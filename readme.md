@@ -1,48 +1,3 @@
-<br />
-<font size='1'><table class='xdebug-error xe-deprecated' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
-<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Deprecated: Function ereg() is deprecated in C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php on line <i>154</i></th></tr>
-<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
-<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
-<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0115</td><td bgcolor='#eeeeec' align='right'>721184</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>0</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0889</td><td bgcolor='#eeeeec' align='right'>770904</td><td bgcolor='#eeeeec'>find_screenshot(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>51</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0889</td><td bgcolor='#eeeeec' align='right'>772216</td><td bgcolor='#eeeeec'>url_validate(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>94</td></tr>
-</table></font>
-<br />
-<font size='1'><table class='xdebug-error xe-deprecated' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
-<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Deprecated: Function ereg() is deprecated in C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php on line <i>154</i></th></tr>
-<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
-<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
-<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0115</td><td bgcolor='#eeeeec' align='right'>721184</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>0</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>1.1993</td><td bgcolor='#eeeeec' align='right'>750208</td><td bgcolor='#eeeeec'>find_screenshot(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>51</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>1.1993</td><td bgcolor='#eeeeec' align='right'>751520</td><td bgcolor='#eeeeec'>url_validate(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>94</td></tr>
-</table></font>
-<br />
-<font size='1'><table class='xdebug-error xe-deprecated' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
-<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Deprecated: Function ereg() is deprecated in C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php on line <i>154</i></th></tr>
-<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
-<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
-<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0115</td><td bgcolor='#eeeeec' align='right'>721184</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>0</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>1.7940</td><td bgcolor='#eeeeec' align='right'>750312</td><td bgcolor='#eeeeec'>find_screenshot(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>51</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>1.7940</td><td bgcolor='#eeeeec' align='right'>751624</td><td bgcolor='#eeeeec'>url_validate(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>94</td></tr>
-</table></font>
-<br />
-<font size='1'><table class='xdebug-error xe-deprecated' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
-<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Deprecated: Function ereg() is deprecated in C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php on line <i>154</i></th></tr>
-<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
-<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
-<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0115</td><td bgcolor='#eeeeec' align='right'>721184</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>0</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>2.3440</td><td bgcolor='#eeeeec' align='right'>750400</td><td bgcolor='#eeeeec'>find_screenshot(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>51</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>2.3440</td><td bgcolor='#eeeeec' align='right'>751712</td><td bgcolor='#eeeeec'>url_validate(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>94</td></tr>
-</table></font>
-<br />
-<font size='1'><table class='xdebug-error xe-deprecated' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
-<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Deprecated: Function ereg() is deprecated in C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php on line <i>154</i></th></tr>
-<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
-<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
-<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0115</td><td bgcolor='#eeeeec' align='right'>721184</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>0</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>2.9034</td><td bgcolor='#eeeeec' align='right'>750568</td><td bgcolor='#eeeeec'>find_screenshot(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>51</td></tr>
-<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>2.9034</td><td bgcolor='#eeeeec' align='right'>751880</td><td bgcolor='#eeeeec'>url_validate(  )</td><td title='C:\wamp\www\WP-Readme-to-Github-Markdown-master\index.php' bgcolor='#eeeeec'>..\index.php<b>:</b>94</td></tr>
-</table></font>
 # JM Twitter Cards #
 **Contributors:** jmlapam  
 **Tags:** twitter, cards, semantic markup, metabox, meta, photo, product, gallery  
@@ -168,22 +123,6 @@ Vous devez utiliser le shortcode [gallery] pour obtenir une card galerie (c'est 
 
 Voir une démo : http://support.tweetpress.fr/demo-twitter-cards-gallery/
 (parfois vous devez patientez un peu pour que les images apparaissent au validateur.)
-
-## Screenshots ##
-###1. admin###
-![admin](http://s-plugins.wordpress.org/jm-twitter-cards/assets/screenshot-1.png)
-
-###2. confirmation mail###
-![confirmation mail](http://s-plugins.wordpress.org/jm-twitter-cards/assets/screenshot-2.png)
-
-###3. meta box###
-![meta box](http://s-plugins.wordpress.org/jm-twitter-cards/assets/screenshot-3.png)
-
-###4. player cards validator ( I did not apply for player cards cause I do not have SSL )###
-![player cards validator ( I did not apply for player cards cause I do not have SSL )](http://s-plugins.wordpress.org/jm-twitter-cards/assets/screenshot-4.png)
-
-###5. gallery cards validator###
-![gallery cards validator](http://s-plugins.wordpress.org/jm-twitter-cards/assets/screenshot-5.png)
 
 
 ## Changelog ##
