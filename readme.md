@@ -140,6 +140,13 @@ Voir une démo : http://support.tweetpress.fr/demo-twitter-cards-gallery/
 
 ## Changelog ##
 
+### 4.4 ###
+* 17 Mar 2014
+* replace far-fetched PHP in get_excerpt_by_id() function with a simple WP function called wp_trim_words() 
+* bump the markup up according to this thread https://dev.twitter.com/discussions/17878
+* Actually no big deal if your theme is clean but sometimes a lot of stuffs is added with the hook `wp_head`
+* For details about installation please read the documentation, you can also check this link : https://dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#plugin_jm
+
 ### 4.3 ###
 * 09 Mar 2014
 * Fix a typo that triggered notice with undefined var
