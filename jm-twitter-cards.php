@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 4.3
+Version: 4.4
 License: GPL2++
 */
 /*
@@ -25,6 +25,7 @@ License: GPL2++
 *			   - https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
 *			   - http://docs.appthemes.com/tutorials/wordpress-check-user-role-function/
 *			   - http://highlightjs.org/
+*			   - https://dev.twitter.com/discussions/17878
 */
 
 // Add some security, no direct load !
@@ -698,15 +699,12 @@ if (!function_exists('get_excerpt_by_id'))
 
 		// SET LENGTH
 
-		$excerpt_length = jm_tc_get_options();
-		$excerpt_length = $excerpt_length['twitterExcerptLength'];
-		$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
-		$words = explode(' ', $the_excerpt, $excerpt_length + 1);
-		if (count($words) > $excerpt_length):
-			array_pop($words);
-			array_push($words, '…');
-			$the_excerpt = implode(' ', $words);
-		endif;
+		$opts = jm_tc_get_options();
+		$excerpt_length = $opts['twitterExcerptLength'];
+		
+		
+		$the_excerpt = wp_trim_words( $the_excerpt, $excerpt_length, '');// it's better to use wp functions 
+		
 		return esc_attr($the_excerpt); // to prevent meta from being broken by ""
 	}
 }
@@ -1071,7 +1069,9 @@ if (!function_exists('_jm_tc_markup'))
 }	
 
 //Add markup according to which page is displayed
-add_action('wp_head', '_jm_tc_add_markup', PHP_INT_MAX); // it's actually better to load twitter card meta at the very end (SEO desc is more important)
+//add_action('wp_head', '_jm_tc_add_markup', PHP_INT_MAX); // it's actually better to load twitter card meta at the very end (SEO desc is more important)
+
+add_action('wp_head', '_jm_tc_add_markup',2); //the priority level used to be a little bit ^^ lower before according this thread https://dev.twitter.com/discussions/17878
 function _jm_tc_add_markup() {
 
         $begin =  "\n" . '<!-- JM Twitter Cards by Julien Maury ' . jm_tc_plugin_get_version() . ' -->' . "\n";
@@ -1888,7 +1888,7 @@ function jm_tc_get_default_options()
 		'twitterCreator' => 'TweetPressFr',
 		'twitterSite' => 'TweetPressFr',
 		'twitterExcerptLength' => 35,
-		'twitterImage' => '',
+		'twitterImage' => 'https://g.twimg.com/Twitter_logo_blue.png',
 		'twitterImageWidth' => '280',
 		'twitterImageHeight' => '150',
 		'twitterCardMetabox' => 'no',
