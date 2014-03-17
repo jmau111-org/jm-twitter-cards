@@ -1,11 +1,18 @@
 # JM Twitter Cards #
-**Contributors:** jmlapam  
-**Tags:** twitter, cards, semantic markup, metabox, meta, photo, product, gallery  
-**Requires at least:** 3.1.0  
-**Tested up to:** 3.8  
-**License:** GPLv2 or later  
-**Stable tag:** trunk  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** jmlapam
+  
+**Tags:** twitter, cards, semantic markup, metabox, meta, photo, product, gallery
+  
+**Requires at least:** 3.1.0
+  
+**Tested up to:** 3.8
+  
+**License:** GPLv2 or later
+  
+**Stable tag:** trunk
+  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+  
 
 Easy integration of Twitter cards in WordPress. Most useful card types provided.
 
@@ -141,7 +148,7 @@ Voir une démo : http://support.tweetpress.fr/demo-twitter-cards-gallery/
 * By default image source will be grabbed from the attached file URL because most of the time it's about images.
 * If you need to set imager for other mime types just use the meta box and set it with external URL section
 * Add upload button for external URL section in meta box
-* Add different hanles for scripts and styles in admin which is actually a better idea
+* Add different handles for scripts and styles in admin which is actually a better idea
 
 ### 4.2 ###
 * 04 Mar 2014
