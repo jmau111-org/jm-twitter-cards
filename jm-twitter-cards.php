@@ -5,27 +5,27 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 4.4
+Version: 4.4.1
 License: GPL2++
 */
 /*
-*    Sources:  - https://dev.twitter.com/docs/cards
-*              - http://codex.wordpress.org/Function_Reference/wp_enqueue_style
-*              - https://github.com/rilwis/meta-box [GREAT]
-*              - http://codex.wordpress.org/Function_Reference/wp_get_attachment_image_src
-*              - http://codex.wordpress.org/Function_Reference/get_user_meta
-*              - http://codex.wordpress.org/Function_Reference/get_posts
-*              - https://codex.wordpress.org/Function_Reference/has_shortcode
-*              - http://codex.wordpress.org/AJAX_in_Plugins
-*              - http://codex.wordpress.org/Plugin_API/Action_Reference/wp_ajax_(action)
-*              - http://byronyasgur.wordpress.com/2011/06/27/frontend-forward-facing-ajax-in-wordpress/
-*              - https://dev.twitter.com/docs/cards/getting-started#open-graph
-*              - https://dev.twitter.com/docs/cards/markup-reference
-*			   - https://dev.twitter.com/docs/cards/types/player-card
-*			   - https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
-*			   - http://docs.appthemes.com/tutorials/wordpress-check-user-role-function/
-*			   - http://highlightjs.org/
-*			   - https://dev.twitter.com/discussions/17878
+*    Sources:  	- https://dev.twitter.com/docs/cards
+*              	- http://codex.wordpress.org/Function_Reference/wp_enqueue_style
+*              	- https://github.com/rilwis/meta-box [GREAT]
+*              	- http://codex.wordpress.org/Function_Reference/wp_get_attachment_image_src
+*              	- http://codex.wordpress.org/Function_Reference/get_user_meta
+*              	- http://codex.wordpress.org/Function_Reference/get_posts
+*              	- https://codex.wordpress.org/Function_Reference/has_shortcode
+*              	- http://codex.wordpress.org/AJAX_in_Plugins
+*              	- http://codex.wordpress.org/Plugin_API/Action_Reference/wp_ajax_(action)
+*              	- http://byronyasgur.wordpress.com/2011/06/27/frontend-forward-facing-ajax-in-wordpress/
+*              	- https://dev.twitter.com/docs/cards/getting-started#open-graph
+* 		- https://dev.twitter.com/docs/cards/markup-reference
+*		- https://dev.twitter.com/docs/cards/types/player-card
+*		- https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
+*		- http://docs.appthemes.com/tutorials/wordpress-check-user-role-function/
+*		- http://highlightjs.org/
+*		- https://dev.twitter.com/discussions/17878
 */
 
 // Add some security, no direct load !
@@ -702,7 +702,7 @@ if (!function_exists('get_excerpt_by_id'))
 		$opts = jm_tc_get_options();
 		$excerpt_length = $opts['twitterExcerptLength'];
 		
-		
+		$the_excerpt = strip_shortcodes($the_excerpt); // prevent shortcodes from appearing in description
 		$the_excerpt = wp_trim_words( $the_excerpt, $excerpt_length, '');// it's better to use wp functions 
 		
 		return esc_attr($the_excerpt); // to prevent meta from being broken by ""
@@ -1110,7 +1110,6 @@ function jm_tc_lang_init()
 
 // Add a "Settings" link in the plugins list
 add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'jm_tc_settings_action_links', 10, 2);
-
 function jm_tc_settings_action_links($links, $file)
 {
 	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc_options') . '">' . __("Settings") . '</a>';
@@ -1120,7 +1119,6 @@ function jm_tc_settings_action_links($links, $file)
 
 // The add_action to add onto the WordPress menu.
 add_action('admin_menu', 'jm_tc_add_options');
-
 function jm_tc_add_options()
 {
 	$tcpage    = add_menu_page('JM Twitter Cards Options', __('Twitter Cards','jm-tc'), 'manage_options', 'jm_tc_options', 'jm_tc_options_page', plugins_url('admin/img/bird_blue_16.png', __FILE__) , 99);
@@ -1162,9 +1160,7 @@ function jm_tc_doc_scripts()
 }
 
 // Ajax saving options
-
 add_action('wp_ajax_jm-tc-ajax-saving', 'jm_tc_ajax_saving_process');
-
 function jm_tc_ajax_saving_process()
 {
 
@@ -1215,7 +1211,6 @@ function jm_tc_metabox_scripts($hook_suffix)
 // Add dismissible notice
 
 add_action('admin_notices', 'jm_tc_admin_notice');
-
 if (!function_exists('jm_tc_admin_notice'))
 {
 	function jm_tc_admin_notice()
@@ -1238,7 +1233,6 @@ if (!function_exists('jm_tc_admin_notice'))
 }
 
 add_action('admin_init', 'jm_tc_ignore_this');
-
 if (!function_exists('jm_tc_ignore_this'))
 {
 	function jm_tc_ignore_this()
