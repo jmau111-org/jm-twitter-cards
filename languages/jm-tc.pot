@@ -1,0 +1,554 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in echo
+#: jm-twitter-cards.php:279
+msgid "(A simple way to opt out meta box on particular posts.)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1739
+msgid "About the developer"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1338
+msgid "Add a field Twitter to profiles"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1712
+msgid "Analytics"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Card types"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1288
+msgid "Choose what type of card you want to use"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1589
+msgid "Deep Linking"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Define specific size for twitter:image display"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Disable metabox ?"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:263
+msgid "Do you want to deactivate twitter cards metabox on this post?"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1481
+msgid "Do you want to force crop on card Image?"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:253
+#: jm-twitter-cards.php:1779
+msgid "Documentation"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1693
+msgid "Enter Google Play ID "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1675
+msgid "Enter Google Play Name "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1684
+msgid "Enter Google Play URL "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1320
+msgid "Enter Twitter account for your Website"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1499
+msgid "Enter URL for fallback image (image by default)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1575
+msgid "Enter description for Posts Page (max: 200 words)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1664
+msgid "Enter iPad ID "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1646
+msgid "Enter iPad Name "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1655
+msgid "Enter iPad URL "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1619
+msgid "Enter iPhone Name "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1628
+#: jm-twitter-cards.php:1637
+msgid "Enter iPhone URL "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1432
+msgid "Enter key for card description"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1423
+msgid "Enter key for card title"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:427
+msgid "Enter the first key data for product"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:435
+msgid "Enter the first key label for product"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:443
+msgid "Enter the second key data for product"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:451
+msgid "Enter the second key label for product"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1566
+msgid "Enter title for Posts Page :"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1311
+msgid "Enter your Personal Twitter account"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:630
+msgid "Enter your Twitter Account (without @)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "External URL for twitter:image ?"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1616
+msgid "For all the following fields, if you do not want to use leave it blank but be careful with the required markup for your app. Read the documentation please."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Gallery Cards"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1281
+msgid "General"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1537
+msgid "Get a <strong>custom metabox</strong> on each post type admin"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1596
+msgid "Get appropriate <strong>meta</strong> for deep linking: "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1258
+msgid "Get more <br />from 140 characters </br> with Twitter Cards"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1419
+msgid "Grab datas from SEO plugins"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1766
+msgid "Help me keep this free"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1779
+msgid "I am a WordPress Developer, I like to make it simple."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:546
+msgid "If you do not understand what is the following field then it is probably a bad idea to fulfill them!"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1419
+msgid "If you prefer to use your own fields"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:410
+#: jm-twitter-cards.php:467
+#: jm-twitter-cards.php:1517
+msgid "Image height"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:542
+msgid "Image is equal to or greater than 1MB. This will break Twitter Cards. Optimize it please, this should also improve your page load."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:402
+#: jm-twitter-cards.php:459
+#: jm-twitter-cards.php:1508
+msgid "Image width"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1721
+msgid "It allows you to make some tests and then you can choose \"top performing Twitter Cards that drove clicks\"."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1771
+msgid "JM Dashicons Shortcode"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "JM Twitter Cards"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1779
+msgid "Just use shortcode <strong>[gallery]</strong> and include at least 4 images."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:511
+#: jm-twitter-cards.php:539
+msgid "Mandatory for Twitter player card!"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "Max mobile non retina (width: 280px - height: 375px)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "Max mobile retina (width: 560px - height: 750px)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "Max web size(width: 435px - height: 375px)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1769
+msgid "Maybe you will like this plugin too: "
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1530
+msgid "Meta Box"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1359
+msgid "Modify user meta key associated with Twitter Account in profiles :"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1607
+msgid "No"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "No way :/"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1779
+msgid "Now you can combine Twitter Cards with"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Options have been saved."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Photo Cards"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Player Cards"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:532
+msgid "Player height"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:521
+msgid "Player width"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1769
+msgid "Please help me keep this plugin free."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1766
+msgid "Plugin"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1559
+msgid "Posts page"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1255
+msgid "Product Cards"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "SAVING..."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1375
+msgid "SEO"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Save changes"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:348
+msgid "Set another source as twitter image (enter URL)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1329
+msgid "Set description according to excerpt length (words count)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:366
+msgid "Set featured image dimensions"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1453
+msgid "Set thumbnail size"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "Small (width: 280px - height: 150px)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1769
+msgid "This will help you to set the best card type experience and it will probably improve your marketing value."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1446
+msgid "Thumbnails"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:616
+msgid "Twitter Card Creator"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Twitter Cards"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1261
+msgid "Twitter Cards help you richly represent your content within Tweets across the web and on mobile devices. This gives users greater context and insight into the URLs shared on Twitter, which in turn allows Twitter to send more engaged traffic to your site or app."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:555
+msgid "URL must be https!"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:504
+msgid "URL of iFrame player (MUST BE HTTPS)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:548
+msgid "URL to raw stream that will be rendered (MUST BE HTTPS)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1403
+msgid "Use SEO by Yoast or All in ONE SEO meta description for your cards (<strong>default is yes</strong>)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1385
+msgid "Use SEO by Yoast or All in ONE SEO meta title for your cards (<strong>default is yes</strong>)"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Warning : Gallery Card is not set properly ! There is no gallery in this post !"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Warning : Player Card is not set properly ! The URL of iFrame Player MUST BE https!"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Warning : Player Card is not set properly ! The URL of raw stream Player MUST BE https!"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Warning : Player Card is not set properly ! There is no URL provided for iFrame player !"
+msgstr ""
+
+#. Text in function
+#: jm-twitter-cards.php:1779
+msgid "Warning : Product Card is not set properly ! There is no product datas !"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:518
+msgid "When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1264
+msgid "With this plugin you can grab summary, summary large image, product, photo and gallery cards."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1607
+msgid "Yes"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1779
+msgid "You can test sources, links, influencers and devices. It is awesome and you should enjoy these new tools."
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+msgid "gallery"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1607
+msgid "no"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+msgid "not at all !"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "photo"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+msgid "player"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+msgid "product"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "summary"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+#: jm-twitter-cards.php:1607
+msgid "summary_large_image"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1607
+#: jm-twitter-cards.php:1391
+msgid "yes"
+msgstr ""
+
+#. Text in echo
+#: jm-twitter-cards.php:1391
+msgid "yes please, deactivate it"
+msgstr ""
