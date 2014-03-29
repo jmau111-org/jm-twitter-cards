@@ -106,6 +106,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 			return esc_url($new);
 		}
+		
 
 		//Meta box
 		function register_meta_boxes( array $meta_boxes )
@@ -336,7 +337,9 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 					
 				)
 			);
-			
+
+
+
 			// 2nd meta box			
 			if(	 $opts['twitterCardProfile'] == 'yes' ) {
 			
@@ -357,7 +360,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 				);
 			
 			
-			}
+			}			
 			
 			return $meta_boxes;
 			

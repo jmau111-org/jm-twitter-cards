@@ -62,8 +62,8 @@ function jm_tc_subpages(){
 		require( JM_TC_INC_DIR .'admin/pages/documentation.php' );	
 	 }
 	 
-	 if ( isset( $_GET['page'] ) && 'jm_tc_robots_txt' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/robots.php' );	
+	 if ( isset( $_GET['page'] ) && 'jm_tc_about' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/about.php' );	
 	 }
 	 
 }
