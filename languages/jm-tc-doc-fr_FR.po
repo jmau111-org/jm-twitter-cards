@@ -1,0 +1,1126 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: JM Twitter Cards Documentation\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: jmlapam <contact@tweetpress.fr>\n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
+
+#. Text in echo
+#: documentation.php:185
+msgid ""
+"<strong>Image options</strong> : This is optional but some users wanted "
+"alternatives for featured image"
+msgstr ""
+"<strong>Options de l'image </strong> : facultatif mais certains utilisateurs "
+"en ont fait le demande pour avoir une alternative à l'utilisation de l'image "
+"à la une"
+
+#. Text in echo
+#: documentation.php:55
+msgid ""
+"<strong>Mobile (non-retina displays)</strong>: maximum height of 375px, "
+"maximum width of 280px"
+msgstr ""
+"<strong>Mobile ( affichages non-retina )</strong>: hauteur max 375px, "
+"largeur max 280px"
+
+#. Text in echo
+#: documentation.php:56
+msgid ""
+"<strong>Mobile (retina displays)</strong>: maximum height of 750px, maximum "
+"width of 560px"
+msgstr ""
+"<strong>Mobile (affichages retina )</strong>: hauteur max 750px, largeur max "
+"560px"
+
+#. Text in echo
+#: documentation.php:186
+msgid ""
+"<strong>Product card options</strong> : You can set 2 key details for your "
+"product (e.g price, size, etc)"
+msgstr ""
+"<strong> Options de la card produits</strong> : vous pouvez définir 2 "
+"caractéristiques importantes de votre produit (ex: le prix, la taille, etc)"
+
+#. Text in echo
+#: documentation.php:184
+msgid ""
+"<strong>Retina display</strong>: Be careful with Retina displays, image must "
+"be tall enough. Also make sure your image is not heavier than 1 MB if used "
+"for summary large cards"
+msgstr ""
+"<strong>Affichage Retina</strong>: attention à inclure des images "
+"suffisamment grandes mais inférieures à 1MB."
+
+#. Text in echo
+#: documentation.php:69
+msgid "A few simple rules for Player Cards"
+msgstr "Quelques règles simples pour les cards vidéo"
+
+#. Text in echo
+#: documentation.php:47
+msgid ""
+"Almost the same card as Summary Card but with a large image. It is nice, "
+"isn't it?"
+msgstr ""
+"Presque pareil qu'une card résumé mais avec une image large. Sympa non?"
+
+#. Text in echo
+#: documentation.php:87
+msgid ""
+"Also be sure to check all the following point before <a href= \"https://dev."
+"twitter.com/docs/cards/validation/validator\">asking for approval</a>. Here "
+"are the common issues with player cards:"
+msgstr ""
+"Assurez-vous aussi de vérifiez les points suivants avant <a href= \"https://"
+"dev.twitter.com/docs/cards/validation/validator\">demander une validation</"
+"a>. Voici les problèmes courants rencontrés avec les cards vidéo:"
+
+#. Text in echo
+#: documentation.php:20 documentation.php:121
+msgid "Analytics"
+msgstr "Analytics"
+
+#. Text in echo
+#: documentation.php:171
+msgid ""
+"And if you do not use one of this two plugins you can use your own custom "
+"fields instead. Just provide meta keys (advanced users)."
+msgstr ""
+"Et si vous n'utilisez aucun de ces 2 plugins vous pouvez utiliser vos "
+"propres champs en spécifiant leurs clés (utilisateurs avancés)."
+
+#. Text in echo
+#: documentation.php:99
+msgid "App Installs"
+msgstr "Installations d'application"
+
+#. Text in echo
+#: documentation.php:120
+msgid "App Installs and Deep-Linking"
+msgstr "App Installs et Deep-Linking"
+
+#. Text in echo
+#: documentation.php:84
+msgid ""
+"Attach additional interactivity outside the video or audio player (e.g., non-"
+"standard buttons or banners)."
+msgstr ""
+"Ajouter de l'interactivité en dehors de la vidéo ou du lecteur audio (ex: "
+"des boutons non standard ou des bannières)."
+
+#. Text in echo
+#: documentation.php:82
+msgid "Automatically play content that is greater than 10 seconds in length."
+msgstr "Jouer automatiquement un contenu supérieur à 10 secondes."
+
+#. Text in echo
+#: documentation.php:138
+msgid ""
+"Basically you provide your custom field keys in plugin option page and then "
+"it will grab datas."
+msgstr ""
+"De manière basique vous entrez vos clés correspondant à vos champs "
+"personnalisés dans la page d'option du plugin et les données seront alors "
+"récupérées depuis ces champs."
+
+#. Text in echo
+#: documentation.php:167
+msgid ""
+"Be careful the key you have to provide MUST BE the key your theme use to set "
+"the Twitter's field in profile ! In addition to this, THE VALUE MUST BE A "
+"USERNAME not a URL such as http://twitter.com/user <strong>it could break "
+"the cards !</strong>"
+msgstr ""
+"Soyez prudent avec la clé fournie. Elle DOIT ÊTRE celle que votre thème "
+"utilise pour fixer les noms d'utilisateur Twitter de vos membres dans les "
+"profils ! S'ajoute que LA VALEUR DOIT ÊTRE UN NOM D'UTILISATEUR pas une URL "
+"comme https://twitter.com/user  <strong>cela peut casser totalement la card !"
+"</strong>"
+
+#. Text in echo
+#: documentation.php:159
+msgid ""
+"Be careful with this. Manipulating markup in head section is quite sensitive."
+msgstr ""
+"Soyez prudent avec ce filtre. Une erreur dans le markup du head et c'est "
+"toute la page qui saute !"
+
+#. Text in echo
+#: documentation.php:125
+msgid "Be careful, it is not available in all countries ! Not yet"
+msgstr "Attention, non disponible dans certains pays ! Pas encore..."
+
+#. Text in echo
+#: documentation.php:71
+msgid ""
+"Build a responsive and equivalent experience that works within all Twitter "
+"clients (including twitter.com, mobile.twitter.com, Twitter for iPhone and "
+"Twitter for Android). Cards that do not work in all Twitter clients listed "
+"will not be approved."
+msgstr ""
+"Mettez en place une expérience équivalente et responsive sur tous les "
+"clients Twitter (y compris twitter.com, mobile.twitter.com, Twitter pour "
+"iPhone et Twitter pour Android). Les cards qui ne fonctionnent pas sur tous "
+"le clients Twitter seront listées comme non approuvées."
+
+#. Text in echo
+#: documentation.php:85
+msgid ""
+"Build end-to-end interactive experiences inside the video or audio player "
+"unrelated to Player Card content, such as the following: purchasing, gaming, "
+"polling, messaging, and data entry. Instead, build these interactive "
+"experiences with our other Card types or enhance your Player Card content "
+"with links to your website or mobile application."
+msgstr ""
+"Mettre en place des expériences interactives à l'intérieur du lecteur vidéo "
+"ou audio qui n'ont rien à voir avec le contenu de la card vidéo comme par "
+"exemple achats, jeux, sondages, messagerie et saisie de données. Faites ceci "
+"avec d'autres types de cards ou préférez à cela le deep-linking vers votre "
+"site ou votre application mobile."
+
+#. Text in echo
+#: documentation.php:101
+msgid ""
+"By adding these new footer tags to your markup, you'll be able to specify "
+"downloads for users who've not yet installed your app on their device. This "
+"will work across iPhone, iPad, and Android (Google Play). Please note that "
+"if you have an iPhone app, but no iPad-optimized app, you should include the "
+"iPhone app id, name, and url for both iPhone and iPad-related tags. When no "
+"value is provided, the Cards will simply render a \"View on web\" link "
+"pointing to website of the card. Below is an example of what the prompt will "
+"look like if the user does not have the app installed:"
+msgstr ""
+"En ajoutant ces nouvelles balises meta vous permettez le téléchargement "
+"direct de votre application dans vos tweets sur les appareils de vos "
+"utilisateurs. Fonctionne sous iPhone, iPad et Android (Google Play). SVP "
+"notez que si vous avez une application iPhone, mais pas d'application "
+"optimisée iPad, VOUS DEVEZ INCLURE les balises id, le nom et URL pour A LA "
+"FOIS IPHONE ET IPAD. Si aucune valeur n'est fournie, la card rendra "
+"simplement un lien \"Voir sur le web\" pointant vers votre site. Ci-dessous "
+"un exemple d'affichage quand l'utilisateur n'a pas encore l'application "
+"installée."
+
+#. Text in echo
+#: documentation.php:95
+msgid ""
+"Check if the player's z-index causes the content to overlap the page header"
+msgstr ""
+"Vérifier si le z-index du player fait que le contenu et l'entête se "
+"chevauchent"
+
+#. Text in echo
+#: documentation.php:136
+msgid ""
+"Check that image does not exceed 1mb in size and/or is compatible with "
+"Twitter requirements."
+msgstr ""
+"Vérifiez que l'image n'excède pas 1MB et/ou est compatible avec les "
+"recommandations de Twitter."
+
+#. Text in echo
+#: documentation.php:81
+msgid ""
+"Circumvent the intended use of the Card. Player Cards are reserved for "
+"linear audio and video consumption only."
+msgstr ""
+"Détourner l'utilisation de la card. Les cards vidéo sont réservées à une "
+"consommation linéraire des contenus vidéos et audios. "
+
+#. Text in echo
+#: documentation.php:91
+msgid "Content greater than 10 seconds in length must not play automatically"
+msgstr ""
+"Un contenu supérieur à 10 secondes NE DOIT PAS être joué automatiquement"
+
+#. Text in echo
+#: documentation.php:103
+msgid "Deep-Linking"
+msgstr "Deep-Linking"
+
+#. Text in echo
+#: documentation.php:75
+msgid ""
+"Default to &#226;&#8364;&#732;sound off&#226;&#8364;&#8482; for videos that "
+"automatically play content. Please note that videos greater than 10 seconds "
+"in length must not automatically play content."
+msgstr ""
+"Mettre par défaut &#226;&#8364;&#732;sound off&#226;&#8364;&#8482; pour les "
+"vidéos qui se jouent automatiquement. SVP notez que les vidéos supérieures à "
+"10 secondes ne doivent pas être jouées automatiquement."
+
+#. Text in echo
+#: documentation.php:13
+msgid "Different type of cards"
+msgstr "Différents types de cards"
+
+#. Text in echo
+#: documentation.php:42
+msgid "Different types of cards"
+msgstr "Différents types de cards"
+
+#. Text in echo
+#: documentation.php:80
+msgid "Do not:"
+msgstr "A ne pas faire"
+
+#. Text in echo
+#: documentation.php:70
+msgid "Do:"
+msgstr "A faire"
+
+#. Text in echo
+#: documentation.php:129
+msgid ""
+"Don't panic ! It's probably you did not set your robots.txt file according "
+"to Twitter's recommandation"
+msgstr ""
+"Pas de panique ! C'es probablement du à des règles manquantes recommandées "
+"par Twitter dans le fichier robots.txt "
+
+#. Text in echo
+#: documentation.php:182
+msgid "Extra settings"
+msgstr "Réglages supplémentaires"
+
+#. Text in echo
+#: documentation.php:34
+msgid "Extrasettings"
+msgstr "Réglages supplémentaires"
+
+#. Text in echo
+#: documentation.php:9
+msgid "Follow me on Twitter"
+msgstr "Me suivre sur Twitter"
+
+#. Text in echo
+#: documentation.php:7
+msgid "French blogger and developer"
+msgstr "Blogueur et dévéloppeur français WordPress"
+
+#. Text in echo
+#: documentation.php:86
+msgid ""
+"Generate active mixed content browser warnings at any point during the audio "
+"or video experience, either on load or during play. For more information, "
+"see the"
+msgstr ""
+"Générer des avertissements contenus active mixed dans le navigateur à un "
+"moment de l'expérience vidéo ou audion que ce soit au chargeement ou durant "
+"la lecture. Pour plus d'informations voir le "
+
+#. Text in echo
+#: documentation.php:191
+msgid "Go To Table of Contents"
+msgstr "Aller au sommaire"
+
+#. Text in echo
+#: documentation.php:143
+msgid ""
+"Here I disable Twitter Cards for both page with ID 19 and page slug "
+"'contact' :"
+msgstr ""
+"Ici je désactive les cards pour des pages spécifiques comme celle portant "
+"l'ID 19 ou le slug 'contact':"
+
+#. Text in echo
+#: documentation.php:148
+msgid "Here I disable Twitter Cards for post with format 'status':"
+msgstr ""
+"Ici je désactive les cards Twitter pour les posts ayant le format 'status':"
+
+#. Text in echo
+#: documentation.php:108
+msgid ""
+"Here is example markup to enable app install prompts and deep-linking, and "
+"note that this metadata can be appended to any card type. Additionally the "
+"App ID value for iPhone and iPad should be the numeric App Store ID, while "
+"the App ID for Google Play should be the Android package name:"
+msgstr ""
+"Ici un exemple de markup pour activer le lien installer l'application et le "
+"deep-linking, et notez que ces metadatas sont applicable à n'importe quel "
+"type de card donc à toutes les cards. S'ajoute que la valeur de l'ID de "
+"l'appli DOIT ÊTRE l'ID numérique App Store pour ce qui concerne iPhone et "
+"iPad alors qu'il s'agira du nom du package Android pour l'ID Google Play."
+
+#. Text in echo
+#: documentation.php:105
+msgid ""
+"If a user does have the application installed, you can specify a deep-link "
+"into the correlated resource within your own application. When a user clicks "
+"on the \"Open in app\" tap target, Twitter will send that user out into your "
+"application. This value is specified in the \"twitter:app:name:(iphone|ipad|"
+"googleplay)\" tags. The app url should be your app-specific URL Scheme "
+"(requires registration within your app) that launches your app on the "
+"appropriate client."
+msgstr ""
+"Si par contre l'utilisateur a déjà l'appli vous pouvez spécifier un deep-"
+"link de votre application. Quand l'utilisateur clique sur  la cible du lien "
+"\"Open in app\", Twitter le dirige vers votre appli. Cette valeur est "
+"paramétrable avec la meta \"twitter:app:name:(iphone|ipad|googleplay)\". "
+"L'URL de l'appli doit être l'URL spécifique (requiert un enregistrement dans "
+"votre appli) qui lance votre application dans le client approprié."
+
+#. Text in echo
+#: documentation.php:175
+msgid ""
+"If home page is posts page (which is often the case), this setting allows "
+"you to define a Twitter Card title and description. This prevent from "
+"getting the datas from the first post in the loop."
+msgstr ""
+"Si la page d'accueil est la page des articles (ce qui est bien souvent le "
+"cas), ce réglage permet de définir une titre et une description. Cela permet "
+"d'éviter l'erreur classique des informations provenant du 1er article de la "
+"boucle WordPress."
+
+#. Text in echo
+#: documentation.php:96
+msgid ""
+"If the browser asks you whether you want to display insecure assets, you "
+"have an https problem"
+msgstr ""
+"Si le navigateur vous demande si vous voulez quand même afficher un contenu "
+"insécurisé, vous avez un sérieux problème https"
+
+#. Text in echo
+#: documentation.php:76
+msgid ""
+"If the media player includes sharing to third-party networks, you must "
+"provide an option to share to Twitter."
+msgstr ""
+"Si le lecteur de médias inclue un partage vers des réseaux tiers, vous devez "
+"fournir une option pour le partage sur Twitter."
+
+#. Text in echo
+#: documentation.php:168
+msgid ""
+"If you experience any issue or if you mess with this option just recover "
+"with the key :"
+msgstr ""
+"Si vous rencontrez des difficultés ou si vous avez commis une erreur avec "
+"cette option vous pouvez réinitialiser avec la clé :"
+
+#. Text in echo
+#: documentation.php:127
+msgid ""
+"If you have any issue, the first thing you have to do is to go to <a class= "
+"\"button button-secondary\" href= \"https://dev.twitter.com/docs/cards/"
+"troubleshooting\">Twitter Cards troubleshooting</a>."
+msgstr ""
+"En cas de souci, la 1ère chose à faire est de se rendre sur <a class= "
+"\"button button-secondary\" href= \"https://dev.twitter.com/docs/cards/"
+"troubleshooting\">le guide des problèmes d'affichage avec les Twitter Cards</"
+"a>."
+
+#. Text in echo
+#: documentation.php:183
+msgid ""
+"If you select photo, or summary large image or product cards then "
+"(<strong>save draft</strong> if JavaScript is disabled) you'll see "
+"additional fields you can set such as :"
+msgstr ""
+"Si vous choisissez photo, résumé large image ou produit (<strong>enregistrer "
+"brouillon</strong> si JavaScript est désactrivé) vous verrez des champs "
+"additionnels apparaître comme:"
+
+#. Text in echo
+#: documentation.php:161
+msgid ""
+"In 3.3.6 Plugin UI has been renewed with some flat design and in a simpler "
+"way. Only option and all explanations in documentation. All sections "
+"includind meta box on post edit has now a link to documentation."
+msgstr ""
+"Depuis 3.3.6 l'UI a changé totalement avec un peu de flat design pour rendre "
+"les choses plus simples : seulement les options et les explications dans une "
+"documentation bien fournie. Toutes les sections y compris la meta box dans "
+"les edits de post ont un lien vers la documentation."
+
+#. Text in echo
+#: documentation.php:90
+msgid ""
+"In Android/iOS browsers the experience must fall back gracefully (sized for "
+"mobile viewport, no broken Flash embeds, etc)"
+msgstr ""
+"Dans les navigateurs Android/iOS l'expérience doit être assurée de manière "
+"gracieuse (viewport mobile, pas de lecteur flash tout cassé, etc)"
+
+#. Text in echo
+#: documentation.php:6
+msgid "JM Twitter Cards - Documentation"
+msgstr "JM Twitter Cards - Documentation"
+
+#. Text in echo
+#: documentation.php:140
+msgid "Just select card type. You will see additional fields if they exist."
+msgstr ""
+"Sélectionnez le type de card. Vous verrez des champs additionnels s'ils sont "
+"nécessaire pour votre type de card."
+
+#. Text in echo
+#: documentation.php:165
+msgid ""
+"Last setting is for multi-author blogs. It allows your authors to get an "
+"additional field in their profile. They can provide their Twitter Account. "
+"This is meant to improve authorship. If they publish a post, their twitter "
+"usernames will be set as twitter meta creator."
+msgstr ""
+"Le dernier réglage concerne les blog multi-auteurs. Il vous permet d'établir "
+"un champ Twitter additionnel dans leurs profils s'il n'existe pas déja. Il "
+"sera utilisé en tant que meta creator pour améliorer l'autorship sur vos "
+"posts publiés."
+
+#. Text in echo
+#: documentation.php:79
+msgid ""
+"Link to a HTML page which falls back to mobile friendly content in case "
+"Flash is not available."
+msgstr ""
+"Lier vers une page HTML qui s'affiche correctement sur mobile dans le cas où "
+"flash n'est pas disponible."
+
+#. Text in echo
+#: documentation.php:97
+msgid ""
+"Make sure the image is at least 68,600 pixels (a 262x262 square image, or a "
+"350x196 16:9 image) or bigger"
+msgstr ""
+"Assurez-vous que votre image ait des dimensions supérieures ou égales à 68 "
+"pixels (une image carrée de 262x262, ou une image 16:9 de 350x196)"
+
+#. Text in echo
+#: documentation.php:74
+msgid ""
+"Mark your Card as &#226;&#8364;&#732;true&#226;&#8364;&#8482; for sensitive "
+"media if such media could be displayed."
+msgstr ""
+"Marquer sa card à &#226;&#8364;&#732;true&#226;&#8364;&#8482; pour les "
+"médias sensible si de tels médias peuvent être affichés."
+
+#. Text in echo
+#: documentation.php:176
+msgid "Meta Box"
+msgstr "Meta Box"
+
+#. Text in echo
+#: documentation.php:189
+msgid "Meta tag references"
+msgstr "Ensemble des metas autorisées"
+
+#. Text in echo
+#: documentation.php:8
+msgid "My Wishlist"
+msgstr "Ma liste de souhaits"
+
+#. Text in echo
+#: documentation.php:62
+msgid ""
+"Note: The product card requires an image of size 160 x 160 or greater. It "
+"prefers a square image but we can crop/resize oddly shaped images to fit as "
+"long as both dimensions are greater than or equal to 160 pixels."
+msgstr ""
+"Note: la card produit requiert une image de 160*160px au minimum. Il est "
+"recommandé d'utiliser des images carrées mais les images rectangulaires "
+"fonctionnent aussi tant qu'elles ont des dimensions supérieures ou égales à "
+"160px."
+
+#. Text in echo
+#: documentation.php:178
+msgid "Once it's activated you'll get a custom meta box in your post edit :"
+msgstr ""
+"Une fois activé vous obtiendrez un meta box dédiée dans vos edits de post :"
+
+#. Text in echo
+#: documentation.php:39
+msgid ""
+"Once you have added the specific markup with plugin <strong>do not forget to "
+"validate your website on dev.twitter :"
+msgstr ""
+"Une fois le markup mis en place grâce au plugin <strong>NE PAS OUBLIER DE "
+"DEMANDER LA VALIDATION</strong> sur dev.twitter.com :"
+
+#. Text in echo
+#: documentation.php:160
+msgid "Plugin options"
+msgstr "Options du plugin"
+
+#. Text in echo
+#: documentation.php:40
+msgid "Preview tool"
+msgstr "Outil de prévisualisation"
+
+#. Text in echo
+#: documentation.php:73
+msgid "Provide a raw stream to video and audio content when possible."
+msgstr "Fournir un stream brut pour la vidéo et l'audio si possible"
+
+#. Text in echo
+#: documentation.php:83
+msgid "Require users to sign-in to your experience."
+msgstr "Rendre les contenus accessibles uniquement sur connexion"
+
+#. Text in echo
+#: documentation.php:124
+msgid "See on dev.twitter.com"
+msgstr "Voir sur dev.twitter.com"
+
+#. Text in echo
+#: documentation.php:87
+msgid "Set twitter:player to point directly at a .swf movie file."
+msgstr ""
+"Définir la meta twitter:player en la faisant pointer directement vers un "
+"fichier .swf"
+
+#. Text in echo
+#: documentation.php:166
+msgid ""
+"Since 3.3.4 there is a new setting that allows you to use your own field for "
+"Twitter's field in profiles. A lot of theme have this feature so you "
+"probably want to keep only one field."
+msgstr ""
+"Depuis 3.3.4 un réglage vous permet d'ajouter vos propres champs pour la "
+"meta creator. Il récupère votre propre champ Twitter dans les profils de vos "
+"auteurs et c'est probablement une meilleure idée que de doubler les champs "
+"Twitter dans les profils. Beaucoup de thèmes proposent nativement cette "
+"fonctionnalité."
+
+#. Text in echo
+#: documentation.php:120
+msgid "Source"
+msgstr "Source"
+
+#. Text in echo
+#: documentation.php:187
+msgid "Sources"
+msgstr "Sources"
+
+#. Text in echo
+#: documentation.php:45
+msgid "Summary Large Image cards"
+msgstr "Cards résumé avec image large"
+
+#. Text in echo
+#: documentation.php:10
+msgid "Table of content"
+msgstr "Sommaire"
+
+#. Text in echo
+#: documentation.php:72
+msgid ""
+"Test your experience on the native browsers of Twitter clients before "
+"submitting for approval."
+msgstr ""
+"Tester le rendu de vos contenus dans les navigateurs natifs des clients "
+"Twitter avant de soumettre votre site pour validation."
+
+#. Text in echo
+#: documentation.php:66
+msgid ""
+"The Gallery Card allows you to represent collections of photos within a "
+"Tweet. This Card type is designed to let the user know that there's more "
+"than just a single image at the URL shared, but rather a gallery of related "
+"images. You can specify up to 4 different images to show in the gallery card "
+"via the twitter:image[0-3] tags. You can also provide attribution to the "
+"photographer of the gallery by specifying the value of the twitter:creator "
+"tag."
+msgstr ""
+"La card galerie permet de représenter une collection de photos dans un "
+"tweet. Cet type de card est conçu pour faire savoir à l'utilisateur qu'il y "
+"a plus d'une seule image à l'URL partagée, mais plutôt sous forme de galerie "
+"d'images. Vous pouvez spécifier 4 images différentes dans votre card galerie "
+"avec les balises twitter:image[0-3]. Vous pouvez par exemple attribuer un "
+"crédit au photograpeh en spécifiant son nom en tant que meta twitter:creator."
+
+#. Text in echo
+#: documentation.php:88
+msgid "The HTTPS lock is showing active mixed content warnings"
+msgstr "Le lock HTTPS montre un avertissement active lixed content"
+
+#. Text in echo
+#: documentation.php:52
+msgid "The Photo Card puts the image front and center in the Tweet:"
+msgstr "La card photo met en valeur l'image et la dispose au centre du Tweet:"
+
+#. Text in echo
+#: documentation.php:60
+msgid ""
+"The Product Card is a great way to represent retail items on Twitter, and to "
+"drive sales. This Card type is designed to showcase your products via an "
+"image, a description, and allow you to highlight two other key details about "
+"your product."
+msgstr ""
+"La card produit est un bon moyen de représenter vos produits sur Twitter, et "
+"d'attirer les ventes. Cette card est conçue pour afficher vos produits avec "
+"une image, une description, et vous permet de mettre en avant deux détails "
+"importants de votre produit."
+
+#. Text in echo
+#: documentation.php:89
+msgid "The content must have stop or pause controls"
+msgstr "Votre contenu doit contenir des boutons pause et stop"
+
+#. Text in echo
+#: documentation.php:93
+msgid "The content must not be entirely an ad"
+msgstr "Votre contenu ne peut se limiter à une simple publicité"
+
+#. Text in echo
+#: documentation.php:92
+msgid "The content must not require sign-in"
+msgstr "Votre contenu ne doit pas nécessiter une connexion pour être vu"
+
+#. Text in echo
+#: documentation.php:49
+msgid ""
+"The image <strong>must not be more than 1mb in size</strong> that is why the "
+"custom Meta Box includes a checking system that assess your image size and "
+"display the result on each post edit. If you do not use cutom meta box be "
+"sure to upload image smaller than 1mb in size. If your image is heavier, "
+"your card will not break because meta image is not required for summary and "
+"summary large image cards but no image will be displayed in your tweets."
+msgstr ""
+"L'image <strong> NE DOIT PAS ÊTRE</strong> supérieure à 1MB c'est pourquoi "
+"la meta box inclue un indicateur sur la taille de l'image à la une. Si vous "
+"n'utilisez pas de meta box vérifiez la taille de vos images à la une. Si "
+"votre image est trop lourde votre card s'affichera quand même car non "
+"obligatoire pour ce type de card comme avec les cards résumé et résumé large "
+"image mais mal c'est-à-dire sans image du coup ! "
+
+#. Text in echo
+#: documentation.php:98
+msgid "The player URL is not HTTPS (did we mention this before?)"
+msgstr "L'URL du lecteur n'est pas HTTPS"
+
+#. Text in echo
+#: documentation.php:94
+msgid "The player URL must not point directly to a .swf"
+msgstr "L'URL du lecteur NE DOIT PAS pointer directement vers un fichier .swf"
+
+#. Text in echo
+#: documentation.php:61
+msgid ""
+"These fields are strings and can be used to show the price, list "
+"availability, list sizes, etc. This will require adding some new markup tags "
+"to your pages, which we will cover below."
+msgstr ""
+"Ces champs sont des chaînes et peuvent être utilisés pour afficher un prix, "
+"des tailles, etc. Cela requiert un markup supplémentaire que nous verrons "
+"plus tard."
+
+#. Text in echo
+#: documentation.php:48
+msgid ""
+"This card requires <strong>a minimum width of 280, and a minimum height of "
+"150</strong>, the same requirement as Photo cards, that is why it's the "
+"smallest size used by the plugin."
+msgstr ""
+"Cette card requiert <strong>une hauteur maximum de 150px et une largeur "
+"minimum de 280px</strong>"
+
+#. Text in echo
+#: documentation.php:158
+msgid "This could be another way to disable cards on some pages."
+msgstr ""
+"Un autre moyen de désactiver les cards sur certaines pages spécifiques."
+
+#. Text in echo
+#: documentation.php:130
+msgid "This file is used to set specific rules for web crawlers."
+msgstr ""
+"Ce fichier est utilisé pour définir des règles particulières pour les robots "
+"des moteurs de recherche."
+
+#. Text in echo
+#: documentation.php:181
+msgid ""
+"This is meant to let the user know that there is more than just a single "
+"image at the URL shared, but rather a gallery of related images. So these "
+"images have to be part of a WordPress gallery. Please ensure you use the "
+"shortcode [gallery] in your post to enjoy Gallery cards"
+msgstr ""
+"Fait pour indiquer à l'utilisateur qu'il y a plus d'une seule image à l'URL "
+"pointée par le tweet et que les images sont réunies dans une galerie. Donc "
+"ces image doivent être ajoutées dans une galerie WordPress. Assurez-vous de "
+"bien utiliser le shortcode natif [gallery] dans votre post."
+
+#. Text in echo
+#: documentation.php:177
+msgid ""
+"This is one of the best features of the plugin. It allows to customize your "
+"cards for each post and you get extra features..."
+msgstr ""
+"Un des atouts majeurs du plugin ! Il vous permet de personnaliser vos cards "
+"pour chaque post avec des services supplémentaires..."
+
+#. Text in echo
+#: documentation.php:163
+msgid ""
+"This is the first section. You can set which type of card will be the "
+"default type used in your website. You must define twitter card creator "
+"(username) and twitter card site (username). If they are the same just enter "
+"username twice."
+msgstr ""
+"La première section. Vous définissez le type de card qui sera utilisé par "
+"défaut sur le site. Vous devez aussi définir les meta creator (nom "
+"d'utilisateur Twitter) et site ( pareil avec un nom d'utilisateur Twitter). "
+"Si les deux meta doivent correspondre au même compte Twitter entrez-le 2 "
+"fois de suite."
+
+#. Text in echo
+#: documentation.php:123
+msgid ""
+"This new feature allows a fine set up for Twitter Cards Experience. You can "
+"analyse your tweets and see what works and what fails. You can also check "
+"which card type fits your content.<br /> In a nutshell you can improve your "
+"Twitter engagement, monitor clicks and retweets and see what is the best "
+"experience for your followers. <strong>AMAZING</strong>!"
+msgstr ""
+"Ce feature affine votre expérience avec les cards Twitter. Vous pouvez "
+"analyser vos tweets et voir ce qui fonctionne et ce qui loupe. Vous pouvez "
+"voir quel type de card convient finalement le mieux à vos contenus. En un "
+"mot, vous améliorer significativement votre engagement Twitter en ayant la "
+"possibilité de monitorer les clicks, les retweets, etc et tout ce qui "
+"correspond à la meilleure expérience pour vos utilisateurs.   "
+"<strong>AMAZING</strong>!"
+
+#. Text in echo
+#: documentation.php:36
+msgid "To GET STARTED:"
+msgstr "Pour commencer"
+
+#. Text in echo
+#: documentation.php:63
+msgid ""
+"To activate this mode you have to activate the <a href=\"#metabox\">custom "
+"meta box</a>."
+msgstr ""
+"Pour activer ce mode activez d'abord <a href=\"#metabox\">la meta box</a>."
+
+#. Text in echo
+#: documentation.php:53
+msgid ""
+"To define a photo card experience, set your card type to \"photo\" and "
+"provide a twitter:image. Twitter will resize images, maintaining original "
+"aspect ratio to fit the following sizes:"
+msgstr ""
+"Pour une card photo réussie définissez le type de card à \"photo\" et "
+"indiquez une twitter:image. Twitter la redimensionnera en conservant le "
+"ratio initial pour ajuster aux tailles suivantes:"
+
+#. Text in echo
+#: documentation.php:180
+msgid ""
+"To use new feature (in 3.3.6) Gallery cards, just use the WordPress Gallery "
+"System"
+msgstr ""
+"Depuis 3.3.6 les cards galerie sont disponibles, utilisez simplement le "
+"système de galerie natif de WordPress"
+
+#. Text in echo
+#: documentation.php:86
+msgid "Troubleshooting Guide"
+msgstr "Guide sur les problèmes d'affichage"
+
+#. Text in echo
+#: documentation.php:122
+msgid ""
+"Twitter Cards allow you to attach rich media experiences to Tweets about "
+"your content; Twitter Card analytics gives you related insights into how "
+"your content is being shared on Twitter. Through personalized data and best "
+"practices,Twitter Card analytics reveals how you can improve key metrics "
+"such as URL clicks, app install attempts and Retweets."
+msgstr ""
+"Les cards Twitter permettent d'ajouter une expérience rich media aux tweets "
+"concernant vos contenus. Twitter Card Analytics vous permet de répérer la "
+"manière dont sont partagés vos contenues sur Twitter. Grâce aux meilleures "
+"pratiques et des données individualisées Twitter Card analytics vous révèle "
+"comment améliorer des points cruciaux comme les clics sur vos URLs, les "
+"tentatives d'installation de votre appli et les retweets."
+
+#. Text in echo
+#: documentation.php:128
+msgid "Twitter card validator does not work with my site !"
+msgstr "Le validateur Twitter Cards ne fonctionne pas avec mon site !"
+
+#. Text in echo
+#: documentation.php:188
+msgid "Twitter cards documentation"
+msgstr "Documentation Twitter Cards"
+
+#. Text in echo
+#: documentation.php:37
+msgid ""
+"Twitter cards make it possible for you to attach media experiences to Tweets "
+"that link to your content. Simply add a few lines of HTML to your webpages, "
+"and users who Tweet links to your content will have a \"card\" added to the "
+"Tweet that is visible to all of their followers."
+msgstr ""
+"Les cards Twitter permettent d'ajouter une expérience rich media aux tweets "
+"concernant vos contenus. Ajout simplement le markup HTML requis sur vos "
+"pages et les utilisateurs qui tweeteront en pointant vers vos URLs auront "
+"une \"card\" ajoutée à leur tweets. Cette card sera visible par leur "
+"followers."
+
+#. Text in echo
+#: documentation.php:57
+msgid ""
+"Twitter will not create a photo card unless the twitter:image is of a "
+"minimum size of 280px wide by 150px tall. Images will not be cropped unless "
+"they have an exceptional aspect ratio"
+msgstr ""
+"Twitter ne créera aucune card photo si la twitter:image n'a pas les "
+"dimensions requises (280px de large, 150px de hauteur). Les images ne seront "
+"pas recadrées à moins qu'elles aient un ratio exceptionnellement élevé."
+
+#. Text in echo
+#: documentation.php:131
+msgid ""
+"Twitter's bot needs to have access to your website to fetch your content, so "
+"just insert this in the file ::"
+msgstr ""
+"Le robot de Twitter DOIT POUVOIR ACCEDER à votre site pour parcourir vos "
+"contenus, donc insérez ceci dans le fichier:"
+
+#. Text in echo
+#: documentation.php:7
+msgid "Updated"
+msgstr "Mis à jour"
+
+#. Text in echo
+#: documentation.php:77
+msgid "Use HTTPS for your iframe, stream, and all assets within your Card."
+msgstr ""
+"Utiliser HTTPS pour votre iframe, votre stream et tout ce qui se rapporte à "
+"votre card."
+
+#. Text in echo
+#: documentation.php:173
+msgid ""
+"Use the dropdown menu to choose which size you want to set by default (you "
+"can override this with the metabox fields). You can now choose (3.3.0) to "
+"force crop or not. Do not forget to enter a fallback image in case no option "
+"is set. You can also set twitter image with and height to get a better "
+"control of cards display (only for photo and product cards)."
+msgstr ""
+"Utilisez le menu déroulant pour choisir la taille par défaut (ce réglage "
+"peut être écrasé sur chaque post grâce à la meta box). Vous pouvez "
+"maintenant choisir (depuis 3.3.0) de forcer le recadrage ou non. N'OUBLIEZ "
+"PAS d'entrer un fallback pour l'image au cas où celle-ci n'est pas définie "
+"sur un de vos posts. Vous pouvez aussi définir la largeur et la hauteur de "
+"la twitter:image par défaut pour avoir un meilleur contrôle sur le rendu "
+"(réglage utilisé seulement pour les cards photo et produits)."
+
+#. Text in echo
+#: documentation.php:78
+msgid ""
+"Use wmode=opaque if utilizing Flash for the twitter.com experience, so that "
+"the player renders at the correct z-index."
+msgstr ""
+"Utiliser wmode=opaque avec Flash pour l'expérience twitter.com qui permet au "
+"lecteur d'avoir un rendu correct au bon z-index."
+
+#. Text in echo
+#: documentation.php:41
+msgid "Validation form"
+msgstr "Formulaire de validation"
+
+#. Text in echo
+#: documentation.php:179
+msgid ""
+"With version 3.3.1 the plugin allows you to dismiss metabox if you do not "
+"want or need to use it. This introduces more flexibility for users who do "
+"not need to use metabox on each post. If option is set to \"yes, please "
+"deactivate it\", the datas will be set by general options."
+msgstr ""
+"Depuis 3.3.1 le plugin vous permet de désactiver la meta box quand bien même "
+"vous l'avez activée sur le site. Plus de flexibilité. Si donc l'option  "
+"\"oui SVP, désactiver la card\" les réglages seront récupérés depuis la page "
+"d'option du plugin."
+
+#. Text in echo
+#: documentation.php:170
+msgid ""
+"WordPress is great but we often need to add some SEO plugins such as <a "
+"href= \"http://yoast.com/wordpress/seo/\">WP SEO by Yoast</a> or <a href= "
+"\"http://wordpress.org/plugins/all-in-one-seo-pack/\">All In One SEO</a>. "
+"These plugins are very very popular and you can find them in a lot of WP "
+"installations. JM Twitter Cards checks if one of the two plugins is "
+"activated and grabs meta title and description you have set. This allows you "
+"not to waste your time writting things twice for each post. If you forget to "
+"fulfill SEO fields do not panic, there are fallback (post title and the "
+"first words of your post as description). Do not forget to choose how many "
+"words the plugin has to grab for twitter meta description(max 200)."
+msgstr ""
+"WordPress est génial mais vous aurez souvent besoin d'un petit plugin SEO "
+"tel que <a href= \"http://yoast.com/wordpress/seo/\">WP SEO by Yoast</a> ou "
+"<a href= \"http://wordpress.org/plugins/all-in-one-seo-pack/\">All In One "
+"SEO</a>. Ces plugins très très populaires sont présents sur bon nombre "
+"d'installations. JM Twitter card s'occupe de détecter leur présence et si "
+"vous le souhaitez récupérer les données concernant la meta title et la meta "
+"description. Cela vous évite de remplir deux fois la même chose quand vous "
+"vous êtes déjà creusé pour trouver un titre et une description SEO-friendly "
+"et Twitter c'est aussi du SEO, un peu ^^. Si les champs de ces plugins ne "
+"sont pas replis mais que l'option SEO est activée dans JM Twitter Cards pas "
+"de souci ! Le plugin prendra le titre du post par défaut et l'extrait à "
+"partir des premiers mots. N'oubliez pas à ce propos de configurer le nombre "
+"de mots à prendre en compte pour la meta description (200 max)."
+
+#. Text in echo
+#: documentation.php:154
+msgid ""
+"Yes, it's now possible with 3.9, you just have to make you own function and "
+"\"hook\" it on <code>jmtc_markup</code> "
+msgstr ""
+"Depuis 3.9 vous pouvez vous hooker sur le filtre <code>jmtc_markup</code>."
+
+#. Text in echo
+#: documentation.php:164
+msgid ""
+"You can also set how many words the plugin has to grab to set a description "
+"by default. This allows to avoid empty twitter meta description which often "
+"breaks twitter cards."
+msgstr ""
+"Vous pouvez aussi définir le nombre de mots à prendre en compte par défaut "
+"pour la meta description. Cela permet d'éviter les cas de meta description "
+"vide qui cassent les cards totalement."
+
+#. Text in echo
+#: documentation.php:142
+msgid ""
+"You can use the following snippet in your functions.php or in a "
+"functionality plugin."
+msgstr ""
+"Vous pouvez vous ajouter les codes suivants dans le fichier functions.php ou "
+"encore mieux dans <a href=\"http://www.tweetpress.fr/codewp/plugin-"
+"fonctionnalites-wordpress/\"> un plugin de fonctionnalités</a>"
+
+#. Text in echo
+#: documentation.php:7
+msgid "by"
+msgstr "par"
+
+#. Text in echo
+#: documentation.php:7
+msgid "for"
+msgstr "pour"
+
+#. Text in echo
+#: documentation.php:54
+msgid "maximum height of 375px, maximum width of 435px"
+msgstr "hauteur maximum de 375px, largeur maximum de 435px"
+
+#. Text in echo
+#: documentation.php
+msgid "What are Twitter Cards?"
+msgstr "Que sont les Twitter Cards?"
+
+#. Text in echo
+#: documentation.php
+msgid "How to get Twitter Cards"
+msgstr "Comment obtenir des cards Twitter"
+
+#. Text in echo
+#: documentation.php
+msgid "Summary cards"
+msgstr "Cards résumé"
+
+#. Text in echo
+#: documentation.php
+msgid "Photo cards"
+msgstr "Cards photo"
+
+#. Text in echo
+#: documentation.php
+msgid "Product cards"
+msgstr "Cards produits"
+
+#. Text in echo
+#: documentation.php
+msgid "Gallery cards"
+msgstr "Cards galerie"
+
+#. Text in echo
+#: documentation.php
+msgid "Player cards"
+msgstr "Cards vidéo"
+
+#. Text in echo
+#: documentation.php
+msgid "App install & Deep Linking"
+msgstr "Installation de l'appli et Deep Linking"
+
+#. Text in echo
+#: documentation.php
+msgid "Common Issues"
+msgstr "Problèmes courants"
+
+#. Text in echo
+#: documentation.php
+msgid "I do not see images in tweets !"
+msgstr "Je ne vois aucune image dans mes tweets !"
+
+#. Text in echo
+#: documentation.php
+msgid "How do I use the custom fields option?"
+msgstr "Comment utiliser l'option custom fields?"
+
+#. Text in echo
+#: documentation.php
+msgid "I do not see all options in meta box"
+msgstr "Je ne vois pas toutes les options dans la meta box"
+
+#. Text in echo
+#: documentation.php
+msgid "I want to disable Twitter Card Markup in particular cases"
+msgstr "Je veux désactiver le markup Twitter Card dans certains cas précis"
+
+#. Text in echo
+#: documentation.php
+msgid "Can I filter markup ?"
+msgstr "Peut-on filtrer le markup généré par le plugin?"
+
+#. Text in echo
+#: documentation.php
+msgid "Plugin settings"
+msgstr "Réglages du plugin"
+
+#. Text in echo
+#: documentation.php
+msgid "General"
+msgstr "Général"
+
+#. Text in echo
+#: documentation.php
+msgid "SEO"
+msgstr "SEO"
+
+#. Text in echo
+#: documentation.php
+msgid "Images"
+msgstr "Images"
+
+#. Text in echo
+#: documentation.php
+msgid "Home settings"
+msgstr "Réglages de la page d'accueil"
+
+#. Text in echo
+#: documentation.php
+msgid "Meta Box setting"
+msgstr "Réglages de la meta box"
+
+#. Text in echo
+#: documentation.php
+msgid "Sources and Credits"
+msgstr "Sources et crédits"
+
+#. Text in echo
+#: documentation.php
+msgid "Twitter Card Validator does not work !"
+msgstr "Le validateur des cards Twitter ne marche pas !"
