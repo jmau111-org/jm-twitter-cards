@@ -1,18 +1,4 @@
 # JM Twitter Cards #
-**Contributors:** jmlapam
-  
-**Tags:** twitter, cards, semantic markup, metabox, meta, photo, product, gallery
-  
-**Requires at least:** 3.1.0
-  
-**Tested up to:** 3.8
-  
-**License:** GPLv2 or later
-  
-**Stable tag:** trunk
-  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
-  
 
 Easy integration of Twitter cards in WordPress. Most useful card types provided.
 
