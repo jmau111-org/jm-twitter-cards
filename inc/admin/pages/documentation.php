@@ -1,9 +1,16 @@
 <?php 
-// Documentation file
-?>
+if ( ! defined( 'JM_TC_VERSION' ) ) {
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
 
+?>
+<div class="wrap" style="max-width:1024px;">
+	<h2><i class="dashicons dashicons-twitter" style="font-size:2em; margin-right:1em; color:#292F33;"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
+</div>
 <div class="html">
-<div class="body"> <h1><?php _e('JM Twitter Cards - Documentation','jm-tc-doc');?></h1>
+<div class="body"> 
  <p class="author"><?php _e('Updated','jm-tc-doc');?> : 16/02/2013<br /> <img src= "http://0.gravatar.com/avatar/2b7ad0c6e3eda4b16a34425c86ad3c96?s=100&amp;d=&amp;r=G" alt="Julien Maury" width="50" height="50" /><?php _e('by','jm-tc-doc');?> Julien Maury.<br /> <?php _e('French blogger and developer','jm-tc-doc');?><br /> <?php _e('for','jm-tc-doc');?> <a href="http://tweetpress.fr/" title= "tips for WordPress and Twitter APIs">TweetPress.fr</a></p>
  <p><a class="btn" href="http://www.amazon.fr/registry/wishlist/1J90JNIHBBXL8"><?php _e('My Wishlist','jm-tc-doc');?></a></p>
  <p><a class="btn" href="http://twitter.com/intent/user?screen_name=TweetPressFr"><?php _e('Follow me on Twitter','jm-tc-doc');?></a></p>
