@@ -22,8 +22,6 @@ if ( ! class_exists('Featured_Image_Sizes') ) {
 			add_filter( 'admin_post_thumbnail_html', array( &$this, 'admin_post_thumbnail_html' ), 10, 2 );
 			add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
 
-			add_filter( 'post_thumbnail_size', array( &$this, 'post_thumbnail_size' ) );
-
 		}
 
 		function admin_post_thumbnail_html( $content, $post_id ) {
@@ -76,22 +74,6 @@ if ( ! class_exists('Featured_Image_Sizes') ) {
 
 			update_post_meta( $post_id, 'cardImgSize', $fis_size );
 
-		}
-
-		function post_thumbnail_size( $size ) {
-
-			// make sure we're in the main loop
-			// so as not to interfere with secondary loops (perhaps widgets)
-			global $wp_query;
-			if ( ! $wp_query->in_the_loop ) return $size;
-
-			// var_dump( get_the_ID() );
-
-			$fis_size = get_post_meta( get_the_ID(), 'cardImgSize', true );
-
-			if ( empty( $fis_size ) ) return $size;
-
-			return $fis_size;
 		}
 
 	}
