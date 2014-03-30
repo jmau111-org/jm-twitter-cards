@@ -105,7 +105,7 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 
 		function admin_post_thumbnail_html( $content, $post_id ) {
 			
-			$twitter_image_size = JM_TC_Utilities::thumbnail_sizes();
+			$twitter_image_size = static::thumbnail_sizes();
 
 			$post_type = get_post_type( $post_id );
 			if ( ! isset( $this->allowed_post_types[ $post_type ] ) ) return $content;
