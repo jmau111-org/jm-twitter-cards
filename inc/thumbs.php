@@ -27,7 +27,7 @@ if ( ! class_exists('Featured_Image_Sizes') ) {
 		}
 
 		function admin_post_thumbnail_html( $content, $post_id ) {
-		
+			
 			$twitter_image_size = JM_TC_Utilities::thumbnail_sizes();
 
 			$post_type = get_post_type( $post_id );
@@ -56,13 +56,13 @@ if ( ! class_exists('Featured_Image_Sizes') ) {
 		function save_post( $post_id, $post ) {
 
 			if ( ! isset( $_POST['nn-fis-image'] ) ) //make sure our custom value is being sent
-				return;
+			return;
 			if ( ! wp_verify_nonce( $_POST['nn-fis-image'], 'na-fis-image' ) ) //verify intent
-				return;
+			return;
 			if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) //no auto saving
-				return;
+			return;
 			if ( ! current_user_can( 'edit_post', $post_id ) ) //verify permissions
-				return;
+			return;
 
 			$fis_size = trim( $_POST['cardImgSize'] );
 			if ( empty( $fis_size ) ) {

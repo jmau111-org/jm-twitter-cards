@@ -42,7 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //Add some security, no direct load !
 defined('ABSPATH') 
-	or die('What we\'re dealing with here is a total lack of respect for the law !');
+or die('What we\'re dealing with here is a total lack of respect for the law !');
 
 //Constantly constant
 define( 'JM_TC_VERSION', 			'5.0' );
@@ -61,12 +61,12 @@ define( 'JM_TC_JS_URL', 			trailingslashit(JM_TC_URL.'js') );
 function jm_tc_subpages(){
 	if ( isset( $_GET['page'] ) && 'jm_tc_doc' == $_GET['page'] ) { 
 		require( JM_TC_INC_DIR .'admin/pages/documentation.php' );	
-	 }
-	 
-	 if ( isset( $_GET['page'] ) && 'jm_tc_about' == $_GET['page'] ) { 
+	}
+	
+	if ( isset( $_GET['page'] ) && 'jm_tc_about' == $_GET['page'] ) { 
 		require( JM_TC_INC_DIR .'admin/pages/about.php' );	
-	 }
-	 
+	}
+	
 }
 
 //Call modules 
@@ -98,7 +98,7 @@ function jm_tc_settings_action_links($links, $file)
 function jm_tc_initialize_cmb_meta_boxes() {
 
 	if ( ! class_exists( 'cmb_Meta_Box' ) )
-		require_once JM_TC_METABOX_DIR . 'init.php';
+	require_once JM_TC_METABOX_DIR . 'init.php';
 
 }
 
@@ -117,7 +117,7 @@ function jm_tc_robots_mod( $output, $public ) {
 
 /******************
 
- INIT
+INIT
 
 ******************/
 add_action('plugins_loaded', 'jm_tc_init');
@@ -169,35 +169,35 @@ function jm_tc_on_activation()
 function jm_tc_get_default_options()
 {
 	return array(
-		'twitterCardType' 			=> 'summary',
-		'twitterCardCreator' 		=> 'TweetPressFr',
-		'twitterCardSite' 			=> 'TweetPressFr',
-		'twitterCardExcerptLength' 	=> 35,
-		'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
-		'twitterCardImageWidth' 	=> 280,
-		'twitterCardImageHeight' 	=> 150,
-		'twitterCardMetabox' 		=> 'no',
-		'twitterCardProfile' 		=> 'no',
-		'twitterCardPostPageTitle' 	=> get_bloginfo('name') , // filter used by plugin to customize title
-		'twitterCardPostPageDesc' 	=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
-		'twitterCardSEOTitle' 		=> 'yes',
-		'twitterCardSEODesc' 		=> 'yes',
-		'twitterCardImageSize' 		=> 'small',
-		'twitterCardTitle' 			=> '',
-		'twitterCardDesc' 			=> '',
-		'twitterCardCrop' 			=> 'yes',
-		'twitterCardUsernameKey' 	=> 'jm_tc_twitter',
-		'twitterCardDeepLinking' 	=> 'no',
-		'twitterCardiPhoneName' 	=> '',
-		'twitterCardiPadName' 		=> '',
-		'twitterCardGooglePlayName' => '',
-		'twitterCardiPhoneUrl' 		=> '',
-		'twitterCardiPadUrl'		=> '',
-		'twitterCardGooglePlayUrl' 	=> '',
-		'twitterCardiPhoneId' 		=> '',
-		'twitterCardiPadId'			=> '',
-		'twitterCardGooglePlayId'   => '',
-		'twitterCardRobotsTxt'		=> 'yes'
+	'twitterCardType' 			=> 'summary',
+	'twitterCardCreator' 		=> 'TweetPressFr',
+	'twitterCardSite' 			=> 'TweetPressFr',
+	'twitterCardExcerptLength' 	=> 35,
+	'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
+	'twitterCardImageWidth' 	=> 280,
+	'twitterCardImageHeight' 	=> 150,
+	'twitterCardMetabox' 		=> 'no',
+	'twitterCardProfile' 		=> 'no',
+	'twitterCardPostPageTitle' 	=> get_bloginfo('name') , // filter used by plugin to customize title
+	'twitterCardPostPageDesc' 	=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
+	'twitterCardSEOTitle' 		=> 'yes',
+	'twitterCardSEODesc' 		=> 'yes',
+	'twitterCardImageSize' 		=> 'small',
+	'twitterCardTitle' 			=> '',
+	'twitterCardDesc' 			=> '',
+	'twitterCardCrop' 			=> 'yes',
+	'twitterCardUsernameKey' 	=> 'jm_tc_twitter',
+	'twitterCardDeepLinking' 	=> 'no',
+	'twitterCardiPhoneName' 	=> '',
+	'twitterCardiPadName' 		=> '',
+	'twitterCardGooglePlayName' => '',
+	'twitterCardiPhoneUrl' 		=> '',
+	'twitterCardiPadUrl'		=> '',
+	'twitterCardGooglePlayUrl' 	=> '',
+	'twitterCardiPhoneId' 		=> '',
+	'twitterCardiPadId'			=> '',
+	'twitterCardGooglePlayId'   => '',
+	'twitterCardRobotsTxt'		=> 'yes'
 	);
 }
 

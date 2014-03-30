@@ -8,9 +8,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 if ( ! class_exists( 'JM_TC_Notices' ) ) {
 	Class JM_TC_Notices {
 
-	
-		public function __construct() {
 		
+		public function __construct() {
+			
 			add_action('admin_init', array( &$this, 'ignore_this') );
 			add_action('admin_notices', array( &$this, 'admin_notice') );
 		}

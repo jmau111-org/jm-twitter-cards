@@ -8,10 +8,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 if( ! class_exists('JM_TC_Utilities') ) {
 
 	Class JM_TC_Utilities {
-	
-	
-		function __construct() {
 		
+		
+		function __construct() {
+			
 			add_action('init', array($this,'thumbnail_create') );
 		}
 
@@ -62,7 +62,7 @@ if( ! class_exists('JM_TC_Utilities') ) {
 
 			default:
 				$twitterCardImgSize = 'jmtc-small-thumb';
-		?><!-- @(-_-)] --><?php
+				?><!-- @(-_-)] --><?php
 				break;
 			}
 
@@ -75,25 +75,25 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		{
 			global $post;
 			$args = array(
-				'post_type' => 'attachment',
-				'post_mime_type' => array(
-					'image/png',
-					'image/jpeg',
-					'image/gif'
-				) ,
-				'numberposts' => - 1,
-				'post_status' => null,
-				'post_parent' => $post->ID
+			'post_type' => 'attachment',
+			'post_mime_type' => array(
+			'image/png',
+			'image/jpeg',
+			'image/gif'
+			) ,
+			'numberposts' => - 1,
+			'post_status' => null,
+			'post_parent' => $post->ID
 			);
 			$attachments = get_posts($args);
 			foreach($attachments as $attachment)
 			{
-					$math = filesize(get_attached_file($attachment->ID)) / 1000000;
-					return $math; //Am I bold enough to call it a math?
+				$math = filesize(get_attached_file($attachment->ID)) / 1000000;
+				return $math; //Am I bold enough to call it a math?
 			}
 		}
-	
-	
+		
+		
 
 		public static function remove_at($at)
 		{
@@ -106,8 +106,8 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		public static function remove_lb($lb)
 		{
 			$output = str_replace(array(
-				"\r\n",
-				"\r"
+			"\r\n",
+			"\r"
 			) , "\n", $lb);
 			$lines = explode("\n", $output);
 			$nolb = array();
@@ -161,17 +161,17 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		
 		
 		public static function get_plugins_list( $slugs = array() ) {
-		
+			
 			$list = '<ul>';
 
 			foreach ( $slugs as $slug => $name ){
-			
+				
 				$list .= '<li><a target="_blank" href="http://wordpress.org/plugins/'.$slug.'">'.__( $name, 'jm-tc').'</a></li>';
 			}
-				
+			
 			$list .= '</ul>';
 			return $list;
-		
+			
 		}
 		
 		public static function get_author_infos() {
@@ -192,13 +192,13 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			
 			
 			$slugs = array(
-				'jm-dashicons-shortcode' 			=> 'JM Dashicons Shortcode',
-				'jm-last-twit-shortcode' 			=> 'JM Last Twit Shortcode',
-				'jm-twit-this-comment'				=> 'JM Twit This Comment',
-				'jm-simple-qr-code-widget' 			=> 'JM Simple QR Code Widget',
-				'jm-html5-and-responsive-gallery' 	=> 'JM HTML5 Responsive Gallery',
+			'jm-dashicons-shortcode' 			=> 'JM Dashicons Shortcode',
+			'jm-last-twit-shortcode' 			=> 'JM Last Twit Shortcode',
+			'jm-twit-this-comment'				=> 'JM Twit This Comment',
+			'jm-simple-qr-code-widget' 			=> 'JM Simple QR Code Widget',
+			'jm-html5-and-responsive-gallery' 	=> 'JM HTML5 Responsive Gallery',
 			);
-		
+			
 
 			$infos3  = '<h2 style="margin:2em 0 1em;"><span>'.__('Plugin', 'jm-tc').'</span></h2>';
 			$infos3 .= '<p>';
