@@ -35,9 +35,6 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			/* maximum retina mobile size for photo cards  */
 		}
 
-		// Get user choice and convert it into post thumbnail sizes
-		// I know there are much better ways but I want my free plugins to be easily modifiable
-
 		public static function thumbnail_sizes()
 		{
 			$opts = get_option('jm_tc_options');

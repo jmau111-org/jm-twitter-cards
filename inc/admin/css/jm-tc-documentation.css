@@ -3,7 +3,7 @@
 * Author: Julien Maury
 * Author URI: http://www.tweetpress.fr
 */
-.html { background: #eee; font-size: 100%; }
+.html { background: #eee; font-size: 100%; margin-top:2em; }
 .body { max-width: 772px; padding:1em 2em; font-family: Georgia, Times, "Times New Roman", serif; font-size:100%; line-height: 150%;
 color: #444; font-size: 1; background: #fff; box-shadow: 0 0 3px rgba(0,0,0,0.3); }
 .body blockquote{ border:none; font-family: Georgia, serif;  font-style: italic; margin: 0.25em 0; padding: 0.25em 40px; line-height: 160%; position: relative; color:#888; background:transparent; }

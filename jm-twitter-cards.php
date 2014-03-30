@@ -37,6 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *			   - https://about.twitter.com/fr/press/brand-assets
 *			   - http://bavotasan.com/2011/simple-textarea-word-counter-jquery-plugin/
 *			   - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
+*			   - https://github.com/trepmal/featured-image-sizes/blob/master/featured-image-sizes.php
 */
 
 //Add some security, no direct load !
@@ -79,6 +80,7 @@ if( is_admin() ) {
 
 // get markup and get it started
 require( JM_TC_INC_DIR . 'utilities.php' ); 
+require( JM_TC_INC_DIR . 'thumbs.php' );
 require( JM_TC_INC_DIR . 'markup.php' ); 
 
 
@@ -135,6 +137,7 @@ function jm_tc_init()
 	
 	
 	new JM_TC_Utilities();
+	new Featured_Image_Sizes();
 	new JM_TC_Markup();
 
 	if( is_admin() ) {

@@ -190,21 +190,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 						'type' => 'file',
 					),
 					
-					array(
-						'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
-						'id'       => "cardImgSize",
-						'type'     => 'select',
-
-						'options'  => array(
-							'mobile-non-retina' => __('Max mobile non retina (width: 280px - height: 375px)', 'jm-tc'),
-							'mobile-retina' => __('Max mobile retina (width: 560px - height: 750px)', 'jm-tc'),
-							'web' => __('Max web size(width: 435px - height: 375px)', 'jm-tc'),
-							'small' => __('Small (width: 280px - height: 150px)', 'jm-tc'),
-						),
-
-					),
-					
-					
 					
 					// title
 					array(

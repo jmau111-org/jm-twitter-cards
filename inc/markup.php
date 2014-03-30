@@ -26,6 +26,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 			
 				/* get options */
 				$opts = get_option('jm_tc_options');
+				$open_tag  = '<meta name="twitter:';
+				$close_tag =  '">' . "\n";
+				
 				global $post;
 
 				$begin =  "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
@@ -35,26 +38,26 @@ if( ! class_exists('JM_TC_Markup') ) {
 				{
 
 					$output  = $begin;
-					$output .= '<meta name="twitter:card" content="' . $opts['twitterCardType'] . '"/>' . "\n";
-					$output .= '<meta name="twitter:creator" content="@' .static::remove_at($opts['twitterCardCreator']). '"/>' . "\n";
-					$output .= '<meta name="twitter:site" content="@' . static::remove_at($opts['twitterCardSite']). '"/>' . "\n";
-					$output .= '<meta name="twitter:title" content="' . $opts['twitterCardPostPageTitle'] . '"/>' . "\n";
-					$output .= '<meta name="twitter:description" content="' . $opts['twitterCardPostPageDesc'] . '"/>' . "\n";
-					$output .= '<meta name="twitter:image:src" content="' . $opts['twitterCardImage'] . '"/>' . "\n";
+					$output .= $open_tag.'card" content="' . $opts['twitterCardType'] . $close_tag;
+					$output .= $open_tag.'creator" content="@' .static::remove_at($opts['twitterCardCreator']). $close_tag;
+					$output .= $open_tag.'site" content="@' . static::remove_at($opts['twitterCardSite']). $close_tag;
+					$output .= $open_tag.'title" content="' . $opts['twitterCardPostPageTitle'] . $close_tag;
+					$output .= $open_tag.'description" content="' . $opts['twitterCardPostPageDesc'] . $close_tag;
+					$output .= $open_tag.'image:src" content="' . $opts['twitterCardImage'] . $close_tag;
 					
 					//Deep linking
 					if ($opts['twitterCardDeepLinking'] == 'yes') 
 					{
 						
-						if( $opts['twitterCardiPhoneName'] != '' ) $output .='<meta name="twitter:app:name:iphone" content="' . $opts['twitterCardiPhoneName'] . '">'. "\n";
-						if( $opts['twitterCardiPadName'] != '' ) $output .='<meta name="twitter:app:name:ipad" content="' . $opts['twitterCardiPadName'] . '">'. "\n";
-						if( $opts['twitterCardGooglePlayName'] != '' ) $output .='<meta name="twitter:app:name:googleplay" content="' . $opts['twitterCardGooglePlayName'] . '">'. "\n";
-						if( $opts['twitterCardiPhoneUrl'] != '' ) $output .='<meta name="twitter:app:url:iphone" content="' . $opts['twitterCardiPhoneUrl'] .'">'. "\n";
-						if( $opts['twitterCardiPadUrl'] != '' ) $output .='<meta name="twitter:app:url:ipad" content="' . $opts['twitterCardiPhoneUrl'] . '">'. "\n";
-						if( $opts['twitterCardGooglePlayUrl'] != '' ) $output .='<meta name="twitter:app:url:googleplay" content="' . $opts['twitterCardGooglePlayUrl'] . '">'. "\n";
-						if( $opts['twitterCardiPhoneId'] != '' ) $output .='<meta name="twitter:app:id:iphone" content="' . $opts['twitterCardiPhoneId'] . '">'. "\n";
-						if( $opts['twitterCardiPadId'] != '' ) $output .='<meta name="twitter:app:id:ipad" content="' . $opts['twitterCardiPadId'] . '">'. "\n";
-						if( $opts['twitterCardGooglePlayId'] != '' ) $output .='<meta name="twitter:app:id:googleplay" content="' . $opts['twitterCardGooglePlayId'] . '">'. "\n";
+						if( $opts['twitterCardiPhoneName'] != '' ) 		$output .= $open_tag.'app:name:iphone" content="' . $opts['twitterCardiPhoneName'] . $close_tag;
+						if( $opts['twitterCardiPadName'] != '' )       	$output .= $open_tag.'app:name:ipad" content="' . $opts['twitterCardiPadName'] . $close_tag;
+						if( $opts['twitterCardGooglePlayName'] != '' ) 	$output .= $open_tag.'app:name:googleplay" content="' . $opts['twitterCardGooglePlayName'] . $close_tag;
+						if( $opts['twitterCardiPhoneUrl'] != '' ) 		$output .= $open_tag.'app:url:iphone" content="' . $opts['twitterCardiPhoneUrl'] .$close_tag;
+						if( $opts['twitterCardiPadUrl'] != '' ) 		$output .= $open_tag.'app:url:ipad" content="' . $opts['twitterCardiPhoneUrl'] . $close_tag;
+						if( $opts['twitterCardGooglePlayUrl'] != '' ) 	$output .= $open_tag.'app:url:googleplay" content="' . $opts['twitterCardGooglePlayUrl'] . $close_tag;
+						if( $opts['twitterCardiPhoneId'] != '' ) 		$output .= $open_tag.'app:id:iphone" content="' . $opts['twitterCardiPhoneId'] . $close_tag;
+						if( $opts['twitterCardiPadId'] != '' ) 			$output .= $open_tag.'app:id:ipad" content="' . $opts['twitterCardiPadId'] . $close_tag;
+						if( $opts['twitterCardGooglePlayId'] != '' ) 	$output .= $open_tag.'app:id:googleplay" content="' . $opts['twitterCardGooglePlayId'] . $close_tag;
 					}
 				
 					$output .= $end;
@@ -147,7 +150,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 							$cardDescription = apply_filters('jm_tc_get_excerpt', static::get_excerpt_by_id($post->ID) );
 						}
 					}
-					elseif (  function_exists('get_field') && $opts['twitterCardTitle'] != '' && $opts['twitterCardDesc']!= '' ) // we detect ACF with the function get_field()
+					elseif (  function_exists('get_field') && $opts['twitterCardTitle'] != '' && $opts['twitterCardDesc'] != '' ) // we detect ACF with the function get_field()
 					{
 
 						// avoid array to string notice on title and desc
@@ -169,31 +172,31 @@ if( ! class_exists('JM_TC_Markup') ) {
 
 					if (($opts['twitterCardMetabox'] == 'yes') && $cardType != '' && $twitterCardCancel != 'yes')
 					{
-						$output .= '<meta name="twitter:card" content="' . apply_filters('jm_tc_card_type', $cardType ). '"/>' . "\n";
+						$output .= $open_tag.'card" content="' . apply_filters('jm_tc_card_type', $cardType ). $close_tag;
 					}
 					else
 					{
-						$output .= '<meta name="twitter:card" content="' . apply_filters('jm_tc_card_type', $opts['twitterCardType'] ). '"/>' . "\n";
+						$output .= $open_tag.'card" content="' . apply_filters('jm_tc_card_type', $opts['twitterCardType'] ). $close_tag;
 					}
 
 					if ($opts['twitterCardProfile'] == 'yes' && $creator != '' )
 					{ // this part has to be optional, this is more for guest bltwitterging but it's no reason to bother everybody.
-						$output .= '<meta name="twitter:creator" content="@' . $creator . '"/>' . "\n";
+						$output .= $open_tag.'creator" content="@' . $creator . $close_tag;
 					}
 					elseif ($opts['twitterCardProfile'] == 'no' && $username != '' && !is_array($username))
 					{ // http://codex.wordpress.org/Function_Reference/get_user_meta#Return_Values
-						$output .= '<meta name="twitter:creator" content="@' . static::remove_at($username) . '"/>' . "\n";
+						$output .= $open_tag.'creator" content="@' . static::remove_at($username) . $close_tag;
 					}
 					else
 					{
-						$output .= '<meta name="twitter:creator" content="@' . static::remove_at($opts['twitterCardCreator']) . '"/>' . "\n";
+						$output .= $open_tag.'creator" content="@' . static::remove_at($opts['twitterCardCreator']) . $close_tag;
 					}
 
 					// these next 4 parameters should not be editable in post admin
 
-					$output .= '<meta name="twitter:site" content="@' . static::remove_at($opts['twitterCardSite']) . '"/>' . "\n";
-					$output .= '<meta name="twitter:title" content="' . $cardTitle . '"/>' . "\n"; // filter used by plugin to customize title
-					$output .= '<meta name="twitter:description" content="' . static::remove_lb($cardDescription) . '"/>' . "\n";
+					$output .= $open_tag.'site" content="@' . static::remove_at($opts['twitterCardSite']) . $close_tag;
+					$output .= $open_tag.'title" content="' . $cardTitle . $close_tag; // filter used by plugin to customize title
+					$output .= $open_tag.'description" content="' . static::remove_lb($cardDescription) . $close_tag;
 				
 					
 					//gallery
@@ -203,29 +206,29 @@ if( ! class_exists('JM_TC_Markup') ) {
 						{
 							if ($cardImage != '' && $twitterCardCancel != 'yes')
 							{ // cardImage is set
-								$output .= '<meta name="twitter:image:src" content="' .  apply_filters( 'jm_tc_image_source', $cardImage ). '"/>' . "\n";
+								$output .= $open_tag.'image:src" content="' .  apply_filters( 'jm_tc_image_source', $cardImage ). $close_tag;
 							}
 							else
 							{
 								$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , static::thumbnail_sizes());
-								$output .= '<meta name="twitter:image:src" content="' . apply_filters( 'jm_tc_image_source', $image_attributes[0] ) . '"/>' . "\n";
+								$output .= $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source', $image_attributes[0] ) . $close_tag;
 							}
 						}
 						elseif (get_the_post_thumbnail($post->ID) == '' && $cardImage != '' && $twitterCardCancel != 'yes')
 						{
-							$output .=  '<meta name="twitter:image:src" content="' . apply_filters( 'jm_tc_image_source', $cardImage ) . '"/>' . "\n";
+							$output .=  $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source', $cardImage ) . $close_tag;
 						}
 						
 						elseif ( 'attachment' == get_post_type() ) 
 						{
 						
-							$output .= '<meta name="twitter:image:src" content="' . apply_filters( 'jm_tc_image_source', wp_get_attachment_url( $post->ID ) ) . '"/>' . "\n";
+							$output .= $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source', wp_get_attachment_url( $post->ID ) ) . $close_tag;
 						
 						}
 						
 						else
 						{ //fallback
-							$output .= '<meta name="twitter:image:src" content="' . apply_filters( 'jm_tc_image_source', $opts['twitterCardImage'] ). '"/>' . "\n";
+							$output .= $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source', $opts['twitterCardImage'] ). $close_tag;
 						}
 					}
 					else
@@ -255,7 +258,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 										// get attachment array with the ID from the returned posts
 
 										$pic = wp_get_attachment_url($attachment->ID);
-										$output .= '<meta name="twitter:image' . $i . '" content="' . apply_filters( 'jm_tc_image_source', $pic ). '"/>' . "\n";
+										$output .= $open_tag.'image' . $i . '" content="' . apply_filters( 'jm_tc_image_source', $pic ). $close_tag;
 										$i++;
 										if ($i > 3) break; //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
 									}
@@ -271,11 +274,11 @@ if( ! class_exists('JM_TC_Markup') ) {
 							if (has_post_thumbnail())
 							{
 								$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , static::thumbnail_sizes() );
-								$output .= '<meta name="twitter:image:src" content="' . apply_filters( 'jm_tc_image_source',$image_attributes[0] ). '"/>' . "\n";
+								$output .= $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source',$image_attributes[0] ). $close_tag;
 							}
 							else
 							{
-								$output .= '<meta name="twitter:image:src" content="' .apply_filters( 'jm_tc_image_source', $opts['twitterCardImage'] ). '"/>' . "\n";
+								$output .= $open_tag.'image:src" content="' .apply_filters( 'jm_tc_image_source', $opts['twitterCardImage'] ). $close_tag;
 							}
 						}
 					}
@@ -285,13 +288,13 @@ if( ! class_exists('JM_TC_Markup') ) {
 					{
 						if ( $cardPhotoWidth != '' && $cardPhotoHeight != '' && $twitterCardCancel != 'yes' )
 						{
-							$output .= '<meta name="twitter:image:width" content="' . $cardPhotoWidth . '"/>' . "\n";
-							$output .= '<meta name="twitter:image:height" content="' . $cardPhotoHeight . '"/>' . "\n";
+							$output .= $open_tag.'image:width" content="' . $cardPhotoWidth . $close_tag;
+							$output .= $open_tag.'image:height" content="' . $cardPhotoHeight . $close_tag;
 						}
 						elseif ($opts['twitterCardType'] == 'photo' && $twitterCardCancel != 'yes' && $opts['twitterCardMetabox'] != 'yes')
 						{
-							$output .= '<meta name="twitter:image:width" content="' . $opts['twitterCardImageWidth'] . '"/>' . "\n";
-							$output .= '<meta name="twitter:image:height" content="' . $opts['twitterCardImageHeight'] . '"/>' . "\n";
+							$output .= $open_tag.'image:width" content="' . $opts['twitterCardImageWidth'] . $close_tag;
+							$output .= $open_tag.'image:height" content="' . $opts['twitterCardImageHeight'] . $close_tag;
 						}
 					}
 					
@@ -300,10 +303,10 @@ if( ! class_exists('JM_TC_Markup') ) {
 					{
 						if ( $cardData1 != '' &&  $cardLabel1 != '' && $cardData2 != '' && $cardLabel2 != '' )
 						{
-							$output .= '<meta name="twitter:data1" content="' . $cardData1 . '"/>' . "\n";
-							$output .= '<meta name="twitter:label1" content="' . $cardLabel1 . '"/>' . "\n";
-							$output .= '<meta name="twitter:data2" content="' . $cardData2 . '"/>' . "\n";
-							$output .= '<meta name="twitter:label2" content="' . $cardLabel2 . '"/>' . "\n";
+							$output .= $open_tag.'data1" content="' . $cardData1 . $close_tag;
+							$output .= $open_tag.'label1" content="' . $cardLabel1 . $close_tag;
+							$output .= $open_tag.'data2" content="' . $cardData2 . $close_tag;
+							$output .= $open_tag.'label2" content="' . $cardLabel2 . $close_tag;
 						}
 						else
 						{
@@ -312,13 +315,13 @@ if( ! class_exists('JM_TC_Markup') ) {
 
 						if ( $cardProductWidth != '' && $cardProductHeight != '' && $cardType == 'product')
 						{
-							$output .= '<meta name="twitter:image:width" content="' . $cardProductWidth . '"/>' . "\n";
-							$output .= '<meta name="twitter:image:height" content="' . $cardProductHeight . '"/>' . "\n";
+							$output .= $open_tag.'image:width" content="' . $cardProductWidth . $close_tag;
+							$output .= $open_tag.'image:height" content="' . $cardProductHeight . $close_tag;
 						}
 						else
 						{
-							$output .= '<meta name="twitter:image:width" content="' . $opts['twitterCardImageWidth'] . '"/>' . "\n";
-							$output .= '<meta name="twitter:image:height" content="' . $opts['twitterCardImageHeight'] . '"/>' . "\n";
+							$output .= $open_tag.'image:width" content="' . $opts['twitterCardImageWidth'] . $close_tag;
+							$output .= $open_tag.'image:height" content="' . $opts['twitterCardImageHeight'] . $close_tag;
 						}
 					}
 					
@@ -326,7 +329,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 					if ($cardType == 'player' && $twitterCardCancel != 'yes' )
 					{
 						if ( $cardPlayer != '' ) {
-							$output .= '<meta name="twitter:player" content="' . $cardPlayer . '"/>' . "\n";
+							$output .= $open_tag.'player" content="' . $cardPlayer . $close_tag;
 						} 
 						else
 						{
@@ -341,20 +344,20 @@ if( ! class_exists('JM_TC_Markup') ) {
 					
 						if ( $cardPlayerWidth != '' && $cardPlayerHeight != ''  )
 						{
-							$output .= '<meta name="twitter:player:width" content="' . $cardPlayerWidth . '"/>' . "\n";
-							$output .= '<meta name="twitter:player:height" content="' . $cardPlayerHeight . '"/>' . "\n";
+							$output .= $open_tag.'player:width" content="' . $cardPlayerWidth . $close_tag;
+							$output .= $open_tag.'player:height" content="' . $cardPlayerHeight . $close_tag;
 						}
 						else 
 						{
-							$output .= '<meta name="twitter:player:width" content="435"/>' . "\n";
-							$output .= '<meta name="twitter:player:height" content="251"/>' . "\n";		
+							$output .= $open_tag.'player:width" content="435"'. $close_tag;
+							$output .= $open_tag.'player:height" content="251"'. $close_tag;		
 						}
 						
 						//Player stream
 						if ( $cardPlayerStream != '' ) 
 						{
-							$output .= '<meta name="twitter:player:stream" content="'.$cardPlayerStream.'">'. "\n";
-							$output .= '<meta name="twitter:player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;">'. "\n";
+							$output .= $open_tag.'player:stream" content="'.$cardPlayerStream.$close_tag;
+							$output .= $open_tag.'player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;'.$close_tag;
 						}
 						
 						if ( $cardPlayerStream != '' && !preg_match( $regex,$cardPlayerStream ) )
@@ -367,15 +370,15 @@ if( ! class_exists('JM_TC_Markup') ) {
 						if ($opts['twitterCardDeepLinking'] == 'yes') 
 						{
 							
-							if( $opts['twitteriPhoneName'] != '' ) $output .='<meta name="twitter:app:name:iphone" content="' . $opts['twitteriPhoneName'] . '">'. "\n";
-							if( $opts['twitteriPadName'] != '' ) $output .='<meta name="twitter:app:name:ipad" content="' . $opts['twitteriPadName'] . '">'. "\n";
-							if( $opts['twitterGooglePlayName'] != '' ) $output .='<meta name="twitter:app:name:googleplay" content="' . $opts['twitterGooglePlayName'] . '">'. "\n";
-							if( $opts['twitteriPhoneUrl'] != '' ) $output .='<meta name="twitter:app:url:iphone" content="' . $opts['twitteriPhoneUrl'] .'">'. "\n";
-							if( $opts['twitteriPadUrl'] != '' ) $output .='<meta name="twitter:app:url:ipad" content="' . $opts['twitteriPhoneUrl'] . '">'. "\n";
-							if( $opts['twitterGooglePlayUrl'] != '' ) $output .='<meta name="twitter:app:url:googleplay" content="' . $opts['twitterGooglePlayUrl'] . '">'. "\n";
-							if( $opts['twitteriPhoneId'] != '' ) $output .='<meta name="twitter:app:id:iphone" content="' . $opts['twitteriPhoneId'] . '">'. "\n";
-							if( $opts['twitteriPadId'] != '' ) $output .='<meta name="twitter:app:id:ipad" content="' . $opts['twitteriPadId'] . '">'. "\n";
-							if( $opts['twitterGooglePlayId'] != '' ) $output .='<meta name="twitter:app:id:googleplay" content="' . $opts['twitterGooglePlayId'] . '">'. "\n";
+							if( $opts['twitteriPhoneName'] != '' ) 		$output .= $open_tag.'app:name:iphone" content="' . $opts['twitteriPhoneName'] . $close_tag;
+							if( $opts['twitteriPadName'] != '' ) 		$output .= $open_tag.'app:name:ipad" content="' . $opts['twitteriPadName'] . $close_tag;
+							if( $opts['twitterGooglePlayName'] != '' ) 	$output .= $open_tag.'app:name:googleplay" content="' . $opts['twitterGooglePlayName'] . $close_tag;
+							if( $opts['twitteriPhoneUrl'] != '' ) 		$output .= $open_tag.'app:url:iphone" content="' . $opts['twitteriPhoneUrl'] .$close_tag;
+							if( $opts['twitteriPadUrl'] != '' ) 		$output .= $open_tag.'app:url:ipad" content="' . $opts['twitteriPhoneUrl'] . $close_tag;
+							if( $opts['twitterGooglePlayUrl'] != '' )   $output .= $open_tag.'app:url:googleplay" content="' . $opts['twitterGooglePlayUrl'] . $close_tag;
+							if( $opts['twitteriPhoneId'] != '' ) 		$output .= $open_tag.'app:id:iphone" content="' . $opts['twitteriPhoneId'] . $close_tag;
+							if( $opts['twitteriPadId'] != '' ) 			$output .= $open_tag.'app:id:ipad" content="' . $opts['twitteriPadId'] . $close_tag;
+							if( $opts['twitterGooglePlayId'] != '' ) 	$output .= $open_tag.'app:id:googleplay" content="' . $opts['twitterGooglePlayId'] . $close_tag;
 						}
 					}
 				
