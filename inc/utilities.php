@@ -9,91 +9,6 @@ if( ! class_exists('JM_TC_Utilities') ) {
 
 	Class JM_TC_Utilities {
 		
-		
-		function __construct() {
-			
-			add_action('init', array($this,'thumbnail_create') );
-		}
-
-
-		// Add stuffs in init such as img size
-		function thumbnail_create()
-		{
-			$opts = get_option('jm_tc_options');
-			$crop = ($opts['twitterCardCrop'] == 'yes') ? true : false;
-
-			if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
-			
-			
-			add_image_size('jmtc-small-thumb', 280, 150, $crop);
-			/* the minimum size possible for Twitter Cards */
-			add_image_size('jmtc-max-web-thumb', 435, 375, $crop);
-			/* maximum web size for photo cards */
-			add_image_size('jmtc-max-mobile-non-retina-thumb', 280, 375, $crop);
-			/* maximum non retina mobile size for photo cards  */
-			add_image_size('jmtc-max-mobile-retina-thumb', 560, 750, $crop);
-			/* maximum retina mobile size for photo cards  */
-		}
-
-		public static function thumbnail_sizes()
-		{
-			$opts = get_option('jm_tc_options');
-			global $post;
-			$twitterCardCancel 	= get_post_meta($post->ID, 'twitterCardCancel', true);
-			$size				= ('' != ( $thumbnail_size = get_post_meta($post->ID, 'cardImgSize', true) ) && $twitterCardCancel != 'yes') ? $thumbnail_size : $opts['twitterCardImageSize'];
-
-			switch ($size)
-			{
-			case 'small':
-				$twitterCardImgSize = 'jmtc-small-thumb';
-				break;
-
-			case 'web':
-				$twitterCardImgSize = 'jmtc-max-web-thumb';
-				break;
-
-			case 'mobile-non-retina':
-				$twitterCardImgSize = 'jmtc-max-mobile-non-retina-thumb';
-				break;
-
-			case 'mobile-retina':
-				$twitterCardImgSize = 'jmtc-max-mobile-retina-thumb';
-				break;
-
-			default:
-				$twitterCardImgSize = 'jmtc-small-thumb';
-				?><!-- @(-_-)] --><?php
-				break;
-			}
-
-			return $twitterCardImgSize;
-		}
-
-		// get featured image
-
-		public static function get_post_thumbnail_size()
-		{
-			global $post;
-			$args = array(
-			'post_type' => 'attachment',
-			'post_mime_type' => array(
-			'image/png',
-			'image/jpeg',
-			'image/gif'
-			) ,
-			'numberposts' => - 1,
-			'post_status' => null,
-			'post_parent' => $post->ID
-			);
-			$attachments = get_posts($args);
-			foreach($attachments as $attachment)
-			{
-				$math = filesize(get_attached_file($attachment->ID)) / 1000000;
-				return $math; //Am I bold enough to call it a math?
-			}
-		}
-		
-		
 
 		public static function remove_at($at)
 		{
@@ -210,6 +125,19 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			echo $infos.$infos2.$infos3;
 		}
 		
+		
+		/**
+		 * Get a list of post types that support a specific feature.
+		 * 
+		 * @param $feature
+		 * @return array
+		 */
+		public static function get_post_types_that_support( $feature ) {
+			global $_wp_post_type_features;
+			$post_types = wp_list_filter( $_wp_post_type_features, array( $feature => 1 ) );
+			
+			return $post_types;
+		}
 
 	}
 }

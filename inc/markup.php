@@ -210,7 +210,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 						}
 						else
 						{
-							$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , static::thumbnail_sizes());
+							$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , JM_TC_Thumbs::thumbnail_sizes());
 							$output .= $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source', $image_attributes[0] ) . $close_tag;
 						}
 					}
@@ -273,7 +273,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 					{
 						if (has_post_thumbnail())
 						{
-							$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , static::thumbnail_sizes() );
+							$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , JM_TC_Thumbs::thumbnail_sizes() );
 							$output .= $open_tag.'image:src" content="' . apply_filters( 'jm_tc_image_source',$image_attributes[0] ). $close_tag;
 						}
 						else

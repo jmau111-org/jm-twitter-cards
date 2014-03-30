@@ -139,7 +139,7 @@ function jm_tc_init()
 	
 	
 	new JM_TC_Utilities();
-	new Featured_Image_Sizes();
+	new JM_TC_Thumbs();
 	new JM_TC_Markup();
 
 	if( is_admin() ) {
