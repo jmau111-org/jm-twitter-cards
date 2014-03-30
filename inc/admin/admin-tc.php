@@ -200,14 +200,14 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			)
 			),
 			
-			
+			/*
 			array(
 			'type' => 'title',
 			'name' => __( 'Meta-box', 'jm-tc' ),
 			'id'   => 'meta_box_title', // Not used but needed for plugin
 			'desc' => static::docu_links(1),
 			),	
-
+			*/
 			array(
 			'name' 		=> __( 'Meta-Box', 'jm-tc' ),
 			'desc' 		=> __('Get a <strong>custom metabox</strong> on each post type admin', 'jm-tc'),
