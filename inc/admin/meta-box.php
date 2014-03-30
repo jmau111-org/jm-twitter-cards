@@ -316,29 +316,23 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			)
 			);
 
-
-
-			// 2nd meta box			
-			if(	 $opts['twitterCardProfile'] == 'yes' ) {
 				
-				$meta_boxes['twitter_creator'] = array(
-				'id'            => 'twitter_creator',
-				'title'         => __( 'Twitter Creator', 'jm-tc' ),
-				'pages'         => array( 'user' ), // Tells CMB to use user_meta vs post_meta
-				'show_names'    => true,
-				'fields'        => array(
-				array(
-				'name'     => __( 'Twitter Creator', 'jm-tc' ),
-				'desc'     => __( "Enter your Twitter Account (without @)", "jm-tc"),
-				'id'       => 'jm_tc_twitter',
-				'type'     => 'text_medium',
-				'on_front' => true,
-				)
-				)
-				);
-				
-				
-			}			
+			$meta_boxes['twitter_creator'] = array(
+			'id'            => 'twitter_creator',
+			'title'         => __( 'Twitter Creator', 'jm-tc' ),
+			'pages'         => array( 'user' ), // Tells CMB to use user_meta vs post_meta
+			'show_names'    => true,
+			'fields'        => array(
+			array(
+			'name'     => __( 'Twitter Creator', 'jm-tc' ),
+			'desc'     => __( "Enter your Twitter Account (without @)", "jm-tc"),
+			'id'       => 'jm_tc_twitter',
+			'type'     => 'text_medium',
+			'on_front' => true,
+			)
+			)
+			);
+			
 			
 			return $meta_boxes;
 			
