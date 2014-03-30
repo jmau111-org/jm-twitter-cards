@@ -200,41 +200,12 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			)
 			),
 			
-			/*
-			array(
-			'type' => 'title',
-			'name' => __( 'Meta-box', 'jm-tc' ),
-			'id'   => 'meta_box_title', // Not used but needed for plugin
-			'desc' => static::docu_links(1),
-			),	
-			*/
-			array(
-			'name' 		=> __( 'Meta-Box', 'jm-tc' ),
-			'desc' 		=> __('Get a <strong>custom metabox</strong> on each post type admin', 'jm-tc'),
-			'id'   		=> 'twitterCardMetabox',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			'no' 			=> __( 'No', 'jm-tc' ),
-			)
-			),
 			
 			array(
 			'type' => 'title',
 			'name' => __( 'Multi-author', 'jm-tc' ),
 			'id'   => 'multi_author_title', // Not used but needed for plugin
 			),	
-
-			array(
-			'name' 		=> __( 'Author profiles', 'jm-tc' ),
-			'desc' 		=> __('Add a field Twitter to profiles', 'jm-tc'),
-			'id'   		=>  'twitterCardProfile',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			'no' 			=> __( 'No', 'jm-tc' ),
-			)
-			),
 			
 			array(
 			'name' 		=> __( 'Meta key Twitter', 'jm-tc' ),

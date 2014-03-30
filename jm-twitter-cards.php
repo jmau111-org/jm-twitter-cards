@@ -178,8 +178,6 @@ function jm_tc_get_default_options()
 	'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
 	'twitterCardImageWidth' 	=> 280,
 	'twitterCardImageHeight' 	=> 150,
-	//'twitterCardMetabox' 		=> 'no',
-	'twitterCardProfile' 		=> 'no',
 	'twitterCardPostPageTitle' 	=> get_bloginfo('name') , // filter used by plugin to customize title
 	'twitterCardPostPageDesc' 	=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
 	'twitterCardSEOTitle' 		=> 'yes',

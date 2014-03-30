@@ -170,7 +170,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				
 				
 
-				if (($opts['twitterCardMetabox'] == 'yes') && $cardType != '' && $twitterCardCancel != 'yes')
+				if ( $cardType != '' && $twitterCardCancel != 'yes' )
 				{
 					$output .= static::getMeta('card',  apply_filters('jm_tc_card_type', $cardType ));
 				}
@@ -179,7 +179,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 					$output .= static::getMeta('card',  apply_filters('jm_tc_card_type', $opts['twitterCardType'] ));
 				}
 
-				if ($opts['twitterCardProfile'] == 'yes' && $creator != '' )
+				if ( $creator != '' )
 				{ // this part has to be optional, this is more for guest bltwitterging but it's no reason to bother everybody.
 					$output .= static::getMeta('creator', '@' . $creator );
 				}
