@@ -1,7 +1,11 @@
 <?php
 //https://github.com/trepmal/featured-image-sizes/blob/master/featured-image-sizes.php
 
-
+if ( ! defined( 'JM_TC_VERSION' ) ) {
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
 
 
 class Featured_Image_Sizes {
