@@ -8,7 +8,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 if( ! class_exists('JM_TC_Utilities') ) {
 
 	Class JM_TC_Utilities {
-		
+
 
 		public static function remove_at($at)
 		{
@@ -140,4 +140,5 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		}
 
 	}
+	
 }
