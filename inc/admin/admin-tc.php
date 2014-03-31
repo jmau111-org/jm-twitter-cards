@@ -82,7 +82,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		*/
 		public function add_page() {
 			$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
-			
+			$this->options_subpage_doc = add_submenu_page( 'jm_tc_options', __( 'Options', 'jm-tc' ), __( 'Options', 'jm-tc' ) , 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_doc = add_submenu_page( 'jm_tc_options', __( 'Documentation', 'jm-tc' ), __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
 			$this->options_subpage_about = add_submenu_page( 'jm_tc_options', __( 'About' ), __( 'About') , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
 			
