@@ -109,6 +109,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 			$post_types = get_post_types();
 			$opts		= get_option('jm_tc_options');
+			$markup     = new JM_TC_Markup();
 
 
 			// 1st meta box
@@ -134,6 +135,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'title',
 			'name' => __('Preview', 'jm-tc'),
 			'id'   => 'preview_title', // Not used but needed for plugin
+			'desc' => esc_html($markup->add_markup())
 			),
 			
 			// title

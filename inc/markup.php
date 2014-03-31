@@ -301,7 +301,12 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$data2 			= get_post_meta($post_id, 'cardData2', true);
 				$label2 		= get_post_meta($post_id, 'cardLabel2', true);
 				
-				$product		= array( $data1, $label1, $data2, $label2);
+				$product		= array( 
+									'data1'  => $data1, 
+									'label1' => $label1, 
+									'data2'  => $data2, 
+									'label2' => $label2
+								);
 				
 				
 				if ( $data1 != '' && $label1 != '' && $data2 != '' && $label2 != '' )
