@@ -124,20 +124,6 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			
 			echo $infos.$infos2.$infos3;
 		}
-		
-		
-		/**
-		 * Get a list of post types that support a specific feature.
-		 * 
-		 * @param $feature
-		 * @return array
-		 */
-		public static function get_post_types_that_support( $feature ) {
-			global $_wp_post_type_features;
-			$post_types = wp_list_filter( $_wp_post_type_features, array( $feature => 1 ) );
-			
-			return $post_types;
-		}
 
 	}
 	

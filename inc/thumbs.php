@@ -1,5 +1,5 @@
 <?php
-//https://github.com/trepmal/featured-image-sizes/blob/master/featured-image-sizes.php
+//http://core.trac.wordpress.org/browser/tags/3.4.2/wp-includes/media.php#L587
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -14,13 +14,9 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 
 		function __construct() {
 
-			$possible_post_types = JM_TC_Utilities::get_post_types_that_support('thumbnail');
-
-			$this->allowed_post_types = apply_filters( 'fis_post_types', $possible_post_types );
-
-			add_filter( 'admin_post_thumbnail_html', array( &$this, 'admin_post_thumbnail_html' ), 10, 2 );
+			add_filter( 'admin_post_thumbnail_html', array( &$this, 'admin_post_thumbnail_html' ), 1, 2 );
 			add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
-			add_action('init', array($this,'thumbnail_create') );
+			add_action( 'init', array($this,'thumbnail_create') );
 		}
 		
 		
@@ -46,36 +42,15 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 
 		public static function thumbnail_sizes()
 		{
-			$opts = get_option('jm_tc_options');
+			
 			global $post;
+			
+			$opts 				= get_option('jm_tc_options');
 			$twitterCardCancel 	= get_post_meta($post->ID, 'twitterCardCancel', true);
-			$size				= ('' != ( $thumbnail_size = get_post_meta($post->ID, 'cardImgSize', true) ) && $twitterCardCancel != 'yes') ? $thumbnail_size : $opts['twitterCardImageSize'];
+			$size				=  ('' != ( $thumbnail_size = get_post_meta($post->ID, 'cardImgSize', true) ) && $twitterCardCancel != 'yes' && !is_home() && !is_front_page() ) ? $thumbnail_size : $opts['twitterCardImageSize'];
 
-			switch ($size)
-			{
-			case 'small':
-				$twitterCardImgSize = 'jmtc-small-thumb';
-				break;
-
-			case 'web':
-				$twitterCardImgSize = 'jmtc-max-web-thumb';
-				break;
-
-			case 'mobile-non-retina':
-				$twitterCardImgSize = 'jmtc-max-mobile-non-retina-thumb';
-				break;
-
-			case 'mobile-retina':
-				$twitterCardImgSize = 'jmtc-max-mobile-retina-thumb';
-				break;
-
-			default:
-				$twitterCardImgSize = 'jmtc-small-thumb';
-				?><!-- @(-_-)] --><?php
-				break;
-			}
-
-			return $twitterCardImgSize;
+			return $size;
+			
 		}
 
 		// get featured image
@@ -100,36 +75,44 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 				return $math; //Am I bold enough to call it a math?
 			}
 		}
-		
-	
 
+		// Get list of thumb sizes		 
 		function admin_post_thumbnail_html( $content, $post_id ) {
 			
 			$twitter_image_size = static::thumbnail_sizes();
-
-			$post_type = get_post_type( $post_id );
-			if ( ! isset( $this->allowed_post_types[ $post_type ] ) ) return $content;
 
 			ob_start();
 			wp_nonce_field( 'na-fis-image', 'nn-fis-image' );
 			$saved_value = get_post_meta( $post_id, 'cardImgSize', true );
 
-			echo '<label>';
+			echo '<label for="cardImgSize">';
 			_e( 'Define specific size for twitter:image display',  $this->textdomain);
-			echo '<select name="cardImgSize">';
+			echo '</label>';
+			echo '<select id="cardImgSize" name="cardImgSize">';
 			echo '<option value="'.$twitter_image_size.'">'.$twitter_image_size.'</option>';
 
-			foreach( get_intermediate_image_sizes() as $size ) {
+			//we just need that 4 values in fact ^^
+			$image_sizes = array('jmtc-small-thumb', 'jmtc-max-web-thumb', 'jmtc-max-mobile-non-retina-thumb', 'jmtc-max-mobile-retina-thumb'); // twitter card img sizes
+			
+			//oh wait we do not want this twice !!! 
+			$double = array_search( $twitter_image_size, $image_sizes );
+			unset( $image_sizes[$double] );
+			
+			
+			
+			foreach( $image_sizes as $size ) {
 				$selected = selected( $size, $saved_value, false );
 				echo "<option value='$size'$selected>$size</option>";
 			}
-			echo '</select></label>';
+			echo '</select>';
 
 			$html = ob_get_clean();
 
 			return $content . $html;
 		}
-
+		
+		
+		// Save value
 		function save_post( $post_id, $post ) {
 
 			if ( ! isset( $_POST['nn-fis-image'] ) ) //make sure our custom value is being sent
@@ -148,7 +131,7 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 			}
 
 			// make sure the POSTed value is an okay size name
-			$ok_sizes = get_intermediate_image_sizes();
+			$ok_sizes = array('jmtc-small-thumb', 'jmtc-max-web-thumb', 'jmtc-max-mobile-non-retina-thumb', 'jmtc-max-mobile-retina-thumb');
 			if ( ! in_array( $fis_size, $ok_sizes ) ) return;
 
 			update_post_meta( $post_id, 'cardImgSize', $fis_size );

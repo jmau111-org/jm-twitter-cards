@@ -39,7 +39,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://bavotasan.com/2011/simple-textarea-word-counter-jquery-plugin/
 * - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
-* - https://github.com/trepmal/featured-image-sizes/blob/master/featured-image-sizes.php
 */
 
 //Add some security, no direct load !
@@ -136,11 +135,6 @@ function jm_tc_init()
 	
 	//robots.txt
 	add_filter( 'robots_txt', 'jm_tc_robots_mod', PHP_INT_MAX, 2 );
-	
-	
-	new JM_TC_Utilities();
-	new JM_TC_Thumbs();
-	new JM_TC_Markup();
 
 	if( is_admin() ) {
 		
@@ -157,6 +151,8 @@ function jm_tc_init()
 	}
 	
 }
+
+
 
 //Plugin install : update options
 register_activation_hook(__FILE__, 'jm_tc_on_activation');
@@ -182,7 +178,7 @@ function jm_tc_get_default_options()
 	'twitterCardPostPageDesc' 	=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
 	'twitterCardSEOTitle' 		=> 'yes',
 	'twitterCardSEODesc' 		=> 'yes',
-	'twitterCardImageSize' 		=> 'small',
+	'twitterCardImageSize' 		=> 'jmtc-small-thumb',
 	'twitterCardTitle' 			=> '',
 	'twitterCardDesc' 			=> '',
 	'twitterCardCrop' 			=> 'yes',
@@ -202,7 +198,20 @@ function jm_tc_get_default_options()
 }
 
 
+/******************
 
+AFTER WP HAS LOADED
+
+******************/
+add_action('wp_loaded', 'jm_tc_after_wp_loeded');
+function jm_tc_after_wp_loeded()
+{
+
+	new JM_TC_Utilities();
+	new JM_TC_Thumbs();
+	new JM_TC_Markup();
+	
+}
 
 // Plugin uninstall: delete option
 register_uninstall_hook(__FILE__, 'jm_tc_uninstall');

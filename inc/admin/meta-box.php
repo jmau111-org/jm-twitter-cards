@@ -119,15 +119,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'context' => 'advanced',
 			'priority' => 'high',
 			'fields' => array(
-			array(
-			'name' => __( 'Do you want to deactivate twitter cards metabox on this post?', 'jm-tc' ),
-			'id'   => "twitterCardCancel",
-			'type' => 'select',
-			'options'  => array(
-			'no' 	=> __( 'No', 'jm-tc' ),	
-			'yes' 	=> __( 'Yes', 'jm-tc' ),			
-			),
-			),
+
 			
 			// title
 			array(

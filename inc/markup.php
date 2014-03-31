@@ -7,235 +7,247 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 
 // For now it's not OOP it is hardly a draft
+// 31/01 : Ok now it is fairly a draft ^^
 if( ! class_exists('JM_TC_Markup') ) {
 
 	Class JM_TC_Markup extends JM_TC_Utilities {	
+	
+		var $opts;
+		var $textdomain = 'jm-tc';
 
 		function __construct() {
-		
+			$this->opts = get_option('jm_tc_options');
 			add_action('wp_head', array(&$this, 'add_markup'), 2 );
 			
 		}
 
+		/*
+		* Add meta to head section
+		*/			
+		public function add_markup() {
+			
+			global $post;
+			
+			echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
+			
+			if( is_singular() && !is_front_page() && !is_home() && !is_404() && !is_tag() ) {
+
+			
+				/* most important meta */
+				$this->cardType( $post->ID );
+				$this->creatorUsername( $post->post_author );
+				$this->siteUsername();
+				$this->title( $post->ID );
+				$this->description( $post->ID );
+				$this->image( $post, $post->ID, $post->post_content );
+				
+				
+				/* secondary meta */
+				$this->product( $post->ID );
+				$this->player( $post->ID );
+			}
+			
+			
+			
+			$this->deeplinking();
+			
+			
+			echo '<!-- /JM Twitter Cards -->' . "\n\n";
 		
-		public static function getMeta($name, $content)
-		{	
-			return '<meta name="twitter:'.$name.'" content="'.$content.'">' . "\n";
+		}	
+		
+		
+		
+		
+		/*
+		* retrieve datas from SEO Plugins
+		*/
+
+		public static function get_seo_plugin_datas( $post_id, $type ) {
+				
+			$plugin = 'WPSEO_Frontend';
+			
+			switch ( class_exists( $plugin ) ) {
+				case 'WPSEO_Frontend' :
+					$object = new WPSEO_Frontend();
+					$title  = $object->title(false);
+					$desc   = $object->metadesc(false); 	
+				break;
+				
+				case 'All_in_One_SEO_Pack' :
+					$title = htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) );
+					$desc  = htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) );					
+				break;
+				
+				case 'acf_field' :
+					$title = get_field( $opts['twitterCardTitle'], $post_id  );
+					$desc  = get_field( $opts['twitterCardDesc'], $post_id  );
+				
+				default:
+					$title = the_title_attribute( array( 'echo' => false));
+					$desc  = static::get_excerpt_by_id($post_id);
+				break;
+			
+			}
+			
+			switch( $type ) {
+				
+				case "title" :
+					$data = $title;
+				break;
+				
+				case "desc" :
+					$data = $desc;
+				break;
+			
+			}
+			
+			return $data;
+			
+		}
+		
+
+		/*
+		* Display the different meta
+		*/
+		private function display_markup( $name, $metadata, $error = false ){
+	
+			if( !$error ) {
+				echo '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
+				
+			} else {
+				if( current_user_can('edit_posts') ) echo '<!--'. $error .'@(-_-)] -->' . "\n";
+			}
+		}
+		
+		/*
+		* Retrieve the meta card type
+		*/		
+		public function cardType( $post_id ) {
+			
+			$cardType = (  ($cardTypePost = get_post_meta($post_id, 'twitterCardType', true) ) != '' ) ? $cardTypePost  : $this->opts['twitterCardType'];
+
+			$this->display_markup( 'card',  apply_filters('jm_tc_card_type', $cardType) );
+		}
+		
+		/*
+		* Retrieve the meta creator
+		*/		
+		public function creatorUsername( $post_author ) {
+		
+		//to be modified or left with the value 'jm_tc_twitter'
+			
+			$cardUsernameKey 	= $this->opts['twitterCardUsernameKey'];
+			$cardCreator 		= get_the_author_meta( $cardUsernameKey, $post_author );
+			
+			$cardCreator		= ($cardCreator != '') ? $cardCreator : $this->opts['twitterCardCreator'];
+			$cardCreator 		=  '@' . static::remove_at( $cardCreator );
+			
+			$this->display_markup( 'creator',  apply_filters('jm_tc_card_creator', $cardCreator) );
+		}
+		
+		/*
+		* retrieve the meta site
+		*/
+		public function siteUsername() {
+			
+			$cardSite =  '@' . static::remove_at( $this->opts['twitterCardSite'] );
+			$this->display_markup( 'site',  apply_filters('jm_tc_card_site', $cardSite) );
 		}
 		
 		
+		/*
+		* retrieve the title
+		*/
+		public function title($post_id) {
 		
-		//Add markup according to which page is displayed
-		function add_markup() {
+			if( $this->opts['twitterCardSEOTitle'] == 'yes'){
+		
+				$cardTitle = static::get_seo_plugin_datas($post_id, 'title');
 			
-			/* get options */
-			$opts = get_option('jm_tc_options');
+			} else {
 			
-			global $post;
-
-			$begin =  "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
-			$end   =  '<!-- /JM Twitter Cards -->' . "\n\n";
-
-			if ( is_home() || is_front_page() ) //detect post page or home (could be the same)
-			{
-
-				$output  = $begin;
-				$output .= static::getMeta('card',  $opts['twitterCardType'] );
-				$output .= static::getMeta('creator', '@'.static::remove_at($opts['twitterCardCreator']));
-				$output .= static::getMeta('site', '@' . static::remove_at($opts['twitterCardSite']));
-				$output .= static::getMeta('title',  $opts['twitterCardPostPageTitle'] );
-				$output .= static::getMeta('description',  $opts['twitterCardPostPageDesc'] );
-				$output .= static::getMeta('image:src',  $opts['twitterCardImage'] );
+				$cardTitle = the_title_attribute( array( 'echo' => false));
 				
-				//Deep linking
-				if ($opts['twitterCardDeepLinking'] == 'yes') 
-				{
-					
-					if( $opts['twitterCardiPhoneName'] != '' ) 		$output .= static::getMeta('app:name:iphone',  $opts['twitterCardiPhoneName'] );
-					if( $opts['twitterCardiPadName'] != '' )       	$output .= static::getMeta('app:name:ipad',  $opts['twitterCardiPadName'] );
-					if( $opts['twitterCardGooglePlayName'] != '' ) 	$output .= static::getMeta('app:name:googleplay',  $opts['twitterCardGooglePlayName'] );
-					if( $opts['twitterCardiPhoneUrl'] != '' ) 		$output .= static::getMeta('app:url:iphone',  $opts['twitterCardiPhoneUrl'] );
-					if( $opts['twitterCardiPadUrl'] != '' ) 		$output .= static::getMeta('app:url:ipad',  $opts['twitterCardiPhoneUrl'] );
-					if( $opts['twitterCardGooglePlayUrl'] != '' ) 	$output .= static::getMeta('app:url:googleplay',  $opts['twitterCardGooglePlayUrl'] );
-					if( $opts['twitterCardiPhoneId'] != '' ) 		$output .= static::getMeta('app:id:iphone',  $opts['twitterCardiPhoneId'] );
-					if( $opts['twitterCardiPadId'] != '' ) 			$output .= static::getMeta('app:id:ipad',  $opts['twitterCardiPadId'] );
-					if( $opts['twitterCardGooglePlayId'] != '' ) 	$output .= static::getMeta('app:id:googleplay',  $opts['twitterCardGooglePlayId'] );
-				}
-				
-				$output .= $end;
-				
-				echo apply_filters('jmtc_markup_home', $output); // provide filter for developers.
+			}			
 
-			}
+			$this->display_markup( 'title',  apply_filters('jm_tc_get_title', $cardTitle) );
+		
+		}
+		
+		/*
+		* retrieve the description
+		*/
+		public function description($post_id) {
 			
-			if( is_singular() && !is_front_page() && !is_home() && !is_404() && !is_tag() ) // avoid pages that do not need cards
-			{
-
-				
-				$creator 			= get_the_author_meta('jm_tc_twitter', $post->post_author);
-				$params 			= get_post_meta( $post->ID );
-				
+			if( $this->opts['twitterCardSEODesc'] == 'yes'){
+		
+				$cardDescription = static::get_seo_plugin_datas($post_id, 'desc') ;
 			
-				$cardType 			= isset($params['twitterCardType']) ? $params['twitterCardType'][0] : '';
-				$cardPhotoWidth	    = isset($params['cardPhotoWidth']) ? $params['cardPhotoWidth'][0] : '';
-				$cardPhotoHeight 	= isset($params['cardPhotoHeight']) ? $params['cardPhotoHeight'][0] : '';
-				$cardProductWidth 	= isset($params['cardProductWidth']) ? $params['cardProductWidth'][0] : '';
-				$cardProductHeight 	= isset($params['cardProductHeight']) ? $params['cardProductHeight'][0] : '';
-				$cardPlayerWidth 	= isset($params['cardPlayerWidth']) ? $params['cardPlayerWidth'][0] : '';
-				$cardPlayerHeight 	= isset($params['cardPlayerHeight']) ? $params['cardPlayerHeight'][0] : '';
-				$cardPlayer 		= isset($params['cardPlayer']) ? $params['cardPlayer'] : '';
-				$cardPlayerStream	= isset($params['cardPlayerStream']) ? $params['cardPlayerStream'][0] : '';
-				$cardImage 			= isset($params['cardImage']) ? $params['cardImage'][0] : '';
-				$cardData1 			= isset($params['cardData1']) ? $params['cardData1'][0] : '';
-				$cardLabel1		 	= isset($params['cardLabel1']) ? $params['cardLabel1'][0] : '';
-				$cardData2 			= isset($params['cardData2']) ? $params['cardData2'][0] : '';
-				$cardLabel2 		= isset($params['cardLabel2']) ? $params['cardLabel2'][0] : '';
-				$cardImgSize 		= isset($params['cardImgSize']) ? $params['cardImgSize'][0] : '';
-				$twitterCardCancel 	= isset($params['twitterCardCancel']) ? $params['twitterCardCancel'][0] : '';
+			} else {
+			
+				$cardDescription = static::get_excerpt_by_id($post_id);
 				
-				
-				//regex for player cards
-				$regex = '~(https://|www.)(.+?)~';
+			}	
+			
 
-				// from option page
-				$username	 		= get_user_meta(get_current_user_id() , $opts['twitterCardUsernameKey'], true);
+			$this->display_markup( 'description',  apply_filters('jm_tc_get_excerpt', $cardDescription) );			
+		
+		}	
+		
+		
 
-				// support for custom meta description WordPress SEO by Yoast or All in One SEO
-
-				if (class_exists('WPSEO_Frontend'))
-				{ // little trick to check if plugin is here and active :)
-					$object = new WPSEO_Frontend();
-					if ($opts['twitterCardSEOTitle'] == 'yes' && $object->title(false))
-					{
-						$cardTitle = $object->title(false);
-					}
-					else
-					{
-						$cardTitle = the_title_attribute(array(
-						'echo' => false
-						));
-					}
-
-					if ($opts['twitterCardSEODesc'] == 'yes' && $object->metadesc(false))
-					{
-						$cardDescription = $object->metadesc(false);
-					}
-					else
-					{
-						$cardDescription = apply_filters('jm_tc_get_excerpt', static::get_excerpt_by_id($post->ID) );
-					}
-				}
-				elseif (class_exists('All_in_One_SEO_Pack'))
-				{
-					global $post;
-					$post_id = $post;
-					if (is_object($post_id)) $post_id = $post_id->ID;
-					if ($opts['twitterCardSEOTitle'] == 'yes' && get_post_meta(get_the_ID() , '_aioseop_title', true))
-					{
-						$cardTitle = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_title', true)));
-					}
-					else
-					{
-						$cardTitle = the_title_attribute(array(
-						'echo' => false
-						));
-					}
-
-					if ($opts['twitterCardSEODesc'] == 'yes' && get_post_meta(get_the_ID() , '_aioseop_description', true))
-					{
-						$cardDescription = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_description', true)));
-					}
-					else
-					{
-						$cardDescription = apply_filters('jm_tc_get_excerpt', static::get_excerpt_by_id($post->ID) );
-					}
-				}
-				elseif (  function_exists('get_field') && $opts['twitterCardTitle'] != '' && $opts['twitterCardDesc'] != '' ) // we detect ACF with the function get_field()
-				{
-
-					// avoid array to string notice on title and desc
-					$cardTitle 			= get_field( $opts['twitterCardTitle'], $post->ID );
-					$cardDescription 	= get_field( $opts['twitterCardDesc'], $post->ID );
-				}
-				else
-				{ //default (I'll probably make a switch next time)
-					$cardTitle = the_title_attribute(array(
-					'echo' => false
-					));
-					$cardDescription = apply_filters('jm_tc_get_excerpt', static::get_excerpt_by_id($post->ID) );
-				}	
-				
-				
-				$output  = $begin;
-				
-				
-
-				if ( $cardType != '' && $twitterCardCancel != 'yes' )
-				{
-					$output .= static::getMeta('card',  apply_filters('jm_tc_card_type', $cardType ));
-				}
-				else
-				{
-					$output .= static::getMeta('card',  apply_filters('jm_tc_card_type', $opts['twitterCardType'] ));
-				}
-
-				if ( $creator != '' )
-				{ // this part has to be optional, this is more for guest bltwitterging but it's no reason to bother everybody.
-					$output .= static::getMeta('creator', '@' . $creator );
-				}
-				elseif ($opts['twitterCardProfile'] == 'no' && $username != '' && !is_array($username))
-				{ // http://codex.wordpress.org/Function_Reference/get_user_meta#Return_Values
-					$output .= static::getMeta('creator', '@' . static::remove_at($username) );
-				}
-				else
-				{
-					$output .= static::getMeta('creator', '@' . static::remove_at($opts['twitterCardCreator']) );
-				}
-
-				// these next 4 parameters should not be editable in post admin
-
-				$output .= static::getMeta('site', '@' . static::remove_at($opts['twitterCardSite']) );
-				$output .= static::getMeta('title',  $cardTitle ); // filter used by plugin to customize title
-				$output .= static::getMeta('description',  static::remove_lb($cardDescription) );
-				
-				
+		/*
+		* retrieve the images
+		*/
+		
+		public function image( $post, $post_id, $post_content ) {
+		
+			$cardImage 			= get_post_meta($post_id, 'cardImage', true); 
+		
 				//gallery
-				if ($cardType != 'gallery')
+				if( ($cardType = get_post_meta($post_id, 'twitterCardType', true) ) != 'gallery') 
 				{
-					if (get_the_post_thumbnail($post->ID) != '')
+					if (get_the_post_thumbnail($post_id ) != '')
 					{
-						if ($cardImage != '' && $twitterCardCancel != 'yes')
+						if ($cardImage != '')
 						{ // cardImage is set
-							$output .= static::getMeta('image:src',   apply_filters( 'jm_tc_image_source', $cardImage ));
+							$image = $cardImage;
 						}
 						else
 						{
-							$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , JM_TC_Thumbs::thumbnail_sizes());
-							$output .= static::getMeta('image:src',  apply_filters( 'jm_tc_image_source', $image_attributes[0] ) );
+							$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post_id) , JM_TC_Thumbs::thumbnail_sizes() );
+							$image =  $image_attributes[0];
 						}
+						
+					
 					}
-					elseif (get_the_post_thumbnail($post->ID) == '' && $cardImage != '' && $twitterCardCancel != 'yes')
+					
+					elseif (get_the_post_thumbnail($post_id ) == '' && $cardImage != '')
 					{
-						$output .=  static::getMeta('image:src',  apply_filters( 'jm_tc_image_source', $cardImage ) );
+						$image = $cardImage;
 					}
 					
 					elseif ( 'attachment' == get_post_type() ) 
 					{
-						
-						$output .= static::getMeta('image:src',  apply_filters( 'jm_tc_image_source', wp_get_attachment_url( $post->ID ) ) );
-						
+
+						$image =  wp_get_attachment_url($post_id);
 					}
 					
 					else
-					{ //fallback
-						$output .= static::getMeta('image:src',  apply_filters( 'jm_tc_image_source', $opts['twitterCardImage'] ));
+					{ 
+					//fallback
+						$image = $opts['twitterCardImage'];
 					}
+					
+					
+					$this->display_markup( 'image', apply_filters( 'jm_tc_image_source', $image) );
+					
 				}
 				else
 				{ // markup will be different
-					if ($twitterCardCancel != 'yes')
-					{
-						if ( is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'gallery'))
+
+						if ( is_a($post, 'WP_Post') && static::has_shortcode($post_content, 'gallery'))
 						{
 
 							// get attachment for gallery cards
@@ -246,7 +258,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 							'exclude' => get_post_thumbnail_id() ,
 							'post_mime_type' => 'image',
 							'post_status' => null,
-							'post_parent' => $post->ID
+							'post_parent' => $post_id 
 							);
 							$attachments = get_posts($args);
 							if ($attachments && count($attachments) > 3)
@@ -258,136 +270,159 @@ if( ! class_exists('JM_TC_Markup') ) {
 									// get attachment array with the ID from the returned posts
 
 									$pic = wp_get_attachment_url($attachment->ID);
-									$output .= static::getMeta('image' . $i . '',  apply_filters( 'jm_tc_image_source', $pic ));
+									$this->display_markup( 'image' . $i, apply_filters( 'jm_tc_image_source', $pic ) );
+									
 									$i++;
 									if ($i > 3) break; //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
 								}
 							}
 						}
+						
 						else
 						{
-							$output .=  '<!-- ' . __('Warning : Gallery Card is not set properly ! There is no gallery in this post !', 'jm-tc')  .'@(-_-)] -->' . "\n";
+							$this->display_markup( '', '', __('Warning : Gallery Card is not set properly ! There is no gallery in this post !', $this->textdomain) );
 						}
-					}
-					else
-					{
-						if (has_post_thumbnail())
-						{
-							$image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , JM_TC_Thumbs::thumbnail_sizes() );
-							$output .= static::getMeta('image:src',  apply_filters( 'jm_tc_image_source',$image_attributes[0] ));
-						}
-						else
-						{
-							$output .= static::getMeta('image:src', apply_filters( 'jm_tc_image_source', $opts['twitterCardImage'] ));
-						}
-					}
+					
 				}
-				
-				//photo
-				if ($opts['twitterCardType'] == 'photo' || $cardType == 'photo'  )
-				{
-					if ( $cardPhotoWidth != '' && $cardPhotoHeight != '' && $twitterCardCancel != 'yes' )
-					{
-						$output .= static::getMeta('image:width',  $cardPhotoWidth );
-						$output .= static::getMeta('image:height',  $cardPhotoHeight );
-					}
-					elseif ($opts['twitterCardType'] == 'photo' && $twitterCardCancel != 'yes' && $opts['twitterCardMetabox'] != 'yes')
-					{
-						$output .= static::getMeta('image:width',  $opts['twitterCardImageWidth'] );
-						$output .= static::getMeta('image:height',  $opts['twitterCardImageHeight'] );
-					}
-				}
-				
-				//product
-				if ($cardType == 'product' && $twitterCardCancel != 'yes')
-				{
-					if ( $cardData1 != '' &&  $cardLabel1 != '' && $cardData2 != '' && $cardLabel2 != '' )
-					{
-						$output .= static::getMeta('data1',  $cardData1 );
-						$output .= static::getMeta('label1',  $cardLabel1 );
-						$output .= static::getMeta('data2',  $cardData2 );
-						$output .= static::getMeta('label2',  $cardLabel2 );
-					}
-					else
-					{
-						$output .=   '<!-- ' .__('Warning : Product Card is not set properly ! There is no product datas !', 'jm-tc').'@(-_-)] -->' . "\n";
-					}
+		
+		}
+		
+		
+		
+		/*
+		* Product additional fields
+		*/
+		public function product($post_id){
 
-					if ( $cardProductWidth != '' && $cardProductHeight != '' && $cardType == 'product')
-					{
-						$output .= static::getMeta('image:width',  $cardProductWidth );
-						$output .= static::getMeta('image:height',  $cardProductHeight );
-					}
-					else
-					{
-						$output .= static::getMeta('image:width',  $opts['twitterCardImageWidth'] );
-						$output .= static::getMeta('image:height',  $opts['twitterCardImageHeight'] );
-					}
-				}
+			if( ($cardType = get_post_meta($post_id, 'twitterCardType', true) ) == 'product') {
+			
+				$data1 			= get_post_meta($post_id, 'cardData1', true);
+				$label1		 	= get_post_meta($post_id, 'cardLabel1', true);
+				$data2 			= get_post_meta($post_id, 'cardData2', true);
+				$label2 		= get_post_meta($post_id, 'cardLabel2', true);
+				
+				$product		= array( $data1, $label1, $data2, $label2);
 				
 				
-				if ($cardType == 'player' && $twitterCardCancel != 'yes' )
+				if ( $data1 != '' && $label1 != '' && $data2 != '' && $label2 != '' )
 				{
-					if ( $cardPlayer != '' ) {
-						$output .= static::getMeta('player',  $cardPlayer );
+					foreach ($product as $field => $value ) $this->display_markup( $field,  apply_filters('jm_tc_product_field-'.$field, $value) );
+				}		
+				
+				else 
+				{
+					 $this->display_markup( '', '', __('Warning : Product Card is not set properly ! There is no product datas !', $this->textdomain) );
+				}
+		
+			} else {
+				return;
+			}
+		}
+		
+		/*
+		* Player additional fields
+		*/
+		public function player($post_id){	
+
+			if( ($cardType = get_post_meta($post_id, 'twitterCardType', true) ) == 'player') {
+			
+				$playerUrl       	= get_post_meta($post_id, 'cardPlayer', true);
+				$playerStreamUrl 	= get_post_meta($post_id, 'cardPlayer', true);
+				$playerWidth 		= get_post_meta($post_id, 'cardPlayerWidth', true);
+				$playerHeight 		= get_post_meta($post_id, 'cardPlayerHeight', true);
+					
+					//Player
+					if ( $playerUrl != '' ) 
+					{
+						$this->display_markup( 'player',  apply_filters('jm_tc_player_url', $playerUrl) );
 					} 
+					
 					else
 					{
-						$output .=  '<!-- ' .__('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc') .'@(-_-)] -->' . "\n";					
-					}
-					
-					if (  $cardPlayer != '' && !preg_match( $regex,$cardPlayer) )
-					{
-						$output .= '<!-- ' .__('Warning : Player Card is not set properly ! The URL of iFrame Player MUST BE https!', 'jm-tc') .'@(-_-)] -->' . "\n";
-					}
-					
-					
-					if ( $cardPlayerWidth != '' && $cardPlayerHeight != ''  )
-					{
-						$output .= static::getMeta('player:width',  $cardPlayerWidth );
-						$output .= static::getMeta('player:height',  $cardPlayerHeight );
-					}
-					else 
-					{
-						$output .= static::getMeta('player:width" content="435"');
-						$output .= static::getMeta('player:height" content="251"');		
+						$this->display_markup( '', '', __('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', $this->textdomain) );				
 					}
 					
 					//Player stream
-					if ( $cardPlayerStream != '' ) 
+					if ( $playerStreamUrl != '' ) 
 					{
-						$output .= static::getMeta('player:stream" content="'.$cardPlayerStream);
-						$output .= static::getMeta('player:stream:content_type" content="video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;');
+					
+					$codec = "video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;";
+					
+						$this->display_markup( 'player:stream',  apply_filters('jm_tc_player_stream_url', $playerUrl) );
+						$this->display_markup( 'player:stream:content_type',  apply_filters('jm_tc_player_stream_codec', $codec) );
+					
+					} else {
+						return;
 					}
 					
-					if ( $cardPlayerStream != '' && !preg_match( $regex,$cardPlayerStream ) )
-					{
-						$output .= '<!-- ' .__('Warning : Player Card is not set properly ! The URL of raw stream Player MUST BE https!', 'jm-tc') . "\n";
+					//Player width and height
+					if ( $playerWidth != '' && $playerHeight != '' ) 
+					{				
+						$this->display_markup( 'player:width',  apply_filters('jm_tc_player_width', $playerWidth) );
+						$this->display_markup( 'player:height',  apply_filters('jm_tc_player_height', $playerHeight) );
 					}
 					
-					
-					//Deep linking
-					if ($opts['twitterCardDeepLinking'] == 'yes') 
+					else 
 					{
-						
-						if( $opts['twitteriPhoneName'] != '' ) 		$output .= static::getMeta('app:name:iphone',  $opts['twitteriPhoneName'] );
-						if( $opts['twitteriPadName'] != '' ) 		$output .= static::getMeta('app:name:ipad',  $opts['twitteriPadName'] );
-						if( $opts['twitterGooglePlayName'] != '' ) 	$output .= static::getMeta('app:name:googleplay',  $opts['twitterGooglePlayName'] );
-						if( $opts['twitteriPhoneUrl'] != '' ) 		$output .= static::getMeta('app:url:iphone',  $opts['twitteriPhoneUrl'] );
-						if( $opts['twitteriPadUrl'] != '' ) 		$output .= static::getMeta('app:url:ipad',  $opts['twitteriPhoneUrl'] );
-						if( $opts['twitterGooglePlayUrl'] != '' )   $output .= static::getMeta('app:url:googleplay',  $opts['twitterGooglePlayUrl'] );
-						if( $opts['twitteriPhoneId'] != '' ) 		$output .= static::getMeta('app:id:iphone',  $opts['twitteriPhoneId'] );
-						if( $opts['twitteriPadId'] != '' ) 			$output .= static::getMeta('app:id:ipad',  $opts['twitteriPadId'] );
-						if( $opts['twitterGooglePlayId'] != '' ) 	$output .= static::getMeta('app:id:googleplay',  $opts['twitterGooglePlayId'] );
+						$this->display_markup( 'player:width',  apply_filters('jm_tc_player_width', '435') );
+						$this->display_markup( 'player:height',  apply_filters('jm_tc_player_height', '251') );	
 					}
-				}
+					
+							
+			} else {
+				return;
+			}
+		
+		}
+		
+		
+		
+		/*
+		* Image Width and Height
+		*/
+		
+		public function cardDim($post_id, $type){	
+		
+			if( ( $cardType = get_post_meta($post_id, 'twitterCardType', true) ) == $type ) {
+			
+				$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'card'.ucwords($type).'Width', true) ) ) ? $cardWidth : $this->opts['twitterCardImageWidth'];
+				$height = ( '' != ($cardHeight = get_post_meta($post_id, 'card'.ucwords($type).'Height', true) ) ) ? $cardHeight : $this->opts['twitterCardImageHeight'];
 				
-				$output  .= $end;
-
-				echo apply_filters('jmtc_markup', $output); // provide filter for developers.
-				
-			}	
-		}	
+				$this->display_markup( 'image:width',  $width );
+				$this->display_markup( 'image:height',  $height );
+			
+			} elseif( $cardType == '' && $this->opts['twitterCardType'] == $type ) {
+			
+				$this->display_markup( 'image:width',  $this->opts['twitterCardWidth'] );
+				$this->display_markup( 'image:height',  $this->opts['twitterCardHeight'] );
+			}
+			
+			else {
+				return;
+			}
+		}
+		
+		
+		/*
+		* retrieve the deep linking and app install meta
+		*/		
+		public function deeplinking(){
+		
+			if( $this->opts['twitterCardDeepLinking'] == 'yes' ) {
+					
+					if( $this->opts['twitterCardiPhoneName'] != '' ) $this->display_markup( 'app:name:iphone',  $this->opts['twitterCardiPhoneName'] );
+					if( $this->opts['twitterCardiPadName'] != '' ) $this->display_markup( 'app:name:ipad', $this->opts['twitterCardiPadName'] );
+					if( $this->opts['twitterCardGooglePlayName'] != '' ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterCardGooglePlayName'] );
+					if( $this->opts['twitterCardiPhoneUrl'] != '' ) $this->display_markup( 'app:url:iphone', $this->opts['twitterCardiPhoneUrl'] );
+					if( $this->opts['twitterCardiPadUrl'] != '' ) $this->display_markup( 'app:url:ipad', $this->opts['twitterCardiPhoneUrl'] );
+					if( $this->opts['twitterCardGooglePlayUrl'] != '' ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterCardGooglePlayUrl'] );
+					if( $this->opts['twitterCardiPhoneId'] != '' ) $this->display_markup( 'app:id:iphone', $this->opts['twitterCardiPhoneId'] );
+					if( $this->opts['twitterCardiPadId'] != '' ) $this->display_markup( 'app:id:ipad', $this->opts['twitterCardiPadId'] );
+					if( $this->opts['twitterCardGooglePlayId'] != '' ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterCardGooglePlayId'] );
+			
+			}
+		}
+		
 
 	}
 
