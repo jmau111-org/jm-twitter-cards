@@ -46,16 +46,16 @@ defined('ABSPATH')
 or die('What we\'re dealing with here is a total lack of respect for the law !');
 
 //Constantly constant
-define( 'JM_TC_VERSION', 			'5.0' );
-define( 'JM_TC_DIR', 				plugin_dir_path( __FILE__ )  );
-define( 'JM_TC_INC_DIR', 			trailingslashit(JM_TC_DIR . 'inc') );
-define( 'JM_TC_METABOX_DIR', 		trailingslashit(JM_TC_INC_DIR . 'admin/meta-box') );
-define( 'JM_TC_LANG_DIR', 			dirname(plugin_basename(__FILE__)) . '/languages/' );
-define( 'JM_TC_URL', 				trailingslashit(plugin_dir_url( __FILE__ ).'inc/admin') );
-define( 'JM_TC_METABOX_URL', 		trailingslashit(JM_TC_URL.'admin/meta-box') );
-define( 'JM_TC_IMG_URL', 			trailingslashit(JM_TC_URL.'img') );
-define( 'JM_TC_CSS_URL', 			trailingslashit(JM_TC_URL.'css') );
-define( 'JM_TC_JS_URL', 			trailingslashit(JM_TC_URL.'js') );
+define( 'JM_TC_VERSION',		'5.0' );
+define( 'JM_TC_DIR',			plugin_dir_path( __FILE__ )  );
+define( 'JM_TC_INC_DIR',		trailingslashit(JM_TC_DIR . 'inc') );
+define( 'JM_TC_METABOX_DIR',	trailingslashit(JM_TC_INC_DIR . 'admin/meta-box') );
+define( 'JM_TC_LANG_DIR',		dirname(plugin_basename(__FILE__)) . '/languages/' );
+define( 'JM_TC_URL',			trailingslashit(plugin_dir_url( __FILE__ ).'inc/admin') );
+define( 'JM_TC_METABOX_URL',	trailingslashit(JM_TC_URL.'admin/meta-box') );
+define( 'JM_TC_IMG_URL',		trailingslashit(JM_TC_URL.'img') );
+define( 'JM_TC_CSS_URL',		trailingslashit(JM_TC_URL.'css') );
+define( 'JM_TC_JS_URL',			trailingslashit(JM_TC_URL.'js') );
 
 
 //Call pages
@@ -203,8 +203,8 @@ function jm_tc_get_default_options()
 AFTER WP HAS LOADED
 
 ******************/
-add_action('wp_loaded', 'jm_tc_after_wp_loeded');
-function jm_tc_after_wp_loeded()
+add_action('wp_loaded', 'jm_tc_after_wp_loaded');
+function jm_tc_after_wp_loaded()
 {
 
 	new JM_TC_Utilities();
