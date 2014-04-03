@@ -267,18 +267,10 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			),	
 			
 			array(
-			'name' 		=> __( 'Home meta title', 'jm-tc' ),
-			'desc' 		=> __('Enter title for Posts Page', 'jm-tc'),
-			'id'   		=> 'twitterCardPostPageTitle',
-			'type' 		=> 'text',
-			),
-			
-			array(
 			'name' 		=> __( 'Home meta desc', 'jm-tc' ),
 			'desc' 		=> __('Enter desc for Posts Page (max: 200 words)', 'jm-tc'),
 			'id'   		=> 'twitterCardPostPageDesc',
 			'type' 		=> 'textarea_small',
-			'std'		=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc'),
 			),
 
 			array(
@@ -338,7 +330,22 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'min'		=> 150,
 			),	
 			
+			array(
+			'type' => 'title',
+			'name' => __( 'Categories and custom taxonomies', 'jm-tc' ),
+			'id'   => 'taxonomies_title', // Not used but needed for plugin
+			'desc' => __('For all the following fields, if you do not want to use leave it blank','jm-tc'),
+			),	
 			
+			/*
+			array(
+				'name' 		=> 'Taxonomies',
+				'desc' 		=> 'Just select taxonomie that should have markup for Twitter Cards',
+				'id' 		=> 'twitterCardTaxonomies',
+				'taxonomy' 	=> get_taxonomies(),
+				'type' 		=> 'taxonomy_multicheck',    
+			),*/
+						
 			array(
 			'type' => 'title',
 			'name' => __( 'Deep Linking', 'jm-tc' ),

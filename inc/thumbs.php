@@ -8,6 +8,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 if ( ! class_exists('JM_TC_Thumbs') ) {
+
 	class JM_TC_Thumbs {
 
 		var $textdomain = 'jm-tc';

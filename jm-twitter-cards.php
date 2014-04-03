@@ -80,8 +80,8 @@ if( is_admin() ) {
 }
 
 // get markup and get it started
-require( JM_TC_INC_DIR . 'utilities.php' ); 
 require( JM_TC_INC_DIR . 'thumbs.php' );
+require( JM_TC_INC_DIR . 'utilities.php' ); 
 require( JM_TC_INC_DIR . 'markup.php' ); 
 
 
@@ -174,7 +174,6 @@ function jm_tc_get_default_options()
 	'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
 	'twitterCardImageWidth' 	=> 280,
 	'twitterCardImageHeight' 	=> 150,
-	'twitterCardPostPageTitle' 	=> get_bloginfo('name') , // filter used by plugin to customize title
 	'twitterCardPostPageDesc' 	=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
 	'twitterCardSEOTitle' 		=> 'yes',
 	'twitterCardSEODesc' 		=> 'yes',
@@ -206,9 +205,8 @@ AFTER WP HAS LOADED
 add_action('wp_loaded', 'jm_tc_after_wp_loaded');
 function jm_tc_after_wp_loaded()
 {
-
-	new JM_TC_Utilities();
 	new JM_TC_Thumbs();
+	new JM_TC_Utilities();
 	new JM_TC_Markup();
 	
 }
