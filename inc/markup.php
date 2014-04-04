@@ -212,7 +212,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 
 			} elseif( !$post_id && $is_tax ) {
 			
-					$cardTitle 	= get_queried_object()->name;
+					$cardTitle 	= ( '' != ( $tax_name = get_queried_object()->name ) ) ? $tax_name : get_bloginfo('name');
 				
 				
 			} else {
@@ -244,7 +244,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				
 			} elseif( !$post_id && $is_tax ) {
 				
-					$cardDescription = wp_strip_all_tags( term_description() );
+					$cardDescription = ( '' != term_description() ) ? wp_strip_all_tags( term_description() ) :  $this->opts['twitterCardPostPageDesc'];
 					
 			} else {
 				
