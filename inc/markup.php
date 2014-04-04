@@ -16,7 +16,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		var $textdomain = 'jm-tc';
 
 		function __construct() {
-			$this->opts 			= get_option('jm_tc_options');
+			$this->opts = get_option('jm_tc_options');
 			add_action('wp_head', array(&$this, 'add_markup'), 2 );
 			
 		}
@@ -39,7 +39,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$this->siteUsername();
 				$this->title( $post->ID );
 				$this->description( $post->ID );
-				$this->image( $post->ID, $post->post_content );
+				$this->image( $post->ID );
 				
 				
 				/* secondary meta */
@@ -54,7 +54,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$this->creatorUsername( false);
 				$this->title( false );
 				$this->description( false );	
-				$this->image( false, false );				
+				$this->image( false );				
 			}
 			
 			
@@ -240,7 +240,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		* retrieve the images
 		*/
 		
-		public function image( $post_id, $post_content ) {
+		public function image( $post_id ) {
 		
 			$cardImage 			= get_post_meta($post_id, 'cardImage', true); 
 		
@@ -272,9 +272,14 @@ if( ! class_exists('JM_TC_Markup') ) {
 						$image =  wp_get_attachment_url($post_id);
 					}
 					
-					else
+					elseif( $post_id == false ) 
 					{ 
-					//fallback
+	
+						$image = $this->opts['twitterCardImage'];
+					}
+					
+					else {
+						//fallback
 						$image = $this->opts['twitterCardImage'];
 					}
 					
@@ -284,8 +289,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 				}
 				else
 				{ // markup will be different
+				global $post;
 
-						if ( static::has_shortcode($post_content, 'gallery'))
+						if (  is_a($post, 'WP_Post') && static::has_shortcode($post->post_content, 'gallery') )
 						{
 
 							// get attachment for gallery cards
