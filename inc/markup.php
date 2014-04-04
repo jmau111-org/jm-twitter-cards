@@ -50,15 +50,25 @@ if( ! class_exists('JM_TC_Markup') ) {
 				
 			}
 			
+			elseif( is_category() || is_tax() ) {
+				
+				$this->cardType(); 
+				$this->siteUsername();	
+				$this->title( false, true );
+				$this->description( false, true );	
+				$this->image();
+				$this->cardDim();		
+			}
+			
 			elseif( is_home() || is_front_page() ) {
 			
-				$this->cardType( false ); 
+				$this->cardType(); 
 				$this->siteUsername();
-				$this->creatorUsername( false );
-				$this->title( false );
-				$this->description( false );	
-				$this->image( false );	
-				$this->cardDim( false );				
+				$this->creatorUsername();
+				$this->title();
+				$this->description();	
+				$this->image();	
+				$this->cardDim();				
 			}
 			
 			
@@ -82,7 +92,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		* retrieve datas from SEO Plugins
 		*/
 
-		public static function get_seo_plugin_datas( $post_id, $type ) {
+		public static function get_seo_plugin_datas( $post_id = false, $type ) {
 				
 			$plugin = 'WPSEO_Frontend';
 			
@@ -135,14 +145,14 @@ if( ! class_exists('JM_TC_Markup') ) {
 				echo '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
 				
 			} else {
-				if( current_user_can('edit_posts') ) echo '<!--'. $error .'@(-_-)] -->' . "\n";
+				if( current_user_can('edit_posts') ) echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
 			}
 		}
 		
 		/*
 		* Retrieve the meta card type
 		*/		
-		public function cardType( $post_id ) {
+		public function cardType( $post_id = false ) {
 			
 			$cardType = (  ($cardTypePost = get_post_meta($post_id, 'twitterCardType', true) ) != '' ) ? $cardTypePost  : $this->opts['twitterCardType'];
 
@@ -152,9 +162,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 		/*
 		* Retrieve the meta creator
 		*/		
-		public function creatorUsername( $post_author ) {
+		public function creatorUsername( $post_author = false ) {
 		
-			if( $post_author != false ) {
+			if( $post_author ) {
 		
 			//to be modified or left with the value 'jm_tc_twitter'
 				
@@ -186,9 +196,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 		/*
 		* retrieve the title
 		*/
-		public function title($post_id) {
+		public function title($post_id = false, $is_tax = false) {
 		
-			if($post_id != false) {
+			if($post_id) {
 			
 				if( $this->opts['twitterCardSEOTitle'] == 'yes'){
 			
@@ -200,6 +210,11 @@ if( ! class_exists('JM_TC_Markup') ) {
 					
 				}	
 
+			} elseif( !$post_id && $is_tax ) {
+			
+					$cardTitle 	= get_queried_object()->name;
+				
+				
 			} else {
 				
 				$cardTitle = get_bloginfo('name');
@@ -213,9 +228,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 		/*
 		* retrieve the description
 		*/
-		public function description($post_id) {
+		public function description($post_id = false, $is_tax = false) {
 		
-			if($post_id != false) {
+			if($post_id) {
 				
 				if( $this->opts['twitterCardSEODesc'] == 'yes'){
 			
@@ -227,6 +242,10 @@ if( ! class_exists('JM_TC_Markup') ) {
 					
 				}	
 				
+			} elseif( !$post_id && $is_tax ) {
+				
+					$cardDescription = wp_strip_all_tags( term_description() );
+					
 			} else {
 				
 				$cardDescription = $this->opts['twitterCardPostPageDesc'];
@@ -243,7 +262,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		* retrieve the images
 		*/
 		
-		public function image( $post_id ) {
+		public function image( $post_id = false ) {
 		
 			$cardImage 			= get_post_meta($post_id, 'cardImage', true); 
 		
@@ -339,7 +358,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		/*
 		* Product additional fields
 		*/
-		public function product($post_id){
+		public function product($post_id = false){
 
 			if( ($cardType = get_post_meta($post_id, 'twitterCardType', true) ) == 'product') {
 			
@@ -374,7 +393,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		/*
 		* Player additional fields
 		*/
-		public function player($post_id){	
+		public function player($post_id = false){	
 
 			if( ($cardType = get_post_meta($post_id, 'twitterCardType', true) ) == 'player') {
 			
@@ -433,7 +452,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		* Image Width and Height
 		*/
 		
-		public function cardDim($post_id){	
+		public function cardDim($post_id = false){	
 		
 		
 			$type = (  ($cardTypePost = get_post_meta($post_id, 'twitterCardType', true) ) != '' ) ? $cardTypePost  : $this->opts['twitterCardType'];
@@ -449,7 +468,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 					$this->display_markup( 'image:width',  $width );
 					$this->display_markup( 'image:height',  $height );
 				
-				} elseif( $cardType == '' || $post_id == false ) {
+				} elseif( $cardType == '' || !$post_id ) {
 				
 					$this->display_markup( 'image:width',  $this->opts['twitterCardWidth'] );
 					$this->display_markup( 'image:height',  $this->opts['twitterCardHeight'] );

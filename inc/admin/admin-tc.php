@@ -336,16 +336,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'id'   => 'taxonomies_title', // Not used but needed for plugin
 			'desc' => __('For all the following fields, if you do not want to use leave it blank','jm-tc'),
 			),	
-			
-			/*
-			array(
-				'name' 		=> 'Taxonomies',
-				'desc' 		=> 'Just select taxonomie that should have markup for Twitter Cards',
-				'id' 		=> 'twitterCardTaxonomies',
-				'taxonomy' 	=> get_taxonomies(),
-				'type' 		=> 'taxonomy_multicheck',    
-			),*/
-						
+		
 			array(
 			'type' => 'title',
 			'name' => __( 'Deep Linking', 'jm-tc' ),
