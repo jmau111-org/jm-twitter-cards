@@ -43,18 +43,22 @@ if( ! class_exists('JM_TC_Markup') ) {
 				
 				
 				/* secondary meta */
+				$this->cardDim( $post->ID );
 				$this->product( $post->ID );
 				$this->player( $post->ID );
+				
+				
 			}
 			
 			elseif( is_home() || is_front_page() ) {
 			
 				$this->cardType( false ); 
 				$this->siteUsername();
-				$this->creatorUsername( false);
+				$this->creatorUsername( false );
 				$this->title( false );
 				$this->description( false );	
-				$this->image( false );				
+				$this->image( false );	
+				$this->cardDim( false );				
 			}
 			
 			
@@ -63,8 +67,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$this->display_markup( '', '', __('Twitter Cards are off for those pages.', $this->textdomain) );
 			}
 			
-			
-			
+		
 			$this->deeplinking();
 			
 			
@@ -430,25 +433,36 @@ if( ! class_exists('JM_TC_Markup') ) {
 		* Image Width and Height
 		*/
 		
-		public function cardDim($post_id, $type){	
+		public function cardDim($post_id){	
 		
-			if( ( $cardType = get_post_meta($post_id, 'twitterCardType', true) ) == $type ) {
-			
-				$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'card'.ucwords($type).'Width', true) ) ) ? $cardWidth : $this->opts['twitterCardImageWidth'];
-				$height = ( '' != ($cardHeight = get_post_meta($post_id, 'card'.ucwords($type).'Height', true) ) ) ? $cardHeight : $this->opts['twitterCardImageHeight'];
+		
+			$type = (  ($cardTypePost = get_post_meta($post_id, 'twitterCardType', true) ) != '' ) ? $cardTypePost  : $this->opts['twitterCardType'];
+		
+					
+			if(  in_array( $type, array('photo','product') )  ) {
+		
+				if( $type != '' ) {
 				
-				$this->display_markup( 'image:width',  $width );
-				$this->display_markup( 'image:height',  $height );
+					$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'card'.ucwords($type).'Width', true) ) ) ? $cardWidth : $this->opts['twitterCardImageWidth'];
+					$height = ( '' != ($cardHeight = get_post_meta($post_id, 'card'.ucwords($type).'Height', true) ) ) ? $cardHeight : $this->opts['twitterCardImageHeight'];
+					
+					$this->display_markup( 'image:width',  $width );
+					$this->display_markup( 'image:height',  $height );
+				
+				} elseif( $cardType == '' || $post_id == false ) {
+				
+					$this->display_markup( 'image:width',  $this->opts['twitterCardWidth'] );
+					$this->display_markup( 'image:height',  $this->opts['twitterCardHeight'] );
+				}
+				
+				else {
+					return;
+				}
 			
-			} elseif( $cardType == '' && $this->opts['twitterCardType'] == $type ) {
-			
-				$this->display_markup( 'image:width',  $this->opts['twitterCardWidth'] );
-				$this->display_markup( 'image:height',  $this->opts['twitterCardHeight'] );
-			}
-			
-			else {
+			} else {
 				return;
 			}
+				 		
 		}
 		
 		
