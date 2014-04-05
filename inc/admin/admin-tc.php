@@ -275,11 +275,12 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			
 			
 			array(
-			'name' => __( 'Images', 'jm-tc' ),
-			'id'   => 'twitterCardImage', // Not used but needed for plugin
-			'desc' => __('Enter URL for fallback image (image by default)', 'jm-tc'),
-			'type' => 'file',
-			),	
+				'name' => __( 'Images', 'jm-tc' ),
+				'id'   => 'twitterCardImage', // Not used but needed for plugin
+				'desc' => __('Enter URL for fallback image (image by default)', 'jm-tc'),
+				'type' => 'file',
+				
+			),
 			
 			
 			array(
@@ -323,13 +324,15 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'min'		=> 150,
 			),	
 			
+			/*
 			array(
 			'type' => 'title',
 			'name' => __( 'Categories and custom taxonomies', 'jm-tc' ),
 			'id'   => 'taxonomies_title', // Not used but needed for plugin
 			'desc' => __('For all the following fields, if you do not want to use leave it blank','jm-tc'),
 			),	
-		
+			*/
+			
 			array(
 			'type' => 'title',
 			'name' => __( 'Deep Linking', 'jm-tc' ),
