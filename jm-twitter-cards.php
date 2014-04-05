@@ -74,7 +74,6 @@ function jm_tc_subpages(){
 if( is_admin() ) {
 
 	require( JM_TC_INC_DIR . 'admin/admin-tc.php' );
-	require( JM_TC_INC_DIR . 'admin/notices.php' );
 	require( JM_TC_INC_DIR . 'admin/meta-box.php' );
 
 }
@@ -139,11 +138,7 @@ function jm_tc_init()
 	if( is_admin() ) {
 		
 		$admin  	= new JM_TC_Admin(); 
-		$metabox	= new JM_TC_Metabox();
-		
-		
-		new JM_TC_Notices();
-		
+		$metabox	= new JM_TC_Metabox();	
 		
 		$admin->hooks();
 		$metabox->hooks();
