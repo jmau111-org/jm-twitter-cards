@@ -137,11 +137,8 @@ function jm_tc_init()
 
 	if( is_admin() ) {
 		
-		$admin  	= new JM_TC_Admin(); 
-		$metabox	= new JM_TC_Metabox();	
-		
-		$admin->hooks();
-		$metabox->hooks();
+		 new JM_TC_Admin(); 
+		 new JM_TC_Metabox();	
 
 	}
 	

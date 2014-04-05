@@ -9,7 +9,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 	class JM_TC_Metabox {
 
 		
-		function hooks() {
+		function __construct() {
 			//Don't show if users do not want it
 			add_filter( 'cmb_show_on', array(&$this, 'metabox_exclude'), 10, 2 );
 			

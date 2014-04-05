@@ -32,14 +32,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		*/
 		public function __construct() {
 			// Set our title
-			$this->title = __( 'JM Twitter Cards', 'jm-tc' );
-		}
-		
-		/**
-		* Initiate our hooks
-		* @since 0.1.0
-		*/
-		public function hooks() {
+			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
 		}
