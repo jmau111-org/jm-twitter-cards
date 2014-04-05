@@ -459,28 +459,23 @@ if( ! class_exists('JM_TC_Markup') ) {
 		
 					
 			if(  in_array( $type, array('photo','product') )  ) {
-		
-				if( $type != '' ) {
-				
-					$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'card'.ucwords($type).'Width', true) ) ) ? $cardWidth : $this->opts['twitterCardImageWidth'];
-					$height = ( '' != ($cardHeight = get_post_meta($post_id, 'card'.ucwords($type).'Height', true) ) ) ? $cardHeight : $this->opts['twitterCardImageHeight'];
-					
-					$this->display_markup( 'image:width',  $width );
-					$this->display_markup( 'image:height',  $height );
-				
-				} elseif( $cardType == '' || !$post_id ) {
-				
-					$this->display_markup( 'image:width',  $this->opts['twitterCardWidth'] );
-					$this->display_markup( 'image:height',  $this->opts['twitterCardHeight'] );
-				}
-				
-				else {
-					return;
-				}
 			
-			} else {
+				$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'card'.ucwords($type).'Width', true) ) ) ? $cardWidth : $this->opts['twitterCardImageWidth'];
+				$height = ( '' != ($cardHeight = get_post_meta($post_id, 'card'.ucwords($type).'Height', true) ) ) ? $cardHeight : $this->opts['twitterCardImageHeight'];
+				
+				$this->display_markup( 'image:width',  $width );
+				$this->display_markup( 'image:height',  $height );
+			
+			} elseif( in_array( $type, array('photo','product') ) && !$post_id ) {
+			
+				$this->display_markup( 'image:width',  $this->opts['twitterCardWidth'] );
+				$this->display_markup( 'image:height',  $this->opts['twitterCardHeight'] );
+			}
+			
+			else {
 				return;
 			}
+
 				 		
 		}
 		
