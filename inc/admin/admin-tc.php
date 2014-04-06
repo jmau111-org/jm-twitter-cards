@@ -275,38 +275,12 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			
 			
 			array(
-				'name' => __( 'Images', 'jm-tc' ),
+				'name' => __( 'Image Fallback', 'jm-tc' ),
 				'id'   => 'twitterCardImage', // Not used but needed for plugin
-				'desc' => __('Enter URL for fallback image (image by default)', 'jm-tc'),
 				'type' => 'file',
 				
 			),
 			
-			
-			array(
-			'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
-			'id'       => 'twitterCardImageSize',
-			'type'     => 'select',
-
-			'options'  => array(
-			'jmtc-max-mobile-non-retina-thumb' => __('Max mobile non retina (width: 280px - height: 375px)', 'jm-tc'),
-			'jmtc-max-mobile-retina-thumb' => __('Max mobile retina (width: 560px - height: 750px)', 'jm-tc'),
-			'jmtc-max-web-thumb' => __('Max web size(width: 435px - height: 375px)', 'jm-tc'),
-			'jmtc-small-thumb' => __('Small (width: 280px - height: 150px)', 'jm-tc'),
-			),
-
-			),
-			
-			array(
-			'name' 		=> __( 'Crop', 'jm-tc' ),
-			'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc'),
-			'id'   		=> 'twitterCardCrop',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
 
 			array(
 			'name' 		=> __('Image width', 'jm-tc'),
@@ -323,6 +297,17 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'type' 		=> 'text_number',
 			'min'		=> 150,
 			),	
+			
+			array(
+			'name' 		=> __( 'Crop', 'jm-tc' ),
+			'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc'),
+			'id'   		=> 'twitterCardCrop',
+			'type' 		=> 'select',
+			'options'	 => array(
+			'no' 			=> __( 'No', 'jm-tc' ),
+			'yes' 			=> __( 'Yes', 'jm-tc' ),
+			)
+			),
 			
 			/*
 			array(

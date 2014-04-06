@@ -67,8 +67,9 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			$opts = get_option('jm_tc_options');
 			$excerpt_length = $opts['twitterCardExcerptLength'];
 			
-			$the_excerpt = strip_shortcodes($the_excerpt);
-			$the_excerpt = wp_trim_words( $the_excerpt, $excerpt_length, '');// it's better to use wp functions 
+			$the_excerpt = strip_tags( $the_excerpt );// kill HTML tags
+			$the_excerpt = strip_shortcodes( $the_excerpt );// kill shortcodes
+			$the_excerpt = substr( $the_excerpt, $excerpt_length, '');// it's better to use wp functions 
 			
 			return esc_attr($the_excerpt); // to prevent meta from being broken by ""
 		}

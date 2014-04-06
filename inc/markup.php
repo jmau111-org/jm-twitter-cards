@@ -279,9 +279,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 						}
 						else
 						{
-							$image_attributes 	= wp_get_attachment_image_src( get_post_thumbnail_id($post_id) , JM_TC_Thumbs::get_thumbnail_sizes($post_id) );
-							$image 				=  $image_attributes[0];
-
+							$size 				= get_post_meta($post_id, 'cardImgSize', true);							
+							$image_attributes 	= wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $size);
+							$image 				= $image_attributes[0];
 						}
 
 					}
