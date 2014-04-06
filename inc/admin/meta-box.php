@@ -40,7 +40,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			return;
 
 			$post_types = get_post_types();
-			$opts		= get_option('jm_tc_options');
 		
 			// 1st meta box
 			$meta_boxes['jm_tc_metabox'] = array(
@@ -257,6 +256,32 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			)
 			);
 			
+			
+			
+			$meta_boxes['twitter_image_size'] = array(
+			'id'            => 'twitter_image_size',
+			'title'         => __( 'Twitter Image Size', 'jm-tc' ),
+			'pages'         => $post_types,
+			'context'       => 'side',
+			'priority'      => 'low',
+			'show_names'    => true,
+			'fields'        => array(
+			array(
+			'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
+			'id'       => 'cardImgSize',
+			'type'     => 'select',
+
+			'options'  => array(
+			'jmtc-max-mobile-non-retina-thumb' => __('280p x 375px', 'jm-tc'),
+			'jmtc-max-mobile-retina-thumb' => __('560 x 750px', 'jm-tc'),
+			'jmtc-max-web-thumb' => __('435 x 375px', 'jm-tc'),
+			'jmtc-small-thumb' => __('280 x 150px', 'jm-tc'),
+			),
+
+			),
+			)
+			);
+
 			
 			return $meta_boxes;
 			

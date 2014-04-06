@@ -111,12 +111,12 @@ if( ! class_exists('JM_TC_Markup') ) {
 				break;
 				
 				case 'acf_field' :
-					$title = get_field( $opts['twitterCardTitle'], $post_id  );
-					$desc  = get_field( $opts['twitterCardDesc'], $post_id  );
+					$title = get_field( $this->opts['twitterCardTitle'], $post_id  );
+					$desc  = get_field( $this->opts['twitterCardDesc'], $post_id  );
 				
 				default:
 					$title = the_title_attribute( array( 'echo' => false));
-					$desc  = static::get_excerpt_by_id($post_id);
+					$desc  = parent::get_excerpt_by_id($post_id);
 				break;
 			
 			}
@@ -174,11 +174,11 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$cardCreator 		= get_the_author_meta( $cardUsernameKey, $post_author );
 				
 				$cardCreator		= ($cardCreator != '') ? $cardCreator : $this->opts['twitterCardCreator'];
-				$cardCreator 		=  '@' . static::remove_at( $cardCreator );
+				$cardCreator 		=  '@' . parent::remove_at( $cardCreator );
 			
 			} else {
 			
-				$cardCreator = '@' .  static::remove_at( $this->opts['twitterCardCreator'] );
+				$cardCreator = '@' .  parent::remove_at( $this->opts['twitterCardCreator'] );
 			}
 			
 			
@@ -190,7 +190,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 		*/
 		public function siteUsername() {
 			
-			$cardSite =  '@' . static::remove_at( $this->opts['twitterCardSite'] );
+			$cardSite =  '@' . parent::remove_at( $this->opts['twitterCardSite'] );
 			$this->display_markup( 'site',  apply_filters('jm_tc_card_site', $cardSite) );
 		}
 		
@@ -240,7 +240,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				
 				} else {
 				
-					$cardDescription = static::get_excerpt_by_id($post_id);
+					$cardDescription = parent::get_excerpt_by_id($post_id);
 					
 				}	
 				
@@ -271,7 +271,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				//gallery
 				if( ($cardType  = get_post_meta($post_id, 'twitterCardType', true) ) != 'gallery' ) 
 				{
-					if (get_the_post_thumbnail($post_id ) != '')
+					if (get_the_post_thumbnail($post_id ) != '' )
 					{
 						if ($cardImage != '')
 						{ // cardImage is set
@@ -279,8 +279,9 @@ if( ! class_exists('JM_TC_Markup') ) {
 						}
 						else
 						{
-							$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id($post_id) , JM_TC_Thumbs::thumbnail_sizes() );
-							$image =  $image_attributes[0];
+							$image_attributes 	= wp_get_attachment_image_src( get_post_thumbnail_id($post_id) , JM_TC_Thumbs::get_thumbnail_sizes($post_id) );
+							$image 				=  $image_attributes[0];
+
 						}
 
 					}
@@ -315,7 +316,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 				{ // markup will be different
 				global $post;
 
-						if (  is_a($post, 'WP_Post') && static::has_shortcode($post->post_content, 'gallery') )
+						if (  is_a($post, 'WP_Post') && parent::has_shortcode($post->post_content, 'gallery') )
 						{
 
 							// get attachment for gallery cards
