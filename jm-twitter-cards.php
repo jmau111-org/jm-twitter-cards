@@ -70,18 +70,20 @@ function jm_tc_subpages(){
 	
 }
 
-//Call modules 
-if( is_admin() ) {
 
-	require( JM_TC_INC_DIR . 'admin/admin-tc.php' );
-	require( JM_TC_INC_DIR . 'admin/meta-box.php' );
-
-}
 
 // get markup and get it started
 require( JM_TC_INC_DIR . 'thumbs.php' );
 require( JM_TC_INC_DIR . 'utilities.php' ); 
 require( JM_TC_INC_DIR . 'markup.php' ); 
+
+//Call modules 
+if( is_admin() ) {
+
+	require( JM_TC_INC_DIR . 'admin/admin-tc.php' );
+	require( JM_TC_INC_DIR . 'admin/meta-box.php' );	
+
+}
 
 
 // Add a "Settings" link in the plugins list
@@ -137,11 +139,8 @@ function jm_tc_init()
 
 	if( is_admin() ) {
 		
-		$admin  	= new JM_TC_Admin(); 
-		$metabox	= new JM_TC_Metabox();	
-		
-		$admin->hooks();
-		$metabox->hooks();
+		 new JM_TC_Admin(); 
+		 new JM_TC_Metabox();	
 
 	}
 	
