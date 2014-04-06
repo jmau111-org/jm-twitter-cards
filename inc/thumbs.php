@@ -12,7 +12,6 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 	class JM_TC_Thumbs extends JM_TC_Utilities{
 		
 		var $opts;
-		var $textdomain = 'jm-tc';
 
 		function __construct() {
 		
