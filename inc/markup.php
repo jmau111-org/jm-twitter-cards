@@ -57,7 +57,8 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$this->title( false, true );
 				$this->description( false, true );	
 				$this->image();
-				$this->cardDim();		
+				$this->cardDim();	
+				
 			}
 			
 			elseif( is_home() || is_front_page() ) {
@@ -68,7 +69,8 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$this->title();
 				$this->description();	
 				$this->image();	
-				$this->cardDim();				
+				$this->cardDim();		
+				
 			}
 			
 			

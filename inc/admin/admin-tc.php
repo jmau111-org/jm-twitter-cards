@@ -261,7 +261,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			
 			array(
 			'name' 		=> __( 'Home meta desc', 'jm-tc' ),
-			'desc' 		=> __('Enter desc for Posts Page (max: 200 words)', 'jm-tc'),
+			'desc' 		=> __('Enter desc for Posts Page (max: 200 characters)', 'jm-tc'),
 			'id'   		=> 'twitterCardPostPageDesc',
 			'type' 		=> 'textarea_small',
 			),

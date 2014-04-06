@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.0
+Version: 5.1
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress
 * - https://github.com/mustardBees/Custom-Metaboxes-and-Fields-for-WordPress/commit/e76f331139df4f5e8035897fed228efa964da841
 * - https://about.twitter.com/fr/press/brand-assets
-* - http://bavotasan.com/2011/simple-textarea-word-counter-jquery-plugin/
+* - http://www.jqeasy.com/jquery-character-counter
 * - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
 */
 
