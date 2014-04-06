@@ -6,10 +6,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 if ( ! class_exists( 'JM_TC_Metabox' ) ) {
-	class JM_TC_Metabox {
+	class JM_TC_Metabox{
 
 		
-		function hooks() {
+		function __construct() {
 			//Don't show if users do not want it
 			add_filter( 'cmb_show_on', array(&$this, 'metabox_exclude'), 10, 2 );
 			
@@ -109,9 +109,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 			$post_types = get_post_types();
 			$opts		= get_option('jm_tc_options');
-			$markup     = new JM_TC_Markup();
-
-
+		
 			// 1st meta box
 			$meta_boxes['jm_tc_metabox'] = array(
 			'id'    => 'jm_tc_metabox',
@@ -135,7 +133,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'title',
 			'name' => __('Preview', 'jm-tc'),
 			'id'   => 'preview_title', // Not used but needed for plugin
-			'desc' => esc_html($markup->add_markup())
+			'desc' => ''
 			),
 			
 			// title
