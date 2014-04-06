@@ -6,34 +6,21 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 if ( ! class_exists( 'JM_TC_Metabox' ) ) {
-	class JM_TC_Metabox {
+	class JM_TC_Metabox{
 
 		
 		function __construct() {
-			//Don't show if users do not want it
-			add_filter( 'cmb_show_on', array(&$this, 'metabox_exclude'), 10, 2 );
+	
 			
 			//render
 			add_action( 'cmb_render_text_number', array(&$this, 'render_text_number'), 10, 2 );
 			add_action( 'cmb_render_text_url_https', array(&$this, 'render_text_url_https'), 10, 2 );
-			
-			//validate
-			add_filter( 'cmb_validate_textarea_small', array(&$this, 'validate_textarea_small') );
-			add_filter( 'cmb_validate_text_url_https', array(&$this, 'validate_text_url_https') );
-			add_filter( 'cmb_validate_text_number', array(&$this, 'validate_text_number') );
-			add_filter( 'cmb_validate_text', array(&$this, 'validate_text') );
-			add_filter( 'cmb_validate_text_medium', array(&$this, 'validate_text') );
-			add_filter( 'cmb_validate_text_small', array(&$this, 'validate_text') );
-			
+
 			
 			//register meta box
 			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ) );
 		}
-		
-		function metabox_exclude( $display, $meta_box ) {
-			return apply_filters('jm_tc_metabox_show_on', $display);
-		}
-		
+
 
 		// Add number field
 		function render_text_number( $field, $meta ) {
@@ -43,61 +30,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		// URL field
 		function render_text_url_https( $field, $meta ) {
 			echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
-		}
-
-
-
-
-		function validate_text( $new ) {
-
-			if ( '' == $new ) {
-				$new = '';
-			}  
-			
-			if ( !is_string ($new) ) $new = '';
-			
-			return $new;
-		}
-
-
-
-		//check textarea 
-		function validate_textarea_small( $new ) {
-			
-			if( '' == $new || str_word_count( $new ) > 200 || str_word_count( $new ) < 10 ) { 
-				$new = __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc'); 
-			} 
-			
-			return $new;
-		}
-
-
-		//check number
-		function validate_text_number( $new ) {
-
-			if ( '' == $new ) { 
-				$new = '';
-			} 
-			
-			if ( !is_int( $new ) ) {
-				$new = '';
-			} 
-			
-			return abs($new);
-		}
-
-		//check url
-
-		function validate_text_url_https( $new ) {
-			if ( '' == $new ) {
-				$new = ''; 
-			}
-
-			if ( !preg_match('/https:\/\//', $new) ) {
-				$new = 'https://' . $new;
-			}
-
-			return esc_url($new);
 		}
 		
 
@@ -109,9 +41,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 			$post_types = get_post_types();
 			$opts		= get_option('jm_tc_options');
-			$markup     = new JM_TC_Markup();
-
-
+		
 			// 1st meta box
 			$meta_boxes['jm_tc_metabox'] = array(
 			'id'    => 'jm_tc_metabox',
@@ -135,7 +65,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'title',
 			'name' => __('Preview', 'jm-tc'),
 			'id'   => 'preview_title', // Not used but needed for plugin
-			'desc' => esc_html($markup->add_markup())
+			'desc' => ''
 			),
 			
 			// title

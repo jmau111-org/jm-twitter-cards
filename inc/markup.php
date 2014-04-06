@@ -176,7 +176,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 			
 			} else {
 			
-				$cardCreator = '@' . $this->opts['twitterCardCreator'];
+				$cardCreator = '@' .  static::remove_at( $this->opts['twitterCardCreator'] );
 			}
 			
 			
