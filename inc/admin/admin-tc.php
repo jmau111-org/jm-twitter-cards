@@ -298,6 +298,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'min'		=> 150,
 			),	
 			
+			
 			array(
 			'name' 		=> __( 'Crop', 'jm-tc' ),
 			'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc'),

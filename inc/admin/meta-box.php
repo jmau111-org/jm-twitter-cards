@@ -272,13 +272,26 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type'     => 'select',
 
 			'options'  => array(
-			'jmtc-max-mobile-non-retina-thumb' => __('280p x 375px', 'jm-tc'),
-			'jmtc-max-mobile-retina-thumb' => __('560 x 750px', 'jm-tc'),
-			'jmtc-max-web-thumb' => __('435 x 375px', 'jm-tc'),
-			'jmtc-small-thumb' => __('280 x 150px', 'jm-tc'),
+			'small'			    => __('280 x 375 px', 'jm-tc'),
+			'web'   			=> __('560 x 750 px', 'jm-tc'),
+			'mobile-non-retina' => __('435 x 375 px', 'jm-tc'),
+			'mobile-retina'  	=> __('280 x 150 px', 'jm-tc'),
 			),
 
 			),
+			
+			
+			
+			array(
+			 'id' 	=> 'twitter_featured_size',
+			 'type' => 'title',
+			 'name'	=> 'Size of the current featured image',
+			 'desc'	=> '',
+			
+			),
+			
+			
+			
 			)
 			);
 

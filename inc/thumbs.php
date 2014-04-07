@@ -12,11 +12,47 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 	class JM_TC_Thumbs extends JM_TC_Utilities{
 		
 		var $opts;
+		var $textdomain = 'jm-tc';
 
 		function __construct() {
 		
 			$this->opts = get_option('jm_tc_options');
 		}
+		
+		
+		
+		function thumbnail_sizes($post_id)
+		{
+			
+			$size = get_post_meta($post_id, 'cardImgSize', true);
+
+
+			switch ($size) :
+				case 'small':
+					$twitterCardImgSize = 'jm_tc_small';
+					break;
+
+				case 'web':
+					$twitterCardImgSize = 'jm_tc_max_web';
+					break;
+
+				case 'mobile-non-retina':
+					$twitterCardImgSize = 'jm_tc_max_mobile_non_retina';
+					break;
+
+				case 'mobile-retina':
+					$twitterCardImgSize = 'jm_tc_max-mobile_retina';
+					break;
+
+				default:
+					$twitterCardImgSize = 'jm_tc_small';
+			?><!-- @(-_-)] --><?php
+					break;
+			endswitch;
+
+			return $twitterCardImgSize;
+		}
+				
 		
 
 		// get featured image
@@ -35,11 +71,11 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 			);
 			
 			$attachments = get_posts($args);
-			foreach($attachments as $attachment)
-			{
-				$math = filesize(get_attached_file($attachment->ID)) / 1000000;
-				return $math; //Am I bold enough to call it a math?
-			}
+			foreach($attachments as $attachment) $math = filesize( get_attached_file( $attachment->ID ) ) / 1000000;
+			
+			return $math = ( $math >= 1 ) ? '<span class="error">'.__('Image is heavier than 1MB ! Card will be broken !', $this->textdomain ) : $math.' MB';
+			
+			
 		}
 
 	}

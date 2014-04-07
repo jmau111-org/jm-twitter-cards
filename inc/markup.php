@@ -279,7 +279,7 @@ if( ! class_exists('JM_TC_Markup') ) {
 						}
 						else
 						{
-							$size 				= get_post_meta($post_id, 'cardImgSize', true);							
+							$size				= JM_TC_Thumbs::thumbnail_sizes($post_id);
 							$image_attributes 	= wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $size);
 							$image 				= $image_attributes[0];
 						}
