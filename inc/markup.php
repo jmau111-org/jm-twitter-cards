@@ -5,10 +5,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-
-// For now it's not OOP it is hardly a draft
-// 31/01 : Ok now it is fairly a draft ^^
-if( ! class_exists('JM_TC_Markup') ) {
+if( class_exists('JM_TC_Utilities') ) {
 
 	Class JM_TC_Markup extends JM_TC_Utilities {	
 	
@@ -16,10 +13,11 @@ if( ! class_exists('JM_TC_Markup') ) {
 		var $textdomain = 'jm-tc';
 
 		function __construct() {
-			$this->opts = get_option('jm_tc_options');
+			$this->opts = get_option('jm_tc');
 			add_action('wp_head', array(&$this, 'add_markup'), 2 );
 			
 		}
+
 
 		/*
 		* Add meta to head section
@@ -253,6 +251,8 @@ if( ! class_exists('JM_TC_Markup') ) {
 				$cardDescription = $this->opts['twitterCardPostPageDesc'];
 			}
 			
+			
+			$cardDescription = parent::remove_lb($cardDescription);
 
 			$this->display_markup( 'description',  apply_filters('jm_tc_get_excerpt', $cardDescription) );			
 		

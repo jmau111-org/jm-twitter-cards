@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.1
+Version: 5.1.1
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -60,10 +60,48 @@ define( 'JM_TC_JS_URL',			trailingslashit(JM_TC_URL.'js') );
 
 //Call pages
 function jm_tc_subpages(){
+
+	/* seo */	
+	if ( isset( $_GET['page'] ) && 'jm_tc_seo' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/seo.php' );	
+	}
+
+	/* images */
+	if ( isset( $_GET['page'] ) && 'jm_tc_images' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/images.php' );	
+	}
+
+	/* multi author */
+	if ( isset( $_GET['page'] ) && 'jm_tc_multi_author' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/multi_author.php' );	
+	}
+
+	/* home */
+	if ( isset( $_GET['page'] ) && 'jm_tc_home' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/home.php' );	
+	}
+
+	/* robots */
+	if ( isset( $_GET['page'] ) && 'jm_tc_robots' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/robots.php' );	
+	}
+
+	/* deep_linking */
+	if ( isset( $_GET['page'] ) && 'jm_tc_deep_linking' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/deep_linking.php' );	
+	}	
+	
+	/* analytics */
+	if ( isset( $_GET['page'] ) && 'jm_tc_analytics' == $_GET['page'] ) { 
+		require( JM_TC_INC_DIR .'admin/pages/analytics.php' );	
+	}
+	
+	/* documentation */
 	if ( isset( $_GET['page'] ) && 'jm_tc_doc' == $_GET['page'] ) { 
 		require( JM_TC_INC_DIR .'admin/pages/documentation.php' );	
 	}
 	
+	/* about */
 	if ( isset( $_GET['page'] ) && 'jm_tc_about' == $_GET['page'] ) { 
 		require( JM_TC_INC_DIR .'admin/pages/about.php' );	
 	}
@@ -109,10 +147,10 @@ function jm_tc_initialize_cmb_meta_boxes() {
 // Robots.txt with magic filter
 function jm_tc_robots_mod( $output, $public ) {
 
-	$opts = get_option('jm_tc_options');
+	$opts = get_option('jm_tc');
 	
 	if( $opts['twitterCardRobotsTxt'] == 'yes' ) {
-		$output .= "User-agent: Twitterbot" ."\n";
+		$output  = "User-agent: Twitterbot" ."\n";
 		$output .= "Disallow: ";
 	}
 	
@@ -143,12 +181,12 @@ function jm_tc_init()
 	if( is_admin() ) {
 		
 		 new JM_TC_Admin(); 
-		 new JM_TC_Metabox();	
+		 new JM_TC_Metabox();
 
 	}
 	
 	/* Thumbnails */
-	$opts = get_option('jm_tc_options');
+	$opts = get_option('jm_tc');
 	$crop = ( $opts['twitterCardCrop'] == 'yes' ) ? true : false;
 
 	if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
@@ -166,8 +204,8 @@ function jm_tc_init()
 register_activation_hook(__FILE__, 'jm_tc_on_activation');
 function jm_tc_on_activation()
 {
-	$opts = get_option('jm_tc_options');	
-	if (!is_array($opts)) update_option('jm_tc_options', jm_tc_get_default_options());
+	$opts = get_option('jm_tc');	
+	if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());
 }
 
 
@@ -203,15 +241,16 @@ function jm_tc_get_default_options()
 	);
 }
 
-
+	
 /******************
 
 AFTER WP HAS LOADED
 
 ******************/
-add_action('wp_loaded', 'jm_tc_after_wp_loaded');
+add_action('wp', 'jm_tc_after_wp_loaded');
 function jm_tc_after_wp_loaded()
-{
+{		
+   
 	new JM_TC_Utilities();
 	new JM_TC_Thumbs();
 	new JM_TC_Notices();
@@ -224,5 +263,5 @@ function jm_tc_after_wp_loaded()
 register_uninstall_hook(__FILE__, 'jm_tc_uninstall');
 function jm_tc_uninstall()
 {
-	delete_option('jm_tc_options');
+	delete_option('jm_tc');
 }

@@ -21,7 +21,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ) );
 		}
 
-
 		// Add number field
 		function render_text_number( $field, $meta ) {
 			echo '<input type="number" min="', $field['min'], '" name="', $field['id'], '" id="', $field['id'], '" value="', $meta , '" style="width:170px;" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
@@ -38,7 +37,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		{
 			if ( ! class_exists( 'cmb_Meta_Box' ) )
 			return;
-
+			
 			$post_types = get_post_types();
 		
 			// 1st meta box
@@ -57,14 +56,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'name' => __('Documentation', 'jm-tc'),
 			'id'   => 'documentation_title', // Not used but needed for plugin
 			'desc' => JM_TC_Admin::docu_links(1),
-			),
-			
-			// title
-			array(
-			'type' => 'title',
-			'name' => __('Preview', 'jm-tc'),
-			'id'   => 'preview_title', // Not used but needed for plugin
-			'desc' => ''
 			),
 			
 			// title
@@ -97,7 +88,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'title',
 			'name' => __('Image', 'jm-tc'),
 			'id'   => 'image_title', // Not used but needed for plugin
-			'desc' => '',
 			),
 			
 			array(
@@ -286,7 +276,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			 'id' 	=> 'twitter_featured_size',
 			 'type' => 'title',
 			 'name'	=> 'Size of the current featured image',
-			 'desc'	=> '',
+			// 'desc'	=> JM_TC_Thumbs::get_post_thumbnail_weight($post_id),
 			
 			),
 			

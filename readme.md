@@ -11,6 +11,10 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.1.1 #
+* 08 Apr 2014
+* split admin into several pages to make it clearer for users
+
 # 5.1 #
 * 06 Apr 2014
 * framework cmB update 

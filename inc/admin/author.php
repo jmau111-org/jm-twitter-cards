@@ -5,7 +5,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if ( ! class_exists('JM_TC_Author') ) {
+if ( class_exists('JM_TC_Utilities') ) {
 
 	class JM_TC_Author extends JM_TC_Utilities{
 
@@ -23,30 +23,20 @@ if ( ! class_exists('JM_TC_Author') ) {
 			
 		}
 		
-		public static function get_author_infos() {
+		public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $slugs = array() ) {
 
 			$infos   = '<div class="postbox" style="margin:2em 0; padding:2em;">';
-			$infos  .= '<h1 class="hndle">'.__('About the developer', 'jm-tc').'</h1>';
-			$infos  .= '<p><img src="http://www.gravatar.com/avatar/'.md5('tweetpressfr' . '@' . 'gmail' . '.' . 'com').'" style="float:left;margin-right:10px;"/>';
-			$infos  .= '<strong>Julien Maury</strong>' ."\n";
-			$infos  .= __('I am a WordPress Developer, I like to make it simple.', 'jm-tc').'<br/>';
-			$infos  .= '<a href="http://www.tweetpress.fr" target="_blank" title="TweetPress.fr - WordPress and Twitter tips">www.tweetpress.fr</a>' .'<br/>';
-			$infos  .= '<i class="link-like dashicons dashicons-twitter"></i> <a href="http://twitter.com/intent/user?screen_name=tweetpressfr" >@TweetPressFR</a>';
+			$infos  .= '<h1 class="hndle">'.__('The developer', 'jm-tc').'</h1>';
+			$infos  .= '<p><img src="http://www.gravatar.com/avatar/'.md5($gravatar_email).'" style="float:left;margin-right:10px;"/>';
+			$infos  .= '<h2>'.$name.'</h2>';
+			$infos  .= '<blockquote>'.$desc.'</blockquote>' .'<br/>';
+			$infos  .= '<a href="'.$url.'" target="_blank">'.$url.'</a>' ."\n\n";
+			$infos  .= '<i class="link-like dashicons dashicons-twitter"></i> <a href="http://twitter.com/intent/user?screen_name='.$twitter.'" >@'.$twitter.'</a>';
 			$infos  .= '</p>';
 			
-			$infos2  =  '<h2 style="margin:2em 0 1em;"><span>'.__('Help me keep this free', 'jm-tc').'</span></h2>';
-			$infos2 .= '<p>'.__('Please help me keep this plugin free.', 'jm-tc').'</p>';
-			$infos2	.= '<i class="link-like va-bottom dashicons dashicons-cart"></i><a target="_blank" href="http://www.amazon.fr/registry/wishlist/1J90JNIHBBXL8">'.__('WishList Amazon', 'jm-ltsc').'</a>';
-			
-			
-			
-			$slugs = array(
-			'jm-dashicons-shortcode' 			=> 'JM Dashicons Shortcode',
-			'jm-last-twit-shortcode' 			=> 'JM Last Twit Shortcode',
-			'jm-twit-this-comment'				=> 'JM Twit This Comment',
-			'jm-simple-qr-code-widget' 			=> 'JM Simple QR Code Widget',
-			'jm-html5-and-responsive-gallery' 	=> 'JM HTML5 Responsive Gallery',
-			);
+			$infos2  =  '<h2 style="margin:2em 0 1em;"><span>'.__('Keep the plugin free', 'jm-tc').'</span></h2>';
+			$infos2 .= '<p>'.__('Please help if you want to keep this plugin free.', 'jm-tc').'</p>';
+			$infos2	.= '<i class="link-like va-bottom dashicons dashicons-cart"></i><a target="_blank" href="'.$donation.'">'.__('Donation', 'jm-ltsc').'</a>';
 			
 
 			$infos3  = '<h2 style="margin:2em 0 1em;"><span>'.__('Plugin', 'jm-tc').'</span></h2>';

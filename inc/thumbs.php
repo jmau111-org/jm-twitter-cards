@@ -7,20 +7,12 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if ( ! class_exists('JM_TC_Thumbs') ) {
+if ( class_exists('JM_TC_Utilities') ) {
 
 	class JM_TC_Thumbs extends JM_TC_Utilities{
-		
-		var $opts;
+
 		var $textdomain = 'jm-tc';
 
-		function __construct() {
-		
-			$this->opts = get_option('jm_tc_options');
-		}
-		
-		
-		
 		function thumbnail_sizes($post_id)
 		{
 			
@@ -56,8 +48,9 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 		
 
 		// get featured image
-		public static function get_post_thumbnail_size($post_id)
+		public static function get_post_thumbnail_weight($post_id)
 		{
+			
 			$args = array(
 			'post_type' => 'attachment',
 			'post_mime_type' => array(
@@ -73,7 +66,7 @@ if ( ! class_exists('JM_TC_Thumbs') ) {
 			$attachments = get_posts($args);
 			foreach($attachments as $attachment) $math = filesize( get_attached_file( $attachment->ID ) ) / 1000000;
 			
-			return $math = ( $math >= 1 ) ? '<span class="error">'.__('Image is heavier than 1MB ! Card will be broken !', $this->textdomain ) : $math.' MB';
+			return $math = ( $math >= 1 ) ? '<span class="error">'.__('Image is heavier than 1MB ! Card will be broken !', $this->textdomain ).'</span>' : $math.' MB';
 			
 			
 		}

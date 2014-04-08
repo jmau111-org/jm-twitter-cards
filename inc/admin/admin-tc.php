@@ -12,7 +12,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		* Option key, and option page slug
 		* @var string
 		*/
-		protected static $key = 'jm_tc_options';
+		protected static $key = 'jm_tc';
 		
 		/**
 		* Array of metaboxes/fields
@@ -65,8 +65,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			
 			return $docu;
 		}
-		
-		
+
 		
 		
 		/**
@@ -74,12 +73,19 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		* @since 0.1.0
 		*/
 		public function add_page() {
-			$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
-			$this->options_subpage_doc = add_submenu_page( 'jm_tc_options', __( 'Options', 'jm-tc' ), __( 'Options', 'jm-tc' ) , 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
-			$this->options_subpage_doc = add_submenu_page( 'jm_tc_options', __( 'Documentation', 'jm-tc' ), __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
-			$this->options_subpage_about = add_submenu_page( 'jm_tc_options', __( 'About' ), __( 'About') , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
+			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
+			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
+			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
+			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'SEO' ), __( 'SEO') , 'manage_options', 'jm_tc_seo', 'jm_tc_subpages' );
+			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'Robots.txt' ), __( 'Robots.txt') , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
+			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings' ), __( 'Home settings') , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
+			$this->options_subpage_multi_author 	= add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
+			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), __( 'Deep Linking') , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
+			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ), __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
+			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', 'jm_tc_subpages' );		
+			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About') , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
 			
-			add_action( 'load-' . $this->options_page, array( $this, 'load_admin_scripts' ) );
+			add_action( 'load-' . $this->options_subpage_home, array( $this, 'load_admin_scripts' ) );
 			add_action( 'load-' . $this->options_subpage_doc, array( $this, 'load_admin_doc_scripts' ) );
 		}
 		
@@ -110,6 +116,9 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			?>
 			<div class="wrap" style="max-width:1024px;">
 			<h2><i class="dashicons dashicons-twitter" style="font-size:2em; margin-right:1em; color:#292F33;"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
+			<div style="float:right;">
+			<?php echo static::docu_links(0); ?>
+			</div>
 			<?php cmb_metabox_form( $this->option_fields(), static::$key ); ?>
 			</div>
 			<?php
@@ -127,18 +136,10 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			return static::$plugin_options;
 			
 			static::$plugin_options = array(
-			'id'         => 'jm_tc_options',
+			'id'         => 'jm_tc',
 			'show_on'    => array( 'key' => 'options-page', 'value' => array( static::$key, ), ),
 			'show_names' => true,
 			'fields'     => array(
-			
-			array(
-			'type' => 'title',
-			'name' => __( 'General', 'jm-tc' ),
-			'id'   => 'general_title', // Not used but needed for plugin
-			'desc' => static::docu_links(0),
-			),
-			
 			
 			array(
 			'name' 		=> __( 'Creator (twitter username)', 'jm-tc' ),
@@ -174,231 +175,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'app'					=> __( 'App', 'jm-tc' ),
 			)
 			),
-			
-			array(
-			'type' => 'title',
-			'name' => __( 'Robots.txt', 'jm-tc' ),
-			'id'   => 'robots_txt_title', // Not used but needed for plugin
-			'desc' => __('Important !', 'jm-tc'),
-			),
 
-			array(
-			'name' 		=> __( 'Twitter\'s bot', 'jm-tc' ),
-			'desc' 		=> __('Add required rules in robots.txt', 'jm-tc'),
-			'id'   		=> 'twitterCardRobotsTxt',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			'no' 			=> __( 'No', 'jm-tc' ),
-			)
-			),
-			
-			
-			array(
-			'type' => 'title',
-			'name' => __( 'Multi-author', 'jm-tc' ),
-			'id'   => 'multi_author_title', // Not used but needed for plugin
-			),	
-			
-			array(
-			'name' 		=> __( 'Meta key Twitter', 'jm-tc' ),
-			'desc' 		=> __('Modify user meta key associated with Twitter Account in profiles :', 'jm-tc'),
-			'id'   		=> 'twitterCardUsernameKey', 
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'type' => 'title',
-			'name' => __( 'SEO', 'jm-tc' ),
-			'id'   => 'meta_box_title', // Not used but needed for plugin
-			'desc' => static::docu_links(3),
-			),				
-			
-			
-			array(
-			'name' 		=> __( 'Meta title', 'jm-tc' ),
-			'desc' 		=> __('Use SEO by Yoast or All in ONE SEO meta title for your cards (<strong>default is yes</strong>)', 'jm-tc'),
-			'id'   		=> 'twitterCardSEOTitle',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
-			
-			array(
-			'name' 		=> __( 'Meta Desc', 'jm-tc' ),
-			'desc' 		=> __('Use SEO by Yoast or All in ONE SEO meta description for your cards (<strong>default is yes</strong>)', 'jm-tc'),
-			'id'   		=>  'twitterCardSEODesc',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
-			//'
-			
-			array(
-			'name' 		=> __( 'Custom field title', 'jm-tc' ),
-			'desc' 		=> __('If you prefer to use your own fields', 'jm-tc'),
-			'id'   		=> 'twitterCardTitle',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'Custom field desc', 'jm-tc' ),
-			'desc' 		=> __('If you prefer to use your own fields', 'jm-tc'),
-			'id'   		=> 'twitterCardDesc',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'type' => 'title',
-			'name' => __( 'Home', 'jm-tc' ),
-			'id'   => 'home_section_title', // Not used but needed for plugin
-			'desc' => static::docu_links(2),
-			),	
-			
-			array(
-			'name' 		=> __( 'Home meta desc', 'jm-tc' ),
-			'desc' 		=> __('Enter desc for Posts Page (max: 200 characters)', 'jm-tc'),
-			'id'   		=> 'twitterCardPostPageDesc',
-			'type' 		=> 'textarea_small',
-			),
-
-			array(
-			'type' => 'title',
-			'name' => __( 'Images', 'jm-tc' ),
-			'id'   => 'images_title', // Not used but needed for plugin
-			'desc' => static::docu_links(4),
-			),	
-			
-			
-			array(
-				'name' => __( 'Image Fallback', 'jm-tc' ),
-				'id'   => 'twitterCardImage', // Not used but needed for plugin
-				'type' => 'file',
-				
-			),
-			
-
-			array(
-			'name' 		=> __('Image width', 'jm-tc'),
-			'desc' 		=> __('px', 'jm-tc'),
-			'id'   		=> 'twitterCardImageWidth',
-			'type' 		=> 'text_number',
-			'min'		=> 280,
-			),	
-
-			array(
-			'name' 		=> __('Image width', 'jm-tc'),
-			'desc' 		=> __('px', 'jm-tc'),
-			'id'   		=> 'twitterCardImageHeight',
-			'type' 		=> 'text_number',
-			'min'		=> 150,
-			),	
-			
-			
-			array(
-			'name' 		=> __( 'Crop', 'jm-tc' ),
-			'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc'),
-			'id'   		=> 'twitterCardCrop',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
-			
-			/*
-			array(
-			'type' => 'title',
-			'name' => __( 'Categories and custom taxonomies', 'jm-tc' ),
-			'id'   => 'taxonomies_title', // Not used but needed for plugin
-			'desc' => __('For all the following fields, if you do not want to use leave it blank','jm-tc'),
-			),	
-			*/
-			
-			array(
-			'type' => 'title',
-			'name' => __( 'Deep Linking', 'jm-tc' ),
-			'id'   => 'deep_linking_title', // Not used but needed for plugin
-			'desc' => static::docu_links(5)."\n".__('For all the following fields, if you do not want to use leave it blank but be careful with the required markup for your app. Read the documentation please.','jm-tc'),
-			),	
-			
-			array(
-			'name' 		=> __( 'Deep linking? ', 'jm-tc'),
-			'desc' 		=> __('Reserved for advanced users', 'jm-tc'),
-			'id'   		=> 'twitterCardDeepLinking',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
-
-			array(
-			'name' 		=> __( 'iPhone Name', 'jm-tc' ),
-			'desc' 		=> __('Enter iPhone Name ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPhoneName',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( ' iPhone URL', 'jm-tc' ),
-			'desc' 		=> __('Enter iPhone URL ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPhoneUrl',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'iPhone ID', 'jm-tc' ),
-			'desc' 		=> __('Enter iPhone ID ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPhoneId',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'iPad Name', 'jm-tc' ),
-			'desc' 		=> __('Enter iPad Name ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPadName',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'iPad URL', 'jm-tc' ),
-			'desc' 		=> __('Enter iPad URL ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPadUrl',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'iPad ID', 'jm-tc' ),
-			'desc' 		=> __('Enter iPad ID ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPadId',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'Google Play Name', 'jm-tc' ),
-			'desc' 		=> __('Enter Google Play Name ', 'jm-tc'),
-			'id'   		=> 'twitterCardGooglePlayName',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'Google Play URL', 'jm-tc' ),
-			'desc' 		=> __('Enter Google Play URL ', 'jm-tc'),
-			'id'   		=> 'twitterCardGooglePlayUrl',
-			'type' 		=> 'text_medium',
-			),
-			
-			array(
-			'name' 		=> __( 'Google Play ID', 'jm-tc' ),
-			'desc' 		=> __('Enter Google Play ID ', 'jm-tc'),
-			'id'   		=> 'twitterCardGooglePlayId',
-			'type' 		=> 'text_medium',
-			),
 			)
 			);
 			
