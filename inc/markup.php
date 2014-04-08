@@ -487,20 +487,18 @@ if( class_exists('JM_TC_Utilities') ) {
 		* retrieve the deep linking and app install meta
 		*/		
 		public function deeplinking(){
-		
-			if( $this->opts['twitterCardDeepLinking'] == 'yes' ) {
+
 					
-					if( $this->opts['twitterCardiPhoneName'] != '' ) $this->display_markup( 'app:name:iphone',  $this->opts['twitterCardiPhoneName'] );
-					if( $this->opts['twitterCardiPadName'] != '' ) $this->display_markup( 'app:name:ipad', $this->opts['twitterCardiPadName'] );
-					if( $this->opts['twitterCardGooglePlayName'] != '' ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterCardGooglePlayName'] );
-					if( $this->opts['twitterCardiPhoneUrl'] != '' ) $this->display_markup( 'app:url:iphone', $this->opts['twitterCardiPhoneUrl'] );
-					if( $this->opts['twitterCardiPadUrl'] != '' ) $this->display_markup( 'app:url:ipad', $this->opts['twitterCardiPhoneUrl'] );
-					if( $this->opts['twitterCardGooglePlayUrl'] != '' ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterCardGooglePlayUrl'] );
-					if( $this->opts['twitterCardiPhoneId'] != '' ) $this->display_markup( 'app:id:iphone', $this->opts['twitterCardiPhoneId'] );
-					if( $this->opts['twitterCardiPadId'] != '' ) $this->display_markup( 'app:id:ipad', $this->opts['twitterCardiPadId'] );
-					if( $this->opts['twitterCardGooglePlayId'] != '' ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterCardGooglePlayId'] );
-			
-			}
+			if( $this->opts['twitterCardiPhoneName'] != '' ) $this->display_markup( 'app:name:iphone',  $this->opts['twitterCardiPhoneName'] );
+			if( $this->opts['twitterCardiPadName'] != '' ) $this->display_markup( 'app:name:ipad', $this->opts['twitterCardiPadName'] );
+			if( $this->opts['twitterCardGooglePlayName'] != '' ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterCardGooglePlayName'] );
+			if( $this->opts['twitterCardiPhoneUrl'] != '' ) $this->display_markup( 'app:url:iphone', $this->opts['twitterCardiPhoneUrl'] );
+			if( $this->opts['twitterCardiPadUrl'] != '' ) $this->display_markup( 'app:url:ipad', $this->opts['twitterCardiPhoneUrl'] );
+			if( $this->opts['twitterCardGooglePlayUrl'] != '' ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterCardGooglePlayUrl'] );
+			if( $this->opts['twitterCardiPhoneId'] != '' ) $this->display_markup( 'app:id:iphone', $this->opts['twitterCardiPhoneId'] );
+			if( $this->opts['twitterCardiPadId'] != '' ) $this->display_markup( 'app:id:ipad', $this->opts['twitterCardiPadId'] );
+			if( $this->opts['twitterCardGooglePlayId'] != '' ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterCardGooglePlayId'] );
+
 		}
 		
 

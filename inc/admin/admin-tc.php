@@ -73,7 +73,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		* @since 0.1.0
 		*/
 		public function add_page() {
-			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
+			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png', PHP_INT_MAX);
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
 			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'SEO' ), __( 'SEO') , 'manage_options', 'jm_tc_seo', 'jm_tc_subpages' );

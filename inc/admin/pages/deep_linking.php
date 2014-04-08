@@ -29,12 +29,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			array(
 			'name' 		=> __( 'Deep linking? ', 'jm-tc'),
 			'desc' 		=> __('For all the following fields, if you do not want to use leave it blank but be careful with the required markup for your app. Read the documentation please.','jm-tc'),
-			'id'   		=> 'twitterCardDeepLinking',
-			'type' 		=> 'select',
-			'options'	=> array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
+			'id'   		=> 'deep_linking_title',
+			'type' 		=> 'title',
 			),
 
 			array(

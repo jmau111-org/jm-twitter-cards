@@ -227,7 +227,6 @@ function jm_tc_get_default_options()
 	'twitterCardDesc' 			=> '',
 	'twitterCardCrop' 			=> 'yes',
 	'twitterCardUsernameKey' 	=> 'jm_tc_twitter',
-	'twitterCardDeepLinking' 	=> 'no',
 	'twitterCardiPhoneName' 	=> '',
 	'twitterCardiPadName' 		=> '',
 	'twitterCardGooglePlayName' => '',
