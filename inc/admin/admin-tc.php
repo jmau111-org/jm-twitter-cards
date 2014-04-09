@@ -35,7 +35,8 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
-			//add_action( 'admin_enqueue_scripts', array( $this, 'meta_box_scripts') );
+			//add_action( 'admin_enqueue_scripts',  array( $this, 'meta_box_scripts' ) );
+			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_styles' ) );
 		}
 		
 		/**
@@ -79,7 +80,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
 			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'SEO' ), __( 'SEO') , 'manage_options', 'jm_tc_seo', 'jm_tc_subpages' );
-			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'Robots.txt' ), __( 'Robots.txt') , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
+			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt' ), __( 'robots.txt') , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
 			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings' ), __( 'Home settings') , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
 			$this->options_subpage_multi_author 	= add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
 			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), __( 'Deep Linking') , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
@@ -87,27 +88,35 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', 'jm_tc_subpages' );		
 			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About') , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
 			
-			add_action( 'load-' . $this->options_subpage_home, array( $this, 'load_admin_scripts' ) );
+			add_action( 'load-' . $this->options_subpage_home, array( $this, 'load_admin_page_home_scripts' ) );
 			add_action( 'load-' . $this->options_subpage_doc, array( $this, 'load_admin_doc_scripts' ) );
 		}
 		
 
-		
 		// I prefer this way even if it's not so good^^
-		public function load_admin_scripts()
+		public function load_admin_page_home_scripts()
 		{
-			wp_enqueue_script('jm-tc-admin-script', JM_TC_JS_URL.'jm-tc-admin.js'
+			wp_enqueue_script('jm-tc-admin-script', JM_TC_JS_URL.'jm-tc-admin-home.js'
 			, array('jquery') 
 			, '1.0'
 			, true
 			);
 		}
 		
+		public function admin_styles()
+		{
+			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_seo', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
+			{
+				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
+			}
+		}
+		
 		
 		public function load_admin_doc_scripts()
 		{
-			wp_enqueue_style('jm-tc-doc-style', JM_TC_CSS_URL.'jm-tc-documentation.css');
+			
 			load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
+			wp_enqueue_style('jm-tc-doc-style', JM_TC_CSS_URL.'jm-tc-documentation.css');
 		}
 		
 	/*	
@@ -129,9 +138,9 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		*/
 		public function admin_page_display() {
 			?>
-			<div class="wrap" style="max-width:1024px;">
-			<h2><i class="dashicons dashicons-twitter" style="font-size:2em; margin-right:1em; color:#292F33;"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
-			<div style="float:right;">
+			<div class="wrap">
+			<h2><i class="dashicons dashicons-twitter"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
+			<div class="floatR">
 			<?php echo static::docu_links(0); ?>
 			</div>
 			<?php cmb_metabox_form( $this->option_fields(), static::$key ); ?>
