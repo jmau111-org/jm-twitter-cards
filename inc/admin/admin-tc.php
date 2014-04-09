@@ -59,11 +59,13 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'#seo',
 			'#images',
 			'#deeplinking',
-			'#analytics'
+			'#analytics',
+			'#faq-crawl'
 
 			);
 			$docu  = '<a class="button button-secondary docu" target="_blank" href="' . esc_url(admin_url().'admin.php?page=jm_tc_doc') . $anchor[$n] . '">' . __('Documentation', 'jm-tc') . '</a>';
 			$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://dev.twitter.com/docs/cards/validation/validator') . '">' . __('Validator', 'jm-tc') . '</a>';
+			$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://dev.twitter.com/docs/cards/troubleshooting') . '">' . __('Troubleshooting', 'jm-tc') . '</a>';
 			
 			return $docu;
 		}
@@ -139,11 +141,22 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		public function admin_page_display() {
 			?>
 			<div class="wrap">
-			<h2><i class="dashicons dashicons-twitter"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
-			<div class="floatR">
+			
+			<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
+
+			<?php cmb_metabox_form( $this->option_fields(), static::$key ); ?>
+			<div class="doc-valid">
 			<?php echo static::docu_links(0); ?>
 			</div>
-			<?php cmb_metabox_form( $this->option_fields(), static::$key ); ?>
+			
+			<blockquote>
+			<p class="bold"><?php _e('Get more <br />from 140 characters', 'jm-tc');?> </p>
+			<p class="sub-bold"><?php _e('with Twitter Cards', 'jm-tc');?></p>
+			<p class="card-desc"><?php _e('Twitter Cards help you richly represent your content within<br /> Tweets across the web and on mobile devices. This gives users <br />greater context and insight into the URLs shared on Twitter,<br /> which in turn allows Twitter to<br /> send more engaged traffic to your site or app.', 'jm-tc');?></p>
+			</blockquote>
+			
+			<p class="plugin-desc"><?php _e('With this plugin you can grab summary, summary large image, product, photo and gallery cards.', 'jm-tc') ; ?></p>
+
 			</div>
 			<?php
 		}

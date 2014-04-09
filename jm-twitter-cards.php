@@ -125,7 +125,7 @@ if( is_admin() ) {
 // Add a "Settings" link in the plugins list
 function jm_tc_settings_action_links($links, $file)
 {
-	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc_options') . '">' . __("Settings") . '</a>';
+	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc') . '">' . __("Settings") . '</a>';
 	array_unshift($links, $settings_link);
 	
 	return $links;

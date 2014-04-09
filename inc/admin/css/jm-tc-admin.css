@@ -2,7 +2,65 @@
 
 
 .wrap { max-width: 1024px; }
-.floatR{ float:right; }
+.wrap h2 {
+	font-size: 300%;
+}
 
-.dashicons-twitter {  font-size:2em; margin-right:1em; color:#292F33; }
+.wrap h2:before {
+	content:"\f301";
+	display: inline-block;
+	width: 42px;
+	height: 42px;
+	margin-right: .5em;
+	margin-left: 40px;
+	line-height: 1;
+	font-family: "dashicons";
+	text-decoration: inherit;
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: top;
+	text-align: center;
+	-webkit-transition: color .1s ease-in 0;
+	transition: color .1s ease-in 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.wrap .cmb-form, .wrap .p {
+	padding: 0.25em 40px;
+}
+
+.wrap .bold {  
+	font-weight: 900;
+	font-size: 400%;
+	line-height: 1.1;
+	letter-spacing: -1px;
+	margin-bottom:6px;	
+}
+
+.wrap .sub-bold {
+	font-size: 32px;
+	font-weight: normal;
+	width: 396px;
+}
+
+.wrap .card-desc{
+	width:400px;
+	font-size:100%;
+	line-height:180%;
+}
+
+.wrap .doc-valid{
+
+	padding: 0.25em 40px;
+	margin: 3.25em 0 1.25em;
+
+}
+
+.wrap blockquote{ border:none; font-family: Georgia, serif;  font-style: italic; margin: 0.25em 0; padding: 0.25em 40px; line-height: 160%; position: relative; color:#888; background:transparent; }
+.wrap blockquote:before{ display: block; content: "\201C"; font-size: 80px; position: absolute; left: -5px; top: 60px; color:#888; }
+
+.plugin-desc { font-size: 1rem; margin: 0.25em 0; padding: 0.25em 40px; }
+
+.wrap .dashicons-twitter {  font-size:2em; margin-right:1em; color:#292F33; }
 

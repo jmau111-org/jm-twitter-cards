@@ -7,12 +7,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 ?>
 <div class="wrap">
-<h2><i class="dashicons dashicons-twitter"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
+<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 <?php $admin = new JM_TC_Admin(); ?>
-	<div class="floatR">
-	<?php echo $admin->docu_links(6); ?>
-	</div>
+
 	
 	<figure>
 		<img src="https://dev.twitter.com/sites/default/files/images_documentation/card_types.png" alt="" />
@@ -24,6 +22,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	<p><?php _e('You can test sources, links, influencers and devices. It is awesome and you should enjoy these new tools.', 'jm-tc'); ?></p>
 	<p><?php _e('This will help you to set the best card type experience and it will probably improve your marketing value.', 'jm-tc');?></p>
 	
+	<div class="doc-valid">
+	<?php echo $admin->docu_links(6); ?>
+	</div>
 	
 </div>
 

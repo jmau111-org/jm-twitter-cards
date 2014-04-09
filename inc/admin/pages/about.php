@@ -7,7 +7,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 ?>
 <div class="wrap">
-<h2><i class="dashicons dashicons-twitter"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
+<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 <?php
 $author = new JM_TC_Author();

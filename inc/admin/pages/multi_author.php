@@ -7,12 +7,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 ?>
 <div class="wrap">
-<h2><i class="dashicons dashicons-twitter"></i> <?php echo esc_html( get_admin_page_title() ); ?></h2>
+<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 <?php $admin = new JM_TC_Admin(); ?>
-<div class="floatR">
-<?php echo $admin->docu_links(0); ?>
-</div>
+
 	<?php
 	function multi_author_options() {
 		$plugin_options = array(
@@ -36,6 +34,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	}
 	?>
 	<?php cmb_metabox_form( multi_author_options(), $admin->key() ); ?>
+	
+	<div class="doc-valid">
+<?php echo $admin->docu_links(0); ?>
+</div>
 </div>
 
 
