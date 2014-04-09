@@ -17,11 +17,23 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'         => 'jm_tc',
 		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_multi_author', ), ),
 		'show_names' => true,
-		'fields'     => array(				
+		'fields'     => array(	
+
+			array(
+			'name' 		=> __( 'Add a field in profiles for author', 'jm-tc' ),
+			'desc' 		=> __('This would add a field in profiles if user can publish posts. In this case his Twitter username will be set as meta creator.', 'jm-tc'),
+			'id'   		=> 'twitterCardProfile',
+			'type' 		=> 'select',
+			'options'	 => array(
+			'yes' 			=> __( 'Yes', 'jm-tc' ),
+			'no' 			=> __( 'No', 'jm-tc' ),
+
+			)
+			),		
 			
 			array(
 			'name' 		=> __( 'Meta key Twitter', 'jm-tc' ),
-			'desc' 		=> __('Modify user meta key associated with Twitter Account in profiles :', 'jm-tc'),
+			'desc' 		=> __('If the above option is set to "no", just modify user meta key associated with Twitter Account in profiles to get Twitter usernames from your own fields:', 'jm-tc'),
 			'id'   		=> 'twitterCardUsernameKey', 
 			'type' 		=> 'text_medium',
 			),

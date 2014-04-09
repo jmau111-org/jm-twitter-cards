@@ -190,16 +190,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'desc' 		=> __('Who is the Owner of the Website? (could be a trademark)',  'jm-tc'),
 			'id'   		=> 'twitterCardSite',
 			'type' 		=> 'text_medium',
-			),	
-
-			array(
-			'name' 		=> __( 'Excerpt by default', 'jm-tc' ),
-			'desc' 		=> __('By default the plugin grabs the first characters of posts to create the mandatory meta description for twitter cards.', 'jm-tc'),
-			'id'   		=> 'twitterCardExcerptLength',
-			'type' 		=> 'text_number',
-			'min'		=> 15,
-			'max'		=> 200,
-			),					
+			),				
 			
 			array(
 			'name' 		=> __( 'Card Types', 'jm-tc' ),

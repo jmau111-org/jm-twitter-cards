@@ -62,14 +62,9 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		{
 			$the_post = get_post($post_id);
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
-
-			// SET LENGTH
-			$opts = get_option('jm_tc');
-			$excerpt_length = $opts['twitterCardExcerptLength'];
 			
 			$the_excerpt = strip_tags( $the_excerpt );// kill HTML tags
 			$the_excerpt = strip_shortcodes( $the_excerpt );// kill shortcodes
-			$the_excerpt = substr( $the_excerpt, 0, $excerpt_length);// it's better to use wp functions 
 			
 			return esc_attr($the_excerpt); // to prevent meta from being broken by ""
 		}
