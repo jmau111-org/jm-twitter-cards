@@ -11,6 +11,11 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.1.2 #
+* 09 Apr 2014
+* add checking for featured image's weight
+* reorganize code and pages
+
 # 5.1.1 #
 * 08 Apr 2014
 * split admin into several pages to make it clearer for users
