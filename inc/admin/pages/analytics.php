@@ -16,7 +16,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	
 	<figure>
 		<img src="https://dev.twitter.com/sites/default/files/images_documentation/card_types.png" alt="" />
-		 <figcaption>Source : <a class="button" href="https://analytics.twitter.com/">Twitter Card analytics</a></figcaption>
+		 <figcaption style="float:right;">Source : <a class="button" href="https://analytics.twitter.com/">Twitter Card analytics</a></figcaption>
 	</figure>
 	
 	<p><?php _e('Now you can combine Twitter Cards with', 'jm-tc');?> Twitter Card analytics</p>

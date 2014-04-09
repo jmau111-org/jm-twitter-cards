@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.1.1
+Version: 5.1.2
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -35,93 +35,89 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - http://highlightjs.org/
 * - https://dev.twitter.com/discussions/17878
 * - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress
-* - https://github.com/mustardBees/Custom-Metaboxes-and-Fields-for-WordPress/commit/e76f331139df4f5e8035897fed228efa964da841
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://www.jqeasy.com/jquery-character-counter
 * - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
 */
 
+
 //Add some security, no direct load !
 defined('ABSPATH') 
 or die('What we\'re dealing with here is a total lack of respect for the law !');
 
+
 //Constantly constant
-define( 'JM_TC_VERSION',		'5.0' );
-define( 'JM_TC_DIR',			plugin_dir_path( __FILE__ )  );
-define( 'JM_TC_INC_DIR',		trailingslashit(JM_TC_DIR . 'inc') );
-define( 'JM_TC_METABOX_DIR',	trailingslashit(JM_TC_INC_DIR . 'admin/meta-box') );
-define( 'JM_TC_LANG_DIR',		dirname(plugin_basename(__FILE__)) . '/languages/' );
-define( 'JM_TC_URL',			trailingslashit(plugin_dir_url( __FILE__ ).'inc/admin') );
-define( 'JM_TC_METABOX_URL',	trailingslashit(JM_TC_URL.'admin/meta-box') );
-define( 'JM_TC_IMG_URL',		trailingslashit(JM_TC_URL.'img') );
-define( 'JM_TC_CSS_URL',		trailingslashit(JM_TC_URL.'css') );
-define( 'JM_TC_JS_URL',			trailingslashit(JM_TC_URL.'js') );
-
-
-//Call pages
+define( 'JM_TC_VERSION', '5.0' );
+define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
+define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
+define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
+define( 'JM_TC_ADMIN_PAGES_DIR', trailingslashit(JM_TC_INC_DIR . 'admin/pages') );
+define( 'JM_TC_METABOX_DIR', trailingslashit(JM_TC_INC_DIR . 'admin/meta-box') );
+define( 'JM_TC_LANG_DIR', dirname(plugin_basename(__FILE__)) . '/languages/' );
+define( 'JM_TC_URL', trailingslashit(plugin_dir_url( __FILE__ ).'inc/admin') );
+define( 'JM_TC_METABOX_URL', trailingslashit(JM_TC_URL.'admin/meta-box') );
+define( 'JM_TC_IMG_URL', trailingslashit(JM_TC_URL.'img') );
+define( 'JM_TC_CSS_URL', trailingslashit(JM_TC_URL.'css') );
+define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );				
+	
+	
+//Call admin pages
 function jm_tc_subpages(){
+if ( isset( $_GET['page'] ) ) {
+		switch ( $_GET['page'] ) {
+			case 'jm_tc_seo':
+				require( JM_TC_ADMIN_PAGES_DIR .'seo.php' );
+				break;
 
-	/* seo */	
-	if ( isset( $_GET['page'] ) && 'jm_tc_seo' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/seo.php' );	
+			case 'jm_tc_images':
+				require( JM_TC_ADMIN_PAGES_DIR .'images.php' );	
+				break;
+
+			case 'jm_tc_multi_author':
+				require( JM_TC_ADMIN_PAGES_DIR .'multi_author.php' );
+				break;
+
+			case 'jm_tc_home':
+				require( JM_TC_ADMIN_PAGES_DIR .'home.php' );	
+				break;
+
+			case 'jm_tc_robots':
+				require( JM_TC_ADMIN_PAGES_DIR .'robots.php' );
+				break;
+
+			case 'jm_tc_deep_linking':
+				require( JM_TC_ADMIN_PAGES_DIR .'deep_linking.php' );
+				break;
+
+			case 'jm_tc_analytics':
+				require( JM_TC_ADMIN_PAGES_DIR .'analytics.php' );
+				break;
+
+			case 'jm_tc_doc':
+				require( JM_TC_ADMIN_PAGES_DIR .'documentation.php' );
+				break;
+
+			case 'jm_tc_about':
+				require( JM_TC_ADMIN_PAGES_DIR .'about.php' );
+				break;
+
+		}
 	}
-
-	/* images */
-	if ( isset( $_GET['page'] ) && 'jm_tc_images' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/images.php' );	
-	}
-
-	/* multi author */
-	if ( isset( $_GET['page'] ) && 'jm_tc_multi_author' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/multi_author.php' );	
-	}
-
-	/* home */
-	if ( isset( $_GET['page'] ) && 'jm_tc_home' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/home.php' );	
-	}
-
-	/* robots */
-	if ( isset( $_GET['page'] ) && 'jm_tc_robots' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/robots.php' );	
-	}
-
-	/* deep_linking */
-	if ( isset( $_GET['page'] ) && 'jm_tc_deep_linking' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/deep_linking.php' );	
-	}	
-	
-	/* analytics */
-	if ( isset( $_GET['page'] ) && 'jm_tc_analytics' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/analytics.php' );	
-	}
-	
-	/* documentation */
-	if ( isset( $_GET['page'] ) && 'jm_tc_doc' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/documentation.php' );	
-	}
-	
-	/* about */
-	if ( isset( $_GET['page'] ) && 'jm_tc_about' == $_GET['page'] ) { 
-		require( JM_TC_INC_DIR .'admin/pages/about.php' );	
-	}
-	
-}
+}		
 
 
+//Call modules 
 
-// get markup and get it started
 require( JM_TC_INC_DIR . 'utilities.php' ); 
-require( JM_TC_INC_DIR . 'admin/author.php' );
-require( JM_TC_INC_DIR . 'admin/notices.php' );
+require( JM_TC_ADMIN_DIR . 'author.php' );
+require( JM_TC_ADMIN_DIR . 'notices.php' );
 require( JM_TC_INC_DIR . 'thumbs.php' );
 require( JM_TC_INC_DIR . 'markup.php' ); 
 
-//Call modules 
 if( is_admin() ) {
 
-	require( JM_TC_INC_DIR . 'admin/admin-tc.php' );
-	require( JM_TC_INC_DIR . 'admin/meta-box.php' );	
+	require( JM_TC_ADMIN_DIR. 'admin-tc.php' );
+	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
 
 }
 
@@ -156,6 +152,7 @@ function jm_tc_robots_mod( $output, $public ) {
 	
 	return $output;
 }
+
 
 /******************
 
@@ -198,7 +195,6 @@ function jm_tc_init()
 	
 }
 
-		
 
 //Plugin install : update options
 register_activation_hook(__FILE__, 'jm_tc_on_activation');
@@ -216,7 +212,7 @@ function jm_tc_get_default_options()
 	'twitterCardType' 			=> 'summary',
 	'twitterCardCreator' 		=> 'TweetPressFr',
 	'twitterCardSite' 			=> 'TweetPressFr',
-	'twitterCardExcerptLength' 	=> 35,
+	'twitterCardExcerptLength' 	=> 200,
 	'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
 	'twitterCardImageWidth' 	=> 280,
 	'twitterCardImageHeight' 	=> 150,

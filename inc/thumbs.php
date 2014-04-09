@@ -9,11 +9,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if ( class_exists('JM_TC_Utilities') ) {
 
-	class JM_TC_Thumbs extends JM_TC_Utilities{
+	class JM_TC_Thumbs extends JM_TC_Utilities
+	{
 
-		var $textdomain = 'jm-tc';
-
-		function thumbnail_sizes($post_id)
+		public function thumbnail_sizes($post_id)
 		{
 			
 			$size = get_post_meta($post_id, 'cardImgSize', true);
@@ -48,28 +47,34 @@ if ( class_exists('JM_TC_Utilities') ) {
 		
 
 		// get featured image
-		public static function get_post_thumbnail_weight($post_id)
+		public function get_post_thumbnail_weight($post_id)
 		{
+
+				
+			$math = filesize( get_attached_file( get_post_thumbnail_id( $post_id ) ) ) / 1000000;
 			
-			$args = array(
-			'post_type' => 'attachment',
-			'post_mime_type' => array(
-			'image/png',
-			'image/jpeg',
-			'image/gif'
-			) ,
-			'numberposts' => - 1,
-			'post_status' => null,
-			'post_parent' => $post_id,
-			);
+		
+			if( $math == 0 ) {
 			
-			$attachments = get_posts($args);
-			foreach($attachments as $attachment) $math = filesize( get_attached_file( $attachment->ID ) ) / 1000000;
+				$weight = __('No featured image for now !', 'jm-tc' );
 			
-			return $math = ( $math >= 1 ) ? '<span class="error">'.__('Image is heavier than 1MB ! Card will be broken !', $this->textdomain ).'</span>' : $math.' MB';
+			} elseif( $math > 1 ) {
+				
+				$weight  =  '<span class="error">'.__('Image is heavier than 1MB ! Card will be broken !', 'jm-tc' ).'</span>';
 			
+			} elseif( $math > 0 && $math < 1 ) {
+				
+				$weight = $math.' MB';	
+
+			} else {
 			
+				$weight = __('Unknown error !', 'jm-tc' );
+			}
+			
+			return $weight;
+
 		}
+
 
 	}
 }

@@ -15,6 +15,9 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			//render
 			add_action( 'cmb_render_text_number', array(&$this, 'render_text_number'), 10, 2 );
 			add_action( 'cmb_render_text_url_https', array(&$this, 'render_text_url_https'), 10, 2 );
+			
+			//alter desc attributes
+			add_filter( 'cmb_title_attributes', array($this,'cmb_update_title_description'), 10, 2 );
 
 			
 			//register meta box
@@ -23,13 +26,27 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 		// Add number field
 		function render_text_number( $field, $meta ) {
-			echo '<input type="number" min="', $field['min'], '" name="', $field['id'], '" id="', $field['id'], '" value="', $meta , '" style="width:170px;" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
+			echo '<input type="number" min="', $field['min'], '" max="', $field['max'], '" name="', $field['id'], '" id="', $field['id'], '" value="', $meta , '" style="width:170px;" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 		}
 
 		// URL field
 		function render_text_url_https( $field, $meta ) {
 			echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 		}
+
+		// Title field customized
+		function render_title_custom( $field, $meta ) {
+			echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
+		}
+		
+		//cmb snippet props to jtsternberg 
+		function cmb_update_title_description( $args, $field ) {
+		
+			if( $field->id() == 'twitter_featured_size' ) $args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight( $field->object_id );
+		
+			return $args;
+		}
+				
 		
 
 		//Meta box
@@ -56,6 +73,15 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'name' => __('Documentation', 'jm-tc'),
 			'id'   => 'documentation_title', // Not used but needed for plugin
 			'desc' => JM_TC_Admin::docu_links(1),
+			),
+			
+			
+			// title
+			array(
+			'type' => 'title',
+			'name' => __('Preview', 'jm-tc'),
+			'id'   => 'preview_title', // Not used but needed for plugin
+			'desc' => '',
 			),
 			
 			// title
@@ -96,28 +122,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'file',
 			),
 			
-			
-			// title
-			array(
-			'type' => 'title',
-			'name' => __('Photo Cards', 'jm-tc'),
-			'id'   => 'photo_title', // Not used but needed for plugin
-			'desc' => '',
-			),
-			array(
-			'name' => __( 'Image width', 'jm-tc'),
-			'id'   => "cardPhotoWidth",
-			'type' => 'text_number',
-			'min'  => 280,
-			),	
-			
-			array(
-			'name' => __('Image height', 'jm-tc'),
-			'id'   => "cardPhotoHeight",
-			'type' => 'text_number',
-			'min'  => 150,
-			),	
-			
+
 			// title
 			array(
 			'type' => 'title',
@@ -159,21 +164,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type'  => 'text_medium',
 
 			),
-			
-			array(
-			'name' => __('Image width', 'jm-tc'),
-			'id'   => "cardProductWidth",
-			'type' => 'text_number',
-			'min'  => 280,
-			),	
-			
-			array(
-			'name' => __('Image height', 'jm-tc'),
-			'id'   => "cardProductHeight",
-			'type' => 'text_number',
-			'min'  => 150,
-			),	
-			
+		
 
 			
 			// title
@@ -203,18 +194,20 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			),
 			
 			array(
-			'name' => __( 'Image width', 'jm-tc'),
+			'name' => __( 'Player width', 'jm-tc'),
 			'id'   => "cardPlayerWidth",
 			'type' => 'text_number',
 			'desc'	   => __('When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', 'jm-tc'),
 			'min'  => 262,
+			'max'  => PHP_INT_MAX,
 			),	
 			
 			array(
-			'name' => __( 'Image height', 'jm-tc'),
+			'name' => __( 'Player height', 'jm-tc'),
 			'id'   => "cardPlayerHeight",
 			'type' => 'text_number',
 			'min'  => 196,
+			'max'  => PHP_INT_MAX,
 			),
 			
 			array(
@@ -256,6 +249,16 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'priority'      => 'low',
 			'show_names'    => true,
 			'fields'        => array(
+			
+			
+			array(
+			 'id' 	=> 'twitter_image_resize',
+			 'type' => 'title',
+			 'name'	=> 'Resize image for twitter:image',		
+			),
+			
+			
+			
 			array(
 			'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
 			'id'       => 'cardImgSize',
@@ -271,12 +274,37 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			),
 			
 			
+			array(
+			 'id' 	=> 'twitter_image_width_height',
+			 'type' => 'title',
+			 'name'	=> 'Rendering on Twitter: width and height',		
+			),
+			
+			
+			 
+			array(
+			'name' => __( 'Image width', 'jm-tc'),
+			'id'   => "cardImageWidth",
+			'type' => 'text_number',
+			'min'  => 280,
+			'max'  => PHP_INT_MAX,
+			),	
+			
+			array(
+			'name' => __('Image height', 'jm-tc'),
+			'id'   => "cardImageHeight",
+			'type' => 'text_number',
+			'min'  => 150,
+			'max'  => PHP_INT_MAX,
+			),	
+			
+			
+			
 			
 			array(
 			 'id' 	=> 'twitter_featured_size',
 			 'type' => 'title',
 			 'name'	=> 'Size of the current featured image',
-			// 'desc'	=> JM_TC_Thumbs::get_post_thumbnail_weight($post_id),
 			
 			),
 			

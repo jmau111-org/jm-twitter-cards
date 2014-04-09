@@ -38,6 +38,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'   		=> 'twitterCardImageWidth',
 		'type' 		=> 'text_number',
 		'min'		=> 280,
+		'max'  		=> PHP_INT_MAX,
 		),	
 
 		array(
@@ -46,6 +47,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'   		=> 'twitterCardImageHeight',
 		'type' 		=> 'text_number',
 		'min'		=> 150,
+		'max'  		=> PHP_INT_MAX,
 		),	
 		
 		

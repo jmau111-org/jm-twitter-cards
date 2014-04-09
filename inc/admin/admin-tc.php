@@ -35,6 +35,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
+			//add_action( 'admin_enqueue_scripts', array( $this, 'meta_box_scripts') );
 		}
 		
 		/**
@@ -73,6 +74,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		* @since 0.1.0
 		*/
 		public function add_page() {
+		
 			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png', PHP_INT_MAX);
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
@@ -89,6 +91,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			add_action( 'load-' . $this->options_subpage_doc, array( $this, 'load_admin_doc_scripts' ) );
 		}
 		
+
 		
 		// I prefer this way even if it's not so good^^
 		public function load_admin_scripts()
@@ -106,7 +109,19 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			wp_enqueue_style('jm-tc-doc-style', JM_TC_CSS_URL.'jm-tc-documentation.css');
 			load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
 		}
-
+		
+	/*	
+		public function meta_box_scripts( $hook_suffix )
+		{
+		
+			if( $hook_suffix == 'post.php' || $hook_suffix == 'post-new.php' ) 
+			{
+				wp_enqueue_script('angular', JM_TC_JS_URL.'angular.min.js', false, null, false);
+				wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('angular'), null, false);
+			}
+		
+		}
+	*/
 		
 		/**
 		* Admin page markup. Mostly handled by CMB
@@ -157,10 +172,11 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 
 			array(
 			'name' 		=> __( 'Excerpt by default', 'jm-tc' ),
-			'desc' 		=> __('By default the plugin grabs the first words of posts to create the mandatory meta description for twitter cards.', 'jm-tc'),
+			'desc' 		=> __('By default the plugin grabs the first characters of posts to create the mandatory meta description for twitter cards.', 'jm-tc'),
 			'id'   		=> 'twitterCardExcerptLength',
 			'type' 		=> 'text_number',
 			'min'		=> 15,
+			'max'		=> 200,
 			),					
 			
 			array(
