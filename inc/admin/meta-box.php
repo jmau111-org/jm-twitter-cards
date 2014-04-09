@@ -156,7 +156,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 			'options'  => array(
 			'summary' 				=> __( 'Summary', 'jm-tc' ),
-			'summary_large_image' 	=> __( 'Summary Large Card', 'jm-tc' ),
+			'summary_large_image' 	=> __( 'Summary below Large Image', 'jm-tc' ),
 			'photo' 				=> __( 'Photo', 'jm-tc' ),
 			'product'				=> __( 'Product', 'jm-tc' ),
 			'player' 				=> __( 'Player', 'jm-tc' ),

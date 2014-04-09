@@ -68,8 +68,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	<?php cmb_metabox_form( image_options(), $admin->key() ); ?>
 	
 		<div class="doc-valid">
-	<?php echo $admin->docu_links(4);?>
-	</div>
+			<?php echo $admin->docu_links(4);?>
+		</div>
 
 </div>
 

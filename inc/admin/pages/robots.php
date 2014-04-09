@@ -40,9 +40,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	?>
 	
 	<?php cmb_metabox_form( robots_options(), $admin->key() ); ?>
-		<div class="doc-valid">
-<?php echo $admin->docu_links(7); ?>
-</div>
+	<div class="doc-valid">
+	<?php echo $admin->docu_links(7); ?>
+	</div>
 </div>
 
 

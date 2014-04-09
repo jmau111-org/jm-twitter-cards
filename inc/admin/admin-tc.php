@@ -84,7 +84,11 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'SEO' ), __( 'SEO') , 'manage_options', 'jm_tc_seo', 'jm_tc_subpages' );
 			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt' ), __( 'robots.txt') , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
 			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings' ), __( 'Home settings') , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
-			$this->options_subpage_multi_author 	= add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
+			
+			//there is no point displaying this option page is the website is not multi_author !
+			if ( is_multi_author() ) 
+				$this->options_subpage_multi_author 	= add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
+			
 			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), __( 'Deep Linking') , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
 			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ), __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
 			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', 'jm_tc_subpages' );		
@@ -121,18 +125,18 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			wp_enqueue_style('jm-tc-doc-style', JM_TC_CSS_URL.'jm-tc-documentation.css');
 		}
 		
-	/*	
-		public function meta_box_scripts( $hook_suffix )
-		{
-		
-			if( $hook_suffix == 'post.php' || $hook_suffix == 'post-new.php' ) 
+		/*	
+			public function meta_box_scripts( $hook_suffix )
 			{
-				wp_enqueue_script('angular', JM_TC_JS_URL.'angular.min.js', false, null, false);
-				wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('angular'), null, false);
+			
+				if( $hook_suffix == 'post.php' || $hook_suffix == 'post-new.php' ) 
+				{
+					wp_enqueue_script('angular', JM_TC_JS_URL.'angular.min.js', false, null, false);
+					wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('angular'), null, false);
+				}
+			
 			}
-		
-		}
-	*/
+		*/
 		
 		/**
 		* Admin page markup. Mostly handled by CMB
@@ -199,9 +203,9 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'type' 		=> 'select',
 			'options' 	=> array(
 			'summary' 				=> __( 'Summary', 'jm-tc' ),
-			'summary_large_image' 	=> __( 'Summary Large Card', 'jm-tc' ),
+			'summary_large_image' 	=> __( 'Summary below Large Image', 'jm-tc' ),
 			'photo' 				=> __( 'Photo', 'jm-tc' ),
-			'app'					=> __( 'App', 'jm-tc' ),
+			'app'					=> __( 'Application', 'jm-tc' ),
 			)
 			),
 
