@@ -27,7 +27,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			//register meta box
 			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ) );
 			
-			//show on/off
+			//show on/off field in progile
 			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_profile'), 10, 2 );
 		}
 
@@ -270,7 +270,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'id'       => 'cardPlayerStream',
 			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
 			'type'     => 'text_url_https',
-			'desc'     => __('If you do not understand what is the following field then it is probably a bad idea to fulfill them!', 'jm-tc'),
+			'desc'     => __('If you do not understand what is the following field then it is probably a bad idea to fulfill it!', 'jm-tc'),
 
 			),
 			

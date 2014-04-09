@@ -159,7 +159,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			<p class="card-desc"><?php _e('Twitter Cards help you richly represent your content within<br /> Tweets across the web and on mobile devices. This gives users <br />greater context and insight into the URLs shared on Twitter,<br /> which in turn allows Twitter to<br /> send more engaged traffic to your site or app.', 'jm-tc');?></p>
 			</blockquote>
 			
-			<p class="plugin-desc"><?php _e('With this plugin you can grab summary, summary large image, product, photo and gallery cards.', 'jm-tc') ; ?></p>
+			<p class="plugin-desc"><?php _e('With this plugin you can get summary, summary large image, product, photo, gallery, app and player cards', 'jm-tc') ; ?></p>
 
 			</div>
 			<?php

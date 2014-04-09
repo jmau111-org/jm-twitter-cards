@@ -1,7 +1,8 @@
 /* Styles in admin  */
 
 .wrap { 
-	max-width: 1024px; 
+	max-width: 1024px;
+    font-family: Georgia, Times, "Times New Roman", serif;	
 }
 
 .wrap h2 {

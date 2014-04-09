@@ -212,7 +212,7 @@ function jm_tc_get_default_options()
 	'twitterCardType' 			=> 'summary',
 	'twitterCardCreator' 		=> 'TweetPressFr',
 	'twitterCardSite' 			=> 'TweetPressFr',
-	'twitterCardProfile'		=> 'yes',
+	'twitterCardProfile'		=> 'no',
 	'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
 	'twitterCardImageWidth' 	=> 280,
 	'twitterCardImageHeight' 	=> 150,
