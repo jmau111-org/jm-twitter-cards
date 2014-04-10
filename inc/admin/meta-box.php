@@ -55,7 +55,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		}
 			
 			
-			
+		//on/off
 		public function on_off() {
 
 			if( $this->opts['twitterCardProfile'] == 'yes') {
@@ -131,14 +131,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'desc' => JM_TC_Admin::docu_links(1),
 			),
 			
-			
-			// title
-			array(
-			'type' => 'title',
-			'name' => __('Preview', 'jm-tc'),
-			'id'   => 'preview_title', // Not used but needed for plugin
-			'desc' => '',
-			),
 			
 			// title
 			array(

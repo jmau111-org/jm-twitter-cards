@@ -15,7 +15,7 @@ if ( class_exists('JM_TC_Utilities') ) {
 
 			foreach ( $slugs as $slug => $name ){
 				
-				$list .= '<li><a target="_blank" href="http://wordpress.org/plugins/'.$slug.'">'.__( $name, 'jm-tc').'</a></li>';
+				$list .= '<li><a class="button" target="_blank" href="http://wordpress.org/plugins/'.$slug.'">'.__( $name, 'jm-tc').'</a></li>';
 			}
 			
 			$list .= '</ul>';
@@ -25,25 +25,24 @@ if ( class_exists('JM_TC_Utilities') ) {
 		
 		public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $slugs = array() ) {
 
-			$infos   = '<div class="postbox" style="margin:2em 0; padding:2em;">';
-			$infos  .= '<h1 class="hndle">'.__('The developer', 'jm-tc').'</h1>';
-			$infos  .= '<p><img src="http://www.gravatar.com/avatar/'.md5($gravatar_email).'" style="float:left;margin-right:10px;"/>';
-			$infos  .= '<h2>'.$name.'</h2>';
-			$infos  .= '<blockquote>'.$desc.'</blockquote>' .'<br/>';
+			$infos   = '<h3 class="hndle">'.__('The developer', 'jm-tc').'</h3>';
+			$infos  .= '<div class="inbl"><img src="http://www.gravatar.com/avatar/'.md5($gravatar_email).'"/></div>';
+			$infos	.= '<div class="inbl">';
+			$infos  .= '<h4>'.$name.'</h4>';
+			$infos  .= '<blockquote class="about">'.$desc.'</blockquote>'."\n\n";
 			$infos  .= '<a href="'.$url.'" target="_blank">'.$url.'</a>' ."\n\n";
 			$infos  .= '<i class="link-like dashicons dashicons-twitter"></i> <a href="http://twitter.com/intent/user?screen_name='.$twitter.'" >@'.$twitter.'</a>';
-			$infos  .= '</p>';
+			$infos  .= '</p></div>';
 			
-			$infos2  =  '<h2 style="margin:2em 0 1em;"><span>'.__('Keep the plugin free', 'jm-tc').'</span></h2>';
-			$infos2 .= '<p>'.__('Please help if you want to keep this plugin free.', 'jm-tc').'</p>';
-			$infos2	.= '<i class="link-like va-bottom dashicons dashicons-cart"></i><a target="_blank" href="'.$donation.'">'.__('Donation', 'jm-ltsc').'</a>';
+			$infos2  =  '<h3><span>'.__('Keep the plugin free', 'jm-tc').'</span></h3>';
+			$infos2 .= '<p class="decal">'.__('Please help if you want to keep this plugin free.', 'jm-tc')."\n\n";
+			$infos2	.= '<i class="dashicons dashicons-cart"></i><a target="_blank" href="'.$donation.'">'.__('Donation', 'jm-ltsc').'</a>'.'</p>';
 			
 
-			$infos3  = '<h2 style="margin:2em 0 1em;"><span>'.__('Plugin', 'jm-tc').'</span></h2>';
-			$infos3 .= '<p>';
+			$infos3  = '<h3><span>'.__('Plugin', 'jm-tc').'</span></h3>';
+			$infos3 .= '<p class="decal">';
 			$infos3 .= __('Maybe you will like this plugin too: ', 'jm-tc') . static::get_plugins_list( $slugs );
 			$infos3 .= '</p>';
-			$infos3 .= '</div>';
 			
 			
 			echo $infos.$infos2.$infos3;

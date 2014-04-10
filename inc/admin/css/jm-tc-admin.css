@@ -9,6 +9,8 @@
 	font-size: 300%;
 }
 
+.wrap .inbl{ display:inline-block; vertical-align:top; margin-right: 2em; }
+
 .wrap h2:before {
 	content:"\f301";
 	display: inline-block;
@@ -31,6 +33,10 @@
 
 .wrap .cmb-form, .wrap p {
 	padding: 0.25em 40px;
+}
+
+.wrap .decal {
+	padding: 0.25em 40px .25em 0;
 }
 
 .wrap .bold {  
@@ -78,6 +84,11 @@
 	position: absolute; 
 	top: 60px; 
 	color:#888; 
+}
+
+.wrap blockquote.about:before{ 
+	font-size:40px;
+	top:-5px;
 }
 
 .plugin-desc { 

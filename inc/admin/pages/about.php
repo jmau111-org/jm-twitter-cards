@@ -12,7 +12,6 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <?php
 $author = new JM_TC_Author();
 
-
 //plugin list
 $slugs = array(
 			'jm-dashicons-shortcode' 			=> 'JM Dashicons Shortcode',
