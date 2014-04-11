@@ -58,7 +58,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		//on/off
 		public function on_off() {
 
-			if( $this->opts['twitterCardProfile'] == 'yes') {
+			if( $this->opts['twitterProfile'] == 'yes') {
 				
 				return 'on';
 				

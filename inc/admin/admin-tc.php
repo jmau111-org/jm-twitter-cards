@@ -185,14 +185,14 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			array(
 			'name' 		=> __( 'Creator (twitter username)', 'jm-tc' ),
 			'desc' 		=> __('Who is the creator of content?', 'jm-tc'),
-			'id'   		=> 'twitterCardCreator',
+			'id'   		=> 'twitterCreator',
 			'type' 		=> 'text_medium',
 			),
 
 			array(
 			'name' 		=> __( 'Site (twitter username)', 'jm-tc' ),
 			'desc' 		=> __('Who is the Owner of the Website? (could be a trademark)',  'jm-tc'),
-			'id'   		=> 'twitterCardSite',
+			'id'   		=> 'twitterSite',
 			'type' 		=> 'text_medium',
 			),				
 			

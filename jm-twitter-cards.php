@@ -47,7 +47,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.0' );
+define( 'JM_TC_VERSION', '5.1.3' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -209,30 +209,33 @@ function jm_tc_on_activation()
 function jm_tc_get_default_options()
 {
 	return array(
-	'twitterCardType' 			=> 'summary',
-	'twitterCardCreator' 		=> 'TweetPressFr',
-	'twitterCardSite' 			=> 'TweetPressFr',
-	'twitterCardProfile'		=> 'no',
-	'twitterCardImage'			=> 'https://g.twimg.com/Twitter_logo_blue.png',
-	'twitterCardImageWidth' 	=> 280,
-	'twitterCardImageHeight' 	=> 150,
-	'twitterCardPostPageDesc' 	=> __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
-	'twitterCardSEOTitle' 		=> 'yes',
-	'twitterCardSEODesc' 		=> 'yes',
-	'twitterCardTitle' 			=> '',
-	'twitterCardDesc' 			=> '',
-	'twitterCardCrop' 			=> 'yes',
-	'twitterCardUsernameKey' 	=> 'jm_tc_twitter',
-	'twitterCardiPhoneName' 	=> '',
-	'twitterCardiPadName' 		=> '',
-	'twitterCardGooglePlayName' => '',
-	'twitterCardiPhoneUrl' 		=> '',
-	'twitterCardiPadUrl'		=> '',
-	'twitterCardGooglePlayUrl' 	=> '',
-	'twitterCardiPhoneId' 		=> '',
-	'twitterCardiPadId'			=> '',
-	'twitterCardGooglePlayId'   => '',
-	'twitterCardRobotsTxt'		=> 'yes'
+		'twitterCardType' => 'summary',
+		'twitterCreator' => 'TweetPressFr',
+		'twitterSite' => 'TweetPressFr',
+		'twitterImage' => 'https://g.twimg.com/Twitter_logo_blue.png',
+		'twitterImageWidth' => '280',
+		'twitterImageHeight' => '150',
+		'twitterCardMetabox' => 'no',
+		'twitterProfile' => 'no',
+		'twitterPostPageTitle' => get_bloginfo('name') , // filter used by plugin to customize title
+		'twitterPostPageDesc' => __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
+		'twitterCardSEOTitle' => 'yes',
+		'twitterCardSEODesc' => 'yes',
+		'twitterCardImgSize' => 'small',
+		'twitterCardTitle' => '',
+		'twitterCardDesc' => '',
+		'twitterCardCrop' => 'yes',
+		'twitterUsernameKey' => 'jm_tc_twitter',
+		'twitteriPhoneName' => '',
+		'twitteriPadName' => '',
+		'twitterGooglePlayName' => '',
+		'twitteriPhoneUrl' => '',
+		'twitteriPadUrl' => '',
+		'twitterGooglePlayUrl' => '',
+		'twitteriPhoneId' => '',
+		'twitteriPadId' => '',
+		'twitterGooglePlayId' => '',
+		'twitterCardRobotsTxt' => 'yes',
 	);
 }
 

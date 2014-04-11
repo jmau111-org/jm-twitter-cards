@@ -22,7 +22,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			array(
 			'name' 		=> __( 'Add a field in profiles for author', 'jm-tc' ),
 			'desc' 		=> __('This would add a field in profiles if user can publish posts. In this case his Twitter username will be set as meta creator.', 'jm-tc'),
-			'id'   		=> 'twitterCardProfile',
+			'id'   		=> 'twitterProfile',
 			'type' 		=> 'select',
 			'options'	 => array(
 			'yes' 			=> __( 'Yes', 'jm-tc' ),
@@ -34,7 +34,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			array(
 			'name' 		=> __( 'Meta key Twitter', 'jm-tc' ),
 			'desc' 		=> __('If the above option is set to "no", just modify user meta key associated with Twitter Account in profiles to get Twitter usernames from your own fields:', 'jm-tc'),
-			'id'   		=> 'twitterCardUsernameKey', 
+			'id'   		=> 'twitterUsernameKey', 
 			'type' 		=> 'text_medium',
 			),
 			

@@ -7,7 +7,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 ?>
 <div class="wrap">
-<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
+<h2>JM Twitter s : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 	<?php $admin = new JM_TC_Admin(); ?>
 
@@ -23,7 +23,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		
 		array(
 			'name' => __( 'Image Fallback', 'jm-tc' ),
-			'id'   => 'twitterCardImage', // Not used but needed for plugin
+			'id'   => 'twitterImage', // Not used but needed for plugin
 			'type' => 'file',
 			
 		),
@@ -32,7 +32,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		array(
 		'name' 		=> __('Image width', 'jm-tc'),
 		'desc' 		=> __('px', 'jm-tc'),
-		'id'   		=> 'twitterCardImageWidth',
+		'id'   		=> 'twitterImageWidth',
 		'type' 		=> 'text_number',
 		'min'		=> 280,
 		'max'  		=> PHP_INT_MAX,
@@ -41,7 +41,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		array(
 		'name' 		=> __('Image width', 'jm-tc'),
 		'desc' 		=> __('px', 'jm-tc'),
-		'id'   		=> 'twitterCardImageHeight',
+		'id'   		=> 'twitterImageHeight',
 		'type' 		=> 'text_number',
 		'min'		=> 150,
 		'max'  		=> PHP_INT_MAX,

@@ -168,15 +168,15 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			//to be modified or left with the value 'jm_tc_twitter'
 				
-				$cardUsernameKey 	= $this->opts['twitterCardUsernameKey'];
+				$cardUsernameKey 	= $this->opts['twitterUsernameKey'];
 				$cardCreator 		= get_the_author_meta( $cardUsernameKey, $post_author );
 				
-				$cardCreator		= ($cardCreator != '') ? $cardCreator : $this->opts['twitterCardCreator'];
+				$cardCreator		= ($cardCreator != '') ? $cardCreator : $this->opts['twitterCreator'];
 				$cardCreator 		=  '@' . parent::remove_at( $cardCreator );
 			
 			} else {
 			
-				$cardCreator = '@' .  parent::remove_at( $this->opts['twitterCardCreator'] );
+				$cardCreator = '@' .  parent::remove_at( $this->opts['twitterCreator'] );
 			}
 			
 			
@@ -188,7 +188,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/
 		public function siteUsername() {
 			
-			$cardSite =  '@' . parent::remove_at( $this->opts['twitterCardSite'] );
+			$cardSite =  '@' . parent::remove_at( $this->opts['twitterSite'] );
 			$this->display_markup( 'site',  apply_filters('jm_tc_card_site', $cardSite) );
 		}
 		
@@ -244,11 +244,11 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 			} elseif( !$post_id && $is_tax ) {
 				
-					$cardDescription = ( '' != term_description() ) ? wp_strip_all_tags( term_description() ) :  $this->opts['twitterCardPostPageDesc'];
+					$cardDescription = ( '' != term_description() ) ? wp_strip_all_tags( term_description() ) :  $this->opts['twitterPostPageDesc'];
 					
 			} else {
 				
-				$cardDescription = $this->opts['twitterCardPostPageDesc'];
+				$cardDescription = $this->opts['twitterPostPageDesc'];
 			}
 			
 			
@@ -300,12 +300,12 @@ if( class_exists('JM_TC_Utilities') ) {
 					elseif( $post_id == false ) 
 					{ 
 	
-						$image = $this->opts['twitterCardImage'];
+						$image = $this->opts['twitterImage'];
 					}
 					
 					else {
 						//fallback
-						$image = $this->opts['twitterCardImage'];
+						$image = $this->opts['twitterImage'];
 					}
 					
 					
@@ -463,8 +463,8 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 			if(  in_array( $type, array('photo','product', 'summary_large_image', 'player') )  ) {
 			
-				$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'cardImageWidth', true) ) ) ? $cardWidth : $this->opts['twitterCardImageWidth'];
-				$height = ( '' != ($cardHeight = get_post_meta($post_id, 'cardImageHeight', true) ) ) ? $cardHeight : $this->opts['twitterCardImageHeight'];
+				$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'cardImageWidth', true) ) ) ? $cardWidth : $this->opts['twitterImageWidth'];
+				$height = ( '' != ($cardHeight = get_post_meta($post_id, 'cardImageHeight', true) ) ) ? $cardHeight : $this->opts['twitterImageHeight'];
 				
 				$this->display_markup( 'image:width',  $width );
 				$this->display_markup( 'image:height',  $height );
@@ -489,15 +489,15 @@ if( class_exists('JM_TC_Utilities') ) {
 		public function deeplinking(){
 
 					
-			if( $this->opts['twitterCardiPhoneName'] != '' ) $this->display_markup( 'app:name:iphone',  $this->opts['twitterCardiPhoneName'] );
-			if( $this->opts['twitterCardiPadName'] != '' ) $this->display_markup( 'app:name:ipad', $this->opts['twitterCardiPadName'] );
-			if( $this->opts['twitterCardGooglePlayName'] != '' ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterCardGooglePlayName'] );
-			if( $this->opts['twitterCardiPhoneUrl'] != '' ) $this->display_markup( 'app:url:iphone', $this->opts['twitterCardiPhoneUrl'] );
-			if( $this->opts['twitterCardiPadUrl'] != '' ) $this->display_markup( 'app:url:ipad', $this->opts['twitterCardiPhoneUrl'] );
-			if( $this->opts['twitterCardGooglePlayUrl'] != '' ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterCardGooglePlayUrl'] );
-			if( $this->opts['twitterCardiPhoneId'] != '' ) $this->display_markup( 'app:id:iphone', $this->opts['twitterCardiPhoneId'] );
-			if( $this->opts['twitterCardiPadId'] != '' ) $this->display_markup( 'app:id:ipad', $this->opts['twitterCardiPadId'] );
-			if( $this->opts['twitterCardGooglePlayId'] != '' ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterCardGooglePlayId'] );
+			if( $this->opts['twitteriPhoneName'] != '' ) $this->display_markup( 'app:name:iphone',  $this->opts['twitteriPhoneName'] );
+			if( $this->opts['twitteriPadName'] != '' ) $this->display_markup( 'app:name:ipad', $this->opts['twitteriPadName'] );
+			if( $this->opts['twitterGooglePlayName'] != '' ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterGooglePlayName'] );
+			if( $this->opts['twitteriPhoneUrl'] != '' ) $this->display_markup( 'app:url:iphone', $this->opts['twitteriPhoneUrl'] );
+			if( $this->opts['twitteriPadUrl'] != '' ) $this->display_markup( 'app:url:ipad', $this->opts['twitteriPhoneUrl'] );
+			if( $this->opts['twitterGooglePlayUrl'] != '' ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterGooglePlayUrl'] );
+			if( $this->opts['twitteriPhoneId'] != '' ) $this->display_markup( 'app:id:iphone', $this->opts['twitteriPhoneId'] );
+			if( $this->opts['twitteriPadId'] != '' ) $this->display_markup( 'app:id:ipad', $this->opts['twitteriPadId'] );
+			if( $this->opts['twitterGooglePlayId'] != '' ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterGooglePlayId'] );
 
 		}
 		

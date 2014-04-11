@@ -7,7 +7,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 ?>
 <div class="wrap">
-<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
+<h2>JM Twitter s : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 <?php $admin = new JM_TC_Admin(); ?>
 	
@@ -31,63 +31,63 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			array(
 			'name' 		=> __( 'iPhone Name', 'jm-tc' ),
 			'desc' 		=> __('Enter iPhone Name ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPhoneName',
+			'id'   		=> 'twitteriPhoneName',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( ' iPhone URL', 'jm-tc' ),
 			'desc' 		=> __('Enter iPhone URL ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPhoneUrl',
+			'id'   		=> 'twitteriPhoneUrl',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'iPhone ID', 'jm-tc' ),
 			'desc' 		=> __('Enter iPhone ID ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPhoneId',
+			'id'   		=> 'twitteriPhoneId',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'iPad Name', 'jm-tc' ),
 			'desc' 		=> __('Enter iPad Name ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPadName',
+			'id'   		=> 'twitteriPadName',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'iPad URL', 'jm-tc' ),
 			'desc' 		=> __('Enter iPad URL ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPadUrl',
+			'id'   		=> 'twitteriPadUrl',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'iPad ID', 'jm-tc' ),
 			'desc' 		=> __('Enter iPad ID ', 'jm-tc'),
-			'id'   		=> 'twitterCardiPadId',
+			'id'   		=> 'twitteriPadId',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'Google Play Name', 'jm-tc' ),
 			'desc' 		=> __('Enter Google Play Name ', 'jm-tc'),
-			'id'   		=> 'twitterCardGooglePlayName',
+			'id'   		=> 'twitterGooglePlayName',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'Google Play URL', 'jm-tc' ),
 			'desc' 		=> __('Enter Google Play URL ', 'jm-tc'),
-			'id'   		=> 'twitterCardGooglePlayUrl',
+			'id'   		=> 'twitterGooglePlayUrl',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
 			'name' 		=> __( 'Google Play ID', 'jm-tc' ),
 			'desc' 		=> __('Enter Google Play ID ', 'jm-tc'),
-			'id'   		=> 'twitterCardGooglePlayId',
+			'id'   		=> 'twitterGooglePlayId',
 			'type' 		=> 'text_medium',
 			),
 			
