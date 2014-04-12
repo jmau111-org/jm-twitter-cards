@@ -11,6 +11,13 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.1.4 #
+* 12 Apr 2014
+* fix notices undefined var
+* last changes and fixes before pushing it on wordpress.org
+* change version number for beta tester, they need to have the last fixes ^^
+
+
 # 5.1.3 #
 * 10 Apr 2014
 * fix admin menu 

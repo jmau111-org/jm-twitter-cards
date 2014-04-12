@@ -27,7 +27,10 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			//register meta box
 			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ) );
 			
-			//show on/off field in progile
+			//show on/off field in post
+			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_post'), 10, 2 );
+			
+			//show on/off field in profile
 			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_profile'), 10, 2 );
 		}
 
@@ -55,18 +58,63 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		}
 			
 			
-		//on/off
-		public function on_off() {
-
-			if( $this->opts['twitterProfile'] == 'yes') {
-				
-				return 'on';
-				
-			} else {
+		//on/off 
+		public function on_off( $context ) {
+		
+			switch ( $context ) {
 			
-				return 'off';
+			case 'profile' :
+				$trigger = apply_filters('jm_tc_exclude_from_profile', $this->opts['twitterProfile'] == 'yes')? 'on' : 'off';
+			break;
+			
+			case 'post' :
+				$trigger = apply_filters('jm_tc_exclude_from_post', $this->opts['twitterCardMetabox'] == 'yes') ? 'on' : 'off';
+			break;
+			
+			
+			default:
+				$trigger = 'on';
+			break;
+					
+			}
+			
+			
+			return $trigger;
+		}
+		
+
+		/**
+		 * Removes metabox from appearing acccording to meta box settings
+		 *
+		 * @author Julien Maury inspired by tips given by Thomas Griffin
+		 *
+		 * @param bool $display
+		 * @param array $meta_box The array of metabox options
+		 * @return bool $display on success, false on failure
+		 */
+		public function exclude_from_post( $display, $meta_box ) {
+
+			global $pagenow;
+			
+			
+			 if ( ! isset( $meta_box['show_on']['alt_key'] ) )
+				return $display; // If the key isn't set, return
+
+			if ( 'exclude_post' !== $meta_box['show_on']['alt_key'] )
+				return $display; // If the key is set but not the one we want, return
+			
+			$meta_box['show_on']['alt_value'] = ! is_array( $meta_box['show_on']['alt_value'] ) ? array( $meta_box['show_on']['alt_value'] ) : $meta_box['show_on']['alt_value'];
+
+			if ( in_array( $pagenow, array('post.php', 'post-new.php') ) && current_user_can('edit_posts') && in_array( 'on', $meta_box['show_on']['alt_value'] )  ) {
+
+				return $display;
+				
+			 } else {
+			 
+				return false;
 				
 			}
+
 		}		
 			
 
@@ -92,7 +140,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			$meta_box['show_on']['alt_value'] = ! is_array( $meta_box['show_on']['alt_value'] ) ? array( $meta_box['show_on']['alt_value'] ) : $meta_box['show_on']['alt_value'];
 
-			if ( 'profile.php' == $pagenow && current_user_can('edit_post') && in_array( 'on', $meta_box['show_on']['alt_value'] )  ) {
+			if ( 'profile.php' == $pagenow && current_user_can('edit_posts') && in_array( 'on', $meta_box['show_on']['alt_value'] )  ) {
 
 				return $display;
 				
@@ -120,6 +168,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'pages' => $post_types,
 			'context' => 'advanced',
 			'priority' => 'high',
+			'show_on' => array( 'alt_value' => static::on_off( 'post' ), 'alt_key' => 'exclude_post'),
 			'fields' => array(
 
 			
@@ -276,7 +325,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'title'         => __( 'Twitter Creator', 'jm-tc' ),
 			'pages'         => array( 'user' ), // Tells CMB to use user_meta vs post_meta
 			'show_names'    => true,
-			'show_on' 		=> array( 'alt_value' => static::on_off(), 'alt_key' => 'exclude_profile'),
+			'show_on' 		=> array( 'alt_value' => static::on_off( 'profile' ), 'alt_key' => 'exclude_profile'),
 			'fields'        => array(
 			array(
 			'name'     => __( 'Twitter Creator', 'jm-tc' ),
@@ -297,6 +346,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'context'       => 'side',
 			'priority'      => 'low',
 			'show_names'    => true,
+			'show_on'	    => array( 'alt_value' => static::on_off( 'post' ), 'alt_key' => 'exclude_post'),
 			'fields'        => array(
 			
 			

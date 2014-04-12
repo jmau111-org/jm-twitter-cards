@@ -85,6 +85,8 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt' ), 'robots.txt' , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
 			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings' ), 'Home settings' , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
 			
+			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box' ), 'Meta Box settings' , 'manage_options', 'jm_tc_meta_box', 'jm_tc_subpages' );
+			
 			//there is no point displaying this option page is the website is not multi_author !
 			if ( is_multi_author() ) 
 				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
@@ -111,7 +113,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		
 		public function admin_styles()
 		{
-			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_cf', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
+			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_meta_box', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_cf', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
 			{
 				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
 			}

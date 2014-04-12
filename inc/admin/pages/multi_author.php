@@ -25,8 +25,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			'id'   		=> 'twitterProfile',
 			'type' 		=> 'select',
 			'options'	 => array(
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
 			'no' 			=> __( 'No', 'jm-tc' ),
+			'yes' 			=> __( 'Yes', 'jm-tc' ),
 
 			)
 			),		
