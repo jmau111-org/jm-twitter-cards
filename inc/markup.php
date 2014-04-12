@@ -99,13 +99,13 @@ if( class_exists('JM_TC_Utilities') ) {
 			switch ( class_exists( $plugin ) ) {
 				case 'WPSEO_Frontend' :
 					$object = new WPSEO_Frontend();
-					$title  = $object->title(false);
-					$desc   = $object->metadesc(false); 	
+					$title  = $object->title(false) ? $object->title(false) : the_title_attribute( array( 'echo' => false));
+					$desc   = $object->metadesc(false) ? $object->metadesc(false) : parent::get_excerpt_by_id($post_id);	
 				break;
 				
 				case 'All_in_One_SEO_Pack' :
-					$title = htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) );
-					$desc  = htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) );					
+					$title = get_post_meta($post_id, '_aioseop_title', true) ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : parent::get_excerpt_by_id($post_id);
+					$desc  = get_post_meta($post_id, '_aioseop_description', true) ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) ) : parent::get_excerpt_by_id($post_id);					
 				break;
 			
 				default:
@@ -236,7 +236,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 					$cardDescription = static::get_seo_plugin_datas($post_id, 'desc') ;
 				
-				} elseif(  $this->opts['twitterCardDesc'] != '') {
+				} elseif( $this->opts['twitterCardDesc'] != '' ) {
 				
 					$cardDescription = get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
 					
