@@ -107,11 +107,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					$title = htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) );
 					$desc  = htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) );					
 				break;
-				
-				case 'acf_field' :
-					$title = get_field( $this->opts['twitterCardTitle'], $post_id  );
-					$desc  = get_field( $this->opts['twitterCardDesc'], $post_id  );
-				
+			
 				default:
 					$title = the_title_attribute( array( 'echo' => false));
 					$desc  = parent::get_excerpt_by_id($post_id);
@@ -204,6 +200,10 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 					$cardTitle = static::get_seo_plugin_datas($post_id, 'title');
 				
+				} elseif(  $this->opts['twitterCardTitle'] != '') {
+				
+					$cardTitle = get_post_meta($post_id, $this->opts['twitterCardTitle'], true);
+					
 				} else {
 				
 					$cardTitle = the_title_attribute( array( 'echo' => false));
@@ -236,6 +236,10 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 					$cardDescription = static::get_seo_plugin_datas($post_id, 'desc') ;
 				
+				} elseif(  $this->opts['twitterCardDesc'] != '') {
+				
+					$cardDescription = get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
+					
 				} else {
 				
 					$cardDescription = parent::get_excerpt_by_id($post_id);
