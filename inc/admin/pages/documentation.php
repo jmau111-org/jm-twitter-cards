@@ -9,7 +9,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <div class="wrap">
 <h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-<p><?php _e('Updated','jm-tc-doc');?> : 16/02/2013</p>
+<p><?php _e('Updated','jm-tc-doc');?> : 12/04/14</p>
 <div id="menu"> <h3><?php _e('Table of content','jm-tc-doc');?></h3>
 <ul> <li><a href="#3w"><?php echo __('What are Twitter Cards?','jm-tc-doc');?></a></li>
 <li><a href="#getcards"><?php echo __('How to get Twitter Cards','jm-tc-doc');?></a></li>
@@ -144,7 +144,11 @@ Disallow:
 <h3 id="faq-deactivate"><?php echo __('I want to disable Twitter Card Markup in particular cases','jm-tc-doc');?></h3>
 <p><?php _e('You can use the following snippet in your functions.php or in a functionality plugin.','jm-tc-doc');?></p>
 <p><?php _e('Here I disable Twitter Cards for both page with ID 19 and page slug \'contact\' :','jm-tc-doc');?></p> <pre>
-//
+add_action('wp_head','disable_twitter_card_info');
+function disable_twitter_card_info() { 
+	if(is_page(array(19,'contact'))) 
+		remove_action('wp_head', 'add_twitter_card_info',);
+}
 </pre>
 <p><?php _e('Here I disable Twitter Cards for post with format \'status\':','jm-tc-doc');?></p> <pre>
 //

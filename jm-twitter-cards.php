@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.1.3
+Version: 5.1.4
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -72,6 +72,10 @@ if ( isset( $_GET['page'] ) ) {
 			case 'jm_tc_images':
 				require( JM_TC_ADMIN_PAGES_DIR .'images.php' );	
 				break;
+				
+			case 'jm_tc_meta_box':
+				require( JM_TC_ADMIN_PAGES_DIR .'meta_box.php' );	
+				break;
 
 			case 'jm_tc_multi_author':
 				require( JM_TC_ADMIN_PAGES_DIR .'multi_author.php' );
@@ -107,7 +111,6 @@ if ( isset( $_GET['page'] ) ) {
 
 
 //Call modules 
-
 require( JM_TC_INC_DIR . 'utilities.php' ); 
 require( JM_TC_ADMIN_DIR . 'author.php' );
 require( JM_TC_ADMIN_DIR . 'notices.php' );
@@ -216,7 +219,7 @@ function jm_tc_get_default_options()
 		'twitterImage' => 'https://g.twimg.com/Twitter_logo_blue.png',
 		'twitterImageWidth' => '280',
 		'twitterImageHeight' => '150',
-		'twitterCardMetabox' => 'no',
+		'twitterCardMetabox' => 'yes',
 		'twitterProfile' => 'no',
 		'twitterPostPageTitle' => get_bloginfo('name') , // filter used by plugin to customize title
 		'twitterPostPageDesc' => __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
