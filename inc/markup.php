@@ -198,7 +198,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 				if(  $this->opts['twitterCardTitle'] != '' ) {
 				
-					$cardTitle = get_post_meta($post_id, $this->opts['twitterCardTitle'], true);
+					$cardTitle = ($title = get_post_meta($post_id, $this->opts['twitterCardTitle'], true) !='') ? $title : the_title_attribute( array( 'echo' => false));
 					
 				} elseif( $this->opts['twitterCardTitle'] == ''  && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') )  ) {
 				
@@ -234,7 +234,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 				if( $this->opts['twitterCardDesc'] != '' ) {
 				
-					$cardDescription = get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
+					$cardDescription = ($desc = get_post_meta($post_id, $this->opts['twitterCardDesc'], true) != '') ? $desc : parent::get_excerpt_by_id($post_id);
 					
 				} elseif( $this->opts['twitterCardDesc'] == '' && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') ) ){
 					
