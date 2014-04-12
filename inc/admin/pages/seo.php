@@ -23,29 +23,6 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'fields'     => array(
 			
 			array(
-			'name' 		=> __( 'Meta title', 'jm-tc' ),
-			'desc' 		=> __('Use SEO by Yoast or All in ONE SEO meta title for your cards (<strong>default is yes</strong>)', 'jm-tc'),
-			'id'   		=> 'twitterCardSEOTitle',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
-			
-			array(
-			'name' 		=> __( 'Meta Desc', 'jm-tc' ),
-			'desc' 		=> __('Use SEO by Yoast or All in ONE SEO meta description for your cards (<strong>default is yes</strong>)', 'jm-tc'),
-			'id'   		=>  'twitterCardSEODesc',
-			'type' 		=> 'select',
-			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
-			)
-			),
-			//'
-			
-			array(
 			'name' 		=> __( 'Custom field title', 'jm-tc' ),
 			'desc' 		=> __('If you prefer to use your own fields', 'jm-tc'),
 			'id'   		=> 'twitterCardTitle',

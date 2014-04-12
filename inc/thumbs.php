@@ -11,32 +11,32 @@ if ( class_exists('JM_TC_Utilities') ) {
 
 	class JM_TC_Thumbs extends JM_TC_Utilities
 	{
-
+	
 		public function thumbnail_sizes($post_id)
 		{
+			$opts = get_option('jm_tc');
 			
-			$size = get_post_meta($post_id, 'cardImgSize', true);
-
+			$size = ('' != ( $thumbnail_size = get_post_meta($post->ID, 'cardImgSize', true) ) ) ? $thumbnail_size : $opts['twitterCardImgSize'];
 
 			switch ($size) :
 				case 'small':
-					$twitterCardImgSize = 'jm_tc_small';
+					$twitterCardImgSize = 'jmtc-small-thumb';
 					break;
 
 				case 'web':
-					$twitterCardImgSize = 'jm_tc_max_web';
+					$twitterCardImgSize = 'jmtc-max-web-thumb';
 					break;
 
 				case 'mobile-non-retina':
-					$twitterCardImgSize = 'jm_tc_max_mobile_non_retina';
+					$twitterCardImgSize = 'jmtc-max-mobile-non-retina-thumb';
 					break;
 
 				case 'mobile-retina':
-					$twitterCardImgSize = 'jm_tc_max-mobile_retina';
+					$twitterCardImgSize = 'jmtc-max-mobile-retina-thumb';
 					break;
 
 				default:
-					$twitterCardImgSize = 'jm_tc_small';
+					$twitterCardImgSize = 'jmtc-small-thumb';
 			?><!-- @(-_-)] --><?php
 					break;
 			endswitch;

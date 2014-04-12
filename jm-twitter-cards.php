@@ -188,10 +188,10 @@ function jm_tc_init()
 
 	if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
 	
-	add_image_size('jm_tc_small', 280, 150, $crop);/* the minimum size possible for Twitter Cards */
-	add_image_size('jm_tc_max_web', 435, 375, $crop);/* maximum web size for photo cards */
-	add_image_size('jm_tc_max_mobile_non_retina', 280, 375, $crop);/* maximum non retina mobile size for photo cards  */
-	add_image_size('jm_tc_max_mobile_retina', 560, 750, $crop);/* maximum retina mobile size for photo cards  */
+	add_image_size('jmtc-small-thumb', 280, 150, $crop);/* the minimum size possible for Twitter Cards */
+	add_image_size('jmtc-max-web-thumb', 435, 375, $crop);/* maximum web size for photo cards */
+	add_image_size('jmtc-max-mobile-non-retina-thumb', 280, 375, $crop);/* maximum non retina mobile size for photo cards  */
+	add_image_size('jmtc-max-mobile-retina-thumb', 560, 750, $crop);/* maximum retina mobile size for photo cards  */
 	
 }
 
@@ -219,8 +219,6 @@ function jm_tc_get_default_options()
 		'twitterProfile' => 'no',
 		'twitterPostPageTitle' => get_bloginfo('name') , // filter used by plugin to customize title
 		'twitterPostPageDesc' => __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
-		'twitterCardSEOTitle' => 'yes',
-		'twitterCardSEODesc' => 'yes',
 		'twitterCardImgSize' => 'small',
 		'twitterCardTitle' => '',
 		'twitterCardDesc' => '',

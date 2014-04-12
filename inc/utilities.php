@@ -66,6 +66,9 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			$the_excerpt = strip_tags( $the_excerpt );// kill HTML tags
 			$the_excerpt = strip_shortcodes( $the_excerpt );// kill shortcodes
 			
+			
+			$the_excerpt = substr( $the_excerpt, 0, 1000);// 200 chars at most. Maybe 5 chars by words in average so 1000 chars ^^
+			
 			return esc_attr($the_excerpt); // to prevent meta from being broken by ""
 		}
 		

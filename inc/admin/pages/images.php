@@ -59,6 +59,20 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		)
 		),
 		
+		array(
+		'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
+		'id'       => 'twitterCardImgSize',
+		'type'     => 'select',
+
+		'options'  => array(
+		'small'			    => __('280 x 375 px', 'jm-tc'),
+		'web'   			=> __('560 x 750 px', 'jm-tc'),
+		'mobile-non-retina' => __('435 x 375 px', 'jm-tc'),
+		'mobile-retina'  	=> __('280 x 150 px', 'jm-tc'),
+		)
+
+		),
+		
 		)
 		);
 		
