@@ -99,13 +99,13 @@ if( class_exists('JM_TC_Utilities') ) {
 			switch ( class_exists( $plugin ) ) {
 				case 'WPSEO_Frontend' :
 					$object = new WPSEO_Frontend();
-					$title  = $object->title(false) ? $object->title(false) : the_title_attribute( array( 'echo' => false));
-					$desc   = $object->metadesc(false) ? $object->metadesc(false) : parent::get_excerpt_by_id($post_id);	
+					$title  = $object->title(false) != '' ? $object->title(false) : the_title_attribute( array( 'echo' => false));
+					$desc   = $object->metadesc(false) != '' ? $object->metadesc(false) : parent::get_excerpt_by_id($post_id);	
 				break;
 				
 				case 'All_in_One_SEO_Pack' :
-					$title = get_post_meta($post_id, '_aioseop_title', true) ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : parent::get_excerpt_by_id($post_id);
-					$desc  = get_post_meta($post_id, '_aioseop_description', true) ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) ) : parent::get_excerpt_by_id($post_id);					
+					$title = get_post_meta($post_id, '_aioseop_title', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : parent::get_excerpt_by_id($post_id);
+					$desc  = get_post_meta($post_id, '_aioseop_description', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) ) : parent::get_excerpt_by_id($post_id);					
 				break;
 			
 				default:
@@ -141,7 +141,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				echo '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
 				
 			} else {
-				if( current_user_can('edit_posts') ) echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
+				if( current_user_can('edit_post') ) echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
 			}
 		}
 		
@@ -196,15 +196,15 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			if($post_id) {
 			
-				if( $this->opts['twitterCardSEOTitle'] == 'yes'){
-			
-					$cardTitle = static::get_seo_plugin_datas($post_id, 'title');
-				
-				} elseif(  $this->opts['twitterCardTitle'] != '') {
+				if(  $this->opts['twitterCardTitle'] != '' ) {
 				
 					$cardTitle = get_post_meta($post_id, $this->opts['twitterCardTitle'], true);
 					
-				} else {
+				} elseif( $this->opts['twitterCardTitle'] == ''  && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') )  ) {
+				
+					$cardTitle = static::get_seo_plugin_datas($post_id, 'title');
+					
+				 } else {
 				
 					$cardTitle = the_title_attribute( array( 'echo' => false));
 					
@@ -232,14 +232,14 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			if($post_id) {
 				
-				if( $this->opts['twitterCardSEODesc'] == 'yes'){
-			
-					$cardDescription = static::get_seo_plugin_datas($post_id, 'desc') ;
-				
-				} elseif( $this->opts['twitterCardDesc'] != '' ) {
+				if( $this->opts['twitterCardDesc'] != '' ) {
 				
 					$cardDescription = get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
 					
+				} elseif( $this->opts['twitterCardDesc'] == '' && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') ) ){
+					
+					$cardDescription = static::get_seo_plugin_datas($post_id, 'desc');
+				
 				} else {
 				
 					$cardDescription = parent::get_excerpt_by_id($post_id);

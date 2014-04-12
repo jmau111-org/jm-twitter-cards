@@ -179,6 +179,7 @@ function jm_tc_init()
 		
 		 new JM_TC_Admin(); 
 		 new JM_TC_Metabox();
+		 new JM_TC_Notices();
 
 	}
 	
@@ -249,7 +250,6 @@ function jm_tc_after_wp_loaded()
    
 	new JM_TC_Utilities();
 	new JM_TC_Thumbs();
-	new JM_TC_Notices();
 	new JM_TC_Author();
 	new JM_TC_Markup();
 	

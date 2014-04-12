@@ -92,7 +92,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			$meta_box['show_on']['alt_value'] = ! is_array( $meta_box['show_on']['alt_value'] ) ? array( $meta_box['show_on']['alt_value'] ) : $meta_box['show_on']['alt_value'];
 
-			if ( 'profile.php' == $pagenow && current_user_can('publish_posts') && in_array( 'on', $meta_box['show_on']['alt_value'] )  ) {
+			if ( 'profile.php' == $pagenow && current_user_can('edit_post') && in_array( 'on', $meta_box['show_on']['alt_value'] )  ) {
 
 				return $display;
 				

@@ -115,3 +115,15 @@
 	color:#292F33; 
 }
 
+.wrap pre {
+	width: 92%;
+	overflow: auto;
+	margin: 2rem 0 2rem 40px;
+	padding: 1rem 0.8rem 1rem 1.2rem;
+	color: #3f3b36;
+	border: 1px solid #f00ACEE;
+	border-left: 1rem solid #00ACEE;
+	font: lighter 1rem/1.5rem Monaco,'MonacoRegular',monospace;
+	background-size: 1px 4rem;
+}
+}

@@ -87,7 +87,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			
 			//there is no point displaying this option page is the website is not multi_author !
 			if ( is_multi_author() ) 
-				$this->options_subpage_multi_author 	= add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
+				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
 			
 			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), 'Deep Linking' , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
 			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ), 'Documentation' , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
