@@ -5,6 +5,7 @@
  *
  * @todo test taxonomy methods with non-post objects
  * @todo test all methods with non-post objects
+ * @todo Date/Time fields should store date format as data attribute for JS
  *
  * @since  1.0.0
  */
@@ -444,7 +445,7 @@ class cmb_Meta_Box_types {
 
 	public function text_date_timestamp() {
 		$meta_value = $this->field->escaped_value();
-		$value = ! empty( $meta_value ) ? date( 'm\/d\/Y', $meta_value ) : '';
+		$value = ! empty( $meta_value ) ? date( $this->field->args( 'date_format' ), $meta_value ) : '';
 		return $this->input( array( 'class' => 'cmb_text_small cmb_datepicker', 'value' => $value ) );
 	}
 
@@ -465,14 +466,14 @@ class cmb_Meta_Box_types {
 				'class' => 'cmb_text_small cmb_datepicker',
 				'name'  => $this->_name( '[date]' ),
 				'id'    => $this->_id( '_date' ),
-				'value' => ! empty( $meta_value ) ? date( 'm\/d\/Y', $meta_value ) : '',
+				'value' => ! empty( $meta_value ) ? date( $this->field->args( 'date_format' ), $meta_value ) : '',
 				'desc'  => '',
 			) ),
 			$this->input( array(
 				'class' => 'cmb_timepicker text_time',
 				'name'  => $this->_name( '[time]' ),
 				'id'    => $this->_id( '_time' ),
-				'value' => ! empty( $meta_value ) ? date( 'h:i A', $meta_value ) : '',
+				'value' => ! empty( $meta_value ) ? date( $this->field->args( 'time_format' ), $meta_value ) : '',
 				'desc'  => $desc,
 			) )
 		);
@@ -726,6 +727,7 @@ class cmb_Meta_Box_types {
 		) ),
 		'<input class="cmb_upload_button button" type="button" value="'. __( 'Add or Upload File', 'cmb' ) .'" />';
 
+		$cached_id = $this->_id();
 		// Reset field args for attachment ID
 		$args = $this->field->args();
 		$args['id'] = $args['_id'] . '_id';
@@ -754,7 +756,7 @@ class cmb_Meta_Box_types {
 				if ( $this->is_valid_img_ext( $meta_value ) ) {
 					echo '<div class="img_status">';
 					echo '<img style="max-width: 350px; width: 100%; height: auto;" src="', $meta_value, '" alt="" />';
-					echo '<p class="cmb_remove_wrapper"><a href="#" class="cmb_remove_file_button" rel="', $this->field->id(), '">'. __( 'Remove Image', 'cmb' ) .'</a></p>';
+					echo '<p class="cmb_remove_wrapper"><a href="#" class="cmb_remove_file_button" rel="', $cached_id, '">'. __( 'Remove Image', 'cmb' ) .'</a></p>';
 					echo '</div>';
 				} else {
 					// $file_ext = $this->get_file_ext( $meta_value );
@@ -762,7 +764,7 @@ class cmb_Meta_Box_types {
 					for ( $i = 0; $i < count( $parts ); ++$i ) {
 						$title = $parts[$i];
 					}
-					echo __( 'File:', 'cmb' ), ' <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $meta_value, '" target="_blank" rel="external">'. __( 'Download', 'cmb' ) .'</a> / <a href="#" class="cmb_remove_file_button" rel="', $this->field->id(), '">'. __( 'Remove', 'cmb' ) .'</a>)';
+					echo __( 'File:', 'cmb' ), ' <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $meta_value, '" target="_blank" rel="external">'. __( 'Download', 'cmb' ) .'</a> / <a href="#" class="cmb_remove_file_button" rel="', $cached_id, '">'. __( 'Remove', 'cmb' ) .'</a>)';
 				}
 			}
 		echo '</div>';

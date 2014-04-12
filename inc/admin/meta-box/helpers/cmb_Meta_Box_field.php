@@ -397,13 +397,6 @@ class cmb_Meta_Box_field {
 
 		echo $this->args( 'before' );
 
-		if ( isset( $_GET['jtdebug'] ) ) {
-			$val = $this->value();
-			if ( is_array( $val ) )
-				echo '<xmp>$val: '. print_r( $val, true ) .'</xmp>';
-			else
-				echo '<p>$val: '. $val .'</p>';
-		}
 		$this_type = new cmb_Meta_Box_types( $this );
 		$this_type->render();
 
@@ -433,6 +426,8 @@ class cmb_Meta_Box_field {
 			$args['default'] = isset( $args['std'] ) ? $args['std'] : '';
 		}
 		if ( ! isset( $args['preview_size'] ) ) $args['preview_size'] = array( 50, 50 );
+		if ( ! isset( $args['date_format'] ) ) $args['date_format'] = 'm\/d\/Y';
+		if ( ! isset( $args['time_format'] ) ) $args['time_format'] = 'h:i A';
 		// Allow a filter override of the default value
 		$args['default']    = apply_filters( 'cmb_default_filter', $args['default'], $args, $this->object_type, $this->object_type );
 		$args['allow']      = 'file' == $args['type'] && ! isset( $args['allow'] ) ? array( 'url', 'attachment' ) : array();

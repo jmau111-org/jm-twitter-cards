@@ -60,7 +60,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			}
 			
 			elseif( is_home() || is_front_page() ) {
-			
+				
 				$this->cardType(); 
 				$this->siteUsername();
 				$this->creatorUsername();
@@ -82,6 +82,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			
 			echo '<!-- /JM Twitter Cards -->' . "\n\n";
+		
 		
 		}	
 		
@@ -138,10 +139,16 @@ if( class_exists('JM_TC_Utilities') ) {
 		private function display_markup( $name, $metadata, $error = false ){
 	
 			if( !$error ) {
+				
 				echo '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
 				
+			} elseif( $error && current_user_can('edit_post') ) {
+			
+				echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
+			
 			} else {
-				if( current_user_can('edit_post') ) echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
+			
+				return;
 			}
 		}
 		

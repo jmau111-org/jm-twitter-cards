@@ -23,7 +23,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			
 			array(
 			'name' 		=> __( 'Add or hide the meta box', 'jm-tc' ),
-			'desc' 		=> __('Hide or display the meta box on post edit', 'jm-tc'),
+			'desc' 		=> __('Hide or display the meta box on post edit. This will display/hide both image and main metaboxes.', 'jm-tc'),
 			'id'   		=> 'twitterCardMetabox',
 			'type' 		=> 'select',
 			'options'	 => array(

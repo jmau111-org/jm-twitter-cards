@@ -25,9 +25,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <ul> <li><a href="#faq-crawl"><?php _e('Twitter Card Validator does not work !','jm-tc-doc');?></a></li>
 <li><a href="#faq-image"><?php echo __('I do not see images in tweets !','jm-tc-doc');?></a></li>
 <li><a href="#faq-cf"><?php echo __('How do I use the custom fields option?','jm-tc-doc');?></a></li>
-<li><a href="#faq-mb-option"><?php echo __('I do not see all options in meta box','jm-tc-doc');?></a></li>
-<li><a href="#faq-deactivate"><?php echo __('I want to disable Twitter Card Markup in particular cases','jm-tc-doc');?></a></li>
-<li><a href="#faq-filter"><?php echo __('Can I filter markup ?','jm-tc-doc');?></a></li> </ul> </li>
+<li><a href="#faq-mb-option"><?php echo __('I do not see all options in meta box','jm-tc-doc');?></a></ul> </li>
 <li> <a href="#settings"><?php echo __('Plugin settings','jm-tc-doc');?></a>
 <ul> <li><a href="#general"><?php echo __('General','jm-tc-doc');?></a></li>
 <li><a href="#seo"><?php echo __('SEO','jm-tc-doc');?></a></li>
@@ -141,23 +139,6 @@ Disallow:
 <p><?php _e('Basically you provide your custom field keys in plugin option page and then it will grab datas.','jm-tc-doc');?></p>
 <h3 id="faq-mb-option"><?php echo __('I do not see all options in meta box','jm-tc-doc');?></h3>
 <p><?php _e('Just select card type. You will see additional fields if they exist.','jm-tc-doc');?></p>
-<h3 id="faq-deactivate"><?php echo __('I want to disable Twitter Card Markup in particular cases','jm-tc-doc');?></h3>
-<p><?php _e('You can use the following snippet in your functions.php or in a functionality plugin.','jm-tc-doc');?></p>
-<p><?php _e('Here I disable Twitter Cards for both page with ID 19 and page slug \'contact\' :','jm-tc-doc');?></p> <pre>
-add_action('wp_head','disable_twitter_card_info');
-function disable_twitter_card_info() { 
-	if(is_page(array(19,'contact'))) 
-		remove_action('wp_head', 'add_twitter_card_info',);
-}
-</pre>
-<p><?php _e('Here I disable Twitter Cards for post with format \'status\':','jm-tc-doc');?></p> <pre>
-//
-</pre>
-<h3 id="faq-filter"><?php echo __('Can I filter markup ?','jm-tc-doc');?></h3>
-<p><?php _e('Yes, it\'s now possible with 3.9, you just have to make you own function and "hook" it on <code>jmtc_markup</code> ','jm-tc-doc');?>:</p> <pre>
-//
-</pre>
-<p><?php _e('This could be another way to disable cards on some pages.','jm-tc-doc');?><?php _e('Be careful with this. Manipulating markup in head section is quite sensitive.','jm-tc-doc');?></p>
 <h4 id="settings"><?php _e('Plugin options','jm-tc-doc');?></h4>
 <p><?php _e('In 3.3.6 Plugin UI has been renewed with some flat design and in a simpler way. Only option and all explanations in documentation. All sections includind meta box on post edit has now a link to documentation.','jm-tc-doc');?></p>
 <h3 id="general"><?php echo __('General','jm-tc-doc');?></h3>
