@@ -81,7 +81,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png', PHP_INT_MAX);
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), 'General', 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), 'Images' , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
-			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'SEO' ), 'SEO' , 'manage_options', 'jm_tc_seo', 'jm_tc_subpages' );
+			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields' ), 'Custom fields' , 'manage_options', 'jm_tc_cf', 'jm_tc_subpages' );
 			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt' ), 'robots.txt' , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
 			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings' ), 'Home settings' , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
 			
@@ -89,7 +89,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			if ( is_multi_author() ) 
 				$this->options_subpage_multi_author 	= add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
 			
-			$this->options_subpage_seo 				= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), 'Deep Linking' , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
+			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), 'Deep Linking' , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
 			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ), 'Documentation' , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
 			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), 'Analytics' , 'manage_options', 'jm_tc_analytics', 'jm_tc_subpages' );		
 			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), 'About' , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
@@ -111,7 +111,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		
 		public function admin_styles()
 		{
-			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_seo', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
+			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_cf', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
 			{
 				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
 			}

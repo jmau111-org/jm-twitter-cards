@@ -65,8 +65,8 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 function jm_tc_subpages(){
 if ( isset( $_GET['page'] ) ) {
 		switch ( $_GET['page'] ) {
-			case 'jm_tc_seo':
-				require( JM_TC_ADMIN_PAGES_DIR .'seo.php' );
+			case 'jm_tc_cf':
+				require( JM_TC_ADMIN_PAGES_DIR .'custom_fields.php' );
 				break;
 
 			case 'jm_tc_images':

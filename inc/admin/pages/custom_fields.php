@@ -18,7 +18,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	
 		$plugin_options = array(
 		'id'         => 'jm_tc',
-		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_seo', ), ),
+		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_cf', ), ),
 		'show_names' => true,
 		'fields'     => array(
 			
