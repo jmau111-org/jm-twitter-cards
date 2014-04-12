@@ -111,7 +111,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		
 		public function admin_styles()
 		{
-			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_about', 'jm_tc_seo', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
+			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_seo', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
 			{
 				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
 			}
@@ -122,7 +122,6 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		{
 			
 			load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
-			wp_enqueue_style('jm-tc-doc-style', JM_TC_CSS_URL.'jm-tc-documentation.css');
 		}
 		
 		/*	

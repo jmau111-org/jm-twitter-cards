@@ -31,8 +31,15 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.wrap .cmb-form, .wrap p {
+.wrap .cmb-form, .wrap p, 
+.wrap h4, .wrap h3, .wrap ul,
+.wrap img, .wrap pre {
 	padding: 0.25em 40px;
+}
+
+.wrap .quote-doc{
+
+	padding-left: 2em;
 }
 
 .wrap .decal {
@@ -73,6 +80,7 @@
 	padding: 0.25em 40px .25em 0; 
 	line-height: 160%; 
 	position: relative; 
+	display:block;
 	color:#888; 
 	background:transparent; 
 }
@@ -91,6 +99,10 @@
 	top:-5px;
 }
 
+.wrap .quote-doc:before{
+	content:"";
+}
+
 .plugin-desc { 
 	font-size: 1rem; 
 	margin: 0.25em 0; 
@@ -102,3 +114,4 @@
 	margin-right:1em; 
 	color:#292F33; 
 }
+
