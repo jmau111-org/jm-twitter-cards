@@ -178,9 +178,11 @@ function jm_tc_init()
 	add_filter( 'robots_txt', 'jm_tc_robots_mod', PHP_INT_MAX, 2 );
 	
 	//admin classes
+	
+	new JM_TC_Utilities();
+	
 	if( is_admin() ) {
 	
-		 new JM_TC_Utilities();
 		 new JM_TC_Admin(); 
 		 new JM_TC_Metabox();
 		 new JM_TC_Notices();
