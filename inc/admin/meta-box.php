@@ -22,10 +22,9 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			//alter desc attributes
 			add_filter( 'cmb_title_attributes', array($this,'cmb_update_title_description'), 10, 2 );
-
 			
 			//register meta box
-			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ) );
+			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ), 10, 1 );
 			
 			//show on/off field in post
 			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_post'), 10, 2 );
@@ -56,7 +55,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		
 			return $args;
 		}
-			
+		
 			
 		//on/off 
 		public function on_off( $context ) {
