@@ -37,6 +37,19 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
 			//add_action( 'admin_enqueue_scripts',  array( $this, 'meta_box_scripts' ) );
 			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_styles' ) );
+			add_filter( 'cmb_frontend_form_format', array( $this, 'save_button' ), 10, 3 );
+		}
+		
+		/**
+		*
+		* Alter the submit button with the sumbit_button() function
+		* This is more appropriate and it will display a notice when settings are saved
+		*/
+		public function save_button( $object_id, $meta_box, $form ){
+		
+			$form = '<form class="cmb-form" method="post" id="%s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%s">%s<input type="submit" name="submit-cmb" value="%s" class="button button-primary"></form>';
+			
+			return $form;
 		}
 		
 		/**

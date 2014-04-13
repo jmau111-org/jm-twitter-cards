@@ -179,10 +179,12 @@ function jm_tc_init()
 	
 	//admin classes
 	if( is_admin() ) {
-		
+	
+		 new JM_TC_Utilities();
 		 new JM_TC_Admin(); 
 		 new JM_TC_Metabox();
 		 new JM_TC_Notices();
+		 new JM_TC_Author();
 
 	}
 	
@@ -237,7 +239,7 @@ function jm_tc_get_default_options()
 		'twitteriPhoneId' => '',
 		'twitteriPadId' => '',
 		'twitterGooglePlayId' => '',
-		'twitterCardRobotsTxt' => 'yes',
+		'twitterCardRobotsTxt' => 'no',
 	);
 }
 
@@ -250,10 +252,7 @@ AFTER WP HAS LOADED
 add_action('wp', 'jm_tc_after_wp_loaded');
 function jm_tc_after_wp_loaded()
 {		
-   
-	new JM_TC_Utilities();
 	new JM_TC_Thumbs();
-	new JM_TC_Author();
 	new JM_TC_Markup();
 	
 }

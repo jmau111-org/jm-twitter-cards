@@ -60,7 +60,7 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		
 		public static function get_excerpt_by_id($post_id)
 		{
-			$the_post = get_post($post_id);
+			$the_post 	 = get_post($post_id);
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 			
 			$the_excerpt = strip_tags( $the_excerpt );// kill HTML tags
