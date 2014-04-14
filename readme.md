@@ -11,6 +11,10 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.1.6 #
+* 14 Apr 2014
+* compatibility with older versions of PHP 
+
 # 5.1.5 #
 * 14 Apr 2014
 * fix jetpack error with PHP_INT_MAX BUG

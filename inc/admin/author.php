@@ -41,7 +41,7 @@ if ( class_exists('JM_TC_Utilities') ) {
 
 			$infos3  = '<h3><span>'.__('Plugin', 'jm-tc').'</span></h3>';
 			$infos3 .= '<p>';
-			$infos3 .= __('Maybe you will like this plugin too: ', 'jm-tc') . static::get_plugins_list( $slugs );
+			$infos3 .= __('Maybe you will like this plugin too: ', 'jm-tc') . self::get_plugins_list( $slugs );
 			$infos3 .= '</p>';
 			
 			

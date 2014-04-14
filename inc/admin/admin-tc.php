@@ -57,7 +57,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		* @since  0.1.0
 		*/
 		public function mninit() {
-			register_setting( static::$key, static::$key );
+			register_setting( self::$key, self::$key );
 		}
 		
 		/**
@@ -91,8 +91,8 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		*/
 		public function add_page() {
 		
-			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', static::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png');
-			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), 'General', 'manage_options', static::$key, array( $this, 'admin_page_display' ) );
+			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png');
+			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), 'General', 'manage_options', self::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), 'Images' , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
 			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields' ), 'Custom fields' , 'manage_options', 'jm_tc_cf', 'jm_tc_subpages' );
 			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt' ), 'robots.txt' , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
@@ -162,9 +162,9 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			
 			<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-			<?php cmb_metabox_form( $this->option_fields(), static::$key ); ?>
+			<?php cmb_metabox_form( $this->option_fields(), self::$key ); ?>
 			<div class="doc-valid">
-			<?php echo static::docu_links(0); ?>
+			<?php echo self::docu_links(0); ?>
 			</div>
 			
 			<blockquote>
@@ -187,12 +187,12 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		public static function option_fields() {
 			
 			// Only need to initiate the array once per page-load
-			if ( ! empty( static::$plugin_options ) )
-			return static::$plugin_options;
+			if ( ! empty( self::$plugin_options ) )
+			return self::$plugin_options;
 			
-			static::$plugin_options = array(
+			self::$plugin_options = array(
 			'id'         => 'jm_tc',
-			'show_on'    => array( 'key' => 'options-page', 'value' => array( static::$key, ), ),
+			'show_on'    => array( 'key' => 'options-page', 'value' => array( self::$key, ), ),
 			'show_names' => true,
 			'fields'     => array(
 			
@@ -227,7 +227,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			);
 			
 			
-			return static::$plugin_options;
+			return self::$plugin_options;
 		}
 		
 		/**
@@ -236,7 +236,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		* @return string  Option key
 		*/
 		public static function key() {
-			return static::$key;
+			return self::$key;
 		}
 		
 	}

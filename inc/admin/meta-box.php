@@ -167,7 +167,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'pages' => $post_types,
 			'context' => 'advanced',
 			'priority' => 'high',
-			'show_on' => array( 'alt_value' => static::on_off( 'post' ), 'alt_key' => 'exclude_post'),
+			'show_on' => array( 'alt_value' => self::on_off( 'post' ), 'alt_key' => 'exclude_post'),
 			'fields' => array(
 
 			
@@ -324,7 +324,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'title'         => __( 'Twitter Creator', 'jm-tc' ),
 			'pages'         => array( 'user' ), // Tells CMB to use user_meta vs post_meta
 			'show_names'    => true,
-			'show_on' 		=> array( 'alt_value' => static::on_off( 'profile' ), 'alt_key' => 'exclude_profile'),
+			'show_on' 		=> array( 'alt_value' => self::on_off( 'profile' ), 'alt_key' => 'exclude_profile'),
 			'fields'        => array(
 			array(
 			'name'     => __( 'Twitter Creator', 'jm-tc' ),
@@ -345,7 +345,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'context'       => 'side',
 			'priority'      => 'low',
 			'show_names'    => true,
-			'show_on'	    => array( 'alt_value' => static::on_off( 'post' ), 'alt_key' => 'exclude_post'),
+			'show_on'	    => array( 'alt_value' => self::on_off( 'post' ), 'alt_key' => 'exclude_post'),
 			'fields'        => array(
 			
 			
