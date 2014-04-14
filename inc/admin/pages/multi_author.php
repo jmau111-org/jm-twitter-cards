@@ -35,7 +35,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			'name' 		=> __( 'Meta key Twitter', 'jm-tc' ),
 			'desc' 		=> __('If the above option is set to "no", just modify user meta key associated with Twitter Account in profiles to get Twitter usernames from your own fields:', 'jm-tc'),
 			'id'   		=> 'twitterUsernameKey', 
-			'type' 		=> 'text_medium',
+			'type' 		=> 'text_medium'
 			),
 			
 		)

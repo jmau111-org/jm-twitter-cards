@@ -12,7 +12,7 @@ if ( class_exists('JM_TC_Utilities') ) {
 	class JM_TC_Thumbs extends JM_TC_Utilities
 	{
 	
-		public function thumbnail_sizes($post_id)
+		public static function thumbnail_sizes($post_id)
 		{
 			$opts = get_option('jm_tc');
 			
@@ -47,7 +47,7 @@ if ( class_exists('JM_TC_Utilities') ) {
 		
 
 		// get featured image
-		public function get_post_thumbnail_weight($post_id)
+		public static function get_post_thumbnail_weight($post_id)
 		{
 
 				
