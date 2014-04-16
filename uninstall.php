@@ -22,7 +22,6 @@ $keys = array(
 			'cardData2',
 			'cardLabel2',
 			'cardImgSize',
-			'twitterCardCancel'
 		);
 		
 		

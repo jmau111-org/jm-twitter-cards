@@ -94,26 +94,17 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/
 
 		public static function get_seo_plugin_datas( $post_id = false, $type ) {
-				
-			$plugin = 'WPSEO_Frontend';
 			
-			switch ( class_exists( $plugin ) ) {
-				case 'WPSEO_Frontend' :
+			if ( class_exists( 'WPSEO_Frontend' ) ) {
 					$object = new WPSEO_Frontend();
 					$title  = $object->title(false) != '' ? $object->title(false) : the_title_attribute( array( 'echo' => false));
 					$desc   = $object->metadesc(false) != '' ? $object->metadesc(false) : parent::get_excerpt_by_id($post_id);	
-				break;
-				
-				case 'All_in_One_SEO_Pack' :
+			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
 					$title = get_post_meta($post_id, '_aioseop_title', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : parent::get_excerpt_by_id($post_id);
 					$desc  = get_post_meta($post_id, '_aioseop_description', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) ) : parent::get_excerpt_by_id($post_id);					
-				break;
-			
-				default:
+			} else {
 					$title = the_title_attribute( array( 'echo' => false));
 					$desc  = parent::get_excerpt_by_id($post_id);
-				break;
-			
 			}
 			
 			switch( $type ) {
@@ -320,7 +311,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					}
 					
 					
-					$this->display_markup( 'image', apply_filters( 'jm_tc_image_source', $image) );
+					$this->display_markup( 'image:src', apply_filters( 'jm_tc_image_source', $image) );
 					
 				}
 				else

@@ -11,6 +11,12 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.1.8 #
+* 16 Apr 2014
+* fix bug with All In One SEO 
+* fix bug with older wordpress version before 3.5 : kinda of gracious degradation
+* add the additional parameter src for image as default for every meta image, this should make the Twitterbot treat the image as a unique URL and re-fetches the image
+
 # 5.1.7 #
 * 15 Apr 2014
 * fix PHP 5.4 warning when calling static method
@@ -22,7 +28,6 @@ This is the github version of the official repository for JM Twitter Cards. It's
 * fix notices undefined var
 * last changes and fixes before pushing it on wordpress.org
 * change version number for beta tester, they need to have the last fixes ^^
-
 
 # 5.1.3 #
 * 10 Apr 2014

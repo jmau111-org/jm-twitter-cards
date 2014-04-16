@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.1.7
+Version: 5.1.8
 License: GPL2++
 
 JM Twitter Cards Plugin
