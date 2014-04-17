@@ -1,6 +1,6 @@
 # JM Twitter Cards #
 
-Easy integration of Twitter cards in WordPress. Most useful card types provided.
+Easy integration of Twitter cards in WordPress. All card types provided.
 
 ## Description ##
 
