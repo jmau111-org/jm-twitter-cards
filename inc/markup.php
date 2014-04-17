@@ -99,9 +99,11 @@ if( class_exists('JM_TC_Utilities') ) {
 					$object = new WPSEO_Frontend();
 					$title  = $object->title(false) != '' ? $object->title(false) : the_title_attribute( array( 'echo' => false));
 					$desc   = $object->metadesc(false) != '' ? $object->metadesc(false) : parent::get_excerpt_by_id($post_id);	
+			
 			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
-					$title = get_post_meta($post_id, '_aioseop_title', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : parent::get_excerpt_by_id($post_id);
+					$title = get_post_meta($post_id, '_aioseop_title', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : the_title_attribute( array( 'echo' => false));
 					$desc  = get_post_meta($post_id, '_aioseop_description', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) ) : parent::get_excerpt_by_id($post_id);					
+			
 			} else {
 					$title = the_title_attribute( array( 'echo' => false));
 					$desc  = parent::get_excerpt_by_id($post_id);
@@ -194,11 +196,12 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			if($post_id) {
 			
-				if(  $this->opts['twitterCardTitle'] != '' ) {
+				if(  !empty( $this->opts['twitterCardTitle'] ) ) {
 				
-					$cardTitle = ($title = get_post_meta($post_id, $this->opts['twitterCardTitle'], true) !='') ? $title : the_title_attribute( array( 'echo' => false));
+					$title = get_post_meta($post_id, $this->opts['twitterCardTitle'], true); // this one is pretty hard to debug ^^
+					$cardTitle = !empty( $title ) ? htmlspecialchars( stripcslashes( $title ) ) : the_title_attribute( array( 'echo' => false));
 					
-				} elseif( $this->opts['twitterCardTitle'] == ''  && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') )  ) {
+				} elseif( empty( $this->opts['twitterCardTitle'] ) && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') )  ) {
 				
 					$cardTitle = self::get_seo_plugin_datas($post_id, 'title');
 					
@@ -229,12 +232,14 @@ if( class_exists('JM_TC_Utilities') ) {
 		public function description($post_id = false, $is_tax = false) {
 		
 			if($post_id) {
+			
 				
-				if( $this->opts['twitterCardDesc'] != '' ) {
+				if( !empty( $this->opts['twitterCardDesc']) ) {
 				
-					$cardDescription = ($desc = get_post_meta($post_id, $this->opts['twitterCardDesc'], true) != '') ? $desc : parent::get_excerpt_by_id($post_id);
+					$desc = get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
+					$cardDescription = !empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : parent::get_excerpt_by_id($post_id);
 					
-				} elseif( $this->opts['twitterCardDesc'] == '' && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') ) ){
+				} elseif( empty( $this->opts['twitterCardDesc'] ) && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') ) ){
 					
 					$cardDescription = self::get_seo_plugin_datas($post_id, 'desc');
 				

@@ -202,6 +202,8 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'player' 				=> __( 'Player', 'jm-tc' ),
 			'gallery' 				=> __( 'Gallery', 'jm-tc' ),
 			),
+			
+			'std'	=> $this->opts['twitterCardType'],
 
 			),
 			
@@ -213,9 +215,10 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			),
 			
 			array(
-			'id' => 'cardImage',
+			'id' 	=> 'cardImage',
 			'name'  => __('Set another source as twitter image (enter URL)', 'jm-tc'),
-			'type' => 'file',
+			'type' 	=> 'file',
+			//'std'	=> $this->opts['twitterImage'], ... probably a bad idea so we won't do this ^^
 			),
 			
 
@@ -368,6 +371,8 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'mobile-non-retina' => __('435 x 375 px', 'jm-tc'),
 			'mobile-retina'  	=> __('280 x 150 px', 'jm-tc'),
 			),
+			
+			'std'	=> $this->opts['twitterCardImgSize'],
 
 			),
 			
@@ -386,6 +391,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'text_number',
 			'min'  => 280,
 			'max'  => PHP_INT_MAX,
+			'std'	=> $this->opts['twitterImageWidth'],
 			),	
 			
 			array(
@@ -394,6 +400,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'text_number',
 			'min'  => 150,
 			'max'  => PHP_INT_MAX,
+			'std'	=> $this->opts['twitterImageHeight'],
 			),	
 			
 			

@@ -11,6 +11,18 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+
+# 5.1.9 #
+* 17 Apr 2014
+* Fix fallback All In One SEO title
+* Put the card type selected in admin option page as default setting for meta box because it so a pain to select it on each post when meta box is enabled ^^
+* Note that if you want to change card type for a particular post you'll need to use this select
+* Everything that can be default is now set so even you do not have to set it if you do not want to
+* Will save your time !
+* Fix bug with get_post_meta and custom fields
+* Can't wait for Spanish Version \o/
+* Rebuild French Translation
+
 # 5.1.8 #
 * 16 Apr 2014
 * fix bug with All In One SEO 
