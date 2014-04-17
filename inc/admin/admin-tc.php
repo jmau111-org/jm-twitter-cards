@@ -94,17 +94,17 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png');
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', self::$key, array( $this, 'admin_page_display' ) );
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
-			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields' ), __( 'Custom fields' ) , 'manage_options', 'jm_tc_cf', 'jm_tc_subpages' );
-			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt' ), __( 'robots.txt' ) , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
-			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings' ), __( 'Home settings' ) , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
+			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields', 'jm-tc' ), __( 'Custom fields', 'jm-tc' ) , 'manage_options', 'jm_tc_cf', 'jm_tc_subpages' );
+			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt', 'jm-tc' ), __( 'robots.txt', 'jm-tc' ) , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
+			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings', 'jm-tc' ), __( 'Home settings', 'jm-tc' ) , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
 			
-			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box' ),  __( 'Meta Box' ), 'manage_options', 'jm_tc_meta_box', 'jm_tc_subpages' );
+			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box', 'jm-tc' ),  __( 'Meta Box', 'jm-tc' ), 'manage_options', 'jm_tc_meta_box', 'jm_tc_subpages' );
 			
 			//there is no point displaying this option page is the website is not multi_author !
 			if ( is_multi_author() ) 
-				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author' ), __( 'Multi Author') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
+				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author', 'jm-tc' ), __( 'Multi Author', 'jm-tc') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
 			
-			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking' ), __( 'Deep Linking' ) , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
+			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking', 'jm-tc' ), __( 'Deep Linking', 'jm-tc' ) , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
 			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ),  __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
 			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', 'jm_tc_subpages' );		
 			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ) , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
