@@ -15,7 +15,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	);
 	
 	foreach ( $urls as $title => $id ) :
-	 echo '<h3>'.$title.'</h3>'. '<p>' . wp_oembed_get( esc_url('http://www.youtube.com/watch?v='.$id ) ). '</p><br/>';
+	 echo '<h3>'.$title.'</h3>'. '<p>' . wp_oembed_get( esc_url('http://www.youtube.com/watch?v='.$id ), array( 'width' => 800 ) ). '</p><br/>';
 	endforeach;
 ?>
 </div>
