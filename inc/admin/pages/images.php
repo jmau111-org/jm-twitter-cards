@@ -39,7 +39,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		),	
 
 		array(
-		'name' 		=> __('Image width', 'jm-tc'),
+		'name' 		=> __('Image height', 'jm-tc'),
 		'desc' 		=> __('px', 'jm-tc'),
 		'id'   		=> 'twitterImageHeight',
 		'type' 		=> 'text_number',

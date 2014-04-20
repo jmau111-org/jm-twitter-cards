@@ -104,6 +104,10 @@ if ( isset( $_GET['page'] ) ) {
 			case 'jm_tc_about':
 				require( JM_TC_ADMIN_PAGES_DIR .'about.php' );
 				break;
+				
+			case 'jm_tc_tutorial':
+				require( JM_TC_ADMIN_PAGES_DIR .'tutorial.php' );
+				break;
 
 		}
 	}

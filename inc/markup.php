@@ -97,7 +97,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			if ( class_exists( 'WPSEO_Frontend' ) ) {
 					$object = new WPSEO_Frontend();
-					$title  = $object->title(false) != '' ? htmlspecialchars( stripcslashes( $object->title(false) ) ): the_title_attribute( array( 'echo' => false));
+					$title  = $object->title(false) != '' ? htmlspecialchars( stripcslashes( $object->title(false) ) ) : the_title_attribute( array( 'echo' => false));
 					$desc   = $object->metadesc(false) != '' ? htmlspecialchars( stripcslashes( $object->metadesc(false)  ) ) : parent::get_excerpt_by_id($post_id);	
 			
 			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
