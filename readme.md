@@ -11,7 +11,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 
 # 5.1.9 #
-* 18 Apr 2014
+* 20 Apr 2014
 * Fix fallback All In One SEO title
 * Put the card type selected in admin option page as default setting for meta box because it so a pain to select it on each post when meta box is enabled ^^
 * Note that if you want to change card type for a particular post you'll need to use this select
@@ -21,6 +21,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 * Fix escaping issue with desc and title from WP SEO by Yoast
 * Can't wait for Spanish Version \o/
 * Rebuild French Translation
+* Add tutorial menu with videos explaining how to use the plugin
 
 # 5.1.8 #
 * 16 Apr 2014
