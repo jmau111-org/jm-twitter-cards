@@ -9,7 +9,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <div class="wrap">
 <h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-<?php $admin = new JM_TC_Admin(); ?>
+
 
 	
 	<figure>
@@ -23,7 +23,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	<p><?php _e('This will help you to set the best card type experience and it will probably improve your marketing value.', 'jm-tc');?></p>
 	
 	<div class="doc-valid">
-	<?php echo $admin->docu_links(6); ?>
+	<?php echo JM_TC_Admin::docu_links(6); ?>
 	</div>
 	
 </div>

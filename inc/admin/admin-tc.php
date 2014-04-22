@@ -38,6 +38,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			//add_action( 'admin_enqueue_scripts',  array( $this, 'meta_box_scripts' ) );
 			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_styles' ) );
 			add_filter( 'cmb_frontend_form_format', array( $this, 'save_button' ), 10, 3 );
+			add_action( 'cmb_save_options-page_fields', array( $this, 'is_it_saved') );
 		}
 		
 		/**
@@ -133,6 +134,17 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			{
 				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
 			}
+		}
+		
+		
+		// Add a confirmation message 
+		public function is_it_saved() 
+		{
+			?>
+			<div id="message" class="updated">
+			<p><strong><?php _e('Settings saved.');?></strong></p>
+			</div>
+			<?php
 		}
 		
 		
