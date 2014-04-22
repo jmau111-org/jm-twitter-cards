@@ -469,7 +469,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			$cardTypePost 	= get_post_meta($post_id, 'twitterCardType', true);
 			$cardWidth 		= get_post_meta($post_id, 'cardImageWidth', true);
 			$cardHeight 	= get_post_meta($post_id, 'cardImageHeight', true);
-			$type = ( !empty( $cardTypePost ) ) ? $cardTypePost  : $this->opts['twitterCardType'];
+			$type 			= ( !empty( $cardTypePost ) ) ? $cardTypePost  : $this->opts['twitterCardType'];
 		
 					
 			if(  in_array( $type, array('photo','product', 'summary_large_image', 'player') )  ) {
