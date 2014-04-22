@@ -53,7 +53,7 @@ if ( class_exists('JM_TC_Utilities') ) {
 		{
 
 				
-			$math = filesize( get_attached_file( get_post_thumbnail_id( $post_id ) ) ) / 1000000;
+			$math = filesize( get_attached_file( get_post_thumbnail_id( $post_id ) ) ) / 1000000;// I was told this is not an accurate math but I actually we do not care, 1 MB images on a website that's not web that's insane!
 			
 		
 			if( $math == 0 ) {
