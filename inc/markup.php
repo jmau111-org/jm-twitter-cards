@@ -149,8 +149,10 @@ if( class_exists('JM_TC_Utilities') ) {
 		* Retrieve the meta card type
 		*/		
 		public function cardType( $post_id = false ) {
+		
+			$cardTypePost = get_post_meta($post_id, 'twitterCardType', true);
 			
-			$cardType = (  ($cardTypePost = get_post_meta($post_id, 'twitterCardType', true) ) != '' ) ? $cardTypePost  : $this->opts['twitterCardType'];
+			$cardType = ( !empty( $cardTypePost  ) ) ? $cardTypePost  : $this->opts['twitterCardType'];
 
 			$this->display_markup( 'card',  apply_filters('jm_tc_card_type', $cardType) );
 		}
@@ -167,7 +169,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				$cardUsernameKey 	= $this->opts['twitterUsernameKey'];
 				$cardCreator 		= get_the_author_meta( $cardUsernameKey, $post_author );
 				
-				$cardCreator		= ($cardCreator != '') ? $cardCreator : $this->opts['twitterCreator'];
+				$cardCreator		= ( !empty( $cardCreator ) ) ? $cardCreator : $this->opts['twitterCreator'];
 				$cardCreator 		=  '@' . parent::remove_at( $cardCreator );
 			
 			} else {
@@ -236,8 +238,8 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 				if( !empty( $this->opts['twitterCardDesc']) ) {
 				
-					$desc = get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
-					$cardDescription = !empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : parent::get_excerpt_by_id($post_id);
+					$desc 				= get_post_meta($post_id, $this->opts['twitterCardDesc'], true);
+					$cardDescription 	= !empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : parent::get_excerpt_by_id($post_id);
 					
 				} elseif( empty( $this->opts['twitterCardDesc'] ) && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') ) ){
 					
