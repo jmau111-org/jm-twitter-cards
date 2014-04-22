@@ -280,7 +280,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				{
 					if (get_the_post_thumbnail($post_id ) != '' )
 					{
-						if ($cardImage != '')
+						if ( !empty( $cardImage ) )
 						{ // cardImage is set
 							$image = $cardImage;
 						}
@@ -293,7 +293,7 @@ if( class_exists('JM_TC_Utilities') ) {
 
 					}
 					
-					elseif (get_the_post_thumbnail($post_id ) == '' && $cardImage != '')
+					elseif (get_the_post_thumbnail($post_id ) == '' && !empty( $cardImage ) )
 					{
 						$image = $cardImage;
 					}
@@ -385,7 +385,7 @@ if( class_exists('JM_TC_Utilities') ) {
 								);
 				
 				
-				if ( $data1 != '' && $label1 != '' && $data2 != '' && $label2 != '' )
+				if ( !empty( $data1 ) && !empty( $label1 ) && !empty( $data2 ) && !empty( $label2 ) )
 				{
 					foreach ($product as $field => $value ) $this->display_markup( $field,  apply_filters('jm_tc_product_field-'.$field, $value) );
 				}		
@@ -413,7 +413,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				$playerHeight 		= get_post_meta($post_id, 'cardPlayerHeight', true);
 					
 					//Player
-					if ( $playerUrl != '' ) 
+					if ( !empty($playerUrl ) ) 
 					{
 						$this->display_markup( 'player',  apply_filters('jm_tc_player_url', $playerUrl) );
 					} 
@@ -424,7 +424,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					}
 					
 					//Player stream
-					if ( $playerStreamUrl != '' ) 
+					if ( !empty( $playerStreamUrl ) ) 
 					{
 					
 					$codec = "video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;";
@@ -437,7 +437,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					}
 					
 					//Player width and height
-					if ( $playerWidth != '' && $playerHeight != '' ) 
+					if ( !empty( $playerWidth ) && !empty( $playerHeight ) ) 
 					{				
 						$this->display_markup( 'player:width',  apply_filters('jm_tc_player_width', $playerWidth) );
 						$this->display_markup( 'player:height',  apply_filters('jm_tc_player_height', $playerHeight) );
@@ -464,14 +464,16 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 		public function cardDim($post_id = false){	
 		
-		
-			$type = (  ($cardTypePost = get_post_meta($post_id, 'twitterCardType', true) ) != '' ) ? $cardTypePost  : $this->opts['twitterCardType'];
+			$cardTypePost 	= get_post_meta($post_id, 'twitterCardType', true);
+			$cardWidth 		= get_post_meta($post_id, 'cardImageWidth', true);
+			$cardHeight 	= get_post_meta($post_id, 'cardImageHeight', true);
+			$type = ( !empty( $cardTypePost ) ) ? $cardTypePost  : $this->opts['twitterCardType'];
 		
 					
 			if(  in_array( $type, array('photo','product', 'summary_large_image', 'player') )  ) {
 			
-				$width  = ( '' != ($cardWidth = get_post_meta($post_id, 'cardImageWidth', true) ) ) ? $cardWidth : $this->opts['twitterImageWidth'];
-				$height = ( '' != ($cardHeight = get_post_meta($post_id, 'cardImageHeight', true) ) ) ? $cardHeight : $this->opts['twitterImageHeight'];
+				$width  = ( !empty( $cardWidth ) ) ? $cardWidth : $this->opts['twitterImageWidth'];
+				$height = ( !empty( $cardHeight ) ) ? $cardHeight : $this->opts['twitterImageHeight'];
 				
 				$this->display_markup( 'image:width',  $width );
 				$this->display_markup( 'image:height',  $height );
@@ -496,15 +498,15 @@ if( class_exists('JM_TC_Utilities') ) {
 		public function deeplinking(){
 
 					
-			if( $this->opts['twitteriPhoneName'] != '' ) $this->display_markup( 'app:name:iphone',  $this->opts['twitteriPhoneName'] );
-			if( $this->opts['twitteriPadName'] != '' ) $this->display_markup( 'app:name:ipad', $this->opts['twitteriPadName'] );
-			if( $this->opts['twitterGooglePlayName'] != '' ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterGooglePlayName'] );
-			if( $this->opts['twitteriPhoneUrl'] != '' ) $this->display_markup( 'app:url:iphone', $this->opts['twitteriPhoneUrl'] );
-			if( $this->opts['twitteriPadUrl'] != '' ) $this->display_markup( 'app:url:ipad', $this->opts['twitteriPhoneUrl'] );
-			if( $this->opts['twitterGooglePlayUrl'] != '' ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterGooglePlayUrl'] );
-			if( $this->opts['twitteriPhoneId'] != '' ) $this->display_markup( 'app:id:iphone', $this->opts['twitteriPhoneId'] );
-			if( $this->opts['twitteriPadId'] != '' ) $this->display_markup( 'app:id:ipad', $this->opts['twitteriPadId'] );
-			if( $this->opts['twitterGooglePlayId'] != '' ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterGooglePlayId'] );
+			if( !empty( $this->opts['twitteriPhoneName'] ) ) $this->display_markup( 'app:name:iphone',  $this->opts['twitteriPhoneName'] );
+			if( !empty( $this->opts['twitteriPadName'] ) ) $this->display_markup( 'app:name:ipad', $this->opts['twitteriPadName'] );
+			if( !empty( $this->opts['twitterGooglePlayName'] ) ) $this->display_markup( 'app:name:googleplay', $this->opts['twitterGooglePlayName'] );
+			if( !empty( $this->opts['twitteriPhoneUrl'] ) ) $this->display_markup( 'app:url:iphone', $this->opts['twitteriPhoneUrl'] );
+			if( !empty( $this->opts['twitteriPadUrl'] ) ) $this->display_markup( 'app:url:ipad', $this->opts['twitteriPhoneUrl'] );
+			if( !empty( $this->opts['twitterGooglePlayUrl'] ) ) $this->display_markup( 'app:url:googleplay', $this->opts['twitterGooglePlayUrl'] );
+			if( !empty( $this->opts['twitteriPhoneId'] ) ) $this->display_markup( 'app:id:iphone', $this->opts['twitteriPhoneId'] );
+			if( !empty( $this->opts['twitteriPadId'] ) ) $this->display_markup( 'app:id:ipad', $this->opts['twitteriPadId'] );
+			if( !empty( $this->opts['twitterGooglePlayId'] ) ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterGooglePlayId'] );
 
 		}
 		
