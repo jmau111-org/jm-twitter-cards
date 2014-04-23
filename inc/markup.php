@@ -94,6 +94,9 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/
 
 		public static function get_seo_plugin_datas( $post_id = false, $type ) {
+		
+		$aioseop_title		 = get_post_meta($post_id, '_aioseop_title', true);
+		$aioseop_description = get_post_meta($post_id, '_aioseop_description', true);
 			
 			if ( class_exists( 'WPSEO_Frontend' ) ) {
 					$object = new WPSEO_Frontend();
@@ -101,12 +104,12 @@ if( class_exists('JM_TC_Utilities') ) {
 					$desc   = $object->metadesc(false) != '' ? htmlspecialchars( stripcslashes( $object->metadesc(false)  ) ) : parent::get_excerpt_by_id($post_id);	
 			
 			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
-					$title = get_post_meta($post_id, '_aioseop_title', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_title', true) ) ) : the_title_attribute( array( 'echo' => false));
-					$desc  = get_post_meta($post_id, '_aioseop_description', true) != '' ? htmlspecialchars( stripcslashes( get_post_meta($post_id, '_aioseop_description', true) ) ) : parent::get_excerpt_by_id($post_id);					
+					$title 	=  !empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false));
+					$desc  	=  !empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : parent::get_excerpt_by_id($post_id);					
 			
 			} else {
-					$title = the_title_attribute( array( 'echo' => false));
-					$desc  = parent::get_excerpt_by_id($post_id);
+					$title 	= the_title_attribute( array( 'echo' => false));
+					$desc  	= parent::get_excerpt_by_id($post_id);
 			}
 			
 			switch( $type ) {
