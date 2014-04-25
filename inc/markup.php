@@ -87,16 +87,14 @@ if( class_exists('JM_TC_Utilities') ) {
 		}	
 		
 		
-		
-		
 		/*
 		* retrieve datas from SEO Plugins
 		*/
 
 		public static function get_seo_plugin_datas( $post_id = false, $type ) {
 		
-		$aioseop_title		 = get_post_meta($post_id, '_aioseop_title', true);
-		$aioseop_description = get_post_meta($post_id, '_aioseop_description', true);
+			$aioseop_title		 = get_post_meta($post_id, '_aioseop_title', true);
+			$aioseop_description = get_post_meta($post_id, '_aioseop_description', true);
 			
 			if ( class_exists( 'WPSEO_Frontend' ) ) {
 					$object = new WPSEO_Frontend();
@@ -138,7 +136,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 				echo '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
 				
-			} elseif( $error && current_user_can('edit_post') ) {
+			} elseif( $error && current_user_can('edit_posts') ) {
 			
 				echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
 			
