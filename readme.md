@@ -10,10 +10,11 @@ This is the github version of the official repository for JM Twitter Cards. It's
 ## Changelog ##
 
 # 5.2.0 #
-* 25 Apr 2014
+* 26 Apr 2014
 * Add confirmation message for option page when settings are saved
 * Add translation in Spanish
 * Fix bug with capability name
+* Add 2nd footage, a video for troubleshooting
 
 
 # 5.1.9 #
