@@ -211,6 +211,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
+			'name' => __('Preview', 'jm-tc'),
 			'id'   => 'preview_title', // Not used but needed for plugin
 			),
 			
