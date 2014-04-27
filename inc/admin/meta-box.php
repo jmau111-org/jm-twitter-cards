@@ -48,13 +48,28 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 		}
 		
+		// Force code display
+		public static function code() {
+          static $on = false;
+          if ( !$on ) {
+               ob_start();
+          } else {
+               $buffer = ob_get_contents();
+               ob_end_clean();
+               highlight_string( $buffer );
+          }
+          $on = !$on;
+		}
 		
+		// get markup and return preview
 		public static function markup_as_preview(){
 		
+			self::code();
 			$markup  = new JM_TC_Markup();
-			$preview = '<pre class="html">'.htmlentities( $markup->add_markup(), ENT_COMPAT, 'UTF-8' ).'</pre>';
+			$preview = $markup->add_markup();
+			self::code();
 			
-		
+			return __('A simple preview for markup (be careful SEO plugins options are not taken into account !)', 'jm-tc') ."\n\n".$preview;
 		}
 		
 		//cmb snippet props to jtsternberg 

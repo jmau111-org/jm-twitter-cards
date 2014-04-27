@@ -10,11 +10,13 @@ This is the github version of the official repository for JM Twitter Cards. It's
 ## Changelog ##
 
 # 5.2.0 #
-* 26 Apr 2014
+* 27 Apr 2014
 * Add confirmation message for option page when settings are saved
 * Add translation in Spanish
 * Fix bug with capability name
 * Add 2nd footage, a video for troubleshooting
+* Re-add preview feature, use only PHP for this
+* Have to fix some bugs (try to grab SEO plugin options in preview), not sure it can be done
 
 
 # 5.1.9 #
