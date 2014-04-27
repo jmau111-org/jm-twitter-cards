@@ -20,7 +20,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			add_action( 'cmb_render_text_number', array(&$this, 'render_text_number'), 10, 2 );
 			add_action( 'cmb_render_text_url_https', array(&$this, 'render_text_url_https'), 10, 2 );
 			
-			//alter desc attributes
+			//alter desc and preview attributes
 			add_filter( 'cmb_title_attributes', array($this,'cmb_update_title_description'), 10, 2 );
 			
 			//register meta box
@@ -51,11 +51,11 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		//cmb snippet props to jtsternberg 
 		function cmb_update_title_description( $args, $field ) {
 		
-			if( $field->id() == 'twitter_featured_size' ) $args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight( $field->object_id );
+			if( $field->id() == 'twitter_featured_size' ) 
+				$args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight( $field->object_id );
 		
 			return $args;
 		}
-		
 			
 		//on/off 
 		public function on_off( $context ) {
@@ -178,7 +178,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'id'   => 'documentation_title', // Not used but needed for plugin
 			'desc' => JM_TC_Admin::docu_links(1),
 			),
-			
 			
 			// title
 			array(
