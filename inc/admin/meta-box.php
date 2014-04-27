@@ -48,11 +48,25 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 		}
 		
+		
+		public static function markup_as_preview(){
+		
+			$markup  = new JM_TC_Markup();
+			$preview = '<pre class="html">'.htmlentities( $markup->add_markup(), ENT_COMPAT, 'UTF-8' ).'</pre>';
+			
+		
+		}
+		
 		//cmb snippet props to jtsternberg 
 		function cmb_update_title_description( $args, $field ) {
 		
 			if( $field->id() == 'twitter_featured_size' ) 
 				$args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight( $field->object_id );
+				
+			if( $field->id() == 'preview_title' ) {
+				$args['desc'] = self::markup_as_preview();
+				
+			}
 		
 			return $args;
 		}
@@ -177,6 +191,13 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'name' => __('Documentation', 'jm-tc'),
 			'id'   => 'documentation_title', // Not used but needed for plugin
 			'desc' => JM_TC_Admin::docu_links(1),
+			),
+			
+			// title
+			array(
+			'type' => 'title',
+			'name' => __('Preview', 'jm-tc'),
+			'id'   => 'preview_title', // Not used but needed for plugin
 			),
 			
 			// title

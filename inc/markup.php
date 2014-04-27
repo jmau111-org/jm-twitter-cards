@@ -17,7 +17,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			add_action('wp_head', array(&$this, 'add_markup'), 2 );
 			
 		}
-
+		
 
 		/*
 		* Add meta to head section
@@ -28,8 +28,16 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
 			
-			if( is_singular() && !is_front_page() && !is_home() && !is_404() && !is_tag() ) {
-
+			if( 
+				is_admin() 
+				|| (
+					is_singular() 
+					&& !is_front_page() 
+					&& !is_home() 
+					&& !is_404() 
+					&& !is_tag()
+				)	
+			) {
 			
 				/* most important meta */
 				$this->cardType( $post->ID );
