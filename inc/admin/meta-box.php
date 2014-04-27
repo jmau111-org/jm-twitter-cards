@@ -69,7 +69,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			$preview = $markup->add_markup();
 			self::code();
 			
-			return __('A simple preview for markup (be careful SEO plugins options are not taken into account !)', 'jm-tc') ."\n\n".$preview;
+			return __('A simple preview for markup', 'jm-tc') ."\n\n".$preview;
 		}
 		
 		//cmb snippet props to jtsternberg 

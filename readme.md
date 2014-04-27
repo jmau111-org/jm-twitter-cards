@@ -16,7 +16,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 * Fix bug with capability name
 * Add 2nd footage, a video for troubleshooting
 * Re-add preview feature, use only PHP for this
-* Have to fix some bugs (try to grab SEO plugin options in preview), not sure it can be done
+* Have to fix some bugs (try to grab WPSEO options in preview), not sure it can be done
 
 
 # 5.1.9 #
