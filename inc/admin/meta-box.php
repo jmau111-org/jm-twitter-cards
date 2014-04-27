@@ -69,7 +69,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			$preview = $markup->add_markup();
 			self::code();
 			
-			return __('A simple preview for markup', 'jm-tc') ."\n\n".$preview;
+			return $preview;
 		}
 		
 		//cmb snippet props to jtsternberg 
@@ -211,7 +211,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Preview', 'jm-tc'),
 			'id'   => 'preview_title', // Not used but needed for plugin
 			),
 			
