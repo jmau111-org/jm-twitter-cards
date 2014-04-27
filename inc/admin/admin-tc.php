@@ -35,7 +35,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
-			add_action( 'admin_enqueue_scripts',  array( $this, 'meta_box_scripts' ) );
+			//add_action( 'admin_enqueue_scripts',  array( $this, 'meta_box_scripts' ) );
 			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_styles' ) );
 			add_filter( 'cmb_frontend_form_format', array( $this, 'save_button' ), 10, 3 );
 			add_action( 'cmb_save_options-page_fields', array( $this, 'is_it_saved') );
@@ -155,7 +155,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		}
 		
 		
-		public function meta_box_scripts( $hook_suffix )
+		/* public function meta_box_scripts( $hook_suffix )
 			{
 			
 				if( $hook_suffix == 'post.php' || $hook_suffix == 'post-new.php' ) 
@@ -163,7 +163,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 					wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false);
 				}
 			
-		}
+		} */
 		
 		
 		/**
