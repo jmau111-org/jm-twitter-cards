@@ -78,13 +78,12 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			if( $field->id() == 'twitter_featured_size' ) 
 				$args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight( $field->object_id );
 				
-			if( $field->id() == 'preview_title' ) {
+			if( $field->id() == 'preview_title' ) 
 				$args['desc'] = self::markup_as_preview();
-				
-			}
 		
 			return $args;
 		}
+		
 			
 		//on/off 
 		public function on_off( $context ) {

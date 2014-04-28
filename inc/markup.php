@@ -91,7 +91,6 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			echo '<!-- /JM Twitter Cards -->' . "\n\n";
 		
-		
 		}	
 		
 		
@@ -101,14 +100,14 @@ if( class_exists('JM_TC_Utilities') ) {
 
 		public static function get_seo_plugin_datas( $post_id = false, $type ) {
 		
-			$aioseop_title		 = get_post_meta($post_id, '_aioseop_title', true);
-			$aioseop_description = get_post_meta($post_id, '_aioseop_description', true);
-			$yoast_title 		 = get_post_meta($post_id, '_yoast_wpseo_title', true);
-			$yoast_description	 = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
+			$aioseop_title		 		= get_post_meta($post_id, '_aioseop_title', true);
+			$aioseop_description 		= get_post_meta($post_id, '_aioseop_description', true);
+			$yoast_wpseo_title 	 		= get_post_meta($post_id, '_yoast_wpseo_title', true);
+			$yoast_wpseo_description 	= get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
 			
 			if ( class_exists( 'WPSEO_Frontend' ) ) {
-					$title  =  !empty( $yoast_title  ) ? htmlspecialchars( stripcslashes( $yoast_title ) ) : the_title_attribute( array( 'echo' => false));
-					$desc   =  !empty( $yoast_description ) ? htmlspecialchars( stripcslashes( $yoast_description ) ) : parent::get_excerpt_by_id($post_id);	
+					$title  =  !empty( $yoast_title  ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : the_title_attribute( array( 'echo' => false));
+					$desc   =  !empty( $yoast_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : parent::get_excerpt_by_id($post_id);	
 			
 			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
 					$title 	=  !empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false));
