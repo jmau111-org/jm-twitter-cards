@@ -65,21 +65,11 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		public static function markup_as_preview(){
 		
 			self::code();
-			global $wpdb;
-			$postmeta = array();
-			   $wpdb->query("
-					SELECT `meta_key`, `meta_value`
-					FROM $wpdb->postmeta
-					WHERE `post_id` = 15
-				");
-			foreach($wpdb->last_result as $key => $value) $postmeta[$value->meta_key] = $value->meta_value;
-			 
-
 			$markup  = new JM_TC_Markup();
 			$preview = $markup->add_markup();
 			self::code();
 			
-			return $preview.print_r($postmeta);;
+			return $preview;
 		}
 		
 		//cmb snippet props to jtsternberg 

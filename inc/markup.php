@@ -103,7 +103,6 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			$aioseop_title		 = get_post_meta($post_id, '_aioseop_title', true);
 			$aioseop_description = get_post_meta($post_id, '_aioseop_description', true);
-			
 			$yoast_title 		 = get_post_meta($post_id, '_yoast_wpseo_title', true);
 			$yoast_description	 = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
 			
