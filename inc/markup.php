@@ -106,8 +106,8 @@ if( class_exists('JM_TC_Utilities') ) {
 			$yoast_wpseo_description 	= get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
 			
 			if ( class_exists( 'WPSEO_Frontend' ) ) {
-					$title  =  !empty( $yoast_title  ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : the_title_attribute( array( 'echo' => false));
-					$desc   =  !empty( $yoast_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : parent::get_excerpt_by_id($post_id);	
+					$title  =  !empty( $yoast_wpseo_title  ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : the_title_attribute( array( 'echo' => false));
+					$desc   =  !empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : parent::get_excerpt_by_id($post_id);	
 			
 			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
 					$title 	=  !empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false));

@@ -11,8 +11,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 <?php
 	$urls =  array(
-		__('How to set it the first time', 'jm-tc') 	=> '8l4k3zrD4Z0',
+		__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
 		__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
+		__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
 	);
 	
 	foreach ( $urls as $title => $id ) :
