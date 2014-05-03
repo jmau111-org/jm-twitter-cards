@@ -7,7 +7,7 @@ Contributors: WebDevStudios (@webdevstudios / webdevstudios.com)
               Bill Erickson (@billerickson / billerickson.net)
               Andrew Norcross (@norcross / andrewnorcross.com)
 Description:  This will create metaboxes with custom fields that will blow your mind.
-Version:      1.1.3
+Version:      1.2.0
 */
 
 /**
@@ -55,7 +55,7 @@ class cmb_Meta_Box {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	const CMB_VERSION = '1.1.3';
+	const CMB_VERSION = '1.2.0';
 
 	/**
 	 * Metabox Config array
@@ -116,6 +116,13 @@ class cmb_Meta_Box {
 	 * @since 1.0.0
 	 */
 	protected static $is_enqueued = false;
+
+	/**
+	 * Whether CMB nonce has been added to the page. (oly add once)
+	 * @var   bool
+	 * @since 1.2.0
+	 */
+	protected static $nonce_added = false;
 
 	/**
 	 * Type of object specified by the metabox Config
@@ -246,12 +253,12 @@ class cmb_Meta_Box {
 			if ( ! is_admin() ) {
 				// we need to register colorpicker on the front-end
 			   wp_register_script( 'iris', admin_url( 'js/iris.min.js' ), array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), self::CMB_VERSION );
-				wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), self::CMB_VERSION );
+		   	wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), self::CMB_VERSION );
 				wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', array(
-					'clear' => __( 'Clear' ),
+					'clear'         => __( 'Clear' ),
 					'defaultString' => __( 'Default' ),
-					'pick' => __( 'Select Color' ),
-					'current' => __( 'Current Color' ),
+					'pick'          => __( 'Select Color' ),
+					'current'       => __( 'Current Color' ),
 				) );
 			}
 		} else {
@@ -263,7 +270,7 @@ class cmb_Meta_Box {
 		wp_register_script( 'cmb-timepicker', CMB_META_BOX_URL . 'js/jquery.timePicker.min.js' );
 		wp_register_script( 'cmb-scripts', CMB_META_BOX_URL .'js/cmb'. $min .'.js', $scripts, self::CMB_VERSION );
 
-		if (function_exists('wp_enqueue_media') ) wp_enqueue_media();
+		wp_enqueue_media();
 
 		wp_localize_script( 'cmb-scripts', 'cmb_l10', apply_filters( 'cmb_localized_data', array(
 			'ajax_nonce'      => wp_create_nonce( 'ajax_nonce' ),
@@ -278,6 +285,7 @@ class cmb_Meta_Box {
 			'ajaxurl'         => admin_url( '/admin-ajax.php' ),
 			'up_arrow'        => '[ ↑ ]&nbsp;',
 			'down_arrow'      => '&nbsp;[ ↓ ]',
+			'check_toggle'    => __( 'Select / Deselect All', 'cmb' ),
 		) ) );
 
 		wp_register_style( 'cmb-styles', CMB_META_BOX_URL . 'style'. $min .'.css', $styles );
@@ -375,9 +383,14 @@ class cmb_Meta_Box {
 		// Set/get ID
 		$object_id = self::set_object_id( $object_id ? $object_id : self::get_object_id() );
 
+		// Add nonce only once per page.
+		if ( ! self::$nonce_added ) {
+			wp_nonce_field( self::nonce(), 'wp_meta_box_nonce', false, true );
+			self::$nonce_added = true;
+		}
+
 		// Use nonce for verification
 		echo "\n<!-- Begin CMB Fields -->\n";
-		wp_nonce_field( self::nonce(), 'wp_meta_box_nonce', false, true );
 		do_action( 'cmb_before_table', $meta_box, $object_id, $object_type );
 		echo '<table class="form-table cmb_metabox">';
 
@@ -440,7 +453,7 @@ class cmb_Meta_Box {
 			self::render_group_row( $field_group, $remove_disabled );
 		}
 
-		echo '<tr><td><p class="add-row"><button data-selector="', $field_group->id() ,'_repeat" class="add-group-row button">'. $field_group->options( 'add_button' ) .'</button></p></td></tr>';
+		echo '<tr><td><p class="add-row"><button data-selector="', $field_group->id() ,'_repeat" data-grouptitle="', $field_group->options( 'group_title' ) ,'" class="add-group-row button">'. $field_group->options( 'add_button' ) .'</button></p></td></tr>';
 
 		echo '</table></td></tr>';
 
@@ -452,6 +465,15 @@ class cmb_Meta_Box {
 		<tr class="repeatable-grouping" data-iterator="'. $field_group->count() .'">
 			<td>
 				<table class="cmb-nested-table" style="width: 100%;">';
+				if ( $field_group->options( 'group_title' ) ) {
+					echo '
+					<tr class="cmb-group-title">
+						<th colspan="2">
+							', sprintf( '<h4>%1$s</h4>', $field_group->replace_hash( $field_group->options( 'group_title' ) ) ), '
+						<th>
+					</tr>
+					';
+				}
 				// Render repeatable group fields
 				foreach ( array_values( $field_group->args( 'fields' ) ) as $field_args ) {
 					$field_args['show_names'] = $field_group->args( 'show_names' );
@@ -595,7 +617,7 @@ class cmb_Meta_Box {
 				}
 
 				// Get old value
-				$old_val = isset( $old[ $field_group->index ][ $sub_id ] )
+				$old_val = is_array( $old ) && isset( $old[ $field_group->index ][ $sub_id ] )
 					? $old[ $field_group->index ][ $sub_id ]
 					: false;
 

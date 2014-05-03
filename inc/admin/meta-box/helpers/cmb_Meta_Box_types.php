@@ -434,7 +434,7 @@ class cmb_Meta_Box_types {
 	public function wysiwyg( $args = array() ) {
 		extract( $this->parse_args( $args, 'input', array(
 			'id'      => $this->_id(),
-			'value'   => stripslashes( html_entity_decode( $this->field->escaped_value( 'esc_html' ) ) ),
+			'value'   => $this->field->escaped_value( 'stripslashes' ),
 			'desc'    => $this->_desc( true ),
 			'options' => $this->field->args( 'options' ),
 		) ) );
@@ -643,7 +643,7 @@ class cmb_Meta_Box_types {
 					'name' => $name,
 				);
 
-				if ( in_array( $term->slug, $saved_terms ) ) {
+				if ( is_array( $saved_terms ) && in_array( $term->slug, $saved_terms ) ) {
 					$args['checked'] = 'checked';
 				}
 				$options .= $this->list_input( $args, $i );
@@ -725,7 +725,8 @@ class cmb_Meta_Box_types {
 			'size'  => 45,
 			'desc'  => '',
 		) ),
-		'<input class="cmb_upload_button button" type="button" value="'. __( 'Add or Upload File', 'cmb' ) .'" />';
+		'<input class="cmb_upload_button button" type="button" value="'. __( 'Add or Upload File', 'cmb' ) .'" />',
+		$this->_desc( true );
 
 		$cached_id = $this->_id();
 		// Reset field args for attachment ID
