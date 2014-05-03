@@ -62,13 +62,12 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			$the_post 	 = get_post($post_id);
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 			
-			$the_excerpt = strip_tags( $the_excerpt );// kill HTML tags
-			$the_excerpt = strip_shortcodes( $the_excerpt );// kill shortcodes
-			
+			//kill shortcode
+			$the_excerpt =  preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $the_excerpt );// fix the issue with strip_shortcodes() not working
 			
 			$the_excerpt = substr( $the_excerpt, 0, 200);// 200 chars at most so 200 chars ^^
 			
-			return esc_attr($the_excerpt); // to prevent meta from being broken by ""
+			return esc_attr(  strip_tags( $the_excerpt )  ); // to prevent meta from being broken by ""
 		}
 		
 
