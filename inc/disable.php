@@ -19,7 +19,7 @@ if( ! class_exists('JM_TC_Disable') ) {
 		public function disable_yoast_twitter(){
 		
 			$opt = get_option( 'wpseo_social' );
-			if ( $opt['twitter'] = true ) $opt['twitter'] = false;
+			$opt['twitter'] = false;
 			
 			update_option('wpseo_social', $opt);
 			
