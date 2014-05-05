@@ -65,7 +65,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		public static function markup_as_preview(){
 		
 			self::code();
-			$markup  = new JM_TC_Markup();
+			$markup  = new JM_TC_Markup;
 			$preview = $markup->add_markup();
 			self::code();
 			
@@ -332,7 +332,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'text_number',
 			'desc'	   => __('When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', 'jm-tc'),
 			'min'  => 262,
-			'max'  => PHP_INT_MAX,
+			'max'  => 1000,
 			),	
 			
 			array(
@@ -340,7 +340,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'id'   => "cardPlayerHeight",
 			'type' => 'text_number',
 			'min'  => 196,
-			'max'  => PHP_INT_MAX,
+			'max'  => 1000,
 			),
 			
 			array(
@@ -424,7 +424,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'id'   => "cardImageWidth",
 			'type' => 'text_number',
 			'min'  => 280,
-			'max'  => PHP_INT_MAX,
+			'max'  => 1000,
 			'std'	=> $this->opts['twitterImageWidth'],
 			),	
 			
@@ -433,7 +433,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'id'   => "cardImageHeight",
 			'type' => 'text_number',
 			'min'  => 150,
-			'max'  => PHP_INT_MAX,
+			'max'  => 1000,
 			'std'	=> $this->opts['twitterImageHeight'],
 			),	
 			

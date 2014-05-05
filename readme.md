@@ -9,6 +9,10 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.2.1 #
+* Skip () for classes because we do not need it, actually no argument in constructor
+* Removes notices, just uncheck option cards in WP SEO if enabled on plugins_loaded (soft way)
+
 # 5.2.0 #
 * 03 May 2014
 * Add confirmation message for option page when settings are saved
@@ -19,6 +23,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 * Fix bug with preview WP SEO
 * Add 3rd footage : multi-author video tutorial
 * Update framework cmb
+* Fix the issue with strip_shortcodes() not working
 
 
 # 5.1.9 #

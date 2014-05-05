@@ -10,7 +10,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 <?php
-$author = new JM_TC_Author();
+$author = new JM_TC_Author;
 
 //plugin list
 $slugs = array(
