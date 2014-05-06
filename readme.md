@@ -12,6 +12,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 # 5.2.1 #
 * Skip () for classes because we do not need it, actually no argument in constructor
 * Removes notices, just uncheck option cards in WP SEO if enabled on plugins_loaded (soft way)
+* Add spanish translation for plugin, huge thanks to Andrew Kurtis from WebHostingHub 
 
 # 5.2.0 #
 * 03 May 2014
