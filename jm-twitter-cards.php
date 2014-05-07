@@ -248,6 +248,7 @@ function jm_tc_get_default_options()
 		'twitteriPadId' => '',
 		'twitterGooglePlayId' => '',
 		'twitterCardRobotsTxt' => 'no',
+		'twitterAppCountry' => '',
 	);
 }
 

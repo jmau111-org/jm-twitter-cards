@@ -91,6 +91,12 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			'type' 		=> 'text_medium',
 			),
 			
+			array(
+			'name' 		=> __( 'App Country code', 'jm-tc' ),
+			'desc' 		=> __('Enter 2 letter App Country code in case your app is not available in the US app store', 'jm-tc'),
+			'id'   		=> 'twitterAppCountry',
+			'type' 		=> 'text_medium',
+			),			
 		)
 		);
 		

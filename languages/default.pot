@@ -550,3 +550,11 @@ msgstr ""
 #: jm-twitter-cards.php:227
 msgid "see blog posts"
 msgstr ""
+
+#: inc/admin/pages/deep_linking.php:95
+msgid "App Country code"
+msgstr ""
+
+#: inc/admin/pages/deep_linking.php:96
+msgid "Enter 2 letter App Country code in case your app is not available in the US app store"
+msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JM Twitter Cards\n"
 "POT-Creation-Date: 2014-04-17 16:16+0100\n"
-"PO-Revision-Date: 2014-05-06 17:14+0100\n"
+"PO-Revision-Date: 2014-05-07 17:27+0100\n"
 "Last-Translator: jmlapam <contact@tweetpress.fr>\n"
 "Language-Team: jmlapam <contact@tweetpress.fr>\n"
 "MIME-Version: 1.0\n"
@@ -584,3 +584,15 @@ msgstr "Bienvenue sur"
 #: jm-twitter-cards.php:227
 msgid "see blog posts"
 msgstr "bonne visite !"
+
+#: inc/admin/pages/deep_linking.php:95
+msgid "App Country code"
+msgstr "Code Pays de l'Application"
+
+#: inc/admin/pages/deep_linking.php:96
+msgid ""
+"Enter 2 letter App Country code in case your app is not available in the US "
+"app store"
+msgstr ""
+"Entre le code pays de l'application si votre application n'est pas "
+"disponible sur l'app store US"

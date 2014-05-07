@@ -507,7 +507,6 @@ if( class_exists('JM_TC_Utilities') ) {
 		* retrieve the deep linking and app install meta
 		*/		
 		public function deeplinking(){
-
 					
 			if( !empty( $this->opts['twitteriPhoneName'] ) ) $this->display_markup( 'app:name:iphone',  $this->opts['twitteriPhoneName'] );
 			if( !empty( $this->opts['twitteriPadName'] ) ) $this->display_markup( 'app:name:ipad', $this->opts['twitteriPadName'] );
@@ -518,7 +517,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			if( !empty( $this->opts['twitteriPhoneId'] ) ) $this->display_markup( 'app:id:iphone', $this->opts['twitteriPhoneId'] );
 			if( !empty( $this->opts['twitteriPadId'] ) ) $this->display_markup( 'app:id:ipad', $this->opts['twitteriPadId'] );
 			if( !empty( $this->opts['twitterGooglePlayId'] ) ) $this->display_markup( 'app:id:googleplay', $this->opts['twitterGooglePlayId'] );
-
+			if( !empty( $this->opts['twitterAppCountry'] ) ) $this->display_markup( 'app:id:country', $this->opts['twitterAppCountry'] );
 		}
 		
 
