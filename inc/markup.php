@@ -6,8 +6,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 if( class_exists('JM_TC_Utilities') ) {
-
-	Class JM_TC_Markup extends JM_TC_Utilities {	
+ 
+	class JM_TC_Markup extends JM_TC_Utilities {	
 	
 		var $opts;
 		var $textdomain = 'jm-tc';

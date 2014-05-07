@@ -7,7 +7,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if( ! class_exists('JM_TC_Disable') ) {
 
-	Class JM_TC_Disable {
+	class JM_TC_Disable {
 	
 		function __construct() {
 		

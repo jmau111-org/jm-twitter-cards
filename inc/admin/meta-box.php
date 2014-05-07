@@ -235,6 +235,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'product'				=> __( 'Product', 'jm-tc' ),
 			'player' 				=> __( 'Player', 'jm-tc' ),
 			'gallery' 				=> __( 'Gallery', 'jm-tc' ),
+			'app' 					=> __( 'Application', 'jm-tc' )
 			),
 			
 			'std'	=> $this->opts['twitterCardType'],
