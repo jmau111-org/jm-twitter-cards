@@ -9,7 +9,12 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.2.2 #
+* fix wrong post meta key for player stream
+* 
+
 # 5.2.1 #
+* 07 May 2014
 * Skip () for classes because we do not need it, actually no argument in constructor
 * Removes notices, just uncheck option cards in WP SEO if enabled on plugins_loaded (soft way)
 * Add app card type to meta box, add country field for meta country application not available on the US app store

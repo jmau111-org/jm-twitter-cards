@@ -419,7 +419,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			if( ($cardType = get_post_meta($post_id, 'twitterCardType', true) ) == 'player') {
 			
 				$playerUrl       	= get_post_meta($post_id, 'cardPlayer', true);
-				$playerStreamUrl 	= get_post_meta($post_id, 'cardPlayer', true);
+				$playerStreamUrl 	= get_post_meta($post_id, 'cardPlayerStream', true);
 				$playerWidth 		= get_post_meta($post_id, 'cardPlayerWidth', true);
 				$playerHeight 		= get_post_meta($post_id, 'cardPlayerHeight', true);
 					
@@ -444,7 +444,7 @@ if( class_exists('JM_TC_Utilities') ) {
 						$this->display_markup( 'player:stream:content_type',  apply_filters('jm_tc_player_stream_codec', $codec) );
 					
 					} else {
-						return;
+						$this->display_markup( '',  '', __('No stream', $this->textdomain) );
 					}
 					
 					//Player width and height
