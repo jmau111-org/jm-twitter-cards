@@ -189,6 +189,7 @@ function jm_tc_init()
 	if( is_admin() ) {
 	
 		 new JM_TC_Utilities;
+		 new JM_TC_Tabs;
 		 new JM_TC_Admin; 
 		 new JM_TC_Metabox;
 		 new JM_TC_Author;
