@@ -26,7 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 *    Sources: 
-* 
 * - https://dev.twitter.com/docs/cards
 * - https://dev.twitter.com/docs/cards/getting-started#open-graph
 * - https://dev.twitter.com/docs/cards/markup-reference
@@ -154,7 +153,7 @@ function jm_tc_robots_mod( $output, $public ) {
 	$opts = get_option('jm_tc');
 	
 	if( $opts['twitterCardRobotsTxt'] == 'yes' ) {
-		$output  = "User-agent: Twitterbot" ."\n";
+		$output .= "User-agent: Twitterbot" ."\n";
 		$output .= "Disallow: ";
 	}
 	

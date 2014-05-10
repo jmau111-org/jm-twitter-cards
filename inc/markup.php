@@ -6,17 +6,27 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 if( class_exists('JM_TC_Utilities') ) {
+
  
 	class JM_TC_Markup extends JM_TC_Utilities {	
 	
+		private static $_this;
 		var $opts;
 		var $textdomain = 'jm-tc';
 
 		function __construct() {
+		
+			self::$_this = $this;
 			$this->opts = get_option('jm_tc');
 			add_action('wp_head', array(&$this, 'add_markup'), 2 );
 			
 		}
+		
+		
+		//being nicer with removers !
+		static function this() {
+			return self::$_this;
+		 }
 		
 
 		/*

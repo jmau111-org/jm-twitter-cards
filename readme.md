@@ -10,8 +10,9 @@ This is the github version of the official repository for JM Twitter Cards. It's
 ## Changelog ##
 
 # 5.2.2 #
-* fix wrong post meta key for player stream
-* 
+* Fix wrong post meta key for player stream
+* Fix robots.txt function 
+
 
 # 5.2.1 #
 * 07 May 2014
