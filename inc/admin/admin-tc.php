@@ -172,6 +172,8 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			<div class="wrap">
 			
 			<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
+			
+			<?php echo JM_TC_Tabs::admin_tabs(); ?>
 
 			<?php cmb_metabox_form( $this->option_fields(), self::$key ); ?>
 			<div class="doc-valid">

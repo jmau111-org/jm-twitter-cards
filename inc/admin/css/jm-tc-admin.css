@@ -1,7 +1,6 @@
 /* Styles in admin  */
 
 .wrap { 
-	max-width: 1024px;
     font-family: Georgia, Times, "Times New Roman", serif;	
 }
 
@@ -127,4 +126,7 @@
 	background-size: 1px 4rem;
 }
 
+.wrap .nav-tab-wrapper li { 
+	display:inline-block;
 
+}

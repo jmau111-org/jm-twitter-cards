@@ -9,6 +9,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <div class="wrap">
 <h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
+<?php echo JM_TC_Tabs::admin_tabs();?>
+
 <p><?php _e('Updated','jm-tc-doc');?> : 12/04/14</p>
 <div id="menu"> <h3><?php _e('Table of content','jm-tc-doc');?></h3>
 <ul> <li><a href="#3w"><?php echo __('What are Twitter Cards?','jm-tc-doc');?></a></li>

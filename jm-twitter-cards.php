@@ -122,7 +122,7 @@ require( JM_TC_INC_DIR . 'disable.php' );
 require( JM_TC_INC_DIR . 'markup.php' ); 
 
 if( is_admin() ) {
-
+	require( JM_TC_ADMIN_DIR. 'tabs.php' );
 	require( JM_TC_ADMIN_DIR. 'admin-tc.php' );
 	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
 
