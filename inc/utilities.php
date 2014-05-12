@@ -63,8 +63,8 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 
 			//kill shortcode
-			$the_excerpt = strip_shortcodes($the_excerpt);
-			$the_excerpt = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $the_excerpt );// fix the issue with strip_shortcodes() not working
+			$shortcode_pattern = get_shortcode_regex();
+			$the_excerpt = preg_replace('/' . $shortcode_pattern . '/', '', $the_excerpt);
 
 			$the_excerpt = substr( $the_excerpt, 0, 200);// 200 chars at most so 200 chars ^^
 
