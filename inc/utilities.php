@@ -8,7 +8,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 if( ! class_exists('JM_TC_Utilities') ) {
 
 	class JM_TC_Utilities {
-	
+
 		public static function remove_at($at)
 		{
 			$noat = str_replace('@', '', $at);
@@ -55,22 +55,23 @@ if( ! class_exists('JM_TC_Utilities') ) {
 
 			return false;
 		}
-		
-		
+
+
 		public static function get_excerpt_by_id($post_id)
 		{
 			$the_post 	 = get_post($post_id);
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
-			
+
 			//kill shortcode
-			$the_excerpt =  preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $the_excerpt );// fix the issue with strip_shortcodes() not working
-			
+			$the_excerpt = strip_shortcodes($the_excerpt);
+			$the_excerpt = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $the_excerpt );// fix the issue with strip_shortcodes() not working
+
 			$the_excerpt = substr( $the_excerpt, 0, 200);// 200 chars at most so 200 chars ^^
-			
+
 			return esc_attr(  strip_tags( $the_excerpt )  ); // to prevent meta from being broken by ""
 		}
-		
+
 
 	}
-	
+
 }
