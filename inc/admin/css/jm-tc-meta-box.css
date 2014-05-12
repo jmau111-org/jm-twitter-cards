@@ -1,3 +1,3 @@
 /* Styles in admin  */
 
- #jm_tc_metabox code{ display:inline-block; padding:2rem; } 
+ #jm_tc_metabox code{ display:inline-block; padding:2rem; overflow:scroll-x; max-width:80%; word-wrap: break-word; } 

@@ -9,11 +9,16 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 ## Changelog ##
 
+# 5.2.3 #
+* Improve text overflow in preview for meta box (used to cover other metaboxes)
+* Change code function name for highlight_code() which is more explicite
+* Change the name of the sc checking function which used to be the same as core WP function
+
 # 5.2.2 #
 * 11 May 2014
 * Fix wrong post meta key for player stream
 * Fix robots.txt function 
-* Add tabs to admin pages
+* Add tabs to admin pages (menu on top for better UX with admin nav)
 
 
 # 5.2.1 #

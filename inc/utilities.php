@@ -35,7 +35,7 @@ if( ! class_exists('JM_TC_Utilities') ) {
 
 		// Use of a WP 3.6 function has_shortcode and fallback
 
-		public static function has_shortcode($content, $tag)
+		public static function has_the_shortcode($content, $tag)
 		{
 			if (function_exists('has_shortcode'))
 			{ //in this case we are in 3.6 at least
@@ -59,7 +59,7 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		
 		public static function get_excerpt_by_id($post_id)
 		{
-			$the_post 	 = get_post($post_id);
+			$the_post	 = get_post($post_id);
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 			
 			//kill shortcode

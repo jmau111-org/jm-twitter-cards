@@ -49,7 +49,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		}
 		
 		// Force code display
-		public static function code() {
+		public static function highlight_code() {
           static $on = false;
           if ( !$on ) {
                ob_start();
@@ -64,10 +64,10 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		// get markup and return preview
 		public static function markup_as_preview(){
 		
-			self::code();
+			self::highlight_code();
 			$markup  = new JM_TC_Markup;
 			$preview = $markup->add_markup();
-			self::code();
+			self::highlight_code();
 			
 			return $preview;
 		}
