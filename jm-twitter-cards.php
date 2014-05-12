@@ -37,7 +37,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://www.jqeasy.com/jquery-character-counter
 * - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
-* - http://perishablepress.com/5-easy-ways-to-display-syntax-highlighted-php-code/
 */
 
 

@@ -13,6 +13,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 * Improve text overflow in preview for meta box (used to cover other metaboxes)
 * Change code function name for highlight_code() which is more explicite
 * Change the name of the sc checking function which used to be the same as core WP function
+* Rebuild preview because of the bug with overflow
 
 # 5.2.2 #
 * 11 May 2014

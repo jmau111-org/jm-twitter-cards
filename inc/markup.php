@@ -148,20 +148,27 @@ if( class_exists('JM_TC_Utilities') ) {
 		/*
 		* Display the different meta
 		*/
-		private function display_markup( $name, $metadata, $error = false ){
+		private function display_markup( $name, $metadata, $error = false, $echo = true ){
 	
 			if( !$error ) {
 				
-				echo '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
+				$meta = '<meta name="twitter:'.$name.'" content="'.$metadata.'">' . "\n";
 				
 			} elseif( $error && current_user_can('edit_posts') ) {
 			
-				echo '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
+				$meta = '<!-- [(-_-)@ '. $error .' @(-_-)] -->' . "\n";
 			
 			} else {
 			
-				return;
+				$meta = '';
 			}
+			
+			
+			if ( $echo )
+				echo $meta;
+			else
+				return $meta;
+			
 		}
 		
 		/*
