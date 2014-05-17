@@ -7,15 +7,15 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if( class_exists('JM_TC_Utilities') ) {
 
- 
+
 	class JM_TC_Markup extends JM_TC_Options {	
-	
+		
 		private static $_this;
 		var $opts;
 		var $textdomain = 'jm-tc';
 
 		function __construct() {
-		
+			
 			self::$_this = $this;
 			$this->opts = get_option('jm_tc');
 			add_action('wp_head', array(&$this, 'add_markup'), 2 );
@@ -25,9 +25,9 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 		//being nicer with removers !
 		static function this() {
-		
+			
 			return self::$_this;
-		 }
+		}
 		
 
 		/*
@@ -46,8 +46,8 @@ if( class_exists('JM_TC_Utilities') ) {
 					&& !is_404() 
 					&& !is_tag()
 					
-			) {
-			
+					) {
+				
 				/* most important meta */
 				$this->display_markup( parent::cardType( $post->ID ) );
 				$this->display_markup( parent::creatorUsername( true ) );
@@ -79,55 +79,50 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			
 			else {
-			
+				
 				parent::error( __('Twitter Cards are off for those pages.', $this->textdomain) );
 			}
 			
-		
+			
 			$this->display_markup( parent::deeplinking() );
 			
 			
 			echo '<!-- /JM Twitter Cards -->' . "\n\n";
-		
+			
 		}	
 
 		/*
 		* Display the different meta
 		*/
-		private function display_markup( $datas, $echo = true ){
-	
+		private function display_markup( $datas ){
+			
 			
 			if ( is_array( $datas ) ) {
-						
-				foreach ( $datas as $name => $value ) {
 				
+				foreach ( $datas as $name => $value ) {
+					
 					if( !empty($value) ) {
-					
-						$meta = '<meta name="twitter:'.$name.'" content="'.$value.'">' . "\n";
-					
+						
+						echo $meta = '<meta name="twitter:'.$name.'" content="'.$value.'">' . "\n";
+						
 					} else{
 						
-						$meta = '';
+						return;
 					}				
 					
 				}
-			
+				
 			} elseif ( is_string( $datas ) ) {
-			
-				$meta = '<!-- [(-_-)@ '. $datas.' @(-_-)] -->' . "\n";
-			
+				
+				echo $meta = '<!-- [(-_-)@ '. $datas.' @(-_-)] -->' . "\n";
+				
 			} else {
-			
-				$meta = '';
+				
+				return;
 			}
 
-		
-			if ( $echo )
-				echo $meta;
-			else
-				return $meta;
-				
-		//var_dump($datas);
+			
+			//var_dump($datas);
 			
 		}
 
