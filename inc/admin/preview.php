@@ -87,7 +87,6 @@ if( class_exists('JM_TC_Options') ) {
 			elseif( in_array('summary', $cardType_arr) ) {
 				
 				$styles    = "width: 60px; height: 60px; margin-left:.6em;";
-				$floatleft = "position:absolute;";
 				$size      = 60;
 				$img       = $img_arr['image:src'];
 				
