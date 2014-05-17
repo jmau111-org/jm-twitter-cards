@@ -244,7 +244,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				}
 				else
 				{ // markup will be different
-				global $post;
+					global $post;
 
 						if (  is_a($post, 'WP_Post') && parent::has_the_shortcode($post->post_content, 'gallery') )
 						{
