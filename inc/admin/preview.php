@@ -14,40 +14,41 @@ if( class_exists('JM_TC_Options') ) {
 		function show_preview($post_ID){
 			
 			/* most important meta */
-			$cardType 		= self::get_datas( parent::cardType( $post_ID ) );
-			$creator 		= self::get_datas( parent::creatorUsername( true ) );
-			$site 			= self::get_datas( parent::siteUsername() );
-			$title 			= self::get_datas( parent::title( $post_ID ) );
-			$description 	= self::get_datas( parent::description( $post_ID ) );
-			$img 			= self::get_datas( parent::image( $post_ID ) );
+			$cardType_arr 		= parent::cardType( $post_ID ) ;
+			$creator_arr 		= parent::creatorUsername( true ) ;
+			$site_arr			= parent::siteUsername() ;
+			$title_arr 			= parent::title( $post_ID );
+			$description_arr 	= parent::description( $post_ID );
+			$img_arr 			= parent::image( $post_ID );
 			
 			
 			/* secondary meta */
-			$product = self::get_datas( parent::product( $post_ID ) );
-			$player  = self::get_datas( parent::player( $post_ID ) );
+			$product_arr = parent::product( $post_ID );
+			$player_arr  = parent::player( $post_ID );
 			
 			
-			$app 	= '';
-			$size 	= 16;
-			$class  = 'featured-image';
-			$tag	= 'img';
-			$close_tag = '';
-			$src	= 'src';
+			$app 			= '';
+			$size 			= 16;
+			$class  		= 'featured-image';
+			$tag			= 'img';
+			$close_tag 		= '';
+			$src			= 'src';
+			$product_meta 	= '';
 			
-			if( in_array($cardType ,array( 'summary_large_image') ) ) {
+			if( in_array($cardType_arr ,array( 'summary_large_image') ) ) {
 				
 				$styles = "width:100%;";
 				$size   = "100%";	
 			}
 			
-			elseif( in_array($cardType ,array( 'photo') ) ) {
+			elseif( in_array($cardType_arr ,array( 'photo') ) ) {
 				
 				$styles = "width:100%;";
 				$size   = "100%";
 				
 			}
 
-			elseif( in_array($cardType ,array( 'player') ) ) {
+			elseif( in_array($cardType_arr ,array( 'player') ) ) {
 				
 				$styles 	= "width:100%;";
 				$src		= "controls poster";
@@ -57,20 +58,28 @@ if( class_exists('JM_TC_Options') ) {
 				
 			}
 			
-			elseif( in_array($cardType ,array( 'summary' ) ) ) {
+			elseif( in_array($cardType_arr ,array( 'summary' ) ) ) {
 				
 				$styles = "float:right; width: 60px; height: 60px; margin-left:.6em;";
 				$size   = 60;
 				
 			}
 			
-			elseif( in_array($cardType ,array( 'product' ) ) ) {
+			elseif( in_array($cardType_arr ,array( 'product' ) ) ) {
+				
+				$product_meta  = '<div style="position:relative;">';
+			
+			
+				foreach ($product as $meta => $value) $product_meta .= '<div>'.$value.'</div>';
+			
+			
+				$product_meta .= '</div>';
 				
 				$styles 	= "float:left; width: 120px; height: 120px; margin-right:.6em;";
 				$size    = 120;
 			}
 			
-			elseif( in_array($cardType ,array( 'app') ) ) {
+			elseif( in_array($cardType_arr ,array( 'app') ) ) {
 				
 				$app = '<div class="gray" style="postion:relative;">Get app</div>';
 			}
@@ -90,18 +99,18 @@ if( class_exists('JM_TC_Options') ) {
 
 							'.get_avatar( false, 16 ).'	
 							
-							<span>'.__('Name associated with ','jm-tc').$site.'</span>
+							<span>'.__('Name associated with ','jm-tc').$site_arr['site'].'</span>
 
 							<div style="position:relative;">
-								<'.$tag.' class="'.$class.'" width="'.$size.'" height="'.$size.'" style="'.$styles.' -webkit-user-drag: none; " '.$src.'="'.$img.'">'.$close_tag.'
+								<'.$tag.' class="'.$class.'" width="'.$size.'" height="'.$size.'" style="'.$styles.' -webkit-user-drag: none; " '.$src.'="'.$img_arr['image:src'].'">'.$close_tag.'
 							</div>
 
 							'
-			.$product.
+			.$product_meta.
 			'
 							
-							<div style= "position:relative;"><strong>'.$title.'</strong></div>
-							<div style= "position:relative;"><em>By '.__('Name associated with ','jm-tc').$creator.'</em></div><div>'.$description.'</div>
+							<div style= "position:relative;"><strong>'.$title_arr['title'].'</strong></div>
+							<div style= "position:relative;"><em>By '.__('Name associated with ','jm-tc').$creator_arr['creator'].'</em></div><div>'.$description_arr['description'].'</div>
 							
 							'
 			.$app.
@@ -118,40 +127,8 @@ if( class_exists('JM_TC_Options') ) {
 			
 		}
 		
-		// get datas
-		private function get_datas( $datas ) {
-			
-			$data = '';
-			
-			if ( is_array( $datas ) ) {
-				
-				foreach ( $datas as $name => $value ) {
-					
-					if( !empty($value) ) {
-						
-						$data .= $value;
-						
-					} else{
-						
-						$data = '';
-					}				
-					
-				}
-				
-				return $data;
-				
-			} else {
-				
-				return;
-			}
-			
-		}
-		
 		
 	}
-	
-	
-
 	
 	
 }

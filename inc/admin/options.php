@@ -117,7 +117,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			$cardSite =  '@' . parent::remove_at( $this->opts['twitterSite'] );
 			
-			return array( 'description' => apply_filters('jm_tc_card_site', $cardSite) );
+			return array( 'site' => apply_filters('jm_tc_card_site', $cardSite) );
 		}
 		
 		
