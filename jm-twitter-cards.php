@@ -58,7 +58,25 @@ define( 'JM_TC_METABOX_URL', trailingslashit(JM_TC_URL.'admin/meta-box') );
 define( 'JM_TC_IMG_URL', trailingslashit(JM_TC_URL.'img') );
 define( 'JM_TC_CSS_URL', trailingslashit(JM_TC_URL.'css') );
 define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );				
-	
+			
+
+
+//Call modules 
+require( JM_TC_INC_DIR . 'utilities.php' ); 
+require( JM_TC_ADMIN_DIR . 'author.php' );
+require( JM_TC_INC_DIR . 'thumbs.php' );
+require( JM_TC_INC_DIR . 'disable.php' );
+require( JM_TC_ADMIN_DIR . 'options.php' );
+require( JM_TC_INC_DIR . 'markup.php' ); 
+
+if( is_admin() ) {
+	require( JM_TC_ADMIN_DIR.  'tabs.php' );
+	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
+	require( JM_TC_ADMIN_DIR . 'preview.php' );	
+	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
+
+}
+
 	
 //Call admin pages
 function jm_tc_subpages(){
@@ -110,21 +128,6 @@ if ( isset( $_GET['page'] ) ) {
 
 		}
 	}
-}		
-
-
-//Call modules 
-require( JM_TC_INC_DIR . 'utilities.php' ); 
-require( JM_TC_ADMIN_DIR . 'author.php' );
-require( JM_TC_INC_DIR . 'thumbs.php' );
-require( JM_TC_INC_DIR . 'disable.php' );
-require( JM_TC_INC_DIR . 'markup.php' ); 
-
-if( is_admin() ) {
-	require( JM_TC_ADMIN_DIR. 'tabs.php' );
-	require( JM_TC_ADMIN_DIR. 'admin-tc.php' );
-	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
-
 }
 
 
@@ -189,7 +192,9 @@ function jm_tc_init()
 	
 		 new JM_TC_Utilities;
 		 new JM_TC_Tabs;
+		 new JM_TC_Options;
 		 new JM_TC_Admin; 
+		 new JM_TC_Preview;
 		 new JM_TC_Metabox;
 		 new JM_TC_Author;
 
