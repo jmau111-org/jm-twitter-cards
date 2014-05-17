@@ -14,17 +14,17 @@ if( class_exists('JM_TC_Options') ) {
 		function show_preview($post_ID){
 			
 			/* most important meta */
-			$cardType = self::get_datas( parent::cardType( $post_ID ) );
-			$creator = self::get_datas( parent::creatorUsername( true ) );
-			$site = self::get_datas( parent::siteUsername() );
-			$title = self::get_datas( parent::title( $post_ID ) );
-			$description = self::get_datas( parent::description( $post_ID ) );
-			$img = self::get_datas( parent::image( $post_ID ) );
+			$cardType 		= self::get_datas( parent::cardType( $post_ID ) );
+			$creator 		= self::get_datas( parent::creatorUsername( true ) );
+			$site 			= self::get_datas( parent::siteUsername() );
+			$title 			= self::get_datas( parent::title( $post_ID ) );
+			$description 	= self::get_datas( parent::description( $post_ID ) );
+			$img 			= self::get_datas( parent::image( $post_ID ) );
 			
 			
 			/* secondary meta */
 			$product = self::get_datas( parent::product( $post_ID ) );
-			$player = self::get_datas( parent::player( $post_ID ) );
+			$player  = self::get_datas( parent::player( $post_ID ) );
 			
 			
 			$app 	= '';

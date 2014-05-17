@@ -6,6 +6,7 @@ Easy integration of Twitter cards in WordPress. All card types provided.
 
 This is the github version of the official repository for JM Twitter Cards. It's hardly a fork but I'm working on ! I'm trying to improve code structure and I'm adding some cool stuffs.
 
+Want to fork? Please fork the trunk version and not the master version, URL is here : https://github.com/TweetPressFr/jm-twitter-cards/tree/trunk
 
 ## Changelog ##
 
