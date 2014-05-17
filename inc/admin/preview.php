@@ -32,6 +32,7 @@ if( class_exists('JM_TC_Options') ) {
 			$size 	= 16;
 			$class  = 'featured-image';
 			$tag	= 'img';
+			$close_tag = '';
 			$src	= 'src';
 			
 			if( in_array($cardType ,array( 'summary_large_image') ) ) {
