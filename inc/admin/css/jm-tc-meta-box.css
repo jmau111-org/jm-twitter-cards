@@ -20,7 +20,7 @@
 
 .hide { display:none; }
 .gallery-meta-container{ float:left; box-sizing: border-box; display: -webkit-box; -webkit-box-pack: start; -webkit-box-align: stretch; -webkit-box-orient: vertical; }
-.tile { -webkit-box-flex: 1;  width:50%; }
+.tile { -webkit-box-flex: 1;  width:50%; height:10em;}
 
 .e-content div { margin:1em 0; }
 .bigger { font-size:1.2em; }
