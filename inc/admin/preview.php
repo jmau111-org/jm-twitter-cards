@@ -69,7 +69,7 @@ if( class_exists('JM_TC_Options') ) {
 			}
 			
 			elseif( in_array('gallery', $cardType_arr) ) {
-			
+				
 				$hide = "hide";
 				$gallery_meta  = '<div class="gallery-meta-container">';
 				
@@ -93,7 +93,7 @@ if( class_exists('JM_TC_Options') ) {
 			}
 			
 			elseif( in_array( 'product', $cardType_arr) ) {
-			
+				
 				$hide = "hide";
 				
 				$product_meta  = '<div class="product-view" style="position:relative;">';
@@ -143,8 +143,8 @@ if( class_exists('JM_TC_Options') ) {
 							</div>
 							
 							'
-			.$app.
-			'
+							.$app.
+							'
 							<div style="float:left;" class="gray"><strong>'.__('View on the web','jm-tc').'<strong></div>
 						
 						</div>';
