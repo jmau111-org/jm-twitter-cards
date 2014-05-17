@@ -338,11 +338,12 @@ if( class_exists('JM_TC_Utilities') ) {
 				$playerStreamUrl 	= get_post_meta($post_ID, 'cardPlayerStream', true);
 				$playerWidth 		= get_post_meta($post_ID, 'cardPlayerWidth', true);
 				$playerHeight 		= get_post_meta($post_ID, 'cardPlayerHeight', true);
+				$player 			= array();
 					
 					//Player
 					if ( !empty($playerUrl ) ) 
 					{
-						return array( 'player' => $playerUrl);
+						$player['player'] = $playerUrl;
 					} 
 					
 					else
@@ -356,34 +357,27 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					$codec = "video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;";
 					
-						return array( 
-						'player:stream' => $playerStreamUrl, 
-						'player:stream:content_type' => $codec 
-						);
+						$player['player:stream'] 			  = $playerStreamUrl;
+						$player['player:stream:content_type'] = $codec;
 					
-					} else {
-						
-						return self::error( __('No stream', 'jm-tc') );
-					}
+					} 
 					
 					//Player width and height
 					if ( !empty( $playerWidth ) && !empty( $playerHeight ) ) 
 					{				
-						return array( 
-							'player:width' => $playerWidth, 
-							'player:height' => $playerHeight 
-							);
+						$player['player:width']  = $playerWidth;
+						$player['player:height'] = $playerHeight;
+							
 					}
 					
 					else 
 					{
-						return array( 
-						'player:width' => 435, 
-						'player:height' => 251 
-						);	
+						$player['player:width']  = 435; 
+						$player['player:height'] = 251;
 					}
 					
-							
+				return $player;
+					
 			} else {
 				return;
 			}

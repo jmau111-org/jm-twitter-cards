@@ -139,7 +139,8 @@ if( class_exists('JM_TC_Options') ) {
 									
 							<div style="'.$floatleft.'">
 							<div><strong>'.$title_arr['title'].'</strong></div>
-							<div><em>By '.__('Name associated with ','jm-tc').$creator_arr['creator'].'</em></div><div>'.$description_arr['description'].'</div>
+							<div><em>By '.__('Name associated with ','jm-tc').$creator_arr['creator'].'</em></div>
+							<div>'.$description_arr['description'].'</div>
 							</div>
 							
 							'

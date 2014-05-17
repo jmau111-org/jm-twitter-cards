@@ -311,6 +311,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'desc'	   => __('When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', 'jm-tc'),
 			'min'  => 262,
 			'max'  => 1000,
+			'std'  => 435,
 			),	
 			
 			array(
@@ -319,6 +320,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'type' => 'text_number',
 			'min'  => 196,
 			'max'  => 1000,
+			'std'  => 251,
 			),
 			
 			array(
