@@ -2,6 +2,7 @@
 
 .fake-twt{
 	display: block;
+	float:left;
 	width: 500px;
 	margin: 0 auto;
 	padding:10px;
@@ -19,4 +20,7 @@
 
 
 .e-content div { margin:1em 0; }
-.gray { padding:.6em; background:#eee; text-align:center; width:90%; margin:1em auto; }
+.bigger { font-size:1.2em; }
+
+.product-view span { display:block; margin:.4em 0;}
+.gray { padding:.6em; background:#eee; text-align:center; width:90%; margin:1em auto; w

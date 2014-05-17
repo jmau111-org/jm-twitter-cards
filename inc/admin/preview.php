@@ -34,6 +34,7 @@ if( class_exists('JM_TC_Options') ) {
 			$close_tag 		= '';
 			$src			= 'src';
 			$product_meta 	= '';
+			$floatleft      = "float:left;";
 			
 			if( in_array('summary_large_image', $cardType_arr ) ) {
 				
@@ -48,7 +49,7 @@ if( class_exists('JM_TC_Options') ) {
 				
 			}
 
-			elseif( in_array($cardType_arr ,array( 'player') ) ) {
+			elseif( in_array('player', $cardType_arr) ) {
 				
 				$styles 	= "width:100%;";
 				$src		= "controls poster";
@@ -67,16 +68,16 @@ if( class_exists('JM_TC_Options') ) {
 			
 			elseif( in_array( 'product', $cardType_arr) ) {
 				
-				$product_meta  = '<div style="position:relative;">';
-			
-			
-				foreach ($product as $meta => $value) $product_meta .= '<div>'.$value.'</div>';
-			
-			
+				$product_meta  = '<div class="product-view" style="">';
+				$product_meta .= '<span class="bigger"><strong>'.$product_arr['data1'].'</strong></span>';
+				$product_meta .= '<span>'.$product_arr['label1'].'</span>';
+				$product_meta .= '<span class="bigger"><strong>'.$product_arr['data2'].'</strong></span>';
+				$product_meta .= '<span>'.$product_arr['label2'].'</span>';
 				$product_meta .= '</div>';
 				
-				$styles 	= "float:left; width: 120px; height: 120px; margin-right:.6em;";
-				$size    = 120;
+				
+				$styles 	   = "float:left; width: 120px; height: 120px; margin-right:.6em;";
+				$size   	   = 120;
 			}
 			
 			elseif( in_array('app', $cardType_arr) ) {
@@ -91,36 +92,31 @@ if( class_exists('JM_TC_Options') ) {
 			
 			
 			$output  = '<div class="fake-twt">';
-			$output .= '<div class="fake-twt-timeline">';
-			$output .= '<div class="fake-twt-tweet">'; 
-			
-			
 			$output .= '<div class="e-content">
 
 							'.get_avatar( false, 16 ).'	
 							
 							<span>'.__('Name associated with ','jm-tc').$site_arr['site'].'</span>
 
-							<div style="position:relative;">
+							<div style="">
 								<'.$tag.' class="'.$class.'" width="'.$size.'" height="'.$size.'" style="'.$styles.' -webkit-user-drag: none; " '.$src.'="'.$img_arr['image:src'].'">'.$close_tag.'
 							</div>
 
 							'
 			.$product_meta.
-			'
-							
-							<div style= "position:relative;"><strong>'.$title_arr['title'].'</strong></div>
-							<div style= "position:relative;"><em>By '.__('Name associated with ','jm-tc').$creator_arr['creator'].'</em></div><div>'.$description_arr['description'].'</div>
+			'				
+							<div style="'.$floatleft.'">
+							<div><strong>'.$title_arr['title'].'</strong></div>
+							<div><em>By '.__('Name associated with ','jm-tc').$creator_arr['creator'].'</em></div><div>'.$description_arr['description'].'</div>
+							</div>
 							
 							'
 			.$app.
 			'
-							<div style="position:relative;" class="gray"><strong>'.__('View on the web','jm-tc').'<strong></div>
+							<div style="float:left;" class="gray"><strong>'.__('View on the web','jm-tc').'<strong></div>
 						
 						</div>';
 			
-			$output .= '</div>';
-			$output .= '</div>';
 			$output .= '</div>';
 			
 			return $output;
