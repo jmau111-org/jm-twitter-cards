@@ -35,13 +35,13 @@ if( class_exists('JM_TC_Options') ) {
 			$src			= 'src';
 			$product_meta 	= '';
 			
-			if( in_array($cardType_arr ,array( 'summary_large_image') ) ) {
+			if( in_array('summary_large_image', $cardType_arr ) ) {
 				
 				$styles = "width:100%;";
 				$size   = "100%";	
 			}
 			
-			elseif( in_array($cardType_arr ,array( 'photo') ) ) {
+			elseif( in_array('photo', $cardType_arr ) ) {
 				
 				$styles = "width:100%;";
 				$size   = "100%";
@@ -58,14 +58,14 @@ if( class_exists('JM_TC_Options') ) {
 				
 			}
 			
-			elseif( in_array($cardType_arr ,array( 'summary' ) ) ) {
+			elseif( in_array('summary', $cardType_arr) ) {
 				
 				$styles = "float:right; width: 60px; height: 60px; margin-left:.6em;";
 				$size   = 60;
 				
 			}
 			
-			elseif( in_array($cardType_arr ,array( 'product' ) ) ) {
+			elseif( in_array( 'product', $cardType_arr) ) {
 				
 				$product_meta  = '<div style="position:relative;">';
 			
@@ -79,7 +79,7 @@ if( class_exists('JM_TC_Options') ) {
 				$size    = 120;
 			}
 			
-			elseif( in_array($cardType_arr ,array( 'app') ) ) {
+			elseif( in_array('app', $cardType_arr) ) {
 				
 				$app = '<div class="gray" style="postion:relative;">Get app</div>';
 			}
