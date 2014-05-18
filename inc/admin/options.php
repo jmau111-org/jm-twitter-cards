@@ -246,35 +246,41 @@ if( class_exists('JM_TC_Utilities') ) {
 					global $post;
 
 						if (  is_a($post, 'WP_Post') 
-							  && has_shortcode($post->post_content, 'gallery') 
+							  && function_exists('has_shortcode')
 						)
 						
 						{
+						
+							if(has_shortcode($post->post_content, 'gallery')  ) 
+							{
 
-							$query_img = get_post_gallery() ? get_post_gallery( $post_ID, false ) : array();//no backward compatibility before 3.6
-							
-							$pic = array();
-							$i   = 0;
-							
-							foreach ( $query_img['src'] as $img ) {
-			
-								// get attachment array with the ID from the returned posts
+								$query_img = get_post_gallery() ? get_post_gallery( $post_ID, false ) : array();//no backward compatibility before 3.6
+								
+								$pic = array();
+								$i   = 0;
+								
+								foreach ( $query_img['src'] as $img ) {
+				
+									// get attachment array with the ID from the returned posts
 
-								$pic['image'.$i.':src'] = $img;
+									$pic['image'.$i.':src'] = $img;
 
-								$i++;
-								if ($i > 3) break; //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
+									$i++;
+									if ($i > 3) break; //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
+								
+								}
+									
+								return $pic;
 							
 							}
-								
-						return $pic;
-							
-						}
+
 						
 						else
 						{
 							return self::error( __('Warning : Gallery Card is not set properly ! There is no gallery in this post !', 'jm-tc') );
 						}
+						
+					}
 					
 				}
 		
