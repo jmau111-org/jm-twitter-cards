@@ -241,44 +241,32 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					return array ( 'image:src' => apply_filters( 'jm_tc_image_source', $image) );
 					
-				}
-				else
-				{ // markup will be different
+				} else { // markup will be different
+				
 					global $post;
 
-						if (  is_a($post, 'WP_Post') && parent::has_the_shortcode($post->post_content, 'gallery') )
+						if (  is_a($post, 'WP_Post') 
+							  && has_shortcode($post->post_content, 'gallery') 
+						)
+						
 						{
-						
-						$pic = array();
 
-							// get attachment for gallery cards
+							$query_img = get_post_gallery() ? get_post_gallery( $post_ID, false ) : array();//no backward compatibility before 3.6
+							
+							$pic = array();
+							$i   = 0;
+							
+							foreach ( $query_img['src'] as $img ) {
+			
+								// get attachment array with the ID from the returned posts
 
-							$args = array(
-							'post_type' => 'attachment',
-							'numberposts' => - 1,
-							'exclude' => get_post_thumbnail_id() ,
-							'post_mime_type' => 'image',
-							'post_status' => null,
-							'post_parent' => $post_ID 
-							);
-							$attachments = get_posts($args);
-							if ($attachments && count($attachments) > 3)
-							{
-								$i = 0;
-								foreach($attachments as $attachment)
-								{
+								$pic['image'.$i.':src'] = $img;
 
-									// get attachment array with the ID from the returned posts
-
-									$pic['image'.$i.':src'] = wp_get_attachment_url($attachment->ID);
-									
-									$i++;
-									if ($i > 3) break; //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
-									
-								}
-								
+								$i++;
+								if ($i > 3) break; //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
+							
 							}
-						
+								
 						return $pic;
 							
 						}

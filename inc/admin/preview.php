@@ -25,6 +25,7 @@ if( class_exists('JM_TC_Options') ) {
 			/* secondary meta */
 			$product_arr 	= parent::product( $post_ID );
 			$player_arr  	= parent::player( $post_ID );
+			$deep_link_arr  = parent::deeplinking();
 			
 			// default 
 			$app 			= '';
@@ -70,15 +71,20 @@ if( class_exists('JM_TC_Options') ) {
 			
 			elseif( in_array('gallery', $cardType_arr) ) {
 				
-				$hide = "hide";
-				$gallery_meta  = '<div class="gallery-meta-container">';
+				$hide 			= 'hide';
+				$gallery_meta  	= '<div class="gallery-meta-container">';
 				
-				$i = 0;
+				if ( is_array( $img_arr ) ) {
+					
+					$i = 0;
+					
+					foreach($img_arr as $name => $url) $gallery_meta .= '<img class="tile" src="'.$url.'" alt="" />';
+					
+					$i++;
+					
+					if ($i > 3) break;
 				
-				foreach($img_arr as $name => $url) $gallery_meta .= '<img class="tile" src="'.$url.'" alt="" />';
-				
-				$i++;
-				if ($i > 3) break;
+				}
 				
 				$gallery_meta .= '</div>';
 				
@@ -96,7 +102,7 @@ if( class_exists('JM_TC_Options') ) {
 				
 			}
 			
-			elseif( in_array( 'product', $cardType_arr) ) {
+			elseif( in_array( 'product', $cardType_arr ) ) {
 				
 				$product_meta  = '<div class="product-view" style="position:relative;">';
 				$product_meta .= '<span class="bigger"><strong>'.$product_arr['data1'].'</strong></span>';
@@ -112,7 +118,7 @@ if( class_exists('JM_TC_Options') ) {
 			
 			elseif( in_array('app', $cardType_arr) ) {
 				
-				$hide = "hide";
+				$hide = 'hide';
 				$app  = '<div class="gray" style="postion:relative;">Get app</div>';
 			}
 			

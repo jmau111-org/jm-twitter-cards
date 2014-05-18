@@ -11,9 +11,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 ## Changelog ##
 
 # 5.2.3 #
-* Improve text overflow in preview for meta box (used to cover other metaboxes)
-* Change code function name for highlight_code() which is more explicite
-* Change the name of the sc checking function which used to be the same as core WP function
+* No more backward compatibility before WP 3.6
 * Rebuild preview because of the bug with overflow
 * To do : add the js to metabox
 
