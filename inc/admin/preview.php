@@ -35,10 +35,10 @@ if( class_exists('JM_TC_Options') ) {
 			$src			= 'src';
 			$product_meta 	= '';
 			$styles			= '';
-			$floatleft      = 'float:left;';
 			$position		= 'position:relative;';
 			$hide			= '';
 			$img  			= ''; 
+			$img_summary	= '';
 			$gallery_meta   = '';
 			
 			// particular cases
@@ -86,15 +86,17 @@ if( class_exists('JM_TC_Options') ) {
 			
 			elseif( in_array('summary', $cardType_arr) ) {
 				
-				$styles    = "width: 60px; height: 60px; margin-left:.6em;";
-				$size      = 60;
-				$img       = $img_arr['image:src'];
+				$styles      = 'width: 60px; height: 60px; margin-left:.6em;';
+				$size        = 60;
+				$hide	     = 'hide';
+				$class  	 = 'summary-image';
+				$img         = $img_arr['image:src'];
+				$img_summary = '<img class="'.$class.'" width="'.$size.'" height="'.$size.'" style="'.$styles.' -webkit-user-drag: none; " '.$src.'="'.$img.'">';
+				$float       = 'float:right;';
 				
 			}
 			
 			elseif( in_array( 'product', $cardType_arr) ) {
-				
-				$hide = "hide";
 				
 				$product_meta  = '<div class="product-view" style="position:relative;">';
 				$product_meta .= '<span class="bigger"><strong>'.$product_arr['data1'].'</strong></span>';
@@ -103,8 +105,7 @@ if( class_exists('JM_TC_Options') ) {
 				$product_meta .= '<span>'.$product_arr['label2'].'</span>';
 				$product_meta .= '</div>';
 				
-
-				$styles 	   = "float:left; width: 120px; height: 120px; margin-right:.6em;";
+				$styles 	   = 'float:left; width: 120px; height: 120px; margin-right:.6em;';
 				$img           = $img_arr['image:src'];
 				$size   	   = 120;
 			}
@@ -123,12 +124,12 @@ if( class_exists('JM_TC_Options') ) {
 			
 			$output  = '<div class="fake-twt" style="">';
 			$output .= '<div class="e-content">
-							<div style="'.$floatleft.'">
+							<div style="float:left;">
 							'.get_avatar( false, 16 ).'	
 							
 							<span>'.__('Name associated with ','jm-tc').$site_arr['site'].'</span>
 							
-							<div style="'.$floatleft.'" class="'.$hide.'">
+							<div style="float:left;" class="'.$hide.'">
 								<'.$tag.' class="'.$class.'" width="'.$size.'" height="'.$size.'" style="'.$styles.' -webkit-user-drag: none; " '.$src.'="'.$img.'">'.$close_tag.'
 							
 							'.$product_meta.'
@@ -137,12 +138,14 @@ if( class_exists('JM_TC_Options') ) {
 							
 							'.$gallery_meta.'
 									
-							<div style="'.$floatleft.'">
+							<div style="float:left;">
 							<div><strong>'.$title_arr['title'].'</strong></div>
 							<div><em>By '.__('Name associated with ','jm-tc').$creator_arr['creator'].'</em></div>
 							<div>'.$description_arr['description'].'</div>
 							</div>
-							
+							'
+							.$img_summary.
+							'
 							'
 							.$app.
 							'
