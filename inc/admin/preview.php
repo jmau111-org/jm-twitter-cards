@@ -117,7 +117,7 @@ if( class_exists('JM_TC_Options') ) {
 			
 			else {
 				
-				$styles = "position: absolute; width: 120px; height: 120px; left: 0px; top: 0px;";
+				$styles = "float:none;";
 			}
 			
 			
