@@ -96,19 +96,15 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/
 		private function display_markup( $datas ){
 			
-			
 			if ( is_array( $datas ) ) {
 				
 				foreach ( $datas as $name => $value ) {
 					
-					if( !empty($value) ) {
+					if( $value != '' ) {
 						
 						echo $meta = '<meta name="twitter:'.$name.'" content="'.$value.'">' . "\n";
 						
-					} else{
-						
-						return;
-					}				
+					} 				
 					
 				}
 				
@@ -125,8 +121,6 @@ if( class_exists('JM_TC_Utilities') ) {
 			//var_dump($datas);
 			
 		}
-
-
 		
 
 	}
