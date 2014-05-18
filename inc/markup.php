@@ -112,11 +112,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 				echo $meta = '<!-- [(-_-)@ '. $datas.' @(-_-)] -->' . "\n";
 				
-			} else {
-				
-				return;
-			}
-
+			} 
 			
 			//var_dump($datas);
 			
