@@ -6,14 +6,14 @@ Easy integration of Twitter cards in WordPress. All card types provided.
 
 This is the github version of the official repository for JM Twitter Cards. It's hardly a fork but I'm working on ! I'm trying to improve code structure and I'm adding some cool stuffs.
 
+Want to fork? Please fork the trunk version and not the master version, URL is here : https://github.com/TweetPressFr/jm-twitter-cards/tree/trunk
 
 ## Changelog ##
 
 # 5.2.3 #
-* Improve text overflow in preview for meta box (used to cover other metaboxes)
-* Change code function name for highlight_code() which is more explicite
-* Change the name of the sc checking function which used to be the same as core WP function
+* No more backward compatibility before WP 3.6
 * Rebuild preview because of the bug with overflow
+* To do : add the js to metabox
 
 # 5.2.2 #
 * 11 May 2014
