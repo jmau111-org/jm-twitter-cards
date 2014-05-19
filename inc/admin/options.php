@@ -80,7 +80,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			$cardType = ( !empty( $cardTypePost  ) ) ? $cardTypePost  : $this->opts['twitterCardType'];
 
-			return array( 'type' => apply_filters('jm_tc_card_type', $cardType) );
+			return array( 'card' => apply_filters('jm_tc_card_type', $cardType) );
 		}
 		
 		/*
