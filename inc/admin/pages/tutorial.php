@@ -16,6 +16,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
 		__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
 		__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
+		__('Preview', 'jm-tc')				 			=> '',
 	);
 	
 	foreach ( $urls as $title => $id ) :
