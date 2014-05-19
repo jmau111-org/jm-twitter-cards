@@ -37,6 +37,8 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			global $post;
 			
+			$options = new JM_TC_Options;
+			
 			echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
 			
 			if( 
@@ -49,42 +51,42 @@ if( class_exists('JM_TC_Utilities') ) {
 					) {
 				
 				/* most important meta */
-				$this->display_markup( parent::cardType( $post->ID ) );
-				$this->display_markup( parent::creatorUsername( true ) );
-				$this->display_markup( parent::siteUsername() );
-				$this->display_markup( parent::title( $post->ID ) );
-				$this->display_markup( parent::description( $post->ID ) );
-				$this->display_markup( parent::image( $post->ID ) );
+				$this->display_markup( $options->cardType( $post->ID ) );
+				$this->display_markup( $options->creatorUsername( true ) );
+				$this->display_markup( $options->siteUsername() );
+				$this->display_markup( $options->title( $post->ID ) );
+				$this->display_markup( $options->description( $post->ID ) );
+				$this->display_markup( $options->image( $post->ID ) );
 				
 				
 				/* secondary meta */
-				$this->display_markup( parent::cardDim( $post->ID ) );
-				$this->display_markup( parent::product( $post->ID ) );
-				$this->display_markup( parent::player( $post->ID ) );
+				$this->display_markup( $options->cardDim( $post->ID ) );
+				$this->display_markup( $options->product( $post->ID ) );
+				$this->display_markup( $options->player( $post->ID ) );
 				
 				
 			}
 			
 			elseif( is_home() || is_front_page() ) {
 				
-				$this->display_markup( parent::cardType() ); 
-				$this->display_markup( parent::siteUsername() );
-				$this->display_markup( parent::creatorUsername() );
-				$this->display_markup( parent::title() );
-				$this->display_markup( parent::description() );	
-				$this->display_markup( parent::image() );	
-				$this->display_markup( parent::cardDim() );		
+				$this->display_markup( $options->cardType() ); 
+				$this->display_markup( $options->siteUsername() );
+				$this->display_markup( $options->creatorUsername() );
+				$this->display_markup( $options->title() );
+				$this->display_markup( $options->description() );	
+				$this->display_markup( $options->image() );	
+				$this->display_markup( $options->cardDim() );		
 				
 			}
 			
 			
 			else {
 				
-				parent::error( __('Twitter Cards are off for those pages.', $this->textdomain) );
+				$options->error( __('Twitter Cards are off for those pages.', $this->textdomain) );
 			}
 			
 			
-			$this->display_markup( parent::deeplinking() );
+			$this->display_markup( $options->deeplinking() );
 			
 			
 			echo '<!-- /JM Twitter Cards -->' . "\n\n";

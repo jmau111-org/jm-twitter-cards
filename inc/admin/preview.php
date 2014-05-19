@@ -11,21 +11,23 @@ if( class_exists('JM_TC_Options') ) {
 	class JM_TC_Preview extends JM_TC_Options {
 		
 		
-		function show_preview($post_ID){
+		public static function show_preview($post_ID){
+		
+			$options = new JM_TC_Options;
 			
 			/* most important meta */
-			$cardType_arr 		= parent::cardType( $post_ID ) ;
-			$creator_arr 		= parent::creatorUsername( true ) ;
-			$site_arr			= parent::siteUsername() ;
-			$title_arr 			= parent::title( $post_ID );
-			$description_arr 	= parent::description( $post_ID );
-			$img_arr 			= parent::image( $post_ID );
+			$cardType_arr 		= $options->cardType( $post_ID ) ;
+			$creator_arr 		= $options->creatorUsername( true ) ;
+			$site_arr			= $options->siteUsername() ;
+			$title_arr 			= $options->title( $post_ID );
+			$description_arr 	= $options->description( $post_ID );
+			$img_arr 			= $options->image( $post_ID );
 			
 			
 			/* secondary meta */
-			$product_arr 	= parent::product( $post_ID );
-			$player_arr  	= parent::player( $post_ID );
-			$deep_link_arr  = parent::deeplinking();
+			$product_arr 	= $options->product( $post_ID );
+			$player_arr  	= $options->player( $post_ID );
+			$deep_link_arr  = $options->deeplinking();
 			
 			// default 
 			$app 			= '';
