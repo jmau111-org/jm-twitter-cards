@@ -119,7 +119,10 @@ if( class_exists('JM_TC_Options') ) {
 			elseif( in_array('app', $cardType_arr) ) {
 				
 				$hide = 'hide';
-				$app  = '<div class="gray" style="postion:relative;">Get app</div>';
+				$class = 'bg-opacity';
+				$app  = '<div class="app-view" style="float:left;">';
+				$app .= '<strong>'.__('Preview for app cards is not available yet.', 'jm-tc').'</strong>';
+				$app .= '</div>';
 			}
 			
 			else {
@@ -128,8 +131,9 @@ if( class_exists('JM_TC_Options') ) {
 			}
 			
 			
-			$output  = '<div class="fake-twt" style="">';
-			$output .= '<div class="e-content">
+			$output  = '<div class="fake-twt">';
+			$output .=  $app;
+			$output .= '<div class="e-content '.$class.'">
 							<div style="float:left;">
 							'.get_avatar( false, 16 ).'	
 							
@@ -152,12 +156,10 @@ if( class_exists('JM_TC_Options') ) {
 							'
 							.$img_summary.
 							'
-							'
-							.$app.
-							'
+							
 							<div style="float:left;" class="gray"><strong>'.__('View on the web','jm-tc').'<strong></div>
 						
-						</div>';
+						</div></div>';
 			
 			$output .= '</div>';
 			
