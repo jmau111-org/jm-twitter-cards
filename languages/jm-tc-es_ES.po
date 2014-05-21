@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JM Twitter Cards\n"
 "POT-Creation-Date: 2014-04-17 16:16+0100\n"
-"PO-Revision-Date: 2014-05-07 17:29+0100\n"
+"PO-Revision-Date: 2014-05-20 01:55+0100\n"
 "Last-Translator: jmlapam <contact@tweetpress.fr>\n"
 "Language-Team: jmlapam <contact@tweetpress.fr>\n"
 "Language: es_ES\n"
@@ -111,7 +111,7 @@ msgstr "Sumario"
 
 #: inc/admin/admin-tc.php:220 inc/admin/meta-box.php:199
 msgid "Summary below Large Image"
-msgstr "Sumario debajo de la Imagen Larga"
+msgstr "Sumario con foto grande"
 
 #: inc/admin/admin-tc.php:221 inc/admin/meta-box.php:200
 msgid "Photo"
@@ -163,7 +163,7 @@ msgstr "Producto"
 
 #: inc/admin/meta-box.php:202
 msgid "Player"
-msgstr "Jugador"
+msgstr "Reproductor de VídeosUMMARY"
 
 #: inc/admin/meta-box.php:203
 msgid "Gallery"

@@ -11,7 +11,12 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.2.4 #
+* 21 May 2014
+* Improve multisite compatibility (default options, uninstall)
+
 # 5.2.3 #
+* 20 May 2014
 * No more backward compatibility before WP 3.6
 * Rebuild preview because of the bug with overflow
 * To do : add the js to metabox

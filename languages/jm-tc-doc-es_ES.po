@@ -5,10 +5,10 @@ msgstr ""
 "Project-Id-Version: JM Twitter Cards Documentation\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: jelena kovacevic <jecajeca260@gmail.com>\n"
+"Last-Translator: jmlapam <contact@tweetpress.fr>\n"
 "Language-Team: jmlapam <contact@tweetpress.fr>\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.6.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
@@ -611,7 +611,7 @@ msgstr "Fuentes"
 #. Text in echo
 #: documentation.php:45
 msgid "Summary Large Image cards"
-msgstr "Resumen tarjetas Imagen Grande"
+msgstr "Sumario con foto grande"
 
 #. Text in echo
 #: documentation.php:10
@@ -1123,7 +1123,7 @@ msgstr "Imágenes"
 #. Text in echo
 #: documentation.php
 msgid "Home settings"
-msgstr "Página de Inicio de ajustes"
+msgstr "Ajustes en el Inicio"
 
 #. Text in echo
 #: documentation.php
