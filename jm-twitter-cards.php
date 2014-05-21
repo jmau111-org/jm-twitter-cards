@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.2.3
+Version: 5.2.4
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -46,7 +46,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.2.3' );
+define( 'JM_TC_VERSION', '5.2.4' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -70,6 +70,7 @@ require( JM_TC_ADMIN_DIR . 'options.php' );
 require( JM_TC_INC_DIR . 'markup.php' ); 
 
 if( is_admin() ) {
+
 	require( JM_TC_ADMIN_DIR.  'tabs.php' );
 	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
 	require( JM_TC_ADMIN_DIR . 'preview.php' );	
@@ -215,11 +216,38 @@ function jm_tc_init()
 
 
 //Plugin install : update options
-register_activation_hook(__FILE__, 'jm_tc_on_activation');
-function jm_tc_on_activation()
-{
-	$opts = get_option('jm_tc');	
-	if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());
+function jm_tc_on_activation() {
+
+        $opts = get_option('jm_tc');	
+		if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
+ 
+}
+
+
+register_activation_hook(__FILE__, 'jm_tc_activate');
+function jm_tc_activate() {
+
+	if( !is_multisite() ) {
+
+		jm_tc_on_activation();
+	
+	} else {
+	
+	    // For regular options.
+		global $wpdb;
+		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+		$original_blog_id = get_current_blog_id();
+		foreach ( $blog_ids as $blog_id ) 
+		{
+			switch_to_blog( $blog_id );
+			jm_tc_on_activation();
+			  
+		}
+	
+		switch_to_blog( $original_blog_id );
+	
+	}
+	
 }
 
 
@@ -268,11 +296,4 @@ function jm_tc_after_wp_loaded()
 	new JM_TC_Thumbs;
 	new JM_TC_Markup;
 	
-}
-
-// Plugin uninstall: delete option
-register_uninstall_hook(__FILE__, 'jm_tc_uninstall');
-function jm_tc_uninstall()
-{
-	delete_option('jm_tc');
 }
