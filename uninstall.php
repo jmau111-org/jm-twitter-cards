@@ -56,6 +56,7 @@ if( !is_multisite() ) {
     {
         switch_to_blog( $blog_id );
         jm_tc_delete();  
+		restore_current_blog();
     }
-	restore_current_blog();
+	
 }

@@ -239,10 +239,9 @@ function jm_tc_activate() {
 		{
 			switch_to_blog( $blog_id );
 			jm_tc_on_activation();
+			restore_current_blog();
 			  
 		}
-	
-		 restore_current_blog();
 	
 	}
 	
