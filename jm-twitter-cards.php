@@ -228,7 +228,6 @@ register_activation_hook(__FILE__, 'jm_tc_activate');
 function jm_tc_activate() {
 
 	if( !is_multisite() ) {
-
 		jm_tc_on_activation();
 	
 	} else {
@@ -236,7 +235,6 @@ function jm_tc_activate() {
 	    // For regular options.
 		global $wpdb;
 		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
-		$original_blog_id = get_current_blog_id();
 		foreach ( $blog_ids as $blog_id ) 
 		{
 			switch_to_blog( $blog_id );
@@ -244,7 +242,7 @@ function jm_tc_activate() {
 			  
 		}
 	
-		switch_to_blog( $original_blog_id );
+		 restore_current_blog();
 	
 	}
 	
