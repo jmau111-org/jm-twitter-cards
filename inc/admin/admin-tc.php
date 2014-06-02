@@ -180,6 +180,23 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			<?php echo self::docu_links(0); ?>
 			</div>
 			
+			<div class="tutorial">
+			<h3><?php _e( 'Tutorial', 'jm-tc' ); ?></h3>
+				<?php 
+					$urls =  array(
+						__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
+						__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
+						__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
+						__('Preview', 'jm-tc')				 			=> 'WniGVE09-IQ',
+					);
+					
+					foreach ( $urls as $title => $id ) :
+					 echo  '<a class="inbl preview-tuto dashicons-before dashicons-video-alt3" href="'.esc_url(admin_url().'/admin.php?page=jm_tc_tutorial#'.$id).'"><figure class="inbl"><img width="120" height="90" src="'.esc_url('https://img.youtube.com/vi/'.$id.'/2.jpg').'" /><figcaption>'.$title.'</figcaption></figure></a>';
+					endforeach;
+				?>
+			
+			</div>
+			
 			<blockquote>
 			<p class="bold"><?php _e('Get more <br />from 140 characters', 'jm-tc');?> </p>
 			<p class="sub-bold"><?php _e('with Twitter Cards', 'jm-tc');?></p>

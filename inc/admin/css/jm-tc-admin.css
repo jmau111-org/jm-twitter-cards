@@ -128,5 +128,23 @@
 
 .wrap .nav-tab-wrapper li { 
 	display:inline-block;
+}
 
+
+.wrap figcaption{
+	text-align:center;
+}
+
+
+.wrap .preview-tuto {
+	position:relative;
+	border:1px solid #ddd;
+}
+
+.wrap .preview-tuto:before {
+	position:absolute;
+	text-decoration:none;
+	color:black;
+	top:50px;
+	left:50%;
 }
