@@ -47,6 +47,17 @@ if( ! class_exists('JM_TC_Utilities') ) {
 
 			return esc_attr(  strip_tags( $the_excerpt )  ); // to prevent meta from being broken by ""
 		}
+		
+		
+		public static function youtube_urls(){
+		
+			return 	array(
+				__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
+				__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
+				__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
+				__('Preview', 'jm-tc')				 			=> 'WniGVE09-IQ',
+			);
+		}
 
 
 	}

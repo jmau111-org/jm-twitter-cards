@@ -12,12 +12,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <?php echo JM_TC_Tabs::admin_tabs();?>
 
 <?php
-	$urls =  array(
-		__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
-		__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
-		__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
-		__('Preview', 'jm-tc')				 			=> 'WniGVE09-IQ',
-	);
+
+	$urls = JM_TC_Utilities::youtube_urls();
 	
 	foreach ( $urls as $title => $id ) :
 	 echo '<h3 id="'.$id.'">'.$title.'</h3>'. '<p>' . wp_oembed_get( esc_url('http://www.youtube.com/watch?v='.$id ), array( 'width' => 800 ) ). '</p><br/>';
