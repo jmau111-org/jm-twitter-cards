@@ -18,7 +18,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			self::$_this = $this;
 			$this->opts = get_option('jm_tc');
-			add_action('wp_head', array(&$this, 'add_markup'), 2 );
+			add_action('wp_head', array( $this, 'add_markup'), 2 );
 			
 		}
 		

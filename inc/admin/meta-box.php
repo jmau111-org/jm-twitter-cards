@@ -17,20 +17,20 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			
 			//render
-			add_action( 'cmb_render_text_number', array(&$this, 'render_text_number'), 10, 2 );
-			add_action( 'cmb_render_text_url_https', array(&$this, 'render_text_url_https'), 10, 2 );
+			add_action( 'cmb_render_text_number', array($this, 'render_text_number'), 10, 2 );
+			add_action( 'cmb_render_text_url_https', array($this, 'render_text_url_https'), 10, 2 );
 			
 			//alter desc and preview attributes
 			add_filter( 'cmb_title_attributes', array($this,'cmb_update_title_description'), 10, 2 );
 			
 			//register meta box
-			add_action( 'cmb_meta_boxes', array(&$this, 'register_meta_boxes' ), 10, 1 );
+			add_action( 'cmb_meta_boxes', array($this, 'register_meta_boxes' ), 10, 1 );
 			
 			//show on/off field in post
-			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_post'), 10, 2 );
+			add_filter( 'cmb_show_on', array($this, 'exclude_from_post'), 10, 2 );
 			
 			//show on/off field in profile
-			add_filter( 'cmb_show_on', array(&$this, 'exclude_from_profile'), 10, 2 );
+			add_filter( 'cmb_show_on', array($this, 'exclude_from_profile'), 10, 2 );
 		}
 
 		// Add number field

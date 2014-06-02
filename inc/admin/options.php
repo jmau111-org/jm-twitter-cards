@@ -27,7 +27,6 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			return self::$_this;
 		 }
-		 
 
 		
 		/*
