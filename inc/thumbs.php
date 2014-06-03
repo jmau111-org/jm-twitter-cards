@@ -48,7 +48,7 @@ if ( class_exists('JM_TC_Utilities') ) {
 				
 		
 
-		// get featured image
+		// get featured image weight
 		public static function get_post_thumbnail_weight($post_id)
 		{
 

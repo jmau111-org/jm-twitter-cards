@@ -323,7 +323,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			array(
 			'id'       => 'cardPlayerStream',
-			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
+			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc') . '[STREAM]',
 			'type'     => 'text_url_https',
 			'desc'     => __('If you do not understand what is the following field then it is probably a bad idea to fulfill it!', 'jm-tc'),
 
