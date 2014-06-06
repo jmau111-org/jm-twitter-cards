@@ -11,7 +11,7 @@ if( ! class_exists('JM_TC_Disable') ) {
 	
 		function __construct() {
 		
-			add_action( 'init', array( &$this, 'disable_yoast_twitter' ) );
+			add_action( 'init', array( $this, 'disable_yoast_twitter' ) );
 			//disable yoast markup but only twitter meta of course !
 			
 		}

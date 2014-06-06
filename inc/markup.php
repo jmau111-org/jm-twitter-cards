@@ -97,14 +97,22 @@ if( class_exists('JM_TC_Utilities') ) {
 		* Display the different meta
 		*/
 		private function display_markup( $datas ){
+		
 			
 			if ( is_array( $datas ) ) {
 				
 				foreach ( $datas as $name => $value ) {
 					
 					if( $value != '' ) {
+					
+						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image:src','image:width','image:height' ) ) ) {
 						
-						echo $meta = '<meta name="twitter:'.$name.'" content="'.$value.'">' . "\n";
+							$is_og = 'og';
+							
+						} else $is_og = 'twitter';
+						
+						
+						echo $meta = '<meta name="'.$is_og.':'.$name.'" content="'.$value.'">' . "\n";
 						
 					} 				
 					

@@ -247,6 +247,17 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'app'					=> __( 'Application', 'jm-tc' ),
 			)
 			),
+			
+			array(
+			'name' 		=> __( 'Open Graph', 'jm-tc' ),
+			'desc' 		=> __( 'Open Graph/SEO', 'jm-tc'),
+			'id'   		=> 'twitterCardOg',
+			'type' 		=> 'select',
+			'options' 	=> array(
+			'no' 		=> __( 'no', 'jm-tc' ),
+			'yes' 		=> __( 'yes', 'jm-tc' ),
+			)
+			),
 
 			)
 			);
