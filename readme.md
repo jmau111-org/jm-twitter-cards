@@ -14,7 +14,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 * 6 June 2014
 * Improve multisite compatibility (default options, uninstall)
 * Appropriate function restore_current_blog() instead of ~x2 switch_to_blog()
-* Support for open graph
+* Support for Open Graph
 
 # 5.2.3 #
 * 20 May 2014

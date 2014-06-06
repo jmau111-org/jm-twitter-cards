@@ -237,8 +237,10 @@ if( class_exists('JM_TC_Utilities') ) {
 						$image = $this->opts['twitterImage'];
 					}
 					
+					//In case Open Graph is on 
+					$img_meta = ( $this->opts['twitterCardOg'] == 'yes' ) ? 'image' : 'image:src';
 					
-					return array ( 'image:src' => apply_filters( 'jm_tc_image_source', $image) );
+					return array ( $img_meta => apply_filters( 'jm_tc_image_source', $image) );
 					
 				} else { // markup will be different
 				

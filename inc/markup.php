@@ -105,8 +105,8 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					if( $value != '' ) {
 					
-						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image:src','image:width','image:height' ) ) ) {
-						
+						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
+							
 							$is_og = 'og';
 							
 						} else $is_og = 'twitter';
@@ -123,8 +123,6 @@ if( class_exists('JM_TC_Utilities') ) {
 				echo $meta = '<!-- [(-_-)@ '. $datas.' @(-_-)] -->' . "\n";
 				
 			} 
-			
-			//var_dump($datas);
 			
 		}
 		
