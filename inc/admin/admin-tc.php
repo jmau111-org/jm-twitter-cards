@@ -187,7 +187,19 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			</blockquote>
 			
 			<p class="plugin-desc"><?php _e('With this plugin you can get summary, summary large image, product, photo, gallery, app and player cards', 'jm-tc') ; ?></p>
-
+			
+			<div class="tutorial">
+			<h3><?php _e( 'Tutorial', 'jm-tc' ); ?></h3>
+			<?php 
+				
+				$urls = JM_TC_Utilities::youtube_urls();
+				
+				foreach ( $urls as $title => $id ) :
+				 echo  '<a class="inbl preview-tuto dashicons-before dashicons-video-alt3" href="'.esc_url(admin_url().'/admin.php?page=jm_tc_tutorial#'.$id).'"><figure class="inbl"><img width="120" height="90" src="'.esc_url('https://img.youtube.com/vi/'.$id.'/2.jpg').'" /><figcaption>'.$title.'</figcaption></figure></a>';
+				endforeach;
+			?>
+			
+			</div>
 			</div>
 			<?php
 		}
@@ -233,6 +245,17 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'summary_large_image' 	=> __( 'Summary below Large Image', 'jm-tc' ),
 			'photo' 				=> __( 'Photo', 'jm-tc' ),
 			'app'					=> __( 'Application', 'jm-tc' ),
+			)
+			),
+			
+			array(
+			'name' 		=> __( 'Open Graph', 'jm-tc' ),
+			'desc' 		=> __( 'Open Graph/SEO', 'jm-tc'),
+			'id'   		=> 'twitterCardOg',
+			'type' 		=> 'select',
+			'options' 	=> array(
+			'no' 		=> __( 'no', 'jm-tc' ),
+			'yes' 		=> __( 'yes', 'jm-tc' ),
 			)
 			),
 

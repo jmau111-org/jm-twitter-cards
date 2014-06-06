@@ -18,7 +18,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			self::$_this = $this;
 			$this->opts = get_option('jm_tc');
-			add_action('wp_head', array(&$this, 'add_markup'), 2 );
+			add_action('wp_head', array( $this, 'add_markup'), 2 );
 			
 		}
 		
@@ -97,14 +97,22 @@ if( class_exists('JM_TC_Utilities') ) {
 		* Display the different meta
 		*/
 		private function display_markup( $datas ){
+		
 			
 			if ( is_array( $datas ) ) {
 				
 				foreach ( $datas as $name => $value ) {
 					
 					if( $value != '' ) {
+					
+						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
+							
+							$is_og = 'og';
+							
+						} else $is_og = 'twitter';
 						
-						echo $meta = '<meta name="twitter:'.$name.'" content="'.$value.'">' . "\n";
+						
+						echo $meta = '<meta name="'.$is_og.':'.$name.'" content="'.$value.'">' . "\n";
 						
 					} 				
 					
@@ -115,8 +123,6 @@ if( class_exists('JM_TC_Utilities') ) {
 				echo $meta = '<!-- [(-_-)@ '. $datas.' @(-_-)] -->' . "\n";
 				
 			} 
-			
-			//var_dump($datas);
 			
 		}
 		

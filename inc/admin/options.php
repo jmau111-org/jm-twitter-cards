@@ -27,7 +27,6 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			return self::$_this;
 		 }
-		 
 
 		
 		/*
@@ -238,8 +237,10 @@ if( class_exists('JM_TC_Utilities') ) {
 						$image = $this->opts['twitterImage'];
 					}
 					
+					//In case Open Graph is on 
+					$img_meta = ( $this->opts['twitterCardOg'] == 'yes' ) ? 'image' : 'image:src';
 					
-					return array ( 'image:src' => apply_filters( 'jm_tc_image_source', $image) );
+					return array ( $img_meta => apply_filters( 'jm_tc_image_source', $image) );
 					
 				} else { // markup will be different
 				
@@ -293,7 +294,9 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/
 		public function product($post_ID){
 
-			if( ($cardType = get_post_meta($post_ID, 'twitterCardType', true) ) == 'product') {
+			$cardType = apply_filters( 'jm_tc_card_type', get_post_meta($post_ID, 'twitterCardType', true) );
+			
+			if( $cardType == 'product' ) {
 			
 				$data1 			= get_post_meta($post_ID, 'cardData1', true);
 				$label1		 	= get_post_meta($post_ID, 'cardLabel1', true);
@@ -325,8 +328,10 @@ if( class_exists('JM_TC_Utilities') ) {
 		* Player additional fields
 		*/
 		public function player($post_ID){	
+		
+		$cardType = apply_filters( 'jm_tc_card_type', get_post_meta($post_ID, 'twitterCardType', true) );
 
-			if( ($cardType = get_post_meta($post_ID, 'twitterCardType', true) ) == 'player') {
+			if( $cardType == 'player') {
 			
 				$playerUrl       	= get_post_meta($post_ID, 'cardPlayer', true);
 				$playerStreamUrl 	= get_post_meta($post_ID, 'cardPlayerStream', true);
@@ -337,7 +342,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					//Player
 					if ( !empty($playerUrl ) ) 
 					{
-						$player['player'] = $playerUrl;
+						$player['player'] = apply_filters('jm_tc_player_url', $playerUrl);
 					} 
 					
 					else
@@ -351,23 +356,23 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					$codec = "video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;";
 					
-						$player['player:stream'] 			  = $playerStreamUrl;
-						$player['player:stream:content_type'] = $codec;
+						$player['player:stream'] 			  = apply_filters('jm_tc_player_stream_url', $playerStreamUrl);
+						$player['player:stream:content_type'] = apply_filters('jm_tc_player_codec', $codec);
 					
 					} 
 					
 					//Player width and height
 					if ( !empty( $playerWidth ) && !empty( $playerHeight ) ) 
 					{				
-						$player['player:width']  = $playerWidth;
-						$player['player:height'] = $playerHeight;
+						$player['player:width']  = apply_filters('jm_tc_player_width', $playerWidth);
+						$player['player:height'] = apply_filters('jm_tc_player_height',$playerHeight);
 							
 					}
 					
 					else 
 					{
-						$player['player:width']  = 435; 
-						$player['player:height'] = 251;
+						$player['player:width']  = apply_filters('jm_tc_player_default_width', 435); 
+						$player['player:height'] = apply_filters('jm_tc_player_default_height', 251);
 					}
 					
 				return $player;
@@ -398,8 +403,8 @@ if( class_exists('JM_TC_Utilities') ) {
 				$height = ( !empty( $cardHeight ) ) ? $cardHeight : $this->opts['twitterImageHeight'];
 				
 				return array( 
-				'image:width' => $width, 
-				'image:height' => $height 
+				'image:width'  => apply_filters('jm_tc_image_width', $width), 
+				'image:height' => apply_filters('jm_tc_image_height', $height)
 				);
 			
 			} elseif( in_array( $type, array('photo','product', 'summary_large_image', 'player') ) && !$post_ID ) {
