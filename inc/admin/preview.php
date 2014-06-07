@@ -56,7 +56,7 @@ if( class_exists('JM_TC_Options') ) {
 			elseif( in_array('photo', $cardType_arr ) ) {
 				
 				$styles = "width:100%;";
-				$img	= $img_arr['image:src'];
+				$img	= ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$size   = "100%";
 				
 			}
@@ -64,7 +64,7 @@ if( class_exists('JM_TC_Options') ) {
 			elseif( in_array('player', $cardType_arr) ) {
 				
 				$styles 	= "width:100%;";
-				$img	= ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
+				$img		= ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$src		= "controls poster";
 				$tag    	= "video";
 				$close_tag 	= "</video>";
@@ -115,7 +115,7 @@ if( class_exists('JM_TC_Options') ) {
 				$product_meta .= '</div>';
 				
 				$styles 	   = 'float:left; width: 120px; height: 120px; margin-right:.6em;';
-				$img           = $img_arr['image:src'];
+				$img		   = ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$size   	   = 120;
 			}
 			
