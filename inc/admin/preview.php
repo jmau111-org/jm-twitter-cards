@@ -14,6 +14,7 @@ if( class_exists('JM_TC_Options') ) {
 		public static function show_preview($post_ID){
 		
 			$options = new JM_TC_Options;
+			$opts    = get_option('jm_tc');
 			
 			/* most important meta */
 			$cardType_arr 		= $options->cardType( $post_ID ) ;
@@ -48,14 +49,14 @@ if( class_exists('JM_TC_Options') ) {
 			if( in_array('summary_large_image', $cardType_arr ) ) {
 				
 				$styles = "width:100%;";
-				$img	= $img_arr['image:src'];
+				$img	= ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$size   = "100%";	
 			}
 			
 			elseif( in_array('photo', $cardType_arr ) ) {
 				
 				$styles = "width:100%;";
-				$img	= $img_arr['image:src'];
+				$img	= ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$size   = "100%";
 				
 			}
@@ -63,7 +64,7 @@ if( class_exists('JM_TC_Options') ) {
 			elseif( in_array('player', $cardType_arr) ) {
 				
 				$styles 	= "width:100%;";
-				$img	    = $img_arr['image:src'];
+				$img		= ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$src		= "controls poster";
 				$tag    	= "video";
 				$close_tag 	= "</video>";
@@ -98,7 +99,7 @@ if( class_exists('JM_TC_Options') ) {
 				$size        = 60;
 				$hide	     = 'hide';
 				$class  	 = 'summary-image';
-				$img         = $img_arr['image:src'];
+				$img		 = ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$img_summary = '<img class="'.$class.'" width="'.$size.'" height="'.$size.'" style="'.$styles.' -webkit-user-drag: none; " '.$src.'="'.$img.'">';
 				$float       = 'float:right;';
 				
@@ -114,7 +115,7 @@ if( class_exists('JM_TC_Options') ) {
 				$product_meta .= '</div>';
 				
 				$styles 	   = 'float:left; width: 120px; height: 120px; margin-right:.6em;';
-				$img           = $img_arr['image:src'];
+				$img		   = ( $opts['twitterCardOg'] == 'yes' ) ? $img_arr['image'] : $img_arr['image:src'];
 				$size   	   = 120;
 			}
 			
