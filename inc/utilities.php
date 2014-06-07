@@ -60,6 +60,15 @@ if( ! class_exists('JM_TC_Utilities') ) {
 				__('Preview', 'jm-tc')				 			=> 'WniGVE09-IQ',
 			);
 		}
+		
+		// Debug
+		
+		public function showVisible( $className ) {
+		 echo "$className::showVisible:\n";
+			echo'<pre>';
+			print_r($this);
+			echo'</pre>';
+		}	
 
 
 	}

@@ -63,14 +63,14 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 
 //Call modules 
 require( JM_TC_INC_DIR . 'utilities.php' ); 
-require( JM_TC_ADMIN_DIR . 'author.php' );
 require( JM_TC_INC_DIR . 'thumbs.php' );
 require( JM_TC_INC_DIR . 'disable.php' );
 require( JM_TC_ADMIN_DIR . 'options.php' );
 require( JM_TC_INC_DIR . 'markup.php' ); 
 
 if( is_admin() ) {
-
+	
+	require( JM_TC_ADMIN_DIR . 'author.php' );
 	require( JM_TC_ADMIN_DIR.  'tabs.php' );
 	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
 	require( JM_TC_ADMIN_DIR . 'preview.php' );	

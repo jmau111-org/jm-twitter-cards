@@ -10,6 +10,10 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.2.5 #
+* Add debug method in utilities to quickly show what is in $this ^^
+* Fix notice appearing with new og param in preview class
+
 # 5.2.4 #
 * 6 June 2014
 * Improve multisite compatibility (default options, uninstall)
