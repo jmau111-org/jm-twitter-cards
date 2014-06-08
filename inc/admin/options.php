@@ -240,7 +240,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					//In case Open Graph is on 
 					
-					$default  = ( is_multisite() ) ? $this->opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
+					$default  = ( is_multisite() ) ? $this->opts['twitterNetworkSite'] : $this->opts['twitterSite'];
 					
 					$img_meta = ( $default == 'yes' ) ? 'image' : 'image:src';
 					
