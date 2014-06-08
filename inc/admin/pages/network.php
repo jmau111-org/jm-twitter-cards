@@ -42,8 +42,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		return $plugin_options;
 	}
 	
-	//$debug = new JM_TC_Options;
-	//$debug->showVisible('JM_TC_Options');
+	$debug = new JM_TC_Options;
+	$debug->showVisible('JM_TC_Options');
 	
 	cmb_metabox_form( jm_tc_network_options(), JM_TC_Admin::key() ); ?>
 </div>

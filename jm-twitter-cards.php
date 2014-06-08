@@ -247,6 +247,9 @@ function jm_tc_activate() {
 	
 	} else {
 	
+		$opts = get_site_option('jm_tc');	
+		if (!is_array($opts)) update_site_option('jm_tc', jm_tc_get_default_network_options());
+	
 	    // For regular options.
 		global $wpdb;
 		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
@@ -294,10 +297,18 @@ function jm_tc_get_default_options()
 		'twitterCardRobotsTxt' => 'no',
 		'twitterAppCountry' => '',
 		'twitterCardOg' => 'no',
-		'twitterNetworkSite' => 'TweetPressFr',
-		'twitterNetworkCardOg' => 'no',
 	);
 }
+
+
+function jm_tc_get_default_network_options()
+{
+	return array(
+	'twitterNetworkSite' => 'TweetPressFr',
+	'twitterNetworkCardOg' => 'no',
+	);
+}
+
 
 /******************
 

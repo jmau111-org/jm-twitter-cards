@@ -13,11 +13,13 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 		private static $_this;
 		var $opts;
+		var $multi_opts;
 
 		function __construct() {
 		
 			self::$_this 		= $this;
 			$this->opts 		= get_option('jm_tc'); 
+			$this->multi_opts 	= get_site_option('jm_tc');
 			
 		}
 		
@@ -113,7 +115,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/
 		public function siteUsername() {
 		
-			$default  = ( is_multisite() ) ? $this->opts['twitterNetworkSite'] : $this->opts['twitterSite'];
+			$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkSite'] : $this->opts['twitterSite'];
 			
 			$cardSite =  '@' . parent::remove_at( $default );
 			
@@ -240,7 +242,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					//In case Open Graph is on 
 					
-					$default  = ( is_multisite() ) ? $this->opts['twitterNetworkSite'] : $this->opts['twitterSite'];
+					$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
 					
 					$img_meta = ( $default == 'yes' ) ? 'image' : 'image:src';
 					
