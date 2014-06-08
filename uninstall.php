@@ -7,7 +7,7 @@ if( !defined( 'ABSPATH') && !defined('WP_UNINSTALL_PLUGIN') )
 
 function jm_tc_on_delete() {
 	
-	delete_option( 'jm_tc');  
+	delete_option( 'jm_tc'); 
 
 	/**
 	 * Delete postmeta from option table
@@ -49,6 +49,9 @@ if( !is_multisite() ) {
 	jm_tc_delete();
 
 } else {
+
+	delete_site_option( 'jm_tc'); 
+	
     // For regular options.
     global $wpdb;
     $blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );

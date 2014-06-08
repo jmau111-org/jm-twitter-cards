@@ -16,15 +16,14 @@ if( class_exists('JM_TC_Utilities') ) {
 
 		function __construct() {
 		
-			self::$_this = $this;
-			$this->opts = get_option('jm_tc');
+			self::$_this 		= $this;
+			$this->opts 		= get_option('jm_tc'); 
 			
 		}
 		
 		
 		//being nicer with removers !
 		static function this() {
-		
 			return self::$_this;
 		 }
 
@@ -113,8 +112,10 @@ if( class_exists('JM_TC_Utilities') ) {
 		* retrieve the meta site
 		*/
 		public function siteUsername() {
+		
+			$default  = ( is_multisite() ) ? $this->opts['twitterNetworkSite'] : $this->opts['twitterSite'];
 			
-			$cardSite =  '@' . parent::remove_at( $this->opts['twitterSite'] );
+			$cardSite =  '@' . parent::remove_at( $default );
 			
 			return array( 'site' => apply_filters('jm_tc_card_site', $cardSite) );
 		}
@@ -238,7 +239,10 @@ if( class_exists('JM_TC_Utilities') ) {
 					}
 					
 					//In case Open Graph is on 
-					$img_meta = ( $this->opts['twitterCardOg'] == 'yes' ) ? 'image' : 'image:src';
+					
+					$default  = ( is_multisite() ) ? $this->opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
+					
+					$img_meta = ( $default == 'yes' ) ? 'image' : 'image:src';
 					
 					return array ( $img_meta => apply_filters( 'jm_tc_image_source', $image) );
 					

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JM Twitter Cards\n"
 "POT-Creation-Date: 2014-04-17 16:16+0100\n"
-"PO-Revision-Date: 2014-05-07 17:27+0100\n"
+"PO-Revision-Date: 2014-06-08 11:58+0100\n"
 "Last-Translator: jmlapam <contact@tweetpress.fr>\n"
 "Language-Team: jmlapam <contact@tweetpress.fr>\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +14,14 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "Language: fr_FR\n"
+
+#: inc/admin/admin-tc.php
+msgid "yes"
+msgstr "oui"
+
+#: inc/admin/admin-tc.php
+msgid "no"
+msgstr "non"
 
 #: inc/admin/admin-tc.php:35
 msgid "JM Twitter Cards"

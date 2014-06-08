@@ -35,6 +35,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
+			add_action( 'network_admin_menu', array( $this, 'network_page') );
 			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_styles' ) );
 			add_filter( 'cmb_frontend_form_format', array( $this, 'save_button' ), 10, 3 );
 			add_action( 'cmb_save_options-page_fields', array( $this, 'is_it_saved') );
@@ -115,6 +116,18 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			add_action( 'load-' . $this->options_subpage_home, array( $this, 'load_admin_page_home_scripts' ) );
 			add_action( 'load-' . $this->options_subpage_doc, array( $this, 'load_admin_doc_scripts' ) );
 		}
+		
+		
+		
+		/**
+		 * Network admin.
+		 */
+		function network_page() {
+				
+			$this->options_page = add_menu_page( $this->title, $this->title, 'manage_network_options', 'jm_tc_network', 'jm_tc_subpages', JM_TC_URL.'img/bird_blue_16.png');
+
+		}
+		
 		
 
 		// I prefer this way even if it's not so good^^

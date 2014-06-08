@@ -1,4 +1,4 @@
-<?php 
+jm_tc_<?php 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -15,7 +15,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	<?php
 	
-	function image_options() {
+	function jm_tc_image_options() {
 	
 		$plugin_options = array(
 		'id'         => 'jm_tc',
@@ -81,7 +81,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		return $plugin_options;
 	}
 	?>
-	<?php cmb_metabox_form( image_options(), JM_TC_Admin::key() ); ?>
+	<?php cmb_metabox_form( jm_tc_image_options(), JM_TC_Admin::key() ); ?>
 	
 		<div class="doc-valid">
 			<?php echo JM_TC_Admin::docu_links(4);?>

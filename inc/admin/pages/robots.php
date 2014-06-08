@@ -16,7 +16,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	<?php
 	
-	function robots_options(){
+	function jm_tc_robots_options(){
 	
 		$plugin_options = array(
 			'id'         => 'jm_tc',
@@ -41,7 +41,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	}
 	?>
 	
-	<?php cmb_metabox_form( robots_options(), JM_TC_Admin::key() ); ?>
+	<?php cmb_metabox_form( jm_tc_robots_options(), JM_TC_Admin::key() ); ?>
 	<div class="doc-valid">
 	<?php echo JM_TC_Admin::docu_links(7); ?>
 	</div>

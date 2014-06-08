@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.2.5
+Version: 5.2.6
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -46,7 +46,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.2.5' );
+define( 'JM_TC_VERSION', '5.2.6' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -126,7 +126,10 @@ if ( isset( $_GET['page'] ) ) {
 			case 'jm_tc_tutorial':
 				require( JM_TC_ADMIN_PAGES_DIR .'tutorial.php' );
 				break;
-
+				
+			case 'jm_tc_network':
+				require( JM_TC_ADMIN_PAGES_DIR .'network.php' );
+				break;
 		}
 	}
 }
@@ -218,9 +221,9 @@ function jm_tc_init()
 //Plugin install : update options
 function jm_tc_on_activation() {
 
-        $opts = get_option('jm_tc');	
-		if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
- 
+	$opts = get_option('jm_tc');	
+	if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
+
 }
 
 
@@ -279,10 +282,11 @@ function jm_tc_get_default_options()
 		'twitterCardRobotsTxt' => 'no',
 		'twitterAppCountry' => '',
 		'twitterCardOg' => 'no',
+		'twitterNetworkSite' => 'TweetPressFr',
+		'twitterNetworkCardOg' => 'no',
 	);
 }
 
-	
 /******************
 
 AFTER WP HAS LOADED

@@ -16,7 +16,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		function __construct() {
 			
 			self::$_this = $this;
-			$this->opts = get_option('jm_tc');
+			$this->opts  = get_option('jm_tc');
 			add_action('wp_head', array( $this, 'add_markup'), 2 );
 			
 		}
@@ -104,7 +104,9 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					if( $value != '' ) {
 					
-						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
+					$default  = ( is_multisite() ) ? $this->opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
+					
+						if ( $default == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
 							
 							$is_og = 'og';
 							

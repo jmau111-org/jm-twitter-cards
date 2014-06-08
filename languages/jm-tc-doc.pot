@@ -4,6 +4,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Text in echo
+#: inc/admin/admin-tc.php
+msgid "yes"
+msgstr ""
+
+#. Text in echo
+#: inc/admin/admin-tc.php
+msgid "no"
+msgstr ""
+
+#. Text in echo
 #: documentation.php:186
 msgid "<strong>Image options</strong> : This is optional but some users wanted alternatives for featured image"
 msgstr ""

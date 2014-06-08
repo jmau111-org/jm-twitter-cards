@@ -16,7 +16,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	
 	
 	<?php
-	function home_options() {
+	function jm_tc_home_options() {
 		$plugin_options = array(
 		'id'         => 'jm_tc',
 		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_home', ), ),
@@ -36,7 +36,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		return $plugin_options;
 	}
 	?>
-	<?php cmb_metabox_form( home_options(), JM_TC_Admin::key() ); ?>
+	<?php cmb_metabox_form( jm_tc_home_options(), JM_TC_Admin::key() ); ?>
 	
 		<div class="doc-valid">
 	<?php echo JM_TC_Admin::docu_links(2); ?>

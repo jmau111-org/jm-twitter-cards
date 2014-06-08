@@ -16,7 +16,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		
 	<?php
 	
-	function seo_options() {
+	function jm_tc_seo_options() {
 	
 		$plugin_options = array(
 		'id'         => 'jm_tc',
@@ -45,7 +45,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	}
 	?>
 	
-	<?php cmb_metabox_form( seo_options(), JM_TC_Admin::key() ); ?>
+	<?php cmb_metabox_form( jm_tc_seo_options(), JM_TC_Admin::key() ); ?>
 		<div class="doc-valid">
 	<?php echo JM_TC_Admin::docu_links(3);?>
 	</div>
