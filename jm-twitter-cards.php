@@ -219,6 +219,18 @@ function jm_tc_init()
 
 
 //Plugin install : update options
+add_action('wpmu_new_blog', 'jm_tc_new_blog');
+function jm_tc_new_blog($blog_id ) {
+
+	switch_to_blog( $blog_id );
+	
+		jm_tc_on_activation();
+
+	 restore_current_blog();
+}
+
+
+
 function jm_tc_on_activation() {
 
 	$opts = get_option('jm_tc');	
