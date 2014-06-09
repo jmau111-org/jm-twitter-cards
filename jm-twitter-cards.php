@@ -75,6 +75,8 @@ if( is_admin() ) {
 	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
 	require( JM_TC_ADMIN_DIR . 'preview.php' );	
 	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
+	
+	if( is_multisite() ) require( JM_TC_ADMIN_DIR.  'admin-tc-mu.php' );
 
 }
 
@@ -126,10 +128,7 @@ if ( isset( $_GET['page'] ) ) {
 			case 'jm_tc_tutorial':
 				require( JM_TC_ADMIN_PAGES_DIR .'tutorial.php' );
 				break;
-				
-			case 'jm_tc_network':
-				require( JM_TC_ADMIN_PAGES_DIR .'network.php' );
-				break;
+
 		}
 	}
 }
@@ -148,8 +147,11 @@ function jm_tc_settings_action_links($links, $file)
 // Init meta box
 function jm_tc_initialize_cmb_meta_boxes() {
 
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
-	require_once JM_TC_METABOX_DIR . 'init.php';
+	if ( ! class_exists( 'cmb_Meta_Box' ) ) {
+		
+		require_once JM_TC_METABOX_DIR . 'init.php';
+	
+	}
 
 }
 
@@ -198,6 +200,7 @@ function jm_tc_init()
 		 new JM_TC_Tabs;
 		 new JM_TC_Options;
 		 new JM_TC_Admin; 
+		 	if( is_multisite() ) new JM_TC_Network;
 		 new JM_TC_Preview;
 		 new JM_TC_Metabox;
 		 new JM_TC_Author;
@@ -247,8 +250,8 @@ function jm_tc_activate() {
 	
 	} else {
 	
-		$opts = get_site_option('jm_tc');	
-		if (!is_array($opts)) update_site_option('jm_tc', jm_tc_get_default_network_options());
+		$multi_opts = get_site_option('jm_tc');	
+		if (!is_array($multi_opts)) update_site_option('jm_tc_network', jm_tc_get_default_network_options());
 	
 	    // For regular options.
 		global $wpdb;

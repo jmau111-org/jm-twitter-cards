@@ -19,7 +19,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 			self::$_this 		= $this;
 			$this->opts 		= get_option('jm_tc'); 
-			$this->multi_opts 	= get_site_option('jm_tc');
+			$this->multi_opts 	= get_site_option('jm_tc_network');
 			
 		}
 		

@@ -18,7 +18,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			self::$_this     = $this;
 			$this->opts  	 = get_option('jm_tc');
-			$this->muti_opts = get_site_option('jm_tc'); 
+			$this->muti_opts = get_site_option('jm_tc_network'); 
 			add_action('wp_head', array( $this, 'add_markup'), 2 );
 			
 		}

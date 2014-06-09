@@ -50,7 +50,7 @@ if( !is_multisite() ) {
 
 } else {
 
-	delete_site_option( 'jm_tc'); 
+	delete_site_option( 'jm_tc_network'); 
 	
     // For regular options.
     global $wpdb;
