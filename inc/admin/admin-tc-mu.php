@@ -63,7 +63,9 @@ if ( class_exists( 'JM_TC_Admin' ) ) {
 			<h2>JM Twitter Cards : <?php _e( 'Network', 'jm-tc' ); ?></h2>
 
 			<?php cmb_metabox_form( $this->option_fields(), self::$key ); ?>
-			<?php var_dump(get_option( 'jm_tc_network' )); ?>
+			<?php 	$debug = new JM_TC_Options;
+					$debug->showVisible('JM_TC_Options'); 
+			?>
 			</div>
 			<?php
 		}
