@@ -20,28 +20,29 @@ if ( class_exists( 'JM_TC_Admin' ) ) {
 		* @since 0.1.0
 		*/
 		public function __construct() {
+		
 			// Set our title
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'network_admin_menu', array( $this, 'network_page') );
-			add_filter( 'cmb_override_option_get_'.self::$key, array( $this, 'get_network_options') );
-			add_filter( 'cmb_override_option_save_'.self::$key, array( $this, 'save_network_options') );
+			add_filter( 'cmb_override_option_get_jm_tc_network', array( $this, 'cmb_override_option_get_'), 10, 2 );
+			add_filter( 'cmb_override_option_save_jm_tc_network', array( $this, 'cmb_override_option_save_'), 10, 2 );
+			
 		}
 		
 		/**
-		* Override getting and setting
+		* Override getting and setting props to jtsternberg
 		*/
-		public static function get_network_options() {
-			
-			return get_site_option( self::$key );
-			
+		// Override CMB's getter
+
+		function cmb_override_option_get_( $empty, $default ) {
+			return get_site_option( 'jm_tc_network', $default );
 		}
-		
-		public static function save_network_options() {
-			
-			return update_site_option( self::$key, self::get_network_options() );
-			
+
+		// Override CMB's setter
+		function cmb_override_option_save_( $to_override, $value ) {
+			return update_site_option( 'jm_tc_network', $value );
 		}
-		
+				
 		/**
 		* Network admin.
 		*/
@@ -65,6 +66,8 @@ if ( class_exists( 'JM_TC_Admin' ) ) {
 			<?php cmb_metabox_form( $this->option_fields(), self::$key ); ?>
 			<?php 	$debug = new JM_TC_Options;
 					$debug->showVisible('JM_TC_Options'); 
+					
+					var_dump(get_site_option('jm_tc_network'));
 			?>
 			</div>
 			<?php

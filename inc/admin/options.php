@@ -244,7 +244,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
 					
-					$img_meta = ( $default == 'yes' ) ? 'image' : 'image:src';
+					$img_meta = ( $default = 'yes' ) ? 'image' : 'image:src';
 					
 					return array ( $img_meta => apply_filters( 'jm_tc_image_source', $image) );
 					

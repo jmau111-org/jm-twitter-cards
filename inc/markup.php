@@ -108,7 +108,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
 					
-						if ( $default == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
+						if ( $default = 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
 							
 							$is_og = 'og';
 							
