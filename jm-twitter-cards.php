@@ -37,6 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://www.jqeasy.com/jquery-character-counter
 * - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
+* - https://github.com/pippinsplugins/Settings-Import-and-Export-Example-Pluginc [GREAT]
 */
 
 
@@ -76,7 +77,8 @@ if( is_admin() ) {
 	require( JM_TC_ADMIN_DIR . 'preview.php' );	
 	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
 	
-	if( is_multisite() ) require( JM_TC_ADMIN_DIR.  'admin-tc-mu.php' );
+	//if( is_multisite() ) require( JM_TC_ADMIN_DIR.  'admin-tc-mu.php' );
+	require( JM_TC_ADMIN_DIR . 'import-export.php' );	
 
 }
 
@@ -87,6 +89,9 @@ if ( isset( $_GET['page'] ) ) {
 		switch ( $_GET['page'] ) {
 			case 'jm_tc_cf':
 				require( JM_TC_ADMIN_PAGES_DIR .'custom_fields.php' );
+				break;
+			case 'jm_tc_import_export':
+				require( JM_TC_ADMIN_PAGES_DIR .'import-export.php' );
 				break;
 
 			case 'jm_tc_images':
@@ -200,7 +205,8 @@ function jm_tc_init()
 		 new JM_TC_Tabs;
 		 new JM_TC_Options;
 		 new JM_TC_Admin; 
-		 	if( is_multisite() ) new JM_TC_Network;
+		 	//if( is_multisite() ) new JM_TC_Network;
+		 new JM_TC_Import_Export;
 		 new JM_TC_Preview;
 		 new JM_TC_Metabox;
 		 new JM_TC_Author;
@@ -250,9 +256,11 @@ function jm_tc_activate() {
 	
 	} else {
 	
+		/*
 		$multi_opts = get_site_option('jm_tc');	
 		if (!is_array($multi_opts)) update_site_option('jm_tc_network', jm_tc_get_default_network_options());
-	
+		*/
+		
 	    // For regular options.
 		global $wpdb;
 		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
@@ -303,14 +311,14 @@ function jm_tc_get_default_options()
 	);
 }
 
-
+/*
 function jm_tc_get_default_network_options()
 {
 	return array(
 	'twitterNetworkCardOg' => 'no',
 	);
 }
-
+*/
 
 /******************
 
