@@ -6,7 +6,7 @@ if( !defined( 'ABSPATH') && !defined('WP_UNINSTALL_PLUGIN') )
 
 	
 delete_option( 'jm_tc'); 
-delete_site_option( 'jm_tc_network'); 
+
 
 /**
  * Delete postmeta from option table
@@ -40,4 +40,11 @@ global $wpdb;
 			$key
 			)
 	);
+}
+
+// multisite part 
+if ( is_multisite() ) {
+
+	delete_site_option( 'jm_tc_network');
+
 }

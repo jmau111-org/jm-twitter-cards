@@ -87,14 +87,6 @@ if ( class_exists( 'JM_TC_Admin' ) ) {
 			'show_on'    => array( 'key' => 'options-page', 'value' => array( self::$key, ), ),
 			'show_names' => true,
 			'fields'     => array(
-
-			array(
-			'name' 		=> __( 'Site (twitter username)', 'jm-tc' ),
-			'desc' 		=> __('Who is the Owner of the Website? (could be a trademark)',  'jm-tc'),
-			'id'   		=> 'twitterNetworkSite',
-			'type' 		=> 'text_medium',
-			),				
-
 			
 			array(
 			'name' 		=> __( 'Open Graph', 'jm-tc' ),

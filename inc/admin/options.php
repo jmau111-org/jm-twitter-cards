@@ -114,10 +114,8 @@ if( class_exists('JM_TC_Utilities') ) {
 		* retrieve the meta site
 		*/
 		public function siteUsername() {
-		
-			$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkSite'] : $this->opts['twitterSite'];
 			
-			$cardSite =  '@' . parent::remove_at( $default );
+			$cardSite =  '@' . parent::remove_at( $this->opts['twitterSite'] );
 			
 			return array( 'site' => apply_filters('jm_tc_card_site', $cardSite) );
 		}

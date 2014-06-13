@@ -307,7 +307,6 @@ function jm_tc_get_default_options()
 function jm_tc_get_default_network_options()
 {
 	return array(
-	'twitterNetworkSite' => 'TweetPressFr',
 	'twitterNetworkCardOg' => 'no',
 	);
 }
