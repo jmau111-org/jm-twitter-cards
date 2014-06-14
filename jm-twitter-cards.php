@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.2.5
+Version: 5.2.6
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -37,6 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://www.jqeasy.com/jquery-character-counter
 * - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
+* - https://github.com/pippinsplugins/Settings-Import-and-Export-Example-Pluginc [GREAT]
 */
 
 
@@ -46,7 +47,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.2.5' );
+define( 'JM_TC_VERSION', '5.2.6' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -75,6 +76,9 @@ if( is_admin() ) {
 	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
 	require( JM_TC_ADMIN_DIR . 'preview.php' );	
 	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
+	
+	//if( is_multisite() ) require( JM_TC_ADMIN_DIR.  'admin-tc-mu.php' );
+	require( JM_TC_ADMIN_DIR . 'import-export.php' );	
 
 }
 
@@ -85,6 +89,9 @@ if ( isset( $_GET['page'] ) ) {
 		switch ( $_GET['page'] ) {
 			case 'jm_tc_cf':
 				require( JM_TC_ADMIN_PAGES_DIR .'custom_fields.php' );
+				break;
+			case 'jm_tc_import_export':
+				require( JM_TC_ADMIN_PAGES_DIR .'import-export.php' );
 				break;
 
 			case 'jm_tc_images':
@@ -145,8 +152,11 @@ function jm_tc_settings_action_links($links, $file)
 // Init meta box
 function jm_tc_initialize_cmb_meta_boxes() {
 
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
-	require_once JM_TC_METABOX_DIR . 'init.php';
+	if ( ! class_exists( 'cmb_Meta_Box' ) ) {
+		
+		require_once JM_TC_METABOX_DIR . 'init.php';
+	
+	}
 
 }
 
@@ -195,6 +205,8 @@ function jm_tc_init()
 		 new JM_TC_Tabs;
 		 new JM_TC_Options;
 		 new JM_TC_Admin; 
+		 	//if( is_multisite() ) new JM_TC_Network;
+		 new JM_TC_Import_Export;
 		 new JM_TC_Preview;
 		 new JM_TC_Metabox;
 		 new JM_TC_Author;
@@ -216,11 +228,23 @@ function jm_tc_init()
 
 
 //Plugin install : update options
+add_action('wpmu_new_blog', 'jm_tc_new_blog');
+function jm_tc_new_blog($blog_id ) {
+
+	switch_to_blog( $blog_id );
+	
+		jm_tc_on_activation();
+
+	 restore_current_blog();
+}
+
+
+
 function jm_tc_on_activation() {
 
-        $opts = get_option('jm_tc');	
-		if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
- 
+	$opts = get_option('jm_tc');	
+	if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
+
 }
 
 
@@ -232,6 +256,11 @@ function jm_tc_activate() {
 	
 	} else {
 	
+		/*
+		$multi_opts = get_site_option('jm_tc');	
+		if (!is_array($multi_opts)) update_site_option('jm_tc_network', jm_tc_get_default_network_options());
+		*/
+		
 	    // For regular options.
 		global $wpdb;
 		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
@@ -282,7 +311,15 @@ function jm_tc_get_default_options()
 	);
 }
 
-	
+/*
+function jm_tc_get_default_network_options()
+{
+	return array(
+	'twitterNetworkCardOg' => 'no',
+	);
+}
+*/
+
 /******************
 
 AFTER WP HAS LOADED

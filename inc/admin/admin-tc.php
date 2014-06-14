@@ -93,7 +93,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		
 			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array( $this, 'admin_page_display' ), JM_TC_URL.'img/bird_blue_16.png');
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', self::$key, array( $this, 'admin_page_display' ) );
-			
+			$this->options_page_import_export		= add_submenu_page( 'jm_tc', __('Import').' / '.__('Export'), __('Import').' / '.__('Export'), 'manage_options', 'jm_tc_import_export', 'jm_tc_subpages' );			
 			$this->options_subpage_tutorial 		= add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ) , 'manage_options', 'jm_tc_tutorial', 'jm_tc_subpages' );
 			
 			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
@@ -129,7 +129,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		
 		public function admin_styles()
 		{
-			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc', 'jm_tc_tutorial', 'jm_tc_meta_box', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_cf', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
+			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc_import_export', 'jm_tc', 'jm_tc_tutorial', 'jm_tc_meta_box', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_cf', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
 			{
 				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
 			}
@@ -216,7 +216,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			return self::$plugin_options;
 			
 			self::$plugin_options = array(
-			'id'         => 'jm_tc',
+			'id'         => self::$key,
 			'show_on'    => array( 'key' => 'options-page', 'value' => array( self::$key, ), ),
 			'show_names' => true,
 			'fields'     => array(

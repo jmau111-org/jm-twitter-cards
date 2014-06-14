@@ -14,7 +14,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 
 	<?php
-	function multi_author_options() {
+	function jm_tc_multi_author_options() {
 		$plugin_options = array(
 		'id'         => 'jm_tc',
 		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_multi_author', ), ),
@@ -47,7 +47,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		
 	}
 	?>
-	<?php cmb_metabox_form( multi_author_options(), JM_TC_Admin::key() ); ?>
+	<?php cmb_metabox_form( jm_tc_multi_author_options(), JM_TC_Admin::key() ); ?>
 	
 	<div class="doc-valid">
 		<?php echo JM_TC_Admin::docu_links(0); ?>

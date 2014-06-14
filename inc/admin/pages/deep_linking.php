@@ -14,7 +14,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	
 	<?php
-	function deep_linking_options() {
+	function jm_tc_deep_linking_options() {
 	
 		$plugin_options = array(
 		'id'         => 'jm_tc',
@@ -106,7 +106,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	}
 	
 	?>
-	<?php cmb_metabox_form( deep_linking_options(), JM_TC_Admin::key() ); ?>
+	<?php cmb_metabox_form( jm_tc_deep_linking_options(), JM_TC_Admin::key() ); ?>
 	
 	<div class="doc-valid">
 	<?php echo JM_TC_Admin::docu_links(5); ?>

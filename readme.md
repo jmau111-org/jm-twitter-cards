@@ -11,12 +11,14 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
-# 5.2.5 #
+# 5.2.6
+* add option to import/export options quickly
+* Fix missing translation for yes/no options
+
+# 5.2.4 & 5.2.5
+* 6 June 2014
 * Add debug method in utilities to quickly show what is in $this ^^
 * Fix notice appearing with new og param in preview class
-
-# 5.2.4 #
-* 6 June 2014
 * Improve multisite compatibility (default options, uninstall)
 * Appropriate function restore_current_blog() instead of ~x2 switch_to_blog()
 * Support for Open Graph

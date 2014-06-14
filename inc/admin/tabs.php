@@ -17,6 +17,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			$tabs = array(
 					'jm_tc' => __('General'), 
+					'jm_tc_import_export' => __('Import/Export','jm-tc'),
 					'jm_tc_tutorial' => __('Tutorial','jm-tc'),
 					'jm_tc_images' => __('Images','jm-tc'),
 					'jm_tc_cf' => __('Custom fields','jm-tc'),
