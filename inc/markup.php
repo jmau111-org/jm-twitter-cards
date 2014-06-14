@@ -11,14 +11,14 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 		private static $_this;
 		var $opts;
-		var $muti_opts;
+		//var $muti_opts;
 		var $textdomain = 'jm-tc';
 
 		function __construct() {
 			
 			self::$_this     = $this;
 			$this->opts  	 = get_option('jm_tc');
-			$this->muti_opts = get_site_option('jm_tc_network'); 
+			//$this->muti_opts = get_site_option('jm_tc_network'); 
 			add_action('wp_head', array( $this, 'add_markup'), 2 );
 			
 		}
@@ -106,9 +106,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					if( $value != '' ) {
 					
-					$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
-					
-						if ( $default = 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
+						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
 							
 							$is_og = 'og';
 							

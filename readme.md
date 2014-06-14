@@ -11,8 +11,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 ## Changelog ##
 
 # 5.2.6
-* Add super admin menu, network view, especially for site and open graph settings
-* Better settings for multisite (allows you to manage SMO from a super admin interface andabove all to override default options on each site)
+* add option to import/export options quickly
 * Fix missing translation for yes/no options
 
 # 5.2.4 & 5.2.5

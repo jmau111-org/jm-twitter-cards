@@ -41,10 +41,10 @@ global $wpdb;
 			)
 	);
 }
-
+/*
 // multisite part 
 if ( is_multisite() ) {
 
 	delete_site_option( 'jm_tc_network');
 
-}
+}*/

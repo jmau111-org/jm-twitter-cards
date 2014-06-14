@@ -29,19 +29,19 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 			
 				<div class="metabox-holder">
 					<div class="postbox">
-						<h3><span><?php _e( 'Export Settings' ); ?></span></h3>
+						<h3><span><?php _e( 'Export' ); ?></span></h3>
 						<div class="inside">
 							<form method="post">
 								<p><input type="hidden" name="action" value="export_settings" /></p>
 								<p>
 									<?php wp_nonce_field( 'export_nonce', 'export_nonce' ); ?>
-									<?php submit_button( __( 'Export' ), 'secondary', 'submit', false ); ?>
+									<?php submit_button( __( 'Export' ), 'primary', 'submit', false ); ?>
 								</p>
 							</form>
 						</div><!-- .inside -->
 					</div><!-- .postbox -->
 					<div class="postbox">
-						<h3><span><?php _e( 'Import Settings' ); ?></span></h3>
+						<h3><span><?php _e( 'Import' ); ?></span></h3>
 						<div class="inside">
 							<form method="post" enctype="multipart/form-data">
 								<p>
@@ -50,7 +50,7 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 								<p>
 									<input type="hidden" name="action" value="import_settings" />
 									<?php wp_nonce_field( 'import_nonce', 'import_nonce' ); ?>
-									<?php submit_button( __( 'Import' ), 'secondary', 'submit', false ); ?>
+									<?php submit_button( __( 'Import' ), 'primary', 'submit', false ); ?>
 								</p>
 							</form>
 						</div><!-- .inside -->
