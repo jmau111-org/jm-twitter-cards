@@ -10,7 +10,11 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.2.7
+* make the og meta more compliant with W3C requirements (small fix HTML markup)
+
 # 5.2.6
+* 14 June 2014
 * add option to import/export options quickly
 * Fix missing translation for yes/no options
 
