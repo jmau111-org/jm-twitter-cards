@@ -108,12 +108,16 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 						if ( $this->opts['twitterCardOg'] == 'yes' && in_array(  $name, array('title','description','image','image:width','image:height' ) ) ) {
 							
-							$is_og = 'og';
+							$is_og 		= 'og';
+							$name_tag 	= 'property';
 							
-						} else $is_og = 'twitter';
+						} else {
 						
+							$is_og 		= 'twitter';
+							$name_tag 	= 'name';
+						}
 						
-						echo $meta = '<meta name="'.$is_og.':'.$name.'" content="'.$value.'">' . "\n";
+						echo $meta = '<meta '.$name_tag.'="'.$is_og.':'.$name.'" content="'.$value.'">' . "\n";
 						
 					} 				
 					
