@@ -10,6 +10,10 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.2.8
+* fix bug with NGG post box
+* better init
+
 # 5.2.7
 * make the og meta more compliant with W3C requirements (small fix HTML markup)
 

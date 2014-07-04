@@ -21,6 +21,8 @@ if( class_exists('JM_TC_Utilities') ) {
 			$this->opts 		= get_option('jm_tc'); 
 			//$this->multi_opts 	= get_site_option('jm_tc_network');
 			
+			add_action( 'wp_ajax_send_this_in_ajax', array( $this, '_send_this_in_ajax' ) );
+			
 		}
 		
 		
@@ -28,7 +30,16 @@ if( class_exists('JM_TC_Utilities') ) {
 		static function this() {
 			return self::$_this;
 		 }
-
+		 
+		 
+		//send the Object 
+		static function _send_this_in_ajax() {
+		
+			//check_ajax_referer( '_obj_jm_tc_nonce', 'checking' );
+		
+			wp_send_json( $this );
+			
+		}
 		
 		/*
 		* retrieve datas from SEO Plugins

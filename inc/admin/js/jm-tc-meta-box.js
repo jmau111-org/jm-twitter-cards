@@ -1,39 +1,27 @@
-//cmb_id_preview_title
+// DOM ready
+jQuery(document).ready(function($) {
 
-jQuery(document).ready(function ($) {
+		
+		busy = $.ajax({
+			url: ajaxurl,
+			type: 'POST',
+			data: form.serialize(),
+			success: function( response ) {
+				
+				if( response == 'JM_TC_Options' ) {
+					
+			
+					console.log('ok');
+				}
+				
+
+			}
+		});
+			
+		
+	}
 	
-/* we'll do some stuffs here */
-
-
-	var cardType = $('#twitterCardType').val();
-	
-	// 1 - on change card type
-	$( '#twitterCardType' ).change(function() {
-		
-		if ( cardType == 'summary' ) {
-		
-		
-		} else if ( cardType == 'summary_large_image' ) {
-		
-		
-		} else if ( cardType == 'photo' ) {
-		
-		
-		} else if ( cardType == 'product' ) {
-		
-		
-		} else if ( cardType == 'gallery' ) {
-		
-		
-		} else if ( cardType == 'player' ) {
-		
-		
-		} else {
-		
-		
-		}
-		
-	});
-		
+	return false;
 	
 });
+		

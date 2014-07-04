@@ -7,9 +7,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if ( class_exists('JM_TC_Utilities') ) {
+if ( !class_exists('JM_TC_Thumbs') ) {
 
-	class JM_TC_Thumbs extends JM_TC_Utilities
+	class JM_TC_Thumbs
 	{
 	
 		public static function thumbnail_sizes($post_id)

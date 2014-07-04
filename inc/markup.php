@@ -19,7 +19,6 @@ if( class_exists('JM_TC_Utilities') ) {
 			self::$_this     = $this;
 			$this->opts  	 = get_option('jm_tc');
 			//$this->muti_opts = get_site_option('jm_tc_network'); 
-			add_action('wp_head', array( $this, 'add_markup'), 2 );
 			
 		}
 		
@@ -28,6 +27,17 @@ if( class_exists('JM_TC_Utilities') ) {
 		static function this() {
 			
 			return self::$_this;
+		}
+		
+		/*
+		* Add just one line before meta
+		*/
+		public function html_comments( $end = false ) {
+		
+			if( !$end )
+				echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
+			else	
+				echo '<!-- /JM Twitter Cards ' . JM_TC_VERSION . ' -->' . "\n\n";
 		}
 		
 
@@ -40,8 +50,6 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			$options = new JM_TC_Options;
 			
-			echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
-			
 			if( 
 					is_singular() 
 					&& !is_front_page() 
@@ -50,6 +58,8 @@ if( class_exists('JM_TC_Utilities') ) {
 					&& !is_tag()
 					
 					) {
+					
+				$this->html_comments();
 				
 				/* most important meta */
 				$this->display_markup( $options->cardType( $post->ID ) );
@@ -64,11 +74,16 @@ if( class_exists('JM_TC_Utilities') ) {
 				$this->display_markup( $options->cardDim( $post->ID ) );
 				$this->display_markup( $options->product( $post->ID ) );
 				$this->display_markup( $options->player( $post->ID ) );
+				$this->display_markup( $options->deeplinking() );
+				
+				$this->html_comments(true);
 				
 				
 			}
 			
-			elseif( is_home() || is_front_page() ) {
+			if( is_home() || is_front_page() ) {
+			
+				$this->html_comments();
 				
 				$this->display_markup( $options->cardType() ); 
 				$this->display_markup( $options->siteUsername() );
@@ -76,21 +91,11 @@ if( class_exists('JM_TC_Utilities') ) {
 				$this->display_markup( $options->title() );
 				$this->display_markup( $options->description() );	
 				$this->display_markup( $options->image() );	
-				$this->display_markup( $options->cardDim() );		
+				$this->display_markup( $options->cardDim() );	
+				$this->display_markup( $options->deeplinking() );	
 				
+				$this->html_comments(true);
 			}
-			
-			
-			else {
-				
-				$options->error( __('Twitter Cards are off for those pages.', $this->textdomain) );
-			}
-			
-			
-			$this->display_markup( $options->deeplinking() );
-			
-			
-			echo '<!-- /JM Twitter Cards -->' . "\n\n";
 			
 		}	
 

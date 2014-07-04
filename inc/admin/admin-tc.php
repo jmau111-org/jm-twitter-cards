@@ -139,7 +139,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			if( $pagenow == 'post.php' || $pagenow == 'post-new.php' ) {
 				
 				wp_enqueue_style('jm-tc-metabox', JM_TC_CSS_URL.'jm-tc-meta-box.css');
-				//wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false);
+				wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false);
 			}
 			
 		}

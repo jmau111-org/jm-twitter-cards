@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.2.7
+Version: 5.2.8
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -47,7 +47,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.2.7' );
+define( 'JM_TC_VERSION', '5.2.8' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -82,11 +82,43 @@ if( is_admin() ) {
 
 }
 
+/******************
+
+CLASS INIT
+
+******************/
+
+global $jm_twitter_cards;
+
+//check if Twitter cards is activated in Yoast and deactivate it
+$jm_twitter_cards['disable'] = new JM_TC_Disable;
+
+//admin classes
+if( is_admin() ) {
+
+	$jm_twitter_cards['utilities'] = new JM_TC_Utilities;
+	$jm_twitter_cards['admin-tabs'] = new JM_TC_Tabs;
+	$jm_twitter_cards['admin-options'] =  new JM_TC_Options;
+	$jm_twitter_cards['admin-base'] = new JM_TC_Admin; 
+	 //if( is_multisite() ) new JM_TC_Network;
+	$jm_twitter_cards['admin-import-export'] = new JM_TC_Import_Export;
+	$jm_twitter_cards['admin-preview'] = new JM_TC_Preview;
+	$jm_twitter_cards['admin-metabox'] = new JM_TC_Metabox;
+	$jm_twitter_cards['admin-about'] = new JM_TC_Author;
+
+}
+	
+$jm_twitter_cards['process-thumbs'] = new JM_TC_Thumbs;
+$jm_twitter_cards['populate-markup'] = new JM_TC_Markup;
+
 	
 //Call admin pages
-function jm_tc_subpages(){
-if ( isset( $_GET['page'] ) ) {
-		switch ( $_GET['page'] ) {
+function jm_tc_subpages()
+{
+	if ( isset( $_GET['page'] ) ) 
+	{
+		switch ( $_GET['page'] ) 
+		{
 			case 'jm_tc_cf':
 				require( JM_TC_ADMIN_PAGES_DIR .'custom_fields.php' );
 				break;
@@ -137,7 +169,6 @@ if ( isset( $_GET['page'] ) ) {
 		}
 	}
 }
-
 
 // Add a "Settings" link in the plugins list
 function jm_tc_settings_action_links($links, $file)
@@ -194,24 +225,11 @@ function jm_tc_init()
 	//robots.txt
 	add_filter( 'robots_txt', 'jm_tc_robots_mod', 10, 2 );
 	
+	//markup
+	global $jm_twitter_cards;
+	$init_markup = $jm_twitter_cards['populate-markup'];
 	
-	//check if Twitter cards is activated in Yoast and deactivate it
-	new JM_TC_Disable;
-	
-	//admin classes
-	if( is_admin() ) {
-	
-		 new JM_TC_Utilities;
-		 new JM_TC_Tabs;
-		 new JM_TC_Options;
-		 new JM_TC_Admin; 
-		 	//if( is_multisite() ) new JM_TC_Network;
-		 new JM_TC_Import_Export;
-		 new JM_TC_Preview;
-		 new JM_TC_Metabox;
-		 new JM_TC_Author;
-
-	}
+	add_action('wp_head', array( $init_markup, 'add_markup'), 2 );
 	
 	/* Thumbnails */
 	$opts = get_option('jm_tc');
@@ -319,16 +337,3 @@ function jm_tc_get_default_network_options()
 	);
 }
 */
-
-/******************
-
-AFTER WP HAS LOADED
-
-******************/
-add_action('wp', 'jm_tc_after_wp_loaded');
-function jm_tc_after_wp_loaded()
-{		
-	new JM_TC_Thumbs;
-	new JM_TC_Markup;
-	
-}
