@@ -37,7 +37,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'   		=> 'twitterImageWidth',
 		'type' 		=> 'text_number',
 		'min'		=> 280,
-		'max'  		=> PHP_INT_MAX,
+		'max'  		=> 1000,
 		),	
 
 		array(
@@ -46,20 +46,46 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'   		=> 'twitterImageHeight',
 		'type' 		=> 'text_number',
 		'min'		=> 150,
-		'max'  		=> PHP_INT_MAX,
+		'max'  		=> 1000,
 		),	
 		
 		
 		array(
 		'name' 		=> __( 'Crop', 'jm-tc' ),
-		'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc'),
+		'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc') .__(' (Super Crop => WordPress 3.9++)', 'jm-tc'),
 		'id'   		=> 'twitterCardCrop',
 		'type' 		=> 'select',
 		'options'	 => array(
 		'no' 			=> __( 'No', 'jm-tc' ),
 		'yes' 			=> __( 'Yes', 'jm-tc' ),
+		'yo' 			=> __( 'Yes', 'jm-tc' ).' (Super Crop)',
 		)
 		),
+
+		array(
+		'name' 		=> __( 'Crop x', 'jm-tc' ),
+		'desc' 		=> __(' (Super Crop => WordPress 3.9++)', 'jm-tc'),
+		'id'   		=> 'twitterCardCropX',
+		'type' 		=> 'select',
+		'options'	 => array(
+		'left' 			=> __( 'Left', 'jm-tc' ),
+		'center' 		=> __( 'Center', 'jm-tc' ),
+		'right' 		=> __( 'Right', 'jm-tc' ),
+		)
+		),
+
+		array(
+		'name' 		=> __( 'Crop y', 'jm-tc' ),
+		'desc' 		=> __(' (Super Crop => WordPress 3.9++)', 'jm-tc'),
+		'id'   		=> 'twitterCardCropY',
+		'type' 		=> 'select',
+		'options'	 => array(
+		'top' 			=> __( 'Top', 'jm-tc' ),
+		'center' 		=> __( 'Center', 'jm-tc' ),
+		'bottom' 		=> __( 'Bottom', 'jm-tc' ),
+		)
+		),
+		
 		
 		array(
 		'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),

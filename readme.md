@@ -11,7 +11,18 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.2.9
+* Add new crop options for WordPress 3.9++
+* Indeed only works with latest versions of WordPress, later than 3.9
+* Delete ajax call in option class
+
+# 5.2.8
+* 04 July 2014
+* fix bug with NGG post box
+* better init
+
 # 5.2.7
+* 22 June 2014
 * make the og meta more compliant with W3C requirements (small fix HTML markup)
 
 # 5.2.6

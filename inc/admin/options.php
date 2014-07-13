@@ -28,8 +28,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		static function this() {
 			return self::$_this;
 		 }
-
-		
+		 
 		/*
 		* retrieve datas from SEO Plugins
 		*/

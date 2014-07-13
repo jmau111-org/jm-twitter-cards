@@ -5,20 +5,20 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if( class_exists('JM_TC_Options') ) {
+if( ! class_exists('JM_TC_Preview') ) {
 
 
-	class JM_TC_Preview extends JM_TC_Options {
+	class JM_TC_Preview {
 		
 		
 		public static function show_preview($post_ID){
 		
 			$options 	= new JM_TC_Options;
 			$opts    	= get_option('jm_tc');
-			$multi_opts = get_site_option('jm_tc_network');
+			//$multi_opts = get_site_option('jm_tc_network');
 			
 			
-			$is_og = ( is_multisite() ) ? $opts['twitterNetworkCardOg'] : $opts['twitterCardOg'];
+			$is_og = /*( is_multisite() ) ? $opts['twitterNetworkCardOg'] : */ $opts['twitterCardOg'];
 			
 			/* most important meta */
 			$cardType_arr 		= $options->cardType( $post_ID ) ;

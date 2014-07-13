@@ -5,13 +5,13 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if( class_exists('JM_TC_Utilities') ) {
+if( ! class_exists('JM_TC_Tabs') ) {
 
  
-	class JM_TC_Tabs extends JM_TC_Utilities {
+	class JM_TC_Tabs {
 	
 		// Create WP Admin Tabs on-the-fly.
-		public static function admin_tabs($tabs = array(), $current=NULL){
+		public static function admin_tabs($tabs = array(), $current = NULL){
 			
 			if( !$tabs ) {
 			
