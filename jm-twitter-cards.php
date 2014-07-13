@@ -248,7 +248,7 @@ function jm_tc_init()
 			break;
 
 			case 'yo' :
-				$is_crop = array($crop_x, $crop_y);
+				$is_crop = ( parent::is_version('3.9') ) ? array($crop_x, $crop_y) : false;
 			break;
 
 			default:

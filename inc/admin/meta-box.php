@@ -414,9 +414,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'max'  => 1000,
 			'std'	=> $this->opts['twitterImageHeight'],
 			),	
-			
-			
-			
+						
 			
 			array(
 			 'id' 	=> 'twitter_featured_size',

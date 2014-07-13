@@ -13,6 +13,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 # 5.2.9
 * Add new crop options for WordPress 3.9++
 * Indeed only works with latest versions of WordPress, later than 3.9
+* Delete ajax call in option class
 
 # 5.2.8
 * 04 July 2014

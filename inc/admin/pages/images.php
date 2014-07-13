@@ -37,7 +37,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'   		=> 'twitterImageWidth',
 		'type' 		=> 'text_number',
 		'min'		=> 280,
-		'max'  		=> PHP_INT_MAX,
+		'max'  		=> 1000,
 		),	
 
 		array(
@@ -46,7 +46,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'id'   		=> 'twitterImageHeight',
 		'type' 		=> 'text_number',
 		'min'		=> 150,
-		'max'  		=> PHP_INT_MAX,
+		'max'  		=> 1000,
 		),	
 		
 		
