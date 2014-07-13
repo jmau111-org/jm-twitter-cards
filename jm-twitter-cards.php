@@ -248,7 +248,8 @@ function jm_tc_init()
 			break;
 
 			case 'yo' :
-				$is_crop = ( parent::is_version('3.9') ) ? array($crop_x, $crop_y) : false;
+				global $wp_version;
+				$is_crop = ( $wp_version >= 3.9 ) ? array($crop_x, $crop_y) : false;
 			break;
 
 			default:
