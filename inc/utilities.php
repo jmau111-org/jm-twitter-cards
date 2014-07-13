@@ -70,17 +70,6 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			echo'</pre>';
 		}	
 
-		// WP version
-
-		public function is_version( $version = '3.9' ) {
-			global $wp_version;
-			if ( version_compare( $wp_version, $version, '>=' ) ) {
-				return true;
-			}
-		return false;
-		}
-
-
 	}
 
 }
