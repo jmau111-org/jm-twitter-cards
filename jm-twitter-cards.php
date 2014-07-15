@@ -252,10 +252,6 @@ function jm_tc_init()
 				global $wp_version;
 				$is_crop = ( version_compare( $wp_version, '3.9', '>=') ) ? array($crop_x, $crop_y) : true;
 			break;
-
-			default:
-				$is_crop === true;
-
 		}
 
 	if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
