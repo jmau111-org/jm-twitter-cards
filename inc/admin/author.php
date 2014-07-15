@@ -11,7 +11,7 @@ if ( ! class_exists('JM_TC_Author') ) {
 
 		public static function get_plugins_list( $slugs = array() ) {
 			
-			$list = '<ul>';
+			$list = '<ul class="plugins-list">';
 
 			foreach ( $slugs as $slug => $name ){
 				
@@ -23,21 +23,36 @@ if ( ! class_exists('JM_TC_Author') ) {
 			
 		}
 		
-		public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $slugs = array() ) {
+		public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $googleplus, $slugs = array() ) {
 
-			$infos   = '<h3 class="hndle">'.__('The developer', 'jm-tc').'</h3>';
-			$infos  .= '<div class="inbl"><img src="http://www.gravatar.com/avatar/'.md5($gravatar_email).'"/></div>';
-			$infos	.= '<div class="inbl">';
-			$infos  .= '<p class="sub-bold">'.$name.'</p>';
-			$infos  .= '<blockquote class="about">'.$desc.'</blockquote>'."\n\n";
-			$infos  .= '<a href="'.$url.'" target="_blank">'.$url.'</a>' ."\n\n";
-			$infos  .= '<i class="link-like dashicons dashicons-twitter"></i> <a href="http://twitter.com/intent/user?screen_name='.$twitter.'" >@'.$twitter.'</a>';
-			$infos  .= '</p></div>';
+			$infos   = '<div class="inbl">';
+			$infos  .= '<h3 class="hndle">'.__('The developer', 'jm-tc').'</h3>';
+			$infos  .= '<figure>';
+			$infos  .= '<img class="totheleft" src="http://www.gravatar.com/avatar/'.md5($gravatar_email).'" alt=""/>';
+			$infos  .= '<figcaption class="totheright">';
+			$infos  .= $name;
+			$infos  .= '<p>'.$desc.'</p>';
+			$infos  .= '<ul>';
+			$infos  .= '<li class="inbl"><a class="social button button-secondary dashicons-before dashicons-admin-site" href="'.$url.'" target="_blank" title="'.esc_attr__('My website', 'jm-tc').'"><span class="visually-hidden">'.__('My website', 'jm-tc').'</span></a></li>';
+			$infos  .= '<li class="inbl"><a class="social button button-secondary link-like dashicons-before dashicons-twitter" href="http://twitter.com/intent/user?screen_name='.$twitter.'" title="'.esc_attr__('Follow me', 'jm-tc').'"> <span class="visually-hidden">'.__('Follow me', 'jm-tc').'</span></a></li>';
+			$infos  .= '<li class="inbl"><a class="button button-secondary dashicons-before dashicons-googleplus social" href="'.$googleplus.'" target="_blank" title="'.esc_attr__('Add me to your circles', 'jm-tc').'"> <span class="visually-hidden">'.__('Add me to your circles', 'jm-tc').'</span></a></li>';
+			$infos  .= '</ul>';
+			$infos  .= '<figcaption>';
+			$infos  .= '</figure>';
+			$infos  .= '</div>';
 			
-			$infos2  =  '<h3><span>'.__('Keep the plugin free', 'jm-tc').'</span></h3>';
-			$infos2 .= '<p>'.__('Please help if you want to keep this plugin free.', 'jm-tc')."\n\n";
-			$infos2	.= '<i class="dashicons dashicons-cart"></i><a target="_blank" href="'.$donation.'">'.__('Donation', 'jm-ltsc').'</a>'.'</p>';
-			
+			$infos2  = '<div class="inbl">';
+			$infos2 .= '<h3><span>'.__('Keep the plugin free', 'jm-tc').'</span></h3>';
+			$infos2 .= '<p>'.__('Please help if you want to keep this plugin free.', 'jm-tc').'</p>';
+			$infos2	.= '
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="'.$donation.'">
+						<input type="image" src="https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+						</form>
+						';
+			$infos2 .= '</div>';
 
 			$infos3  = '<h3><span>'.__('Plugin', 'jm-tc').'</span></h3>';
 			$infos3 .= '<p>';

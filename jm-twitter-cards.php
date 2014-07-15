@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.2.9
+Version: 5.3.0
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -48,7 +48,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.2.9' );
+define( 'JM_TC_VERSION', '5.3.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -233,6 +233,7 @@ function jm_tc_init()
 	
 	/* Thumbnails */
 	$opts = get_option('jm_tc');
+	$is_crop = true;
 	$crop = $opts['twitterCardCrop'];
 	$crop_x =  $opts['twitterCardCropX'];
 	$crop_y =  $opts['twitterCardCropY'];
@@ -251,10 +252,6 @@ function jm_tc_init()
 				global $wp_version;
 				$is_crop = ( version_compare( $wp_version, '3.9', '>=') ) ? array($crop_x, $crop_y) : true;
 			break;
-
-			default:
-				$is_crop === true;
-
 		}
 
 	if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
