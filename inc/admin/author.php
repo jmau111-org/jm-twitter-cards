@@ -32,10 +32,10 @@ if ( ! class_exists('JM_TC_Author') ) {
 			$infos  .= '<figcaption class="totheright">';
 			$infos  .= $name;
 			$infos  .= '<p>'.$desc.'</p>';
-			$infos  .= '<ul>';
+			$infos  .= '<ul class="social-links">';
 			$infos  .= '<li class="inbl"><a class="social button button-secondary dashicons-before dashicons-admin-site" href="'.$url.'" target="_blank" title="'.esc_attr__('My website', 'jm-tc').'"><span class="visually-hidden">'.__('My website', 'jm-tc').'</span></a></li>';
 			$infos  .= '<li class="inbl"><a class="social button button-secondary link-like dashicons-before dashicons-twitter" href="http://twitter.com/intent/user?screen_name='.$twitter.'" title="'.esc_attr__('Follow me', 'jm-tc').'"> <span class="visually-hidden">'.__('Follow me', 'jm-tc').'</span></a></li>';
-			$infos  .= '<li class="inbl"><a class="button button-secondary dashicons-before dashicons-googleplus social" href="'.$googleplus.'" target="_blank" title="'.esc_attr__('Add me to your circles', 'jm-tc').'"> <span class="visually-hidden">'.__('Add me to your circles', 'jm-tc').'</span></a></li>';
+			$infos  .= '<li class="inbl"><a class="social button button-secondary dashicons-before dashicons-googleplus" href="'.$googleplus.'" target="_blank" title="'.esc_attr__('Add me to your circles', 'jm-tc').'"> <span class="visually-hidden">'.__('Add me to your circles', 'jm-tc').'</span></a></li>';
 			$infos  .= '</ul>';
 			$infos  .= '<figcaption>';
 			$infos  .= '</figure>';
