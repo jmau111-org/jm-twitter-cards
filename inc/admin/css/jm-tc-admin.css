@@ -172,6 +172,7 @@
 	-moz-columns: 3;
 	columns: 3;
 }
-.plugins-list li{
-
+.plugins-list li .button{
+	width:200px;
+	text-align: center;
 }
