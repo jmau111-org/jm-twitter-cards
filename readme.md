@@ -10,6 +10,10 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.3.0
+* Fix notice with var $is_crop
+* Replace wishlist Amazon with simple Paypal donation
+
 # 5.2.9
 * 13 July 2014
 * Add new crop options for WordPress 3.9++

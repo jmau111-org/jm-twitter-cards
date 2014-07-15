@@ -20,10 +20,20 @@ $slugs = array(
 			'jm-last-twit-shortcode' 			=> 'JM Last Twit Shortcode',
 			'jm-twit-this-comment'				=> 'JM Twit This Comment',
 			'jm-simple-qr-code-widget' 			=> 'JM Simple QR Code Widget',
-			'jm-html5-and-responsive-gallery' 	=> 'JM HTML5 Responsive Gallery',
+			'jm-wp-d-vine' 						=> 'JM WP D-Vine',
+			'jm-instagram-feed-widget'			=> 'JM Instagram Feed Widget'
 			);
 
-$author->get_author_infos('Julien Maury', __('I am a WordPress Developer, I like to make it simple.', 'jm-tc'), 'tweetpressfr@gmail.com', 'http://www.tweetpress.fr', 'http://www.amazon.fr/registry/wishlist/1J90JNIHBBXL8', 'tweetpressfr', $slugs);
+$author->get_author_infos(
+	'Julien Maury', 
+	__('I am a WordPress Developer, I like to make it simple.', 'jm-tc'), 
+	'tweetpressfr@gmail.com', 
+	'http://tweetpressfr.github.io', 
+	'7BJYYT486HEH6', 
+	'tweetpressfr',
+	'https://plus.google.com/u/0/+JulienMaury',  
+	$slugs
+	);
 ?>
 </div>
 

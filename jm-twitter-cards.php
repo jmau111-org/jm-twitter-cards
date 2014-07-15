@@ -233,6 +233,7 @@ function jm_tc_init()
 	
 	/* Thumbnails */
 	$opts = get_option('jm_tc');
+	$is_crop = true;
 	$crop = $opts['twitterCardCrop'];
 	$crop_x =  $opts['twitterCardCropX'];
 	$crop_y =  $opts['twitterCardCropY'];
