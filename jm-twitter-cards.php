@@ -241,11 +241,11 @@ function jm_tc_init()
 	switch($crop)
 		{
 			case 'yes' :
-				$is_crop === true;
+				$is_crop = true;
 			break;
 
 			case 'no' :
-				$is_crop === false;
+				$is_crop = false;
 			break;
 
 			case 'yo' :
