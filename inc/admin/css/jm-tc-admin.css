@@ -167,11 +167,30 @@
 	width: 1px;
 }
 
+
+.social-links li{
+	width:50px;
+}
+.social.dashicons-before:before{
+	padding: .2em;
+}
+
+.social.dashicons-before.dashicons-twitter{
+	background:#55ACEE;
+	color:#fff;
+}
+
+.social.dashicons-before.dashicons-googleplus{
+	background:#DD4B39;
+	color:#fff;
+}
+
 .plugins-list{
--webkit-columns: 3;
+	-webkit-columns: 3;
 	-moz-columns: 3;
 	columns: 3;
 }
-.plugins-list li{
-
+.plugins-list li .button{
+	width:200px;
+	text-align: center;
 }
