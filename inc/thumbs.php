@@ -18,7 +18,8 @@ if ( !class_exists('JM_TC_Thumbs') ) {
 			
 			$size = $opts['twitterCardImgSize'];
 
-			switch ($size) :
+			switch ($size) 
+			{
 				case 'small':
 					$twitterCardImgSize = 'jmtc-small-thumb';
 					break;
@@ -38,8 +39,7 @@ if ( !class_exists('JM_TC_Thumbs') ) {
 				default:
 					$twitterCardImgSize = 'jmtc-small-thumb';
 			?><!-- @(-_-)] --><?php
-					break;
-			endswitch;
+			}
 
 			return $twitterCardImgSize;
 		}
