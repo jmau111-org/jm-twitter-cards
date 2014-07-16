@@ -365,31 +365,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			
 			array(
-			 'id' 	=> 'twitter_image_resize',
-			 'type' => 'title',
-			 'name'	=> 'Resize image for twitter:image',		
-			),
-			
-			
-			
-			array(
-			'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
-			'id'       => 'cardImgSize',
-			'type'     => 'select',
-
-			'options'  => array(
-			'small'			    => __('280 x 375 px', 'jm-tc'),
-			'web'   			=> __('560 x 750 px', 'jm-tc'),
-			'mobile-non-retina' => __('435 x 375 px', 'jm-tc'),
-			'mobile-retina'  	=> __('280 x 150 px', 'jm-tc'),
-			),
-			
-			'std'	=> $this->opts['twitterCardImgSize'],
-
-			),
-			
-			
-			array(
 			 'id' 	=> 'twitter_image_width_height',
 			 'type' => 'title',
 			 'name'	=> 'Rendering on Twitter: width and height',		

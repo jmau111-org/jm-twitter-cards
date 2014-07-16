@@ -24,8 +24,7 @@ $keys = array(
 			'cardData1',
 			'cardLabel1',
 			'cardData2',
-			'cardLabel2',
-			'cardImgSize',
+			'cardLabel2'
 		);
 		
 		
@@ -41,10 +40,3 @@ global $wpdb;
 			)
 	);
 }
-/*
-// multisite part 
-if ( is_multisite() ) {
-
-	delete_site_option( 'jm_tc_network');
-
-}*/

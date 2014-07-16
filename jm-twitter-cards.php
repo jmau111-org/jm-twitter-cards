@@ -76,8 +76,6 @@ if( is_admin() ) {
 	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
 	require( JM_TC_ADMIN_DIR . 'preview.php' );	
 	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
-	
-	//if( is_multisite() ) require( JM_TC_ADMIN_DIR.  'admin-tc-mu.php' );
 	require( JM_TC_ADMIN_DIR . 'import-export.php' );	
 
 }
@@ -98,9 +96,8 @@ if( is_admin() ) {
 
 	$jm_twitter_cards['utilities'] = new JM_TC_Utilities;
 	$jm_twitter_cards['admin-tabs'] = new JM_TC_Tabs;
-	$jm_twitter_cards['admin-options'] =  new JM_TC_Options;
+	$jm_twitter_cards['admin-options'] = new JM_TC_Options;
 	$jm_twitter_cards['admin-base'] = new JM_TC_Admin; 
-	 //if( is_multisite() ) new JM_TC_Network;
 	$jm_twitter_cards['admin-import-export'] = new JM_TC_Import_Export;
 	$jm_twitter_cards['admin-preview'] = new JM_TC_Preview;
 	$jm_twitter_cards['admin-metabox'] = new JM_TC_Metabox;
@@ -254,12 +251,35 @@ function jm_tc_init()
 			break;
 		}
 
-	if (function_exists('add_theme_support')) add_theme_support('post-thumbnails');
-	
-	add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
-	add_image_size('jmtc-max-web-thumb', 435, 375, $is_crop);/* maximum web size for photo cards */
-	add_image_size('jmtc-max-mobile-non-retina-thumb', 280, 375, $is_crop);/* maximum non retina mobile size for photo cards  */
-	add_image_size('jmtc-max-mobile-retina-thumb', 560, 750, $is_crop);/* maximum retina mobile size for photo cards  */
+	if (function_exists('add_theme_support')) 
+		add_theme_support('post-thumbnails');
+
+	$opts = get_option('jm_tc');
+	$size = $opts['twitterCardImgSize'];
+
+	switch ($size) 
+	{
+		case 'small':
+			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
+			break;
+
+		case 'web':
+			add_image_size('jmtc-max-web-thumb', 435, 375, $is_crop);/* maximum web size for photo cards */
+			break;
+
+		case 'mobile-non-retina':
+			add_image_size('jmtc-max-mobile-non-retina-thumb', 280, 375, $is_crop);/* maximum non retina mobile size for photo cards*/
+			break;
+
+		case 'mobile-retina':
+			add_image_size('jmtc-max-mobile-retina-thumb', 560, 750, $is_crop);/* maximum retina mobile size for photo cards  */
+			break;
+
+		default:
+			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
+			break;
+	}
+
 	
 }
 
@@ -293,11 +313,6 @@ function jm_tc_activate() {
 	
 	} else {
 	
-		/*
-		$multi_opts = get_site_option('jm_tc');	
-		if (!is_array($multi_opts)) update_site_option('jm_tc_network', jm_tc_get_default_network_options());
-		*/
-		
 	    // For regular options.
 		global $wpdb;
 		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
@@ -328,7 +343,7 @@ function jm_tc_get_default_options()
 		'twitterProfile' => 'yes',
 		'twitterPostPageTitle' => get_bloginfo('name') , // filter used by plugin to customize title
 		'twitterPostPageDesc' => __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
-		'twitterCardImgSize' => 'small',
+		/*'twitterCardImgSize' => 'small',*/
 		'twitterCardTitle' => '',
 		'twitterCardDesc' => '',
 		'twitterCardCrop' => 'yes',
@@ -349,12 +364,3 @@ function jm_tc_get_default_options()
 		'twitterCardOg' => 'no',
 	);
 }
-
-/*
-function jm_tc_get_default_network_options()
-{
-	return array(
-	'twitterNetworkCardOg' => 'no',
-	);
-}
-*/
