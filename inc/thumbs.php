@@ -50,8 +50,10 @@ if ( !class_exists('JM_TC_Thumbs') ) {
 		public static function get_post_thumbnail_weight($post_id)
 		{
 
-				
-			$math = filesize( get_attached_file( get_post_thumbnail_id( $post_id ) ) ) / 1000000;// I was told this is not an accurate math but I actually we do not care, 1 MB images on a website that's not web that's insane!
+			$file_size = has_post_thumbnail( $post_id ) ? filesize( get_attached_file( get_post_thumbnail_id( $post_id ) ) ) : 0;//avoid warning if you screw your install or delete all images in upload
+			$math =  $file_size / 1000000;
+				// I was told this is not an accurate math but I actually we do not care, 
+				// 1 MB images on a website that's not web safe that's insane!
 			
 		
 			if( $math == 0 ) {

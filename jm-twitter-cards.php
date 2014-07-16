@@ -219,19 +219,19 @@ function jm_tc_initialize() {
 	{
 		case 'small':
 			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
-			break;
+		break;
 
 		case 'web':
 			add_image_size('jmtc-max-web-thumb', 435, 375, $is_crop);/* maximum web size for photo cards */
-			break;
+		break;
 
 		case 'mobile-non-retina':
 			add_image_size('jmtc-max-mobile-non-retina-thumb', 280, 375, $is_crop);/* maximum non retina mobile size for photo cards*/
-			break;
+		break;
 
 		case 'mobile-retina':
 			add_image_size('jmtc-max-mobile-retina-thumb', 560, 750, $is_crop);/* maximum retina mobile size for photo cards  */
-			break;
+		break;
 
 		default:
 			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
@@ -259,8 +259,8 @@ function jm_tc_robots_mod( $output, $public ) {
 INIT
 
 ******************/
-add_action('plugins_loaded', 'jm_tc_init');
-function jm_tc_init()
+add_action('plugins_loaded', 'jm_tc_plugins_loaded');
+function jm_tc_plugins_loaded()
 {
 	//lang
 	load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
