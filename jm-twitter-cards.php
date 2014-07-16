@@ -192,6 +192,7 @@ function jm_tc_initialize() {
 	$crop = $opts['twitterCardCrop'];
 	$crop_x =  $opts['twitterCardCropX'];
 	$crop_y =  $opts['twitterCardCropY'];
+	$size = $opts['twitterCardImgSize'];
 
 	switch($crop)
 		{
@@ -211,9 +212,6 @@ function jm_tc_initialize() {
 
 	if (function_exists('add_theme_support')) 
 		add_theme_support('post-thumbnails');
-
-	$opts = get_option('jm_tc');
-	$size = $opts['twitterCardImgSize'];
 
 	switch ($size) 
 	{
