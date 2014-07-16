@@ -178,7 +178,7 @@ function jm_tc_settings_action_links($links, $file)
 
 
 // Init meta box
-function jm_tc_initialize_cmb_meta_boxes() {
+function jm_tc_initialize() {
 
 	if ( ! class_exists( 'cmb_Meta_Box' ) ) {
 		
@@ -186,49 +186,7 @@ function jm_tc_initialize_cmb_meta_boxes() {
 	
 	}
 
-}
-
-// Robots.txt with magic filter
-function jm_tc_robots_mod( $output, $public ) {
-
-	$opts = get_option('jm_tc');
-	
-	if( $opts['twitterCardRobotsTxt'] == 'yes' ) {
-		$output .= "User-agent: Twitterbot" ."\n";
-		$output .= "Disallow: ";
-	}
-	
-	return $output;
-}
-
-
-/******************
-
-INIT
-
-******************/
-add_action('plugins_loaded', 'jm_tc_init');
-function jm_tc_init()
-{
-	//lang
-	load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
-	
-	//settings link
-	add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'jm_tc_settings_action_links', 10, 2);
-	
-	//meta box
-	add_action( 'init', 'jm_tc_initialize_cmb_meta_boxes');
-	
-	//robots.txt
-	add_filter( 'robots_txt', 'jm_tc_robots_mod', 10, 2 );
-	
-	//markup
-	global $jm_twitter_cards;
-	$init_markup = $jm_twitter_cards['populate-markup'];
-	
-	add_action('wp_head', array( $init_markup, 'add_markup'), 2 );
-	
-	/* Thumbnails */
+		/* Thumbnails */
 	$opts = get_option('jm_tc');
 	$is_crop = true;
 	$crop = $opts['twitterCardCrop'];
@@ -278,6 +236,49 @@ function jm_tc_init()
 		default:
 			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
 	}
+
+
+}
+
+// Robots.txt with magic filter
+function jm_tc_robots_mod( $output, $public ) {
+
+	$opts = get_option('jm_tc');
+	
+	if( $opts['twitterCardRobotsTxt'] == 'yes' ) {
+		$output .= "User-agent: Twitterbot" ."\n";
+		$output .= "Disallow: ";
+	}
+	
+	return $output;
+}
+
+
+/******************
+
+INIT
+
+******************/
+add_action('plugins_loaded', 'jm_tc_init');
+function jm_tc_init()
+{
+	//lang
+	load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
+	
+	//settings link
+	add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'jm_tc_settings_action_links', 10, 2);
+	
+	//meta box
+	add_action( 'init', 'jm_tc_initialize');
+	
+	//robots.txt
+	add_filter( 'robots_txt', 'jm_tc_robots_mod', 10, 2 );
+	
+	//markup
+	global $jm_twitter_cards;
+	$init_markup = $jm_twitter_cards['populate-markup'];
+	
+	add_action('wp_head', array( $init_markup, 'add_markup'), 2 );
 
 	
 }
