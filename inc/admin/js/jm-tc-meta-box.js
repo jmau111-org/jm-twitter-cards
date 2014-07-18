@@ -84,6 +84,8 @@ jQuery(document).ready(function($) {
 		    hidePlayer();
 			hideGallery();
 			console.log('application');
+		}else{
+			console.log('oO');
 		}
 
 	});
