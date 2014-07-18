@@ -75,7 +75,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 				$trigger = apply_filters('jm_tc_exclude_from_post', $this->opts['twitterCardMetabox'] == 'yes') ? 'on' : 'off';
 			break;
 			
-			
 			default:
 				$trigger = 'on';
 			break;

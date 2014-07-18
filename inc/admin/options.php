@@ -13,7 +13,6 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 		private static $_this;
 		var $opts;
-		//var $multi_opts;
 
 		function __construct() {
 		
