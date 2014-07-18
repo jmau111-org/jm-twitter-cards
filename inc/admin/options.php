@@ -13,13 +13,11 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 		private static $_this;
 		var $opts;
-		//var $multi_opts;
 
 		function __construct() {
 		
 			self::$_this 		= $this;
 			$this->opts 		= get_option('jm_tc'); 
-			//$this->multi_opts 	= get_site_option('jm_tc_network');
 			
 		}
 		
@@ -238,9 +236,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					}
 					
 					//In case Open Graph is on 
-					
-					//$default  = ( is_multisite() ) ? $this->multi_opts['twitterNetworkCardOg'] : $this->opts['twitterCardOg'];
-					
+						
 					$img_meta = ( $this->opts['twitterCardOg'] == 'yes' ) ? 'image' : 'image:src';
 					
 					return array ( $img_meta => apply_filters( 'jm_tc_image_source', $image) );

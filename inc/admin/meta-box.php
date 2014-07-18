@@ -75,7 +75,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 				$trigger = apply_filters('jm_tc_exclude_from_post', $this->opts['twitterCardMetabox'] == 'yes') ? 'on' : 'off';
 			break;
 			
-			
 			default:
 				$trigger = 'on';
 			break;
@@ -362,31 +361,6 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'show_names'    => true,
 			'show_on'	    => array( 'alt_value' => self::on_off( 'post' ), 'alt_key' => 'exclude_post'),
 			'fields'        => array(
-			
-			
-			array(
-			 'id' 	=> 'twitter_image_resize',
-			 'type' => 'title',
-			 'name'	=> 'Resize image for twitter:image',		
-			),
-			
-			
-			
-			array(
-			'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
-			'id'       => 'cardImgSize',
-			'type'     => 'select',
-
-			'options'  => array(
-			'small'			    => __('280 x 375 px', 'jm-tc'),
-			'web'   			=> __('560 x 750 px', 'jm-tc'),
-			'mobile-non-retina' => __('435 x 375 px', 'jm-tc'),
-			'mobile-retina'  	=> __('280 x 150 px', 'jm-tc'),
-			),
-			
-			'std'	=> $this->opts['twitterCardImgSize'],
-
-			),
 			
 			
 			array(
