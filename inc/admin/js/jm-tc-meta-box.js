@@ -1,6 +1,10 @@
 // DOM ready
 jQuery(document).ready(function($) {
 
+	/* we do this not the simpliest way but it's readable. 
+	   next time I'll add some checking for fields
+	*/
+
 	//hide
 	function hideProduct(){
 	   $( '.cmb_id_product_title').hide();
