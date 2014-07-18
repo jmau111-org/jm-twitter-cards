@@ -335,7 +335,7 @@ function jm_tc_get_default_options()
 		'twitterCreator' => 'TweetPressFr',
 		'twitterSite' => 'TweetPressFr',
 		'twitterImage' => 'https://g.twimg.com/Twitter_logo_blue.png',
-		'twitterImgSize' => 'small',
+		'twitterCardImgSize' => 'small',
 		'twitterImageWidth' => '280',
 		'twitterImageHeight' => '150',
 		'twitterCardMetabox' => 'yes',
