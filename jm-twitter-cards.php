@@ -91,6 +91,9 @@ global $jm_twitter_cards;
 //check if Twitter cards is activated in Yoast and deactivate it
 $jm_twitter_cards['disable'] = new JM_TC_Disable;
 
+//handle particular cases	
+$jm_twitter_cards['particular'] = new JM_TC_Particular;
+
 //admin classes
 if( is_admin() ) {
 
