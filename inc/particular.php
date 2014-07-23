@@ -5,10 +5,15 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-add_filter( 'cmb_meta_box_url', 'update_cmb_meta_box_url' );
-function update_cmb_meta_box_url( $url ) {
-    // modify the url here
-    return $url;
+// SSL stuffs
+add_filter( 'cmb_meta_box_url', 'jm_tc_update_cmb_meta_box_url' );
+function jm_tc_update_cmb_meta_box_url( $url ) {
+	if( is_ssl() ) {
+    	// modify the url here
+	    return preg_replace('|^http://|', 'https://', $url);
+	} else {
+		return $url;
+	}
 }
 
 
