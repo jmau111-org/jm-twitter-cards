@@ -8,6 +8,7 @@ This is the github version of the official repository for JM Twitter Cards. It's
 
 Want to fork? Please fork the trunk version and not the master version, URL is here : https://github.com/TweetPressFr/jm-twitter-cards/tree/trunk
 
+
 ## Changelog ##
 
 # 5.3.1
