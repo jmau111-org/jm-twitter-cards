@@ -12,6 +12,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 # 5.3.1
 * fix bug over SSL
+* reorganize code
 
 # 5.3.0
 * Fix notice with var $is_crop
