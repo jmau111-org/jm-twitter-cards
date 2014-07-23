@@ -83,7 +83,67 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			return $docu;
 		}
 
-		
+		/**
+		* Call admin pages
+		*
+		* */
+		public function subpages()
+		{
+			if ( isset( $_GET['page'] ) ) 
+			{
+				switch ( $_GET['page'] ) 
+				{
+					case 'jm_tc_cf':
+						require( JM_TC_ADMIN_PAGES_DIR .'custom_fields.php' );
+						break;
+					case 'jm_tc_import_export':
+						require( JM_TC_ADMIN_PAGES_DIR .'import-export.php' );
+						break;
+
+					case 'jm_tc_images':
+						require( JM_TC_ADMIN_PAGES_DIR .'images.php' );	
+						break;
+						
+					case 'jm_tc_meta_box':
+						require( JM_TC_ADMIN_PAGES_DIR .'meta_box.php' );	
+						break;
+
+					case 'jm_tc_multi_author':
+						require( JM_TC_ADMIN_PAGES_DIR .'multi_author.php' );
+						break;
+
+					case 'jm_tc_home':
+						require( JM_TC_ADMIN_PAGES_DIR .'home.php' );	
+						break;
+
+					case 'jm_tc_robots':
+						require( JM_TC_ADMIN_PAGES_DIR .'robots.php' );
+						break;
+
+					case 'jm_tc_deep_linking':
+						require( JM_TC_ADMIN_PAGES_DIR .'deep_linking.php' );
+						break;
+
+					case 'jm_tc_analytics':
+						require( JM_TC_ADMIN_PAGES_DIR .'analytics.php' );
+						break;
+
+					case 'jm_tc_doc':
+						require( JM_TC_ADMIN_PAGES_DIR .'documentation.php' );
+						break;
+
+					case 'jm_tc_about':
+						require( JM_TC_ADMIN_PAGES_DIR .'about.php' );
+						break;
+						
+					case 'jm_tc_tutorial':
+						require( JM_TC_ADMIN_PAGES_DIR .'tutorial.php' );
+						break;
+
+				}
+			}
+		}
+
 		
 		/**
 		* Add menu options page
@@ -93,24 +153,24 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		
 			$this->options_page 					= add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array( $this, 'admin_page_display' ), 'dashicons-twitter');
 			$this->options_page_options 			= add_submenu_page( 'jm_tc', __('General'), __('General'), 'manage_options', self::$key, array( $this, 'admin_page_display' ) );
-			$this->options_page_import_export		= add_submenu_page( 'jm_tc', __('Import').' / '.__('Export'), __('Import').' / '.__('Export'), 'manage_options', 'jm_tc_import_export', 'jm_tc_subpages' );			
-			$this->options_subpage_tutorial 		= add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ) , 'manage_options', 'jm_tc_tutorial', 'jm_tc_subpages' );
+			$this->options_page_import_export		= add_submenu_page( 'jm_tc', __('Import').' / '.__('Export'), __('Import').' / '.__('Export'), 'manage_options', 'jm_tc_import_export', array( $this, 'subpages' ));			
+			$this->options_subpage_tutorial 		= add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ) , 'manage_options', 'jm_tc_tutorial', array( $this, 'subpages' ));
 			
-			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', 'jm_tc_subpages' );
-			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields', 'jm-tc' ), __( 'Custom fields', 'jm-tc' ) , 'manage_options', 'jm_tc_cf', 'jm_tc_subpages' );
-			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt', 'jm-tc' ), __( 'robots.txt', 'jm-tc' ) , 'manage_options', 'jm_tc_robots', 'jm_tc_subpages' );
-			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings', 'jm-tc' ), __( 'Home settings', 'jm-tc' ) , 'manage_options', 'jm_tc_home', 'jm_tc_subpages' );
+			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', array( $this, 'subpages' ));
+			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields', 'jm-tc' ), __( 'Custom fields', 'jm-tc' ) , 'manage_options', 'jm_tc_cf', array( $this, 'subpages' ));
+			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt', 'jm-tc' ), __( 'robots.txt', 'jm-tc' ) , 'manage_options', 'jm_tc_robots', array( $this, 'subpages' ));
+			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings', 'jm-tc' ), __( 'Home settings', 'jm-tc' ) , 'manage_options', 'jm_tc_home', array( $this, 'subpages' ));
 			
-			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box', 'jm-tc' ),  __( 'Meta Box', 'jm-tc' ), 'manage_options', 'jm_tc_meta_box', 'jm_tc_subpages' );
+			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box', 'jm-tc' ),  __( 'Meta Box', 'jm-tc' ), 'manage_options', 'jm_tc_meta_box', array( $this, 'subpages' ));
 			
 			//there is no point displaying this option page is the website is not multi_author !
 			if ( is_multi_author() ) 
-				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author', 'jm-tc' ), __( 'Multi Author', 'jm-tc') , 'manage_options', 'jm_tc_multi_author', 'jm_tc_subpages' );
+				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author', 'jm-tc' ), __( 'Multi Author', 'jm-tc') , 'manage_options', 'jm_tc_multi_author', array( $this, 'subpages' ));
 			
-			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking', 'jm-tc' ), __( 'Deep Linking', 'jm-tc' ) , 'manage_options', 'jm_tc_deep_linking', 'jm_tc_subpages' );
-			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ),  __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', 'jm_tc_subpages' );
-			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', 'jm_tc_subpages' );		
-			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ) , 'manage_options', 'jm_tc_about', 'jm_tc_subpages' );
+			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking', 'jm-tc' ), __( 'Deep Linking', 'jm-tc' ) , 'manage_options', 'jm_tc_deep_linking', array( $this, 'subpages' ));
+			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ),  __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', array( $this, 'subpages' ));
+			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', array( $this, 'subpages' ));		
+			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ) , 'manage_options', 'jm_tc_about', array( $this, 'subpages' ));
 			
 			add_action( 'load-' . $this->options_subpage_home, array( $this, 'load_admin_page_home_scripts' ) );
 			add_action( 'load-' . $this->options_subpage_doc, array( $this, 'load_admin_doc_scripts' ) );

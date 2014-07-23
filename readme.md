@@ -11,13 +11,17 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.3.1
+* fix bug over SSL
+* reorganize code
+
 # 5.3.0
 * Fix notice with var $is_crop
 * Replace wishlist Amazon with simple Paypal donation
 * Delete metabox img size option, reduce the bloat. In fact it used to produce A LOT of images. 
 * While it provided flexibility to a certain extent users were not so happy with this huge amount of img files
 * To set img size, set it in option page, if you want to change, change the value in option page (img section) and use regenerate thumbnails plugin.
-* Add js to meta box so users do not have to scroll to the bootom (they get only the option they need for each card type)
+* Add js to meta box so users do not have to scroll to the bottom (they get only the option they need for each card type)
 
 # 5.2.9
 * 13 July 2014
