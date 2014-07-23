@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.3.0
+Version: 5.3.1
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -47,7 +47,7 @@ or die('What we\'re dealing with here is a total lack of respect for the law !')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.0' );
+define( 'JM_TC_VERSION', '5.3.1' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -63,6 +63,7 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 
 //Call modules 
 require( JM_TC_INC_DIR . 'utilities.php' ); 
+require( JM_TC_INC_DIR . 'particular.php' ); 
 require( JM_TC_INC_DIR . 'thumbs.php' );
 require( JM_TC_INC_DIR . 'disable.php' );
 require( JM_TC_ADMIN_DIR . 'options.php' );
@@ -108,64 +109,6 @@ $jm_twitter_cards['process-thumbs'] = new JM_TC_Thumbs;
 $jm_twitter_cards['populate-markup'] = new JM_TC_Markup;
 
 	
-//Call admin pages
-function jm_tc_subpages()
-{
-	if ( isset( $_GET['page'] ) ) 
-	{
-		switch ( $_GET['page'] ) 
-		{
-			case 'jm_tc_cf':
-				require( JM_TC_ADMIN_PAGES_DIR .'custom_fields.php' );
-				break;
-			case 'jm_tc_import_export':
-				require( JM_TC_ADMIN_PAGES_DIR .'import-export.php' );
-				break;
-
-			case 'jm_tc_images':
-				require( JM_TC_ADMIN_PAGES_DIR .'images.php' );	
-				break;
-				
-			case 'jm_tc_meta_box':
-				require( JM_TC_ADMIN_PAGES_DIR .'meta_box.php' );	
-				break;
-
-			case 'jm_tc_multi_author':
-				require( JM_TC_ADMIN_PAGES_DIR .'multi_author.php' );
-				break;
-
-			case 'jm_tc_home':
-				require( JM_TC_ADMIN_PAGES_DIR .'home.php' );	
-				break;
-
-			case 'jm_tc_robots':
-				require( JM_TC_ADMIN_PAGES_DIR .'robots.php' );
-				break;
-
-			case 'jm_tc_deep_linking':
-				require( JM_TC_ADMIN_PAGES_DIR .'deep_linking.php' );
-				break;
-
-			case 'jm_tc_analytics':
-				require( JM_TC_ADMIN_PAGES_DIR .'analytics.php' );
-				break;
-
-			case 'jm_tc_doc':
-				require( JM_TC_ADMIN_PAGES_DIR .'documentation.php' );
-				break;
-
-			case 'jm_tc_about':
-				require( JM_TC_ADMIN_PAGES_DIR .'about.php' );
-				break;
-				
-			case 'jm_tc_tutorial':
-				require( JM_TC_ADMIN_PAGES_DIR .'tutorial.php' );
-				break;
-
-		}
-	}
-}
-
 // Add a "Settings" link in the plugins list
 function jm_tc_settings_action_links($links, $file)
 {
@@ -237,19 +180,6 @@ function jm_tc_initialize() {
 
 }
 
-// Robots.txt with magic filter
-function jm_tc_robots_mod( $output, $public ) {
-
-	$opts = get_option('jm_tc');
-	
-	if( $opts['twitterCardRobotsTxt'] == 'yes' ) {
-		$output .= "User-agent: Twitterbot" ."\n";
-		$output .= "Disallow: ";
-	}
-	
-	return $output;
-}
-
 
 /******************
 
@@ -267,9 +197,6 @@ function jm_tc_plugins_loaded()
 	
 	//meta box
 	add_action( 'init', 'jm_tc_initialize');
-	
-	//robots.txt
-	add_filter( 'robots_txt', 'jm_tc_robots_mod', 10, 2 );
 	
 	//markup
 	global $jm_twitter_cards;
