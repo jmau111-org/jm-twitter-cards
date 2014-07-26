@@ -11,7 +11,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 ## Changelog ##
 
 # 5.3.2
-
+* increment version
 
 # 5.3.1
 * fix bug over SSL
@@ -53,27 +53,27 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 * Appropriate function restore_current_blog() instead of ~x2 switch_to_blog()
 * Support for Open Graph
 
-# 5.2.3 #
+# 5.2.3 
 * 20 May 2014
 * No more backward compatibility before WP 3.6
 * Rebuild preview because of the bug with overflow
 * To do : add the js to metabox
 
-# 5.2.2 #
+# 5.2.2 
 * 11 May 2014
 * Fix wrong post meta key for player stream
 * Fix robots.txt function 
 * Add tabs to admin pages (menu on top for better UX with admin nav)
 
 
-# 5.2.1 #
+# 5.2.1 
 * 07 May 2014
 * Skip () for classes because we do not need it, actually no argument in constructor
 * Removes notices, just uncheck option cards in WP SEO if enabled on plugins_loaded (soft way)
 * Add app card type to meta box, add country field for meta country application not available on the US app store
 * Add spanish translation for plugin & documentation so now full spanish version, huge thanks to Andrew Kurtis from WebHostingHub (http://www.webhostinghub.com/)
 
-# 5.2.0 #
+# 5.2.0 
 * 03 May 2014
 * Add confirmation message for option page when settings are saved
 * Add translation in Spanish
@@ -86,7 +86,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 * Fix the issue with strip_shortcodes() not working
 
 
-# 5.1.9 #
+# 5.1.9 
 * 20 Apr 2014
 * Fix fallback All In One SEO title
 * Put the card type selected in admin option page as default setting for meta box because it so a pain to select it on each post when meta box is enabled ^^
