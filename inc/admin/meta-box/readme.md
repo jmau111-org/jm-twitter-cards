@@ -88,8 +88,6 @@ All contributions welcome. If you would like to submit a pull request, please ch
 
 ## Installation
 
-This script is easy to install. If you can't figure it out you probably shouldn't be using it.
-
 1. Place the CMB directory inside of your theme or plugin.
 2. Copy (and rename if desired) `example-functions.php` into a folder *above* the CMB directory OR copy the entirety of its contents to your theme's `functions.php` file.
 2. Edit to only include the fields you need and rename the functions (CMB directory should be left unedited in order to easily update the library).
@@ -105,6 +103,7 @@ This script is easy to install. If you can't figure it out you probably shouldn'
 * Simplify `wysiwyg` escaping and allow it to be overridden via the `escape_cb` parameter. ([#491](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/pull/491))
 * Add a 'Select/Deselect all' button for the `multicheck` field type.
 * Add title option for [repeatable groups](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Field-Types#group). Title field takes an optional replacement hash, "{#}" that will be replaced by the row number.
+* New field parameter, `show_on_cb`, allows you to conditionally display a field via a callback. ([#47](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/issues/47))
 * Unit testing (the beginning). Props [@brichards](https://github.com/brichards) and [@camdensegal](https://github.com/camdensegal).
 
 **Bug Fixes**  
