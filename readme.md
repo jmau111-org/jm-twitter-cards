@@ -11,7 +11,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 ## Changelog ##
 
 # 5.3.3
-* 
+* change file names for classes
 
 # 5.3.2
 * increment version
