@@ -10,8 +10,8 @@ if( class_exists('JM_TC_Utilities') ) {
 	class JM_TC_Markup extends JM_TC_Options {	
 		
 		private static $_this;
-		var $opts;
-		var $textdomain = 'jm-tc';
+		public $opts;
+		public $textdomain = 'jm-tc';
 
 		function __construct() {
 			
@@ -44,9 +44,10 @@ if( class_exists('JM_TC_Utilities') ) {
 		*/			
 		public function add_markup() {
 			
-			global $post;
-			
-			$options = new JM_TC_Options;
+			global $post, $jm_twitter_cards;
+			$jm_twitter_cards['options'] = new JM_TC_Options;
+
+			$options = $jm_twitter_cards['options'];
 			
 			if( 
 					is_singular() 

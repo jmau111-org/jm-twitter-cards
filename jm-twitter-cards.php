@@ -47,7 +47,7 @@ defined('ABSPATH')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.2' );
+define( 'JM_TC_VERSION', '5.3.3' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -99,7 +99,6 @@ if( is_admin() ) {
 
 	$jm_twitter_cards['utilities'] = new JM_TC_Utilities;
 	$jm_twitter_cards['admin-tabs'] = new JM_TC_Tabs;
-	$jm_twitter_cards['admin-options'] = new JM_TC_Options;
 	$jm_twitter_cards['admin-base'] = new JM_TC_Admin; 
 	$jm_twitter_cards['admin-import-export'] = new JM_TC_Import_Export;
 	$jm_twitter_cards['admin-preview'] = new JM_TC_Preview;
