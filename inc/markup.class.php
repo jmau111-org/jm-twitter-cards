@@ -10,7 +10,7 @@ if( class_exists('JM_TC_Utilities') ) {
 	class JM_TC_Markup extends JM_TC_Options {	
 		
 		private static $_this;
-		public $opts;
+		protected $opts;
 		public $textdomain = 'jm-tc';
 
 		function __construct() {

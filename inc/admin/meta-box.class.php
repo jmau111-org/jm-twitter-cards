@@ -9,7 +9,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 
 	class JM_TC_Metabox{
 
-		var $opts;
+		private $opts;
 		
 		function __construct() {
 	

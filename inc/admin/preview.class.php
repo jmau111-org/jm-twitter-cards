@@ -13,12 +13,14 @@ if( ! class_exists('JM_TC_Preview') ) {
 		
 		public static function show_preview($post_ID){
 		
-			$options 	= new JM_TC_Options;
+			global $jm_twitter_cards;
+			$jm_twitter_cards['options'] = new JM_TC_Options;
+
+			$options 	= $jm_twitter_cards['options'];
 			$opts    	= get_option('jm_tc');
-			//$multi_opts = get_site_option('jm_tc_network');
 			
 			
-			$is_og = /*( is_multisite() ) ? $opts['twitterNetworkCardOg'] : */ $opts['twitterCardOg'];
+			$is_og =  $opts['twitterCardOg'];
 			
 			/* most important meta */
 			$cardType_arr 		= $options->cardType( $post_ID ) ;
