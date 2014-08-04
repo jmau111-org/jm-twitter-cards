@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.3.2
+Version: 5.3.3
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -43,11 +43,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //Add some security, no direct load !
 defined('ABSPATH') 
-or die('What we\'re dealing with here is a total lack of respect for the law !');
+	or die('What we\'re dealing with here is a total lack of respect for the law !');
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.2' );
+define( 'JM_TC_VERSION', '5.3.3' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -62,21 +62,21 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 		
 
 //Call modules 
-require( JM_TC_INC_DIR . 'utilities.php' ); 
-require( JM_TC_INC_DIR . 'particular.php' ); 
-require( JM_TC_INC_DIR . 'thumbs.php' );
-require( JM_TC_INC_DIR . 'disable.php' );
-require( JM_TC_ADMIN_DIR . 'options.php' );
-require( JM_TC_INC_DIR . 'markup.php' ); 
+require( JM_TC_INC_DIR . 'utilities.class.php' ); 
+require( JM_TC_INC_DIR . 'particular.class.php' ); 
+require( JM_TC_INC_DIR . 'thumbs.class.php' );
+require( JM_TC_INC_DIR . 'disable.class.php' );
+require( JM_TC_ADMIN_DIR . 'options.class.php' );
+require( JM_TC_INC_DIR . 'markup.class.php' ); 
 
 if( is_admin() ) {
 	
-	require( JM_TC_ADMIN_DIR . 'author.php' );
-	require( JM_TC_ADMIN_DIR.  'tabs.php' );
-	require( JM_TC_ADMIN_DIR.  'admin-tc.php' );
-	require( JM_TC_ADMIN_DIR . 'preview.php' );	
-	require( JM_TC_ADMIN_DIR . 'meta-box.php' );	
-	require( JM_TC_ADMIN_DIR . 'import-export.php' );	
+	require( JM_TC_ADMIN_DIR . 'author.class.php' );
+	require( JM_TC_ADMIN_DIR.  'tabs.class.php' );
+	require( JM_TC_ADMIN_DIR.  'admin-tc.class.php' );
+	require( JM_TC_ADMIN_DIR . 'preview.class.php' );	
+	require( JM_TC_ADMIN_DIR . 'meta-box.class.php' );	
+	require( JM_TC_ADMIN_DIR . 'import-export.class.php' );	
 
 }
 
@@ -99,7 +99,6 @@ if( is_admin() ) {
 
 	$jm_twitter_cards['utilities'] = new JM_TC_Utilities;
 	$jm_twitter_cards['admin-tabs'] = new JM_TC_Tabs;
-	$jm_twitter_cards['admin-options'] = new JM_TC_Options;
 	$jm_twitter_cards['admin-base'] = new JM_TC_Admin; 
 	$jm_twitter_cards['admin-import-export'] = new JM_TC_Import_Export;
 	$jm_twitter_cards['admin-preview'] = new JM_TC_Preview;

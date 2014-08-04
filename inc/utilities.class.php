@@ -51,24 +51,18 @@ if( ! class_exists('JM_TC_Utilities') ) {
 		
 		// Tutorial list
 		
-		public static function youtube_urls(){
+		public static function display_footage( $data, $provider = 'http://www.youtube.com/watch?v=' )
+		{
+
+			$output = '';
 		
-			return 	array(
-				__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
-				__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
-				__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
-				__('Preview', 'jm-tc')				 			=> 'WniGVE09-IQ',
-			);
+			if ( is_array($data) ) {
+				foreach ( $data as $label => $id )
+					$output .= '<h3 id="'.$id.'">'.$label.'</h3>'. '<p>' . wp_oembed_get( esc_url( $provider . $id ), array( 'width' => 800 ) ). '</p><br/>';
+			}
+
+			return $output;
 		}
-		
-		// Debug
-		
-		public function showVisible( $className ) {
-		 echo "$className::showVisible:\n";
-			echo'<pre>';
-			print_r($this);
-			echo'</pre>';
-		}	
 
 	}
 
