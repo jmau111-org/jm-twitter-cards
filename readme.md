@@ -12,6 +12,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 # 5.3.3
 * change file names for classes
+* change visibility for class properties, protected instead of public
 
 # 5.3.2
 * increment version
