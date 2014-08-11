@@ -32,10 +32,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
 * - http://highlightjs.org/
 * - https://dev.twitter.com/discussions/17878
-* - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress
+* - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress [GREAT]
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://www.jqeasy.com/jquery-character-counter
-* - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
+* - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/ [GREAT]
 * - https://github.com/pippinsplugins/Settings-Import-and-Export-Example-Pluginc [GREAT]
 * - http://www.wpexplorer.com/wordpress-image-crop-sizes/
 */

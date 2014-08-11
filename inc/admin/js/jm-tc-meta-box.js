@@ -46,6 +46,18 @@ jQuery(document).ready(function($) {
 	   $( '.cmb_id_cardPlayerStream').show(500);
 	}
 
+	function showBoxImg(){
+	   $( '.cmb_id_image_title').show(500);
+	   $( '#twitter_image_size').show(500);
+	   $( '.cmb_id_cardImage').show(500);
+	}
+
+	function hideBoxImg(){
+	   $( '.cmb_id_image_title').hide();
+	   $( '#twitter_image_size').hide();
+	   $( '.cmb_id_cardImage').hide();
+	}
+
 	hideProduct();
     hidePlayer();
 	hideGallery();		
@@ -56,38 +68,45 @@ jQuery(document).ready(function($) {
 		if ( this.value == 'summary' ) {
 			hideProduct();
 		    hidePlayer();
-			hideGallery();		 
-		    console.log('summary');
+			hideGallery();	
+			showBoxImg();	 
+		    //console.log('summary');
 		} else if( this.value == 'summary_large_image' ){
 			hideProduct();
 		    hidePlayer();
 			hideGallery();
-		    console.log('summary large image');
+			showBoxImg();
+		    //console.log('summary large image');
 		} else if( this.value == 'photo') { 
 			hideProduct();
 		    hidePlayer();
 			hideGallery();
-		    console.log('photo');  
+			showBoxImg();
+		    //console.log('photo');  
 		} else if( this.value == 'product' ){ 
 			hideProduct();
 		    hidePlayer();
 			showProduct();
-			console.log('product');
+			showBoxImg();
+			//console.log('product');
 		} else if( this.value == 'player' ){ 
 			hideGallery();
 			hideProduct();
 			showPlayer();
-			console.log('player');
+			showBoxImg();
+			//console.log('player');
 		}else if( this.value == 'gallery' ){
 			hideProduct();
 			hidePlayer();
 		    showGallery();
-		    console.log('gallery');
+		    hideBoxImg();
+		    //console.log('gallery');
 		}else if( this.value == 'application' ){
 			hideProduct();
 		    hidePlayer();
 			hideGallery();
-			console.log('application');
+			hideBoxImg();
+			//console.log('application');
 		}else{
 			console.log('oO');
 		}

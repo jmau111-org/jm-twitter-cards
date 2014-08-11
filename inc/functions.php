@@ -6,11 +6,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 /*
-
 	Globalize options
 	provides filter for options
 	@return $jm_tc_options
-
 */
 
 if ( ! function_exists( 'jm_tc_get_options' ) ) {
