@@ -62,7 +62,7 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 		
 
 //Call modules 
-require( JM_TC_INC_DIR . 'functions.php' );
+require( JM_TC_INC_DIR . 'functions.inc.php' );
 require( JM_TC_INC_DIR . 'utilities.class.php' ); 
 require( JM_TC_INC_DIR . 'particular.class.php' ); 
 require( JM_TC_INC_DIR . 'thumbs.class.php' );
