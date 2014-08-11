@@ -32,7 +32,7 @@ if( !class_exists('JM_TC_Particular') )
 			// Robots.txt with magic filter
 			public static function robots_mod( $output, $public ) {
 
-				$opts = get_option('jm_tc');
+				$opts = jm_tc_get_options();
 				
 				if( $opts['twitterCardRobotsTxt'] == 'yes' ) {
 					$output .= "User-agent: Twitterbot" ."\n";

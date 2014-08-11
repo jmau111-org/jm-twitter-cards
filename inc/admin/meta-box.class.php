@@ -13,7 +13,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		
 		function __construct() {
 	
-			$this->opts = get_option('jm_tc');
+			$this->opts = jm_tc_get_options();
 			
 			
 			//render
