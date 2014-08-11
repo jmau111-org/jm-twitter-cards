@@ -17,7 +17,7 @@ if( ! class_exists('JM_TC_Preview') ) {
 			$jm_twitter_cards['options'] = new JM_TC_Options;
 
 			$options 	= $jm_twitter_cards['options'];
-			$opts    	= get_option('jm_tc');
+			$opts    	= jm_tc_get_options();
 			
 			
 			$is_og =  $opts['twitterCardOg'];

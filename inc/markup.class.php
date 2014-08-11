@@ -16,7 +16,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		function __construct() {
 			
 			self::$_this     = $this;
-			$this->opts  	 = get_option('jm_tc'); 
+			$this->opts  	 = jm_tc_get_options(); 
 			
 		}
 		

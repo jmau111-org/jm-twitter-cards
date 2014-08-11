@@ -25,7 +25,7 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 		
 		public static function settings_page() {
 
-			$options = get_option( 'jm_tc' ); ?>
+			$options = jm_tc_get_options(); ?>
 			
 				<div class="metabox-holder">
 					<div class="postbox">

@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.3.3
+Version: 5.3.4
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -32,10 +32,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
 * - http://highlightjs.org/
 * - https://dev.twitter.com/discussions/17878
-* - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress
+* - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress [GREAT]
 * - https://about.twitter.com/fr/press/brand-assets
 * - http://www.jqeasy.com/jquery-character-counter
-* - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/
+* - https://trepmal.com/2011/04/03/change-the-virtual-robots-txt-file/ [GREAT]
 * - https://github.com/pippinsplugins/Settings-Import-and-Export-Example-Pluginc [GREAT]
 * - http://www.wpexplorer.com/wordpress-image-crop-sizes/
 */
@@ -47,7 +47,7 @@ defined('ABSPATH')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.3' );
+define( 'JM_TC_VERSION', '5.3.4' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
@@ -62,6 +62,7 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 		
 
 //Call modules 
+require( JM_TC_INC_DIR . 'functions.inc.php' );
 require( JM_TC_INC_DIR . 'utilities.class.php' ); 
 require( JM_TC_INC_DIR . 'particular.class.php' ); 
 require( JM_TC_INC_DIR . 'thumbs.class.php' );
@@ -131,7 +132,7 @@ function jm_tc_initialize() {
 	}
 
 		/* Thumbnails */
-	$opts = get_option('jm_tc');
+	$opts = jm_tc_get_options();
 	$is_crop = true;
 	$crop = $opts['twitterCardCrop'];
 	$crop_x =  $opts['twitterCardCropX'];

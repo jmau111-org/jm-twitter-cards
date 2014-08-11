@@ -14,7 +14,7 @@ if ( !class_exists('JM_TC_Thumbs') ) {
 	
 		public static function thumbnail_sizes($post_id)
 		{
-			$opts = get_option('jm_tc');
+			$opts = jm_tc_get_options();
 			
 			$size = $opts['twitterCardImgSize'];
 
