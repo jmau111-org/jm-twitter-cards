@@ -50,7 +50,9 @@ defined('ABSPATH')
 define( 'JM_TC_VERSION', '5.3.4' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
+define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_INC_DIR . 'classes') );
 define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
+define( 'JM_TC_ADMIN_CLASS_DIR', trailingslashit(JM_TC_ADMIN_DIR . 'classes') );
 define( 'JM_TC_ADMIN_PAGES_DIR', trailingslashit(JM_TC_INC_DIR . 'admin/pages') );
 define( 'JM_TC_METABOX_DIR', trailingslashit(JM_TC_INC_DIR . 'admin/meta-box') );
 define( 'JM_TC_LANG_DIR', dirname(plugin_basename(__FILE__)) . '/languages/' );
@@ -63,21 +65,21 @@ define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );
 
 //Call modules 
 require( JM_TC_INC_DIR . 'functions.inc.php' );
-require( JM_TC_INC_DIR . 'utilities.class.php' ); 
-require( JM_TC_INC_DIR . 'particular.class.php' ); 
-require( JM_TC_INC_DIR . 'thumbs.class.php' );
-require( JM_TC_INC_DIR . 'disable.class.php' );
-require( JM_TC_ADMIN_DIR . 'options.class.php' );
-require( JM_TC_INC_DIR . 'markup.class.php' ); 
+require( JM_TC_CLASS_DIR . 'utilities.class.php' ); 
+require( JM_TC_CLASS_DIR . 'particular.class.php' ); 
+require( JM_TC_CLASS_DIR . 'thumbs.class.php' );
+require( JM_TC_CLASS_DIR . 'disable.class.php' );
+require( JM_TC_CLASS_DIR . 'options.class.php' );
+require( JM_TC_CLASS_DIR . 'markup.class.php' ); 
 
 if( is_admin() ) {
 	
-	require( JM_TC_ADMIN_DIR . 'author.class.php' );
-	require( JM_TC_ADMIN_DIR.  'tabs.class.php' );
-	require( JM_TC_ADMIN_DIR.  'admin-tc.class.php' );
-	require( JM_TC_ADMIN_DIR . 'preview.class.php' );	
-	require( JM_TC_ADMIN_DIR . 'meta-box.class.php' );	
-	require( JM_TC_ADMIN_DIR . 'import-export.class.php' );	
+	require( JM_TC_ADMIN_CLASS_DIR . 'author.class.php' );
+	require( JM_TC_ADMIN_CLASS_DIR.  'tabs.class.php' );
+	require( JM_TC_ADMIN_CLASS_DIR.  'admin-tc.class.php' );
+	require( JM_TC_ADMIN_CLASS_DIR . 'preview.class.php' );	
+	require( JM_TC_ADMIN_CLASS_DIR . 'meta-box.class.php' );	
+	require( JM_TC_ADMIN_CLASS_DIR . 'import-export.class.php' );	
 
 }
 
