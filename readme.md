@@ -10,6 +10,12 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.3.4 
+* bugfixes
+* reorganize folders
+* globalize options
+* more hide with metabox js. In fact some parts such as img box are not needed for some card types (ex: gallery cards)
+
 # 5.3.3
 * change file names for classes
 * change visibility for class properties, protected instead of public
