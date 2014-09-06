@@ -307,6 +307,17 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			)
 			),
 
+			array(
+			'name' 		=> __( 'Excerpt'),
+			'desc' 		=> __( 'Excerpt as meta desc?', 'jm-tc'),
+			'id'   		=> 'twitterCardExcerpt',
+			'type' 		=> 'select',
+			'options' 	=> array(
+			'no' 		=> __( 'no', 'jm-tc' ),
+			'yes' 		=> __( 'yes', 'jm-tc' ),
+			)
+			),
+
 			)
 			);
 			

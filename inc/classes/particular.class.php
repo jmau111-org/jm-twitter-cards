@@ -11,10 +11,17 @@ if( !class_exists('JM_TC_Particular') )
 	class JM_TC_Particular
 		{
 
+			protected $opts;
+
 			public function __construct(){
 
 				add_filter( 'robots_txt', array( $this, 'robots_mod' ), 10, 2 );
 				add_filter( 'cmb_meta_box_url', array( $this, 'update_cmb_meta_box_url' ) );
+
+				$this->opts = jm_tc_get_options(); 
+
+				if( isset( $this->opts['twitterCardExcerpt']  ) && $this->opts['twitterCardExcerpt'] == 'yes' )
+					add_filter('jm_tc_get_excerpt', array( $this, 'modify_excerpt' ) );
 
 			}
 
@@ -40,6 +47,21 @@ if( !class_exists('JM_TC_Particular') )
 				}
 				
 				return $output;
+			}
+
+			// Whether or not to include custom excerpt as meta desc
+			function modify_excerpt() {
+			    global $post;
+			    return $this->get_excerpt_from_far_far_away( $post->ID );
+			}
+
+			function get_excerpt_from_far_far_away( $post_id )
+			{
+			    global $wpdb;
+			    $query = 'SELECT post_excerpt FROM '. $wpdb->posts .' WHERE ID = %d LIMIT 1';
+			    $result = $wpdb->get_results( $wpdb->prepare( $query, $post_id ), ARRAY_A );
+			    $post_excerpt = $result[0]['post_excerpt'];
+			    return esc_attr( $post_excerpt );
 			}
 		}
 
