@@ -49,7 +49,7 @@ if( !class_exists('JM_TC_Particular') )
 				return $output;
 			}
 
-			// Whether or not include custom excerpt as meta desc
+			// Whether or not to include custom excerpt as meta desc
 			function modify_excerpt() {
 			    global $post;
 			    return $this->get_excerpt_from_far_far_away( $post->ID );
