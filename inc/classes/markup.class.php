@@ -7,7 +7,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if( class_exists('JM_TC_Utilities') ) {
 
-	class JM_TC_Markup extends JM_TC_Options {	
+	class JM_TC_Markup {	
 		
 		private static $_this;
 		protected $opts;
