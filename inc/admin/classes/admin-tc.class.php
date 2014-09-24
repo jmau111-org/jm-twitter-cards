@@ -35,7 +35,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
-			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_styles' ) );
+			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_scripts' ) );
 			add_filter( 'cmb_frontend_form_format', array( $this, 'save_button' ), 10, 3 );
 			add_action( 'cmb_save_options-page_fields', array( $this, 'is_it_saved') );
 		}
@@ -172,34 +172,54 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', array( $this, 'subpages' ));		
 			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ) , 'manage_options', 'jm_tc_about', array( $this, 'subpages' ));
 			
-			add_action( 'load-' . $this->options_subpage_home, array( $this, 'load_admin_page_home_scripts' ) );
-			add_action( 'load-' . $this->options_subpage_doc, array( $this, 'load_admin_doc_scripts' ) );
 		}
 		
 
-		// I prefer this way even if it's not so good^^
-		public function load_admin_page_home_scripts()
+		// Better to use $hook_suffix here for scripts
+		public function admin_scripts( $hook_suffix )
 		{
-			wp_enqueue_script('jm-tc-admin-script', JM_TC_JS_URL.'jm-tc-admin-home.js'
-			, array('jquery') 
-			, '1.0'
-			, true
-			);
-		}
-		
-		public function admin_styles()
-		{
-			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array('jm_tc_import_export', 'jm_tc', 'jm_tc_tutorial', 'jm_tc_meta_box', 'jm_tc_doc', 'jm_tc_about', 'jm_tc_cf', 'jm_tc_images', 'jm_tc_multi_author', 'jm_tc_home', 'jm_tc_robots', 'jm_tc_deep_linking', 'jm_tc_analytics') ) ) 
+
+			//var_dump( $hook_suffix );
+
+			switch ( $hook_suffix ) 
 			{
-				wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
-			}
-			
-			global $pagenow;
-			
-			if( $pagenow == 'post.php' || $pagenow == 'post-new.php' ) {
-				
-				wp_enqueue_style('jm-tc-metabox', JM_TC_CSS_URL.'jm-tc-meta-box.css');
-				wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false);
+
+				case 'toplevel_page_jm_tc':
+				case 'jm-twitter-cards_page_jm_tc_import_export':
+				case 'jm-twitter-cards_page_jm_tc_tutorial':
+				case 'jm-twitter-cards_page_jm_tc_doc':
+				case 'jm-twitter-cards_page_jm_tc_meta_box':
+				case 'jm-twitter-cards_page_jm_tc_about':
+				case 'jm-twitter-cards_page_jm_tc_cf':
+				case 'jm-twitter-cards_page_jm_tc_images':
+				case 'jm-twitter-cards_page_jm_tc_robots':
+				case 'jm-twitter-cards_page_jm_tc_multi_author':
+				case 'jm-twitter-cards_page_jm_tc_deep_linking':
+				case 'jm-twitter-cards_page_jm_tc_analytics':
+
+					wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
+
+				break;
+
+				case 'post.php':
+				case 'post-new.php':
+					
+					wp_enqueue_style('jm-tc-metabox', JM_TC_CSS_URL.'jm-tc-meta-box.css');
+					wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false);
+
+				break;
+
+				case 'jm-twitter-cards_page_jm_tc_home':
+					
+					wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
+					wp_enqueue_script('jm-tc-admin-script', JM_TC_JS_URL.'jm-tc-admin-home.js'
+						, array('jquery') 
+						, '1.0'
+						, true
+					);
+
+				break;
+
 			}
 			
 		}
