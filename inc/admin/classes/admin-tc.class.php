@@ -197,22 +197,22 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 				case 'jm-twitter-cards_page_jm_tc_deep_linking':
 				case 'jm-twitter-cards_page_jm_tc_analytics':
 
-					wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
+					wp_enqueue_style( 'jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css' );
 
 				break;
 
 				case 'post.php':
 				case 'post-new.php':
 					
-					wp_enqueue_style('jm-tc-metabox', JM_TC_CSS_URL.'jm-tc-meta-box.css');
-					wp_enqueue_script('jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false);
+					wp_enqueue_style( 'jm-tc-metabox', JM_TC_CSS_URL.'jm-tc-meta-box.css' );
+					wp_enqueue_script( 'jm-tc-metabox', JM_TC_JS_URL.'jm-tc-meta-box.js', array('jquery'), null, false );
 
 				break;
 
 				case 'jm-twitter-cards_page_jm_tc_home':
 					
-					wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css');
-					wp_enqueue_script('jm-tc-admin-script', JM_TC_JS_URL.'jm-tc-admin-home.js'
+					wp_enqueue_style( 'jm-tc-admin-style', JM_TC_CSS_URL.'jm-tc-admin.css' );
+					wp_enqueue_script( 'jm-tc-admin-script', JM_TC_JS_URL.'jm-tc-admin-home.js'
 						, array('jquery') 
 						, '1.0'
 						, true

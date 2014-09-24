@@ -30,7 +30,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://dev.twitter.com/docs/cards/markup-reference
 * - https://dev.twitter.com/docs/cards/types/player-card
 * - https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
-* - http://highlightjs.org/
 * - https://dev.twitter.com/discussions/17878
 * - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress [GREAT]
 * - https://about.twitter.com/fr/press/brand-assets
