@@ -44,9 +44,10 @@ if( ! class_exists('JM_TC_Utilities') ) {
 			$shortcode_pattern = get_shortcode_regex();
 			$the_excerpt = preg_replace('/' . $shortcode_pattern . '/', '', $the_excerpt);
 
-			$the_excerpt = substr( $the_excerpt, 0, 200);// 200 chars at most so 200 chars ^^
+			// kill tags
+			$the_excerpt = strip_tags( $the_excerpt );
 
-			return esc_attr(  strip_tags( $the_excerpt )  ); // to prevent meta from being broken by ""
+			return esc_attr( substr( $the_excerpt, 0, 200) ); // to prevent meta from being broken by e.g ""
 		}
 		
 		// Tutorial list

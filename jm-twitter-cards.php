@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.3.5
+Version: 5.3.6
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,7 +30,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * - https://dev.twitter.com/docs/cards/markup-reference
 * - https://dev.twitter.com/docs/cards/types/player-card
 * - https://dev.twitter.com/docs/cards/app-installs-and-deep-linking [GREAT]
-* - http://highlightjs.org/
 * - https://dev.twitter.com/discussions/17878
 * - https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress [GREAT]
 * - https://about.twitter.com/fr/press/brand-assets
@@ -47,7 +46,7 @@ defined('ABSPATH')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.5' );
+define( 'JM_TC_VERSION', '5.3.6' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_INC_DIR . 'classes') );
