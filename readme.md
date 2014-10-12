@@ -10,7 +10,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
-# 5.3.7
+# 5.3.7 
 * 12 Oct 2014
 * Better PHP documentation
 * Reorganize code
