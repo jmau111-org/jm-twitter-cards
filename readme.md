@@ -10,6 +10,18 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.3.7
+* 12 Oct 2014
+* Better PHP documentation
+* Reorganize code
+* Responsive web design for admin page and menu
+* Update documentation and fix 404 on img
+
+# 5.3.6
+* 25 Sep 2014
+* Fix bug with meta desc disapearing when img at the very top of content box
+* Delete useless hook for admin scripts and use $hook_suffix
+
 # 5.3.5
 * add post excerpt option for meta desc
 

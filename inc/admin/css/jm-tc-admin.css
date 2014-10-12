@@ -5,45 +5,13 @@
 }
 
 .wrap h2 {
-	font-size: 300%;
+	font-size: 23px;
+	font-weight: 400;
+	padding: 9px 15px 4px 0;
+	line-height: 29px;
 }
 
 .wrap .inbl{ display:inline-block; vertical-align:top; margin-right: 2em; }
-
-.wrap h2:before {
-	content:"\f301";
-	display: inline-block;
-	width: 42px;
-	height: 42px;
-	margin-right: .5em;
-	margin-left: 40px;
-	line-height: 1;
-	font-family: "dashicons";
-	text-decoration: inherit;
-	font-weight: normal;
-	font-style: normal;
-	vertical-align: top;
-	text-align: center;
-	-webkit-transition: color .1s ease-in 0;
-	transition: color .1s ease-in 0;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.wrap .cmb-form, .wrap p, 
-.wrap h4, .wrap h3, .wrap ul,
-.wrap img, .wrap pre {
-	padding: 0.25em 40px;
-}
-
-.wrap .quote-doc{
-
-	padding-left: 2em;
-}
-
-.wrap .decal {
-	padding: 0.25em 40px .25em 0;
-}
 
 .wrap .bold {  
 	font-weight: 900;
@@ -122,7 +90,7 @@
 	color: #3f3b36;
 	border: 1px solid #f00ACEE;
 	border-left: 1rem solid #00ACEE;
-	font: lighter 1rem/1.5rem Monaco,'MonacoRegular',monospace;
+	font: lighter .8rem/1rem Monaco,'MonacoRegular',monospace;
 	background-size: 1px 4rem;
 }
 
@@ -147,6 +115,11 @@
 	color:black;
 	top:50px;
 	left:50%;
+}
+
+.wrap .postbox{
+	min-height:15em;
+	min-width: 25em;
 }
 
 .totheleft{

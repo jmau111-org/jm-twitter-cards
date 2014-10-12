@@ -7,28 +7,29 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if ( class_exists( 'JM_TC_Options' ) ) {
 
-	class JM_TC_Import_Export{
-	
-		
+	class JM_TC_Import_Export
+	{
 		/**
 		* Constructor
-		* @since 0.1.0
+		* @since 5.3.2
 		*/
-		public function __construct() {
-		
-			// Set our title
+		public function __construct() 
+		{
 			$this->title = __( 'JM Twitter Cards', 'jm-tc');
 			add_action( 'admin_init', array( $this, 'process_settings_export' ) );
 			add_action( 'admin_init', array( $this, 'process_settings_import' ) );
-			
 		}
 		
-		public static function settings_page() {
-
+		/**
+		* Displays option page for importing and exporting options
+		* @since 5.3.2
+		*/
+		public static function settings_page() 
+		{
 			$options = jm_tc_get_options(); ?>
 			
 				<div class="metabox-holder">
-					<div class="postbox">
+					<div class="postbox inbl">
 						<h3><span><?php _e( 'Export' ); ?></span></h3>
 						<div class="inside">
 							<form method="post">
@@ -40,7 +41,7 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 							</form>
 						</div><!-- .inside -->
 					</div><!-- .postbox -->
-					<div class="postbox">
+					<div class="postbox inbl">
 						<h3><span><?php _e( 'Import' ); ?></span></h3>
 						<div class="inside">
 							<form method="post" enctype="multipart/form-data">
@@ -61,6 +62,7 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 
 		/**
 		 * Process a settings export that generates a .json file of the shop settings
+		 * @since 5.3.2
 		 */
 		function process_settings_export() {
 
@@ -86,9 +88,9 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 			exit;
 		}
 
-
 		/**
 		 * Process a settings import from a json file
+		 * @since 5.3.2
 		 */
 		function process_settings_import() {
 
@@ -122,7 +124,5 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 
 		}
 
-		
-		
 	}
 }

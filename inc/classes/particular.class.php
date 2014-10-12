@@ -7,13 +7,20 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if( !class_exists('JM_TC_Particular') )
 	{
-
 	class JM_TC_Particular
 		{
-
-			protected $opts;
-
-			public function __construct(){
+			/**
+			* Options
+			* @var array
+			*/
+			protected $opts = array();
+			
+			/**
+			*	Constructor
+			*	@since 5.3.2
+			*/
+			public function __construct()
+			{
 
 				add_filter( 'robots_txt', array( $this, 'robots_mod' ), 10, 2 );
 				add_filter( 'cmb_meta_box_url', array( $this, 'update_cmb_meta_box_url' ) );
@@ -25,8 +32,13 @@ if( !class_exists('JM_TC_Particular') )
 
 			}
 
-			// SSL stuffs
-			public static function update_cmb_meta_box_url( $url ) {
+			/**
+			*	SSL stuffs
+			*	@since 5.3.2
+			*   @return string
+			*/			
+			public static function update_cmb_meta_box_url( $url ) 
+			{
 				if( is_ssl() ) {
 			    	// modify the url here
 				    return preg_replace('|^http://|', 'https://', $url);
@@ -36,8 +48,13 @@ if( !class_exists('JM_TC_Particular') )
 			}
 
 
-			// Robots.txt with magic filter
-			public static function robots_mod( $output, $public ) {
+			/**
+			*	filter for robots.txt rules
+			*	@since 5.3.2
+			*   @return string
+			*/	
+			public static function robots_mod( $output, $public ) 
+			{
 
 				$opts = jm_tc_get_options();
 				
@@ -49,12 +66,22 @@ if( !class_exists('JM_TC_Particular') )
 				return $output;
 			}
 
-			// Whether or not to include custom excerpt as meta desc
-			function modify_excerpt() {
+			/**
+			*	alter excerpt with filter jm_tc_get_excerpt
+			*	@since 5.3.2
+			*   @return string
+			*/	
+			function modify_excerpt() 
+			{
 			    global $post;
 			    return $this->get_excerpt_from_far_far_away( $post->ID );
 			}
-
+			
+			/**
+			*	get excerpt from database
+			*	@since 5.3.2
+			*   @return string
+			*/	
 			function get_excerpt_from_far_far_away( $post_id )
 			{
 			    global $wpdb;

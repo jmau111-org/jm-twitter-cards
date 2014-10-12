@@ -9,15 +9,15 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <div class="wrap">
 <h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-	
 <?php echo JM_TC_Tabs::admin_tabs();?>
 
-
-		
 	<?php
-	
-	function jm_tc_seo_options() {
-	
+	/**
+	* Fields for admin page custom fields
+	* @return array
+	*/	
+	function jm_tc_seo_options() 
+	{
 		$plugin_options = array(
 		'id'         => 'jm_tc',
 		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_cf', ), ),

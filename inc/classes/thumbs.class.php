@@ -11,7 +11,12 @@ if ( !class_exists('JM_TC_Thumbs') ) {
 
 	class JM_TC_Thumbs
 	{
-	
+		/**
+		* get size setting and convert it into custom sizes
+		* @since 5.3.2
+		* @param integer $post_id
+		* @return string
+		*/	
 		public static function thumbnail_sizes($post_id)
 		{
 			$opts = jm_tc_get_options();
@@ -46,7 +51,11 @@ if ( !class_exists('JM_TC_Thumbs') ) {
 				
 		
 
-		// get featured image weight
+		/**
+		* Get post thumb weight
+		* @return string
+		* @param integer $post_id
+		*/
 		public static function get_post_thumbnail_weight($post_id)
 		{
 

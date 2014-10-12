@@ -7,8 +7,13 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if ( ! class_exists('JM_TC_Author') ) {
 
-	class JM_TC_Author{
-
+	class JM_TC_Author
+	{
+		/**
+		* Create suggested plugins list
+		* @since  5.3.0
+		* @return string
+		*/
 		public static function get_plugins_list( $slugs = array() ) {
 			
 			$list = '<ul class="plugins-list">';
@@ -22,7 +27,11 @@ if ( ! class_exists('JM_TC_Author') ) {
 			return $list;
 			
 		}
-		
+		/**
+		* Displays author infos
+		* @since  5.3.0
+		* @return string
+		*/		
 		public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $googleplus, $slugs = array() ) {
 
 			$infos   = '<div class="inbl">';

@@ -16,10 +16,7 @@ $author = new JM_TC_Author;
 
 //plugin list
 $slugs = array(
-			'jm-dashicons-shortcode' 			=> 'JM Dashicons Shortcode',
-			'jm-last-twit-shortcode' 			=> 'JM Last Twit Shortcode',
-			'jm-twit-this-comment'				=> 'JM Twit This Comment',
-			'jm-simple-qr-code-widget' 			=> 'JM Simple QR Code Widget',
+			'jm-wp-cookie-bar' 			        => 'JM WP Cookie Bar',
 			'jm-wp-d-vine' 						=> 'JM WP D-Vine',
 			'jm-instagram-feed-widget'			=> 'JM Instagram Feed Widget'
 			);

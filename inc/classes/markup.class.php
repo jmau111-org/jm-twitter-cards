@@ -7,30 +7,39 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if( class_exists('JM_TC_Utilities') ) {
 
-	class JM_TC_Markup {	
+	class JM_TC_Markup 
+	{	
+		/**
+		* Options
+		* @var array
+		*/
+		protected $opts = array();
 		
-		private static $_this;
-		protected $opts;
+		/**
+		* Text domain / translation
+		* @var string
+		*/		
 		public $textdomain = 'jm-tc';
-
-		function __construct() {
+		
+		/**
+		*	Constructor
+		*	@since 5.3.2
+		*/
+		function __construct() 
+		{
 			
-			self::$_this     = $this;
 			$this->opts  	 = jm_tc_get_options(); 
 			
 		}
-		
-		
-		//being nicer with removers !
-		static function this() {
-			
-			return self::$_this;
-		}
-		
-		/*
-		* Add just one line before meta
+
+		/**
+		*	Add just one line before meta
+		*	@since 5.3.2
+		*   @param bool $end
+		*   @return string
 		*/
-		public function html_comments( $end = false ) {
+		public function html_comments( $end = false ) 
+		{
 		
 			if( !$end )
 				echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
@@ -40,9 +49,11 @@ if( class_exists('JM_TC_Utilities') ) {
 		
 
 		/*
-		* Add meta to head section
+		*   Add meta to head section
+		*	@since 5.3.2
 		*/			
-		public function add_markup() {
+		public function add_markup() 
+		{
 			
 			global $post, $jm_twitter_cards;
 			$jm_twitter_cards['options'] = new JM_TC_Options;
@@ -99,14 +110,17 @@ if( class_exists('JM_TC_Utilities') ) {
 		}	
 
 		/*
-		* Display the different meta
+		*   Display the different meta
+		*	@since 5.3.2
+		*   @param mixed $data
+		*   @return string
 		*/
-		private function display_markup( $datas ){
-		
-			
-			if ( is_array( $datas ) ) {
+		protected function display_markup( $data )
+		{
 				
-				foreach ( $datas as $name => $value ) {
+			if ( is_array( $data ) ) {
+				
+				foreach ( $data as $name => $value ) {
 					
 					if( $value != '' ) {
 					
@@ -127,9 +141,9 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 				}
 				
-			} elseif ( is_string( $datas ) ) {
+			} elseif ( is_string( $data ) ) {
 				
-				echo $meta = '<!-- [(-_-)@ '. $datas.' @(-_-)] -->' . "\n";
+				echo $meta = '<!-- [(-_-)@ '. $data .' @(-_-)] -->' . "\n";
 				
 			} 
 			

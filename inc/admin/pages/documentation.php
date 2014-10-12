@@ -11,9 +11,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 <?php echo JM_TC_Tabs::admin_tabs();?>
 
-<p><?php _e('Updated','jm-tc-doc');?> : 12/04/14</p>
-<div id="menu"> <h3><?php _e('Table of content','jm-tc-doc');?></h3>
-<ul> <li><a href="#3w"><?php echo __('What are Twitter Cards?','jm-tc-doc');?></a></li>
+<p><?php _e('Updated','jm-tc-doc');?> : 12/10/2014</p>
+<div id="menu" class="rmm" data-menu-style="sapphire">
+<ul class="menu"> <li><a href="#3w"><?php echo __('What are Twitter Cards?','jm-tc-doc');?></a></li>
 <li><a href="#getcards"><?php echo __('How to get Twitter Cards','jm-tc-doc');?></a></li>
 <li> <a href="#types"><?php _e('Different type of cards','jm-tc-doc');?></a>
 <ul> <li><a href="#summarycards"><?php echo __('Summary cards','jm-tc-doc');?></a></li>
@@ -40,18 +40,18 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <blockquote class="quote-doc"> <?php _e('Twitter cards make it possible for you to attach media experiences to Tweets that link to your content. Simply add a few lines of HTML to your webpages, and users who Tweet links to your content will have a "card" added to the Tweet that is visible to all of their followers.','jm-tc-doc');?> </blockquote>
 <h3 id="getcards"><?php echo __('How to get Twitter Cards','jm-tc-doc');?></h3>
 <p><?php _e('Once you have added the specific markup with plugin <strong>do not forget to validate your website on dev.twitter :','jm-tc-doc');?></strong></p>
-<ul class="jm-tools"> <li><a class="jm-preview" title="Twitter Cards Preview Tool" href= "https://dev.twitter.com/docs/cards/validation/validator" rel="nofollow" target= "_blank"><?php _e('Preview tool','jm-tc-doc');?></a></li>
-<li><a class="jm-valid-card" title="Twitter Cards Application Form" href= "https://dev.twitter.com/docs/cards/validation/validator" rel="nofollow" target= "_blank"><?php _e('Validation form','jm-tc-doc');?></a></li> </ul>
+<ul class="jm-tools"> <li><a class="jm-preview" title="Twitter Cards Preview Tool" href= "https://cards-dev.twitter.com/validator" rel="nofollow" target= "_blank"><?php _e('Preview tool','jm-tc-doc');?></a></li>
+<li><a class="jm-valid-card" title="Twitter Cards Application Form" href= "https://cards-dev.twitter.com/validator" rel="nofollow" target= "_blank"><?php _e('Validation form','jm-tc-doc');?></a></li> </ul>
 <h3 id="types"><?php _e('Different types of cards','jm-tc-doc');?></h3>
 <h3 id="summarycards"><?php echo __('Summary cards','jm-tc-doc');?></h3>
-<img src= "https://dev.twitter.com/sites/default/files/images_documentation/web_summary_1.png" alt="" />
+<?php echo wp_oembed_get('https://twitter.com/UN/status/479594830478471168');?>
 <h3 id="summarlargecards"><?php _e('Summary Large Image cards','jm-tc-doc');?></h3>
-<img src= "https://dev.twitter.com/sites/default/files/images_documentation/web_summary_large.png" alt="" />
+<?php echo wp_oembed_get('https://twitter.com/TechCrunch/status/491955931719434241');?>
 <p><?php _e('Almost the same card as Summary Card but with a large image. It is nice, isn\'t it?','jm-tc-doc');?></p>
 <p><?php _e('This card requires <strong>a minimum width of 280, and a minimum height of 150</strong>, the same requirement as Photo cards, that is why it\'s the smallest size used by the plugin.','jm-tc-doc');?></p>
 <p><?php _e('The image <strong>must not be more than 1mb in size</strong> that is why the custom Meta Box includes a checking system that assess your image size and display the result on each post edit. If you do not use cutom meta box be sure to upload image smaller than 1mb in size. If your image is heavier, your card will not break because meta image is not required for summary and summary large image cards but no image will be displayed in your tweets.','jm-tc-doc');?></p>
 <h3 id="photocards"><?php echo __('Photo cards','jm-tc-doc');?></h3>
-<img src= "https://dev.twitter.com/sites/default/files/images_documentation/web_photo.png" alt= "" />
+<?php echo wp_oembed_get('https://twitter.com/Flickr/status/423511451970445312');?>
 <blockquote class="quote-doc"> <p><?php _e('The Photo Card puts the image front and center in the Tweet:','jm-tc-doc');?></p>
 <p><?php _e('To define a photo card experience, set your card type to "photo" and provide a twitter:image. Twitter will resize images, maintaining original aspect ratio to fit the following sizes:','jm-tc-doc');?></p>
 <ul class="jm-doc-photocard"> <li><strong>Web</strong>: <?php _e('maximum height of 375px, maximum width of 435px','jm-tc-doc');?></li>
@@ -59,16 +59,16 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <li><?php _e('<strong>Mobile (retina displays)</strong>: maximum height of 750px, maximum width of 560px','jm-tc-doc');?></li>
 <li><?php _e('Twitter will not create a photo card unless the twitter:image is of a minimum size of 280px wide by 150px tall. Images will not be cropped unless they have an exceptional aspect ratio','jm-tc-doc');?></li> </ul> </blockquote>
 <h3 id="productcards"><?php echo __('Product cards','jm-tc-doc');?></h3>
-<img src= "https://dev.twitter.com/sites/default/files/images_documentation/web_product.png" alt= "" />
+<?php echo wp_oembed_get('https://twitter.com/iHeartRadio/status/431829482291212288');?>
 <p><?php _e('The Product Card is a great way to represent retail items on Twitter, and to drive sales. This Card type is designed to showcase your products via an image, a description, and allow you to highlight two other key details about your product.','jm-tc-doc');?></p>
 <p><?php _e('These fields are strings and can be used to show the price, list availability, list sizes, etc. This will require adding some new markup tags to your pages, which we will cover below.','jm-tc-doc');?></p>
 <p><?php _e('Note: The product card requires an image of size 160 x 160 or greater. It prefers a square image but we can crop/resize oddly shaped images to fit as long as both dimensions are greater than or equal to 160 pixels.','jm-tc-doc');?></p>
 <p><?php _e('To activate this mode you have to activate the <a href="#metabox">custom meta box</a>.','jm-tc-doc');?></p>
 <h3 id="gallerycards"><?php echo __('Gallery cards','jm-tc-doc');?></h3>
-<img src= "https://dev.twitter.com/sites/default/files/images_documentation/web_gallery.png" alt= "" />
+<?php echo wp_oembed_get('https://twitter.com/VisitCA/status/477565323206336512');?>
 <blockquote class="quote-doc"> <?php _e('The Gallery Card allows you to represent collections of photos within a Tweet. This Card type is designed to let the user know that there\'s more than just a single image at the URL shared, but rather a gallery of related images. You can specify up to 4 different images to show in the gallery card via the twitter:image[0-3] tags. You can also provide attribution to the photographer of the gallery by specifying the value of the twitter:creator tag.','jm-tc-doc');?> </blockquote>
 <h3 id="playercards"><?php echo __('Player cards','jm-tc-doc');?></h3>
-<img src= "https://dev.twitter.com/sites/default/files/images_documentation/web_player2.png" alt= "" />
+<div class="inbl"><?php echo wp_oembed_get('https://twitter.com/gpj/status/413394813854040064');?></div><div class="inbl"><?php echo wp_oembed_get('https://twitter.com/SoundCloud/status/459443749769453568');?></div>
 <blockquote class="quote-doc"> <?php _e('A few simple rules for Player Cards','jm-tc-doc');?>
 <p><strong><?php _e('Do:','jm-tc-doc');?></strong></p>
 <ul> <li><?php _e('Build a responsive and equivalent experience that works within all Twitter clients (including twitter.com, mobile.twitter.com, Twitter for iPhone and Twitter for Android). Cards that do not work in all Twitter clients listed will not be approved.','jm-tc-doc');?></li>
@@ -87,7 +87,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <li><?php _e('Attach additional interactivity outside the video or audio player (e.g., non-standard buttons or banners).','jm-tc-doc');?></li>
 <li><?php _e('Build end-to-end interactive experiences inside the video or audio player unrelated to Player Card content, such as the following: purchasing, gaming, polling, messaging, and data entry. Instead, build these interactive experiences with our other Card types or enhance your Player Card content with links to your website or mobile application.','jm-tc-doc');?></li>
 <li><?php _e('Generate active mixed content browser warnings at any point during the audio or video experience, either on load or during play. For more information, see the','jm-tc-doc');?> <a href= "https://dev.twitter.com/docs/cards/troubleshooting#Active_Mixed_ContentSSL_Issue"><?php _e('Troubleshooting Guide','jm-tc-doc');?></a>.</li>
-<li><?php _e('Set twitter:player to point directly at a .swf movie file.','jm-tc-doc');?></li> </ul> </blockquote><p><?php _e('Also be sure to check all the following point before <a href= "https://dev.twitter.com/docs/cards/validation/validator">asking for approval</a>. Here are the common issues with player cards:','jm-tc-doc');?></p>
+<li><?php _e('Set twitter:player to point directly at a .swf movie file.','jm-tc-doc');?></li> </ul> </blockquote><p><?php _e('Also be sure to check all the following point before <a href= "https://cards-dev.twitter.com/validator">asking for approval</a>. Here are the common issues with player cards:','jm-tc-doc');?></p>
 <blockquote class="quote-doc"> <ol> <li><?php _e('The HTTPS lock is showing active mixed content warnings','jm-tc-doc');?></li>
 <li><?php _e('The content must have stop or pause controls','jm-tc-doc');?></li>
 <li><?php _e('In Android/iOS browsers the experience must fall back gracefully (sized for mobile viewport, no broken Flash embeds, etc)','jm-tc-doc');?></li>
@@ -102,10 +102,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <h3><?php _e('App Installs','jm-tc-doc');?></h3>
 
 <?php _e('By adding these new footer tags to your markup, you\'ll be able to specify downloads for users who\'ve not yet installed your app on their device. This will work across iPhone, iPad, and Android (Google Play). Please note that if you have an iPhone app, but no iPad-optimized app, you should include the iPhone app id, name, and url for both iPhone and iPad-related tags. When no value is provided, the Cards will simply render a "View on web" link pointing to website of the card. Below is an example of what the prompt will look like if the user does not have the app installed:','jm-tc-doc');?> </blockquote><br />
-<img src="https://dev.twitter.com/sites/default/files/images_documentation/blog-image_1.png" alt=""/><br /><br /> <blockquote class="quote-doc">
+<img src="<?php echo esc_url(JM_TC_IMG_URL.'doc/app_install.png');?>" width="600" height="400" alt="" /><br /><br /> <blockquote class="quote-doc">
 <h3><?php _e('Deep-Linking','jm-tc-doc');?></h3>
-
-<?php _e('If a user does have the application installed, you can specify a deep-link into the correlated resource within your own application. When a user clicks on the "Open in app" tap target, Twitter will send that user out into your application. This value is specified in the "twitter:app:name:(iphone|ipad|googleplay)" tags. The app url should be your app-specific URL Scheme (requires registration within your app) that launches your app on the appropriate client.','jm-tc-doc');?> </blockquote><br /> <img src="https://dev.twitter.com/sites/default/files/images_documentation/blog-image_2.png" alt=""/><br />
+<?php _e('If a user does have the application installed, you can specify a deep-link into the correlated resource within your own application. When a user clicks on the "Open in app" tap target, Twitter will send that user out into your application. This value is specified in the "twitter:app:name:(iphone|ipad|googleplay)" tags. The app url should be your app-specific URL Scheme (requires registration within your app) that launches your app on the appropriate client.','jm-tc-doc');?> </blockquote><br /> <img src="<?php echo esc_url(JM_TC_IMG_URL.'doc/deep_linking.png');?>" width="600" height="400" alt="" /><br />
 <br />
 <blockquote class="quote-doc">
 <?php _e('Here is example markup to enable app install prompts and deep-linking, and note that this metadata can be appended to any card type. Additionally the App ID value for iPhone and iPad should be the numeric App Store ID, while the App ID for Google Play should be the Android package name:','jm-tc-doc');?> 
@@ -120,7 +119,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 &lt;meta name="twitter:app:name:googleplay" content="Example App"/&gt;
 &lt;meta name="twitter:app:id:googleplay" content="com.example.app"/&gt;
 &lt;meta name="twitter:app:url:googleplay" content="http://example.com/action/5149e249222"/&gt;
-</pre>  <p><?php _e('Source','jm-tc-doc');?> : <a href="https://dev.twitter.com/docs/cards/app-installs-and-deep-linking"><?php _e('App Installs and Deep-Linking','jm-tc-doc');?></a></p>
+</pre>  <p><?php _e('Source','jm-tc-doc');?> : <a href="https://dev.twitter.com/cards/mobile"><?php _e('App Installs and Deep-Linking','jm-tc-doc');?></a></p>
 <h3 id="analytics"><?php _e('Analytics','jm-tc-doc');?></h3>
 <blockquote class="quote-doc"> <?php _e('Twitter Cards allow you to attach rich media experiences to Tweets about your content; Twitter Card analytics gives you related insights into how your content is being shared on Twitter. Through personalized data and best practices,Twitter Card analytics reveals how you can improve key metrics such as URL clicks, app install attempts and Retweets.','jm-tc-doc');?> </blockquote>
 <p><?php _e('This new feature allows a fine set up for Twitter Cards Experience. You can analyse your tweets and see what works and what fails. You can also check which card type fits your content.<br /> In a nutshell you can improve your Twitter engagement, monitor clicks and retweets and see what is the best experience for your followers. <strong>AMAZING</strong>!','jm-tc-doc');?></p>
@@ -165,7 +164,6 @@ Disallow:
 <p><?php _e('This is meant to let the user know that there is more than just a single image at the URL shared, but rather a gallery of related images. So these images have to be part of a WordPress gallery. Please ensure you use the shortcode [gallery] in your post to enjoy Gallery cards','jm-tc-doc');?></p>
 <h3 id="extrasettings"><?php _e('Extra settings','jm-tc-doc');?></h3>
 <p><?php _e('If you select photo, or summary large image or product cards then (<strong>save draft</strong> if JavaScript is disabled) you\'ll see additional fields you can set such as :','jm-tc-doc');?></p>
-<img src=""/>
 <ul> <li><?php _e('<strong>Retina display</strong>: Be careful with Retina displays, image must be tall enough. Also make sure your image is not heavier than 1 MB if used for summary large cards','jm-tc-doc');?></li>
 <li><?php _e('<strong>Image options</strong> : This is optional but some users wanted alternatives for featured image','jm-tc-doc');?></li>
 <li><?php _e('<strong>Product card options</strong> : You can set 2 key details for your product (e.g price, size, etc)','jm-tc-doc');?></li> </ul>

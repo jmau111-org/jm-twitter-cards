@@ -28,7 +28,8 @@ $keys = array(
 		);
 		
 		
-foreach($keys as $key)	{
+foreach($keys as $key)	
+{
 global $wpdb;
 	$wpdb->query( 
 		$wpdb->prepare( 

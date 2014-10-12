@@ -11,11 +11,13 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 <?php echo JM_TC_Tabs::admin_tabs();?>
 
-	
-
 	<?php
-	
-	function jm_tc_image_options() {
+	/**
+	* Fields for admin page images
+	* @return array
+	*/	
+	function jm_tc_image_options() 
+	{
 	
 		$plugin_options = array(
 		'id'         => 'jm_tc',

@@ -11,10 +11,13 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 <?php echo JM_TC_Tabs::admin_tabs();?>
 
-
-
 	<?php
-	function jm_tc_multi_author_options() {
+	/**
+	* Fields for admin page multi-options
+	* @return array
+	*/
+	function jm_tc_multi_author_options() 
+	{
 		$plugin_options = array(
 		'id'         => 'jm_tc',
 		'show_on'    => array( 'key' => 'options-page', 'value' => array( 'jm_tc_multi_author', ), ),

@@ -7,12 +7,15 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 if( ! class_exists('JM_TC_Tabs') ) {
 
- 
-	class JM_TC_Tabs {
-	
-		// Create WP Admin Tabs on-the-fly.
-		public static function admin_tabs($tabs = array(), $current = NULL){
-			
+	class JM_TC_Tabs 
+	{
+
+		/**
+		* Create WP Admin Tabs on-the-fly.
+		* @return string
+		*/	
+		public static function admin_tabs( $tabs = array() )
+		{
 			if( !$tabs ) {
 			
 			$tabs = array(
@@ -32,27 +35,18 @@ if( ! class_exists('JM_TC_Tabs') ) {
 				);
 			
 			}
-		
-		
-			if(is_null($current)){
-				if(isset($_GET['page'])){
-					$current = $_GET['page'];
-				}
-			}
 			
 			$menu = '';
-			$menu .= '<ul class="nav-tab-wrapper">';
+			$menu = '<div class="rmm">';
+			$menu .= '<ul>';
 			
-			foreach($tabs as $page => $menu_page){
-				if($current == $page){
-					$class = ' nav-tab-active';
-				} else{
-					$class = '';    
-				}
-				$menu .= '<li><a class="nav-tab'.$class.'" href="?page='.$page.'">'.$menu_page.'</a></li>';
+			foreach( (array)$tabs as $page => $menu_page){
+			
+				$menu .= '<li><a href="'.esc_url( admin_url().'admin.php?page='.$page ).'">'.$menu_page.'</a></li>';
 			}
 			
 			$menu .= '</ul>';
+			$menu .= '</div>';
 			
 			return $menu;
 		}

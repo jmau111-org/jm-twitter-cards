@@ -9,14 +9,11 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 <div class="wrap">
 <h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-
 <?php echo JM_TC_Tabs::admin_tabs();?>
-
-
 	
 	<figure>
-		<img src="https://dev.twitter.com/sites/default/files/images_documentation/card_types.png" alt="" />
-		 <figcaption style="float:right;">Source : <a class="button" href="https://analytics.twitter.com/">Twitter Card analytics</a></figcaption>
+		<img src="<?php echo esc_url(JM_TC_IMG_URL.'doc/analytics.png');?>" width="90%" alt="" />
+		<figcaption class="totheright">Source : <a class="button" href="<?php echo esc_url('https://analytics.twitter.com/');?>">Twitter Card analytics</a></figcaption>
 	</figure>
 	
 	<p><?php _e('Now you can combine Twitter Cards with', 'jm-tc');?> Twitter Card analytics</p>

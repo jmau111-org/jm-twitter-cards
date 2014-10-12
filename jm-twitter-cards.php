@@ -5,7 +5,7 @@ Plugin URI: http://www.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://www.tweetpress.fr
-Version: 5.3.6
+Version: 5.3.7
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -46,7 +46,7 @@ defined('ABSPATH')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.6' );
+define( 'JM_TC_VERSION', '5.3.7' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_INC_DIR . 'classes') );
@@ -83,9 +83,7 @@ if( is_admin() ) {
 }
 
 /******************
-
 	CLASS INIT
-
 ******************/
 
 global $jm_twitter_cards;
@@ -112,8 +110,9 @@ if( is_admin() ) {
 $jm_twitter_cards['process-thumbs'] = new JM_TC_Thumbs;
 $jm_twitter_cards['populate-markup'] = new JM_TC_Markup;
 
-	
-// Add a "Settings" link in the plugins list
+/**
+* Add a "Settings" link in the plugins list
+*/	
 function jm_tc_settings_action_links($links, $file)
 {
 	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc') . '">' . __("Settings") . '</a>';
@@ -122,17 +121,18 @@ function jm_tc_settings_action_links($links, $file)
 	return $links;
 }
 
-
-// Init meta box
-function jm_tc_initialize() {
-
+/**
+* Init meta box
+*/	
+function jm_tc_initialize() 
+{
 	if ( ! class_exists( 'cmb_Meta_Box' ) ) {
 		
 		require_once JM_TC_METABOX_DIR . 'init.php';
 	
 	}
 
-		/* Thumbnails */
+	/* Thumbnails */
 	$opts = jm_tc_get_options();
 	$is_crop = true;
 	$crop = $opts['twitterCardCrop'];
@@ -180,17 +180,12 @@ function jm_tc_initialize() {
 		default:
 			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
 	}
-
-
 }
 
 
-/******************
-
-	INIT
-
-******************/
-add_action('plugins_loaded', 'jm_tc_plugins_loaded');
+/**
+* Everything that should trigger early
+*/	
 function jm_tc_plugins_loaded()
 {
 	//lang
@@ -207,33 +202,36 @@ function jm_tc_plugins_loaded()
 	$init_markup = $jm_twitter_cards['populate-markup'];
 	
 	add_action('wp_head', array( $init_markup, 'add_markup'), 2 );
-
-	
 }
+add_action('plugins_loaded', 'jm_tc_plugins_loaded');
 
-
-//Plugin install : update options
-add_action('wpmu_new_blog', 'jm_tc_new_blog');
-function jm_tc_new_blog($blog_id ) {
-
+/**
+* Default options for multisite when creating new site
+*/	
+function jm_tc_new_blog($blog_id ) 
+{
 	switch_to_blog( $blog_id );
 	
 		jm_tc_on_activation();
 
 	 restore_current_blog();
 }
+add_action('wpmu_new_blog', 'jm_tc_new_blog');
 
-
-
-function jm_tc_on_activation() {
-
+/**
+* Avoid undefined index by registering default options
+*/	
+function jm_tc_on_activation() 
+{
 	$opts = get_option('jm_tc');	
 	if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
-
 }
 
 
-register_activation_hook(__FILE__, 'jm_tc_activate');
+
+/**
+* Avoid undefined index by registering default options
+*/
 function jm_tc_activate() {
 
 	if( !is_multisite() ) {
@@ -255,9 +253,12 @@ function jm_tc_activate() {
 	}
 	
 }
+register_activation_hook(__FILE__, 'jm_tc_activate');
 
-
-// Return default options
+/**
+* Return default options
+* @return array
+*/	
 function jm_tc_get_default_options()
 {
 	return array(

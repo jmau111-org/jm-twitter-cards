@@ -8,7 +8,11 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 if( ! class_exists('JM_TC_Disable') ) {
 
 	class JM_TC_Disable {
-	
+			
+		/**
+		*	Constructor
+		*	@since 5.3.2
+		*/
 		function __construct() {
 		
 			add_action( 'init', array( $this, 'disable_yoast_twitter' ) );
@@ -16,6 +20,10 @@ if( ! class_exists('JM_TC_Disable') ) {
 			
 		}
 		
+		/**
+		*	Disable Yoast cards
+		*	@since 5.3.4
+		*/		
 		public function disable_yoast_twitter(){
 		
 			$opt = get_option( 'wpseo_social' );
