@@ -74,7 +74,7 @@ License: CC BY 3.0 http://creativecommons.org/licenses/by/3.0/
 }
 .rmm .rmm-toggled ul li {
 	display:block;
-
+	text-transform:uppercase;
 }
 
 
