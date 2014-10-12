@@ -243,6 +243,11 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 						, '1.0'
 						, true
 					);
+					wp_enqueue_script( 'twitter-widget', '//platform.twitter.com/widgets.js', 
+						false, 
+						null, 
+						true
+					);
 					
 				break;
 
