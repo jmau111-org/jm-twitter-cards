@@ -24,7 +24,7 @@ $slugs = array(
 $author->get_author_infos(
 	'Julien Maury', 
 	__('I am a WordPress Developer, I like to make it simple.', 'jm-tc'), 
-	'tweetpressfr@gmail.com', 
+	'contact@tweetpress.fr', 
 	'http://tweetpressfr.github.io', 
 	'7BJYYT486HEH6', 
 	'tweetpressfr',
