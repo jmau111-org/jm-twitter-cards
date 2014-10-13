@@ -136,8 +136,6 @@ function jm_tc_initialize()
 	$opts = jm_tc_get_options();
 	$is_crop = true;
 	$crop = $opts['twitterCardCrop'];
-	$crop_x =  $opts['twitterCardCropX'];
-	$crop_y =  $opts['twitterCardCropY'];
 	$size = $opts['twitterCardImgSize'];
 
 	switch($crop)
@@ -149,9 +147,11 @@ function jm_tc_initialize()
 			case 'no' :
 				$is_crop = false;
 			break;
-
+			
 			case 'yo' :
 				global $wp_version;
+				$crop_x =  $opts['twitterCardCropX'];
+				$crop_y =  $opts['twitterCardCropY'];
 				$is_crop = ( version_compare( $wp_version, '3.9', '>=') ) ? array($crop_x, $crop_y) : true;
 			break;
 		}
