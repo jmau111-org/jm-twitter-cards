@@ -114,12 +114,13 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 		
 
 		/**
-		 * Removes metabox from appearing acccording to meta box settings
+		 * Removes metabox from appearing according to meta box settings
 		 *
 		 * @author Julien Maury inspired by tips given by Thomas Griffin
 		 *
 		 * @param bool $display
 		 * @param array $meta_box The array of metabox options
+		 *
 		 * @return bool $display on success, false on failure
 		 */
 		public function exclude_from_post( $display, $meta_box ) 

@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: JM Twitter Cards
-Plugin URI: http://www.tweetpress.fr
+Plugin URI: http://tweetpressfr.github.io
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
-Author URI: http://www.tweetpress.fr
-Version: 5.3.7
+Author URI: http://tweetpressfr.github.io
+Version: 5.3.8
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -46,7 +46,7 @@ defined('ABSPATH')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.7' );
+define( 'JM_TC_VERSION', '5.3.8' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
 define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
 define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_INC_DIR . 'classes') );
@@ -112,8 +112,8 @@ $jm_twitter_cards['populate-markup'] = new JM_TC_Markup;
 
 /**
 * Add a "Settings" link in the plugins list
-*/	
-function jm_tc_settings_action_links($links, $file)
+ */
+function jm_tc_settings_action_links( $links )
 {
 	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc') . '">' . __("Settings") . '</a>';
 	array_unshift($links, $settings_link);
