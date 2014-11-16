@@ -40,7 +40,7 @@ if( ! class_exists('JM_TC_Tabs') ) {
 			$menu = '<div class="rmm">';
 			$menu .= '<ul>';
 			
-			foreach( (array)$tabs as $page => $menu_page){
+			foreach( (array) $tabs as $page => $menu_page){
 			
 				$menu .= '<li><a href="'.esc_url( admin_url().'admin.php?page='.$page ).'">'.$menu_page.'</a></li>';
 			}
