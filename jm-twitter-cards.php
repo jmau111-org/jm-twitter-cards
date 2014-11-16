@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: JM Twitter Cards
-Plugin URI: http://www.tweetpress.fr
+Plugin URI: http://tweetpressfr.github.io
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
-Author URI: http://www.tweetpress.fr
-Version: 5.3.7
+Author URI: http://tweetpressfr.github.io
+Version: 5.4
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -46,24 +46,22 @@ defined('ABSPATH')
 
 
 //Constantly constant
-define( 'JM_TC_VERSION', '5.3.7' );
+define( 'JM_TC_VERSION', '5.4' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
-define( 'JM_TC_INC_DIR', trailingslashit(JM_TC_DIR . 'inc') );
-define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_INC_DIR . 'classes') );
-define( 'JM_TC_ADMIN_DIR', trailingslashit(JM_TC_DIR . 'inc/admin') );
-define( 'JM_TC_ADMIN_CLASS_DIR', trailingslashit(JM_TC_ADMIN_DIR . 'classes') );
-define( 'JM_TC_ADMIN_PAGES_DIR', trailingslashit(JM_TC_INC_DIR . 'admin/pages') );
-define( 'JM_TC_METABOX_DIR', trailingslashit(JM_TC_INC_DIR . 'admin/meta-box') );
+define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_DIR . 'classes') );
+define( 'JM_TC_ADMIN_CLASS_DIR', trailingslashit(JM_TC_DIR . 'classes/admin') );
+define( 'JM_TC_ADMIN_PAGES_DIR', trailingslashit(JM_TC_DIR . 'views/pages') );
+define( 'JM_TC_METABOX_DIR', trailingslashit(JM_TC_DIR . 'classes/meta-box') );
 define( 'JM_TC_LANG_DIR', dirname(plugin_basename(__FILE__)) . '/languages/' );
-define( 'JM_TC_URL', trailingslashit(plugin_dir_url( __FILE__ ).'inc/admin') );
-define( 'JM_TC_METABOX_URL', trailingslashit(JM_TC_URL.'admin/meta-box') );
-define( 'JM_TC_IMG_URL', trailingslashit(JM_TC_URL.'img') );
-define( 'JM_TC_CSS_URL', trailingslashit(JM_TC_URL.'css') );
-define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'js') );				
+define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
+define( 'JM_TC_METABOX_URL', trailingslashit(JM_TC_URL.'classes/meta-box') );
+define( 'JM_TC_IMG_URL', trailingslashit(JM_TC_URL.'assets/img') );
+define( 'JM_TC_CSS_URL', trailingslashit(JM_TC_URL.'assets/css') );
+define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'assets/js') );				
 		
 
 //Call modules 
-require( JM_TC_INC_DIR . 'functions.inc.php' );
+require( JM_TC_DIR . 'functions/functions.inc.php' );
 require( JM_TC_CLASS_DIR . 'utilities.class.php' ); 
 require( JM_TC_CLASS_DIR . 'particular.class.php' ); 
 require( JM_TC_CLASS_DIR . 'thumbs.class.php' );
@@ -112,8 +110,8 @@ $jm_twitter_cards['populate-markup'] = new JM_TC_Markup;
 
 /**
 * Add a "Settings" link in the plugins list
-*/	
-function jm_tc_settings_action_links($links, $file)
+ */
+function jm_tc_settings_action_links( $links )
 {
 	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc') . '">' . __("Settings") . '</a>';
 	array_unshift($links, $settings_link);
@@ -186,10 +184,14 @@ function jm_tc_initialize()
 /**
 * Everything that should trigger early
 */	
+add_action('plugins_loaded', 'jm_tc_plugins_loaded');
 function jm_tc_plugins_loaded()
 {
-	//lang
+	//langs
 	load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
+
+	if ( is_admin() )
+		load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
 	
 	//settings link
 	add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'jm_tc_settings_action_links', 10, 2);
@@ -203,11 +205,12 @@ function jm_tc_plugins_loaded()
 	
 	add_action('wp_head', array( $init_markup, 'add_markup'), 2 );
 }
-add_action('plugins_loaded', 'jm_tc_plugins_loaded');
+
 
 /**
 * Default options for multisite when creating new site
-*/	
+*/
+add_action('wpmu_new_blog', 'jm_tc_new_blog');	
 function jm_tc_new_blog($blog_id ) 
 {
 	switch_to_blog( $blog_id );
@@ -216,7 +219,6 @@ function jm_tc_new_blog($blog_id )
 
 	 restore_current_blog();
 }
-add_action('wpmu_new_blog', 'jm_tc_new_blog');
 
 /**
 * Avoid undefined index by registering default options
@@ -232,6 +234,7 @@ function jm_tc_on_activation()
 /**
 * Avoid undefined index by registering default options
 */
+register_activation_hook(__FILE__, 'jm_tc_activate');
 function jm_tc_activate() {
 
 	if( !is_multisite() ) {
@@ -241,7 +244,7 @@ function jm_tc_activate() {
 	
 	    // For regular options.
 		global $wpdb;
-		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs}" );
 		foreach ( $blog_ids as $blog_id ) 
 		{
 			switch_to_blog( $blog_id );
@@ -253,7 +256,6 @@ function jm_tc_activate() {
 	}
 	
 }
-register_activation_hook(__FILE__, 'jm_tc_activate');
 
 /**
 * Return default options
