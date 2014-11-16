@@ -265,8 +265,8 @@ function jm_tc_get_default_options()
 {
 	return array(
 		'twitterCardType' => 'summary',
-		'twitterCreator' => apply_filters( 'jm_tc_default_creator_name', 'TweetPressFr' ),
-		'twitterSite' => apply_filters( 'jm_tc_default_site_name', 'TweetPressFr' ),
+		'twitterCreator' => 'TweetPressFr',
+		'twitterSite' => 'TweetPressFr',
 		'twitterImage' => 'https://g.twimg.com/Twitter_logo_blue.png',
 		'twitterCardImgSize' => 'small',
 		'twitterImageWidth' => '280',
