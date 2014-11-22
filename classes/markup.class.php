@@ -22,7 +22,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		function __construct() 
 		{
 			
-			$this->opts  	 = jm_tc_get_options(); 
+			$this->opts = jm_tc_get_options(); 
 			
 		}
 
