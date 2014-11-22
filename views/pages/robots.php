@@ -26,13 +26,13 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 			'fields'     => array(
 
 				array(
-				'name' 		=> __( 'Twitter\'s bot', 'jm-tc' ),
-				'desc' 		=> __('Add required rules in robots.txt', 'jm-tc'),
+				'name' 		=> __( 'Twitter\'s bot', JM_TC_TEXTDOMAIN ),
+				'desc' 		=> __('Add required rules in robots.txt', JM_TC_TEXTDOMAIN),
 				'id'   		=> 'twitterCardRobotsTxt',
 				'type' 		=> 'select',
 				'options'	 => array(
-				'yes' 			=> __( 'Yes', 'jm-tc' ),
-				'no' 			=> __( 'No', 'jm-tc' ),
+				'yes' 			=> __( 'Yes', JM_TC_TEXTDOMAIN ),
+				'no' 			=> __( 'No', JM_TC_TEXTDOMAIN ),
 				)
 				),
 			)

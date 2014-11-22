@@ -25,13 +25,13 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'fields'     => array(				
 			
 			array(
-			'name' 		=> __( 'Add or hide the meta box', 'jm-tc' ),
-			'desc' 		=> __('Hide or display the meta box on post edit. This will display/hide both image and main metaboxes.', 'jm-tc'),
+			'name' 		=> __( 'Add or hide the meta box', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Hide or display the meta box on post edit. This will display/hide both image and main metaboxes.', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitterCardMetabox',
 			'type' 		=> 'select',
 			'options'	 => array(
-			'yes' 			=> __( 'Display', 'jm-tc' ),
-			'no' 			=> __( 'Hide', 'jm-tc' ),
+			'yes' 			=> __( 'Display', JM_TC_TEXTDOMAIN ),
+			'no' 			=> __( 'Hide', JM_TC_TEXTDOMAIN ),
 
 			)
 			),	

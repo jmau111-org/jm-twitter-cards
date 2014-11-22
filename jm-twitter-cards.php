@@ -42,26 +42,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //Add some security, no direct load !
 defined('ABSPATH') 
-	or die('What we\'re dealing with here is a total lack of respect for the law !');
+	or die('No direct load !');
 
 
 //Constantly constant
 define( 'JM_TC_VERSION', '5.4' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ )  );
-define( 'JM_TC_CLASS_DIR', trailingslashit(JM_TC_DIR . 'classes') );
-define( 'JM_TC_ADMIN_CLASS_DIR', trailingslashit(JM_TC_DIR . 'classes/admin') );
-define( 'JM_TC_ADMIN_PAGES_DIR', trailingslashit(JM_TC_DIR . 'views/pages') );
-define( 'JM_TC_METABOX_DIR', trailingslashit(JM_TC_DIR . 'classes/meta-box') );
+define( 'JM_TC_CLASS_DIR', JM_TC_DIR . 'classes/' );
+define( 'JM_TC_ADMIN_CLASS_DIR', JM_TC_DIR . 'classes/admin/' );
+define( 'JM_TC_ADMIN_PAGES_DIR', JM_TC_DIR . 'views/pages/' );
+define( 'JM_TC_METABOX_DIR', JM_TC_DIR . 'classes/meta-box/' );
+
 define( 'JM_TC_LANG_DIR', dirname(plugin_basename(__FILE__)) . '/languages/' );
+define( 'JM_TC_TEXTDOMAIN', 'jm-tc' );
+define( 'JM_TC_DOC_TEXTDOMAIN', 'jm-tc-doc' );
+
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
-define( 'JM_TC_METABOX_URL', trailingslashit(JM_TC_URL.'classes/meta-box') );
-define( 'JM_TC_IMG_URL', trailingslashit(JM_TC_URL.'assets/img') );
-define( 'JM_TC_CSS_URL', trailingslashit(JM_TC_URL.'assets/css') );
-define( 'JM_TC_JS_URL', trailingslashit(JM_TC_URL.'assets/js') );				
+define( 'JM_TC_METABOX_URL', JM_TC_URL.'classes/meta-box/' );
+define( 'JM_TC_IMG_URL', JM_TC_URL.'assets/img/' );
+define( 'JM_TC_CSS_URL', JM_TC_URL.'assets/css/' );
+define( 'JM_TC_JS_URL', JM_TC_URL.'assets/js/' );				
 		
 
 //Call modules 
-require( JM_TC_DIR . 'functions/functions.inc.php' );
+require( JM_TC_CLASS_DIR . 'init.class.php' );
+require( JM_TC_DIR 		 . 'functions/functions.inc.php' );
 require( JM_TC_CLASS_DIR . 'utilities.class.php' ); 
 require( JM_TC_CLASS_DIR . 'particular.class.php' ); 
 require( JM_TC_CLASS_DIR . 'thumbs.class.php' );
@@ -70,10 +75,10 @@ require( JM_TC_CLASS_DIR . 'options.class.php' );
 require( JM_TC_CLASS_DIR . 'markup.class.php' ); 
 
 if( is_admin() ) {
-	
+
 	require( JM_TC_ADMIN_CLASS_DIR . 'author.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR.  'tabs.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR.  'admin-tc.class.php' );
+	require( JM_TC_ADMIN_CLASS_DIR .  'tabs.class.php' );
+	require( JM_TC_ADMIN_CLASS_DIR .  'admin-tc.class.php' );
 	require( JM_TC_ADMIN_CLASS_DIR . 'preview.class.php' );	
 	require( JM_TC_ADMIN_CLASS_DIR . 'meta-box.class.php' );	
 	require( JM_TC_ADMIN_CLASS_DIR . 'import-export.class.php' );	
@@ -95,6 +100,7 @@ $jm_twitter_cards['particular'] = new JM_TC_Particular;
 //admin classes
 if( is_admin() ) {
 
+	$jm_twitter_cards['init'] = new JM_TC_init;
 	$jm_twitter_cards['utilities'] = new JM_TC_Utilities;
 	$jm_twitter_cards['admin-tabs'] = new JM_TC_Tabs;
 	$jm_twitter_cards['admin-base'] = new JM_TC_Admin; 
@@ -108,77 +114,11 @@ if( is_admin() ) {
 $jm_twitter_cards['process-thumbs'] = new JM_TC_Thumbs;
 $jm_twitter_cards['populate-markup'] = new JM_TC_Markup;
 
-/**
-* Add a "Settings" link in the plugins list
- */
-function jm_tc_settings_action_links( $links )
-{
-	$settings_link = '<a href="' . admin_url('admin.php?page=jm_tc') . '">' . __("Settings") . '</a>';
-	array_unshift($links, $settings_link);
-	
-	return $links;
-}
 
-/**
-* Init meta box
-*/	
-function jm_tc_initialize() 
-{
-	if ( ! class_exists( 'cmb_Meta_Box' ) ) {
-		
-		require_once JM_TC_METABOX_DIR . 'init.php';
-	
-	}
-
-	/* Thumbnails */
-	$opts = jm_tc_get_options();
-	$is_crop = true;
-	$crop = $opts['twitterCardCrop'];
-	$crop_x =  $opts['twitterCardCropX'];
-	$crop_y =  $opts['twitterCardCropY'];
-	$size = $opts['twitterCardImgSize'];
-
-	switch($crop)
-		{
-			case 'yes' :
-				$is_crop = true;
-			break;
-
-			case 'no' :
-				$is_crop = false;
-			break;
-
-			case 'yo' :
-				global $wp_version;
-				$is_crop = ( version_compare( $wp_version, '3.9', '>=') ) ? array($crop_x, $crop_y) : true;
-			break;
-		}
-
-	if (function_exists('add_theme_support')) 
-		add_theme_support('post-thumbnails');
-
-	switch ($size) 
-	{
-		case 'small':
-			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
-		break;
-
-		case 'web':
-			add_image_size('jmtc-max-web-thumb', 435, 375, $is_crop);/* maximum web size for photo cards */
-		break;
-
-		case 'mobile-non-retina':
-			add_image_size('jmtc-max-mobile-non-retina-thumb', 280, 375, $is_crop);/* maximum non retina mobile size for photo cards*/
-		break;
-
-		case 'mobile-retina':
-			add_image_size('jmtc-max-mobile-retina-thumb', 560, 750, $is_crop);/* maximum retina mobile size for photo cards  */
-		break;
-
-		default:
-			add_image_size('jmtc-small-thumb', 280, 150, $is_crop);/* the minimum size possible for Twitter Cards */
-	}
-}
+/*
+* On activation
+*/
+register_activation_hook( __FILE__, array('JM_TC_Init', 'activate') );
 
 
 /**
@@ -187,112 +127,22 @@ function jm_tc_initialize()
 add_action('plugins_loaded', 'jm_tc_plugins_loaded');
 function jm_tc_plugins_loaded()
 {
-	//langs
-	load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
 
-	if ( is_admin() )
-		load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
-	
-	//settings link
-	add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'jm_tc_settings_action_links', 10, 2);
-	
-	//meta box
-	add_action( 'init', 'jm_tc_initialize');
+	// init metabox
+	add_action( 'init', array( 'JM_TC_Init', 'initialize' ) );
+
+	//langs
+	load_plugin_textdomain( JM_TC_TEXTDOMAIN, false, JM_TC_LANG_DIR );
+
+	if ( is_admin() ) {
+
+		load_plugin_textdomain( JM_TC_DOC_TEXTDOMAIN, false, JM_TC_LANG_DIR );
+
+	}
 	
 	//markup
 	global $jm_twitter_cards;
 	$init_markup = $jm_twitter_cards['populate-markup'];
 	
-	add_action('wp_head', array( $init_markup, 'add_markup'), 2 );
-}
-
-
-/**
-* Default options for multisite when creating new site
-*/
-add_action('wpmu_new_blog', 'jm_tc_new_blog');	
-function jm_tc_new_blog($blog_id ) 
-{
-	switch_to_blog( $blog_id );
-	
-		jm_tc_on_activation();
-
-	 restore_current_blog();
-}
-
-/**
-* Avoid undefined index by registering default options
-*/	
-function jm_tc_on_activation() 
-{
-	$opts = get_option('jm_tc');	
-	if (!is_array($opts)) update_option('jm_tc', jm_tc_get_default_options());  
-}
-
-
-
-/**
-* Avoid undefined index by registering default options
-*/
-register_activation_hook(__FILE__, 'jm_tc_activate');
-function jm_tc_activate() {
-
-	if( !is_multisite() ) {
-		jm_tc_on_activation();
-	
-	} else {
-	
-	    // For regular options.
-		global $wpdb;
-		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs}" );
-		foreach ( $blog_ids as $blog_id ) 
-		{
-			switch_to_blog( $blog_id );
-			jm_tc_on_activation();
-			restore_current_blog();
-			  
-		}
-	
-	}
-	
-}
-
-/**
-* Return default options
-* @return array
-*/	
-function jm_tc_get_default_options()
-{
-	return array(
-		'twitterCardType' => 'summary',
-		'twitterCreator' => 'TweetPressFr',
-		'twitterSite' => 'TweetPressFr',
-		'twitterImage' => 'https://g.twimg.com/Twitter_logo_blue.png',
-		'twitterCardImgSize' => 'small',
-		'twitterImageWidth' => '280',
-		'twitterImageHeight' => '150',
-		'twitterCardMetabox' => 'yes',
-		'twitterProfile' => 'yes',
-		'twitterPostPageTitle' => get_bloginfo('name') , // filter used by plugin to customize title
-		'twitterPostPageDesc' => __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc') ,
-		'twitterCardTitle' => '',
-		'twitterCardDesc' => '',
-		'twitterCardExcerpt' => 'no',
-		'twitterCardCrop' => 'yes',
-		'twitterCardCropX' => '',
-		'twitterCardCropY' => '',
-		'twitterUsernameKey' => 'jm_tc_twitter',
-		'twitteriPhoneName' => '',
-		'twitteriPadName' => '',
-		'twitterGooglePlayName' => '',
-		'twitteriPhoneUrl' => '',
-		'twitteriPadUrl' => '',
-		'twitterGooglePlayUrl' => '',
-		'twitteriPhoneId' => '',
-		'twitteriPadId' => '',
-		'twitterGooglePlayId' => '',
-		'twitterCardRobotsTxt' => 'no',
-		'twitterAppCountry' => '',
-		'twitterCardOg' => 'no',
-	);
+	add_action( 'wp_head', array( $init_markup, 'add_markup'), 2 );
 }

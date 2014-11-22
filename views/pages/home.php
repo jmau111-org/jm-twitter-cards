@@ -25,8 +25,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'fields'     => array(				
 			
 			array(
-			'name' 		=> __( 'Home meta desc', 'jm-tc' ),
-			'desc' 		=> __('Enter desc for Posts Page (max: 200 characters)', 'jm-tc'),
+			'name' 		=> __( 'Home meta desc', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter desc for Posts Page (max: 200 characters)', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterPostPageDesc',
 			'type' 		=> 'textarea_small',
 			),

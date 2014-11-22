@@ -13,10 +13,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 <?php
 	$data = array(
-				__('Start', 'jm-tc') 							=> '8l4k3zrD4Z0',
-				__('Troubleshooting', 'jm-tc')				 	=> 'sNihgEu65L0',
-				__('Multi-author', 'jm-tc')				 		=> 'LpQuIzaHqtk',
-				__('Preview', 'jm-tc')				 			=> 'WniGVE09-IQ',
+				__( 'Start', JM_TC_TEXTDOMAIN ) 			=> '8l4k3zrD4Z0',
+				__( 'Troubleshooting', JM_TC_TEXTDOMAIN )	=> 'sNihgEu65L0',
+				__( 'Multi-author', JM_TC_TEXTDOMAIN )		=> 'LpQuIzaHqtk',
+				__( 'Preview', JM_TC_TEXTDOMAIN )			=> 'WniGVE09-IQ',
 			);
 
 	$tutorials = JM_TC_Utilities::display_footage($data);

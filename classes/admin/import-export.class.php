@@ -5,7 +5,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if ( class_exists( 'JM_TC_Options' ) ) {
+if ( !class_exists( 'JM_TC_Import_Export' ) ) {
 
 	class JM_TC_Import_Export
 	{
@@ -15,7 +15,7 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 		*/
 		public function __construct() 
 		{
-			$this->title = __( 'JM Twitter Cards', 'jm-tc');
+			$this->title = __( 'JM Twitter Cards', JM_TC_TEXTDOMAIN );
 			add_action( 'admin_init', array( $this, 'process_settings_export' ) );
 			add_action( 'admin_init', array( $this, 'process_settings_import' ) );
 		}
@@ -106,13 +106,13 @@ if ( class_exists( 'JM_TC_Options' ) ) {
 			$extension = end( explode( '.', $_FILES['import_file']['name'] ) );
 
 			if( $extension != 'json' ) {
-				wp_die( __( 'Please upload a valid .json file', 'jm-tc' ) );
+				wp_die( __( 'Please upload a valid .json file', JM_TC_TEXTDOMAIN ) );
 			}
 
 			$import_file = $_FILES['import_file']['tmp_name'];
 
 			if( empty( $import_file ) ) {
-				wp_die( __( 'Please upload a file to import', 'jm-tc' ) );
+				wp_die( __( 'Please upload a file to import', JM_TC_TEXTDOMAIN ) );
 			}
 
 			// Retrieve the settings from the file and convert the json object to an array.

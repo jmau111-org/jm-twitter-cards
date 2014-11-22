@@ -26,78 +26,78 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 			
 			array(
-			'name' 		=> __( 'Deep linking? ', 'jm-tc'),
-			'desc' 		=> __('For all the following fields, if you do not want to use leave it blank but be careful with the required markup for your app. Read the documentation please.','jm-tc'),
+			'name' 		=> __( 'Deep linking? ', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('For all the following fields, if you do not want to use leave it blank but be careful with the required markup for your app. Read the documentation please.', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'deep_linking_title',
 			'type' 		=> 'title',
 			),
 
 			array(
-			'name' 		=> __( 'iPhone Name', 'jm-tc' ),
-			'desc' 		=> __('Enter iPhone Name ', 'jm-tc'),
+			'name' 		=> __( 'iPhone Name', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter iPhone Name ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitteriPhoneName',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( ' iPhone URL', 'jm-tc' ),
-			'desc' 		=> __('Enter iPhone URL ', 'jm-tc'),
+			'name' 		=> __( ' iPhone URL', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter iPhone URL ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitteriPhoneUrl',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'iPhone ID', 'jm-tc' ),
-			'desc' 		=> __('Enter iPhone ID ', 'jm-tc'),
+			'name' 		=> __( 'iPhone ID', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter iPhone ID ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitteriPhoneId',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'iPad Name', 'jm-tc' ),
-			'desc' 		=> __('Enter iPad Name ', 'jm-tc'),
+			'name' 		=> __( 'iPad Name', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter iPad Name ', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitteriPadName',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'iPad URL', 'jm-tc' ),
-			'desc' 		=> __('Enter iPad URL ', 'jm-tc'),
+			'name' 		=> __( 'iPad URL', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter iPad URL ', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitteriPadUrl',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'iPad ID', 'jm-tc' ),
-			'desc' 		=> __('Enter iPad ID ', 'jm-tc'),
+			'name' 		=> __( 'iPad ID', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter iPad ID ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitteriPadId',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'Google Play Name', 'jm-tc' ),
-			'desc' 		=> __('Enter Google Play Name ', 'jm-tc'),
+			'name' 		=> __( 'Google Play Name', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter Google Play Name ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterGooglePlayName',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'Google Play URL', 'jm-tc' ),
-			'desc' 		=> __('Enter Google Play URL ', 'jm-tc'),
+			'name' 		=> __( 'Google Play URL', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter Google Play URL ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterGooglePlayUrl',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'Google Play ID', 'jm-tc' ),
-			'desc' 		=> __('Enter Google Play ID ', 'jm-tc'),
+			'name' 		=> __( 'Google Play ID', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter Google Play ID ', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterGooglePlayId',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'App Country code', 'jm-tc' ),
-			'desc' 		=> __('Enter 2 letter App Country code in case your app is not available in the US app store', 'jm-tc'),
+			'name' 		=> __( 'App Country code', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('Enter 2 letter App Country code in case your app is not available in the US app store', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterAppCountry',
 			'type' 		=> 'text_medium',
 			),			

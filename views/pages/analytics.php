@@ -16,10 +16,10 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		<figcaption class="totheright">Source : <a class="button" href="<?php echo esc_url('https://analytics.twitter.com/');?>">Twitter Card analytics</a></figcaption>
 	</figure>
 	
-	<p><?php _e('Now you can combine Twitter Cards with', 'jm-tc');?> Twitter Card analytics</p>
-	<p><?php _e('It allows you to make some tests and then you can choose "top performing Twitter Cards that drove clicks".', 'jm-tc'); ?> </p>
-	<p><?php _e('You can test sources, links, influencers and devices. It is awesome and you should enjoy these new tools.', 'jm-tc'); ?></p>
-	<p><?php _e('This will help you to set the best card type experience and it will probably improve your marketing value.', 'jm-tc');?></p>
+	<p><?php _e('Now you can combine Twitter Cards with', JM_TC_TEXTDOMAIN);?> Twitter Card analytics</p>
+	<p><?php _e('It allows you to make some tests and then you can choose "top performing Twitter Cards that drove clicks".', JM_TC_TEXTDOMAIN); ?> </p>
+	<p><?php _e('You can test sources, links, influencers and devices. It is awesome and you should enjoy these new tools.', JM_TC_TEXTDOMAIN); ?></p>
+	<p><?php _e('This will help you to set the best card type experience and it will probably improve your marketing value.', JM_TC_TEXTDOMAIN);?></p>
 	
 	<div class="doc-valid">
 	<?php echo JM_TC_Admin::docu_links(6); ?>

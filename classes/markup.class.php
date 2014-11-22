@@ -16,19 +16,13 @@ if( class_exists('JM_TC_Utilities') ) {
 		protected $opts = array();
 		
 		/**
-		* Text domain / translation
-		* @var string
-		*/		
-		public $textdomain = 'jm-tc';
-		
-		/**
 		*	Constructor
 		*	@since 5.3.2
 		*/
 		function __construct() 
 		{
 			
-			$this->opts  	 = jm_tc_get_options(); 
+			$this->opts = jm_tc_get_options(); 
 			
 		}
 
@@ -55,9 +49,8 @@ if( class_exists('JM_TC_Utilities') ) {
 		public function add_markup() 
 		{
 			
-			global $post, $jm_twitter_cards;
+			global $jm_twitter_cards;
 			$jm_twitter_cards['options'] = new JM_TC_Options;
-
 			$options = $jm_twitter_cards['options'];
 			
 			if( 
@@ -69,21 +62,24 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					) {
 					
+				// safer than the global $post => seems killed on a lot of install :/
+				$post_ID = get_queried_object()->ID;
+
 				$this->html_comments();
 				
 				/* most important meta */
-				$this->display_markup( $options->cardType( $post->ID ) );
+				$this->display_markup( $options->cardType( $post_ID ) );
 				$this->display_markup( $options->creatorUsername( true ) );
 				$this->display_markup( $options->siteUsername() );
-				$this->display_markup( $options->title( $post->ID ) );
-				$this->display_markup( $options->description( $post->ID ) );
-				$this->display_markup( $options->image( $post->ID ) );
+				$this->display_markup( $options->title( $post_ID ) );
+				$this->display_markup( $options->description( $post_ID ) );
+				$this->display_markup( $options->image( $post_ID ) );
 				
 				
 				/* secondary meta */
-				$this->display_markup( $options->cardDim( $post->ID ) );
-				$this->display_markup( $options->product( $post->ID ) );
-				$this->display_markup( $options->player( $post->ID ) );
+				$this->display_markup( $options->cardDim( $post_ID ) );
+				$this->display_markup( $options->product( $post_ID ) );
+				$this->display_markup( $options->player( $post_ID ) );
 				$this->display_markup( $options->deeplinking() );
 				
 				$this->html_comments(true);
