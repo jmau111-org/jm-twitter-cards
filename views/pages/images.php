@@ -26,7 +26,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'fields'     => array(
 		
 		array(
-			'name' => __( 'Image Fallback', 'jm-tc' ),
+			'name' => __( 'Image Fallback', JM_TC_TEXTDOMAIN ),
 			'id'   => 'twitterImage', // Not used but needed for plugin
 			'type' => 'file',
 			
@@ -34,8 +34,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		
 
 		array(
-		'name' 		=> __('Image width', 'jm-tc'),
-		'desc' 		=> __('px', 'jm-tc'),
+		'name' 		=> __('Image width', JM_TC_TEXTDOMAIN),
+		'desc' 		=> __('px', JM_TC_TEXTDOMAIN),
 		'id'   		=> 'twitterImageWidth',
 		'type' 		=> 'text_number',
 		'min'		=> 280,
@@ -43,8 +43,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		),	
 
 		array(
-		'name' 		=> __('Image height', 'jm-tc'),
-		'desc' 		=> __('px', 'jm-tc'),
+		'name' 		=> __('Image height', JM_TC_TEXTDOMAIN),
+		'desc' 		=> __('px', JM_TC_TEXTDOMAIN),
 		'id'   		=> 'twitterImageHeight',
 		'type' 		=> 'text_number',
 		'min'		=> 150,
@@ -53,52 +53,52 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		
 		
 		array(
-		'name' 		=> __( 'Crop', 'jm-tc' ),
-		'desc' 		=> __('Do you want to force crop on card Image?', 'jm-tc') .__(' (Super Crop => WordPress 3.9++)', 'jm-tc'),
+		'name' 		=> __( 'Crop', JM_TC_TEXTDOMAIN ),
+		'desc' 		=> __('Do you want to force crop on card Image?', JM_TC_TEXTDOMAIN) .__(' (Super Crop => WordPress 3.9++)', JM_TC_TEXTDOMAIN),
 		'id'   		=> 'twitterCardCrop',
 		'type' 		=> 'select',
 		'options'	 => array(
-		'no' 			=> __( 'No', 'jm-tc' ),
-		'yes' 			=> __( 'Yes', 'jm-tc' ),
-		'yo' 			=> __( 'Yes', 'jm-tc' ).' (Super Crop)',
+		'no' 			=> __( 'No', JM_TC_TEXTDOMAIN ),
+		'yes' 			=> __( 'Yes', JM_TC_TEXTDOMAIN ),
+		'yo' 			=> __( 'Yes', JM_TC_TEXTDOMAIN ).' (Super Crop)',
 		)
 		),
 
 		array(
-		'name' 		=> __( 'Crop x', 'jm-tc' ),
-		'desc' 		=> __(' (Super Crop => WordPress 3.9++)', 'jm-tc'),
+		'name' 		=> __( 'Crop x', JM_TC_TEXTDOMAIN ),
+		'desc' 		=> __(' (Super Crop => WordPress 3.9++)', JM_TC_TEXTDOMAIN),
 		'id'   		=> 'twitterCardCropX',
 		'type' 		=> 'select',
 		'options'	 => array(
-		'left' 			=> __( 'Left', 'jm-tc' ),
-		'center' 		=> __( 'Center', 'jm-tc' ),
-		'right' 		=> __( 'Right', 'jm-tc' ),
+		'left' 			=> __( 'Left', JM_TC_TEXTDOMAIN ),
+		'center' 		=> __( 'Center', JM_TC_TEXTDOMAIN ),
+		'right' 		=> __( 'Right', JM_TC_TEXTDOMAIN ),
 		)
 		),
 
 		array(
-		'name' 		=> __( 'Crop y', 'jm-tc' ),
-		'desc' 		=> __(' (Super Crop => WordPress 3.9++)', 'jm-tc'),
+		'name' 		=> __( 'Crop y', JM_TC_TEXTDOMAIN ),
+		'desc' 		=> __(' (Super Crop => WordPress 3.9++)', JM_TC_TEXTDOMAIN),
 		'id'   		=> 'twitterCardCropY',
 		'type' 		=> 'select',
 		'options'	 => array(
-		'top' 			=> __( 'Top', 'jm-tc' ),
-		'center' 		=> __( 'Center', 'jm-tc' ),
-		'bottom' 		=> __( 'Bottom', 'jm-tc' ),
+		'top' 			=> __( 'Top', JM_TC_TEXTDOMAIN ),
+		'center' 		=> __( 'Center', JM_TC_TEXTDOMAIN ),
+		'bottom' 		=> __( 'Bottom', JM_TC_TEXTDOMAIN ),
 		)
 		),
 		
 		
 		array(
-		'name'     => __( 'Define specific size for twitter:image display', 'jm-tc'),
+		'name'     => __( 'Define specific size for twitter:image display', JM_TC_TEXTDOMAIN),
 		'id'       => 'twitterCardImgSize',
 		'type'     => 'select',
 
 		'options'  => array(
-		'small'			    => __('280 x 375 px', 'jm-tc'),
-		'web'   			=> __('560 x 750 px', 'jm-tc'),
-		'mobile-non-retina' => __('435 x 375 px', 'jm-tc'),
-		'mobile-retina'  	=> __('280 x 150 px', 'jm-tc'),
+		'small'			    => __('280 x 375 px', JM_TC_TEXTDOMAIN),
+		'web'   			=> __('560 x 750 px', JM_TC_TEXTDOMAIN),
+		'mobile-non-retina' => __('435 x 375 px', JM_TC_TEXTDOMAIN),
+		'mobile-retina'  	=> __('280 x 150 px', JM_TC_TEXTDOMAIN),
 		)
 
 		),

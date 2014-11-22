@@ -25,20 +25,20 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'fields'     => array(	
 
 			array(
-			'name' 		=> __( 'Add a field in profiles for author', 'jm-tc' ),
-			'desc' 		=> __('This would add a field in profiles if user can publish posts. In this case his Twitter username will be set as meta creator.', 'jm-tc'),
+			'name' 		=> __( 'Add a field in profiles for author', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('This would add a field in profiles if user can publish posts. In this case his Twitter username will be set as meta creator.', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitterProfile',
 			'type' 		=> 'select',
 			'options'	 => array(
-			'no' 			=> __( 'No', 'jm-tc' ),
-			'yes' 			=> __( 'Yes', 'jm-tc' ),
+			'no' 			=> __( 'No', JM_TC_TEXTDOMAIN ),
+			'yes' 			=> __( 'Yes', JM_TC_TEXTDOMAIN ),
 
 			)
 			),		
 			
 			array(
-			'name' 		=> __( 'Meta key Twitter', 'jm-tc' ),
-			'desc' 		=> __('If the above option is set to "no", just modify user meta key associated with Twitter Account in profiles to get Twitter usernames from your own fields:', 'jm-tc'),
+			'name' 		=> __( 'Meta key Twitter', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('If the above option is set to "no", just modify user meta key associated with Twitter Account in profiles to get Twitter usernames from your own fields:', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitterUsernameKey', 
 			'type' 		=> 'text_medium'
 			),

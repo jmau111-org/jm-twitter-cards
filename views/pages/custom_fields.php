@@ -25,15 +25,15 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		'fields'     => array(
 			
 			array(
-			'name' 		=> __( 'Custom field title', 'jm-tc' ),
-			'desc' 		=> __('If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title.', 'jm-tc'),
+			'name' 		=> __( 'Custom field title', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title.', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitterCardTitle',
 			'type' 		=> 'text_medium',
 			),
 			
 			array(
-			'name' 		=> __( 'Custom field desc', 'jm-tc' ),
-			'desc' 		=> __('If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc.', 'jm-tc'),
+			'name' 		=> __( 'Custom field desc', JM_TC_TEXTDOMAIN ),
+			'desc' 		=> __('If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc.', JM_TC_TEXTDOMAIN),
 			'id'   		=> 'twitterCardDesc',
 			'type' 		=> 'text_medium',
 			),

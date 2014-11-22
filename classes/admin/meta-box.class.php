@@ -195,7 +195,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// 1st meta box
 			$meta_boxes['jm_tc_metabox'] = array(
 			'id'    => 'jm_tc_metabox',
-			'title' => __( 'Twitter Cards', 'jm-tc' ),
+			'title' => __( 'Twitter Cards', JM_TC_TEXTDOMAIN ),
 			'pages' => $post_types,
 			'context' => 'advanced',
 			'priority' => 'high',
@@ -206,7 +206,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Documentation', 'jm-tc'),
+			'name' => __('Documentation', JM_TC_TEXTDOMAIN),
 			'id'   => 'documentation_title', // Not used but needed for plugin
 			'desc' => JM_TC_Admin::docu_links(1),
 			),
@@ -214,32 +214,32 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Preview', 'jm-tc'),
+			'name' => __('Preview', JM_TC_TEXTDOMAIN),
 			'id'   => 'preview_title', // Not used but needed for plugin
 			),
 			
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Card type', 'jm-tc'),
+			'name' => __('Card type', JM_TC_TEXTDOMAIN),
 			'id'   => 'type_title', // Not used but needed for plugin
 			'desc' => '',
 			),
 			
 			
 			array(
-			'name'     => __( 'Card Type', 'jm-tc' ),
+			'name'     => __( 'Card Type', JM_TC_TEXTDOMAIN ),
 			'id'       => 'twitterCardType',
 			'type'     => 'select',
 
 			'options'  => array(
-			'summary' 				=> __( 'Summary', 'jm-tc' ),
-			'summary_large_image' 	=> __( 'Summary below Large Image', 'jm-tc' ),
-			'photo' 				=> __( 'Photo', 'jm-tc' ),
-			'product'				=> __( 'Product', 'jm-tc' ),
-			'player' 				=> __( 'Player', 'jm-tc' ),
-			'gallery' 				=> __( 'Gallery', 'jm-tc' ),
-			'app' 					=> __( 'Application', 'jm-tc' )
+			'summary' 				=> __( 'Summary', JM_TC_TEXTDOMAIN ),
+			'summary_large_image' 	=> __( 'Summary below Large Image', JM_TC_TEXTDOMAIN ),
+			'photo' 				=> __( 'Photo', JM_TC_TEXTDOMAIN ),
+			'product'				=> __( 'Product', JM_TC_TEXTDOMAIN ),
+			'player' 				=> __( 'Player', JM_TC_TEXTDOMAIN ),
+			'gallery' 				=> __( 'Gallery', JM_TC_TEXTDOMAIN ),
+			'app' 					=> __( 'Application', JM_TC_TEXTDOMAIN )
 			),
 			
 			'std'	=> $this->opts['twitterCardType'],
@@ -249,13 +249,13 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Image', 'jm-tc'),
+			'name' => __('Image', JM_TC_TEXTDOMAIN),
 			'id'   => 'image_title', // Not used but needed for plugin
 			),
 			
 			array(
 			'id' 	=> 'cardImage',
-			'name'  => __('Set another source as twitter image (enter URL)', 'jm-tc'),
+			'name'  => __('Set another source as twitter image (enter URL)', JM_TC_TEXTDOMAIN),
 			'type' 	=> 'file',
 			//'std'	=> $this->opts['twitterImage'], ... probably a bad idea so we won't do this ^^
 			),
@@ -264,14 +264,14 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Product Cards', 'jm-tc'),
+			'name' => __('Product Cards', JM_TC_TEXTDOMAIN),
 			'id'   => 'product_title', // Not used but needed for plugin
 			'desc' => '',
 			),
 			
 			array(
 			// Field name - Will be used as label
-			'name'  => __( 'Enter the first key data for product', 'jm-tc'),
+			'name'  => __( 'Enter the first key data for product', JM_TC_TEXTDOMAIN),
 			// Field ID, i.e. the meta key
 			'id'    => "cardData1",
 			'type'  => 'text_medium',
@@ -279,7 +279,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			),
 			array(
 			// Field name - Will be used as label
-			'name'  => __('Enter the first key label for product', 'jm-tc'),
+			'name'  => __('Enter the first key label for product', JM_TC_TEXTDOMAIN),
 			// Field ID, i.e. the meta key
 			'id'    => "cardLabel1",
 			'type'  => 'text_medium',
@@ -288,7 +288,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			array(
 			// Field name - Will be used as label
-			'name'  => __('Enter the second key data for product', 'jm-tc'),
+			'name'  => __('Enter the second key data for product', JM_TC_TEXTDOMAIN),
 			// Field ID, i.e. the meta key
 			'id'    => "cardData2",
 			'type'  => 'text_medium',
@@ -296,7 +296,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			),
 			array(
 			// Field name - Will be used as label
-			'name'  => __( 'Enter the second key label for product', 'jm-tc'),
+			'name'  => __( 'Enter the second key label for product', JM_TC_TEXTDOMAIN),
 			// Field ID, i.e. the meta key
 			'id'    => "cardLabel2",
 			'type'  => 'text_medium',
@@ -308,9 +308,9 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Gallery Cards', 'jm-tc'),
+			'name' => __('Gallery Cards', JM_TC_TEXTDOMAIN),
 			'id'   => 'gallery_title', // Not used but needed for plugin
-			'desc' => __('Just use shortcode <strong>[gallery]</strong> and include at least 4 images.', 'jm-tc'),
+			'desc' => __('Just use shortcode <strong>[gallery]</strong> and include at least 4 images.', JM_TC_TEXTDOMAIN),
 			),
 			
 
@@ -319,29 +319,29 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			// title
 			array(
 			'type' => 'title',
-			'name' => __('Player Cards', 'jm-tc'),
+			'name' => __('Player Cards', JM_TC_TEXTDOMAIN),
 			'id'   => 'player_title', // Not used but needed for plugin
 			),
 			
 			
 			array(
 			'id'       => 'cardPlayer',
-			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
+			'name'     => __('URL of iFrame player (MUST BE HTTPS)', JM_TC_TEXTDOMAIN),
 			'type'     => 'text_url_https',
 
 			),
 			
 			array(
-			'name' => __( 'Player width', 'jm-tc'),
+			'name' => __( 'Player width', JM_TC_TEXTDOMAIN),
 			'id'   => "cardPlayerWidth",
 			'type' => 'text_number',
-			'desc'	   => __('When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', 'jm-tc'),
+			'desc'	   => __('When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', JM_TC_TEXTDOMAIN),
 			'min'  => 262,
 			'max'  => 1000,
 			),	
 			
 			array(
-			'name' => __( 'Player height', 'jm-tc'),
+			'name' => __( 'Player height', JM_TC_TEXTDOMAIN),
 			'id'   => "cardPlayerHeight",
 			'type' => 'text_number',
 			'min'  => 196,
@@ -350,9 +350,9 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			array(
 			'id'       => 'cardPlayerStream',
-			'name'     => __('URL of iFrame player (MUST BE HTTPS)', 'jm-tc') . '[STREAM]',
+			'name'     => __('URL of iFrame player (MUST BE HTTPS)', JM_TC_TEXTDOMAIN) . '[STREAM]',
 			'type'     => 'text_url_https',
-			'desc'     => __('If you do not understand what is the following field then it is probably a bad idea to fulfill it!', 'jm-tc'),
+			'desc'     => __('If you do not understand what is the following field then it is probably a bad idea to fulfill it!', JM_TC_TEXTDOMAIN),
 
 			),
 			
@@ -363,14 +363,14 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 				
 			$meta_boxes['twitter_creator'] = array(
 			'id'            => 'twitter_creator',
-			'title'         => __( 'Twitter Creator', 'jm-tc' ),
+			'title'         => __( 'Twitter Creator', JM_TC_TEXTDOMAIN ),
 			'pages'         => array( 'user' ), // Tells CMB to use user_meta vs post_meta
 			'show_names'    => true,
 			'show_on' 		=> array( 'alt_value' => self::on_off( 'profile' ), 'alt_key' => 'exclude_profile'),
 			'fields'        => array(
 			array(
-			'name'     => __( 'Twitter Creator', 'jm-tc' ),
-			'desc'     => __( "Enter your Twitter Account (without @)", "jm-tc"),
+			'name'     => __( 'Twitter Creator', JM_TC_TEXTDOMAIN ),
+			'desc'     => __( "Enter your Twitter Account (without @)", JM_TC_TEXTDOMAIN),
 			'id'       => 'jm_tc_twitter',
 			'type'     => 'text_medium',
 			'on_front' => true,
@@ -382,7 +382,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			
 			$meta_boxes['twitter_image_size'] = array(
 			'id'            => 'twitter_image_size',
-			'title'         => __( 'Twitter Image Size', 'jm-tc' ),
+			'title'         => __( 'Twitter Image Size', JM_TC_TEXTDOMAIN ),
 			'pages'         => $post_types,
 			'context'       => 'side',
 			'priority'      => 'low',
@@ -390,17 +390,9 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			'show_on'	    => array( 'alt_value' => self::on_off( 'post' ), 'alt_key' => 'exclude_post'),
 			'fields'        => array(
 			
-			
-			array(
-			 'id' 	=> 'twitter_image_width_height',
-			 'type' => 'title',
-			 'name'	=> 'Rendering on Twitter: width and height',		
-			),
-			
-			
 			 
 			array(
-			'name' => __( 'Image width', 'jm-tc'),
+			'name' => __( 'Image width', JM_TC_TEXTDOMAIN),
 			'id'   => "cardImageWidth",
 			'type' => 'text_number',
 			'min'  => 280,
@@ -409,7 +401,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			),	
 			
 			array(
-			'name' => __('Image height', 'jm-tc'),
+			'name' => __('Image height', JM_TC_TEXTDOMAIN),
 			'id'   => "cardImageHeight",
 			'type' => 'text_number',
 			'min'  => 150,
@@ -421,7 +413,7 @@ if ( ! class_exists( 'JM_TC_Metabox' ) ) {
 			array(
 			 'id' 	=> 'twitter_featured_size',
 			 'type' => 'title',
-			 'name'	=> 'Size of the current featured image',
+			 'name'	=> __('File size'),
 			
 			),
 			

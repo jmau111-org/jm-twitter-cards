@@ -33,7 +33,7 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 		*/
 		public function __construct() {
 
-			$this->title = __( 'JM Twitter Cards', 'jm-tc');
+			$this->title = __( 'JM Twitter Cards', JM_TC_TEXTDOMAIN );
 			add_action( 'admin_init', array( $this, 'mninit' ) );
 			add_action( 'admin_menu', array( $this, 'add_page' ) );
 			add_action( 'admin_enqueue_scripts',  array( $this, 'admin_scripts' ) );
@@ -77,9 +77,9 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'#faq-crawl'
 
 			);
-			$docu  = '<a class="button button-secondary docu" target="_blank" href="' . esc_url(admin_url().'admin.php?page=jm_tc_doc') . $anchor[$n] . '">' . __('Documentation', 'jm-tc') . '</a>';
-			$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://cards-dev.twitter.com/validator') . '">' . __('Validator', 'jm-tc') . '</a>';
-			$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://dev.twitter.com/docs/cards/troubleshooting') . '">' . __('Troubleshooting', 'jm-tc') . '</a>';
+			$docu  = '<a class="button button-secondary docu" target="_blank" href="' . esc_url(admin_url().'admin.php?page=jm_tc_doc') . $anchor[$n] . '">' . __('Documentation', JM_TC_TEXTDOMAIN ) . '</a>';
+			$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://cards-dev.twitter.com/validator') . '">' . __('Validator', JM_TC_TEXTDOMAIN ) . '</a>';
+			$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://dev.twitter.com/docs/cards/troubleshooting') . '">' . __('Troubleshooting', JM_TC_TEXTDOMAIN ) . '</a>';
 			
 			return $docu;
 		}
@@ -157,20 +157,20 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			$this->options_page_import_export		= add_submenu_page( 'jm_tc', __('Import').' / '.__('Export'), __('Import').' / '.__('Export'), 'manage_options', 'jm_tc_import_export', array( $this, 'subpages' ));			
 			$this->options_subpage_tutorial 		= add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ) , 'manage_options', 'jm_tc_tutorial', array( $this, 'subpages' ));
 			
-			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', 'jm-tc' ), __( 'Images', 'jm-tc' ) , 'manage_options', 'jm_tc_images', array( $this, 'subpages' ));
-			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields', 'jm-tc' ), __( 'Custom fields', 'jm-tc' ) , 'manage_options', 'jm_tc_cf', array( $this, 'subpages' ));
-			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt', 'jm-tc' ), __( 'robots.txt', 'jm-tc' ) , 'manage_options', 'jm_tc_robots', array( $this, 'subpages' ));
-			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings', 'jm-tc' ), __( 'Home settings', 'jm-tc' ) , 'manage_options', 'jm_tc_home', array( $this, 'subpages' ));
+			$this->options_subpage_images 			= add_submenu_page( 'jm_tc', __( 'Images', JM_TC_TEXTDOMAIN  ), __( 'Images', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_images', array( $this, 'subpages' ));
+			$this->options_subpage_cf				= add_submenu_page( 'jm_tc', __( 'Custom fields', JM_TC_TEXTDOMAIN  ), __( 'Custom fields', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_cf', array( $this, 'subpages' ));
+			$this->options_subpage_robots 			= add_submenu_page( 'jm_tc', __( 'robots.txt', JM_TC_TEXTDOMAIN  ), __( 'robots.txt', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_robots', array( $this, 'subpages' ));
+			$this->options_subpage_home 			= add_submenu_page( 'jm_tc', __( 'Home settings', JM_TC_TEXTDOMAIN  ), __( 'Home settings', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_home', array( $this, 'subpages' ));
 			
-			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box', 'jm-tc' ),  __( 'Meta Box', 'jm-tc' ), 'manage_options', 'jm_tc_meta_box', array( $this, 'subpages' ));
+			$this->options_subpage_metabox			= add_submenu_page( 'jm_tc', __( 'Meta Box', JM_TC_TEXTDOMAIN  ),  __( 'Meta Box', JM_TC_TEXTDOMAIN  ), 'manage_options', 'jm_tc_meta_box', array( $this, 'subpages' ));
 			
 			//there is no point displaying this option page is the website is not multi_author !
 			if ( is_multi_author() ) 
-				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author', 'jm-tc' ), __( 'Multi Author', 'jm-tc') , 'manage_options', 'jm_tc_multi_author', array( $this, 'subpages' ));
+				$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author', JM_TC_TEXTDOMAIN  ), __( 'Multi Author', JM_TC_TEXTDOMAIN ) , 'manage_options', 'jm_tc_multi_author', array( $this, 'subpages' ));
 			
-			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking', 'jm-tc' ), __( 'Deep Linking', 'jm-tc' ) , 'manage_options', 'jm_tc_deep_linking', array( $this, 'subpages' ));
-			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', 'jm-tc' ),  __( 'Documentation', 'jm-tc' ) , 'manage_options', 'jm_tc_doc', array( $this, 'subpages' ));
-			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', 'jm-tc' ), __( 'Analytics', 'jm-tc' ) , 'manage_options', 'jm_tc_analytics', array( $this, 'subpages' ));		
+			$this->options_subpage_deep_linking 	= add_submenu_page( 'jm_tc', __( 'Deep Linking', JM_TC_TEXTDOMAIN  ), __( 'Deep Linking', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_deep_linking', array( $this, 'subpages' ));
+			$this->options_subpage_doc 				= add_submenu_page( 'jm_tc', __( 'Documentation', JM_TC_TEXTDOMAIN  ),  __( 'Documentation', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_doc', array( $this, 'subpages' ));
+			$this->options_subpage_analytics 		= add_submenu_page( 'jm_tc', __( 'Analytics', JM_TC_TEXTDOMAIN  ), __( 'Analytics', JM_TC_TEXTDOMAIN  ) , 'manage_options', 'jm_tc_analytics', array( $this, 'subpages' ));		
 			$this->options_subpage_about 			= add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ) , 'manage_options', 'jm_tc_about', array( $this, 'subpages' ));
 			
 		}
@@ -296,12 +296,12 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			</div>
 			
 			<blockquote>
-			<p class="bold"><?php _e('Get more <br />from 140 characters', 'jm-tc');?> </p>
-			<p class="sub-bold"><?php _e('with Twitter Cards', 'jm-tc');?></p>
-			<p class="card-desc"><?php _e('Twitter Cards help you richly represent your content within<br /> Tweets across the web and on mobile devices. This gives users <br />greater context and insight into the URLs shared on Twitter,<br /> which in turn allows Twitter to<br /> send more engaged traffic to your site or app.', 'jm-tc');?></p>
+			<p class="bold"><?php _e('Get more <br />from 140 characters', JM_TC_TEXTDOMAIN );?> </p>
+			<p class="sub-bold"><?php _e('with Twitter Cards', JM_TC_TEXTDOMAIN );?></p>
+			<p class="card-desc"><?php _e('Twitter Cards help you richly represent your content within<br /> Tweets across the web and on mobile devices. This gives users <br />greater context and insight into the URLs shared on Twitter,<br /> which in turn allows Twitter to<br /> send more engaged traffic to your site or app.', JM_TC_TEXTDOMAIN );?></p>
 			</blockquote>
 			
-			<p class="plugin-desc"><?php _e('With this plugin you can get summary, summary large image, product, photo, gallery, app and player cards', 'jm-tc') ; ?></p>
+			<p class="plugin-desc"><?php _e('With this plugin you can get summary, summary large image, product, photo, gallery, app and player cards', JM_TC_TEXTDOMAIN ) ; ?></p>
 
 			</div>
 			<?php
@@ -325,51 +325,51 @@ if ( ! class_exists( 'JM_TC_Admin' ) ) {
 			'fields'     => array(
 			
 			array(
-			'name' 		=> __( 'Creator (twitter username)', 'jm-tc' ),
-			'desc' 		=> __('Who is the creator of content?', 'jm-tc'),
+			'name' 		=> __( 'Creator (twitter username)', JM_TC_TEXTDOMAIN  ),
+			'desc' 		=> __('Who is the creator of content?', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterCreator',
 			'type' 		=> 'text_medium',
 			),
 
 			array(
-			'name' 		=> __( 'Site (twitter username)', 'jm-tc' ),
+			'name' 		=> __( 'Site (twitter username)', JM_TC_TEXTDOMAIN  ),
 			'desc' 		=> __('Who is the Owner of the Website? (could be a trademark)',  'jm-tc'),
 			'id'   		=> 'twitterSite',
 			'type' 		=> 'text_medium',
 			),				
 			
 			array(
-			'name' 		=> __( 'Card Types', 'jm-tc' ),
-			'desc' 		=> __( 'Choose what type of card you want to use', 'jm-tc'),
+			'name' 		=> __( 'Card Types', JM_TC_TEXTDOMAIN  ),
+			'desc' 		=> __( 'Choose what type of card you want to use', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterCardType',
 			'type' 		=> 'select',
 			'options' 	=> array(
-			'summary' 				=> __( 'Summary', 'jm-tc' ),
-			'summary_large_image' 	=> __( 'Summary below Large Image', 'jm-tc' ),
-			'photo' 				=> __( 'Photo', 'jm-tc' ),
-			'app'					=> __( 'Application', 'jm-tc' ),
+			'summary' 				=> __( 'Summary', JM_TC_TEXTDOMAIN  ),
+			'summary_large_image' 	=> __( 'Summary below Large Image', JM_TC_TEXTDOMAIN  ),
+			'photo' 				=> __( 'Photo', JM_TC_TEXTDOMAIN  ),
+			'app'					=> __( 'Application', JM_TC_TEXTDOMAIN  ),
 			)
 			),
 			
 			array(
-			'name' 		=> __( 'Open Graph', 'jm-tc' ),
-			'desc' 		=> __( 'Open Graph/SEO', 'jm-tc'),
+			'name' 		=> __( 'Open Graph', JM_TC_TEXTDOMAIN  ),
+			'desc' 		=> __( 'Open Graph/SEO', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterCardOg',
 			'type' 		=> 'select',
 			'options' 	=> array(
-			'no' 		=> __( 'no', 'jm-tc' ),
-			'yes' 		=> __( 'yes', 'jm-tc' ),
+			'no' 		=> __( 'no', JM_TC_TEXTDOMAIN  ),
+			'yes' 		=> __( 'yes', JM_TC_TEXTDOMAIN  ),
 			)
 			),
 
 			array(
 			'name' 		=> __( 'Excerpt'),
-			'desc' 		=> __( 'Excerpt as meta desc?', 'jm-tc'),
+			'desc' 		=> __( 'Excerpt as meta desc?', JM_TC_TEXTDOMAIN ),
 			'id'   		=> 'twitterCardExcerpt',
 			'type' 		=> 'select',
 			'options' 	=> array(
-			'no' 		=> __( 'no', 'jm-tc' ),
-			'yes' 		=> __( 'yes', 'jm-tc' ),
+			'no' 		=> __( 'no', JM_TC_TEXTDOMAIN  ),
+			'yes' 		=> __( 'yes', JM_TC_TEXTDOMAIN  ),
 			)
 			),
 

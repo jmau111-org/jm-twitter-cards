@@ -10,6 +10,18 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+# 5.4
+* 22 Nov 2014
+* Refactoring code
+* Delete messy parts of it
+* Kinda MVC structure
+* Fix missing translations for documentation
+* Remove useless functions from main file and put them into JM_TC_Init class
+* No needs for inheritance actually, not even logical, options cannot inherit from utitilities 
+* Get post object from get_queried_object() in markup class - seems safer considering global $post often get screwed
+* Delete trailingslashit function (kinda heavy while doing nothing really helpful here)
+*  
+
 # 5.3.7 
 * 12 Oct 2014
 * Better PHP documentation

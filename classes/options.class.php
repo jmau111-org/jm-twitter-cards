@@ -5,9 +5,9 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-if( class_exists('JM_TC_Utilities') ) {
+if( ! class_exists('JM_TC_Options') ) {
 
-	class JM_TC_Options extends JM_TC_Utilities {
+	class JM_TC_Options {
 	
 		/**
 		*	options
@@ -43,15 +43,15 @@ if( class_exists('JM_TC_Utilities') ) {
 			
 			if ( class_exists( 'WPSEO_Frontend' ) ) {
 					$title  =  !empty( $yoast_wpseo_title  ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : the_title_attribute( array( 'echo' => false));
-					$desc   =  !empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : parent::get_excerpt_by_id($post_ID);	
+					$desc   =  !empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : JM_TC_Utilities::get_excerpt_by_id($post_ID);	
 			
 			} elseif( class_exists( 'All_in_One_SEO_Pack' ) ) {
 					$title 	=  !empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false));
-					$desc  	=  !empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : parent::get_excerpt_by_id($post_ID);					
+					$desc  	=  !empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : JM_TC_Utilities::get_excerpt_by_id($post_ID);					
 			
 			} else {
 					$title 	= the_title_attribute( array( 'echo' => false));
-					$desc  	= parent::get_excerpt_by_id($post_ID);
+					$desc  	= JM_TC_Utilities::get_excerpt_by_id($post_ID);
 			}
 			
 			switch( $type ) {
@@ -108,11 +108,11 @@ if( class_exists('JM_TC_Utilities') ) {
 				$cardCreator 		= get_the_author_meta( $cardUsernameKey, $author_id );
 				
 				$cardCreator		= ( !empty( $cardCreator ) ) ? $cardCreator : $this->opts['twitterCreator'];
-				$cardCreator 		=  '@' . parent::remove_at( $cardCreator );
+				$cardCreator 		=  '@' . JM_TC_Utilities::remove_at( $cardCreator );
 			
 			} else {
 			
-				$cardCreator = '@' .  parent::remove_at( $this->opts['twitterCreator'] );
+				$cardCreator = '@' .  JM_TC_Utilities::remove_at( $this->opts['twitterCreator'] );
 			}
 			
 			
@@ -127,7 +127,7 @@ if( class_exists('JM_TC_Utilities') ) {
 		public function siteUsername() 
 		{
 			
-			$cardSite =  '@' . parent::remove_at( $this->opts['twitterSite'] );
+			$cardSite =  '@' . JM_TC_Utilities::remove_at( $this->opts['twitterSite'] );
 			
 			return array( 'site' => apply_filters('jm_tc_card_site', $cardSite) );
 		}
@@ -182,7 +182,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				if( !empty( $this->opts['twitterCardDesc']) ) {
 				
 					$desc 				= get_post_meta($post_ID, $this->opts['twitterCardDesc'], true);
-					$cardDescription 	= !empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : parent::get_excerpt_by_id($post_ID);
+					$cardDescription 	= !empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : JM_TC_Utilities::get_excerpt_by_id($post_ID);
 					
 				} elseif( empty( $this->opts['twitterCardDesc'] ) && ( class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack') ) ){
 					
@@ -190,7 +190,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 				} else {
 				
-					$cardDescription = parent::get_excerpt_by_id($post_ID);
+					$cardDescription = JM_TC_Utilities::get_excerpt_by_id($post_ID);
 					
 				}	
 				
@@ -200,7 +200,7 @@ if( class_exists('JM_TC_Utilities') ) {
 			}
 			
 			
-			$cardDescription = parent::remove_lb($cardDescription);
+			$cardDescription = JM_TC_Utilities::remove_lb($cardDescription);
 
 			return  array('description' => apply_filters('jm_tc_get_excerpt', $cardDescription) );			
 		
@@ -301,7 +301,7 @@ if( class_exists('JM_TC_Utilities') ) {
 						
 						else
 						{
-							return self::error( __('Warning : Gallery Card is not set properly ! There is no gallery in this post !', 'jm-tc') );
+							return self::error( __('Warning : Gallery Card is not set properly ! There is no gallery in this post !', JM_TC_TEXTDOMAIN) );
 						}
 						
 					}
@@ -342,7 +342,7 @@ if( class_exists('JM_TC_Utilities') ) {
 				
 				else 
 				{
-					 return self::error( __('Warning : Product Card is not set properly ! There is no product datas !', 'jm-tc') );
+					 return self::error( __('Warning : Product Card is not set properly ! There is no product datas !', JM_TC_TEXTDOMAIN) );
 				}
 		
 			} else {
@@ -376,7 +376,7 @@ if( class_exists('JM_TC_Utilities') ) {
 					
 					else
 					{
-						return self::error( __('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc') );				
+						return self::error( __('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', JM_TC_TEXTDOMAIN) );				
 					}
 					
 					//Player stream
