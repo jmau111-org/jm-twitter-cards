@@ -11,7 +11,7 @@ if (!class_exists('JM_TC_Disable')) {
     {
 
         /**
-         *    Constructor
+         * Constructor
          * @since 5.3.2
          */
         function __construct()
@@ -23,7 +23,7 @@ if (!class_exists('JM_TC_Disable')) {
         }
 
         /**
-         *    Disable Yoast cards
+         * Disable Yoast cards
          * @since 5.3.4
          */
         public function disable_yoast_twitter()
