@@ -5,7 +5,7 @@ Plugin URI: http://tweetpressfr.github.io
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpressfr.github.io
-Version: 5.4
+Version: 5.4.1
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -46,7 +46,7 @@ or die('No direct load !');
 
 
 //Constantly constant
-define('JM_TC_VERSION', '5.4');
+define('JM_TC_VERSION', '5.4.1');
 define('JM_TC_DIR', plugin_dir_path(__FILE__));
 define('JM_TC_CLASS_DIR', JM_TC_DIR . 'classes/');
 define('JM_TC_ADMIN_CLASS_DIR', JM_TC_DIR . 'classes/admin/');
@@ -66,7 +66,7 @@ define('JM_TC_JS_URL', JM_TC_URL . 'assets/js/');
 
 //Call modules 
 require(JM_TC_CLASS_DIR . 'init.class.php');
-require(JM_TC_DIR . 'functions/functions.inc.php');
+require(JM_TC_DIR       . 'functions/functions.inc.php');
 require(JM_TC_CLASS_DIR . 'utilities.class.php');
 require(JM_TC_CLASS_DIR . 'particular.class.php');
 require(JM_TC_CLASS_DIR . 'thumbs.class.php');
