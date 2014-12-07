@@ -7,7 +7,10 @@ if (!class_exists('JM_TC_Init')) {
 
     class JM_TC_Init
     {
-
+        /**
+         * Constructor
+         * @since 5.3.2
+         */
         public function __construct()
         {
 

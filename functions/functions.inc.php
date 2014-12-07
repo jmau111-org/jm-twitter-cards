@@ -6,8 +6,8 @@ if (!defined('JM_TC_VERSION')) {
 }
 
 /**
- *    Globalize options
- *    provides filter for options
+ * Globalize options
+ * provides filter for options
  * @return $jm_tc_options
  */
 
