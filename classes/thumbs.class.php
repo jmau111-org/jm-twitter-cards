@@ -9,16 +9,14 @@ if (!defined('JM_TC_VERSION')) {
 
 if (!class_exists('JM_TC_Thumbs')) {
 
-    class JM_TC_Thumbs
-    {
+    class JM_TC_Thumbs{
         /**
          * get size setting and convert it into custom sizes
          * @since 5.3.2
          * @param integer $post_id
          * @return string
          */
-        public static function thumbnail_sizes($post_id)
-        {
+        public static function thumbnail_sizes($post_id){
             $opts = jm_tc_get_options();
 
             $size = $opts['twitterCardImgSize'];
@@ -49,15 +47,12 @@ if (!class_exists('JM_TC_Thumbs')) {
             return $twitterCardImgSize;
         }
 
-
-
         /**
          * Get post thumb weight
          * @return string
          * @param integer $post_id
          */
-        public static function get_post_thumbnail_weight($post_id)
-        {
+        public static function get_post_thumbnail_weight($post_id){
 
             $file_size = has_post_thumbnail($post_id) ? filesize(get_attached_file(get_post_thumbnail_id($post_id))) : 0;//avoid warning if you screw your install or delete all images in upload
             $math = $file_size / 1000000;

@@ -7,8 +7,7 @@ if (!defined('JM_TC_VERSION')) {
 
 if (class_exists('JM_TC_Utilities')) {
 
-    class JM_TC_Markup
-    {
+    class JM_TC_Markup{
         /**
          * Options
          * @var array
@@ -19,8 +18,7 @@ if (class_exists('JM_TC_Utilities')) {
          * Constructor
          * @since 5.3.2
          */
-        function __construct()
-        {
+        function __construct(){
 
             $this->opts = jm_tc_get_options();
 
@@ -32,8 +30,7 @@ if (class_exists('JM_TC_Utilities')) {
          * @param bool $end
          * @return string
          */
-        public function html_comments($end = false)
-        {
+        public function html_comments($end = false){
 
             if (!$end)
                 echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
@@ -43,11 +40,10 @@ if (class_exists('JM_TC_Utilities')) {
 
 
         /*
-        *   Add meta to head section
-        *	@since 5.3.2
-        */
-        public function add_markup()
-        {
+         * Add meta to head section
+         * @since 5.3.2
+         */
+        public function add_markup(){
 
             global $jm_twitter_cards;
             $jm_twitter_cards['options'] = new JM_TC_Options;
@@ -111,8 +107,7 @@ if (class_exists('JM_TC_Utilities')) {
         *   @param mixed $data
         *   @return string
         */
-        protected function display_markup($data)
-        {
+        protected function display_markup($data){
 
             if (is_array($data)) {
 

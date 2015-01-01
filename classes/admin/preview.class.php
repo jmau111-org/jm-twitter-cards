@@ -5,17 +5,15 @@ if (!defined('JM_TC_VERSION')) {
     exit();
 }
 
-if (!class_exists('JM_TC_Preview')) {
+if ( ! class_exists('JM_TC_Preview') ) {
 
-    class JM_TC_Preview
-    {
+    class JM_TC_Preview{
         /**
          * output cards preview
          * @return string
          * @param integer $post_ID
          */
-        public static function show_preview($post_ID)
-        {
+        public static function show_preview($post_ID){
 
             global $jm_twitter_cards;
             $jm_twitter_cards['options'] = new JM_TC_Options;
@@ -86,7 +84,10 @@ if (!class_exists('JM_TC_Preview')) {
 
                     $i++;
 
-                    if ($i > 3) break;
+                    if ($i > 3) {
+
+                        break;
+                    }
 
                 }
 

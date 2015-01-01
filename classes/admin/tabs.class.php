@@ -5,17 +5,16 @@ if (!defined('JM_TC_VERSION')) {
     exit();
 }
 
-if (!class_exists('JM_TC_Tabs')) {
+if ( ! class_exists('JM_TC_Tabs') ) {
 
-    class JM_TC_Tabs
-    {
+    class JM_TC_Tabs{
 
         /**
          * Create WP Admin Tabs on-the-fly.
+         * @param array $tabs
          * @return string
          */
-        public static function admin_tabs($tabs = array())
-        {
+        public static function admin_tabs($tabs = array()){
             if (!$tabs) {
 
                 $tabs = array(
