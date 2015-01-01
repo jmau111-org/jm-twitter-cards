@@ -84,7 +84,7 @@ if ( ! class_exists('JM_TC_Admin') ) {
             );
             $docu = '<a class="button button-secondary docu" target="_blank" href="' . esc_url(admin_url() . 'admin.php?page=jm_tc_doc') . $anchor[$n] . '">' . __('Documentation', JM_TC_TEXTDOMAIN) . '</a>';
             $docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://cards-dev.twitter.com/validator') . '">' . __('Validator', JM_TC_TEXTDOMAIN) . '</a>';
-            $docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://dev.twitter.com/docs/cards/troubleshooting') . '">' . __('Troubleshooting', JM_TC_TEXTDOMAIN) . '</a>';
+            $docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url('https://dev.twitter.com/cards/troubleshooting') . '">' . __('Troubleshooting', JM_TC_TEXTDOMAIN) . '</a>';
 
             return $docu;
         }
