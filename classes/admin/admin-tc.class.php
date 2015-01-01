@@ -201,12 +201,6 @@ if ( ! class_exists('JM_TC_Admin') ) {
                 case 'jm-twitter-cards_page_jm_tc_analytics':
 
                     wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL . 'jm-tc-admin.css');
-                    wp_enqueue_style('jm-tc-menu', JM_TC_CSS_URL . 'jm-tc-menu.css');
-                    wp_enqueue_script('jm-tc-doc-script', JM_TC_JS_URL . 'responsivemobilemenu.js'
-                        , array('jquery')
-                        , '1.0'
-                        , true
-                    );
 
                     break;
 
@@ -221,12 +215,6 @@ if ( ! class_exists('JM_TC_Admin') ) {
                 case 'jm-twitter-cards_page_jm_tc_home':
 
                     wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL . 'jm-tc-admin.css');
-                    wp_enqueue_style('jm-tc-menu', JM_TC_CSS_URL . 'jm-tc-menu.css');
-                    wp_enqueue_script('jm-tc-doc-script', JM_TC_JS_URL . 'responsivemobilemenu.js'
-                        , array('jquery')
-                        , '1.0'
-                        , true
-                    );
                     wp_enqueue_script('jm-tc-admin-script', JM_TC_JS_URL . 'jm-tc-admin-home.js'
                         , array('jquery')
                         , '1.0'
@@ -238,12 +226,6 @@ if ( ! class_exists('JM_TC_Admin') ) {
                 case 'jm-twitter-cards_page_jm_tc_doc':
 
                     wp_enqueue_style('jm-tc-admin-style', JM_TC_CSS_URL . 'jm-tc-admin.css');
-                    wp_enqueue_style('jm-tc-menu', JM_TC_CSS_URL . 'jm-tc-menu.css');
-                    wp_enqueue_script('jm-tc-doc-script', JM_TC_JS_URL . 'responsivemobilemenu.js'
-                        , array('jquery')
-                        , '1.0'
-                        , true
-                    );
                     wp_enqueue_script('twitter-widget', '//platform.twitter.com/widgets.js',
                         false,
                         null,

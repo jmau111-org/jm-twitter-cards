@@ -14,7 +14,8 @@ if ( ! class_exists('JM_TC_Tabs') ) {
          * @param array $tabs
          * @return string
          */
-        public static function admin_tabs($tabs = array()){
+        public static function admin_tabs($tabs = array()){		
+
             if (!$tabs) {
 
                 $tabs = array(
@@ -34,19 +35,20 @@ if ( ! class_exists('JM_TC_Tabs') ) {
                 );
 
             }
-
+		
             $menu = '';
-            $menu = '<div class="rmm">';
-            $menu .= '<ul>';
+	    $menu .= '<div class="tc-menu nav-tab-wrapper">';
+	    $menu .= '<ul>';
 
-            foreach ((array)$tabs as $page => $menu_page) {
+	    foreach ( $tabs as $page => $menu_page) {
+		$url = esc_url( admin_url() . 'admin.php?page=' . $page );
+		$class = ( isset($_GET['page']) && $_GET['page'] == $page ) ? 'nav-tab-active' : '';
+	        $menu .= '<li><a class="nav-tab '. $class .'" href="' . $url . '">' . $menu_page . '</a></li>';
+	    }
 
-                $menu .= '<li><a href="' . esc_url(admin_url() . 'admin.php?page=' . $page) . '">' . $menu_page . '</a></li>';
-            }
-
-            $menu .= '</ul>';
-            $menu .= '</div>';
-
+	    $menu .= '</ul>';
+	    $menu .= '</div>';
+	
             return $menu;
         }
 

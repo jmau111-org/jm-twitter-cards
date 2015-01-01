@@ -125,8 +125,7 @@ register_activation_hook(__FILE__, array('JM_TC_Init', 'activate'));
  * Everything that should trigger early
  */
 add_action('plugins_loaded', 'jm_tc_plugins_loaded');
-function jm_tc_plugins_loaded()
-{
+function jm_tc_plugins_loaded(){
 
     // init metabox
     add_action('init', array('JM_TC_Init', 'initialize'));

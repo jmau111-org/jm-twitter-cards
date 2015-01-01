@@ -13,7 +13,7 @@ if (!defined('JM_TC_VERSION')) {
 
     <p><?php _e('Updated', JM_TC_DOC_TEXTDOMAIN); ?> : 12/10/2014</p>
 
-    <div id="menu" class="rmm" data-menu-style="sapphire">
+    <div id="menu" class="tc-doc-menu">
         <ul class="menu">
             <li><a href="#3w"><?php echo __('What are Twitter Cards?', JM_TC_DOC_TEXTDOMAIN); ?></a></li>
             <li><a href="#getcards"><?php echo __('How to get Twitter Cards', JM_TC_DOC_TEXTDOMAIN); ?></a></li>
