@@ -96,6 +96,9 @@ if ( ! class_exists('JM_TC_Admin') ) {
         public function subpages(){
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {
+                    case 'jm_tc':
+                        require(JM_TC_ADMIN_PAGES_DIR . 'main.php');
+                        break;
                     case 'jm_tc_cf':
                         require(JM_TC_ADMIN_PAGES_DIR . 'custom_fields.php');
                         break;
@@ -154,8 +157,8 @@ if ( ! class_exists('JM_TC_Admin') ) {
          */
         public function add_page(){
 
-            $this->options_page = add_menu_page($this->title, $this->title, 'manage_options', self::$key, array($this, 'admin_page_display'), 'dashicons-twitter');
-            $this->options_page_options = add_submenu_page('jm_tc', __('General'), __('General'), 'manage_options', self::$key, array($this, 'admin_page_display'));
+            $this->options_page = add_menu_page($this->title, $this->title, 'manage_options', self::$key, array($this, 'subpages'), 'dashicons-twitter');
+            $this->options_page_options = add_submenu_page('jm_tc', __('General'), __('General'), 'manage_options', self::$key, array($this, 'subpages'));
             $this->options_page_import_export = add_submenu_page('jm_tc', __('Import') . ' / ' . __('Export'), __('Import') . ' / ' . __('Export'), 'manage_options', 'jm_tc_import_export', array($this, 'subpages'));
             $this->options_subpage_tutorial = add_submenu_page('jm_tc', __('Tutorial'), __('Tutorial'), 'manage_options', 'jm_tc_tutorial', array($this, 'subpages'));
 
@@ -257,37 +260,6 @@ if ( ! class_exists('JM_TC_Admin') ) {
         public function load_admin_doc_scripts(){
 
             load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
-        }
-
-        /**
-         * Admin page markup. Mostly handled by CMB
-         * @since  0.1.0
-         */
-        public function admin_page_display(){
-            ?>
-            <div class="wrap">
-
-                <h2>JM Twitter Cards : <?php echo esc_html(get_admin_page_title()); ?></h2>
-
-                <?php echo JM_TC_Tabs::admin_tabs(); ?>
-
-                <?php cmb_metabox_form($this->option_fields(), self::$key); ?>
-                <div class="doc-valid">
-                    <?php echo self::docu_links(0); ?>
-                </div>
-
-                <blockquote>
-                    <p class="bold"><?php _e('Get more <br />from 140 characters', JM_TC_TEXTDOMAIN); ?> </p>
-
-                    <p class="sub-bold"><?php _e('with Twitter Cards', JM_TC_TEXTDOMAIN); ?></p>
-
-                    <p class="card-desc"><?php _e('Twitter Cards help you richly represent your content within<br /> Tweets across the web and on mobile devices. This gives users <br />greater context and insight into the URLs shared on Twitter,<br /> which in turn allows Twitter to<br /> send more engaged traffic to your site or app.', JM_TC_TEXTDOMAIN); ?></p>
-                </blockquote>
-
-                <p class="plugin-desc"><?php _e('With this plugin you can get summary, summary large image, product, photo, gallery, app and player cards', JM_TC_TEXTDOMAIN); ?></p>
-
-            </div>
-        <?php
         }
 
         /**
