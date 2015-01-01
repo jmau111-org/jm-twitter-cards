@@ -36,18 +36,15 @@ if ( ! class_exists('JM_TC_Tabs') ) {
 
             }
 		
-            $menu = '';
-	    $menu .= '<div class="tc-menu nav-tab-wrapper">';
-	    $menu .= '<ul>';
+            $menu = '<h2 class="tc-menu nav-tab-wrapper">';
 
-	    foreach ( $tabs as $page => $menu_page) {
-		$url = esc_url( admin_url() . 'admin.php?page=' . $page );
-		$class = ( isset($_GET['page']) && $_GET['page'] == $page ) ? 'nav-tab-active' : '';
-	        $menu .= '<li><a class="nav-tab '. $class .'" href="' . $url . '">' . $menu_page . '</a></li>';
-	    }
+	        foreach ( $tabs as $page => $menu_page) {
+		        $url = esc_url( admin_url() . 'admin.php?page=' . $page );
+		        $class = ( isset($_GET['page']) && $_GET['page'] == $page ) ? 'nav-tab-active' : '';
+	            $menu .= '<a class="nav-tab '. $class .'" href="' . $url . '">' . $menu_page . '</a>';
+	        }
 
-	    $menu .= '</ul>';
-	    $menu .= '</div>';
+	        $menu .= '</h2>';
 	
             return $menu;
         }
