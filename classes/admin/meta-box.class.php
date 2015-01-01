@@ -5,13 +5,13 @@ if (!defined('JM_TC_VERSION')) {
     exit();
 }
 
-if (!class_exists('JM_TC_Metabox')) {
+if ( ! class_exists('JM_TC_Metabox') ) {
 
     class JM_TC_Metabox
     {
         /**
          * Options
-         * @var array
+         * @var mixed|void
          */
         protected $opts;
 
@@ -19,8 +19,7 @@ if (!class_exists('JM_TC_Metabox')) {
          * Constructor
          * @since 5.3.2
          */
-        function __construct()
-        {
+        function __construct(){
 
             $this->opts = jm_tc_get_options();
 
@@ -45,27 +44,30 @@ if (!class_exists('JM_TC_Metabox')) {
         /**
          * input number
          * @since 5.3.2
+         * @param $field
+         * @param $meta
          */
-        function render_text_number($field, $meta)
-        {
+        function render_text_number($field, $meta){
             echo '<input type="number" min="', $field['min'], '" max="', $field['max'], '" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:170px;" />', '<p class="cmb_metabox_description">', $field['desc'], '</p>';
         }
 
         /**
          * input url https
          * @since 5.3.2
+         * @param $field
+         * @param $meta
          */
-        function render_text_url_https($field, $meta)
-        {
+        function render_text_url_https($field, $meta){
             echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />', '<p class="cmb_metabox_description">', $field['desc'], '</p>';
         }
 
         /**
          * input url
          * @since 5.3.2
+         * @param $field
+         * @param $meta
          */
-        function render_title_custom($field, $meta)
-        {
+        function render_title_custom($field, $meta){
             echo '<input type="url" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" style="width:97%" />', '<p class="cmb_metabox_description">', $field['desc'], '</p>';
         }
 
@@ -73,9 +75,11 @@ if (!class_exists('JM_TC_Metabox')) {
          * Displays preview
          * @author jtsternberg
          * @since 5.3.2
+         * @param $args
+         * @param $field
+         * @return mixed
          */
-        function cmb_update_title_description($args, $field)
-        {
+        function cmb_update_title_description($args, $field){
 
             if ($field->id() == 'twitter_featured_size')
                 $args['desc'] = JM_TC_Thumbs::get_post_thumbnail_weight($field->object_id);
@@ -91,9 +95,10 @@ if (!class_exists('JM_TC_Metabox')) {
          * Displays preview
          * @since 5.3.2
          * @return string
+         * @param $context
+         * @return string
          */
-        public function on_off($context)
-        {
+        public function on_off($context){
             switch ($context) {
 
                 case 'profile' :
@@ -124,8 +129,7 @@ if (!class_exists('JM_TC_Metabox')) {
          *
          * @return bool $display on success, false on failure
          */
-        public function exclude_from_post($display, $meta_box)
-        {
+        public function exclude_from_post($display, $meta_box){
             global $pagenow;
 
             if (!isset($meta_box['show_on']['alt_key']))
@@ -158,8 +162,7 @@ if (!class_exists('JM_TC_Metabox')) {
          * @param array $meta_box The array of metabox options
          * @return bool $display on success, false on failure
          */
-        public function exclude_from_profile($display, $meta_box)
-        {
+        public function exclude_from_profile($display, $meta_box){
 
             global $pagenow;
 
@@ -185,9 +188,12 @@ if (!class_exists('JM_TC_Metabox')) {
         }
 
 
-        //Meta box
-        function register_meta_boxes(array $meta_boxes)
-        {
+        /**
+         * Meta box
+         * @param array $meta_boxes
+         * @return array|void
+         */
+        function register_meta_boxes(array $meta_boxes){
             if (!class_exists('cmb_Meta_Box'))
                 return;
 

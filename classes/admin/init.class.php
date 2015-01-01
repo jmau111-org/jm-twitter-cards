@@ -3,16 +3,14 @@
 defined('ABSPATH')
 or die('No direct load !');
 
-if (!class_exists('JM_TC_Init')) {
+if ( ! class_exists('JM_TC_Init') ) {
 
-    class JM_TC_Init
-    {
+    class JM_TC_Init{
         /**
          * Constructor
          * @since 5.3.2
          */
-        public function __construct()
-        {
+        public function __construct(){
 
             add_action('wpmu_new_blog', array(__CLASS__, 'new_blog'));
             add_filter('plugin_action_links_' . plugin_basename(__FILE__), array(__CLASS__, 'settings_action_links'), 10, 2);
@@ -21,9 +19,10 @@ if (!class_exists('JM_TC_Init')) {
 
         /**
          * Add a "Settings" link in the plugins list
+         * @param $links
+         * @return mixed
          */
-        public static function settings_action_links($links)
-        {
+        public static function settings_action_links($links){
             $settings_link = '<a href="' . admin_url('admin.php?page=jm_tc') . '">' . __("Settings") . '</a>';
             array_unshift($links, $settings_link);
 
@@ -33,8 +32,7 @@ if (!class_exists('JM_TC_Init')) {
         /**
          * Init meta box
          */
-        public static function initialize()
-        {
+        public static function initialize(){
             if (!class_exists('cmb_Meta_Box')) {
 
                 require_once JM_TC_METABOX_DIR . 'init.php';
@@ -91,9 +89,9 @@ if (!class_exists('JM_TC_Init')) {
 
         /**
          * Default options for multisite when creating new site
+         * @param $blog_id
          */
-        public static function new_blog($blog_id)
-        {
+        public static function new_blog($blog_id){
             switch_to_blog($blog_id);
 
             self::on_activation();
@@ -104,8 +102,7 @@ if (!class_exists('JM_TC_Init')) {
         /**
          * Avoid undefined index by registering default options
          */
-        public static function on_activation()
-        {
+        public static function on_activation(){
             $opts = get_option('jm_tc');
             if (!is_array($opts)) update_option('jm_tc', self::get_default_options());
         }
@@ -114,8 +111,7 @@ if (!class_exists('JM_TC_Init')) {
         /**
          * Avoid undefined index by registering default options
          */
-        public static function activate()
-        {
+        public static function activate(){
 
             if (!is_multisite()) {
 
@@ -141,8 +137,7 @@ if (!class_exists('JM_TC_Init')) {
          * Return default options
          * @return array
          */
-        public static function get_default_options()
-        {
+        public static function get_default_options(){
             return array(
                 'twitterCardType' => 'summary',
                 'twitterCreator' => 'TweetPressFr',

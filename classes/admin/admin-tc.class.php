@@ -5,10 +5,9 @@ if (!defined('JM_TC_VERSION')) {
     exit();
 }
 
-if (!class_exists('JM_TC_Admin')) {
+if ( ! class_exists('JM_TC_Admin') ) {
 
-    class JM_TC_Admin
-    {
+    class JM_TC_Admin{
         /**
          * Option key, and option page slug
          * @var string
@@ -31,8 +30,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Constructor
          * @since 0.1.0
          */
-        public function __construct()
-        {
+        public function __construct(){
 
             $this->title = __('JM Twitter Cards', JM_TC_TEXTDOMAIN);
             add_action('admin_init', array($this, 'mninit'));
@@ -45,9 +43,12 @@ if (!class_exists('JM_TC_Admin')) {
         /**
          * Alter save_button
          * @since  0.1.0
+         * @param $object_id
+         * @param $meta_box
+         * @param $form
+         * @return string
          */
-        public function save_button($object_id, $meta_box, $form)
-        {
+        public function save_button($object_id, $meta_box, $form){
 
             $form = '<form class="cmb-form" method="post" id="%s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%s">%s<input type="submit" name="submit-cmb" value="%s" class="button button-primary"></form>';
 
@@ -58,8 +59,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Register our setting to WP
          * @since  0.1.0
          */
-        public function mninit()
-        {
+        public function mninit(){
             register_setting(self::$key, self::$key);
         }
 
@@ -67,9 +67,10 @@ if (!class_exists('JM_TC_Admin')) {
          * Displays confirmation mess for saving settings
          * @since  5.3.0
          * @return string
+         * @param int $n
+         * @return string
          */
-        public static function docu_links($n = 0)
-        {
+        public static function docu_links($n = 0){
             $anchor = array(
                 '#general',
                 '#metabox',
@@ -92,8 +93,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Add subpages to admin
          * @since  5.3.0
          */
-        public function subpages()
-        {
+        public function subpages(){
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {
                     case 'jm_tc_cf':
@@ -152,8 +152,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Add menu options page
          * @since 5.3.0
          */
-        public function add_page()
-        {
+        public function add_page(){
 
             $this->options_page = add_menu_page($this->title, $this->title, 'manage_options', self::$key, array($this, 'admin_page_display'), 'dashicons-twitter');
             $this->options_page_options = add_submenu_page('jm_tc', __('General'), __('General'), 'manage_options', self::$key, array($this, 'admin_page_display'));
@@ -180,10 +179,10 @@ if (!class_exists('JM_TC_Admin')) {
 
         /**
          * Enqueue scripts conditionnally in admin
-         * @since  5.3.0
+         * @since  5.3
+         * @param $hook_suffix
          */
-        public function admin_scripts($hook_suffix)
-        {
+        public function admin_scripts($hook_suffix){
 
             //var_dump( $hook_suffix );
 
@@ -261,8 +260,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Displays confirmation mess for saving settings
          * @since  5.3.0
          */
-        public function is_it_saved()
-        {
+        public function is_it_saved(){
             ?>
             <div id="message" class="updated">
                 <p><strong><?php _e('Settings saved.'); ?></strong></p>
@@ -274,8 +272,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Translates documentation
          * @since  5.0
          */
-        public function load_admin_doc_scripts()
-        {
+        public function load_admin_doc_scripts(){
 
             load_plugin_textdomain('jm-tc-doc', false, JM_TC_LANG_DIR);
         }
@@ -284,8 +281,7 @@ if (!class_exists('JM_TC_Admin')) {
          * Admin page markup. Mostly handled by CMB
          * @since  0.1.0
          */
-        public function admin_page_display()
-        {
+        public function admin_page_display(){
             ?>
             <div class="wrap">
 
@@ -317,8 +313,7 @@ if (!class_exists('JM_TC_Admin')) {
          * @since  5.0
          * @return $plugin_options
          */
-        public static function option_fields()
-        {
+        public static function option_fields(){
 
             // Only need to initiate the array once per page-load
             if (!empty(self::$plugin_options))
@@ -391,8 +386,7 @@ if (!class_exists('JM_TC_Admin')) {
          * @since  0.1.0
          * @return string  Option key
          */
-        public static function key()
-        {
+        public static function key(){
             return self::$key;
         }
 

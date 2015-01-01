@@ -7,8 +7,7 @@ if (!defined('JM_TC_VERSION')) {
 
 if (!class_exists('JM_TC_Options')) {
 
-    class JM_TC_Options
-    {
+    class JM_TC_Options{
 
         /**
          * options
@@ -20,8 +19,7 @@ if (!class_exists('JM_TC_Options')) {
          * Constructor
          * @since 5.3.2
          */
-        function __construct()
-        {
+        function __construct(){
 
             $this->opts = jm_tc_get_options();
 
@@ -34,8 +32,7 @@ if (!class_exists('JM_TC_Options')) {
          * @param string $type Whether it's post title or desc
          * @return string
          */
-        public static function get_seo_plugin_datas($post_ID = false, $type)
-        {
+        public static function get_seo_plugin_datas($post_ID = false, $type){
 
             $aioseop_title = get_post_meta($post_ID, '_aioseop_title', true);
             $aioseop_description = get_post_meta($post_ID, '_aioseop_description', true);
@@ -78,8 +75,7 @@ if (!class_exists('JM_TC_Options')) {
         * @param integer $post_ID
         * @return array
         */
-        public function cardType($post_ID = false)
-        {
+        public function cardType($post_ID = false){
 
             $cardTypePost = get_post_meta($post_ID, 'twitterCardType', true);
 
@@ -95,8 +91,7 @@ if (!class_exists('JM_TC_Options')) {
         * @param integer $post_ID
         * @return array
         */
-        public function creatorUsername($post_author = false, $post_ID = false)
-        {
+        public function creatorUsername($post_author = false, $post_ID = false){
 
             $post = get_post($post_ID);
             $author_id = $post->post_author;
@@ -125,8 +120,7 @@ if (!class_exists('JM_TC_Options')) {
         * @since 5.3.2
         * @return array
         */
-        public function siteUsername()
-        {
+        public function siteUsername(){
 
             $cardSite = '@' . JM_TC_Utilities::remove_at($this->opts['twitterSite']);
 
@@ -138,8 +132,7 @@ if (!class_exists('JM_TC_Options')) {
         * retrieve the title
         * @return array
         */
-        public function title($post_ID = false)
-        {
+        public function title($post_ID = false){
 
             if ($post_ID) {
 
@@ -174,8 +167,7 @@ if (!class_exists('JM_TC_Options')) {
         * @since 5.3.2
         * @return array
         */
-        public function description($post_ID = false)
-        {
+        public function description($post_ID = false){
 
             if ($post_ID) {
 
@@ -214,8 +206,7 @@ if (!class_exists('JM_TC_Options')) {
         * @return array
         */
 
-        public function image($post_ID = false)
-        {
+        public function image($post_ID = false){
 
             $cardImage = get_post_meta($post_ID, 'cardImage', true);
 
@@ -293,8 +284,7 @@ if (!class_exists('JM_TC_Options')) {
         * @param integer $post_ID
         * @return array
         */
-        public function product($post_ID)
-        {
+        public function product($post_ID){
 
             $cardType = apply_filters('jm_tc_card_type', get_post_meta($post_ID, 'twitterCardType', true));
 
@@ -327,8 +317,7 @@ if (!class_exists('JM_TC_Options')) {
         * @param integer $post_ID
         * @return array
         */
-        public function player($post_ID)
-        {
+        public function player($post_ID){
 
             $cardType = apply_filters('jm_tc_card_type', get_post_meta($post_ID, 'twitterCardType', true));
 
@@ -382,8 +371,7 @@ if (!class_exists('JM_TC_Options')) {
         * @return array
         */
 
-        public function cardDim($post_ID = false)
-        {
+        public function cardDim($post_ID = false){
 
             $cardTypePost = get_post_meta($post_ID, 'twitterCardType', true);
             $cardWidth = get_post_meta($post_ID, 'cardImageWidth', true);
@@ -420,8 +408,7 @@ if (!class_exists('JM_TC_Options')) {
         * @since 5.3.2
         * @return array
         */
-        public function deeplinking()
-        {
+        public function deeplinking(){
 
             $twitteriPhoneName = (!empty($this->opts['twitteriPhoneName'])) ? $this->opts['twitteriPhoneName'] : '';
             $twitteriPadName = (!empty($this->opts['twitteriPadName'])) ? $this->opts['twitteriPadName'] : '';
@@ -456,8 +443,7 @@ if (!class_exists('JM_TC_Options')) {
         * error in config
         * @return string
         */
-        protected function error($error = false)
-        {
+        protected function error($error = false){
 
             if ($error && current_user_can('edit_posts'))
                 return $error;

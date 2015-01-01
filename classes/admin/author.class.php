@@ -5,17 +5,18 @@ if (!defined('JM_TC_VERSION')) {
     exit();
 }
 
-if (!class_exists('JM_TC_Author')) {
+if ( ! class_exists('JM_TC_Author') ) {
 
-    class JM_TC_Author
-    {
+    class JM_TC_Author{
+
         /**
          * Create suggested plugins list
          * @since  5.3.0
          * @return string
+         * @param array $slugs
+         * @return string
          */
-        public static function get_plugins_list($slugs = array())
-        {
+        public static function get_plugins_list($slugs = array()){
 
             $list = '<ul class="plugins-list">';
 
@@ -33,9 +34,16 @@ if (!class_exists('JM_TC_Author')) {
          * Displays author infos
          * @since  5.3.0
          * @return string
+         * @param $name
+         * @param $desc
+         * @param $gravatar_email
+         * @param $url
+         * @param $donation
+         * @param $twitter
+         * @param $googleplus
+         * @param array $slugs
          */
-        public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $googleplus, $slugs = array())
-        {
+        public static function get_author_infos($name, $desc, $gravatar_email, $url, $donation, $twitter, $googleplus, $slugs = array()){
 
             $infos = '<div class="inbl">';
             $infos .= '<h3 class="hndle">' . __('The developer', 'jm-tc') . '</h3>';

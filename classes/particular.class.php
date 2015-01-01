@@ -6,11 +6,10 @@ if (!defined('JM_TC_VERSION')) {
 }
 
 if (!class_exists('JM_TC_Particular')) {
-    class JM_TC_Particular
-    {
+    class JM_TC_Particular{
         /**
          * Options
-         * @var array
+         * @var array $opts
          */
         protected $opts = array();
 
@@ -18,8 +17,7 @@ if (!class_exists('JM_TC_Particular')) {
          * Constructor
          * @since 5.3.2
          */
-        public function __construct()
-        {
+        public function __construct(){
 
             add_filter('robots_txt', array($this, 'robots_mod'), 10, 2);
             add_filter('cmb_meta_box_url', array($this, 'update_cmb_meta_box_url'));
@@ -36,8 +34,7 @@ if (!class_exists('JM_TC_Particular')) {
          * @since 5.3.2
          * @return string
          */
-        public static function update_cmb_meta_box_url($url)
-        {
+        public static function update_cmb_meta_box_url($url){
             if (is_ssl()) {
                 // modify the url here
                 return preg_replace('|^http://|', 'https://', $url);
@@ -52,8 +49,7 @@ if (!class_exists('JM_TC_Particular')) {
          * @since 5.3.2
          * @return string
          */
-        public static function robots_mod($output, $public)
-        {
+        public static function robots_mod($output, $public){
 
             $opts = jm_tc_get_options();
 
@@ -70,8 +66,7 @@ if (!class_exists('JM_TC_Particular')) {
          * @since 5.3.2
          * @return string
          */
-        function modify_excerpt()
-        {
+        function modify_excerpt(){
             global $post;
             return $this->get_excerpt_from_far_far_away($post->ID);
         }
@@ -81,8 +76,7 @@ if (!class_exists('JM_TC_Particular')) {
          * @since 5.3.2
          * @return string
          */
-        function get_excerpt_from_far_far_away($post_id)
-        {
+        function get_excerpt_from_far_far_away($post_id){
             global $wpdb;
             $query = 'SELECT post_excerpt FROM ' . $wpdb->posts . ' WHERE ID = %d LIMIT 1';
             $result = $wpdb->get_results($wpdb->prepare($query, $post_id), ARRAY_A);

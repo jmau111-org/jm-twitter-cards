@@ -7,8 +7,7 @@ if (!defined('JM_TC_VERSION')) {
 
 if (!class_exists('JM_TC_Utilities')) {
 
-    class JM_TC_Utilities
-    {
+    class JM_TC_Utilities{
 
         /*
         *   Remove "at" from input
@@ -16,8 +15,7 @@ if (!class_exists('JM_TC_Utilities')) {
         *   @param string $at
         *   @return string
         */
-        public static function remove_at($at)
-        {
+        public static function remove_at($at){
             $noat = str_replace('@', '', $at);
             return $noat;
         }
@@ -28,8 +26,7 @@ if (!class_exists('JM_TC_Utilities')) {
         *   @param string $lb
         *   @return string
         */
-        public static function remove_lb($lb)
-        {
+        public static function remove_lb($lb){
             $output = str_replace(array(
                 "\r\n",
                 "\r"
@@ -49,8 +46,7 @@ if (!class_exists('JM_TC_Utilities')) {
         *   @param integer $post_id
         *   @return string
         */
-        public static function get_excerpt_by_id($post_id)
-        {
+        public static function get_excerpt_by_id($post_id){
             $the_post = get_post($post_id);
             $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 
@@ -71,8 +67,7 @@ if (!class_exists('JM_TC_Utilities')) {
         *   @param string $provider endpoint API
         *   @return string
         */
-        public static function display_footage($data, $provider = 'http://www.youtube.com/watch?v=')
-        {
+        public static function display_footage($data, $provider = 'http://www.youtube.com/watch?v='){
 
             $output = '';
 
