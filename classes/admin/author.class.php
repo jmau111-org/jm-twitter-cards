@@ -14,7 +14,6 @@ if ( ! class_exists('JM_TC_Author') ) {
          * @since  5.3.0
          * @return string
          * @param array $slugs
-         * @return string
          */
         public static function get_plugins_list($slugs = array()){
 
