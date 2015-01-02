@@ -5,7 +5,7 @@ if (!defined('JM_TC_VERSION')) {
     exit();
 }
 
-if (!class_exists('JM_TC_Options')) {
+if ( ! class_exists('JM_TC_Options') ) {
 
     class JM_TC_Options{
 
