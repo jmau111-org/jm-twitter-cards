@@ -18,7 +18,7 @@ class Tabs {
 	 */
 	public static function admin_tabs( $tabs = array() ) {
 
-		if ( ! $tabs ) {
+		if ( empty( $tabs ) ) {
 
 			$tabs = array(
 				'jm_tc'               => __( 'General' ),

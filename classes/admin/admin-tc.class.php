@@ -84,10 +84,9 @@ class Admin {
 			'#images',
 			'#deeplinking',
 			'#analytics',
-			'#faq-crawl'
-
+			'#faq-crawl',
 		);
-		$docu   = '<a class="button button-secondary docu" target="_blank" href="' . esc_url( admin_url() . 'admin.php?page=jm_tc_doc' ) . $anchor[ $n ] . '">' . __( 'Documentation', JM_TC_TEXTDOMAIN ) . '</a>';
+		$docu  = '<a class="button button-secondary docu" target="_blank" href="' . esc_url( admin_url() . 'admin.php?page=jm_tc_doc' ) . $anchor[ $n ] . '">' . __( 'Documentation', JM_TC_TEXTDOMAIN ) . '</a>';
 		$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url( 'https://cards-dev.twitter.com/validator' ) . '">' . __( 'Validator', JM_TC_TEXTDOMAIN ) . '</a>';
 		$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url( 'https://dev.twitter.com/cards/troubleshooting' ) . '">' . __( 'Troubleshooting', JM_TC_TEXTDOMAIN ) . '</a>';
 
@@ -150,7 +149,6 @@ class Admin {
 				case 'jm_tc_tutorial':
 					require( JM_TC_ADMIN_PAGES_DIR . 'tutorial.php' );
 					break;
-
 			}
 		}
 	}
@@ -162,68 +160,68 @@ class Admin {
 	 */
 	public function add_page() {
 
-		$this->options_page               = add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array(
+		$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array(
 			$this,
-			'subpages'
+			'subpages',
 		), 'dashicons-twitter' );
-		$this->options_page_options       = add_submenu_page( 'jm_tc', __( 'General' ), __( 'General' ), 'manage_options', self::$key, array(
+		$this->options_page_options = add_submenu_page( 'jm_tc', __( 'General' ), __( 'General' ), 'manage_options', self::$key, array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
 		$this->options_page_import_export = add_submenu_page( 'jm_tc', __( 'Import' ) . ' / ' . __( 'Export' ), __( 'Import' ) . ' / ' . __( 'Export' ), 'manage_options', 'jm_tc_import_export', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
-		$this->options_subpage_tutorial   = add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ), 'manage_options', 'jm_tc_tutorial', array(
+		$this->options_subpage_tutorial = add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ), 'manage_options', 'jm_tc_tutorial', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
 
 		$this->options_subpage_images = add_submenu_page( 'jm_tc', __( 'Images', JM_TC_TEXTDOMAIN ), __( 'Images', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_images', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
-		$this->options_subpage_cf     = add_submenu_page( 'jm_tc', __( 'Custom fields', JM_TC_TEXTDOMAIN ), __( 'Custom fields', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_cf', array(
+		$this->options_subpage_cf = add_submenu_page( 'jm_tc', __( 'Custom fields', JM_TC_TEXTDOMAIN ), __( 'Custom fields', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_cf', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
 		$this->options_subpage_robots = add_submenu_page( 'jm_tc', __( 'robots.txt', JM_TC_TEXTDOMAIN ), __( 'robots.txt', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_robots', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
-		$this->options_subpage_home   = add_submenu_page( 'jm_tc', __( 'Home settings', JM_TC_TEXTDOMAIN ), __( 'Home settings', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_home', array(
+		$this->options_subpage_home = add_submenu_page( 'jm_tc', __( 'Home settings', JM_TC_TEXTDOMAIN ), __( 'Home settings', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_home', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
 
 		$this->options_subpage_metabox = add_submenu_page( 'jm_tc', __( 'Meta Box', JM_TC_TEXTDOMAIN ), __( 'Meta Box', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_meta_box', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
 
 		//there is no point displaying this option page is the website is not multi_author !
 		if ( is_multi_author() ) {
 			$this->options_subpage_multi_author = add_submenu_page( 'jm_tc', __( 'Multi Author', JM_TC_TEXTDOMAIN ), __( 'Multi Author', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_multi_author', array(
 				$this,
-				'subpages'
+				'subpages',
 			) );
 		}
 
 		$this->options_subpage_deep_linking = add_submenu_page( 'jm_tc', __( 'Deep Linking', JM_TC_TEXTDOMAIN ), __( 'Deep Linking', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_deep_linking', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
-		$this->options_subpage_doc          = add_submenu_page( 'jm_tc', __( 'Documentation', JM_TC_TEXTDOMAIN ), __( 'Documentation', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_doc', array(
+		$this->options_subpage_doc  = add_submenu_page( 'jm_tc', __( 'Documentation', JM_TC_TEXTDOMAIN ), __( 'Documentation', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_doc', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
-		$this->options_subpage_analytics    = add_submenu_page( 'jm_tc', __( 'Analytics', JM_TC_TEXTDOMAIN ), __( 'Analytics', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_analytics', array(
+		$this->options_subpage_analytics  = add_submenu_page( 'jm_tc', __( 'Analytics', JM_TC_TEXTDOMAIN ), __( 'Analytics', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_analytics', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
-		$this->options_subpage_about        = add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ), 'manage_options', 'jm_tc_about', array(
+		$this->options_subpage_about = add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ), 'manage_options', 'jm_tc_about', array(
 			$this,
-			'subpages'
+			'subpages',
 		) );
 
 	}
@@ -235,8 +233,6 @@ class Admin {
 	 * @param $hook_suffix
 	 */
 	public function admin_scripts( $hook_suffix ) {
-
-		//var_dump( $hook_suffix );
 
 		switch ( $hook_suffix ) {
 
@@ -297,9 +293,9 @@ class Admin {
 	public function is_it_saved() {
 		?>
 		<div id="message" class="updated">
-			<p><strong><?php _e( 'Settings saved.' ); ?></strong></p>
+			<p><strong><?php esc_html_e( 'Settings saved.' ); ?></strong></p>
 		</div>
-	<?php
+		<?php
 	}
 
 	/**
@@ -312,9 +308,7 @@ class Admin {
 	}
 
 	/**
-	 * Add fields to option page
-	 * @since  5.0
-	 * @return $plugin_options
+	 * @return array
 	 */
 	public static function option_fields() {
 

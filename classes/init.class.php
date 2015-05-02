@@ -19,9 +19,7 @@ class Init {
 	public static function initialize() {
 
 		if ( ! class_exists( 'cmb_Meta_Box' ) ) {
-
 			require_once JM_TC_METABOX_DIR . 'init.php';
-
 		}
 
 		/* Thumbnails */
@@ -36,11 +34,9 @@ class Init {
 			case 'yes' :
 				$is_crop = true;
 				break;
-
 			case 'no' :
 				$is_crop = false;
 				break;
-
 			case 'yo' :
 				global $wp_version;
 				$is_crop = ( version_compare( $wp_version, '3.9', '>=' ) ) ? array( $crop_x, $crop_y ) : true;
@@ -153,7 +149,6 @@ class Init {
 				switch_to_blog( $blog_id );
 				self::on_activation();
 				restore_current_blog();
-
 			}
 
 		}

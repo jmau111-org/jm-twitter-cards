@@ -29,7 +29,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
-
 // Constantly constant
 define( 'JM_TC_VERSION', '5.5' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
@@ -48,63 +47,24 @@ define( 'JM_TC_IMG_URL', JM_TC_URL . 'assets/img/' );
 define( 'JM_TC_CSS_URL', JM_TC_URL . 'assets/css/' );
 define( 'JM_TC_JS_URL', JM_TC_URL . 'assets/js/' );
 
+// Function for easy load files
+function _jm_tc_load_files( $dir, $files, $suffix = '' ) {
+	foreach ( $files as $file ) {
+		if ( is_file( $dir . $file . '.' . $suffix . '.php' ) ) {
+			require_once( $dir . $file . '.' . $suffix . '.php' );
+		}
+	}
+}
 
 // Call modules
-require( JM_TC_CLASS_DIR . 'init.class.php' );
-require( JM_TC_DIR . 'functions/functions.inc.php' );
-require( JM_TC_CLASS_DIR . 'utilities.class.php' );
-require( JM_TC_CLASS_DIR . 'particular.class.php' );
-require( JM_TC_CLASS_DIR . 'thumbs.class.php' );
-require( JM_TC_CLASS_DIR . 'disable.class.php' );
-require( JM_TC_CLASS_DIR . 'options.class.php' );
-require( JM_TC_CLASS_DIR . 'markup.class.php' );
+_jm_tc_load_files( JM_TC_CLASS_DIR, array( 'init', 'utilities', 'particular', 'thumbs', 'disable', 'options', 'markup' ), 'class' );
+_jm_tc_load_files( JM_TC_DIR . 'functions/', array( 'functions' ), 'inc' );
 
 if ( is_admin() ) {
-
-	require( JM_TC_ADMIN_CLASS_DIR . 'author.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR . 'tabs.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR . 'admin-tc.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR . 'preview.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR . 'meta-box.class.php' );
-	require( JM_TC_ADMIN_CLASS_DIR . 'import-export.class.php' );
-
+	_jm_tc_load_files( JM_TC_ADMIN_CLASS_DIR, array( 'author', 'tabs', 'admin-tc', 'preview', 'metabox', 'import-export' ), 'class' );
 }
 
-/******************
- * CLASS INIT
- ******************/
-
-global $jm_twitter_cards;
-
-//check if Twitter cards is activated in Yoast and deactivate it
-$jm_twitter_cards['disable'] = new TokenToMe\twitter_cards\Disable;
-
-//handle particular cases	
-$jm_twitter_cards['particular'] = new TokenToMe\twitter_cards\Particular;
-
-//admin classes
-if ( is_admin() ) {
-
-	$jm_twitter_cards['init']                = new TokenToMe\twitter_cards\init;
-	$jm_twitter_cards['utilities']           = new TokenToMe\twitter_cards\Utilities;
-	$jm_twitter_cards['admin-tabs']          = new TokenToMe\twitter_cards\Tabs;
-	$jm_twitter_cards['admin-base']          = new TokenToMe\twitter_cards\Admin;
-	$jm_twitter_cards['admin-import-export'] = new TokenToMe\twitter_cards\Import_Export;
-	$jm_twitter_cards['admin-preview']       = new TokenToMe\twitter_cards\Preview;
-	$jm_twitter_cards['admin-metabox']       = new TokenToMe\twitter_cards\Metabox;
-	$jm_twitter_cards['admin-about']         = new TokenToMe\twitter_cards\Author;
-
-}
-
-$jm_twitter_cards['process-thumbs']  = new TokenToMe\twitter_cards\Thumbs;
-$jm_twitter_cards['populate-markup'] = new TokenToMe\twitter_cards\Markup;
-
-
-/*
-* On activation
-*/
 register_activation_hook( __FILE__, array( 'TokenToMe\twitter_cards\Init', 'activate' ) );
-
 
 /**
  * Everything that should trigger early
@@ -114,6 +74,33 @@ function jm_tc_plugins_loaded() {
 
 	// init metabox
 	add_action( 'init', array( 'TokenToMe\twitter_cards\Init', 'initialize' ) );
+
+	/******************
+	 * CLASS INIT
+	 ******************/
+
+	// check if Twitter cards is activated in Yoast and deactivate it
+	$GLOBALS['jm_twitter_cards']['disable'] = new TokenToMe\twitter_cards\Disable;
+
+	// handle particular cases
+	$GLOBALS['jm_twitter_cards']['particular'] = new TokenToMe\twitter_cards\Particular;
+
+	//admin classes
+	if ( is_admin() ) {
+
+		$GLOBALS['jm_twitter_cards']['init']                = new TokenToMe\twitter_cards\init;
+		$GLOBALS['jm_twitter_cards']['utilities']           = new TokenToMe\twitter_cards\Utilities;
+		$GLOBALS['jm_twitter_cards']['admin-tabs']          = new TokenToMe\twitter_cards\Tabs;
+		$GLOBALS['jm_twitter_cards']['admin-base']          = new TokenToMe\twitter_cards\Admin;
+		$GLOBALS['jm_twitter_cards']['admin-import-export'] = new TokenToMe\twitter_cards\Import_Export;
+		$GLOBALS['jm_twitter_cards']['admin-preview']       = new TokenToMe\twitter_cards\Preview;
+		$GLOBALS['jm_twitter_cards']['admin-metabox']       = new TokenToMe\twitter_cards\Metabox;
+		$GLOBALS['jm_twitter_cards']['admin-about']         = new TokenToMe\twitter_cards\Author;
+
+	}
+
+	$GLOBALS['jm_twitter_cards']['process-thumbs']  = new TokenToMe\twitter_cards\Thumbs;
+	$GLOBALS['jm_twitter_cards']['populate-markup'] = new TokenToMe\twitter_cards\Markup;
 
 	//langs
 	load_plugin_textdomain( JM_TC_TEXTDOMAIN, false, JM_TC_LANG_DIR );
@@ -125,8 +112,5 @@ function jm_tc_plugins_loaded() {
 	}
 
 	//markup
-	global $jm_twitter_cards;
-	$init_markup = $jm_twitter_cards['populate-markup'];
-
-	add_action( 'wp_head', array( $init_markup, 'add_markup' ), 2 );
+	add_action( 'wp_head', array( $GLOBALS['jm_twitter_cards']['populate-markup'], 'add_markup' ), 2 );
 }

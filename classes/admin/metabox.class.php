@@ -22,7 +22,6 @@ class Metabox {
 
 		$this->opts = jm_tc_get_options();
 
-
 		//render
 		add_action( 'cmb_render_text_number', array( $this, 'render_text_number' ), 10, 2 );
 		add_action( 'cmb_render_text_url_https', array( $this, 'render_text_url_https' ), 10, 2 );
@@ -85,11 +84,11 @@ class Metabox {
 	 */
 	function cmb_update_title_description( $args, $field ) {
 
-		if ( $field->id() == 'twitter_featured_size' ) {
+		if ( 'twitter_featured_size' === $field->id() ) {
 			$args['desc'] = Thumbs::get_post_thumbnail_weight( $field->object_id );
 		}
 
-		if ( $field->id() == 'preview_title' ) {
+		if ( 'preview_title' === $field->id() ) {
 			$args['desc'] = Preview::show_preview( $field->object_id );
 		}
 
@@ -110,11 +109,11 @@ class Metabox {
 		switch ( $context ) {
 
 			case 'profile' :
-				$trigger = apply_filters( 'jm_tc_exclude_from_profile', $this->opts['twitterProfile'] == 'yes' ) ? 'on' : 'off';
+				$trigger = apply_filters( 'jm_tc_exclude_from_profile', 'yes' === $this->opts['twitterProfile'] ) ? 'on' : 'off';
 				break;
 
 			case 'post' :
-				$trigger = apply_filters( 'jm_tc_exclude_from_post', $this->opts['twitterCardMetabox'] == 'yes' ) ? 'on' : 'off';
+				$trigger = apply_filters( 'jm_tc_exclude_from_post', 'yes' === $this->opts['twitterCardMetabox'] ) ? 'on' : 'off';
 				break;
 
 			default:
@@ -152,9 +151,8 @@ class Metabox {
 
 		if ( in_array( $pagenow, array(
 				'post.php',
-				'post-new.php'
-			) ) && current_user_can( 'edit_posts' ) && in_array( 'on', $meta_box['show_on']['alt_value'] )
-		) {
+				'post-new.php',
+			) ) && current_user_can( 'edit_posts' ) && in_array( 'on', $meta_box['show_on']['alt_value'] ) ) {
 
 			return $display;
 
@@ -192,7 +190,7 @@ class Metabox {
 
 		$meta_box['show_on']['alt_value'] = ! is_array( $meta_box['show_on']['alt_value'] ) ? array( $meta_box['show_on']['alt_value'] ) : $meta_box['show_on']['alt_value'];
 
-		if ( 'profile.php' == $pagenow && current_user_can( 'edit_posts' ) && in_array( 'on', $meta_box['show_on']['alt_value'] ) ) {
+		if ( 'profile.php' === $pagenow && current_user_can( 'edit_posts' ) && in_array( 'on', $meta_box['show_on']['alt_value'] ) ) {
 
 			return $display;
 
@@ -289,7 +287,7 @@ class Metabox {
 					// Field name - Will be used as label
 					'name' => __( 'Enter the first key data for product', JM_TC_TEXTDOMAIN ),
 					// Field ID, i.e. the meta key
-					'id'   => "cardData1",
+					'id'   => 'cardData1',
 					'type' => 'text_medium',
 
 				),
@@ -297,7 +295,7 @@ class Metabox {
 					// Field name - Will be used as label
 					'name' => __( 'Enter the first key label for product', JM_TC_TEXTDOMAIN ),
 					// Field ID, i.e. the meta key
-					'id'   => "cardLabel1",
+					'id'   => 'cardLabel1',
 					'type' => 'text_medium',
 
 				),
@@ -305,7 +303,7 @@ class Metabox {
 					// Field name - Will be used as label
 					'name' => __( 'Enter the second key data for product', JM_TC_TEXTDOMAIN ),
 					// Field ID, i.e. the meta key
-					'id'   => "cardData2",
+					'id'   => 'cardData2',
 					'type' => 'text_medium',
 
 				),
@@ -313,7 +311,7 @@ class Metabox {
 					// Field name - Will be used as label
 					'name' => __( 'Enter the second key label for product', JM_TC_TEXTDOMAIN ),
 					// Field ID, i.e. the meta key
-					'id'   => "cardLabel2",
+					'id'   => 'cardLabel2',
 					'type' => 'text_medium',
 
 				),
@@ -338,7 +336,7 @@ class Metabox {
 				),
 				array(
 					'name' => __( 'Player width', JM_TC_TEXTDOMAIN ),
-					'id'   => "cardPlayerWidth",
+					'id'   => 'cardPlayerWidth',
 					'type' => 'text_number',
 					'desc' => __( 'When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', JM_TC_TEXTDOMAIN ),
 					'min'  => 262,
@@ -346,7 +344,7 @@ class Metabox {
 				),
 				array(
 					'name' => __( 'Player height', JM_TC_TEXTDOMAIN ),
-					'id'   => "cardPlayerHeight",
+					'id'   => 'cardPlayerHeight',
 					'type' => 'text_number',
 					'min'  => 196,
 					'max'  => 1000,
@@ -356,11 +354,8 @@ class Metabox {
 					'name' => __( 'URL of iFrame player (MUST BE HTTPS)', JM_TC_TEXTDOMAIN ) . '[STREAM]',
 					'type' => 'text_url_https',
 					'desc' => __( 'If you do not understand what is the following field then it is probably a bad idea to fulfill it!', JM_TC_TEXTDOMAIN ),
-
 				),
-
-
-			)
+			),
 		);
 
 
@@ -373,12 +368,12 @@ class Metabox {
 			'fields'     => array(
 				array(
 					'name'     => __( 'Twitter Creator', JM_TC_TEXTDOMAIN ),
-					'desc'     => __( "Enter your Twitter Account (without @)", JM_TC_TEXTDOMAIN ),
+					'desc'     => __( 'Enter your Twitter Account (without @)', JM_TC_TEXTDOMAIN ),
 					'id'       => 'jm_tc_twitter',
 					'type'     => 'text_medium',
 					'on_front' => true,
-				)
-			)
+				),
+			),
 		);
 
 
@@ -391,11 +386,9 @@ class Metabox {
 			'show_names' => true,
 			'show_on'    => array( 'alt_value' => self::on_off( 'post' ), 'alt_key' => 'exclude_post' ),
 			'fields'     => array(
-
-
 				array(
 					'name' => __( 'Image width', JM_TC_TEXTDOMAIN ),
-					'id'   => "cardImageWidth",
+					'id'   => 'cardImageWidth',
 					'type' => 'text_number',
 					'min'  => 280,
 					'max'  => 1000,
@@ -403,7 +396,7 @@ class Metabox {
 				),
 				array(
 					'name' => __( 'Image height', JM_TC_TEXTDOMAIN ),
-					'id'   => "cardImageHeight",
+					'id'   => 'cardImageHeight',
 					'type' => 'text_number',
 					'min'  => 150,
 					'max'  => 1000,
@@ -413,10 +406,7 @@ class Metabox {
 					'id'   => 'twitter_featured_size',
 					'type' => 'title',
 					'name' => __( 'File size' ),
-
 				),
-
-
 			)
 		);
 

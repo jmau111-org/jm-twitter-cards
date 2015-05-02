@@ -35,32 +35,27 @@ class Markup {
 	 */
 	public function html_comments( $end = false ) {
 
-		if ( ! $end ) {
-			echo "\n" . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . "\n";
+		if ( false === $end ) {
+			echo PHP_EOL . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 		} else {
-			echo '<!-- /JM Twitter Cards ' . JM_TC_VERSION . ' -->' . "\n\n";
+			echo '<!-- /JM Twitter Cards ' . JM_TC_VERSION . ' -->' . PHP_EOL . PHP_EOL;
 		}
 	}
 
 
-	/*
-	 * Add meta to head section
-	 * @since 5.3.2
+	/**
+	 *
 	 */
 	public function add_markup() {
 
-		global $jm_twitter_cards;
-		$jm_twitter_cards['options'] = new Options;
-		$options                     = $jm_twitter_cards['options'];
+		$GLOBALS['jm_twitter_cards']['options'] = new Options;
+		$options = $GLOBALS['jm_twitter_cards']['options'];
 
-		if (
-			is_singular()
+		if ( is_singular()
 			&& ! is_front_page()
 			&& ! is_home()
 			&& ! is_404()
-			&& ! is_tag()
-
-		) {
+			&& ! is_tag() ) {
 
 			// safer than the global $post => seems killed on a lot of install :/
 			$post_ID = get_queried_object()->ID;
@@ -68,90 +63,68 @@ class Markup {
 			$this->html_comments();
 
 			/* most important meta */
-			$this->display_markup( $options->cardType( $post_ID ) );
-			$this->display_markup( $options->creatorUsername( true ) );
-			$this->display_markup( $options->siteUsername() );
+			$this->display_markup( $options->card_type( $post_ID ) );
+			$this->display_markup( $options->creator_username( true ) );
+			$this->display_markup( $options->site_username() );
 			$this->display_markup( $options->title( $post_ID ) );
 			$this->display_markup( $options->description( $post_ID ) );
 			$this->display_markup( $options->image( $post_ID ) );
 
-
 			/* secondary meta */
-			$this->display_markup( $options->cardDim( $post_ID ) );
+			$this->display_markup( $options->card_dim( $post_ID ) );
 			$this->display_markup( $options->product( $post_ID ) );
 			$this->display_markup( $options->player( $post_ID ) );
-			$this->display_markup( $options->deeplinking() );
+			$this->display_markup( $options->deep_linking() );
 
 			$this->html_comments( true );
-
-
 		}
 
 		if ( is_home() || is_front_page() ) {
 
 			$this->html_comments();
 
-			$this->display_markup( $options->cardType() );
-			$this->display_markup( $options->siteUsername() );
-			$this->display_markup( $options->creatorUsername() );
+			$this->display_markup( $options->card_type() );
+			$this->display_markup( $options->site_username() );
+			$this->display_markup( $options->creator_username() );
 			$this->display_markup( $options->title() );
 			$this->display_markup( $options->description() );
 			$this->display_markup( $options->image() );
-			$this->display_markup( $options->cardDim() );
-			$this->display_markup( $options->deeplinking() );
+			$this->display_markup( $options->card_dim() );
+			$this->display_markup( $options->deep_linking() );
 
 			$this->html_comments( true );
 		}
 
 	}
 
-	/*
-	*   Display the different meta
-	*	@since 5.3.2
-	*   @param mixed $data
-	*   @return string
-	*/
+	/**
+	 * @param $data
+	 */
 	protected function display_markup( $data ) {
 
 		if ( is_array( $data ) ) {
-
 			foreach ( $data as $name => $value ) {
-
-				if ( $value != '' ) {
-
-					if ( $this->opts['twitterCardOg'] == 'yes' && in_array( $name, array(
+				if ( '' !== $value ) {
+					if ( 'yes' === $this->opts['twitterCardOg'] && in_array( $name, array(
 							'title',
 							'description',
 							'image',
 							'image:width',
-							'image:height'
-						) )
-					) {
-
+							'image:height',
+						) ) ) {
 						$is_og    = 'og';
 						$name_tag = 'property';
-
 					} else {
-
 						$is_og    = 'twitter';
 						$name_tag = 'name';
 					}
-
-					echo $meta = '<meta ' . $name_tag . '="' . $is_og . ':' . $name . '" content="' . $value . '">' . "\n";
-
+					echo '<meta ' . $name_tag . '="' . $is_og . ':' . $name . '" content="' . $value . '">' . PHP_EOL;
 				}
-
 			}
-
 		} elseif ( is_string( $data ) ) {
-
-			echo $meta = '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . "\n";
-
+			echo '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . PHP_EOL;
 		}
-
 	}
-
-
 }
 
 
