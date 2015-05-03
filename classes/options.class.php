@@ -90,6 +90,7 @@ class Options {
 
 		$post_obj  = get_post( $post_ID );
 		$author_id = $post_obj->post_author;
+		$cardCreator = '@' . Utilities::remove_at( $this->opts['twitterCreator'] );
 
 		if ( $post_author ) {
 
@@ -100,12 +101,7 @@ class Options {
 
 			$cardCreator = ( ! empty( $cardCreator ) ) ? $cardCreator : $this->opts['twitterCreator'];
 			$cardCreator = '@' . Utilities::remove_at( $cardCreator );
-
-		} else {
-
-			$cardCreator = '@' . Utilities::remove_at( $this->opts['twitterCreator'] );
 		}
-
 
 		return array( 'creator' => apply_filters( 'jm_tc_card_creator', $cardCreator ) );
 	}
@@ -128,7 +124,11 @@ class Options {
 	 */
 	public function title( $post_ID = false ) {
 
+		$cardTitle = get_bloginfo( 'name' );
+
 		if ( $post_ID ) {
+
+			$cardTitle = the_title_attribute( array( 'echo' => false ) );
 
 			if ( ! empty( $this->opts['twitterCardTitle'] ) ) {
 
@@ -138,15 +138,7 @@ class Options {
 			} elseif ( empty( $this->opts['twitterCardTitle'] ) && ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) ) {
 
 				$cardTitle = self::get_seo_plugin_datas( $post_ID, 'title' );
-
-			} else {
-
-				$cardTitle = the_title_attribute( array( 'echo' => false ) );
 			}
-		} else {
-
-			$cardTitle = get_bloginfo( 'name' );
-
 		}
 
 		return array( 'title' => apply_filters( 'jm_tc_get_title', $cardTitle ) );
@@ -160,20 +152,18 @@ class Options {
 	 */
 	public function description( $post_ID = false ) {
 
+		$cardDescription = $this->opts['twitterPostPageDesc'];
 		if ( $post_ID ) {
+
+			$cardDescription = Utilities::get_excerpt_by_id( $post_ID );
+
 			if ( ! empty( $this->opts['twitterCardDesc'] ) ) {
 				$desc            = get_post_meta( $post_ID, $this->opts['twitterCardDesc'], true );
 				$cardDescription = ! empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : Utilities::get_excerpt_by_id( $post_ID );
 			} elseif ( empty( $this->opts['twitterCardDesc'] ) && ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) ) {
 				$cardDescription = self::get_seo_plugin_datas( $post_ID, 'desc' );
-			} else {
-				$cardDescription = Utilities::get_excerpt_by_id( $post_ID );
 			}
-		} else {
-
-			$cardDescription = $this->opts['twitterPostPageDesc'];
 		}
-
 		$cardDescription = Utilities::remove_lb( $cardDescription );
 
 		return array( 'description' => apply_filters( 'jm_tc_get_excerpt', $cardDescription ) );
