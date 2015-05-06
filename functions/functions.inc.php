@@ -21,3 +21,35 @@ if ( ! function_exists( 'jm_tc_get_options' ) ) {
 	}
 }
 
+if ( ! function_exists( 'jm_tc_remove_at' ) ) {
+	/**
+	 * @param $at
+	 *
+	 * @return mixed
+	 */
+	function jm_tc_remove_at( $at ) {
+		return TokenToMe\twitter_cards\Utilities::remove_at( $at );
+	}
+}
+
+if ( ! function_exists( 'jm_tc_remove_lb' ) ) {
+	/**
+	 * @param $lb
+	 *
+	 * @return string
+	 */
+	function jm_tc_remove_lb( $lb ) {
+		return TokenToMe\twitter_cards\Utilities::remove_lb( $lb );
+	}
+}
+
+if ( ! function_exists( 'jm_tc_get_excerpt_by_id' ) ) {
+	/**
+	 * @param $post_id
+	 *
+	 * @return string|void
+	 */
+	function jm_tc_get_excerpt_by_id( $post_id ) {
+		return TokenToMe\twitter_cards\Utilities::get_excerpt_by_id( $post_id );
+	}
+}
