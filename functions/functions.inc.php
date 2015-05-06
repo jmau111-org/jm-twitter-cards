@@ -25,7 +25,7 @@ if ( ! function_exists( 'jm_tc_remove_at' ) ) {
 	/**
 	 * @param $at
 	 *
-	 * @return mixed
+	 * @return bool|mixed
 	 */
 	function jm_tc_remove_at( $at ) {
 		return TokenToMe\twitter_cards\Utilities::remove_at( $at );

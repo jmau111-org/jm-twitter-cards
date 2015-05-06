@@ -13,9 +13,14 @@ class Utilities {
 	/**
 	 * @param $at
 	 *
-	 * @return mixed
+	 * @return bool|mixed
 	 */
 	public static function remove_at( $at ) {
+
+		if ( ! is_string( $at ) ) {
+			return false;
+		}
+
 		$noat = str_replace( '@', '', $at );
 
 		return $noat;

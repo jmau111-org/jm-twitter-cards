@@ -33,7 +33,7 @@ class Import_Export {
 	 */
 	function process_settings_export() {
 
-		if ( empty( $_POST['action'] ) || 'export_settings' != $_POST['action'] ) {
+		if ( empty( $_POST['action'] ) || 'export_settings' !== $_POST['action'] ) {
 			return;
 		}
 
@@ -78,7 +78,7 @@ class Import_Export {
 
 		$extension = end( explode( '.', $_FILES['import_file']['name'] ) );
 
-		if ( $extension !== 'json' ) {
+		if ( 'json' !== $extension ) {
 			wp_die( __( 'Please upload a valid .json file', JM_TC_TEXTDOMAIN ) );
 		}
 

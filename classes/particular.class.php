@@ -25,7 +25,7 @@ class Particular {
 
 		$this->opts = jm_tc_get_options();
 
-		if ( isset( $this->opts['twitterCardExcerpt'] ) && $this->opts['twitterCardExcerpt'] == 'yes' ) {
+		if ( isset( $this->opts['twitterCardExcerpt'] ) && 'yes' === $this->opts['twitterCardExcerpt'] ) {
 			add_filter( 'jm_tc_get_excerpt', array( $this, 'modify_excerpt' ) );
 		}
 
