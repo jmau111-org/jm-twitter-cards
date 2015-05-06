@@ -22,9 +22,9 @@ class Preview {
 		$is_og = $opts['twitterCardOg'];
 
 		/* most important meta */
-		$cardType_arr    = $options->cardType( $post_ID );
-		$creator_arr     = $options->creatorUsername( true );
-		$site_arr        = $options->siteUsername();
+		$cardType_arr    = $options->card_type( $post_ID );
+		$creator_arr     = $options->creator_username( true );
+		$site_arr        = $options->site_username();
 		$title_arr       = $options->title( $post_ID );
 		$description_arr = $options->description( $post_ID );
 		$img_arr         = $options->image( $post_ID );
@@ -32,7 +32,7 @@ class Preview {
 		/* secondary meta */
 		$product_arr   = $options->product( $post_ID );
 		$player_arr    = $options->player( $post_ID );
-		$deep_link_arr = $options->deeplinking();
+		$deep_link_arr = $options->deep_linking();
 
 		// default
 		$app          = '';
