@@ -142,23 +142,5 @@ class Init {
 
 		}
 
-		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		}
-		// Makes sure the plugin is defined before trying to use it
-
-		if ( ! is_plugin_active_for_network( 'wp-content/plugins/jm-twitter-cards.php' ) ) {
-
-			// For regular options.
-			global $wpdb;
-			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs}" );
-			foreach ( $blog_ids as $blog_id ) {
-				switch_to_blog( $blog_id );
-				self::on_activation();
-				restore_current_blog();
-			}
-
-		}
-
 	}
 }
