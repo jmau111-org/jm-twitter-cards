@@ -57,11 +57,26 @@ function _jm_tc_load_files( $dir, $files, $suffix = '' ) {
 }
 
 // Call modules
-_jm_tc_load_files( JM_TC_CLASS_DIR, array( 'init', 'utilities', 'particular', 'thumbs', 'disable', 'options', 'markup' ), 'class' );
+_jm_tc_load_files( JM_TC_CLASS_DIR, array(
+	'init',
+	'utilities',
+	'particular',
+	'thumbs',
+	'disable',
+	'options',
+	'markup',
+), 'class' );
 _jm_tc_load_files( JM_TC_DIR . 'functions/', array( 'functions' ), 'inc' );
 
 if ( is_admin() ) {
-	_jm_tc_load_files( JM_TC_ADMIN_CLASS_DIR, array( 'author', 'tabs', 'admin-tc', 'preview', 'metabox', 'import-export' ), 'class' );
+	_jm_tc_load_files( JM_TC_ADMIN_CLASS_DIR, array(
+		'author',
+		'tabs',
+		'admin-tc',
+		'preview',
+		'metabox',
+		'import-export',
+	), 'class' );
 }
 
 register_activation_hook( __FILE__, array( 'TokenToMe\twitter_cards\Init', 'activate' ) );
@@ -104,12 +119,6 @@ function jm_tc_plugins_loaded() {
 
 	//langs
 	load_plugin_textdomain( JM_TC_TEXTDOMAIN, false, JM_TC_LANG_DIR );
-
-	if ( is_admin() ) {
-
-		load_plugin_textdomain( JM_TC_DOC_TEXTDOMAIN, false, JM_TC_LANG_DIR );
-
-	}
 
 	//markup
 	add_action( 'wp_head', array( $GLOBALS['jm_twitter_cards']['populate-markup'], 'add_markup' ), 2 );

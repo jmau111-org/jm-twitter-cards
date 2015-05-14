@@ -26,12 +26,9 @@ class Tabs {
 				'jm_tc_tutorial'      => __( 'Tutorial', 'jm-tc' ),
 				'jm_tc_images'        => __( 'Images', 'jm-tc' ),
 				'jm_tc_cf'            => __( 'Custom fields', 'jm-tc' ),
-				'jm_tc_robots'        => __( 'Robots.txt', 'jm-tc' ),
 				'jm_tc_home'          => __( 'Home Settings', 'jm-tc' ),
-				'jm_tc_meta_box'      => __( 'Meta Box', 'jm-tc' ),
 				'jm_tc_deep_linking'  => __( 'Deep Linking', 'jm-tc' ),
 				'jm_tc_doc'           => __( 'Documentation', 'jm-tc' ),
-				'jm_tc_analytics'     => __( 'Analytics', 'jm-tc' ),
 				'jm_tc_about'         => __( 'About' ),
 
 			);

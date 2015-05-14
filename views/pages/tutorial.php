@@ -13,12 +13,8 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	<?php echo Tabs::admin_tabs(); ?>
 
-	<?php
-	$data = array(
-		__( 'Start', JM_TC_TEXTDOMAIN )           => '8l4k3zrD4Z0',
-		__( 'Troubleshooting', JM_TC_TEXTDOMAIN ) => 'sNihgEu65L0',
-		__( 'Multi-author', JM_TC_TEXTDOMAIN )    => 'LpQuIzaHqtk',
-		__( 'Preview', JM_TC_TEXTDOMAIN )         => 'WniGVE09-IQ',
+	<?php $data = array(
+		__( 'Start', JM_TC_TEXTDOMAIN ) => '', /*TODO : redo tutorial*/
 	);
 
 	$tutorials = Utilities::display_footage( $data );

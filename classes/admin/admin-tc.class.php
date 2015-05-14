@@ -42,6 +42,105 @@ class Admin {
 	}
 
 	/**
+	 * @return array
+	 */
+	public static function option_fields() {
+
+		// Only need to initiate the array once per page-load
+		if ( ! empty( self::$plugin_options ) ) {
+			return self::$plugin_options;
+		}
+
+		self::$plugin_options = array(
+			'id'         => self::$key,
+			'show_on'    => array( 'key' => 'options-page', 'value' => array( self::$key, ), ),
+			'show_names' => true,
+			'fields'     => array(
+
+				array(
+					'name' => __( 'Creator (twitter username)', JM_TC_TEXTDOMAIN ),
+					'desc' => __( 'Who is the creator of content?', JM_TC_TEXTDOMAIN ),
+					'id'   => 'twitterCreator',
+					'type' => 'text_medium',
+				),
+				array(
+					'name' => __( 'Site (twitter username)', JM_TC_TEXTDOMAIN ),
+					'desc' => __( 'Who is the Owner of the Website? (could be a trademark)', 'jm-tc' ),
+					'id'   => 'twitterSite',
+					'type' => 'text_medium',
+				),
+				array(
+					'name'    => __( 'Card Types', JM_TC_TEXTDOMAIN ),
+					'desc'    => __( 'Choose what type of card you want to use', JM_TC_TEXTDOMAIN ),
+					'id'      => 'twitterCardType',
+					'type'    => 'select',
+					'options' => array(
+						'summary'             => __( 'Summary', JM_TC_TEXTDOMAIN ),
+						'summary_large_image' => __( 'Summary below Large Image', JM_TC_TEXTDOMAIN ),
+						'photo'               => __( 'Photo', JM_TC_TEXTDOMAIN ),
+						'app'                 => __( 'Application', JM_TC_TEXTDOMAIN ),
+					)
+				),
+				array(
+					'name'    => __( 'Add or hide the meta box', JM_TC_TEXTDOMAIN ),
+					'desc'    => __( 'Hide or display the meta box on post edit. This will display/hide both image and main metaboxes.', JM_TC_TEXTDOMAIN ),
+					'id'      => 'twitterCardMetabox',
+					'type'    => 'select',
+					'options' => array(
+						'yes' => __( 'Display', JM_TC_TEXTDOMAIN ),
+						'no'  => __( 'Hide', JM_TC_TEXTDOMAIN ),
+					),
+				),
+				array(
+					'name'    => __( 'Open Graph', JM_TC_TEXTDOMAIN ),
+					'desc'    => __( 'Open Graph/SEO', JM_TC_TEXTDOMAIN ),
+					'id'      => 'twitterCardOg',
+					'type'    => 'select',
+					'options' => array(
+						'no'  => __( 'no', JM_TC_TEXTDOMAIN ),
+						'yes' => __( 'yes', JM_TC_TEXTDOMAIN ),
+					)
+				),
+				array(
+					'name'    => __( 'Excerpt' ),
+					'desc'    => __( 'Excerpt as meta desc?', JM_TC_TEXTDOMAIN ),
+					'id'      => 'twitterCardExcerpt',
+					'type'    => 'select',
+					'options' => array(
+						'no'  => __( 'no', JM_TC_TEXTDOMAIN ),
+						'yes' => __( 'yes', JM_TC_TEXTDOMAIN ),
+					)
+				),
+				array(
+					'name'    => __( 'Twitter\'s bot', JM_TC_TEXTDOMAIN ),
+					'desc'    => __( 'Add required rules in robots.txt', JM_TC_TEXTDOMAIN ),
+					'id'      => 'twitterCardRobotsTxt',
+					'type'    => 'select',
+					'options' => array(
+						'yes' => __( 'Yes', JM_TC_TEXTDOMAIN ),
+						'no'  => __( 'No', JM_TC_TEXTDOMAIN ),
+					)
+				),
+
+			)
+		);
+
+
+		return self::$plugin_options;
+	}
+
+
+	/**
+	 * Make public the protected $key variable.
+	 * @since  0.1.0
+	 * @return string  Option key
+	 */
+	public static function key() {
+		return self::$key;
+	}
+
+
+	/**
 	 * Alter save_button
 	 * @since  0.1.0
 	 *
@@ -67,33 +166,6 @@ class Admin {
 	}
 
 	/**
-	 * Displays confirmation mess for saving settings
-	 * @since  5.3.0
-	 * @return string
-	 *
-	 * @param int $n
-	 *
-	 * @return string
-	 */
-	public static function docu_links( $n = 0 ) {
-		$anchor = array(
-			'#general',
-			'#metabox',
-			'#pagehome',
-			'#seo',
-			'#images',
-			'#deeplinking',
-			'#analytics',
-			'#faq-crawl',
-		);
-		$docu  = '<a class="button button-secondary docu" target="_blank" href="' . esc_url( admin_url() . 'admin.php?page=jm_tc_doc' ) . $anchor[ $n ] . '">' . __( 'Documentation', JM_TC_TEXTDOMAIN ) . '</a>';
-		$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url( 'https://cards-dev.twitter.com/validator' ) . '">' . __( 'Validator', JM_TC_TEXTDOMAIN ) . '</a>';
-		$docu .= '&nbsp;<a class="button button-secondary docu" target="_blank" href="' . esc_url( 'https://dev.twitter.com/cards/troubleshooting' ) . '">' . __( 'Troubleshooting', JM_TC_TEXTDOMAIN ) . '</a>';
-
-		return $docu;
-	}
-
-	/**
 	 * Add subpages to admin
 	 * @since  5.3.0
 	 */
@@ -114,10 +186,6 @@ class Admin {
 					require( JM_TC_ADMIN_PAGES_DIR . 'images.php' );
 					break;
 
-				case 'jm_tc_meta_box':
-					require( JM_TC_ADMIN_PAGES_DIR . 'meta_box.php' );
-					break;
-
 				case 'jm_tc_multi_author':
 					require( JM_TC_ADMIN_PAGES_DIR . 'multi_author.php' );
 					break;
@@ -126,16 +194,8 @@ class Admin {
 					require( JM_TC_ADMIN_PAGES_DIR . 'home.php' );
 					break;
 
-				case 'jm_tc_robots':
-					require( JM_TC_ADMIN_PAGES_DIR . 'robots.php' );
-					break;
-
 				case 'jm_tc_deep_linking':
 					require( JM_TC_ADMIN_PAGES_DIR . 'deep_linking.php' );
-					break;
-
-				case 'jm_tc_analytics':
-					require( JM_TC_ADMIN_PAGES_DIR . 'analytics.php' );
 					break;
 
 				case 'jm_tc_doc':
@@ -153,14 +213,13 @@ class Admin {
 		}
 	}
 
-
 	/**
 	 * Add menu options page
 	 * @since 5.3.0
 	 */
 	public function add_page() {
 
-		$this->options_page = add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array(
+		$this->options_page         = add_menu_page( $this->title, $this->title, 'manage_options', self::$key, array(
 			$this,
 			'subpages',
 		), 'dashicons-twitter' );
@@ -168,11 +227,12 @@ class Admin {
 			$this,
 			'subpages',
 		) );
+
 		$this->options_page_import_export = add_submenu_page( 'jm_tc', __( 'Import' ) . ' / ' . __( 'Export' ), __( 'Import' ) . ' / ' . __( 'Export' ), 'manage_options', 'jm_tc_import_export', array(
 			$this,
 			'subpages',
 		) );
-		$this->options_subpage_tutorial = add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ), 'manage_options', 'jm_tc_tutorial', array(
+		$this->options_subpage_tutorial   = add_submenu_page( 'jm_tc', __( 'Tutorial' ), __( 'Tutorial' ), 'manage_options', 'jm_tc_tutorial', array(
 			$this,
 			'subpages',
 		) );
@@ -181,20 +241,13 @@ class Admin {
 			$this,
 			'subpages',
 		) );
+
 		$this->options_subpage_cf = add_submenu_page( 'jm_tc', __( 'Custom fields', JM_TC_TEXTDOMAIN ), __( 'Custom fields', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_cf', array(
 			$this,
 			'subpages',
 		) );
-		$this->options_subpage_robots = add_submenu_page( 'jm_tc', __( 'robots.txt', JM_TC_TEXTDOMAIN ), __( 'robots.txt', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_robots', array(
-			$this,
-			'subpages',
-		) );
-		$this->options_subpage_home = add_submenu_page( 'jm_tc', __( 'Home settings', JM_TC_TEXTDOMAIN ), __( 'Home settings', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_home', array(
-			$this,
-			'subpages',
-		) );
 
-		$this->options_subpage_metabox = add_submenu_page( 'jm_tc', __( 'Meta Box', JM_TC_TEXTDOMAIN ), __( 'Meta Box', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_meta_box', array(
+		$this->options_subpage_home = add_submenu_page( 'jm_tc', __( 'Home settings', JM_TC_TEXTDOMAIN ), __( 'Home settings', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_home', array(
 			$this,
 			'subpages',
 		) );
@@ -211,14 +264,11 @@ class Admin {
 			$this,
 			'subpages',
 		) );
-		$this->options_subpage_doc  = add_submenu_page( 'jm_tc', __( 'Documentation', JM_TC_TEXTDOMAIN ), __( 'Documentation', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_doc', array(
+		$this->options_subpage_doc          = add_submenu_page( 'jm_tc', __( 'Documentation', JM_TC_TEXTDOMAIN ), __( 'Documentation', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_doc', array(
 			$this,
 			'subpages',
 		) );
-		$this->options_subpage_analytics  = add_submenu_page( 'jm_tc', __( 'Analytics', JM_TC_TEXTDOMAIN ), __( 'Analytics', JM_TC_TEXTDOMAIN ), 'manage_options', 'jm_tc_analytics', array(
-			$this,
-			'subpages',
-		) );
+
 		$this->options_subpage_about = add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ), 'manage_options', 'jm_tc_about', array(
 			$this,
 			'subpages',
@@ -239,14 +289,11 @@ class Admin {
 			case 'toplevel_page_jm_tc':
 			case 'jm-twitter-cards_page_jm_tc_import_export':
 			case 'jm-twitter-cards_page_jm_tc_tutorial':
-			case 'jm-twitter-cards_page_jm_tc_meta_box':
 			case 'jm-twitter-cards_page_jm_tc_about':
 			case 'jm-twitter-cards_page_jm_tc_cf':
 			case 'jm-twitter-cards_page_jm_tc_images':
-			case 'jm-twitter-cards_page_jm_tc_robots':
 			case 'jm-twitter-cards_page_jm_tc_multi_author':
 			case 'jm-twitter-cards_page_jm_tc_deep_linking':
-			case 'jm-twitter-cards_page_jm_tc_analytics':
 
 				wp_enqueue_style( 'jm-tc-admin-style', JM_TC_CSS_URL . 'jm-tc-admin.css' );
 
@@ -295,94 +342,7 @@ class Admin {
 		<div id="message" class="updated">
 			<p><strong><?php esc_html_e( 'Settings saved.' ); ?></strong></p>
 		</div>
-		<?php
+	<?php
 	}
-
-	/**
-	 * Translates documentation
-	 * @since  5.0
-	 */
-	public function load_admin_doc_scripts() {
-
-		load_plugin_textdomain( 'jm-tc-doc', false, JM_TC_LANG_DIR );
-	}
-
-	/**
-	 * @return array
-	 */
-	public static function option_fields() {
-
-		// Only need to initiate the array once per page-load
-		if ( ! empty( self::$plugin_options ) ) {
-			return self::$plugin_options;
-		}
-
-		self::$plugin_options = array(
-			'id'         => self::$key,
-			'show_on'    => array( 'key' => 'options-page', 'value' => array( self::$key, ), ),
-			'show_names' => true,
-			'fields'     => array(
-
-				array(
-					'name' => __( 'Creator (twitter username)', JM_TC_TEXTDOMAIN ),
-					'desc' => __( 'Who is the creator of content?', JM_TC_TEXTDOMAIN ),
-					'id'   => 'twitterCreator',
-					'type' => 'text_medium',
-				),
-				array(
-					'name' => __( 'Site (twitter username)', JM_TC_TEXTDOMAIN ),
-					'desc' => __( 'Who is the Owner of the Website? (could be a trademark)', 'jm-tc' ),
-					'id'   => 'twitterSite',
-					'type' => 'text_medium',
-				),
-				array(
-					'name'    => __( 'Card Types', JM_TC_TEXTDOMAIN ),
-					'desc'    => __( 'Choose what type of card you want to use', JM_TC_TEXTDOMAIN ),
-					'id'      => 'twitterCardType',
-					'type'    => 'select',
-					'options' => array(
-						'summary'             => __( 'Summary', JM_TC_TEXTDOMAIN ),
-						'summary_large_image' => __( 'Summary below Large Image', JM_TC_TEXTDOMAIN ),
-						'photo'               => __( 'Photo', JM_TC_TEXTDOMAIN ),
-						'app'                 => __( 'Application', JM_TC_TEXTDOMAIN ),
-					)
-				),
-				array(
-					'name'    => __( 'Open Graph', JM_TC_TEXTDOMAIN ),
-					'desc'    => __( 'Open Graph/SEO', JM_TC_TEXTDOMAIN ),
-					'id'      => 'twitterCardOg',
-					'type'    => 'select',
-					'options' => array(
-						'no'  => __( 'no', JM_TC_TEXTDOMAIN ),
-						'yes' => __( 'yes', JM_TC_TEXTDOMAIN ),
-					)
-				),
-				array(
-					'name'    => __( 'Excerpt' ),
-					'desc'    => __( 'Excerpt as meta desc?', JM_TC_TEXTDOMAIN ),
-					'id'      => 'twitterCardExcerpt',
-					'type'    => 'select',
-					'options' => array(
-						'no'  => __( 'no', JM_TC_TEXTDOMAIN ),
-						'yes' => __( 'yes', JM_TC_TEXTDOMAIN ),
-					)
-				),
-
-			)
-		);
-
-
-		return self::$plugin_options;
-	}
-
-	/**
-	 * Make public the protected $key variable.
-	 * @since  0.1.0
-	 * @return string  Option key
-	 */
-	public static function key() {
-		return self::$key;
-	}
-
 }
 

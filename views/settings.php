@@ -1,5 +1,5 @@
 <div class="metabox-holder">
-	<div class="postbox inbl">
+	<div class="postbox">
 		<h3><span><?php esc_html_e( 'Export' ); ?></span></h3>
 
 		<div class="inside">
@@ -15,7 +15,7 @@
 		<!-- .inside -->
 	</div>
 	<!-- .postbox -->
-	<div class="postbox inbl">
+	<div class="postbox">
 		<h3><span><?php esc_html_e( 'Import' ); ?></span></h3>
 
 		<div class="inside">

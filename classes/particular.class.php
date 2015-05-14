@@ -40,9 +40,10 @@ class Particular {
 		if ( is_ssl() ) {
 			// modify the url here
 			return preg_replace( '|^http://|', 'https://', $url );
-		} else {
-			return $url;
 		}
+
+		return $url;
+
 	}
 
 
@@ -55,9 +56,9 @@ class Particular {
 
 		$opts = jm_tc_get_options();
 
-		if ( $opts['twitterCardRobotsTxt'] == 'yes' ) {
-			$output .= "User-agent: Twitterbot" . "\n";
-			$output .= "Disallow: ";
+		if ( 'yes' === $opts['twitterCardRobotsTxt'] ) {
+			$output .= 'User-agent: Twitterbot' . PHP_EOL;
+			$output .= 'Disallow: ';
 		}
 
 		return $output;
@@ -81,7 +82,7 @@ class Particular {
 	 */
 	function get_excerpt_from_far_far_away( $post_id ) {
 		global $wpdb;
-		$query        = 'SELECT post_excerpt FROM ' . $wpdb->posts . ' WHERE ID = %d LIMIT 1';
+		$query        = "SELECT post_excerpt FROM {$wpdb->posts} WHERE ID = %d LIMIT 1";
 		$result       = $wpdb->get_results( $wpdb->prepare( $query, $post_id ), ARRAY_A );
 		$post_excerpt = $result[0]['post_excerpt'];
 

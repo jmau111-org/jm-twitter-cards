@@ -15,9 +15,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	<?php echo Tabs::admin_tabs(); ?>
 
 	<?php cmb_metabox_form( $this->option_fields(), self::$key ); ?>
-	<div class="doc-valid">
-		<?php echo self::docu_links( 0 ); ?>
-	</div>
+
 	<p class="bold"><?php _e( 'Get more <br />from 140 characters', JM_TC_TEXTDOMAIN ); ?> </p>
 
 	<p class="sub-bold"><?php _e( 'with Twitter Cards', JM_TC_TEXTDOMAIN ); ?></p>

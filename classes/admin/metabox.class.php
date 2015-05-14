@@ -109,11 +109,11 @@ class Metabox {
 		switch ( $context ) {
 
 			case 'profile' :
-				$trigger = apply_filters( 'jm_tc_exclude_from_profile', 'yes' === $this->opts['twitterProfile'] ) ? 'on' : 'off';
+				$trigger = 'yes' === $this->opts['twitterProfile'] ? 'on' : 'off';
 				break;
 
 			case 'post' :
-				$trigger = apply_filters( 'jm_tc_exclude_from_post', 'yes' === $this->opts['twitterCardMetabox'] ) ? 'on' : 'off';
+				$trigger = 'yes' === $this->opts['twitterCardMetabox'] ? 'on' : 'off';
 				break;
 
 			default:
@@ -226,15 +226,6 @@ class Metabox {
 			'priority' => 'high',
 			'show_on'  => array( 'alt_value' => self::on_off( 'post' ), 'alt_key' => 'exclude_post' ),
 			'fields'   => array(
-
-
-				// title
-				array(
-					'type' => 'title',
-					'name' => __( 'Documentation', JM_TC_TEXTDOMAIN ),
-					'id'   => 'documentation_title', // Not used but needed for plugin
-					'desc' => Admin::docu_links( 1 ),
-				),
 				// title
 				array(
 					'type' => 'title',
