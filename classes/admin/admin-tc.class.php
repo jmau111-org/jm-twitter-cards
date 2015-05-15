@@ -342,7 +342,7 @@ class Admin {
 		<div id="message" class="updated">
 			<p><strong><?php esc_html_e( 'Settings saved.' ); ?></strong></p>
 		</div>
-	<?php
+		<?php
 	}
 }
 
