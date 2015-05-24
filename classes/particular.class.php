@@ -29,6 +29,22 @@ class Particular {
 			add_filter( 'jm_tc_get_excerpt', array( $this, 'modify_excerpt' ) );
 		}
 
+		add_action( 'wpmu_new_blog', array( $this, 'new_blog' ) );
+
+	}
+
+
+	/**
+	 * Default options for multisite when creating new site
+	 *
+	 * @param $blog_id
+	 */
+	public function new_blog( $blog_id ) {
+		switch_to_blog( $blog_id );
+
+		Init::on_activation();
+
+		restore_current_blog();
 	}
 
 	/**

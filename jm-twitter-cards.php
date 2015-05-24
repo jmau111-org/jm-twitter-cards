@@ -32,17 +32,11 @@ or die( 'No direct load !' );
 // Constantly constant
 define( 'JM_TC_VERSION', '5.5' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
-define( 'JM_TC_CLASS_DIR', JM_TC_DIR . 'classes/' );
-define( 'JM_TC_ADMIN_CLASS_DIR', JM_TC_DIR . 'classes/admin/' );
-define( 'JM_TC_ADMIN_PAGES_DIR', JM_TC_DIR . 'views/pages/' );
-define( 'JM_TC_METABOX_DIR', JM_TC_DIR . 'library/metaboxes/' );
 
 define( 'JM_TC_LANG_DIR', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 define( 'JM_TC_TEXTDOMAIN', 'jm-tc' );
-define( 'JM_TC_DOC_TEXTDOMAIN', 'jm-tc-doc' );
 
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
-define( 'JM_TC_METABOX_URL', JM_TC_URL . 'library/metaboxes/' );
 define( 'JM_TC_IMG_URL', JM_TC_URL . 'assets/img/' );
 define( 'JM_TC_CSS_URL', JM_TC_URL . 'assets/css/' );
 define( 'JM_TC_JS_URL', JM_TC_URL . 'assets/js/' );
@@ -56,70 +50,44 @@ function _jm_tc_load_files( $dir, $files, $suffix = '' ) {
 	}
 }
 
-// Call modules
-_jm_tc_load_files( JM_TC_CLASS_DIR, array(
-	'init',
-	'utilities',
-	'particular',
-	'thumbs',
-	'disable',
-	'options',
-	'markup',
-), 'class' );
-_jm_tc_load_files( JM_TC_DIR . 'functions/', array( 'functions' ), 'inc' );
+if ( version_compare( '5.3', phpversion(), '>' ) ) {
+	add_action( 'admin_notices', 'jm_tc_check_php_version_notif', 0 );
+	/**
+	 * Check if current PHP version is newer than 5.4
+	 * @author Julien Maury
+	 */
+	function jm_tc_check_php_version_notif(){
 
-if ( is_admin() ) {
-	_jm_tc_load_files( JM_TC_ADMIN_CLASS_DIR, array(
-		'author',
-		'tabs',
-		'admin-tc',
-		'preview',
-		'metabox',
-		'import-export',
-	), 'class' );
-}
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			return;
+		}
 
-register_activation_hook( __FILE__, array( 'TokenToMe\twitter_cards\Init', 'activate' ) );
-
-/**
- * Everything that should trigger early
- */
-add_action( 'plugins_loaded', 'jm_tc_plugins_loaded' );
-function jm_tc_plugins_loaded() {
-
-	// init metabox
-	add_action( 'init', array( 'TokenToMe\twitter_cards\Init', 'initialize' ) );
-
-	/******************
-	 * CLASS INIT
-	 ******************/
-
-	// check if Twitter cards is activated in Yoast and deactivate it
-	$GLOBALS['jm_twitter_cards']['disable'] = new TokenToMe\twitter_cards\Disable;
-
-	// handle particular cases
-	$GLOBALS['jm_twitter_cards']['particular'] = new TokenToMe\twitter_cards\Particular;
-
-	//admin classes
-	if ( is_admin() ) {
-
-		$GLOBALS['jm_twitter_cards']['init']                = new TokenToMe\twitter_cards\init;
-		$GLOBALS['jm_twitter_cards']['utilities']           = new TokenToMe\twitter_cards\Utilities;
-		$GLOBALS['jm_twitter_cards']['admin-tabs']          = new TokenToMe\twitter_cards\Tabs;
-		$GLOBALS['jm_twitter_cards']['admin-base']          = new TokenToMe\twitter_cards\Admin;
-		$GLOBALS['jm_twitter_cards']['admin-import-export'] = new TokenToMe\twitter_cards\Import_Export;
-		$GLOBALS['jm_twitter_cards']['admin-preview']       = new TokenToMe\twitter_cards\Preview;
-		$GLOBALS['jm_twitter_cards']['admin-metabox']       = new TokenToMe\twitter_cards\Metabox;
-		$GLOBALS['jm_twitter_cards']['admin-about']         = new TokenToMe\twitter_cards\Author;
+		printf(__('<div class="error"><p>%1$s requires PHP 5.3 at least</p></div>'), 'JM Twitter cards' );
 
 	}
 
-	$GLOBALS['jm_twitter_cards']['process-thumbs']  = new TokenToMe\twitter_cards\Thumbs;
-	$GLOBALS['jm_twitter_cards']['populate-markup'] = new TokenToMe\twitter_cards\Markup;
+} else {
 
-	//langs
-	load_plugin_textdomain( JM_TC_TEXTDOMAIN, false, JM_TC_LANG_DIR );
+	// Call modules
+	_jm_tc_load_files( JM_TC_DIR . 'classes/', array(
+		'utilities',
+		'particular',
+		'thumbs',
+		'disable',
+		'options',
+		'markup',
+	), 'class' );
 
-	//markup
-	add_action( 'wp_head', array( $GLOBALS['jm_twitter_cards']['populate-markup'], 'add_markup' ), 2 );
+	if ( is_admin() ) {
+		_jm_tc_load_files( JM_TC_DIR . 'classes/admin/', array(
+			'author',
+			'tabs',
+			'admin-tc',
+			'preview',
+			'metabox',
+			'import-export',
+		), 'class' );
+	}
+	_jm_tc_load_files( JM_TC_DIR . 'functions/', array( 'functions' ), 'inc' );
+	require JM_TC_DIR . 'bootstrap.php';
 }

@@ -10,6 +10,61 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 class Thumbs{
 
+	public function __construct(){
+
+		add_action( 'init', array( __CLASS__, 'add_image_sizes' ) );
+	}
+
+
+	static function add_image_sizes(){
+
+		/* Thumbnails */
+		$opts    = jm_tc_get_options();
+		$is_crop = true;
+		$crop    = $opts['twitterCardCrop'];
+		$crop_x  = $opts['twitterCardCropX'];
+		$crop_y  = $opts['twitterCardCropY'];
+		$size    = $opts['twitterCardImgSize'];
+
+		switch ( $crop ) {
+			case 'yes' :
+				$is_crop = true;
+				break;
+			case 'no' :
+				$is_crop = false;
+				break;
+			case 'yo' :
+				global $wp_version;
+				$is_crop = ( version_compare( $wp_version, '3.9', '>=' ) ) ? array( $crop_x, $crop_y ) : true;
+				break;
+		}
+
+		if ( function_exists( 'add_theme_support' ) ) {
+			add_theme_support( 'post-thumbnails' );
+		}
+
+		switch ( $size ) {
+			case 'small':
+				add_image_size( 'jmtc-small-thumb', 280, 150, $is_crop );/* the minimum size possible for Twitter Cards */
+				break;
+
+			case 'web':
+				add_image_size( 'jmtc-max-web-thumb', 435, 375, $is_crop );/* maximum web size for photo cards */
+				break;
+
+			case 'mobile-non-retina':
+				add_image_size( 'jmtc-max-mobile-non-retina-thumb', 280, 375, $is_crop );/* maximum non retina mobile size for photo cards*/
+				break;
+
+			case 'mobile-retina':
+				add_image_size( 'jmtc-max-mobile-retina-thumb', 560, 750, $is_crop );/* maximum retina mobile size for photo cards  */
+				break;
+
+			default:
+				add_image_size( 'jmtc-small-thumb', 280, 150, $is_crop );/* the minimum size possible for Twitter Cards */
+		}
+	}
+
 	/**
 	 * @return string
 	 */

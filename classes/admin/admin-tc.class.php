@@ -173,41 +173,41 @@ class Admin {
 		if ( isset( $_GET['page'] ) ) {
 			switch ( $_GET['page'] ) {
 				case 'jm_tc':
-					require( JM_TC_ADMIN_PAGES_DIR . 'main.php' );
+					require( JM_TC_DIR . 'views/pages/main.php' );
 					break;
 				case 'jm_tc_cf':
-					require( JM_TC_ADMIN_PAGES_DIR . 'custom_fields.php' );
+					require( JM_TC_DIR . 'views/pages/custom_fields.php' );
 					break;
 				case 'jm_tc_import_export':
-					require( JM_TC_ADMIN_PAGES_DIR . 'import-export.php' );
+					require( JM_TC_DIR . 'views/pages/import-export.php' );
 					break;
 
 				case 'jm_tc_images':
-					require( JM_TC_ADMIN_PAGES_DIR . 'images.php' );
+					require( JM_TC_DIR . 'views/pages/images.php' );
 					break;
 
 				case 'jm_tc_multi_author':
-					require( JM_TC_ADMIN_PAGES_DIR . 'multi_author.php' );
+					require( JM_TC_DIR . 'views/pages/multi_author.php' );
 					break;
 
 				case 'jm_tc_home':
-					require( JM_TC_ADMIN_PAGES_DIR . 'home.php' );
+					require( JM_TC_DIR . 'views/pages/home.php' );
 					break;
 
 				case 'jm_tc_deep_linking':
-					require( JM_TC_ADMIN_PAGES_DIR . 'deep_linking.php' );
+					require( JM_TC_DIR . 'views/pages/deep_linking.php' );
 					break;
 
 				case 'jm_tc_doc':
-					require( JM_TC_ADMIN_PAGES_DIR . 'documentation.php' );
+					require( JM_TC_DIR . 'views/pages/documentation.php' );
 					break;
 
 				case 'jm_tc_about':
-					require( JM_TC_ADMIN_PAGES_DIR . 'about.php' );
+					require( JM_TC_DIR . 'views/pages/about.php' );
 					break;
 
 				case 'jm_tc_tutorial':
-					require( JM_TC_ADMIN_PAGES_DIR . 'tutorial.php' );
+					require( JM_TC_DIR . 'views/pages/tutorial.php' );
 					break;
 			}
 		}
@@ -314,17 +314,6 @@ class Admin {
 					, array( 'jquery' )
 					, '1.0'
 					, true
-				);
-
-				break;
-
-			case 'jm-twitter-cards_page_jm_tc_doc':
-
-				wp_enqueue_style( 'jm-tc-admin-style', JM_TC_CSS_URL . 'jm-tc-admin.css' );
-				wp_enqueue_script( 'twitter-widget', '//platform.twitter.com/widgets.js',
-					false,
-					null,
-					true
 				);
 
 				break;

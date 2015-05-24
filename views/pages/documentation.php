@@ -13,7 +13,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	<?php echo Tabs::admin_tabs(); ?>
 
-	<p><?php esc_html_e( 'Updated', JM_TC_DOC_TEXTDOMAIN ); ?> : 14/05/2015</p>
+	<p><?php esc_html_e( 'Updated' ); ?> : 14/05/2015</p>
 
 	<p><a href="https://dev.twitter.com/cards/overview">Documentation</a></p>
 
