@@ -11,34 +11,30 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 class Thumbs{
 
 	/**
-	 * @param $post_id
-	 *
 	 * @return string
 	 */
-	public static function thumbnail_sizes( $post_id ){
+	static function thumbnail_sizes(){
 
 		$opts = jm_tc_get_options();
 		$size = $opts['twitterCardImgSize'];
 
 		switch ( $size ) {
 			case 'small':
-				$twitterCardImgSize = 'jmtc-small-thumb';
+				return 'jmtc-small-thumb';
 				break;
 			case 'web':
-				$twitterCardImgSize = 'jmtc-max-web-thumb';
+				return 'jmtc-max-web-thumb';
 				break;
 			case 'mobile-non-retina':
-				$twitterCardImgSize = 'jmtc-max-mobile-non-retina-thumb';
+				return 'jmtc-max-mobile-non-retina-thumb';
 				break;
 			case 'mobile-retina':
-				$twitterCardImgSize = 'jmtc-max-mobile-retina-thumb';
+				return 'jmtc-max-mobile-retina-thumb';
 				break;
 			default:
-				$twitterCardImgSize = 'jmtc-small-thumb';
-				?><!-- @(-_-)] --><?php
+				return'jmtc-small-thumb';
 		}
 
-		return $twitterCardImgSize;
 	}
 
 	/**
@@ -47,29 +43,31 @@ class Thumbs{
 	 *
 	 * @param integer $post_id
 	 */
-	public static function get_post_thumbnail_weight( $post_id ) {
+	static function get_post_thumbnail_size( $post_id ) {
+		if ( 'attachment' === get_post_type( $post_id ) ) {
+			return;
+		}
 
-		$file_size = has_post_thumbnail( $post_id ) ? filesize( get_attached_file( get_post_thumbnail_id( $post_id ) ) ) : 0;//avoid warning if you screw your install or delete all images in upload
-		$math      = $file_size / 1000000;
-		// I was told this is not an accurate math but I actually we do not care,
-		// 1 MB images on a website that's not web safe that's insane!
+		if ( ! has_post_thumbnail( $post_id ) ) {
 
+			return __( 'No featured image for now !', JM_TC_TEXTDOMAIN );
+		}
 
-		if ( 0 === (int) $math ) {
+		$file = get_attached_file( get_post_thumbnail_id( $post_id ) );
+		$file_size = filesize( $file );
+		$math = round( $file_size / 1048.576, 2 );
 
-			$weight = __( 'No featured image for now !', JM_TC_TEXTDOMAIN );
+		// If that does not match the following case then it's weird
+		$weight = __( 'Unknown error !', JM_TC_TEXTDOMAIN );
 
-		} elseif ( $math > 1 ) {
+		if ( $math > 0 && $math < 1000 ) {
+
+			$weight = sprintf( '%f kB', $math );// obviously the result will be in kB
+
+		} elseif ( $math > 1000 ) {
 
 			$weight = '<span class="error">' . __( 'Image is heavier than 1MB ! Card will be broken !', JM_TC_TEXTDOMAIN ) . '</span>';
 
-		} elseif ( $math > 0 && $math < 1 ) {
-
-			$weight = $math . ' MB';
-
-		} else {
-
-			$weight = __( 'Unknown error !', JM_TC_TEXTDOMAIN );
 		}
 
 		return $weight;

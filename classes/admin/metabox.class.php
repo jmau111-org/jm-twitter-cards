@@ -85,7 +85,7 @@ class Metabox {
 	function cmb_update_title_description( $args, $field ) {
 
 		if ( 'twitter_featured_size' === $field->id() ) {
-			$args['desc'] = Thumbs::get_post_thumbnail_weight( $field->object_id );
+			$args['desc'] = Thumbs::get_post_thumbnail_size( $field->object_id );
 		}
 
 		if ( 'preview_title' === $field->id() ) {

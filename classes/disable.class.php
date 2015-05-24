@@ -15,7 +15,7 @@ class Disable {
 	 */
 	function __construct() {
 
-		add_action( 'init', array( $this, 'disable_yoast_twitter' ) );
+		add_action( 'admin_init', array( $this, 'disable_yoast_twitter' ) );
 		//disable yoast markup but only twitter meta of course !
 
 	}
