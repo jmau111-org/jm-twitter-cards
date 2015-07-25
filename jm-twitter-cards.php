@@ -26,39 +26,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // Add some security, no direct load !
-defined('ABSPATH')
-or die('No direct load !');
+defined( 'ABSPATH' )
+or die( 'No direct load !' );
 
 // Constantly constant
-define('JM_TC_VERSION', '6.0');
-define('JM_TC_DIR', plugin_dir_path(__FILE__));
+define( 'JM_TC_VERSION', '6.0' );
+define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 
-define('JM_TC_LANG_DIR', dirname(plugin_basename(__FILE__)) . '/languages/');
-define('JM_TC_TEXTDOMAIN', 'jm-tc');
+define( 'JM_TC_LANG_DIR', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+define( 'JM_TC_TEXTDOMAIN', 'jm-tc' );
 
-define('JM_TC_URL', plugin_dir_url(__FILE__));
-define('JM_TC_CSS_URL', JM_TC_URL . 'css/');
-define('JM_TC_JS_URL', JM_TC_URL . 'js/');
+define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
+define( 'JM_TC_CSS_URL', JM_TC_URL . 'css/' );
+define( 'JM_TC_JS_URL', JM_TC_URL . 'js/' );
 
-if (version_compare('5.3', phpversion(), '>')) {
-    add_action('admin_notices', 'jm_tc_check_php_version_notif', 0);
-    /**
-     * Check if current PHP version is newer than 5.4
-     * @author Julien Maury
-     */
-    function jm_tc_check_php_version_notif()
-    {
+if ( version_compare( '5.3', phpversion(), '>' ) ) {
+	add_action( 'admin_notices', 'jm_tc_check_php_version_notif', 0 );
+	/**
+	 * Check if current PHP version is newer than 5.4
+	 * @author Julien Maury
+	 */
+	function jm_tc_check_php_version_notif() {
 
-        if (!current_user_can('install_plugins')) {
-            return;
-        }
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			return;
+		}
 
-        printf(__('<div class="error"><p>%1$s requires PHP 5.3 at least</p></div>'), 'JM Twitter cards');
-    }
+		printf( __( '<div class="error"><p>%1$s requires PHP 5.3 at least</p></div>' ), 'JM Twitter cards' );
+	}
 
 } else {
 
-    require(JM_TC_DIR . 'functions/functions.inc.php');
-    require(JM_TC_DIR . 'autoload.php');
-    require(JM_TC_DIR . 'bootstrap.php');
+	require( JM_TC_DIR . 'functions/functions.inc.php' );
+	require( JM_TC_DIR . 'autoload.php' );
+	require( JM_TC_DIR . 'bootstrap.php' );
 }
