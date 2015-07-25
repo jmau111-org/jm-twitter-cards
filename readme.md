@@ -10,6 +10,14 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+### 6.0
+* 25 July 2015
+* autoload resources
+* requires now PHP 5.3++
+* deactivate plugin if PHP version is not compatible
+* improve namespace
+* use admin default font not the font I like
+
 ### 5.5
 * 02 May 2015
 * code inspector
