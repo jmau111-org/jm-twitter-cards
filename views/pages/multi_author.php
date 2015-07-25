@@ -50,7 +50,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	}
 
-	cmb_metabox_form( jm_tc_multi_author_options(), Admin::key() ); ?>
+	cmb_metabox_form( jm_tc_multi_author_options(), Main::key() ); ?>
 </div>
 
 

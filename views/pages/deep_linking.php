@@ -99,7 +99,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 		return $plugin_options;
 	}
 
-	cmb_metabox_form( jm_tc_deep_linking_options(), Admin::key() ); ?>
+	cmb_metabox_form( jm_tc_deep_linking_options(), Main::key() ); ?>
 </div>
 
 

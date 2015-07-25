@@ -1,5 +1,6 @@
 <?php
 namespace TokenToMe\TwitterCards\Admin;
+use TokenToMe\TwitterCards\Options;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
