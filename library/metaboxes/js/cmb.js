@@ -172,16 +172,16 @@ window.CMB = (function (window, document, $, undefined) {
                     if (this.type && this.type === 'image') {
                         // image preview
                         uploadStatus = '<li class="img_status">' +
-                        '<img width="50" height="50" src="' + this.url + '" class="attachment-50x50" alt="' + this.filename + '">' +
-                        '<p><a href="#" class="cmb_remove_file_button" rel="' + cmb.formfield + '[' + this.id + ']">' + l10n.remove_image + '</a></p>' +
-                        '<input type="hidden" id="filelist-' + this.id + '" name="' + formName + '[' + this.id + ']" value="' + this.url + '">' +
-                        '</li>';
+                            '<img width="50" height="50" src="' + this.url + '" class="attachment-50x50" alt="' + this.filename + '">' +
+                            '<p><a href="#" class="cmb_remove_file_button" rel="' + cmb.formfield + '[' + this.id + ']">' + l10n.remove_image + '</a></p>' +
+                            '<input type="hidden" id="filelist-' + this.id + '" name="' + formName + '[' + this.id + ']" value="' + this.url + '">' +
+                            '</li>';
 
                     } else {
                         // Standard generic output if it's not an image.
                         uploadStatus = '<li>' + l10n.file + ' <strong>' + this.filename + '</strong>&nbsp;&nbsp;&nbsp; (<a href="' + this.url + '" target="_blank" rel="external">' + l10n.download + '</a> / <a href="#" class="cmb_remove_file_button" rel="' + cmb.formfield + '[' + this.id + ']">' + l10n.remove_file + '</a>)' +
-                        '<input type="hidden" id="filelist-' + this.id + '" name="' + formName + '[' + this.id + ']" value="' + this.url + '">' +
-                        '</li>';
+                            '<input type="hidden" id="filelist-' + this.id + '" name="' + formName + '[' + this.id + ']" value="' + this.url + '">' +
+                            '</li>';
 
                     }
 

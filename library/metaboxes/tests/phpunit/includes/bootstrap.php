@@ -9,8 +9,8 @@
  * @link https://credly.com
  */
 
-ini_set( 'display_errors', 'on' );
-error_reporting( E_ALL );
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 
 /**
  * Set `WP_TESTS_DIR` to the base directory of WordPress:
@@ -20,13 +20,13 @@ error_reporting( E_ALL );
  *
  * export WP_TESTS_DIR=/tmp/wordpress/tests
  */
-if ( ! $wp_test_dir = getenv( 'WP_TESTS_DIR' ) ) {
+if (!$wp_test_dir = getenv('WP_TESTS_DIR')) {
 
-	$wp_test_dir = '/tmp/wordpress-tests-lib';
+    $wp_test_dir = '/tmp/wordpress-tests-lib';
 
-	if ( ! file_exists( $wp_test_dir . '/includes' ) ) {
-		die( "Fatal Error: Could not find the WordPress tests directory.\n" );
-	}
+    if (!file_exists($wp_test_dir . '/includes')) {
+        die("Fatal Error: Could not find the WordPress tests directory.\n");
+    }
 }
 
 /**
@@ -42,20 +42,21 @@ require_once $wp_test_dir . '/includes/functions.php';
  * @see wp_tests_options
  */
 $GLOBALS['wp_tests_options'] = array(
-	'active_plugins' => array(
-		'hello.php',
-	),
+    'active_plugins' => array(
+        'hello.php',
+    ),
 );
 
 /**
  * Run custom functionality after mu-plugins are loaded.
  */
-function _tests_load_badgeos() {
-	define( 'CMB_DIRECTORY_PATH', trailingslashit( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) );
-	require CMB_DIRECTORY_PATH . 'init.php';
+function _tests_load_badgeos()
+{
+    define('CMB_DIRECTORY_PATH', trailingslashit(dirname(dirname(dirname(dirname(__FILE__))))));
+    require CMB_DIRECTORY_PATH . 'init.php';
 }
 
-tests_add_filter( 'muplugins_loaded', '_tests_load_badgeos' );
+tests_add_filter('muplugins_loaded', '_tests_load_badgeos');
 
 /**
  * Bootstraps the WordPress stack.
