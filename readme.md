@@ -17,6 +17,7 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 * deactivate plugin if PHP version is not compatible
 * improve namespace
 * use admin default font not the font I like
+* delete product and gallery cards cause they're no longer supported by Twitter
 
 ### 5.5
 * 02 May 2015

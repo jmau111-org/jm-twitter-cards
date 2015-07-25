@@ -21,7 +21,7 @@ class Markup {
 	 */
 	function __construct() {
 
-		$this->opts = jm_tc_get_options();
+		$this->opts = \jm_tc_get_options();
 
 	}
 
@@ -42,14 +42,9 @@ class Markup {
 		}
 	}
 
-
-	/**
-	 *
-	 */
 	public function add_markup() {
 
-		$GLOBALS['jm_twitter_cards']['options'] = new Options;
-		$options                                = $GLOBALS['jm_twitter_cards']['options'];
+		$options = new Options;
 
 		if ( is_singular()
 		     && ! is_front_page()
@@ -64,18 +59,17 @@ class Markup {
 			$this->html_comments();
 
 			/* most important meta */
-			$this->display_markup( $options->card_type( $post_ID ) );
-			$this->display_markup( $options->creator_username( true ) );
-			$this->display_markup( $options->site_username() );
-			$this->display_markup( $options->title( $post_ID ) );
-			$this->display_markup( $options->description( $post_ID ) );
-			$this->display_markup( $options->image( $post_ID ) );
+			$this->display( $options->card_type( $post_ID ) );
+			$this->display( $options->creator_username( true ) );
+			$this->display( $options->site_username() );
+			$this->display( $options->title( $post_ID ) );
+			$this->display( $options->description( $post_ID ) );
+			$this->display( $options->image( $post_ID ) );
 
 			/* secondary meta */
-			$this->display_markup( $options->card_dim( $post_ID ) );
-			$this->display_markup( $options->product( $post_ID ) );
-			$this->display_markup( $options->player( $post_ID ) );
-			$this->display_markup( $options->deep_linking() );
+			$this->display( $options->card_dim( $post_ID ) );
+			$this->display( $options->player( $post_ID ) );
+			$this->display( $options->deep_linking() );
 
 			$this->html_comments( true );
 		}
@@ -84,14 +78,14 @@ class Markup {
 
 			$this->html_comments();
 
-			$this->display_markup( $options->card_type() );
-			$this->display_markup( $options->site_username() );
-			$this->display_markup( $options->creator_username() );
-			$this->display_markup( $options->title() );
-			$this->display_markup( $options->description() );
-			$this->display_markup( $options->image() );
-			$this->display_markup( $options->card_dim() );
-			$this->display_markup( $options->deep_linking() );
+			$this->display( $options->card_type() );
+			$this->display( $options->site_username() );
+			$this->display( $options->creator_username() );
+			$this->display( $options->title() );
+			$this->display( $options->description() );
+			$this->display( $options->image() );
+			$this->display( $options->card_dim() );
+			$this->display( $options->deep_linking() );
 
 			$this->html_comments( true );
 		}
@@ -101,7 +95,7 @@ class Markup {
 	/**
 	 * @param $data
 	 */
-	protected function display_markup( $data ) {
+	protected function display( $data ) {
 
 		if ( is_array( $data ) ) {
 			foreach ( $data as $name => $value ) {

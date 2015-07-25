@@ -23,7 +23,7 @@ class Particular {
 		add_filter( 'robots_txt', array( $this, 'robots_mod' ), 10, 2 );
 		add_filter( 'cmb_meta_box_url', array( $this, 'update_cmb_meta_box_url' ) );
 
-		$this->opts = jm_tc_get_options();
+		$this->opts = \jm_tc_get_options();
 
 		if ( isset( $this->opts['twitterCardExcerpt'] ) && 'yes' === $this->opts['twitterCardExcerpt'] ) {
 			add_filter( 'jm_tc_get_excerpt', array( $this, 'modify_excerpt' ) );
@@ -70,7 +70,7 @@ class Particular {
 	 */
 	public static function robots_mod( $output, $public ) {
 
-		$opts = jm_tc_get_options();
+		$opts = \jm_tc_get_options();
 
 		if ( 'yes' === $opts['twitterCardRobotsTxt'] ) {
 			$output .= 'User-agent: Twitterbot' . PHP_EOL;

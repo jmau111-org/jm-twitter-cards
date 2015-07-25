@@ -33,7 +33,6 @@ class Preview {
 		$img_arr         = $options->image( $post_ID );
 
 		/* secondary meta */
-		$product_arr   = $options->product( $post_ID );
 		$player_arr    = $options->player( $post_ID );
 		$deep_link_arr = $options->deep_linking();
 
@@ -66,40 +65,13 @@ class Preview {
 			$tag       = 'video';
 			$close_tag = '</video>';
 			$size      = '100%';
-		} elseif ( in_array( 'gallery', $cardType_arr ) ) {
-			$hide         = 'hide';
-			$gallery_meta = '<div class="gallery-meta-container">';
-			if ( is_array( $img_arr ) ) {
-
-				$i = 0;
-
-				foreach ( $img_arr as $name => $url ) {
-					$gallery_meta .= '<img class="tile" src="' . $url . '" alt="" />';
-					$i ++;
-
-					if ( $i > 3 ) {
-
-						break;
-					}
-				}
-			}
-			$gallery_meta .= '</div>';
-		} elseif ( in_array( 'summary', $cardType_arr ) ) {
+		}  elseif ( in_array( 'summary', $cardType_arr ) ) {
 			$styles      = 'width: 60px; height: 60px; margin-left:.6em;';
 			$size        = 60;
 			$hide        = 'hide';
 			$class       = 'summary-image';
 			$img_summary = '<img class="' . $class . '" width="' . $size . '" height="' . $size . '" style="' . $styles . ' -webkit-user-drag: none; " ' . $src . '="' . $img . '">';
 			$float       = 'float:right;';
-		} elseif ( in_array( 'product', $cardType_arr ) ) {
-			$product_meta = '<div class="product-view" style="position:relative;">';
-			$product_meta .= '<span class="bigger"><strong>' . $product_arr['data1'] . '</strong></span>';
-			$product_meta .= '<span>' . $product_arr['label1'] . '</span>';
-			$product_meta .= '<span class="bigger"><strong>' . $product_arr['data2'] . '</strong></span>';
-			$product_meta .= '<span>' . $product_arr['label2'] . '</span>';
-			$product_meta .= '</div>';
-			$styles = 'float:left; width: 120px; height: 120px; margin-right:.6em;';
-			$size   = 120;
 		} elseif ( in_array( 'app', $cardType_arr ) ) {
 			$hide  = 'hide';
 			$class = 'bg-opacity';

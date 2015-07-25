@@ -250,9 +250,7 @@ class Metabox {
 						'summary'             => __( 'Summary', JM_TC_TEXTDOMAIN ),
 						'summary_large_image' => __( 'Summary below Large Image', JM_TC_TEXTDOMAIN ),
 						'photo'               => __( 'Photo', JM_TC_TEXTDOMAIN ),
-						'product'             => __( 'Product', JM_TC_TEXTDOMAIN ),
 						'player'              => __( 'Player', JM_TC_TEXTDOMAIN ),
-						'gallery'             => __( 'Gallery', JM_TC_TEXTDOMAIN ),
 						'app'                 => __( 'Application', JM_TC_TEXTDOMAIN )
 					),
 					'std'     => $this->opts['twitterCardType'],
@@ -269,52 +267,6 @@ class Metabox {
 					'name' => __( 'Set another source as twitter image (enter URL)', JM_TC_TEXTDOMAIN ),
 					'type' => 'file',
 					//'std'	=> $this->opts['twitterImage'], ... probably a bad idea so we won't do this ^^
-				),
-				// title
-				array(
-					'type' => 'title',
-					'name' => __( 'Product Cards', JM_TC_TEXTDOMAIN ),
-					'id'   => 'product_title', // Not used but needed for plugin
-					'desc' => '',
-				),
-				array(
-					// Field name - Will be used as label
-					'name' => __( 'Enter the first key data for product', JM_TC_TEXTDOMAIN ),
-					// Field ID, i.e. the meta key
-					'id'   => 'cardData1',
-					'type' => 'text_medium',
-
-				),
-				array(
-					// Field name - Will be used as label
-					'name' => __( 'Enter the first key label for product', JM_TC_TEXTDOMAIN ),
-					// Field ID, i.e. the meta key
-					'id'   => 'cardLabel1',
-					'type' => 'text_medium',
-
-				),
-				array(
-					// Field name - Will be used as label
-					'name' => __( 'Enter the second key data for product', JM_TC_TEXTDOMAIN ),
-					// Field ID, i.e. the meta key
-					'id'   => 'cardData2',
-					'type' => 'text_medium',
-
-				),
-				array(
-					// Field name - Will be used as label
-					'name' => __( 'Enter the second key label for product', JM_TC_TEXTDOMAIN ),
-					// Field ID, i.e. the meta key
-					'id'   => 'cardLabel2',
-					'type' => 'text_medium',
-
-				),
-				// title
-				array(
-					'type' => 'title',
-					'name' => __( 'Gallery Cards', JM_TC_TEXTDOMAIN ),
-					'id'   => 'gallery_title', // Not used but needed for plugin
-					'desc' => __( 'Just use shortcode <strong>[gallery]</strong> and include at least 4 images.', JM_TC_TEXTDOMAIN ),
 				),
 				// title
 				array(
