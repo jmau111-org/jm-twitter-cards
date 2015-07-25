@@ -1,7 +1,4 @@
 /* Styles in admin  */
-.wrap {
-    font-family: Georgia, Times, "Times New Roman", serif;
-}
 
 .wrap h2 {
     font-size: 23px;
@@ -37,7 +34,6 @@
 
 .wrap blockquote {
     border: none;
-    font-family: Georgia, serif;
     font-style: italic;
     margin: 0.25em 0;
     padding: 0.25em 40px .25em 0;

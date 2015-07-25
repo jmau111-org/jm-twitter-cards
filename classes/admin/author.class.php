@@ -1,5 +1,6 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards\Admin;
+use TokenToMe\TwitterCards\Utilities;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -45,7 +46,7 @@ class Author {
 	 */
 	static function get_author_infos( $name, $desc, $gravatar_email, $url, $donation, $twitter, $googleplus, $slugs = array() ) {
 
-		$output  = '<h3 class="hndle">' . __( 'The developer', JM_TC_TEXTDOMAIN ) . '</h3>';
+		$output = '<h3 class="hndle">' . __( 'The developer', JM_TC_TEXTDOMAIN ) . '</h3>';
 		$output .= '<img src="' . esc_url( 'http://www.gravatar.com/avatar/' . md5( $gravatar_email ) ) . '" alt=""/>';
 		$output .= esc_html( $name );
 		$output .= wpautop( $desc );

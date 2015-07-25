@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -19,8 +19,6 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	//plugin list
 	$slugs = array(
 		'jm-wp-cookie-bar'         => 'JM WP Cookie Bar',
-		'jm-wp-d-vine'             => 'JM WP D-Vine',
-		'jm-instagram-feed-widget' => 'JM Instagram Feed Widget',
 	);
 
 	$author->get_author_infos(

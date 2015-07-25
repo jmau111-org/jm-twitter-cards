@@ -1,4 +1,5 @@
 <?php
+
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -28,7 +29,7 @@ if ( ! function_exists( 'jm_tc_remove_at' ) ) {
 	 * @return bool|mixed
 	 */
 	function jm_tc_remove_at( $at ) {
-		return TokenToMe\twitter_cards\Utilities::remove_at( $at );
+		return \TokenToMe\TwitterCards\Utilities::remove_at( $at );
 	}
 }
 
@@ -39,7 +40,7 @@ if ( ! function_exists( 'jm_tc_remove_lb' ) ) {
 	 * @return string
 	 */
 	function jm_tc_remove_lb( $lb ) {
-		return TokenToMe\twitter_cards\Utilities::remove_lb( $lb );
+		return \TokenToMe\TwitterCards\Utilities::remove_lb( $lb );
 	}
 }
 
@@ -50,6 +51,6 @@ if ( ! function_exists( 'jm_tc_get_excerpt_by_id' ) ) {
 	 * @return string|void
 	 */
 	function jm_tc_get_excerpt_by_id( $post_id ) {
-		return TokenToMe\twitter_cards\Utilities::get_excerpt_by_id( $post_id );
+		return \TokenToMe\TwitterCards\Utilities::get_excerpt_by_id( $post_id );
 	}
 }

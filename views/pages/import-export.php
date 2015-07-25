@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -13,7 +13,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 	<?php echo Tabs::admin_tabs(); ?>
 
-	<?php Import_Export::settings_page(); ?>
+	<?php ImportExport::settings_page(); ?>
 </div>
 
 

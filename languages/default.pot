@@ -74,8 +74,8 @@ msgstr ""
 
 #: inc/admin/admin-tc.php:176
 msgid ""
-"With this plugin you can get summary, summary large image, product, photo, "
-"gallery, app and player cards"
+"With this plugin you can get summary, summary large image, photo, "
+"app and player cards"
 msgstr ""
 
 #: inc/admin/admin-tc.php:200
@@ -157,16 +157,8 @@ msgstr ""
 msgid "Card Type"
 msgstr ""
 
-#: inc/admin/meta-box.php:201
-msgid "Product"
-msgstr ""
-
 #: inc/admin/meta-box.php:202
 msgid "Player"
-msgstr ""
-
-#: inc/admin/meta-box.php:203
-msgid "Gallery"
 msgstr ""
 
 #: inc/admin/meta-box.php:213
@@ -175,35 +167,6 @@ msgstr ""
 
 #: inc/admin/meta-box.php:219
 msgid "Set another source as twitter image (enter URL)"
-msgstr ""
-
-#: inc/admin/meta-box.php:228
-msgid "Product Cards"
-msgstr ""
-
-#: inc/admin/meta-box.php:235
-msgid "Enter the first key data for product"
-msgstr ""
-
-#: inc/admin/meta-box.php:243
-msgid "Enter the first key label for product"
-msgstr ""
-
-#: inc/admin/meta-box.php:252
-msgid "Enter the second key data for product"
-msgstr ""
-
-#: inc/admin/meta-box.php:260
-msgid "Enter the second key label for product"
-msgstr ""
-
-#: inc/admin/meta-box.php:272
-msgid "Gallery Cards"
-msgstr ""
-
-#: inc/admin/meta-box.php:274
-msgid ""
-"Just use shortcode <strong>[gallery]</strong> and include at least 4 images."
 msgstr ""
 
 #: inc/admin/meta-box.php:283
@@ -508,17 +471,6 @@ msgstr ""
 
 #: inc/markup.php:77
 msgid "Twitter Cards are off for those pages."
-msgstr ""
-
-#: inc/markup.php:359
-msgid ""
-"Warning : Gallery Card is not set properly ! There is no gallery in this "
-"post !"
-msgstr ""
-
-#: inc/markup.php:395
-msgid ""
-"Warning : Product Card is not set properly ! There is no product datas !"
 msgstr ""
 
 #: inc/markup.php:423

@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -8,19 +8,14 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 
-class Thumbs{
-
-	public function __construct(){
-
-		add_action( 'init', array( __CLASS__, 'add_image_sizes' ) );
-	}
+class Thumbs {
 
 	/**
 	 * @return bool
 	 */
-	static function is_crop(){
+	static function is_crop() {
 
-		$opts = jm_tc_get_options();
+		$opts = \jm_tc_get_options();
 
 		switch ( $opts['twitterCardCrop'] ) {
 			case 'yes' :
@@ -31,8 +26,9 @@ class Thumbs{
 				break;
 			case 'yo' :
 				global $wp_version;
-				$crop_x  = $opts['twitterCardCropX'];
-				$crop_y  = $opts['twitterCardCropY'];
+				$crop_x = $opts['twitterCardCropX'];
+				$crop_y = $opts['twitterCardCropY'];
+
 				return version_compare( $wp_version, '3.9', '>=' ) ? array( $crop_x, $crop_y ) : true;
 				break;
 			default:
@@ -41,13 +37,13 @@ class Thumbs{
 
 	}
 
-	static function add_image_sizes(){
+	static function add_image_sizes() {
 
 		if ( function_exists( 'add_theme_support' ) ) {
 			add_theme_support( 'post-thumbnails' );
 		}
 
-		$opts = jm_tc_get_options();
+		$opts = \jm_tc_get_options();
 		switch ( $opts['twitterCardImgSize'] ) {
 			case 'small':
 				add_image_size(
@@ -98,9 +94,9 @@ class Thumbs{
 	/**
 	 * @return string
 	 */
-	static function thumbnail_sizes(){
+	static function thumbnail_sizes() {
 
-		$opts = jm_tc_get_options();
+		$opts = \jm_tc_get_options();
 		$size = $opts['twitterCardImgSize'];
 
 		switch ( $size ) {
@@ -117,7 +113,7 @@ class Thumbs{
 				return 'jmtc-max-mobile-retina-thumb';
 				break;
 			default:
-				return'jmtc-small-thumb';
+				return 'jmtc-small-thumb';
 		}
 
 	}
@@ -130,7 +126,7 @@ class Thumbs{
 	 */
 	static function get_post_thumbnail_size( $post_id ) {
 		if ( 'attachment' === get_post_type( $post_id ) ) {
-			return;
+			return false;
 		}
 
 		if ( ! has_post_thumbnail( $post_id ) ) {
@@ -138,9 +134,9 @@ class Thumbs{
 			return __( 'No featured image for now !', JM_TC_TEXTDOMAIN );
 		}
 
-		$file = get_attached_file( get_post_thumbnail_id( $post_id ) );
+		$file      = get_attached_file( get_post_thumbnail_id( $post_id ) );
 		$file_size = filesize( $file );
-		$math = round( $file_size / 1048.576, 2 );
+		$math      = round( $file_size / 1048.576, 2 );
 
 		// If that does not match the following case then it's weird
 		$weight = __( 'Unknown error !', JM_TC_TEXTDOMAIN );

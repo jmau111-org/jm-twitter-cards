@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -8,7 +8,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 }
 
 
-class Admin {
+class Main {
 	/**
 	 * Option key, and option page slug
 	 * @var string

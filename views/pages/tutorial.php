@@ -1,5 +1,6 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards\Admin;
+use TokenToMe\TwitterCards\Utilities;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -14,7 +15,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	<?php echo Tabs::admin_tabs(); ?>
 
 	<?php $data = array(
-		__( 'Start', JM_TC_TEXTDOMAIN ) => '', /*TODO : redo tutorial*/
+		__( 'Start', JM_TC_TEXTDOMAIN ) => '8l4k3zrD4Z0', /*TODO : redo tutorial (shorter)*/
 	);
 
 	$tutorials = Utilities::display_footage( $data );

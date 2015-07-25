@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -21,7 +21,7 @@ class Options {
 	 */
 	function __construct() {
 
-		$this->opts = jm_tc_get_options();
+		$this->opts = \jm_tc_get_options();
 
 	}
 
@@ -88,8 +88,8 @@ class Options {
 	 */
 	public function creator_username( $post_author = false, $post_ID = false ) {
 
-		$post_obj  = get_post( $post_ID );
-		$author_id = $post_obj->post_author;
+		$post_obj    = get_post( $post_ID );
+		$author_id   = $post_obj->post_author;
 		$cardCreator = '@' . Utilities::remove_at( $this->opts['twitterCreator'] );
 
 		if ( $post_author ) {
@@ -180,91 +180,29 @@ class Options {
 
 		$cardImage = get_post_meta( $post_ID, 'cardImage', true );
 
-		//gallery
-		if ( 'gallery' !== ( $cardType = get_post_meta( $post_ID, 'twitterCardType', true ) ) ) {
-			//fallback
+		//fallback
+		$image = $this->opts['twitterImage'];
+
+		if ( '' !== get_the_post_thumbnail( $post_ID ) ) {
+			$image = $cardImage;
+			if ( empty( $cardImage ) ) {
+				$size             = Thumbs::thumbnail_sizes( $post_ID );
+				$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), $size );
+				$image            = $image_attributes[0];
+			}
+		} elseif ( '' === get_the_post_thumbnail( $post_ID ) && ! empty( $cardImage ) ) {
+			$image = $cardImage;
+		} elseif ( 'attachment' === get_post_type() ) {
+			$image = wp_get_attachment_url( $post_ID );
+		} elseif ( false === $post_ID ) {
 			$image = $this->opts['twitterImage'];
-
-			if ( '' !== get_the_post_thumbnail( $post_ID ) ) {
-				$image = $cardImage;
-				if ( empty( $cardImage ) ) {
-					$size             = Thumbs::thumbnail_sizes( $post_ID );
-					$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), $size );
-					$image            = $image_attributes[0];
-				}
-			} elseif ( '' === get_the_post_thumbnail( $post_ID ) && ! empty( $cardImage ) ) {
-				$image = $cardImage;
-			} elseif ( 'attachment' === get_post_type() ) {
-				$image = wp_get_attachment_url( $post_ID );
-			} elseif ( false === $post_ID ) {
-				$image = $this->opts['twitterImage'];
-			}
-
-			//In case Open Graph is on
-			$img_meta = ( 'yes' === $this->opts['twitterCardOg'] ) ? 'image' : 'image:src';
-
-			return array( $img_meta => apply_filters( 'jm_tc_image_source', $image ) );
-
-		} else { // markup will be different
-
-			global $post;
-
-			if ( is_a( $post, 'WP_Post' ) && function_exists( 'has_shortcode' ) ) {
-
-				if ( has_shortcode( $post->post_content, 'gallery' ) ) {
-
-					$query_img = get_post_gallery() ? get_post_gallery( $post_ID, false ) : array();//no backward compatibility before 3.6
-
-					$pic = array();
-					$i   = 0;
-
-					foreach ( $query_img['src'] as $img ) {
-						// get attachment array with the ID from the returned posts
-						$pic[ 'image' . $i . ':src' ] = $img;
-
-						$i ++;
-						if ( $i > 3 ) {
-							break;
-						} //in case there are more than 4 images in post, we are not allowed to add more than 4 images in our card by Twitter
-					}
-
-					return $pic;
-				}
-				return self::error( __( 'Warning : Gallery Card is not set properly ! There is no gallery in this post !', JM_TC_TEXTDOMAIN ) );
-			}
-		}
-		return false;
-	}
-
-
-	/**
-	 * @param $post_ID
-	 *
-	 * @return array|bool
-	 */
-	public function product( $post_ID ) {
-
-		$cardType = apply_filters( 'jm_tc_card_type', get_post_meta( $post_ID, 'twitterCardType', true ) );
-
-		if ( 'product' === $cardType ) {
-
-			$data1  = apply_filters( 'jm_tc_product_field-data1', get_post_meta( $post_ID, 'cardData1', true ) );
-			$label1 = apply_filters( 'jm_tc_product_field-label1', get_post_meta( $post_ID, 'cardLabel1', true ) );
-			$data2  = apply_filters( 'jm_tc_product_field-data2', get_post_meta( $post_ID, 'cardData2', true ) );
-			$label2 = apply_filters( 'jm_tc_product_field-label2', get_post_meta( $post_ID, 'cardLabel2', true ) );
-
-			if ( ! empty( $data1 ) && ! empty( $label1 ) && ! empty( $data2 ) && ! empty( $label2 ) ) {
-				return array(
-					'data1'  => $data1,
-					'label1' => $label1,
-					'data2'  => $data2,
-					'label2' => $label2,
-				);
-			}
-			return self::error( __( 'Warning : Product Card is not set properly ! There is no product datas !', JM_TC_TEXTDOMAIN ) );
 		}
 
-		return false;
+		//In case Open Graph is on
+		$img_meta = ( 'yes' === $this->opts['twitterCardOg'] ) ? 'image' : 'image:src';
+
+		return array( $img_meta => apply_filters( 'jm_tc_image_source', $image ) );
+
 	}
 
 	/**
@@ -293,7 +231,7 @@ class Options {
 
 			//Player stream
 			if ( ! empty( $playerStreamUrl ) ) {
-				$codec = 'video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;';
+				$codec                                = 'video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;';
 				$player['player:stream']              = apply_filters( 'jm_tc_player_stream_url', $playerStreamUrl );
 				$player['player:stream:content_type'] = apply_filters( 'jm_tc_player_codec', $codec );
 			}
@@ -305,8 +243,10 @@ class Options {
 				$player['player:width']  = apply_filters( 'jm_tc_player_width', $playerWidth );
 				$player['player:height'] = apply_filters( 'jm_tc_player_height', $playerHeight );
 			}
+
 			return $player;
 		}
+
 		return false;
 	}
 
@@ -328,8 +268,8 @@ class Options {
 			$width  = ( ! empty( $cardWidth ) ) ? $cardWidth : $this->opts['twitterImageWidth'];
 			$height = ( ! empty( $cardHeight ) ) ? $cardHeight : $this->opts['twitterImageHeight'];
 
-			$width   = apply_filters( 'jm_tc_image_width', $width );
-			$height  = apply_filters( 'jm_tc_image_height', $height );
+			$width  = apply_filters( 'jm_tc_image_width', $width );
+			$height = apply_filters( 'jm_tc_image_height', $height );
 
 			return array(
 				'image:width'  => $width,
@@ -343,6 +283,7 @@ class Options {
 				'image:height' => $this->opts['twitterCardHeight'],
 			);
 		}
+
 		return false;
 	}
 
@@ -402,6 +343,7 @@ class Options {
 		if ( $error && current_user_can( 'edit_posts' ) ) {
 			return $error;
 		}
+
 		return false;
 
 	}

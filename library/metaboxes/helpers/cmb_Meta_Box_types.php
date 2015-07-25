@@ -154,7 +154,7 @@ class cmb_Meta_Box_types {
 			</td>
 		</tr>
 
-	<?php
+		<?php
 	}
 
 	/**

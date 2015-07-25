@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! defined( 'JM_TC_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -7,7 +7,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 	exit();
 }
 
-class Import_Export {
+class ImportExport {
 	/**
 	 * Constructor
 	 * @since 5.3.2
@@ -23,7 +23,7 @@ class Import_Export {
 	 * @since 5.3.2
 	 */
 	public static function settings_page() {
-		$options = jm_tc_get_options();
+		$options = \jm_tc_get_options();
 		require( JM_TC_DIR . 'views/settings.php' );
 	}
 
@@ -68,7 +68,7 @@ class Import_Export {
 			return;
 		}
 
-		if ( !wp_verify_nonce( $_POST['import_nonce'], 'import_nonce' ) ) {
+		if ( ! wp_verify_nonce( $_POST['import_nonce'], 'import_nonce' ) ) {
 			return;
 		}
 

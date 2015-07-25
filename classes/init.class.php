@@ -1,5 +1,5 @@
 <?php
-namespace TokenToMe\twitter_cards;
+namespace TokenToMe\TwitterCards;
 
 //Add some security, no direct load !
 defined( 'ABSPATH' )
