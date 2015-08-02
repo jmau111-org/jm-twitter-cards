@@ -6,8 +6,6 @@ namespace TokenToMe\TwitterCards;
 defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
-register_activation_hook( __FILE__, array( 'Init', 'TokenToMe\TwitterCards\activate' ) );
-
 /**
  * Everything that should trigger early
  */

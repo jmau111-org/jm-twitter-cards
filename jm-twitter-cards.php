@@ -57,6 +57,8 @@ if ( version_compare( '5.3', phpversion(), '>' ) ) {
 
 } else {
 
+	register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
+
 	require( JM_TC_DIR . 'functions/functions.inc.php' );
 	require( JM_TC_DIR . 'autoload.php' );
 	require( JM_TC_DIR . 'bootstrap.php' );
