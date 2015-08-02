@@ -9,7 +9,7 @@ if ( ! defined( 'JM_TC_VERSION' ) ) {
 
 ?>
 <div class="wrap">
-	<h2>JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h2>
+	<h1 class="page-title-action">JM Twitter Cards : <?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 	<?php echo Tabs::admin_tabs(); ?>
 
