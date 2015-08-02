@@ -10,6 +10,10 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Changelog ##
 
+### 6.0.1
+* 02 august 2015
+* fix notices by fixing init class call
+
 ### 6.0
 * 25 July 2015
 * autoload resources
