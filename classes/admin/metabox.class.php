@@ -301,6 +301,12 @@ class Metabox {
 					'type' => 'text_url_https',
 					'desc' => __( 'If you do not understand what is the following field then it is probably a bad idea to fulfill it!', JM_TC_TEXTDOMAIN ),
 				),
+				array(
+					'id'   => 'cardPlayerCodec',
+					'name' => __( 'Codec', JM_TC_TEXTDOMAIN ),
+					'type' => 'text',
+					'desc' => __( 'If you do not understand what is the following field then it is probably a bad idea to fulfill it!', JM_TC_TEXTDOMAIN ),
+				),
 			),
 		);
 

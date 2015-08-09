@@ -22,6 +22,7 @@ $keys = array(
 	'cardPlayerWidth',
 	'cardPlayerHeight',
 	'cardPlayerStream',
+	'cardPlayerCodec',
 	'cardData1',
 	'cardLabel1',
 	'cardData2',
