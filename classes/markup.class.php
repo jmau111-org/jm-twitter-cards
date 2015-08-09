@@ -97,13 +97,13 @@ class Markup {
 	 */
 	protected function display( $data ) {
 
-		/**
-		 * Values are filerable
-		 * so we need to sanitize again
-		 */
-		$data = array_map( 'esc_attr', $data );
-
 		if ( is_array( $data ) ) {
+
+			/**
+			 * Values are filerable
+			 * so we need to sanitize again
+			 */
+			$data = array_map( 'esc_attr', $data );
 			foreach ( $data as $name => $value ) {
 				if ( '' !== $value ) {
 					if ( 'yes' === $this->opts['twitterCardOg'] && in_array( $name, array(
