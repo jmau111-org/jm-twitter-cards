@@ -231,9 +231,9 @@ class Options {
 
 			//Player stream
 			if ( ! empty( $playerStreamUrl ) ) {
-				$codec                                = 'video/mp4; codecs=&quot;avc1.42E01E1, mp4a.40.2&quot;';
+				$codec                                = apply_filters( 'jm_tc_player_codec', 'video/mp4; codecs="avc1.42E01E1, mp4a.40.2"' );
 				$player['player:stream']              = apply_filters( 'jm_tc_player_stream_url', $playerStreamUrl );
-				$player['player:stream:content_type'] = apply_filters( 'jm_tc_player_codec', $codec );
+				$player['player:stream:content_type'] = esc_attr( $codec );
 			}
 
 			//Player width and
