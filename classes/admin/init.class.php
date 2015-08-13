@@ -24,8 +24,8 @@ class Init {
 	public static function get_default_options() {
 		return array(
 			'twitterCardType'       => 'summary',
-			'twitterCreator'        => 'TweetPressFr',
-			'twitterSite'           => 'TweetPressFr',
+			'twitterCreator'        => '',
+			'twitterSite'           => '',
 			'twitterImage'          => 'https://g.twimg.com/Twitter_logo_blue.png',
 			'twitterCardImgSize'    => 'small',
 			'twitterImageWidth'     => '280',
