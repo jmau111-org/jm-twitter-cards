@@ -1,0 +1,34 @@
+{
+  "name": "tweetpressfr/jm-twitter-cards",
+  "keywords": [
+    "WordPress",
+    "twitter",
+    "cards",
+    "meta"
+  ],
+  "homepage": "https://github.com/TweetPressFr/jm-twitter-cards",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "TweetPressFr",
+      "email": "contact@tweetpress.fr"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "description": "Easy integration of Twitter cards in WordPress. All card types provided.",
+  "require": {
+    "composer/installers": "~1.0",
+    "tareq1988/wordpress-settings-api-class": "dev-master",
+    "php": ">=5.3.0",
+    "rilwis/meta-box": "^4.6"
+  },
+  "autoload": {
+    "files": [
+      "functions/functions.php"
+    ],
+    "classmap": [
+      "classes/",
+      "classes/admin/"
+    ]
+  }
+}
