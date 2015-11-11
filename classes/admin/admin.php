@@ -67,19 +67,16 @@ class Main {
 				array(
 					'name'  => 'twitterCreator',
 					'label' => __( 'Creator (twitter username)', 'jm-tc' ),
-					'desc'  => __( 'Text input description', 'jm-tc' ),
 					'type'  => 'text',
 				),
 				array(
 					'name'  => 'twitterSite',
 					'label' => __( 'Site (twitter username)', 'jm-tc' ),
-					'desc'  => __( 'Text input description', 'jm-tc' ),
 					'type'  => 'text',
 				),
 				array(
 					'name'    => 'twitterCardType',
-					'label'   => __( 'A Dropdown', 'jm-tc' ),
-					'desc'    => __( 'Dropdown description', 'jm-tc' ),
+					'label'   => __( 'Card type', 'jm-tc' ),
 					'type'    => 'select',
 					'default' => 'summary',
 					'options' => array(
