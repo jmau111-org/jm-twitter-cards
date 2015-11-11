@@ -1,0 +1,597 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JM Twitter Cards\n"
+"POT-Creation-Date: 2014-04-17 16:16+0100\n"
+"PO-Revision-Date: 2014-06-08 11:59+0100\n"
+"Last-Translator: jmlapam <contact@tweetpress.fr>\n"
+"Language-Team: jmlapam <contact@tweetpress.fr>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+
+#: inc/admin/admin-tc.php
+msgid "yes"
+msgstr "si"
+
+#: inc/admin/admin-tc.php
+msgid "no"
+msgstr "no"
+
+#: inc/admin/admin-tc.php:35
+msgid "JM Twitter Cards"
+msgstr "JM Twitter Cards"
+
+#: inc/admin/admin-tc.php:79 inc/admin/admin-tc.php:108
+#: inc/admin/meta-box.php:177
+msgid "Documentation"
+msgstr "Documentación"
+
+#: inc/admin/admin-tc.php:80
+msgid "Validator"
+msgstr "Validador"
+
+#: inc/admin/admin-tc.php:81
+msgid "Troubleshooting"
+msgstr "Solución de problemas"
+
+#: inc/admin/admin-tc.php:97
+msgid "Custom fields"
+msgstr "Campos personalizados"
+
+#: inc/admin/admin-tc.php:98
+msgid "robots.txt"
+msgstr "robots.txt"
+
+#: inc/admin/admin-tc.php:105
+msgid "Multi Author"
+msgstr "Varios Autores"
+
+#: inc/admin/admin-tc.php:107
+msgid "Deep Linking"
+msgstr "Enlazado Profundo"
+
+#: inc/admin/admin-tc.php:110
+msgid "About"
+msgstr "Acerca de"
+
+#: inc/admin/admin-tc.php:171
+msgid "Get more <br />from 140 characters"
+msgstr "Obtener más <br /> de 140 caracteres"
+
+#: inc/admin/admin-tc.php:172
+msgid "with Twitter Cards"
+msgstr "Con Twitter Cards"
+
+#: inc/admin/admin-tc.php:173
+msgid ""
+"Twitter Cards help you richly represent your content within<br /> Tweets "
+"across the web and on mobile devices. This gives users <br />greater context "
+"and insight into the URLs shared on Twitter,<br /> which in turn allows "
+"Twitter to<br /> send more engaged traffic to your site or app."
+msgstr ""
+"Twitter Cards le ayuda a enriquecer su contenido dentro de los <br /> Tweets "
+"a través de la web y en dispositivos móviles. Esto ofrece a los usuarios<br/ "
+">un contexto más amplio y una visión de las URLs compartidas en Twitter,<br /"
+"> que a su vez permite a Twitter<br /> enviar tráfico más comprometido a su "
+"sitio web o aplicación."
+
+#: inc/admin/admin-tc.php:176
+msgid ""
+"With this plugin you can get summary, summary large image, product, photo, "
+"gallery, app and player cards"
+msgstr ""
+"Con este plugin se puede obtener sumarios, imágenes grandes de sumarios, "
+"productos, fotos, galerías, aplicaciones y tarjetas de jugadores"
+
+#: inc/admin/admin-tc.php:200
+msgid "Creator (twitter username)"
+msgstr "Creador (nombre de usuario en twitter)"
+
+#: inc/admin/admin-tc.php:201
+msgid "Who is the creator of content?"
+msgstr "¿Quién es el creador de este contenido?"
+
+#: inc/admin/admin-tc.php:207
+msgid "Site (twitter username)"
+msgstr "Sitio (nombre de usuario en twitter)"
+
+#: inc/admin/admin-tc.php:208
+msgid "Who is the Owner of the Website? (could be a trademark)"
+msgstr "¿Quién es el Dueño del Website? (puede ser de una marca)"
+
+#: inc/admin/admin-tc.php:214
+msgid "Card Types"
+msgstr "Tipos de Tarjeta"
+
+#: inc/admin/admin-tc.php:215
+msgid "Choose what type of card you want to use"
+msgstr "Seleccione que tipo de tarjeta que usted desea utilizar"
+
+#: inc/admin/admin-tc.php:219 inc/admin/meta-box.php:198
+msgid "Summary"
+msgstr "Sumario"
+
+#: inc/admin/admin-tc.php:220 inc/admin/meta-box.php:199
+msgid "Summary below Large Image"
+msgstr "Sumario con foto grande"
+
+#: inc/admin/admin-tc.php:221 inc/admin/meta-box.php:200
+msgid "Photo"
+msgstr "Foto"
+
+#: inc/admin/admin-tc.php:222
+msgid "Application"
+msgstr "Aplicación"
+
+#: inc/admin/author.php:28
+msgid "The developer"
+msgstr "El desarrollador"
+
+#: inc/admin/author.php:37
+msgid "Keep the plugin free"
+msgstr "Mantenga este plugin gratuito"
+
+#: inc/admin/author.php:38
+msgid "Please help if you want to keep this plugin free."
+msgstr "Por favor ayude si usted desea mantener este plugin gratuito."
+
+#: inc/admin/author.php:39
+msgid "Donation"
+msgstr "Donar"
+
+#: inc/admin/author.php:42
+msgid "Plugin"
+msgstr "Plugin"
+
+#: inc/admin/author.php:44
+msgid "Maybe you will like this plugin too: "
+msgstr "A lo mejor le gusta también este plugin:"
+
+#: inc/admin/meta-box.php:166
+msgid "Twitter Cards"
+msgstr "Twitter Cards "
+
+#: inc/admin/meta-box.php:186
+msgid "Card type"
+msgstr "Tipo de tarjeta"
+
+#: inc/admin/meta-box.php:193
+msgid "Card Type"
+msgstr "Tipo de Tarjeta"
+
+#: inc/admin/meta-box.php:201
+msgid "Product"
+msgstr "Producto"
+
+#: inc/admin/meta-box.php:202
+msgid "Player"
+msgstr "Reproductor de VídeosUMMARY"
+
+#: inc/admin/meta-box.php:203
+msgid "Gallery"
+msgstr "Galería"
+
+#: inc/admin/meta-box.php:213
+msgid "Image"
+msgstr "Imagen"
+
+#: inc/admin/meta-box.php:219
+msgid "Set another source as twitter image (enter URL)"
+msgstr "Establezca otro origen como imagen de twitter (introducir URL)"
+
+#: inc/admin/meta-box.php:228
+msgid "Product Cards"
+msgstr "Tarjetas de Producto"
+
+#: inc/admin/meta-box.php:235
+msgid "Enter the first key data for product"
+msgstr "Introduzca el primer dato de clave para el producto"
+
+#: inc/admin/meta-box.php:243
+msgid "Enter the first key label for product"
+msgstr "Introduzca la primera etiqueta para el producto"
+
+#: inc/admin/meta-box.php:252
+msgid "Enter the second key data for product"
+msgstr "Introduzca el segundo dato de clave para el producto"
+
+#: inc/admin/meta-box.php:260
+msgid "Enter the second key label for product"
+msgstr "Introduzca la segunda etiqueta para el producto"
+
+#: inc/admin/meta-box.php:272
+msgid "Gallery Cards"
+msgstr "Tarjetas de Galería  "
+
+#: inc/admin/meta-box.php:274
+msgid ""
+"Just use shortcode <strong>[gallery]</strong> and include at least 4 images."
+msgstr ""
+"Sólo tiene que utilizar el código corto <strong>[gallery]</strong> e incluir "
+"al menos 4 imágenes"
+
+#: inc/admin/meta-box.php:283
+msgid "Player Cards"
+msgstr "Tarjetas de Jugador"
+
+#: inc/admin/meta-box.php:290 inc/admin/meta-box.php:314
+msgid "URL of iFrame player (MUST BE HTTPS)"
+msgstr "URL del jugador de iFrame (DEBE SER HTTPS)"
+
+#: inc/admin/meta-box.php:296
+msgid "Player width"
+msgstr "Ancho del jugador"
+
+#: inc/admin/meta-box.php:299
+msgid ""
+"When setting this, make sure player dimension and image dimensions are "
+"exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square "
+"image, or a 350x196 16:9 image)"
+msgstr ""
+"Cuando se establece esto, ¡esté seguro que la dimensión de su jugador y las "
+"dimensiones de la imagen son exactamente las mismas!"
+
+#: inc/admin/meta-box.php:305
+msgid "Player height"
+msgstr "Largo del jugador"
+
+#: inc/admin/meta-box.php:316
+msgid ""
+"If you do not understand what is the following field then it is probably a "
+"bad idea to fulfill it!"
+msgstr ""
+"!Si usted no entiende lo que es el siguiente campo, entonces es "
+"probablemente una mala idea llenarlo!"
+
+#: inc/admin/meta-box.php:327 inc/admin/meta-box.php:333
+msgid "Twitter Creator"
+msgstr "Creador de Twitter"
+
+#: inc/admin/meta-box.php:334
+msgid "Enter your Twitter Account (without @)"
+msgstr "Introduzca su Cuenta de Twitter (sin @)"
+
+#: inc/admin/meta-box.php:346
+msgid "Twitter Image Size"
+msgstr "Tamaño de la Imagen de Twitter"
+
+#: inc/admin/meta-box.php:364 inc/admin/pages/images.php:63
+msgid "Define specific size for twitter:image display"
+msgstr "Definir el tamaño específico para mostrar twitter:image"
+
+#: inc/admin/meta-box.php:369 inc/admin/pages/images.php:68
+msgid "280 x 375 px"
+msgstr "280 x 375 px"
+
+#: inc/admin/meta-box.php:370 inc/admin/pages/images.php:69
+msgid "560 x 750 px"
+msgstr "560 x 750 px"
+
+#: inc/admin/meta-box.php:371 inc/admin/pages/images.php:70
+msgid "435 x 375 px"
+msgstr "435 x 375 px"
+
+#: inc/admin/meta-box.php:372 inc/admin/pages/images.php:71
+msgid "280 x 150 px"
+msgstr "280 x 150 px"
+
+#: inc/admin/meta-box.php:389 inc/admin/pages/images.php:33
+#: inc/admin/pages/images.php:42
+msgid "Image width"
+msgstr "Ancho de la Imagen"
+
+#: inc/admin/meta-box.php:398
+msgid "Image height"
+msgstr "Alto de la Imagen"
+
+#: inc/admin/notices.php:30
+#, php-format
+msgid ""
+"WordPress SEO by Yoast is activated, please uncheck Twitter Card option in "
+"this plugin if it is enabled to avoid adding markup twice | <a class=\"button"
+"\" href=\"%1$s\">Hide Notice</a>"
+msgstr ""
+"SEO WordPress por Yoast está activado, por favor desmarque la opción de "
+"Twitter Card en este plugin si está activada para evitar que se añada el "
+"markup dos veces | <a class=\"button\" href=\"%1$s\">Ocultar Advertencia</a>"
+
+#: inc/admin/pages/about.php:24
+msgid "I am a WordPress Developer, I like to make it simple."
+msgstr "Soy un desarrollador de WordPress, me gusta que sea sencillo."
+
+#: inc/admin/pages/analytics.php:20
+msgid "Now you can combine Twitter Cards with"
+msgstr "Ahora usted puede combinar Twitter Cards  con"
+
+#: inc/admin/pages/analytics.php:21
+msgid ""
+"It allows you to make some tests and then you can choose \"top performing "
+"Twitter Cards that drove clicks\"."
+msgstr ""
+"Le permite hacer algunas pruebas y luego puede escoger \"las Twitter Cards "
+"más eficientes que provocaron clics\"."
+
+#: inc/admin/pages/analytics.php:22
+msgid ""
+"You can test sources, links, influencers and devices. It is awesome and you "
+"should enjoy these new tools."
+msgstr ""
+"Usted puede probar las fuentes, enlaces, influenciadores y dispositivos. Es "
+"impresionante y usted debe disfrutar de estas nuevas herramientas."
+
+#: inc/admin/pages/analytics.php:23
+msgid ""
+"This will help you to set the best card type experience and it will probably "
+"improve your marketing value."
+msgstr ""
+"Esto le ayudará a configurar la mejor experiencia de tipo de tarjeta y "
+"probablemente va a mejorar su valor de comercialización."
+
+#: inc/admin/pages/custom_fields.php:26
+msgid "Custom field title"
+msgstr "Título del campo personalizado"
+
+#: inc/admin/pages/custom_fields.php:27
+msgid ""
+"If you prefer to use your own field for twitter meta title instead of SEO "
+"plugin. Leave it blank if you want to use SEO plugin or default title."
+msgstr ""
+"Si usted prefiere usar su propio campo para el meta título de twitter en vez "
+"del plugin SEO. Déjelo en blanco si usted desea usar el plugin SEO o el "
+"título por defecto."
+
+#: inc/admin/pages/custom_fields.php:33
+msgid "Custom field desc"
+msgstr "Descripción del campo personalizado"
+
+#: inc/admin/pages/custom_fields.php:34
+msgid ""
+"If you prefer to use your own field for twitter meta description instead of "
+"SEO plugin. Leave it blank if you want to use SEO plugin or default desc."
+msgstr ""
+"Si usted prefiere usar su propio campo para la meta descripción de twitter "
+"en vez del plugin SEO. Déjelo en blanco si usted quiere usar el plugin SEO o "
+"la descripción por defecto."
+
+#: inc/admin/pages/deep_linking.php:25
+msgid "Deep linking? "
+msgstr "¿Enlazado profundo?"
+
+#: inc/admin/pages/deep_linking.php:26
+msgid ""
+"For all the following fields, if you do not want to use leave it blank but "
+"be careful with the required markup for your app. Read the documentation "
+"please."
+msgstr ""
+"Para todos los siguientes campos, si usted no desea utilizarlos déjelos en "
+"blanco, pero tenga cuidado con el markup requerido para su aplicación. Por "
+"favor lea la documentación."
+
+#: inc/admin/pages/deep_linking.php:32
+msgid "iPhone Name"
+msgstr "Nombre del iPhone"
+
+#: inc/admin/pages/deep_linking.php:33
+msgid "Enter iPhone Name "
+msgstr "Introduzca el Nombre del iPhone"
+
+#: inc/admin/pages/deep_linking.php:39
+msgid " iPhone URL"
+msgstr "URL del iPhone "
+
+#: inc/admin/pages/deep_linking.php:40
+msgid "Enter iPhone URL "
+msgstr "Introduzca la URL del iPhone "
+
+#: inc/admin/pages/deep_linking.php:46
+msgid "iPhone ID"
+msgstr "ID del iPhone"
+
+#: inc/admin/pages/deep_linking.php:47
+msgid "Enter iPhone ID "
+msgstr "Introduzca el ID del iPhone "
+
+#: inc/admin/pages/deep_linking.php:53
+msgid "iPad Name"
+msgstr "Nombre del iPad "
+
+#: inc/admin/pages/deep_linking.php:54
+msgid "Enter iPad Name "
+msgstr "Introduzca el Nombre del iPad "
+
+#: inc/admin/pages/deep_linking.php:60
+msgid "iPad URL"
+msgstr "URL del iPad "
+
+#: inc/admin/pages/deep_linking.php:61
+msgid "Enter iPad URL "
+msgstr "Introduzca la URL del iPad"
+
+#: inc/admin/pages/deep_linking.php:67
+msgid "iPad ID"
+msgstr "ID del iPad "
+
+#: inc/admin/pages/deep_linking.php:68
+msgid "Enter iPad ID "
+msgstr "Introduzca el ID del iPad "
+
+#: inc/admin/pages/deep_linking.php:74
+msgid "Google Play Name"
+msgstr "Nombre de Google Play"
+
+#: inc/admin/pages/deep_linking.php:75
+msgid "Enter Google Play Name "
+msgstr "Introduzca el Nombre del Google Play"
+
+#: inc/admin/pages/deep_linking.php:81
+msgid "Google Play URL"
+msgstr "URL de Google Play "
+
+#: inc/admin/pages/deep_linking.php:82
+msgid "Enter Google Play URL "
+msgstr "Introduzca la URL de Google Play"
+
+#: inc/admin/pages/deep_linking.php:88
+msgid "Google Play ID"
+msgstr "ID de Google Play "
+
+#: inc/admin/pages/deep_linking.php:89
+msgid "Enter Google Play ID "
+msgstr "Introduzca el ID de Google Play "
+
+#: inc/admin/pages/home.php:25
+msgid "Home meta desc"
+msgstr "Meta descripción del inicio"
+
+#: inc/admin/pages/home.php:26
+msgid "Enter desc for Posts Page (max: 200 characters)"
+msgstr "Introduzca descripción para la Página de Posts (max: 200 caracteres)"
+
+#: inc/admin/pages/images.php:25
+msgid "Image Fallback"
+msgstr "Fallback de la Imagen "
+
+#: inc/admin/pages/images.php:34 inc/admin/pages/images.php:43
+msgid "px"
+msgstr " px"
+
+#: inc/admin/pages/images.php:52
+msgid "Crop"
+msgstr "Cortar"
+
+#: inc/admin/pages/images.php:53
+msgid "Do you want to force crop on card Image?"
+msgstr "¿Quiere forzar cortar la imagen de la tarjeta?"
+
+#: inc/admin/pages/images.php:57 inc/admin/pages/multi_author.php:28
+#: inc/admin/pages/robots.php:32
+msgid "No"
+msgstr "No"
+
+#: inc/admin/pages/images.php:58 inc/admin/pages/multi_author.php:29
+#: inc/admin/pages/robots.php:31
+msgid "Yes"
+msgstr "Si"
+
+#: inc/admin/pages/meta_box.php:25
+msgid "Add or hide the meta box"
+msgstr "Agregar u ocultar el meta cuadro "
+
+#: inc/admin/pages/meta_box.php:26
+msgid ""
+"Hide or display the meta box on post edit. This will display/hide both image "
+"and main metaboxes."
+msgstr ""
+"Ocultar o mostrar el meta cuadro en la edición del post. Esto visualizará/"
+"ocultará las imágenes y los meta cuadros principales."
+
+#: inc/admin/pages/meta_box.php:30
+msgid "Display"
+msgstr "Mostrar"
+
+#: inc/admin/pages/meta_box.php:31
+msgid "Hide"
+msgstr "Ocultar"
+
+#: inc/admin/pages/multi_author.php:23
+msgid "Add a field in profiles for author"
+msgstr "Añadir un campo en los perfiles para el autor"
+
+#: inc/admin/pages/multi_author.php:24
+msgid ""
+"This would add a field in profiles if user can publish posts. In this case "
+"his Twitter username will be set as meta creator."
+msgstr ""
+"Esto añadirá un campo en los perfiles si el usuario puede publicar posts. En "
+"este caso su username de Twitter se establecerá como el meta creador."
+
+#: inc/admin/pages/multi_author.php:35
+msgid "Meta key Twitter"
+msgstr "Meta clave de Twitter"
+
+#: inc/admin/pages/multi_author.php:36
+msgid ""
+"If the above option is set to \"no\", just modify user meta key associated "
+"with Twitter Account in profiles to get Twitter usernames from your own "
+"fields:"
+msgstr ""
+"Si la opción anterior se establece en \"no\", basta con modificar la meta "
+"clave de usuario asociada a la cuenta de Twitter en los perfiles para "
+"obtener los nombres de usuario de Twitter de sus propios campos:"
+
+#: inc/admin/pages/robots.php:26
+msgid "Twitter's bot"
+msgstr "Robot de Twitter"
+
+#: inc/admin/pages/robots.php:27
+msgid "Add required rules in robots.txt"
+msgstr "Agregar reglas requeridas en robots.txt"
+
+#: inc/markup.php:77
+msgid "Twitter Cards are off for those pages."
+msgstr "Las Twitter Cards están fuera de esas páginas."
+
+#: inc/markup.php:359
+msgid ""
+"Warning : Gallery Card is not set properly ! There is no gallery in this "
+"post !"
+msgstr ""
+"Advertencia: ¡ La Tarjeta de Galería no está configurada correctamente! ¡No "
+"hay galerías en este post!"
+
+#: inc/markup.php:395
+msgid ""
+"Warning : Product Card is not set properly ! There is no product datas !"
+msgstr ""
+"Advertencia: ¡La Tarjeta de Producto no está configurada correctamente! ¡No "
+"hay datos de producto!"
+
+#: inc/markup.php:423
+msgid ""
+"Warning : Player Card is not set properly ! There is no URL provided for "
+"iFrame player !"
+msgstr ""
+"Advertencia: ¡La Tarjeta de Jugador no está configurada correctamente! ¡No "
+"existe una dirección URL proporcionada para el jugador de iFrame!"
+
+#: inc/thumbs.php:59
+msgid "No featured image for now !"
+msgstr "¡Sin imagen personalizada por ahora!"
+
+#: inc/thumbs.php:63
+msgid "Image is heavier than 1MB ! Card will be broken !"
+msgstr "¡La imagen es más pesada que 1 MB! ¡Card se romperá!"
+
+#: inc/thumbs.php:71
+msgid "Unknown error !"
+msgstr "¡Error desconocido!"
+
+#: jm-twitter-cards.php:131
+msgid "Settings"
+msgstr "Ajustes"
+
+#: jm-twitter-cards.php:227
+msgid "Welcome to"
+msgstr "Bienvenido a"
+
+#: jm-twitter-cards.php:227
+msgid "see blog posts"
+msgstr "ver los posts del blog"
+
+#: inc/admin/pages/deep_linking.php:95
+msgid "App Country code"
+msgstr "Codifica país (Aplicación)"
+
+#: inc/admin/pages/deep_linking.php:96
+msgid ""
+"Enter 2 letter App Country code in case your app is not available in the US "
+"app store"
+msgstr ""
+"Entra el código país de la aplicación si su aplicación no está disponible "
+"para el app appstore US"
