@@ -34,7 +34,8 @@ class Main {
 
 	function admin_menu() {
 		add_menu_page( __( 'JM Twitter Cards', 'jm-tc' ), __( 'JM Twitter Cards', 'jm-tc' ), 'manage_options', 'jm_tc', array( $this, 'plugin_page' ), 'dashicons-twitter' );
-		add_submenu_page( 'jm_tc', __( 'Import' ) . ' / ' . __( 'Export' ), __( 'Import' ) . ' / ' . __( 'Export' ), 'manage_options', 'jm_tc_import_export', array( $this, 'get_view' ) );
+		add_submenu_page( 'jm_tc', __( 'Import' ) . ' / ' . __( 'Export' ), __( 'Import' ) . ' / ' . __( 'Export' ), 'manage_options', 'jm_tc_import_export', array( $this, 'get_view_exp' ) );
+		add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ), 'manage_options', 'jm_tc_about', array( $this, 'get_view_about' ) );
 	}
 
 	/**
@@ -242,9 +243,19 @@ class Main {
 	/**
 	 * Get our view
 	 */
-	public function get_view(){
+	public function get_view_exp(){
 		ob_start();
 		require( JM_TC_DIR . 'views/settings.php' );
+		ob_end_flush();
+		return true;
+	}
+
+	/**
+	 * Get our view
+	 */
+	public function get_view_about(){
+		ob_start();
+		require( JM_TC_DIR . 'views/about.php' );
 		ob_end_flush();
 		return true;
 	}
