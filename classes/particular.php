@@ -21,7 +21,6 @@ class Particular {
 	public function __construct() {
 
 		add_filter( 'robots_txt', array( $this, 'robots_mod' ) );
-		add_filter( 'cmb_meta_box_url', array( $this, 'update_cmb_meta_box_url' ) );
 
 		$this->opts = \jm_tc_get_options();
 
@@ -60,22 +59,6 @@ class Particular {
 
 		restore_current_blog();
 	}
-
-	/**
-	 * SSL stuffs
-	 * @since 5.3.2
-	 * @return string
-	 */
-	public static function update_cmb_meta_box_url( $url ) {
-		if ( is_ssl() ) {
-			// modify the url here
-			return preg_replace( '|^http://|', 'https://', $url );
-		}
-
-		return $url;
-
-	}
-
 
 	/**
 	 * filter for robots.txt rules
