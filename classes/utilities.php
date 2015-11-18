@@ -7,7 +7,6 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-
 class Utilities {
 
 	/**
