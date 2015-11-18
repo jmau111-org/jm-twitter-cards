@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a818a81925bb6df7ca113ef2be1393ff",
-    "content-hash": "f0b376a53e8f13a896029c725dcf680f",
+    "hash": "84b4fc5b4af0757319503e8d5491893c",
+    "content-hash": "dfccc19f982559a8153c67ae14282640",
     "packages": [
         {
             "name": "composer/installers",
@@ -107,16 +107,16 @@
         },
         {
             "name": "rilwis/meta-box",
-            "version": "4.6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rilwis/meta-box.git",
-                "reference": "4ff46c3de624f007448635728934662a8f54f5fa"
+                "reference": "3953c67d33080306fe78f68b6828e9239140196c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/4ff46c3de624f007448635728934662a8f54f5fa",
-                "reference": "4ff46c3de624f007448635728934662a8f54f5fa",
+                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/3953c67d33080306fe78f68b6828e9239140196c",
+                "reference": "3953c67d33080306fe78f68b6828e9239140196c",
                 "shasum": ""
             },
             "type": "library",
@@ -155,7 +155,7 @@
                 "wordpress-plugin",
                 "wp-admin"
             ],
-            "time": "2015-10-26 01:51:35"
+            "time": "2015-11-08 23:40:38"
         },
         {
             "name": "tareq1988/wordpress-settings-api-class",
@@ -206,12 +206,13 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tareq1988/wordpress-settings-api-class": 20
+        "tareq1988/wordpress-settings-api-class": 20,
+        "rilwis/meta-box": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.0"
+        "php": ">=5.4.0"
     },
     "platform-dev": []
 }

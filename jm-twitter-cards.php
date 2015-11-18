@@ -5,7 +5,7 @@ Plugin URI: http://tweetpressfr.github.io
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpressfr.github.io
-Version: 7.0
+Version: 7.0.1
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,9 +30,8 @@ defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
 // Constantly constant
-define( 'JM_TC_VERSION', '7.0' );
+define( 'JM_TC_VERSION', '7.0.1' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
-define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Autoload this !
@@ -42,21 +41,64 @@ require_once ( JM_TC_DIR . 'vendor/rilwis/meta-box/meta-box.php' );
 
 register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
 
-add_action( 'plugins_loaded', '_jm_tc_plugins_loaded' );
-function _jm_tc_plugins_loaded() {
+add_action(
+	'plugins_loaded',
+	array ( JM_TC_Loading::get_instance(), 'plugin_setup' )
+);
+class JM_TC_Loading {
+	/**
+	 * Plugin instance.
+	 * @type object
+	 */
+	protected static $instance = NULL;
 
-	if ( is_admin() ) {
-		new \TokenToMe\TwitterCards\Admin\Main();
-		new \TokenToMe\TwitterCards\Admin\ImportExport();
-		new \TokenToMe\TwitterCards\Admin\Options();
-		new \TokenToMe\TwitterCards\Admin\Meta_Box();
-	} else {
-		new \TokenToMe\TwitterCards\Main();
-		new \TokenToMe\TwitterCards\Thumbs();
-		new \TokenToMe\TwitterCards\Markup();
+	/**
+	 * Access this plugin’s working instance
+	 *
+	 * @wp-hook plugins_loaded
+	 * @return $this object (kidding)
+	 */
+	public static function get_instance() {
+		NULL === self::$instance and self::$instance = new self;
+		return self::$instance;
 	}
+	/**
+	 * Setup
+	 * @return  void
+	 */
+	public function plugin_setup() {
+		$this->register_text_domain( 'jm-tc' );
 
-	//langs
-	load_plugin_textdomain( 'jm-tc', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
+		if ( is_admin() ) {
+			new TokenToMe\TwitterCards\Admin\Main();
+			new TokenToMe\TwitterCards\Admin\ImportExport();
+			$options = TokenToMe\TwitterCards\Admin\Options::get_instance();
+			$options->init();
+			new TokenToMe\TwitterCards\Admin\Meta_Box();
+		} else {
+			new TokenToMe\TwitterCards\Thumbs();
+			$markup = TokenToMe\TwitterCards\Markup::get_instance();
+			$markup->init();
+		}
+	}
+	/**
+	 * Constructor. Intentionally left empty and public.
+	 *
+	 * @see plugin_setup()
+	 * @since 2012.09.12
+	 */
+	public function __construct() {}
+	/**
+	 * Loads translations
+	 *
+	 * @param   string $domain
+	 * @return  void
+	 */
+	public function register_text_domain( $domain ){
+		load_plugin_textdomain(
+			$domain,
+			FALSE,
+			JM_TC_DIR  . '/languages'
+		);
+	}
 }

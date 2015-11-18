@@ -1,5 +1,6 @@
 <?php
 namespace TokenToMe\TwitterCards;
+use TokenToMe\TwitterCards\Singleton;
 
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -9,17 +10,22 @@ if ( ! function_exists( 'add_action' ) ) {
 
 
 class Markup {
+
+	use Singleton;
+
 	/**
 	 * Options
 	 * @var array
 	 */
 	protected $opts = array();
 
+	private function __construct() {}
+
 	/**
 	 * Constructor
 	 * @since 5.3.2
 	 */
-	function __construct() {
+	public function init() {
 
 		$this->opts = \jm_tc_get_options();
 		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
@@ -45,7 +51,8 @@ class Markup {
 
 	public function add_markup() {
 
-		$options = new \TokenToMe\TwitterCards\Admin\Options;
+		$options = Admin\Options::get_instance();
+		$options->init();
 
 		if ( is_singular()
 		     && ! is_front_page()

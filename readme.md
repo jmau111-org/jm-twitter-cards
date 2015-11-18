@@ -21,6 +21,9 @@ composer install
 
 ## Changelog ##
 
+### 7.0.1
+* get_instance()
+
 ### 7.0
 * 11 Nov 2015
 * composer, namespace and simplification
