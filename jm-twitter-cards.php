@@ -85,7 +85,6 @@ class JM_TC_Loading {
 	 * Constructor. Intentionally left empty and public.
 	 *
 	 * @see plugin_setup()
-	 * @since 2012.09.12
 	 */
 	public function __construct() {}
 	/**
@@ -98,7 +97,7 @@ class JM_TC_Loading {
 		load_plugin_textdomain(
 			$domain,
 			FALSE,
-			JM_TC_DIR  . '/languages'
+			plugin_basename( dirname( __FILE__ ) ) . '/languages'
 		);
 	}
 }
