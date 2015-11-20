@@ -17,6 +17,7 @@ class Options {
 	 * @var array
 	 */
 	protected $opts = array();
+	protected $post_ID;
 
 	public function __construct( $post_ID ) {
 		$this->post_ID = $post_ID;
@@ -28,7 +29,7 @@ class Options {
 	 *
 	 * @return null|string|void
 	 */
-	public function get_seo_plugin_datas(  $type ) {
+	public function get_seo_plugin_datas( $type ) {
 
 		$aioseop_title           = get_post_meta( $this->post_ID, '_aioseop_title', true );
 		$aioseop_description     = get_post_meta( $this->post_ID, '_aioseop_description', true );

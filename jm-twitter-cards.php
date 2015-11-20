@@ -68,15 +68,16 @@ class JM_TC_Loading {
 	 */
 	public function plugin_setup() {
 		$this->register_text_domain( 'jm-tc' );
+		global $post;
 
 		if ( is_admin() ) {
 			new TokenToMe\TwitterCards\Admin\Main();
 			new TokenToMe\TwitterCards\Admin\ImportExport();
-			new TokenToMe\TwitterCards\Admin\Options();
 			new TokenToMe\TwitterCards\Admin\Meta_Box();
 		} else {
 			new TokenToMe\TwitterCards\Thumbs();
-			new TokenToMe\TwitterCards\Markup();
+			$markup = new TokenToMe\TwitterCards\MarkupFactory( (int) $post->ID );
+			$markup->createMarkup();
 		}
 	}
 	/**
