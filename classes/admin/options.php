@@ -176,7 +176,7 @@ class Options {
 		$image = $this->opts['twitterImage'];
 
 		if ( '' !== get_the_post_thumbnail( $this->post_ID ) ) {
-			$image = $cardImage;
+			$image = wp_get_attachment_url( (int) $cardImage );
 			if ( empty( $cardImage ) ) {
 				$size             = Thumbs::thumbnail_sizes();
 				$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
