@@ -71,9 +71,6 @@ class Options {
 	public function card_type() {
 
 		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
-
-		var_dump( $this->post_ID, $cardTypePost );
-
 		$cardType = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
 
 		return array( 'card' => apply_filters( 'jm_tc_card_type', $cardType ) );
