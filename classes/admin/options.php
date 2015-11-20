@@ -1,6 +1,5 @@
 <?php
 namespace TokenToMe\TwitterCards\Admin;
-use TokenToMe\TwitterCards\Singleton;
 use TokenToMe\TwitterCards\Utilities;
 use TokenToMe\TwitterCards\Thumbs;
 
@@ -12,8 +11,6 @@ if ( ! function_exists( 'add_action' ) ) {
 
 class Options {
 
-	use Singleton;
-
 	/**
 	 * options
 	 *
@@ -21,35 +18,33 @@ class Options {
 	 */
 	protected $opts = array();
 
-	protected function __construct() {}
-
-	public function init(){
+	public function __construct( $post_ID ) {
+		$this->post_ID = $post_ID;
 		$this->opts = \jm_tc_get_options();
 	}
 
 	/**
-	 * @param bool   $post_ID
 	 * @param string $type
 	 *
 	 * @return null|string|void
 	 */
-	public function get_seo_plugin_datas( $post_ID = false, $type ) {
+	public function get_seo_plugin_datas(  $type ) {
 
-		$aioseop_title           = get_post_meta( $post_ID, '_aioseop_title', true );
-		$aioseop_description     = get_post_meta( $post_ID, '_aioseop_description', true );
-		$yoast_wpseo_title       = get_post_meta( $post_ID, '_yoast_wpseo_title', true );
-		$yoast_wpseo_description = get_post_meta( $post_ID, '_yoast_wpseo_metadesc', true );
+		$aioseop_title           = get_post_meta( $this->post_ID, '_aioseop_title', true );
+		$aioseop_description     = get_post_meta( $this->post_ID, '_aioseop_description', true );
+		$yoast_wpseo_title       = get_post_meta( $this->post_ID, '_yoast_wpseo_title', true );
+		$yoast_wpseo_description = get_post_meta( $this->post_ID, '_yoast_wpseo_metadesc', true );
 
 		$title = the_title_attribute( array( 'echo' => false ) );
-		$desc  = Utilities::get_excerpt_by_id( $post_ID );
+		$desc  = Utilities::get_excerpt_by_id( $this->post_ID );
 
 		if ( class_exists( 'WPSEO_Frontend' ) ) {
 			$title = ! empty( $yoast_wpseo_title ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : the_title_attribute( array( 'echo' => false ) );
-			$desc  = ! empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : Utilities::get_excerpt_by_id( $post_ID );
+			$desc  = ! empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
 
 		} elseif ( class_exists( 'All_in_One_SEO_Pack' ) ) {
 			$title = ! empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false ) );
-			$desc  = ! empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : Utilities::get_excerpt_by_id( $post_ID );
+			$desc  = ! empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
 		}
 
 		switch ( $type ) {
@@ -69,13 +64,12 @@ class Options {
 
 
 	/**
-	 * @param bool $post_ID
 	 *
 	 * @return array
 	 */
-	public function card_type( $post_ID = false ) {
+	public function card_type() {
 
-		$cardTypePost = get_post_meta( $post_ID, 'twitterCardType', true );
+		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
 
 		$cardType = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
 
@@ -84,13 +78,12 @@ class Options {
 
 	/**
 	 * @param bool $post_author
-	 * @param bool $post_ID
 	 *
 	 * @return array
 	 */
-	public function creator_username( $post_author = false, $post_ID = false ) {
+	public function creator_username( $post_author = false ) {
 
-		$post_obj    = get_post( $post_ID );
+		$post_obj    = get_post( $this->post_ID );
 		$author_id   = $post_obj->post_author;
 		$cardCreator = '@' . Utilities::remove_at( $this->opts['twitterCreator'] );
 
@@ -120,26 +113,25 @@ class Options {
 
 
 	/**
-	 * @param bool $post_ID
 	 *
 	 * @return array
 	 */
-	public function title( $post_ID = false ) {
+	public function title() {
 
 		$cardTitle = get_bloginfo( 'name' );
 
-		if ( $post_ID ) {
+		if ( $this->post_ID ) {
 
 			$cardTitle = the_title_attribute( array( 'echo' => false ) );
 
 			if ( ! empty( $this->opts['twitterCardTitle'] ) ) {
 
-				$title     = get_post_meta( $post_ID, $this->opts['twitterCardTitle'], true ); // this one is pretty hard to debug ^^
+				$title     = get_post_meta( $this->post_ID, $this->opts['twitterCardTitle'], true ); // this one is pretty hard to debug ^^
 				$cardTitle = ! empty( $title ) ? htmlspecialchars( stripcslashes( $title ) ) : the_title_attribute( array( 'echo' => false ) );
 
 			} elseif ( empty( $this->opts['twitterCardTitle'] ) && ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) ) {
 
-				$cardTitle = $this->get_seo_plugin_datas( $post_ID, 'title' );
+				$cardTitle = $this->get_seo_plugin_datas( 'title' );
 			}
 		}
 
@@ -148,22 +140,21 @@ class Options {
 	}
 
 	/**
-	 * @param bool $post_ID
 	 *
 	 * @return array
 	 */
-	public function description( $post_ID = false ) {
+	public function description() {
 
 		$cardDescription = $this->opts['twitterPostPageDesc'];
-		if ( $post_ID ) {
+		if ( $this->post_ID ) {
 
-			$cardDescription = Utilities::get_excerpt_by_id( $post_ID );
+			$cardDescription = Utilities::get_excerpt_by_id( $this->post_ID );
 
 			if ( ! empty( $this->opts['twitterCardDesc'] ) ) {
-				$desc            = get_post_meta( $post_ID, $this->opts['twitterCardDesc'], true );
-				$cardDescription = ! empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : Utilities::get_excerpt_by_id( $post_ID );
+				$desc            = get_post_meta( $this->post_ID, $this->opts['twitterCardDesc'], true );
+				$cardDescription = ! empty( $desc ) ? htmlspecialchars( stripcslashes( $desc ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
 			} elseif ( empty( $this->opts['twitterCardDesc'] ) && ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) ) {
-				$cardDescription = $this->get_seo_plugin_datas( $post_ID, 'desc' );
+				$cardDescription = $this->get_seo_plugin_datas( 'desc' );
 			}
 		}
 		$cardDescription = Utilities::remove_lb( $cardDescription );
@@ -174,29 +165,28 @@ class Options {
 
 
 	/**
-	 * @param bool $post_ID
 	 *
 	 * @return array|bool
 	 */
-	public function image( $post_ID = false ) {
+	public function image() {
 
-		$cardImage = get_post_meta( $post_ID, 'cardImage', true );
+		$cardImage = get_post_meta( $this->post_ID, 'cardImage', true );
 
 		//fallback
 		$image = $this->opts['twitterImage'];
 
-		if ( '' !== get_the_post_thumbnail( $post_ID ) ) {
+		if ( '' !== get_the_post_thumbnail( $this->post_ID ) ) {
 			$image = $cardImage;
 			if ( empty( $cardImage ) ) {
 				$size             = Thumbs::thumbnail_sizes();
-				$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $post_ID ), $size );
+				$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
 				$image            = reset($image_attributes);
 			}
-		} elseif ( '' === get_the_post_thumbnail( $post_ID ) && ! empty( $cardImage ) ) {
+		} elseif ( '' === get_the_post_thumbnail( $this->post_ID ) && ! empty( $cardImage ) ) {
 			$image = $cardImage;
 		} elseif ( 'attachment' === get_post_type() ) {
-			$image = wp_get_attachment_url( $post_ID );
-		} elseif ( false === $post_ID ) {
+			$image = wp_get_attachment_url( $this->post_ID );
+		} elseif ( false === $this->post_ID ) {
 			$image = $this->opts['twitterImage'];
 		}
 
@@ -205,26 +195,25 @@ class Options {
 	}
 
 	/**
-	 * @param $post_ID
 	 *
 	 * @return array|bool
 	 */
-	public function player( $post_ID ) {
+	public function player() {
 
-		$cardType = apply_filters( 'jm_tc_card_type', get_post_meta( $post_ID, 'twitterCardType', true ) );
+		$cardType = apply_filters( 'jm_tc_card_type', get_post_meta( $this->post_ID, 'twitterCardType', true ) );
 
 		if ( 'player' === $cardType ) {
 
-			$playerUrl       = get_post_meta( $post_ID, 'cardPlayer', true );
-			$playerStreamUrl = get_post_meta( $post_ID, 'cardPlayerStream', true );
-			$playerWidth     = get_post_meta( $post_ID, 'cardPlayerWidth', true );
-			$playerHeight    = get_post_meta( $post_ID, 'cardPlayerHeight', true );
-			$playerCodec     = get_post_meta( $post_ID, 'cardPlayerCodec', true );
+			$playerUrl       = get_post_meta( $this->post_ID, 'cardPlayer', true );
+			$playerStreamUrl = get_post_meta( $this->post_ID, 'cardPlayerStream', true );
+			$playerWidth     = get_post_meta( $this->post_ID, 'cardPlayerWidth', true );
+			$playerHeight    = get_post_meta( $this->post_ID, 'cardPlayerHeight', true );
+			$playerCodec     = get_post_meta( $this->post_ID, 'cardPlayerCodec', true );
 			$player          = array();
 
 			//Player
 			if ( empty( $playerUrl ) ) {
-				return self::error( __( 'Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc' ) );
+				return $this->error( __( 'Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc' ) );
 			}
 
 			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl );
@@ -256,31 +245,15 @@ class Options {
 
 
 	/**
-	 * @param bool $post_ID
 	 *
 	 * @return array|bool
 	 */
-	public function card_dim( $post_ID = false ) {
+	public function card_dim( ) {
 
-		$cardTypePost = get_post_meta( $post_ID, 'twitterCardType', true );
-		$cardWidth    = get_post_meta( $post_ID, 'cardImageWidth', true );
-		$cardHeight   = get_post_meta( $post_ID, 'cardImageHeight', true );
+		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
 		$type         = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
 
 		if ( in_array( $type, array( 'summary_large_image', 'player' ) ) ) {
-
-			$width  = ( ! empty( $cardWidth ) ) ? $cardWidth : $this->opts['twitterImageWidth'];
-			$height = ( ! empty( $cardHeight ) ) ? $cardHeight : $this->opts['twitterImageHeight'];
-
-			$width  = apply_filters( 'jm_tc_image_width', $width );
-			$height = apply_filters( 'jm_tc_image_height', $height );
-
-			return array(
-				'image:width'  => $width,
-				'image:height' => $height,
-			);
-
-		} elseif ( in_array( $type, array( 'summary_large_image', 'player' ) ) && ! $post_ID ) {
 
 			return array(
 				'image:width'  => $this->opts['twitterCardWidth'],

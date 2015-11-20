@@ -72,13 +72,11 @@ class JM_TC_Loading {
 		if ( is_admin() ) {
 			new TokenToMe\TwitterCards\Admin\Main();
 			new TokenToMe\TwitterCards\Admin\ImportExport();
-			$options = TokenToMe\TwitterCards\Admin\Options::get_instance();
-			$options->init();
+			new TokenToMe\TwitterCards\Admin\Options();
 			new TokenToMe\TwitterCards\Admin\Meta_Box();
 		} else {
 			new TokenToMe\TwitterCards\Thumbs();
-			$markup = TokenToMe\TwitterCards\Markup::get_instance();
-			$markup->init();
+			new TokenToMe\TwitterCards\Markup();
 		}
 	}
 	/**

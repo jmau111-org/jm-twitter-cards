@@ -1,6 +1,5 @@
 <?php
 namespace TokenToMe\TwitterCards;
-use TokenToMe\TwitterCards\Singleton;
 
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -11,23 +10,17 @@ if ( ! function_exists( 'add_action' ) ) {
 
 class Markup {
 
-	use Singleton;
-
 	/**
 	 * Options
 	 * @var array
 	 */
 	protected $opts = array();
+	protected $options;
 
-	private function __construct() {}
-
-	/**
-	 * Constructor
-	 * @since 5.3.2
-	 */
-	public function init() {
+	public function __construct( Admin\Options $options ) {
 
 		$this->opts = \jm_tc_get_options();
+		$this->options = $options;
 		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
 
 	}
@@ -51,9 +44,6 @@ class Markup {
 
 	public function add_markup() {
 
-		$options = Admin\Options::get_instance();
-		$options->init();
-
 		if ( is_singular()
 		     && ! is_front_page()
 		     && ! is_home()
@@ -67,17 +57,17 @@ class Markup {
 			$this->html_comments();
 
 			/* most important meta */
-			$this->display( $options->card_type( $post_ID ) );
-			$this->display( $options->creator_username( true ) );
-			$this->display( $options->site_username() );
-			$this->display( $options->title( $post_ID ) );
-			$this->display( $options->description( $post_ID ) );
-			$this->display( $options->image( $post_ID ) );
+			$this->display( $this->options->card_type( $post_ID ) );
+			$this->display( $this->options->creator_username( true ) );
+			$this->display( $this->options->site_username() );
+			$this->display( $this->options->title( $post_ID ) );
+			$this->display( $this->options->description( $post_ID ) );
+			$this->display( $this->options->image( $post_ID ) );
 
 			/* secondary meta */
-			$this->display( $options->card_dim( $post_ID ) );
-			$this->display( $options->player( $post_ID ) );
-			$this->display( $options->deep_linking() );
+			$this->display( $this->options->card_dim( $post_ID ) );
+			$this->display( $this->options->player( $post_ID ) );
+			$this->display( $this->options->deep_linking() );
 
 			$this->html_comments( true );
 		}
@@ -86,14 +76,14 @@ class Markup {
 
 			$this->html_comments();
 
-			$this->display( $options->card_type() );
-			$this->display( $options->site_username() );
-			$this->display( $options->creator_username() );
-			$this->display( $options->title() );
-			$this->display( $options->description() );
-			$this->display( $options->image() );
-			$this->display( $options->card_dim() );
-			$this->display( $options->deep_linking() );
+			$this->display( $this->options->card_type() );
+			$this->display( $this->options->site_username() );
+			$this->display( $this->options->creator_username() );
+			$this->display( $this->options->title() );
+			$this->display( $this->options->description() );
+			$this->display( $this->options->image() );
+			$this->display( $this->options->card_dim() );
+			$this->display( $this->options->deep_linking() );
 
 			$this->html_comments( true );
 		}
