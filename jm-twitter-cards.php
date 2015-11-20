@@ -68,7 +68,6 @@ class JM_TC_Loading {
 	 */
 	public function plugin_setup() {
 		$this->register_text_domain( 'jm-tc' );
-		global $post;
 
 		if ( is_admin() ) {
 			new TokenToMe\TwitterCards\Admin\Main();
@@ -76,8 +75,6 @@ class JM_TC_Loading {
 			new TokenToMe\TwitterCards\Admin\Meta_Box();
 		} else {
 			new TokenToMe\TwitterCards\Thumbs();
-			$markup = new TokenToMe\TwitterCards\MarkupFactory( (int) $post->ID );
-			$markup->createMarkup();
 		}
 	}
 	/**
@@ -85,7 +82,18 @@ class JM_TC_Loading {
 	 *
 	 * @see plugin_setup()
 	 */
-	public function __construct() {}
+	public function __construct() {
+		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
+	}
+
+	public function add_markup(){
+		if ( ! is_404() && ! is_tag() && ! is_tax() && ! is_category() ) {
+			global $post;
+			$markup = new TokenToMe\TwitterCards\MarkupFactory();
+			$markup->createMarkup( $post->ID )->add_markup();
+		}
+	}
+
 	/**
 	 * Loads translations
 	 *

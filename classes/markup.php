@@ -15,14 +15,11 @@ class Markup {
 	 */
 	protected $opts    = array();
 	protected $options = array();
-	protected $post_ID;
 
-	public function __construct( Admin\Options $post_ID  ) {
+	public function __construct( Admin\Options $options ) {
 
-		$this->post_ID = $post_ID;
-
+		$this->options = $options;
 		$this->opts = \jm_tc_get_options();
-		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
 	}
 
 	/**
@@ -44,25 +41,22 @@ class Markup {
 
 	public function add_markup() {
 
-		if ( ( is_singular() || is_front_page() || is_home() ) && ! is_404() && ! is_tag() ) {
+		$this->html_comments();
 
-			$this->html_comments();
+		/* most important meta */
+		$this->display( $this->options->card_type() );
+		$this->display( $this->options->creator_username( true ) );
+		$this->display( $this->options->site_username() );
+		$this->display( $this->options->title() );
+		$this->display( $this->options->description() );
+		$this->display( $this->options->image() );
 
-			/* most important meta */
-			$this->display( $this->post_ID->card_type() );
-			$this->display( $this->post_ID->creator_username( true ) );
-			$this->display( $this->post_ID->site_username() );
-			$this->display( $this->post_ID->title() );
-			$this->display( $this->post_ID->description() );
-			$this->display( $this->post_ID->image() );
+		/* secondary meta */
+		$this->display( $this->options->card_dim() );
+		$this->display( $this->options->player() );
+		$this->display( $this->options->deep_linking() );
 
-			/* secondary meta */
-			$this->display( $this->post_ID->card_dim() );
-			$this->display( $this->post_ID->player() );
-			$this->display( $this->post_ID->deep_linking() );
-
-			$this->html_comments( true );
-		}
+		$this->html_comments( true );
 	}
 
 	/**
