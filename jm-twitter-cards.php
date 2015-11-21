@@ -72,13 +72,9 @@ class JM_TC_Loading {
 		if ( is_admin() ) {
 			new TokenToMe\TwitterCards\Admin\Main();
 			new TokenToMe\TwitterCards\Admin\ImportExport();
-			$options = TokenToMe\TwitterCards\Admin\Options::get_instance();
-			$options->init();
 			new TokenToMe\TwitterCards\Admin\Meta_Box();
 		} else {
 			new TokenToMe\TwitterCards\Thumbs();
-			$markup = TokenToMe\TwitterCards\Markup::get_instance();
-			$markup->init();
 		}
 	}
 	/**
@@ -86,7 +82,17 @@ class JM_TC_Loading {
 	 *
 	 * @see plugin_setup()
 	 */
-	public function __construct() {}
+	public function __construct() {
+		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
+	}
+
+	public function add_markup(){
+		if ( ! is_404() && ! is_tag() && ! is_tax() && ! is_category() ) {
+			$markup = new TokenToMe\TwitterCards\MarkupFactory();
+			$markup->createMarkup( get_queried_object_id() )->add_markup();
+		}
+	}
+
 	/**
 	 * Loads translations
 	 *
