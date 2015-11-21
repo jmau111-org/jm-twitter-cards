@@ -65,7 +65,6 @@ class Options {
 
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function card_type() {
@@ -113,7 +112,6 @@ class Options {
 
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function title() {
@@ -140,7 +138,6 @@ class Options {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function description() {
@@ -165,7 +162,6 @@ class Options {
 
 
 	/**
-	 *
 	 * @return array|bool
 	 */
 	public function image() {
@@ -175,18 +171,15 @@ class Options {
 		//fallback
 		$image = $this->opts['twitterImage'];
 
-		if ( '' !== get_the_post_thumbnail( $this->post_ID ) ) {
+		if ( $this->post_ID && empty( $cardImage ) && has_post_thumbnail( $this->post_ID ) ) {
+			$size             = Thumbs::thumbnail_sizes();
+			$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
+			$image            = reset($image_attributes);
+		} elseif ( ! empty( $cardImage ) ) {
 			$image = wp_get_attachment_url( (int) $cardImage );
-			if ( empty( $cardImage ) ) {
-				$size             = Thumbs::thumbnail_sizes();
-				$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
-				$image            = reset($image_attributes);
-			}
-		} elseif ( '' === get_the_post_thumbnail( $this->post_ID ) && ! empty( $cardImage ) ) {
-			$image = $cardImage;
 		} elseif ( 'attachment' === get_post_type() ) {
 			$image = wp_get_attachment_url( $this->post_ID );
-		} elseif ( false === $this->post_ID ) {
+		} elseif ( empty( $this->post_ID ) ) {
 			$image = $this->opts['twitterImage'];
 		}
 
@@ -195,7 +188,6 @@ class Options {
 	}
 
 	/**
-	 *
 	 * @return array|bool
 	 */
 	public function player() {
