@@ -62,4 +62,14 @@ class Utilities {
 		return esc_attr( substr( $the_excerpt, 0, 200 ) ); // to prevent meta from being broken by e.g ""
 	}
 
+	/**
+	 * Allows us to get post types we want
+	 * and make some show/hide
+	 * @return array
+	 */
+	public static function get_post_types(){
+		$cpts = get_option( 'jm_tc_cpt' );
+		return empty( $cpts['twitterCardPt'] ) ? get_post_types( array( 'public' => true ) ) : array_values( $cpts['twitterCardPt'] );
+	}
+
 }

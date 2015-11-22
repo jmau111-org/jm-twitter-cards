@@ -1,6 +1,8 @@
 <?php
 namespace TokenToMe\TwitterCards\Admin;
 
+use TokenToMe\TwitterCards\Utilities;
+
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -18,16 +20,6 @@ class Meta_Box{
 	}
 
 	/**
-	 * Allows us to get post types we want
-	 * and make some show/hide
-	 * @return array
-	 */
-	public function get_post_types(){
-		$cpts = get_option( 'jm_tc_cpt' );
-		return empty( $cpts['twitterCardPt'] ) ? get_post_types( array( 'public' => true ) ) : array_values( $cpts['twitterCardPt'] );
-	}
-
-	/**
 	 * @param $meta_boxes
 	 *
 	 * @return array
@@ -40,7 +32,7 @@ class Meta_Box{
 			// Meta box title - Will appear at the drag and drop handle bar. Required.
 			'title'      => __( 'Twitter Cards', 'jm-tc' ),
 			// Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
-			'post_types' => $this->get_post_types(),
+			'post_types' => Utilities::get_post_types(),
 			// Where the meta box appear: normal (default), advanced, side. Optional.
 			'context'    => 'normal',
 			// Order of meta box: high (default), low. Optional.

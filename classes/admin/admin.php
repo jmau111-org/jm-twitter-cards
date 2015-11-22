@@ -207,7 +207,7 @@ class Main {
 			'jm_tc_cpt' => array(
 				array(
 					'name'    => 'twitterCardPt',
-					'label'   => __( 'Select' ),
+					'label'   => __( 'Add or hide the meta box', 'jm-tc' ),
 					'desc'    => __( 'Default' ) . ': ' . __( 'All' ),
 					'type'    => 'multicheck',
 					'options' => $this->get_post_types()
