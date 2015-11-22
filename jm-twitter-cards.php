@@ -67,7 +67,6 @@ class JM_TC_Loading {
 	 * @return  void
 	 */
 	public function plugin_setup() {
-		$this->register_text_domain( 'jm-tc' );
 
 		if ( is_admin() ) {
 			new TokenToMe\TwitterCards\Admin\Main();
@@ -84,8 +83,20 @@ class JM_TC_Loading {
 	 */
 	public function __construct() {
 		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
+		add_action( 'init', array( $this, 'on_init' ), 1 );
 	}
 
+	/**
+	 * Everything that triggers on this hook
+	 * init
+	 */
+	public function on_init(){
+		$this->register_text_domain( 'jm-tc' );
+	}
+
+	/**
+	 * Add specific markup
+	 */
 	public function add_markup(){
 		if ( ! is_404() && ! is_tag() && ! is_tax() && ! is_category() ) {
 			$markup = new TokenToMe\TwitterCards\MarkupFactory();
