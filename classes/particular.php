@@ -1,7 +1,8 @@
 <?php
 namespace TokenToMe\TwitterCards;
+use TokenToMe\TwitterCards\Admin\Init;
 
-if ( ! defined( 'JM_TC_VERSION' ) ) {
+if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
@@ -55,7 +56,7 @@ class Particular {
 	public function new_blog( $blog_id ) {
 		switch_to_blog( $blog_id );
 
-		\TokenToMe\TwitterCards\Admin\Init::on_activation();
+		Init::on_activation();
 
 		restore_current_blog();
 	}
@@ -82,7 +83,6 @@ class Particular {
 	 */
 	function modify_excerpt() {
 		global $post;
-
 		return $this->get_excerpt_from_far_far_away( $post->ID );
 	}
 
