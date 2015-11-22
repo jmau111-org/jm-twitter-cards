@@ -37,7 +37,16 @@ define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
  * Autoload this !
  */
 require_once ( JM_TC_DIR . 'vendor/autoload.php' );
-require_once ( JM_TC_DIR . 'vendor/rilwis/meta-box/meta-box.php' );
+
+
+/**
+ * A lot of themes and plugins
+ * are using this framework
+ * probably better to check this before
+ */
+if ( ! function_exists( 'rwmb_register_meta_boxes' ) ) {
+	require_once ( JM_TC_DIR . 'vendor/rilwis/meta-box/meta-box.php' );
+}
 
 register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
 
