@@ -98,7 +98,7 @@ class JM_TC_Loading {
 	 * Add specific markup
 	 */
 	public function add_markup(){
-		if ( ! is_404() && ! is_tag() && ! is_tax() && ! is_category() ) {
+		if ( ! is_404() && ! is_tag() && is_archive() && ! is_tax() && ! is_category() ) {
 			$markup = new TokenToMe\TwitterCards\MarkupFactory();
 			$markup->createMarkup( get_queried_object_id() )->add_markup();
 		}
