@@ -61,7 +61,6 @@ class Meta_Box{
 						'summary'             => __( 'Summary', 'jm-tc' ),
 						'summary_large_image' => __( 'Summary below Large Image', 'jm-tc' ),
 						'player'              => __( 'Player', 'jm-tc' ),
-						'app'                 => __( 'Application', 'jm-tc' )
 					),
 					'std'     => $this->opts['twitterCardType'],
 
