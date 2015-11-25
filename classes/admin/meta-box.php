@@ -16,7 +16,22 @@ class Meta_Box{
 	 */
 	public function __construct() {
 		add_filter( 'rwmb_meta_boxes', array( $this, 'register_metaboxes' ) );
+		add_filter( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		$this->opts = \jm_tc_get_options();
+	}
+
+	/**
+	 * Add some js
+	 * for metabox
+	 * no need to show all fields if not player
+	 */
+	public function admin_enqueue_scripts(){
+
+		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array(), JM_TC_VERSION, true );
+
+		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
+			wp_enqueue_script( 'jm-tc-metabox' );
+		}
 	}
 
 	/**
@@ -39,18 +54,6 @@ class Meta_Box{
 			'priority'   => 'high',
 			// Auto save: true, false (default). Optional.
 			'autosave'   => true,
-			'tabs'       => array(
-				'summary' => array(
-					'label' => __( 'Summary', 'jm-tc' ) . ' / ' . __( 'Summary below Large Image', 'jm-tc' ),
-				),
-				'app'     => array(
-					'label' => __( 'Application', 'jm-tc' ),
-				),
-				'player'  => array(
-					'label' => __( 'Player', 'jm-tc' ),
-				),
-			),
-			'tab_style'  => 'default',
 			// List of meta fields
 			'fields'     => array(
 				array(

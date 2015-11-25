@@ -32,6 +32,7 @@ or die( 'No direct load !' );
 // Constantly constant
 define( 'JM_TC_VERSION', '7.0.1' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
+define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Autoload this !
