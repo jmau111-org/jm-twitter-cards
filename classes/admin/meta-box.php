@@ -71,7 +71,7 @@ class Meta_Box{
 				array(
 					'id'   => 'cardImage',
 					'name' => __( 'Set another source as twitter image (enter URL)', 'jm-tc' ),
-					'type' => 'file',
+					'type' => 'file_input',
 					'max_file_uploads' => 1,
 				),
 				array(
