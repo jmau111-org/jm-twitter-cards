@@ -235,28 +235,6 @@ class Options {
 		return false;
 	}
 
-
-	/**
-	 *
-	 * @return array|bool
-	 */
-	public function card_dim( ) {
-
-		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
-		$type         = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
-
-		if ( in_array( $type, array( 'summary_large_image', 'player' ) ) ) {
-
-			return array(
-				'image:width'  => $this->opts['twitterCardWidth'],
-				'image:height' => $this->opts['twitterCardHeight'],
-			);
-		}
-
-		return false;
-	}
-
-
 	/**
 	 * @return array
 	 */
