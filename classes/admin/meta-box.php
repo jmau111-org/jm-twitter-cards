@@ -1,6 +1,6 @@
 <?php
 namespace TokenToMe\TwitterCards\Admin;
-
+use TokenToMe\TwitterCards\Factory;
 use TokenToMe\TwitterCards\Utilities;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -28,10 +28,19 @@ class Meta_Box{
 	public function admin_enqueue_scripts(){
 
 		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array(), JM_TC_VERSION, true );
+		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.css', array(), JM_TC_VERSION );
 
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
 			wp_enqueue_script( 'jm-tc-metabox' );
+			wp_enqueue_style( 'jm-tc-preview' );
 		}
+	}
+
+	/**
+	 * @return int
+	 */
+	public static function get_post_id() {
+		return isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0;
 	}
 
 	/**
@@ -40,6 +49,9 @@ class Meta_Box{
 	 * @return array
 	 */
 	public function register_metaboxes( $meta_boxes ) {
+
+		$factory = new Factory();
+		$preview = $factory->createPreview( self::get_post_id() );
 
 		$meta_boxes[] = array(
 			// Meta box id, UNIQUE per meta box. Optional since 4.1.5
@@ -56,6 +68,12 @@ class Meta_Box{
 			'autosave'   => true,
 			// List of meta fields
 			'fields'     => array(
+				array(
+					'name'    => __( 'Preview', 'jm-tc' ),
+					'id'      => 'twitterCardPreview',
+					'type'    => 'custom_html',
+					'std'     => $preview->generate_preview(),
+				),
 				array(
 					'name'    => __( 'Card Type', 'jm-tc' ),
 					'id'      => 'twitterCardType',
