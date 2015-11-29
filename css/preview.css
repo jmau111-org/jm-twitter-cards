@@ -7,17 +7,21 @@
     border: 1px solid #dbdbdb;
     border-radius: 5px;
 }
+
 .tc-preview .u-pullLeft {
     float: left!important;
 }
+
 .tc-preview .u-pullRight {
     float: right!important;
 }
+
 .tc-preview .tc-author {
     position: relative;
     margin-right: 75px;
     margin-bottom: 10px;
 }
+
 .tc-preview .tc-author-name {
     margin-right: 4px;
     font-size: 14px;
@@ -40,21 +44,28 @@
     border-radius: 4px;
 }
 
+.tc-preview .tc-summary {
+    display: table;
+}
 .tc-preview .summary-img {
-    width:  calc(50% - 8.81667em - 1px);
-    display: block;
-    float:left;
+    width: 30%;
 }
-
 .tc-preview .summary-content{
-
+    width: 70%;
 }
-.tc-preview .tc-img {
-    max-width: 100%
+
+.tc-preview .tc-summary-img-container, .tc-preview .summary-content{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.tc-preview .tc-text, .tc-preview .tc-img {
+    width: 100%;
+    display: block;
 }
 
 .tc-preview .tc-title {
-
+    font-size: 1.5em;
     max-height: 1.3em;
     white-space: nowrap;
     overflow: hidden;
@@ -77,13 +88,10 @@
 .tc-preview .tc-container {
     cursor: pointer;
     outline-offset: -1px;
-    transition: background-color .15s ease-in-out,
-    border-color .15s ease-in-out;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
     text-decoration: none;
     border-radius: .42857em;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #E1E8ED;
+    border: 1px solid #E1E8ED;
     box-sizing: border-box;
     color: inherit!important;
     overflow: hidden;

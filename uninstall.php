@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) && ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 
 delete_option( 'jm_tc' );
+delete_option( 'jm_tc_cpt' );
 
 
 /**
