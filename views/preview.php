@@ -6,18 +6,21 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-$a = esc_url( get_avatar_url( get_avatar( null, 36 ) ) );
+$type = $this->options->card_type();
+$title = $this->options->title();
+$desc = $this->options->description();
+$image = $this->options->image();
 
-if ( ! is_array( $this->options->card_type() ) || ! is_array( $this->options->title() ) || ! is_array( $this->options->description() ) || ! is_array( $this->options->image() ) ) {
+if ( ! is_array( $type ) || ! is_array( $title ) || ! is_array( $desc ) || ! is_array( $image ) ) {
 	$preview .= '';
 
 	return;
 }
 
-$type   = reset( $this->options->card_type() );
-$title  = reset( $this->options->title() );
-$desc   = reset( $this->options->description() );
-$image  = reset( $this->options->image() );
+$type   = reset( $type );
+$title  = reset( $title );
+$desc   = reset( $desc );
+$image  = reset( $image );
 $domain = $_SERVER['HTTP_HOST'];
 $avatar = get_avatar_url( get_avatar( null, 36 ) );
 $style  = 'summary' === $type ? 'style="background-image:url( ' . esc_url( $image ) . ');"' : '';
