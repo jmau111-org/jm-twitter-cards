@@ -101,7 +101,6 @@ class Meta_Box{
 					'id'   => 'cardPlayer',
 					'name' => __( 'URL of iFrame player (MUST BE HTTPS)', 'jm-tc' ),
 					'type' => 'url',
-					'tab'  => 'player',
 
 				),
 				array(
@@ -111,7 +110,6 @@ class Meta_Box{
 					'desc' => __( 'When setting this, make sure player dimension and image dimensions are exactly the same! Image MUST BE greater than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image)', 'jm-tc' ),
 					'min'  => 262,
 					'max'  => 1000,
-					'tab'  => 'player',
 				),
 				array(
 					'name' => __( 'Player height', 'jm-tc' ),
@@ -119,21 +117,18 @@ class Meta_Box{
 					'type' => 'number',
 					'min'  => 196,
 					'max'  => 1000,
-					'tab'  => 'player',
 				),
 				array(
 					'id'   => 'cardPlayerStream',
 					'name' => __( 'URL of iFrame player (MUST BE HTTPS)', 'jm-tc' ) . '[STREAM]',
 					'type' => 'url',
 					'desc' => __( 'If you do not understand what is the following field then it is probably a bad idea to fulfill it!', 'jm-tc' ),
-					'tab'  => 'player',
 				),
 				array(
 					'id'   => 'cardPlayerCodec',
 					'name' => __( 'Codec', 'jm-tc' ),
 					'type' => 'text',
 					'desc' => __( 'If you do not understand what is the following field then it is probably a bad idea to fulfill it!', 'jm-tc' ),
-					'tab'  => 'player',
 				),
 			),
 		);
