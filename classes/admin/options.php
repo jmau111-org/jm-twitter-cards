@@ -87,7 +87,7 @@ class Options {
 
 			//to be modified or left with the value 'jm_tc_twitter'
 
-			$cardUsernameKey = $this->opts['twitterUsernameKey'];
+			$cardUsernameKey = ! empty( $this->opts['twitterUsernameKey'] ) ? $this->opts['twitterUsernameKey'] : 'jm_tc_twitter';
 			$cardCreator     = get_the_author_meta( $cardUsernameKey, $author_id );
 
 			$cardCreator = ( ! empty( $cardCreator ) ) ? $cardCreator : $this->opts['twitterCreator'];
