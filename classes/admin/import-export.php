@@ -35,16 +35,13 @@ class ImportExport {
 			return;
 		}
 
-		$settings = array(
-			'tc' => get_option( 'jm_tc' ),
-			'ie' => get_option( 'jm_tc_cpt'),
-			);
+		$settings = array( 'tc' => (array) get_option( 'jm_tc' ), 'ie' => (array) get_option( 'jm_tc_cpt'), );
 
 		ignore_user_abort( true );
 
 		nocache_headers();
 		header( 'Content-Type: application/json; charset=utf-8' );
-		header( 'Content-Disposition: attachment; filename=jm-twitter-cards-settings-export-' . date( 'Y-m-d' ) . '.json' );
+		header( 'Content-Disposition: attachment; filename=jm-twitter-cards-settings-export-' . strtotime( 'now' ) . '.json' );
 		header( 'Expires: 0' );
 
 		echo json_encode( $settings );
@@ -81,11 +78,18 @@ class ImportExport {
 			wp_die( __( 'Please upload a file to import', 'jm-tc' ) );
 		}
 
-		// Retrieve the settings from the file and convert the json object to an array.
-		$settings = (array) json_decode( file_get_contents( $import_file ) );
+		/**
+		 * array associative
+		 *
+		 */
+		$settings = (array) json_decode( file_get_contents( $import_file ), true );
 
-		update_option( 'jm_tc', $settings['tc'] );
-		update_option( 'jm_tc_cpt', $settings['ie'] );
+		if ( ! empty( $settings['tc'] ) ) {
+			update_option( 'jm_tc', (array) $settings['tc'] );
+		}
+		if ( ! empty( $settings['ie'] ) ) {
+			update_option( 'jm_tc_cpt',(array) $settings['ie'] );
+		}
 
 		wp_safe_redirect( admin_url( 'admin.php?page=jm_tc' ) );
 		exit;
