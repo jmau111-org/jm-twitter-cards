@@ -25,9 +25,9 @@ class Options {
 	}
 
 	/**
-	 * @param string $type
+	 * @param $type
 	 *
-	 * @return null|string|void
+	 * @return string|void
 	 */
 	public function get_seo_plugin_datas( $type ) {
 
@@ -36,11 +36,11 @@ class Options {
 		$yoast_wpseo_title       = get_post_meta( $this->post_ID, '_yoast_wpseo_title', true );
 		$yoast_wpseo_description = get_post_meta( $this->post_ID, '_yoast_wpseo_metadesc', true );
 
-		$title = the_title_attribute( array( 'echo' => false ) );
+		$title = get_the_title( $this->post_ID );
 		$desc  = Utilities::get_excerpt_by_id( $this->post_ID );
 
 		if ( class_exists( 'WPSEO_Frontend' ) ) {
-			$title = ! empty( $yoast_wpseo_title ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : the_title_attribute( array( 'echo' => false ) );
+			$title = ! empty( $yoast_wpseo_title ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : get_the_title( $this->post_ID );
 			$desc  = ! empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
 
 		} elseif ( class_exists( 'All_in_One_SEO_Pack' ) ) {
@@ -50,17 +50,14 @@ class Options {
 
 		switch ( $type ) {
 			case 'title' :
-				$data = $title;
+				return $title;
 				break;
 			case 'desc' :
-				$data = $desc;
+				return $desc;
 				break;
 			default:
-				$data = $title;
+				return $title;
 		}
-
-		return $data;
-
 	}
 
 
@@ -120,19 +117,16 @@ class Options {
 
 		if ( $this->post_ID ) {
 
-			$cardTitle = the_title_attribute( array( 'echo' => false ) );
+			$cardTitle = get_the_title( $this->post_ID );
 
 			if ( ! empty( $this->opts['twitterCardTitle'] ) ) {
-
 				$title     = get_post_meta( $this->post_ID, $this->opts['twitterCardTitle'], true ); // this one is pretty hard to debug ^^
-				$cardTitle = ! empty( $title ) ? htmlspecialchars( stripcslashes( $title ) ) : the_title_attribute( array( 'echo' => false ) );
+				$cardTitle = ! empty( $title ) ? htmlspecialchars( stripcslashes( $title ) ) : get_the_title( $this->post_ID );
 
 			} elseif ( empty( $this->opts['twitterCardTitle'] ) && ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) ) {
-
 				$cardTitle = $this->get_seo_plugin_datas( 'title' );
 			}
 		}
-
 		return array( 'title' => apply_filters( 'jm_tc_get_title', $cardTitle ) );
 
 	}
@@ -234,28 +228,6 @@ class Options {
 
 		return false;
 	}
-
-
-	/**
-	 *
-	 * @return array|bool
-	 */
-	public function card_dim( ) {
-
-		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
-		$type         = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
-
-		if ( in_array( $type, array( 'summary_large_image', 'player' ) ) ) {
-
-			return array(
-				'image:width'  => $this->opts['twitterCardWidth'],
-				'image:height' => $this->opts['twitterCardHeight'],
-			);
-		}
-
-		return false;
-	}
-
 
 	/**
 	 * @return array

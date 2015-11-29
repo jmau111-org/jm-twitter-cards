@@ -1,6 +1,6 @@
 <?php
 namespace TokenToMe\TwitterCards\Admin;
-
+use TokenToMe\TwitterCards\Factory;
 use TokenToMe\TwitterCards\Utilities;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -16,7 +16,31 @@ class Meta_Box{
 	 */
 	public function __construct() {
 		add_filter( 'rwmb_meta_boxes', array( $this, 'register_metaboxes' ) );
+		add_filter( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		$this->opts = \jm_tc_get_options();
+	}
+
+	/**
+	 * Add some js
+	 * for metabox
+	 * no need to show all fields if not player
+	 */
+	public function admin_enqueue_scripts(){
+
+		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.min.js', array(), JM_TC_VERSION, true );
+		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.min.css', array(), JM_TC_VERSION );
+
+		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
+			wp_enqueue_script( 'jm-tc-metabox' );
+			wp_enqueue_style( 'jm-tc-preview' );
+		}
+	}
+
+	/**
+	 * @return int
+	 */
+	public static function get_post_id() {
+		return isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0;
 	}
 
 	/**
@@ -25,6 +49,9 @@ class Meta_Box{
 	 * @return array
 	 */
 	public function register_metaboxes( $meta_boxes ) {
+
+		$factory = new Factory();
+		$preview = $factory->createPreview( self::get_post_id() );
 
 		$meta_boxes[] = array(
 			// Meta box id, UNIQUE per meta box. Optional since 4.1.5
@@ -39,20 +66,14 @@ class Meta_Box{
 			'priority'   => 'high',
 			// Auto save: true, false (default). Optional.
 			'autosave'   => true,
-			'tabs'       => array(
-				'summary' => array(
-					'label' => __( 'Summary', 'jm-tc' ) . ' / ' . __( 'Summary below Large Image', 'jm-tc' ),
-				),
-				'app'     => array(
-					'label' => __( 'Application', 'jm-tc' ),
-				),
-				'player'  => array(
-					'label' => __( 'Player', 'jm-tc' ),
-				),
-			),
-			'tab_style'  => 'default',
 			// List of meta fields
 			'fields'     => array(
+				array(
+					'name'    => __( 'Preview', 'jm-tc' ),
+					'id'      => 'twitterCardPreview',
+					'type'    => 'custom_html',
+					'std'     => $preview->generate_preview(),
+				),
 				array(
 					'name'    => __( 'Card Type', 'jm-tc' ),
 					'id'      => 'twitterCardType',
@@ -68,7 +89,7 @@ class Meta_Box{
 				array(
 					'id'   => 'cardImage',
 					'name' => __( 'Set another source as twitter image (enter URL)', 'jm-tc' ),
-					'type' => 'file',
+					'type' => 'file_input',
 					'max_file_uploads' => 1,
 				),
 				array(

@@ -32,6 +32,7 @@ or die( 'No direct load !' );
 // Constantly constant
 define( 'JM_TC_VERSION', '7.0.1' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
+define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Autoload this !
@@ -108,8 +109,8 @@ class JM_TC_Loading {
 	 */
 	public function add_markup(){
 		if ( ! is_404() && ! is_tag() && ! is_archive() && ! is_tax() && ! is_category() ) {
-			$markup = new TokenToMe\TwitterCards\MarkupFactory();
-			$markup->createMarkup( get_queried_object_id() )->add_markup();
+			$factory = new TokenToMe\TwitterCards\Factory();
+			$factory->createMarkup( get_queried_object_id() )->generate_markup();
 		}
 	}
 

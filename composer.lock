@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c2c8dabeb6f095cbb049527c63fbedf",
+    "hash": "ec9986cfec049bed0daa63f9fcd6a034",
     "content-hash": "1787b4366dea5407a58408cb0dab4b95",
     "packages": [
         {
@@ -111,12 +111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rilwis/meta-box.git",
-                "reference": "3953c67d33080306fe78f68b6828e9239140196c"
+                "reference": "e0c97cb11fd2e6a11a47db0996caa14ea05fcb85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/3953c67d33080306fe78f68b6828e9239140196c",
-                "reference": "3953c67d33080306fe78f68b6828e9239140196c",
+                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/e0c97cb11fd2e6a11a47db0996caa14ea05fcb85",
+                "reference": "e0c97cb11fd2e6a11a47db0996caa14ea05fcb85",
                 "shasum": ""
             },
             "type": "library",
@@ -128,6 +128,8 @@
                     "inc/fields",
                     "inc/common.php",
                     "inc/field.php",
+                    "inc/field-multiple-values.php",
+                    "inc/validation.php",
                     "inc/helpers.php",
                     "inc/meta-box.php"
                 ]
@@ -155,7 +157,81 @@
                 "wordpress-plugin",
                 "wp-admin"
             ],
-            "time": "2015-11-08 23:40:38"
+            "time": "2015-11-27 04:47:24"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "32a879f4f35019d78d568db2885d7779ca084a33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/32a879f4f35019d78d568db2885d7779ca084a33",
+                "reference": "32a879f4f35019d78d568db2885d7779ca084a33",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.1.2"
+            },
+            "bin": [
+                "scripts/phpcs",
+                "scripts/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "CodeSniffer.php",
+                    "CodeSniffer/CLI.php",
+                    "CodeSniffer/Exception.php",
+                    "CodeSniffer/File.php",
+                    "CodeSniffer/Fixer.php",
+                    "CodeSniffer/Report.php",
+                    "CodeSniffer/Reporting.php",
+                    "CodeSniffer/Sniff.php",
+                    "CodeSniffer/Tokens.php",
+                    "CodeSniffer/Reports/",
+                    "CodeSniffer/Tokenizers/",
+                    "CodeSniffer/DocGenerators/",
+                    "CodeSniffer/Standards/AbstractPatternSniff.php",
+                    "CodeSniffer/Standards/AbstractScopeSniff.php",
+                    "CodeSniffer/Standards/AbstractVariableSniff.php",
+                    "CodeSniffer/Standards/IncorrectPatternException.php",
+                    "CodeSniffer/Standards/Generic/Sniffs/",
+                    "CodeSniffer/Standards/MySource/Sniffs/",
+                    "CodeSniffer/Standards/PEAR/Sniffs/",
+                    "CodeSniffer/Standards/PSR1/Sniffs/",
+                    "CodeSniffer/Standards/PSR2/Sniffs/",
+                    "CodeSniffer/Standards/Squiz/Sniffs/",
+                    "CodeSniffer/Standards/Zend/Sniffs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2015-11-23 21:30:59"
         },
         {
             "name": "tareq1988/wordpress-settings-api-class",
@@ -200,6 +276,42 @@
                 "wp"
             ],
             "time": "2015-10-18 08:33:32"
+        },
+        {
+            "name": "wp-coding-standards/wpcs",
+            "version": "0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "reference": "b3d4d8eedd8b0b7f4fdf8764df1c8b23ff099334"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/b3d4d8eedd8b0b7f4fdf8764df1c8b23ff099334",
+                "reference": "b3d4d8eedd8b0b7f4fdf8764df1c8b23ff099334",
+                "shasum": ""
+            },
+            "require": {
+                "squizlabs/php_codesniffer": "~2.2"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "wordpress"
+            ],
+            "time": "2015-10-02 22:20:22"
         }
     ],
     "packages-dev": [],

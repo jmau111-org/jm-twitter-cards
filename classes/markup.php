@@ -33,36 +33,50 @@ class Markup {
 	public function html_comments( $end = false ) {
 
 		if ( false === $end ) {
-			echo PHP_EOL . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
+			return PHP_EOL . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 		} else {
-			echo '<!-- /JM Twitter Cards ' . JM_TC_VERSION . ' -->' . PHP_EOL . PHP_EOL;
+			return '<!-- /JM Twitter Cards ' . JM_TC_VERSION . ' -->' . PHP_EOL . PHP_EOL;
 		}
 	}
 
-	public function add_markup() {
+	/**
+	 * @param bool|true $echo
+	 *
+	 * @return string
+	 */
+	public function generate_markup( $echo = true ) {
 
-		$this->html_comments();
+		$markup  = $this->html_comments();
 
 		/* most important meta */
-		$this->display( $this->options->card_type() );
-		$this->display( $this->options->creator_username( true ) );
-		$this->display( $this->options->site_username() );
-		$this->display( $this->options->title() );
-		$this->display( $this->options->description() );
-		$this->display( $this->options->image() );
+		$markup .= $this->display( $this->options->card_type() );
+		$markup .= $this->display( $this->options->creator_username( true ) );
+		$markup .= $this->display( $this->options->site_username() );
+		$markup .= $this->display( $this->options->title() );
+		$markup .= $this->display( $this->options->description() );
+		$markup .= $this->display( $this->options->image() );
 
 		/* secondary meta */
-		$this->display( $this->options->card_dim() );
-		$this->display( $this->options->player() );
-		$this->display( $this->options->deep_linking() );
+		$markup .= $this->display( $this->options->player() );
+		$markup .= $this->display( $this->options->deep_linking() );
 
-		$this->html_comments( true );
+		$markup .= $this->html_comments( true );
+
+		if ( $echo ) {
+			echo $markup;
+		} else {
+			return $markup;
+		}
 	}
 
 	/**
 	 * @param $data
+	 *
+	 * @return string
 	 */
-	protected function display( $data ) {
+	protected function display( $data) {
+
+		$markup = '';
 
 		if ( is_array( $data ) ) {
 
@@ -77,8 +91,6 @@ class Markup {
 							'title',
 							'description',
 							'image',
-							'image:width',
-							'image:height',
 						) )
 					) {
 						$is_og    = 'og';
@@ -87,12 +99,13 @@ class Markup {
 						$is_og    = 'twitter';
 						$name_tag = 'name';
 					}
-					echo '<meta ' . $name_tag . '="' . $is_og . ':' . $name . '" content="' . $value . '">' . PHP_EOL;
+					$markup .= '<meta ' . $name_tag . '="' . $is_og . ':' . $name . '" content="' . $value . '">' . PHP_EOL;
 				}
 			}
 		} elseif ( is_string( $data ) ) {
-			echo '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . PHP_EOL;
+			$markup .=  '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . PHP_EOL;
 		}
+		return $markup;
 	}
 }
 
