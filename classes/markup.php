@@ -40,11 +40,9 @@ class Markup {
 	}
 
 	/**
-	 * @param bool|true $echo
-	 *
 	 * @return string
 	 */
-	public function display( $echo = true ) {
+	public function __toString() {
 
 		$markup  = $this->html_comments();
 
@@ -62,11 +60,9 @@ class Markup {
 
 		$markup .= $this->html_comments( true );
 
-		if ( $echo ) {
-			echo $markup;
-		} else {
-			return $markup;
-		}
+
+		return $markup;
+
 	}
 
 	/**

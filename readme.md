@@ -21,7 +21,7 @@ composer install
 
 ## Changelog ##
 
-### 7.0.1
+### 7.0.2
 * 13 Dec 2015
 * fix bugs reported
 
