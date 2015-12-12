@@ -44,21 +44,21 @@ class Markup {
 	 *
 	 * @return string
 	 */
-	public function generate_markup( $echo = true ) {
+	public function display( $echo = true ) {
 
 		$markup  = $this->html_comments();
 
 		/* most important meta */
-		$markup .= $this->display( $this->options->card_type() );
-		$markup .= $this->display( $this->options->creator_username( true ) );
-		$markup .= $this->display( $this->options->site_username() );
-		$markup .= $this->display( $this->options->title() );
-		$markup .= $this->display( $this->options->description() );
-		$markup .= $this->display( $this->options->image() );
+		$markup .= $this->generate_markup( $this->options->card_type() );
+		$markup .= $this->generate_markup( $this->options->creator_username( true ) );
+		$markup .= $this->generate_markup( $this->options->site_username() );
+		$markup .= $this->generate_markup( $this->options->title() );
+		$markup .= $this->generate_markup( $this->options->description() );
+		$markup .= $this->generate_markup( $this->options->image() );
 
 		/* secondary meta */
-		$markup .= $this->display( $this->options->player() );
-		$markup .= $this->display( $this->options->deep_linking() );
+		$markup .= $this->generate_markup( $this->options->player() );
+		$markup .= $this->generate_markup( $this->options->deep_linking() );
 
 		$markup .= $this->html_comments( true );
 
@@ -74,7 +74,7 @@ class Markup {
 	 *
 	 * @return string
 	 */
-	protected function display( $data) {
+	protected function generate_markup( $data) {
 
 		$markup = '';
 

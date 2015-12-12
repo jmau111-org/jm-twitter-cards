@@ -22,7 +22,18 @@ composer install
 ## Changelog ##
 
 ### 7.0.1
-* get_instance()
+* 13 Dec 2015
+* fix bugs reported
+
+### 7.0.1
+* 29 Nov 2015
+* delete deprecated markup reference according to dev.twitter.com
+* delete ref to gallery and product cards (these card types are deprecated)
+* rebuild options + preview + markup
+* fix bug title when Yoast is activated and Yoast title not set
+* take ONLY public custom post types into account ( e.g no more metabox in ACF group fields)
+* add new feature : choose post type where you want to show metabox
+* less options
 
 ### 7.0
 * 11 Nov 2015
