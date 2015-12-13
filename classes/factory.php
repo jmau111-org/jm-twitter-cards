@@ -15,7 +15,7 @@ class Factory {
 	 */
 	public function createMarkup( $post_ID = false ) {
 		$options = new Admin\Options( $post_ID );
-		return new Markup( $options );
+		echo new Markup( $options );
 	}
 
 	/**

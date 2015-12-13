@@ -5,7 +5,7 @@ Plugin URI: http://tweetpressfr.github.io
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpressfr.github.io
-Version: 7.0.1
+Version: 7.0.2
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,7 +30,7 @@ defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
 // Constantly constant
-define( 'JM_TC_VERSION', '7.0.1' );
+define( 'JM_TC_VERSION', '7.0.2' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
@@ -110,7 +110,7 @@ class JM_TC_Loading {
 	public function add_markup(){
 		if ( ! is_404() && ! is_tag() && ! is_archive() && ! is_tax() && ! is_category() ) {
 			$factory = new TokenToMe\TwitterCards\Factory();
-			$factory->createMarkup( get_queried_object_id() )->generate_markup();
+			$factory->createMarkup( get_queried_object_id() );
 		}
 	}
 
