@@ -22,7 +22,7 @@ $title  = reset( $title );
 $desc   = reset( $desc );
 $image  = reset( $image );
 $domain = $_SERVER['HTTP_HOST'];
-$avatar = get_avatar_url( get_avatar( null, 36 ) );
+$avatar = get_avatar_url( get_avatar( get_current_user_id(), 36, 36 ) );
 $style  = 'summary' === $type ? 'style="background-image:url( ' . esc_url( $image ) . ');"' : '';
 
 $preview .= '<div class="global-' . esc_attr( $type ) . ' tc-preview">';
