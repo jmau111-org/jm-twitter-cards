@@ -82,6 +82,7 @@ class Main {
 					'options' => array(
 						'summary'             => __( 'Summary', 'jm-tc' ),
 						'summary_large_image' => __( 'Summary below Large Image', 'jm-tc' ),
+						'app' => __( 'Application', 'jm-tc' ),
 					)
 				),
 				array(

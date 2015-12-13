@@ -10,7 +10,8 @@ if ( ! function_exists( 'add_action' ) ) {
     <h1><?php esc_html_e( 'JM Twitter Cards', 'jm-tc' ); ?>: <?php echo strtolower( esc_html__( 'About' ) ); ?></h1>
     <h3 class="hndle"><?php _e( 'Tutorial', 'jm-tc' ); ?></h3>
     <?php
-    echo wp_oembed_get( 'https://www.youtube.com/watch?v=8l4k3zrD4Z0' ); ?>
+    // needs update
+    //echo wp_oembed_get( 'https://www.youtube.com/watch?v=8l4k3zrD4Z0' ); ?>
 
 
     <h3 class="hndle"><?php _e( 'The developer', 'jm-tc' ); ?></h3>

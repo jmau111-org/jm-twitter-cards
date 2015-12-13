@@ -31,12 +31,8 @@ class Markup {
 	 * @return string
 	 */
 	public function html_comments( $end = false ) {
-
-		if ( false === $end ) {
-			return PHP_EOL . '<!-- JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
-		} else {
-			return '<!-- /JM Twitter Cards ' . JM_TC_VERSION . ' -->' . PHP_EOL . PHP_EOL;
-		}
+		$slash = ( false === $end ) ? '' : '/';
+		return '<!-- '. $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 	}
 
 	/**
