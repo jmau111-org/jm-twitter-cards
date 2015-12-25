@@ -15,8 +15,7 @@ The plugin uses libraries such as API Settings wrapper or Rilwis Metabox Framewo
 To get this work, use composer :
 
 ```
-cd jm-twitter-cards
-composer install
+composer create-project TweetPressFr/jm-twitter-cards --no-dev
 ```
 
 ## Changelog ##
