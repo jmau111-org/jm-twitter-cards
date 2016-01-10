@@ -39,16 +39,6 @@ define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
  */
 require_once ( JM_TC_DIR . 'vendor/autoload.php' );
 
-
-/**
- * A lot of themes and plugins
- * are using this framework
- * probably better to check this before
- */
-if ( ! function_exists( 'rwmb_register_meta_boxes' ) ) {
-	require_once ( JM_TC_DIR . 'vendor/rilwis/meta-box/meta-box.php' );
-}
-
 register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
 
 add_action(
@@ -63,7 +53,7 @@ class JM_TC_Loading {
 	protected static $instance = NULL;
 
 	/**
-	 * Access this plugin�s working instance
+	 * Access this plugin's working instance
 	 *
 	 * @wp-hook plugins_loaded
 	 * @return $this object (kidding)
@@ -102,6 +92,15 @@ class JM_TC_Loading {
 	 */
 	public function on_init(){
 		$this->register_text_domain( 'jm-tc' );
+
+		/**
+		 * A lot of themes and plugins
+		 * are using this framework
+		 * probably better to check this before
+		 */
+		if ( ! function_exists( 'rwmb_register_meta_boxes' ) ) {
+			require_once ( JM_TC_DIR . 'vendor/rilwis/meta-box/meta-box.php' );
+		}
 	}
 
 	/**
