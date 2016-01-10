@@ -21,6 +21,11 @@ composer install
 
 ## Changelog ##
 
+### 7.1.0
+* 10 Jan 2016
+* fix notices with plugins that use meta box plugin
+* load meta box framework on init
+
 ### 7.0.2
 * 13 Dec 2015
 * fix bugs reported
