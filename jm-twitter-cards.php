@@ -5,7 +5,7 @@ Plugin URI: http://tweetpressfr.github.io
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpressfr.github.io
-Version: 7.1.0
+Version: 7.2.0
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,7 +30,7 @@ defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
 // Constantly constant
-define( 'JM_TC_VERSION', '7.1.0' );
+define( 'JM_TC_VERSION', '7.2.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
@@ -38,6 +38,20 @@ define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
  * Autoload this !
  */
 require_once ( JM_TC_DIR . 'vendor/autoload.php' );
+
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_settings_action_link' );
+
+/**
+ * Re-add Settings link to admin page
+ * some users needed it and it does not evil ^^
+ * @param $links
+ *
+ * @return mixed
+ */
+function jm_tc_settings_action_link( $links ) {
+	$links['settings'] = '<a href="' . add_query_arg( array( 'page' => 'jm_tc' ), admin_url( 'admin.php') ) . '">' . __( 'Settings' ) . '</a>';
+	return $links;
+}
 
 register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
 

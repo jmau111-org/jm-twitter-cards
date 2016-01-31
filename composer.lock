@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c2c8dabeb6f095cbb049527c63fbedf",
-    "content-hash": "1787b4366dea5407a58408cb0dab4b95",
+    "hash": "2fce294a008997c2985ff67d10fcf2cd",
+    "content-hash": "af97036327b2b1084aa5c751a69d94a7",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.22",
+            "version": "v1.0.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
-                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "url": "https://api.github.com/repos/composer/installers/zipball/6213d900e92647831f7a406d5c530ea1f3d4360e",
+                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -103,20 +103,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-10-29 23:28:48"
+            "time": "2016-01-27 12:54:22"
         },
         {
             "name": "rilwis/meta-box",
-            "version": "dev-master",
+            "version": "4.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rilwis/meta-box.git",
-                "reference": "e0c97cb11fd2e6a11a47db0996caa14ea05fcb85"
+                "reference": "baf3f8e47158cf01a20a29539576093247224785"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/e0c97cb11fd2e6a11a47db0996caa14ea05fcb85",
-                "reference": "e0c97cb11fd2e6a11a47db0996caa14ea05fcb85",
+                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/baf3f8e47158cf01a20a29539576093247224785",
+                "reference": "baf3f8e47158cf01a20a29539576093247224785",
                 "shasum": ""
             },
             "type": "library",
@@ -157,7 +157,7 @@
                 "wordpress-plugin",
                 "wp-admin"
             ],
-            "time": "2015-11-27 04:47:24"
+            "time": "2015-12-14 04:38:44"
         },
         {
             "name": "tareq1988/wordpress-settings-api-class",
@@ -209,7 +209,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "tareq1988/wordpress-settings-api-class": 20,
-        "rilwis/meta-box": 20
+        "rilwis/meta-box": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
