@@ -21,6 +21,10 @@ composer install
 
 ## Changelog ##
 
+### 7.2.0
+* 31 Jan 2016
+* update framework Rilwis + small fixes loading that should solve some display issue
+
 ### 7.1.0
 * 10 Jan 2016
 * fix notices with plugins that use meta box plugin
