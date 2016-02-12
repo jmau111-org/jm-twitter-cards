@@ -37,6 +37,10 @@ define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 /**
  * Autoload this !
  */
+if ( ! file_exists( JM_TC_DIR . 'vendor/autoload.php' ) ) {
+	return false;
+}
+
 require_once ( JM_TC_DIR . 'vendor/autoload.php' );
 
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_settings_action_link' );

@@ -16,7 +16,7 @@ To get this work, use composer :
 
 ```
 git clone https://github.com/TweetPressFr/jm-twitter-cards.git && cd jm-twitter-cards
-composer install
+composer dump-autoload
 ```
 
 ## Changelog ##
