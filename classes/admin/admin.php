@@ -20,6 +20,22 @@ class Main {
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+	}
+
+
+	/**
+	 * Add some js
+	 * @param $hook_suffix
+	 * for fox desc home - charcount
+	 */
+	public function admin_enqueue_scripts( $hook_suffix ){
+
+		wp_register_script( 'jm-tc-charcount', JM_TC_URL . 'js/charcount.min.js', array(), JM_TC_VERSION, true );
+
+		if ( 'toplevel_page_jm_tc' === $hook_suffix ) {
+			wp_enqueue_script( 'jm-tc-charcount' );
+		}
 	}
 
 
