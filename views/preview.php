@@ -25,7 +25,7 @@ $domain = $_SERVER['HTTP_HOST'];
 $avatar = get_avatar_url( get_avatar( get_current_user_id(), 36, 36 ) );
 $style  = 'summary' === $type ? 'style="background-image:url( ' . esc_url( $image ) . ');"' : '';
 
-$preview .= '<div class="global-' . esc_attr( $type ) . ' tc-preview">';
+$preview .= '<div class="global-' . esc_attr( $type ) . ' tc-preview col1">';
 $preview .= '<div class="tc-author u-cf">';
 $preview .= '<img class="tc-author-avatar" src="' . esc_url( $avatar ) . '">';
 $preview .= '<div class="tc-author-name u-pullLeft">' . __( 'Name' ) . '</div>';

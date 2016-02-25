@@ -46,7 +46,8 @@
 }
 
 .tc-preview .tc-summary {
-    display: table
+    display: table;
+    width: 100%
 }
 
 .tc-preview .summary-content {

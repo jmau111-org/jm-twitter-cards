@@ -170,7 +170,7 @@ class Options {
 			$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
 			$image            = reset($image_attributes);
 		} elseif ( ! empty( $cardImage ) ) {
-			$image = esc_url( $cardImage );
+			$image = esc_url_raw( $cardImage );
 		} elseif ( 'attachment' === get_post_type() ) {
 			$image = wp_get_attachment_url( $this->post_ID );
 		} elseif ( empty( $this->post_ID ) ) {

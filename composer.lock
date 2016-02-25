@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fce294a008997c2985ff67d10fcf2cd",
-    "content-hash": "af97036327b2b1084aa5c751a69d94a7",
+    "hash": "416ab94d6105c19425d3a49110d0c27e",
+    "content-hash": "2459c845b59e15c103554908bc20bdaa",
     "packages": [
         {
             "name": "composer/installers",
@@ -106,60 +106,6 @@
             "time": "2016-01-27 12:54:22"
         },
         {
-            "name": "rilwis/meta-box",
-            "version": "4.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rilwis/meta-box.git",
-                "reference": "baf3f8e47158cf01a20a29539576093247224785"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rilwis/meta-box/zipball/baf3f8e47158cf01a20a29539576093247224785",
-                "reference": "baf3f8e47158cf01a20a29539576093247224785",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "meta-box-loader.php"
-                ],
-                "classmap": [
-                    "inc/fields",
-                    "inc/common.php",
-                    "inc/field.php",
-                    "inc/field-multiple-values.php",
-                    "inc/validation.php",
-                    "inc/helpers.php",
-                    "inc/meta-box.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Tran Ngoc Tuan Anh",
-                    "email": "rilwis@gmail.com",
-                    "homepage": "http://www.deluxeblogtips.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Easily create custom meta boxes in WordPress.",
-            "homepage": "http://metabox.io",
-            "keywords": [
-                "custom-field",
-                "meta-box",
-                "select2",
-                "ui",
-                "wordpress",
-                "wordpress-plugin",
-                "wp-admin"
-            ],
-            "time": "2015-12-14 04:38:44"
-        },
-        {
             "name": "tareq1988/wordpress-settings-api-class",
             "version": "dev-master",
             "source": {
@@ -208,8 +154,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tareq1988/wordpress-settings-api-class": 20,
-        "rilwis/meta-box": 0
+        "tareq1988/wordpress-settings-api-class": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
