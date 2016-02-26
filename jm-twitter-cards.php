@@ -5,7 +5,7 @@ Plugin URI: http://dev73.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpress.fr
-Version: 7.3.0
+Version: 7.4.0
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,7 +30,7 @@ defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
 // Constantly constant
-define( 'JM_TC_VERSION', '7.3.0' );
+define( 'JM_TC_VERSION', '7.4.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
@@ -89,7 +89,7 @@ class JM_TC_Loading {
 		if ( is_admin() ) {
 			new TokenToMe\TwitterCards\Admin\Main();
 			new TokenToMe\TwitterCards\Admin\ImportExport();
-			new TokenToMe\TwitterCards\Admin\Meta_Box();
+			new TokenToMe\TwitterCards\Admin\Box();
 		} else {
 			new TokenToMe\TwitterCards\Thumbs();
 		}
@@ -110,15 +110,6 @@ class JM_TC_Loading {
 	 */
 	public function on_init(){
 		$this->register_text_domain( 'jm-tc' );
-
-		/**
-		 * A lot of themes and plugins
-		 * are using this framework
-		 * probably better to check this before
-		 */
-		if ( ! function_exists( 'rwmb_register_meta_boxes' ) ) {
-			require_once ( JM_TC_DIR . 'vendor/rilwis/meta-box/meta-box.php' );
-		}
 	}
 
 	/**

@@ -23,7 +23,7 @@ class Preview {
 		$this->opts    = \jm_tc_get_options();
 	}
 
-	public function generate_preview(){
+	public function __toString(){
 		$preview = '';
 		ob_start();
 		require_once ( JM_TC_DIR . 'views/preview.php' );

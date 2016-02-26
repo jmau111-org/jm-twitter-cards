@@ -9,8 +9,10 @@ if ( ! function_exists( 'add_action' ) ) {
 
 class Factory {
 	/**
-	 * @param bool|false $post_ID
+	 * Markup front
 	 *
+	 * @param bool|false $post_ID
+	 * @author Julien Maury
 	 * @return \TokenToMe\TwitterCards\Markup
 	 */
 	public function createMarkup( $post_ID = false ) {
@@ -19,12 +21,22 @@ class Factory {
 	}
 
 	/**
-	 * @param $post_ID
+	 * @author Julien Maury
+	 * @return \TokenToMe\TwitterCards\Admin\Fields
+	 */
+	public function createFields(){
+		return new Admin\Fields();
+	}
+
+	/**
+	 * Preview metabox
 	 *
+	 * @param $post_ID
+	 * @author Julien Maury
 	 * @return \TokenToMe\TwitterCards\Admin\Preview
 	 */
 	public function createPreview( $post_ID ){
 		$options = new Admin\Options( $post_ID );
-		return new Admin\Preview( $options );
+		echo new Admin\Preview( $options );
 	}
 }
