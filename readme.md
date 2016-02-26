@@ -21,6 +21,11 @@ composer dump-autoload
 
 ## Changelog ##
 
+### 7.4.0
+* 26 Feb 2016
+* sick and tired of external resources not working
+* do my own fields
+
 ### 7.2.0
 * 31 Jan 2016
 * update framework Rilwis + small fixes loading that should solve some display issue
