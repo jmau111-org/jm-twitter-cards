@@ -1,3 +1,14 @@
+#jm_tc_metabox {
+    float: left;
+    padding-bottom: 1%
+}
+#jm_tc_metabox .form-table, .col1 {
+    position: relative;
+    width: 46%;
+    padding: 3%;
+    float: left
+}
+
 .tc-preview {
     position: relative;
     max-width: 50%;
