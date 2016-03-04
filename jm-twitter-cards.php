@@ -43,6 +43,13 @@ if ( ! file_exists( JM_TC_DIR . 'vendor/autoload.php' ) ) {
 
 require_once ( JM_TC_DIR . 'vendor/autoload.php' );
 
+/**
+ * CLI commands
+ */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once( JM_TC_DIR  . 'cli/cli.php' );
+}
+
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_settings_action_link' );
 
 /**
