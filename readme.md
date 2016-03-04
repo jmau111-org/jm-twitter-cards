@@ -21,6 +21,10 @@ composer dump-autoload
 
 ## Changelog ##
 
+### 7.5.0
+* 05 Mar 2016
+* CLI commands
+
 ### 7.4.0
 * 26 Feb 2016
 * sick and tired of external resources not working
