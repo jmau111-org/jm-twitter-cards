@@ -31,18 +31,18 @@ jQuery(document).ready(function (e) {
 
     function a() {
         e(".cardPlayer").hide(),
-        e(".cardPlayerWidth").hide(),
-        e(".cardPlayerHeight").hide(),
-        e(".cardPlayerStream").hide(),
-        e(".cardPlayerCodec").hide()
+            e(".cardPlayerWidth").hide(),
+            e(".cardPlayerHeight").hide(),
+            e(".cardPlayerStream").hide(),
+            e(".cardPlayerCodec").hide()
     }
 
     function r() {
         e(".cardPlayer").show(),
-        e(".cardPlayerWidth").show(),
-        e(".cardPlayerHeight").show(),
-        e(".cardPlayerStream").show(),
-        e(".cardPlayerCodec").show()
+            e(".cardPlayerWidth").show(),
+            e(".cardPlayerHeight").show(),
+            e(".cardPlayerStream").show(),
+            e(".cardPlayerCodec").show()
     }
 
     e("#twitterCardType").on("change", function () {

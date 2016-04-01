@@ -203,8 +203,8 @@ class Box implements MetaBox {
 	 */
 	public function admin_enqueue_scripts() {
 
-		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.min.js', array(), JM_TC_VERSION, true );
-		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.min.css', array(), JM_TC_VERSION );
+		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array(), JM_TC_VERSION, true );
+		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.css', array(), JM_TC_VERSION );
 
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
 			wp_enqueue_media();
