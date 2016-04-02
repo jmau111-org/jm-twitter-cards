@@ -1,17 +1,14 @@
-#jm_tc_metabox {
-    float: left;
-    padding-bottom: 1%
-}
-#jm_tc_metabox .form-table, .col1 {
-    position: relative;
+.form-table, .app{
     width: 46%;
-    padding: 3%;
-    float: left
+    display: inline-block
+}
+
+.form-table {
+    margin-left: 2%;
 }
 
 .tc-preview {
     position: relative;
-    max-width: 50%;
     padding: 12px 12px 8px 54px;
     margin: 0;
     text-align: left;
@@ -125,4 +122,10 @@
     color: inherit!important;
     overflow: hidden;
     padding-bottom: 1em
+}
+
+@media screen and (max-width: 1024px) {
+     .form-table, .app{
+        width:100%
+    }
 }
