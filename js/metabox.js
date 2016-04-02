@@ -2,6 +2,12 @@ jQuery(document).ready(function (e) {
 
     var tc_uploader;
 
+    //Extend the wp.media object
+    tc_uploader = wp.media.frames.file_frame = wp.media({
+        multiple: false
+    });
+
+    console.log( tc_uploader );
 
     jQuery('.tc-file-input-select').click(function (e) {
 

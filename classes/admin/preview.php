@@ -1,5 +1,6 @@
 <?php
 namespace TokenToMe\TwitterCards\Admin;
+use TokenToMe\TwitterCards\Utilities;
 
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );

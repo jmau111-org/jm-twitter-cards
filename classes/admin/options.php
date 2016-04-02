@@ -33,17 +33,11 @@ class Options {
 
 		$aioseop_title           = get_post_meta( $this->post_ID, '_aioseop_title', true );
 		$aioseop_description     = get_post_meta( $this->post_ID, '_aioseop_description', true );
-		$yoast_wpseo_title       = get_post_meta( $this->post_ID, '_yoast_wpseo_title', true );
-		$yoast_wpseo_description = get_post_meta( $this->post_ID, '_yoast_wpseo_metadesc', true );
 
 		$title = get_the_title( $this->post_ID );
 		$desc  = Utilities::get_excerpt_by_id( $this->post_ID );
 
-		if ( class_exists( 'WPSEO_Frontend' ) ) {
-			$title = ! empty( $yoast_wpseo_title ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_title ) ) : get_the_title( $this->post_ID );
-			$desc  = ! empty( $yoast_wpseo_description ) ? htmlspecialchars( stripcslashes( $yoast_wpseo_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
-
-		} elseif ( class_exists( 'All_in_One_SEO_Pack' ) ) {
+		if ( class_exists( 'All_in_One_SEO_Pack' ) ) {
 			$title = ! empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false ) );
 			$desc  = ! empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
 		}
