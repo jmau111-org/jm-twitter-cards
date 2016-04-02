@@ -24,6 +24,8 @@ composer dump-autoload
 ### 7.5.0
 * 05 Mar 2016
 * CLI commands
+* full js preview in real time
+* less code in js when possible
 
 ### 7.4.0
 * 26 Feb 2016

@@ -1,6 +1,7 @@
-.form-table, .app{
+.form-table, .tc-preview{
     width: 46%;
-    display: inline-block
+    display: inline-block;
+    vertical-align: top
 }
 
 .form-table {
@@ -63,22 +64,26 @@
 }
 
 .tc-preview .summary-content,
-.tc-preview .tc-summary-img-container {
+.tc-preview #summary-img-container {
     display: table-cell;
     vertical-align: top
 }
 
-.tc-preview .tc-summary-img-container {
+.tc-preview #summary-img-container {
     max-height: 200px;
     background-size: cover;
     background-position: 50% 50%
 }
 
-.tc-preview .tc-summary-img-container .tc-img {
+.tc-preview #summary-img-container .tc-img {
     width: 100%;
     opacity: 0;
     zoom: 1;
     filter: alpha(opacity=0)
+}
+.tc-preview #player-img-container video{
+    width:100%;
+    max-height: 300px
 }
 
 .tc-preview .tc-img,

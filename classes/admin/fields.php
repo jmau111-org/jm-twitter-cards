@@ -22,7 +22,9 @@ class Fields {
 			return false;
 		}
 
-		return 'start' === $mod ? '<' . esc_attr( $aar['tag'] ) .' class="' . sanitize_html_class( $aar['class'] ) . '">' : '</' . esc_attr( $aar['tag'] ) .'>';
+		$class = ! empty( $aar['class'] ) ? sanitize_html_class( $aar['class'] ) : '';
+
+		return 'start' === $mod ? '<' . esc_attr( $aar['tag'] ) .' class="' . $class . '">' : '</' . esc_attr( $aar['tag'] ) .'>';
 	}
 
 	/**
@@ -33,9 +35,12 @@ class Fields {
 	 * @author Julien Maury
 	 */
 	public function text_field( $aar ){
+
+		$type = ! empty( $aar['type']  ) ? esc_attr( $aar['type'] ) : '';
+
 		$output  = '<tr class="' . esc_attr( $aar['field_id'] ) . '">';
 		$output .= '<th scope="row"><label for="' . esc_attr( $aar['field_id'] ) . '">' . esc_html( $aar['label'] ) . '</label></th>';
-		$output .= '<td><input size="60" class="tc-field-' . esc_attr( $aar['type'] ) . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="text" value="' . esc_attr( $aar['value'] ) . '"></td>';
+		$output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="text" value="' . esc_attr( $aar['value'] ) . '"></td>';
 		$output .= '</tr>';
 
 		return $output;
@@ -49,9 +54,12 @@ class Fields {
 	 * @author Julien Maury
 	 */
 	public function url_field( $aar ){
+
+		$type = ! empty( $aar['type']  ) ? esc_attr( $aar['type'] ) : '';
+
 		$output  = '<tr class="' . esc_attr( $aar['field_id'] ) . '">';
 		$output .= '<th scope="row"><label for="' . esc_attr( $aar['field_id'] ) . '">' . esc_html( $aar['label'] ) . '</label></th>';
-		$output .= '<td><input size="60" class="tc-field-' . esc_attr( $aar['type'] ) . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="url" value="' . esc_attr( $aar['value'] ) . '" placeholder="https://"></td>';
+		$output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="url" value="' . esc_attr( $aar['value'] ) . '" placeholder="https://"></td>';
 		$output .= '</tr>';
 
 		return $output;
@@ -65,9 +73,12 @@ class Fields {
 	 * @author Julien Maury
 	 */
 	public function num_field( $aar ){
+
+		$type = ! empty( $aar['type']  ) ? esc_attr( $aar['type'] ) : '';
+
 		$output  = '<tr class="' . esc_attr( $aar['field_id'] ) . '">';
 		$output .= '<th scope="row"><label for="' . esc_attr( $aar['field_id'] ) . '">' . esc_html( $aar['label'] ) . '</label></th>';
-		$output .= '<td><input size=60" step="' . esc_attr( $aar['step'] ) . '" min="' . esc_attr( $aar['min'] ) . '" max="' . esc_attr( $aar['max'] ) . '" class="tc-field-' . esc_attr( $aar['type'] ) . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="number" value="' . esc_attr( $aar['value'] ) . '"></td>';
+		$output .= '<td><input size=60" step="' . esc_attr( $aar['step'] ) . '" min="' . esc_attr( $aar['min'] ) . '" max="' . esc_attr( $aar['max'] ) . '" class="tc-field-' . $type . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="number" value="' . esc_attr( $aar['value'] ) . '"></td>';
 		$output .= '</tr>';
 
 		return $output;

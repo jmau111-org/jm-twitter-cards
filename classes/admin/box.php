@@ -59,8 +59,6 @@ class Box implements MetaBox {
 	 */
 	public function display_box() {
 
-		echo '<div id="app" class="app"></div>';
-
 		$factory = new Factory();
 
 		echo $factory->createFields()->wrapper( array( 'tag' => 'table', 'class' => 'form-table', ) );
@@ -119,6 +117,8 @@ class Box implements MetaBox {
 
 		echo $factory->createFields()->wrapper( array( 'tag' => 'tbody', ), 'end' );
 		echo $factory->createFields()->wrapper( array( 'tag' => 'table', ), 'end' );
+
+		$factory->createPreview( self::get_post_id() );
 	}
 
 	/**
@@ -189,32 +189,6 @@ class Box implements MetaBox {
 	}
 
 	/**
-	 * Get options and format them
-	 * for use in js
-	 * @return array
-	 */
-	public function format_options(){
-
-		$options = new Options( self::get_post_id() );
-		$title = $options->title();
-		$image = $options->image();
-		$player = $options->player();
-		$type   = $options->card_type();
-		$desc   = $options->description();
-
-		return array(
-			'type'   => $type['card'],
-			'image'  => $image['image'],
-			'player' => $player,
-			'site'   => $this->opts['twitterSite'],
-			'title'  => $title['title'],
-			'desc'   => $desc['description'],
-			'domain' => home_url(),
-		);
-
-	}
-
-	/**
 	 * Add some js
 	 * for metabox
 	 * no need to show all fields if not player
@@ -229,14 +203,11 @@ class Box implements MetaBox {
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'jm-tc-metabox' );
+
+			wp_localize_script( 'jm-tc-metabox', 'tcStrings',  array( 'upload_message' => __( 'Upload') ) );
+
 			wp_enqueue_script( 'jm-tc-preview', JM_TC_URL . 'js/preview.js', array(), JM_TC_VERSION, true );
 			wp_enqueue_style( 'jm-tc-preview' );
-
-			wp_localize_script( 'jm-tc-preview', 'tcData', array(
-				'message' => esc_html__( 'The card for your website will look a little something like this!', 'jm-tc' ),
-				'avatar'  => get_avatar_url( get_avatar( get_current_user_id(), 36, 36 ) ),
-				'options' => $this->format_options()
-			) );
 
 		}
 	}
