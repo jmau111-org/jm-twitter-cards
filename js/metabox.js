@@ -7,8 +7,6 @@ jQuery(document).ready(function (e) {
         multiple: false
     });
 
-    console.log( tc_uploader );
-
     jQuery('.tc-file-input-select').click(function (e) {
 
         e.preventDefault();
@@ -36,19 +34,11 @@ jQuery(document).ready(function (e) {
     });
 
     function a() {
-        e(".cardPlayer").hide(),
-            e(".cardPlayerWidth").hide(),
-            e(".cardPlayerHeight").hide(),
-            e(".cardPlayerStream").hide(),
-            e(".cardPlayerCodec").hide()
+        e('*[class^="cardPlayer"]').hide()
     }
 
     function r() {
-        e(".cardPlayer").show(),
-            e(".cardPlayerWidth").show(),
-            e(".cardPlayerHeight").show(),
-            e(".cardPlayerStream").show(),
-            e(".cardPlayerCodec").show()
+        e('*[class^="cardPlayer"]').show()
     }
 
     e("#twitterCardType").on("change", function () {
