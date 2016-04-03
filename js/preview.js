@@ -20,18 +20,14 @@ if (typeof( title.addEventListener ) !== 'undefined') {
 
 /**
  * Sync desc
+ * It's a huge pain to get it from WP :/
  */
-if (typeof tinymce !== 'undefined') {
-
-    tinymce.on('SetupEditor', function (editor) {
-        if (editor.id === 'contentLeft') {
-            editor.on('keyup', function (evt) {
-                var tcDesc = document.getElementById('tc-desc');
-                tcDesc.textContent = evt.target.value;
-            });
-        }
+window.onload = function () {
+    tinymce.get('content').on('keyup',function(e){
+        var tcDesc = document.getElementById('tc-desc');
+        tcDesc.textContent = this.getContent().replace(/(<([^>]+)>)/ig,"");
     });
-}
+};
 
 var getImage = function () {
     return typeof(metaBoxImg) !== 'undefined' ? metaBoxImg.value : postThumb[0].currentSrc;

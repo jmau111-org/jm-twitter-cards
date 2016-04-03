@@ -14,6 +14,6 @@ $card .= 'player' ===  $type
 $card .= '</div>';
 $card .= '<div class="' . esc_attr( $type ) . '-content">
 		  <p class="' . esc_attr( $type ) . '-title tc-title onchange" id="tc-title">' . esc_html( $title ) . '</p>
-          <p class="' . esc_attr( $type ) . '-desc tc-desc onchange">' . esc_html( $desc ) . '</p>
+          <p class="' . esc_attr( $type ) . '-desc tc-desc onchange" id="tc-desc">' . esc_html( $desc ) . '</p>
           <span class="tc-domain ' . esc_attr( $type ) . '-domain onchange">' . _( $domain ) . '</span></div>';
 $card .= '</div>';
