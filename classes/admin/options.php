@@ -191,12 +191,12 @@ class Options {
 			$playerCodec     = get_post_meta( $this->post_ID, 'cardPlayerCodec', true );
 			$player          = array();
 
+			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl );
+
 			//Player
-			if ( empty( $playerUrl ) ) {
+			if ( empty( $player['player'] ) ) {
 				return $this->error( __( 'Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc' ) );
 			}
-
-			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl );
 
 			//Player stream
 			if ( ! empty( $playerStreamUrl ) ) {

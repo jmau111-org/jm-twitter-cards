@@ -11,7 +11,6 @@ var title = document.getElementById('title'),
  */
 if (typeof( title.addEventListener ) !== 'undefined') {
     title.addEventListener('keyup', function (evt) {
-        console.log(evt);
 
         var tcTitle = document.getElementById('tc-title');
         tcTitle.textContent = evt.target.value;
@@ -57,6 +56,10 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
         var iCc = document.getElementById(evt.target.value + '-img-container'),
             iChild = document.getElementById('tc-img-child');
 
+        var removeC = function(){
+            iCc.removeChild(iChild);
+        };
+
         /**
          * Change Markup
          */
@@ -64,7 +67,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
             case 'summary':
                 iCc.setAttribute("style", "background-image: url(" + getImage() + ");");
                 iCc.parentNode.className = 'tc-summary tc-container';
-                iCc.removeChild(iChild);
+                removeC();
                 var imgSmall = document.createElement('img');
                 imgSmall.setAttribute("src", getImage());
                 imgSmall.id = 'tc-img-child';
@@ -75,7 +78,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
             case 'summary_large_image':
                 iCc.removeAttribute("style");
                 iCc.parentNode.className = 'summary_large_image tc-container';
-                iCc.removeChild(iChild);
+                removeC();
                 var imgLarge = document.createElement('img');
                 imgLarge.setAttribute("src", getImage());
                 imgLarge.className = "summary_large_image";
@@ -87,7 +90,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
                 iCc.removeAttribute("style");
                 iCc.className = "player";
                 iCc.parentNode.className = 'player tc-container';
-                iCc.removeChild(iChild);
+                removeC();
                 var video = document.createElement('video');
                 video.setAttribute("poster", getImage());
                 video.setAttribute("controls", "");
