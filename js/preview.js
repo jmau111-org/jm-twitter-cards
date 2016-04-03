@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * TODO : bind onchange elements + onchange IMG
+ * @type {Element}
+ */
+
 var title = document.getElementById('title'),
     description = document.getElementById('title'),
     cardType = document.getElementById('twitterCardType'),
