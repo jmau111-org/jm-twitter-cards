@@ -13,6 +13,11 @@
             });
     });
 
+    $('.tc-file-input-reset').click(function(e) {
+        e.preventDefault();
+        $('.tc-file-input').val('');
+    });
+
     function a() {
         $('*[class^="cardPlayer"]').hide()
     }

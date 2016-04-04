@@ -130,7 +130,8 @@
 }
 
 @media screen and (max-width: 1024px) {
-     .form-table, .app{
-        width:100%
+     .form-table,.tc-preview{
+        width:auto;
+         margin:1em auto
     }
 }
