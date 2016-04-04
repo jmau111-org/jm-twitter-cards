@@ -1,6 +1,12 @@
 'use strict';
 
 /**
+ * All these stuffs to not use jQuery
+ * which is already loaded by WP
+ * this is really lame !
+ */
+
+/**
  * @type {Element}
  */
 
@@ -9,7 +15,6 @@ var title = document.getElementById('title'),
     cardType = document.getElementById('twitterCardType'),
     postThumb = document.querySelectorAll('.attachment-post-thumbnail'),
     metaBoxImg = document.getElementById('cardImage');
-
 
 /**
  * Handle backward compat for stupid IE browsers
@@ -79,11 +84,11 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
 
         var removeC = function(){
             iCc.removeChild(iChild);
-        };
-
-        var bgimgC = function(){
+        }, bgimgC = function(){
             iCc.removeAttribute("style");
             iCc.setAttribute("style", "-webkit-background-size: cover;background-size: cover; background-image: url(" + getImage() + ");");
+        }, setIdC = function(obj){
+            obj.id = 'tc-img-child';
         };
 
         /**
@@ -96,7 +101,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
                 removeC();
                 var imgSmall = document.createElement('img');
                 imgSmall.setAttribute("src", getImage());
-                imgSmall.id = 'tc-img-child';
+                setIdC(imgSmall);
                 imgSmall.className = "tc-img summary-img onchange";
                 iCc.appendChild(imgSmall);
                 break;
@@ -108,7 +113,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
                 var imgLarge = document.createElement('img');
                 imgLarge.setAttribute("src", getImage());
                 imgLarge.className = "summary_large_image";
-                imgLarge.id = 'tc-img-child';
+                setIdC(imgLarge);
                 iCc.appendChild(imgLarge);
                 break;
 
@@ -120,7 +125,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
                 var video = document.createElement('video');
                 video.setAttribute("poster", getImage());
                 video.setAttribute("controls", "");
-                video.id = 'tc-img-child';
+                setIdC(video);
                 iCc.appendChild(video);
                 break;
         }
