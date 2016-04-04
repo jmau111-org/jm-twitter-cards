@@ -1,5 +1,16 @@
 'use strict';
 
+/**
+ * Handle backward compat for stupid IE browsers
+ * @source: http://stackoverflow.com/a/25674763/1930236
+ */
+if (typeof Element.prototype.addEventListener === 'undefined') {
+    Element.prototype.addEventListener = function (e, callback) {
+        e = 'on' + e;
+        return this.attachEvent(e, callback);
+    };
+}
+
 var textArea = document.getElementById('jm_tc[twitterPostPageDesc]'), textAreaParent = textArea.parentNode,
     textAreaLength = textArea.value.length, maxLength = 200, span = document.createElement('span');
 

@@ -1,7 +1,6 @@
 'use strict';
 
 /**
- * TODO : bind onchange elements + onchange IMG
  * @type {Element}
  */
 
@@ -10,6 +9,18 @@ var title = document.getElementById('title'),
     cardType = document.getElementById('twitterCardType'),
     postThumb = document.querySelectorAll('.attachment-post-thumbnail'),
     metaBoxImg = document.getElementById('cardImage');
+
+
+/**
+ * Handle backward compat for stupid IE browsers
+ * @source: http://stackoverflow.com/a/25674763/1930236
+ */
+if (typeof Element.prototype.addEventListener === 'undefined') {
+    Element.prototype.addEventListener = function (e, callback) {
+        e = 'on' + e;
+        return this.attachEvent(e, callback);
+    };
+}
 
 /**
  * Sync title
@@ -35,8 +46,17 @@ window.onload = function () {
 };
 
 var getImage = function () {
-    return typeof(metaBoxImg) !== 'undefined' ? metaBoxImg.value : postThumb[0].currentSrc;
+   if( typeof(metaBoxImg) !== 'undefined' && metaBoxImg.value.length !== 0) {
+       return metaBoxImg.value;
+    } else {
+       if (typeof(postThumb[0]) !== 'undefined' && postThumb[0].currentSrc.length !== 0) {
+           return postThumb[0].currentSrc;
+       } else {
+           return 'https://g.twimg.com/Twitter_logo_blue.png';
+       }
+   }
 };
+
 
 /**
  * Change card preview
@@ -61,12 +81,17 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
             iCc.removeChild(iChild);
         };
 
+        var bgimgC = function(){
+            iCc.removeAttribute("style");
+            iCc.setAttribute("style", "-webkit-background-size: cover;background-size: cover; background-image: url(" + getImage() + ");");
+        };
+
         /**
          * Change Markup
          */
         switch (evt.target.value) {
             case 'summary':
-                iCc.setAttribute("style", "background-image: url(" + getImage() + ");");
+                bgimgC();
                 iCc.parentNode.className = 'tc-summary tc-container';
                 removeC();
                 var imgSmall = document.createElement('img');
@@ -77,7 +102,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
                 break;
 
             case 'summary_large_image':
-                iCc.removeAttribute("style");
+                bgimgC();
                 iCc.parentNode.className = 'summary_large_image tc-container';
                 removeC();
                 var imgLarge = document.createElement('img');
