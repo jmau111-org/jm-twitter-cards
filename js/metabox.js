@@ -1,23 +1,34 @@
+/**
+ * Handle upload media
+ * field image
+ */
 (function ($) {
 
-    $('.tc-file-input-select').click(function(e) {
+    $('.tc-file-input-select').click(function (e) {
         e.preventDefault();
         var image = wp.media({
             title: tcStrings.upload_message,
             multiple: false
         }).open()
-            .on('select', function(e){
+            .on('select', function (e) {
                 var uploaded_image = image.state().get('selection').first();
                 var image_url = uploaded_image.toJSON().url;
                 $('.tc-file-input').val(image_url);
             });
     });
 
-    $('.tc-file-input-reset').click(function(e) {
+    $('.tc-file-input-reset').click(function (e) {
         e.preventDefault();
-        $('.tc-file-input').val('');
+        $('.tc-file-input').attr('value', '');
     });
+})(jQuery);
 
+
+/**
+ * Hide/show options
+ * according to card type
+ */
+(function ($) {
     function a() {
         $('*[class^="cardPlayer"]').hide()
     }
@@ -29,4 +40,5 @@
     $("#twitterCardType").on("change", function () {
         "player" == this.value ? r() : a()
     }).change()
+
 })(jQuery);

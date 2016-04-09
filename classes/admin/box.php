@@ -140,11 +140,17 @@ class Box implements MetaBox {
 			return $post_id;
 		}
 
-		foreach ( (array) $this->keys as $key ) {
+		if ( ! empty( $_POST ) && check_admin_referer( 'save_tc_meta', 'save_tc_meta_nonce' ) ) {
 
-			if ( ! empty( $_POST[ $key ] ) && check_admin_referer( 'save_tc_meta', 'save_tc_meta_nonce' ) ) {
-				update_post_meta( $post_id, $key, $this->sanitize( $key, $_POST[ $key ] ) );
+			foreach ( (array) $this->keys as $key ) {
+
+				if ( ! empty( $_POST[ $key ] ) ) {
+					update_post_meta( $post_id, $key, $this->sanitize( $key, $_POST[ $key ] ) );
+				} elseif ( empty( $_POST[ $key ] ) ) {
+					delete_post_meta( $post_id, $key );
+				}
 			}
+
 		}
 
 		return $post_id;

@@ -39,16 +39,16 @@ class JM_TC_CLI extends WP_CLI_Command {
 	}
 
 	/**
- * Set sitename
- * @author Julien Maury
- *
- * ## EXAMPLES
- *
- * wp jm_tc set_sitename nbcnews
- *
- * @param $args
- * @param $assoc_args
- */
+	 * Set sitename
+	 * @author Julien Maury
+	 *
+	 * ## EXAMPLES
+	 *
+	 * wp jm_tc set_sitename nbcnews
+	 *
+	 * @param $args
+	 * @param $assoc_args
+	 */
 	public function set_sitename( $args, $assoc_args ){
 
 		if ( empty( $args[0] ) ) {

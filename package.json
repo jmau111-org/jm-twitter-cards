@@ -2,12 +2,5 @@
   "name": "jm-twitter-cards",
   "version": "7.5.0",
   "description": "JM Twitter Cards WP Plugin",
-  "author": "Julien Maury",
-  "scripts": {
-    "build": "browserify -v --debug -t js/components/app.js -o js/preview.js",
-    "watch": "watchify  -v --debug -t js/components/app.js -o js/preview.js"
-  },
-  "devDependencies": {
-    "browserify": "^13.0.0"
-  }
+  "author": "Julien Maury"
 }

@@ -3,7 +3,7 @@
 /**
  * All these stuffs to not use jQuery
  * which is already loaded by WP
- * this is really lame !
+ * this is really lame ^^ !
  */
 
 /**
@@ -38,6 +38,7 @@ if (typeof( title.addEventListener ) !== 'undefined') {
 
     }, false);
 }
+
 
 /**
  * Sync desc
