@@ -3,7 +3,7 @@ Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BJYYT486HEH6
 Requires at least: 4.2
-Tested up to: 4.4
+Tested up to: 4.5.1
 License: GPLv2 or later
 Stable tag: trunk
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,9 +61,7 @@ So, when users click on Tweets with an Instagram link, photos appear cropped.
 = Plugin is fine but Twitter cards doesn't appear in my tweets =
 
 1. Make sure you correctly fulfilled fields in option page according to [Twitter documentation](https://dev.twitter.com/docs/cards "Twitter cards documentation")
-2. Make sure you have correctly [submitted your website to Twitter](https://dev.twitter.com/docs/cards/validation/validator "Twitter cards submit")
-3. Wait for Twitter's answer (a mail that tells you your site has been approved)
-4. Be careful with your robots.txt and put some rules to allow Twitter to fetch your website :
+2. Be careful with your robots.txt and put some rules to allow Twitter to fetch your website :
 
 `	
 	User-agent: Twitterbot
@@ -93,9 +91,7 @@ C'est un problème connu. Cela vient d'Instagram lui-même qui préfère que ses
 = Le plugin marche mais je n'obtiens pas de Twitter Cards dans mes tweets =
 
 1. Assurez-vous bien d'avoir rempli correctement les champs dans la page d'options suivant <a href="https://dev.twitter.com/docs/cards" title="Twitter cards documentation">la documentation Twitter</a>
-2. Assurez-vous bien d'avoir <a href="https://dev.twitter.com/docs/cards/validation/validator" title="Twitter cards formulaire de validation">soumis votre site à Twitter</a>
-3. Attendez la réponse de Twitter (un mail qui vous indique que votre site a été approuvé)
-4. Attention avec le fichier robots.txt, vous devez autoriser le robot de Twitter à crawler votre site:
+2. Attention avec le fichier robots.txt, vous devez autoriser le robot de Twitter à crawler votre site:
 
 `
 	User-agent: Twitterbot
@@ -117,6 +113,13 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 
 == Changelog ==
+
+### 7.5.0
+* 01 May 2016
+* fix edge case player card, player not set
+* full js preview in real time
+* less code in js when possible
+* CLI commands
 
 = 7.4.0 =
 * 27 Feb 2016

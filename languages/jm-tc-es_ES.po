@@ -595,3 +595,7 @@ msgid ""
 msgstr ""
 "Entra el código país de la aplicación si su aplicación no está disponible "
 "para el app appstore US"
+
+#: inc/admin/admin-tc.php:38
+msgid "characters left"
+msgstr ""

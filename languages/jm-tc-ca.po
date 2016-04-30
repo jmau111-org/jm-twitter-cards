@@ -534,3 +534,7 @@ msgid ""
 msgstr ""
 "Introdueix el codi App de país de 2 lletres en cas que la teva app no etigui "
 "disponible a la App Store US"
+
+#: inc/admin/admin-tc.php:38
+msgid "characters left"
+msgstr ""

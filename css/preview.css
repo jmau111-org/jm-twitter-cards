@@ -1,14 +1,9 @@
-.form-table, .tc-preview{
-    width: 46%;
-    display: inline-block;
-    vertical-align: top
-}
-
 .form-table {
     margin-left: 2%;
 }
 
 .tc-preview {
+    max-width: 70%;
     position: relative;
     padding: 12px 12px 8px 54px;
     margin: 0;
@@ -128,7 +123,7 @@
 
 @media screen and (max-width: 1024px) {
      .form-table,.tc-preview{
-        width:auto;
+         width:auto;
          margin:1em auto
     }
 }

@@ -1,39 +1,13 @@
-'use strict';
-
-/**
- * Handle backward compat for stupid IE browsers
- * @source: http://stackoverflow.com/a/25674763/1930236
- */
-if (typeof Element.prototype.addEventListener === 'undefined') {
-    Element.prototype.addEventListener = function (e, callback) {
-        e = 'on' + e;
-        return this.attachEvent(e, callback);
-    };
-}
-
-var textArea = document.getElementById('jm_tc[twitterPostPageDesc]'), textAreaParent = textArea.parentNode,
-    textAreaLength = textArea.value.length, maxLength = 200, span = document.createElement('span');
-
-span.id = 'tc-charcount';
-span.textContent = textAreaLength + '/' + maxLength;
-
-textAreaParent.appendChild(span);
-
-if (typeof( textArea.addEventListener ) !== 'undefined') {
-
-    textArea.addEventListener("keyup", function (evt) {
-
-        var Length = evt.target.value.length,
-            span = document.getElementById('tc-charcount');
-
-        if (Length > 200) {
-            span.style.color = '#f00';
+(function ($) {
+    var textArea = $('textarea');
+    textArea.after('<div id="tc-charcount"></div>');
+    $(textArea).keyup(function () {
+        var max = 200,len = $(this).val().length, div = $('#tc-charcount');
+        if (len >= max) {
+            div.text(max - len );
+            div.css('color', 'red');
+        } else {
+            div.text(max - len + ' ' + tcStrings.charcount_message);
         }
-
-        span.textContent = Length + '/' + maxLength;
-    }, false);
-
-
-}
-
-
+    });
+})(jQuery);

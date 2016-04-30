@@ -61,6 +61,8 @@ class Box implements MetaBox {
 
 		$factory = new Factory();
 
+		$factory->createPreview( self::get_post_id() );
+
 		echo $factory->createFields()->wrapper( array( 'tag' => 'table', 'class' => 'form-table', ) );
 		echo $factory->createFields()->wrapper( array( 'tag' => 'tbody', ) );
 		echo $factory->createFields()->select_field(
@@ -118,7 +120,6 @@ class Box implements MetaBox {
 		echo $factory->createFields()->wrapper( array( 'tag' => 'tbody', ), 'end' );
 		echo $factory->createFields()->wrapper( array( 'tag' => 'table', ), 'end' );
 
-		$factory->createPreview( self::get_post_id() );
 	}
 
 	/**
@@ -203,16 +204,24 @@ class Box implements MetaBox {
 	 */
 	public function admin_enqueue_scripts() {
 
-		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array(), JM_TC_VERSION, true );
+		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array( 'jquery' ), JM_TC_VERSION, true );
+		wp_register_script( 'jm-tc-preview', JM_TC_URL . 'js/preview.js', array('jquery'), JM_TC_VERSION, true );
 		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.css', array(), JM_TC_VERSION );
 
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'jm-tc-metabox' );
+			wp_enqueue_script( 'jm-tc-preview' );
 
-			wp_localize_script( 'jm-tc-metabox', 'tcStrings',  array( 'upload_message' => __( 'Upload') ) );
+			wp_localize_script(
+				'jm-tc-metabox',
+				'tcStrings',
+				array(
+					'upload_message' => __( 'Upload'),
+					'logo_twitter'   => JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
+				)
+			);
 
-			wp_enqueue_script( 'jm-tc-preview', JM_TC_URL . 'js/preview.js', array(), JM_TC_VERSION, true );
 			wp_enqueue_style( 'jm-tc-preview' );
 
 		}

@@ -43,8 +43,8 @@ msgid "robots.txt"
 msgstr ""
 
 
-#: inc/admin/admin-tc.php:105
-msgid "Multi Author"
+#: inc/admin/admin-tc.php:38
+msgid "characters left"
 msgstr ""
 
 #: inc/admin/admin-tc.php:107

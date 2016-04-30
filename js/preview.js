@@ -1,76 +1,53 @@
-'use strict';
+(function ($) {
 
-/**
- * All these stuffs to not use jQuery
- * which is already loaded by WP
- * this is really lame ^^ !
- */
+    /**
+     * @type {Element}
+     */
+    var title = $('#title'),
+        cardType = $('#twitterCardType'),
+        metaBoxImg = $('#cardImage'),
+        postThumb = $('#set-post-thumbnail img');
 
-/**
- * @type {Element}
- */
-
-var title = document.getElementById('title'),
-    description = document.getElementById('title'),
-    cardType = document.getElementById('twitterCardType'),
-    postThumb = document.querySelectorAll('.attachment-post-thumbnail'),
-    metaBoxImg = document.getElementById('cardImage');
-
-/**
- * Handle backward compat for stupid IE browsers
- * @source: http://stackoverflow.com/a/25674763/1930236
- */
-if (typeof Element.prototype.addEventListener === 'undefined') {
-    Element.prototype.addEventListener = function (e, callback) {
-        e = 'on' + e;
-        return this.attachEvent(e, callback);
-    };
-}
-
-/**
- * Sync title
- */
-if (typeof( title.addEventListener ) !== 'undefined') {
-    title.addEventListener('keyup', function (evt) {
-
-        var tcTitle = document.getElementById('tc-title');
-        tcTitle.textContent = evt.target.value;
-
-    }, false);
-}
-
-
-/**
- * Sync desc
- * It's a huge pain to get it from WP :/
- */
-window.onload = function () {
-    tinymce.get('content').on('keyup',function(e){
-        var tcDesc = document.getElementById('tc-desc');
-        tcDesc.textContent = this.getContent().replace(/(<([^>]+)>)/ig,"");
+    /**
+     * Sync title
+     */
+    $(title).keyup(function (evt) {
+        evt.preventDefault();
+        $('#tc-title').text(this.value);
     });
-};
 
-var getImage = function () {
-   if( typeof(metaBoxImg) !== 'undefined' && metaBoxImg.value.length !== 0) {
-       return metaBoxImg.value;
-    } else {
-       if (typeof(postThumb[0]) !== 'undefined' && postThumb[0].currentSrc.length !== 0) {
-           return postThumb[0].currentSrc;
-       } else {
-           return 'https://g.twimg.com/Twitter_logo_blue.png';
-       }
-   }
-};
+    /**
+     * Sync desc
+     * It's a huge pain to get it from WP :/
+     */
+    window.onload = function () {
+        tinymce.get('content').on('keyup', function () {
+            $('#tc-desc').text(this.getContent().replace(/(<([^>]+)>)/ig, ""));
+        });
+    };
+
+    /**
+     * Get img from different inputs
+     * @returns {*}
+     */
+    function getImage() {
+        if ( typeof($(metaBoxImg)) !== 'undefined' && $(metaBoxImg).val() !== '') {
+            return $(metaBoxImg).val();
+        } else {
+            if (typeof($(postThumb)[0]) !== 'undefined' && $(postThumb)[0].currentSrc !== '') {
+                return $(postThumb)[0].currentSrc;
+            } else {
+                return tcStrings.logo_twitter;
+            }
+        }
+    }
 
 
-/**
- * Change card preview
- * according to card type
- */
-if (typeof( cardType.addEventListener ) !== 'undefined') {
-
-    cardType.addEventListener('change', function (evt) {
+    /**
+     * Change card preview
+     * according to card type
+    */
+    $(cardType).on('change', function (evt) {
 
         /**
          * Change container ID and class
@@ -83,12 +60,12 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
         var iCc = document.getElementById(evt.target.value + '-img-container'),
             iChild = document.getElementById('tc-img-child');
 
-        var removeC = function(){
+        var removeC = function () {
             iCc.removeChild(iChild);
-        }, bgimgC = function(){
+        }, bgimgC = function () {
             iCc.removeAttribute("style");
             iCc.setAttribute("style", "-webkit-background-size: cover;background-size: cover; background-image: url(" + getImage() + ");");
-        }, setIdC = function(obj){
+        }, setIdC = function (obj) {
             obj.id = 'tc-img-child';
         };
 
@@ -98,7 +75,7 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
         switch (evt.target.value) {
             case 'summary':
                 bgimgC();
-                iCc.parentNode.className = 'tc-summary tc-container';
+                iCc.parentNode.className = evt.target.value + ' tc-container';
                 removeC();
                 var imgSmall = document.createElement('img');
                 imgSmall.setAttribute("src", getImage());
@@ -109,19 +86,19 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
 
             case 'summary_large_image':
                 bgimgC();
-                iCc.parentNode.className = 'summary_large_image tc-container';
+                iCc.parentNode.className = evt.target.value + ' tc-container';
                 removeC();
                 var imgLarge = document.createElement('img');
                 imgLarge.setAttribute("src", getImage());
-                imgLarge.className = "summary_large_image";
+                imgLarge.className = evt.target.value;
                 setIdC(imgLarge);
                 iCc.appendChild(imgLarge);
                 break;
 
             case 'player':
                 iCc.removeAttribute("style");
-                iCc.className = "player";
-                iCc.parentNode.className = 'player tc-container';
+                iCc.className = evt.target.value;
+                iCc.parentNode.className = evt.target.value + ' tc-container';
                 removeC();
                 var video = document.createElement('video');
                 video.setAttribute("poster", getImage());
@@ -131,5 +108,6 @@ if (typeof( cardType.addEventListener ) !== 'undefined') {
                 break;
         }
 
-    }, false);
-}
+    });
+
+})(jQuery);
