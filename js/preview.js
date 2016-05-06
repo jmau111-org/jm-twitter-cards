@@ -37,7 +37,7 @@
             if (typeof($(postThumb)[0]) !== 'undefined' && $(postThumb)[0].currentSrc !== '') {
                 return $(postThumb)[0].currentSrc;
             } else {
-                return tcStrings.logo_twitter;
+                return tcStrings.default_image;
             }
         }
     }

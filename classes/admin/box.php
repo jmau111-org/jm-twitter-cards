@@ -218,7 +218,7 @@ class Box implements MetaBox {
 				'tcStrings',
 				array(
 					'upload_message' => __( 'Upload'),
-					'logo_twitter'   => JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
+					'default_image'  =>  ! empty( $this->opts['twitterImage'] ) ? esc_url( $this->opts['twitterImage'] ) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
 				)
 			);
 

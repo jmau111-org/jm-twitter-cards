@@ -162,7 +162,7 @@ class Options {
 		if ( $this->post_ID && empty( $cardImage ) && has_post_thumbnail( $this->post_ID ) ) {
 			$size             = Thumbs::thumbnail_sizes();
 			$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
-			$image            = reset($image_attributes);
+			$image            = ! empty( $image_attributes ) && is_array( $image_attributes ) ? reset( $image_attributes ) : $this->opts['twitterImage'];;
 		} elseif ( ! empty( $cardImage ) ) {
 			$image = esc_url_raw( $cardImage );
 		} elseif ( 'attachment' === get_post_type() ) {
