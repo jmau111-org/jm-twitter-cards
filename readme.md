@@ -22,6 +22,10 @@ composer install
 ## Changelog ##
 
 ### 7.5.0
+* 07 May 2016
+* fix default opts metabox card type
+
+### 7.5.0
 * 05 April 2016
 * CLI commands
 * full js preview in real time

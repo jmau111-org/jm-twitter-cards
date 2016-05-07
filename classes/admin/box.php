@@ -73,8 +73,9 @@ class Box implements MetaBox {
 					'summary'             => __( 'Summary', 'jm-tc' ),
 					'summary_large_image' => __( 'Summary below Large Image', 'jm-tc' ),
 					'player'              => __( 'Player', 'jm-tc' ),
+					'app'				  => __( 'Application', 'jm-tc' ),
 				),
-				'value'    => get_post_meta( self::get_post_id(), 'twitterCardType', true ),
+				'value'    => get_post_meta( self::get_post_id(), 'twitterCardType', true ) ? get_post_meta( self::get_post_id(), 'twitterCardType', true ) : $this->opts['twitterCardType'],
 			)
 		);
 		echo $factory->createFields()->image_field( array(
