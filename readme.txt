@@ -114,6 +114,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 7.6.0
+* 07 May 2016
+* fix default opts metabox card type
+* fix admin referer issue that trigger error with other plugins
+
 ### 7.5.0
 * 01 May 2016
 * fix edge case player card, player not set

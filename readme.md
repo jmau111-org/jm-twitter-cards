@@ -24,6 +24,7 @@ composer install
 ### 7.5.0
 * 07 May 2016
 * fix default opts metabox card type
+* fix admin referer issue that trigger error with other plugins
 
 ### 7.5.0
 * 05 April 2016
