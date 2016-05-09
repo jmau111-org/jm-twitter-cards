@@ -142,8 +142,7 @@ class Box implements MetaBox {
 			return $post_id;
 		}
 
-		if ( check_admin_referer( 'save_tc_meta', 'save_tc_meta_nonce' ) ) {
-
+		if ( ! empty( $_POST['save_tc_meta_nonce'] ) && check_admin_referer( 'save_tc_meta', 'save_tc_meta_nonce' ) ) {
 			foreach ( (array) $this->keys as $key ) {
 
 				if ( ! empty( $_POST[ $key ] ) ) {
