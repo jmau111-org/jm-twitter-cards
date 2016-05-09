@@ -29,16 +29,9 @@
  * according to card type
  */
 (function ($) {
-    function a() {
-        $('*[class^="cardPlayer"]').hide()
-    }
-
-    function r() {
-        $('*[class^="cardPlayer"]').show()
-    }
-
     $("#twitterCardType").on("change", function () {
-        "player" == this.value ? r() : a()
+        "app"    == this.value ? $('.tc-preview').hide() : $('.tc-preview').show()
+        "player" == this.value ? $('*[class^="cardPlayer"]').show() : $('*[class^="cardPlayer"]').hide()
     }).change()
 
 })(jQuery);
