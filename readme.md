@@ -21,6 +21,13 @@ composer install
 
 ## Changelog ##
 
+### 7.7
+* 10 dec 2016
+* fix error preview (WP preview)
+* reaorganize file
+* no more framework, delete old code
+* fix issues img
+
 ### 7.5.0
 * 07 May 2016
 * fix default opts metabox card type

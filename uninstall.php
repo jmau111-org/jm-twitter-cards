@@ -30,9 +30,8 @@ $keys = array(
 	'cardLabel2'
 );
 
-
+global $wpdb;
 foreach ( $keys as $key ) {
-	global $wpdb;
 	$wpdb->query(
 		$wpdb->prepare(
 			"

@@ -114,6 +114,13 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 7.7
+* 10 dec 2016
+* fix error preview (WP preview)
+* reaorganize file
+* no more framework, delete old code
+* fix issues img
+
 ### 7.6.0
 * 07 May 2016
 * fix default opts metabox card type

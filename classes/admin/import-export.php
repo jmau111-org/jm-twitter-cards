@@ -91,7 +91,7 @@ class ImportExport {
 			update_option( 'jm_tc_cpt',(array) $settings['ie'] );
 		}
 
-		wp_safe_redirect( admin_url( 'admin.php?page=jm_tc' ) );
+		wp_safe_redirect( add_query_arg( 'page', 'jm_tc', admin_url( 'admin.php' ) ) );
 		exit;
 
 	}
