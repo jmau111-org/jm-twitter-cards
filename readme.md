@@ -21,6 +21,11 @@ composer install
 
 ## Changelog ##
 
+### 7.8
+* 11 feb 2017
+* fix local storage collision props to xwolfoverride
+* also load js settings only on page settings
+
 ### 7.7
 * 10 dec 2016
 * fix error preview (WP preview)

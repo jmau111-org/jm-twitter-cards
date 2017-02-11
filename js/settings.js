@@ -6,7 +6,7 @@
         $('.group').hide();
         var activetab = '';
         if (typeof(localStorage) != 'undefined' ) {
-            activetab = localStorage.getItem("activetab");
+            activetab = localStorage.getItem("jm_activetab");
         }
         if (activetab != '' && $(activetab).length ) {
             $(activetab).fadeIn();
@@ -35,7 +35,7 @@
             $(this).addClass('nav-tab-active').blur();
             var clicked_group = $(this).attr('href');
             if (typeof(localStorage) != 'undefined' ) {
-                localStorage.setItem("activetab", $(this).attr('href'));
+                localStorage.setItem("jm_activetab", $(this).attr('href'));
             }
             $('.group').hide();
             $(clicked_group).fadeIn();
