@@ -21,6 +21,11 @@ composer install
 
 ## Changelog ##
 
+### 7.8.0
+* 11 Feb 2017
+* fix localstorage collision (props to xwolfoverride)
+* also load js tab jquery only on page settings
+
 ### 7.5.0
 * 07 May 2016
 * fix default opts metabox card type
