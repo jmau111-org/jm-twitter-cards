@@ -32,8 +32,10 @@ class Main {
 	public function admin_enqueue_scripts( $hook_suffix ){
 
 		wp_register_script( 'jm-tc-charcount', JM_TC_URL . 'js/charcount.js', array( 'jquery' ), JM_TC_VERSION, true );
+		wp_register_script( 'jm-tc-settings', JM_TC_URL . 'js/settings.js', array( 'jquery' ), JM_TC_VERSION, true );
 
 		if ( 'toplevel_page_jm_tc' === $hook_suffix ) {
+			wp_enqueue_script( 'jm-tc-settings' );
 			wp_enqueue_script( 'jm-tc-charcount' );
 			wp_localize_script(
 				'jm-tc-charcount',
