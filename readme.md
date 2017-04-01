@@ -21,6 +21,12 @@ composer install
 
 ## Changelog ##
 
+### 7.9
+* 02 April 2017
+* fix missing loading class
+* that would resolve many issues especially with description
+
+
 ### 7.8
 * 11 feb 2017
 * fix local storage collision props to xwolfoverride
