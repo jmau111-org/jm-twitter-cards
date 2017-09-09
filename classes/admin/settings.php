@@ -34,6 +34,7 @@ class Settings {
         wp_enqueue_media();
         wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_script( 'jquery' );
+        wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings.js', array( 'jquery' ), JM_TC_VERSION, true );
     }
 
     /**

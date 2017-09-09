@@ -132,7 +132,7 @@ class Box implements MetaBox {
 	 *
 	 * @author Julien Maury
 	 *
-	 * @return int|void
+	 * @return int
 	 */
 	public function save_box( $post_id, $post, $update ) {
 

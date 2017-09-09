@@ -21,6 +21,12 @@ composer install
 
 ## Changelog ##
 
+### 8.0
+* 09 Sept 2017
+* test up to 4.8.1
+* fix load markup according to post types option
+
+
 ### 7.9
 * 02 April 2017
 * fix missing loading class

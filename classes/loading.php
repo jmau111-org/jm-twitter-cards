@@ -36,7 +36,6 @@ class Loading {
 			new Admin\Box();
 		} else {
 			new Thumbs();
-			new Particular();
 		}
 	}
 	/**
@@ -61,6 +60,13 @@ class Loading {
 	 * Add specific markup
 	 */
 	public function add_markup(){
+
+		$types = Utilities::get_post_types();
+
+		if ( ! is_home() && ! is_front_page() && ! in_array( get_post_type(), $types, true ) ) {
+			return false;
+		}
+
 		if ( ! is_404() && ! is_tag() && ! is_archive() && ! is_tax() && ! is_category() ) {
 			$factory = new Factory();
 			$factory->createMarkup( get_queried_object_id() );
