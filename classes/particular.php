@@ -81,9 +81,14 @@ class Particular {
 	 * @since 5.3.2
 	 * @return string
 	 */
-	function modify_excerpt() {
+	function modify_excerpt( $excerpt ) {
 		global $post;
-		return $this->get_excerpt_from_far_far_away( $post->ID );
+		$_excerpt = $this->get_excerpt_from_far_far_away( $post->ID );
+
+		if ( ! empty( $_excerpt ) ) {
+			return $_excerpt;
+		}
+		return $excerpt;
 	}
 
 	/**
@@ -94,7 +99,7 @@ class Particular {
 	function get_excerpt_from_far_far_away( $post_id ) {
 		global $wpdb;
 		$query        = "SELECT post_excerpt FROM {$wpdb->posts} WHERE ID = %d LIMIT 1";
-		$result       = $wpdb->get_results( $wpdb->prepare( $query, $post_id ), ARRAY_A );
+		$result       = $wpdb->get_results( $wpdb->prepare( $query, (int) $post_id ), ARRAY_A );
 		$post_excerpt = $result[0]['post_excerpt'];
 
 		return esc_attr( $post_excerpt );
