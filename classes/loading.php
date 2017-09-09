@@ -36,6 +36,7 @@ class Loading {
 			new Admin\Box();
 		} else {
 			new Thumbs();
+			new Particular();
 		}
 	}
 	/**
