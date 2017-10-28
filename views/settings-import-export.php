@@ -1,9 +1,9 @@
 <?php
 
 if ( ! function_exists( 'add_action' ) ) {
-    header( 'Status: 403 Forbidden' );
-    header( 'HTTP/1.1 403 Forbidden' );
-    exit();
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
 }
 ?>
 <div class="wrap">
@@ -19,8 +19,8 @@ if ( ! function_exists( 'add_action' ) ) {
                     <p><input type="hidden" name="action" value="export_settings"/></p>
 
                     <p>
-                        <?php wp_nonce_field( 'export_nonce', 'export_nonce' ); ?>
-                        <?php submit_button( __( 'Export' ), 'primary', 'submit', false ); ?>
+						<?php wp_nonce_field( 'export_nonce', 'export_nonce' ); ?>
+						<?php submit_button( __( 'Export' ), 'primary', 'submit', false ); ?>
                     </p>
                 </form>
             </div>
@@ -38,8 +38,8 @@ if ( ! function_exists( 'add_action' ) ) {
 
                     <p>
                         <input type="hidden" name="action" value="import_settings"/>
-                        <?php wp_nonce_field( 'import_nonce', 'import_nonce' ); ?>
-                        <?php submit_button( __( 'Import' ), 'primary', 'submit', false ); ?>
+						<?php wp_nonce_field( 'import_nonce', 'import_nonce' ); ?>
+						<?php submit_button( __( 'Import' ), 'primary', 'submit', false ); ?>
                     </p>
                 </form>
             </div>

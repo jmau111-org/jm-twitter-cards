@@ -13,11 +13,11 @@
 }
 
 .tc-preview .u-pullLeft {
-    float: left!important
+    float: left !important
 }
 
 .tc-preview .u-pullRight {
-    float: right!important
+    float: right !important
 }
 
 .tc-preview .tc-author {
@@ -71,7 +71,7 @@
 }
 
 .tc-preview #summary-img-container .tc-img,
-.tc-preview img.summary_large_image{
+.tc-preview img.summary_large_image {
     width: 100%;
     opacity: 0;
     zoom: 1;
@@ -116,14 +116,14 @@
     border-radius: .42857em;
     border: 1px solid #E1E8ED;
     box-sizing: border-box;
-    color: inherit!important;
+    color: inherit !important;
     overflow: hidden;
     padding-bottom: 1em
 }
 
 @media screen and (max-width: 1024px) {
-     .form-table,.tc-preview{
-         width:auto;
-         margin:1em auto
+    .form-table, .tc-preview {
+        width: auto;
+        margin: 1em auto
     }
 }

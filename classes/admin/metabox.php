@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -15,7 +16,7 @@ interface MetaBox {
 	 *
 	 * @return mixed
 	 */
-	public function add_box($post_type, $post);
+	public function add_box( $post_type, $post );
 
 	public function display_box();
 

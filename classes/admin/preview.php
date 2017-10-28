@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -23,12 +24,12 @@ class Preview {
 		$this->opts    = \jm_tc_get_options();
 	}
 
-	public function __toString(){
+	public function __toString() {
 		$preview = '';
-		$type = $this->options->card_type();
-		$title = $this->options->title();
-		$desc = $this->options->description();
-		$image = $this->options->image();
+		$type    = $this->options->card_type();
+		$title   = $this->options->title();
+		$desc    = $this->options->description();
+		$image   = $this->options->image();
 
 		if ( ! is_array( $type ) || ! is_array( $title ) || ! is_array( $desc ) || ! is_array( $image ) ) {
 			return false;
@@ -44,8 +45,9 @@ class Preview {
 
 
 		ob_start();
-		require_once ( JM_TC_DIR . 'views/preview.php' );
+		require_once( JM_TC_DIR . 'views/preview.php' );
 		ob_end_flush();
+
 		return $preview;
 	}
 

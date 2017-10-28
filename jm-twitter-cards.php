@@ -5,7 +5,7 @@ Plugin URI: http://dev73.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpress.fr
-Version: 8.0
+Version: 8.1
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,7 +30,7 @@ defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
 // Constantly constant
-define( 'JM_TC_VERSION', '8.0' );
+define( 'JM_TC_VERSION', '8.1' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 
@@ -41,13 +41,13 @@ if ( ! file_exists( JM_TC_DIR . 'vendor/autoload.php' ) ) {
 	return false;
 }
 
-require_once ( JM_TC_DIR . 'vendor/autoload.php' );
+require_once( JM_TC_DIR . 'vendor/autoload.php' );
 
 /**
  * CLI commands
  */
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-	require_once( JM_TC_DIR  . 'cli/cli.php' );
+	require_once( JM_TC_DIR . 'cli/cli.php' );
 }
 
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_settings_action_link' );
@@ -55,15 +55,17 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_setting
 /**
  * Re-add Settings link to admin page
  * some users needed it and it does not evil ^^
+ *
  * @param $links
  *
  * @return mixed
  */
 function jm_tc_settings_action_link( $links ) {
-	$links['settings'] = '<a href="' . add_query_arg( array( 'page' => 'jm_tc' ), admin_url( 'admin.php') ) . '">' . __( 'Settings' ) . '</a>';
+	$links['settings'] = '<a href="' . add_query_arg( array( 'page' => 'jm_tc' ), admin_url( 'admin.php' ) ) . '">' . __( 'Settings' ) . '</a>';
+
 	return $links;
 }
 
 register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
 
-add_action( 'plugins_loaded', array ( TokenToMe\TwitterCards\Loading::get_instance(), 'plugin_setup' ) );
+add_action( 'plugins_loaded', array( TokenToMe\TwitterCards\Loading::get_instance(), 'plugin_setup' ) );

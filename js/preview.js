@@ -31,7 +31,7 @@
      * @returns {*}
      */
     function getImage() {
-        if ( typeof($(metaBoxImg)) !== 'undefined' && $(metaBoxImg).val() !== '') {
+        if (typeof($(metaBoxImg)) !== 'undefined' && $(metaBoxImg).val() !== '') {
             return $(metaBoxImg).val();
         } else {
             if (typeof($(postThumb)[0]) !== 'undefined' && $(postThumb)[0].currentSrc !== '') {
@@ -46,7 +46,7 @@
     /**
      * Change card preview
      * according to card type
-    */
+     */
     $(cardType).on('change', function (evt) {
 
         /**

@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -35,7 +36,7 @@ class ImportExport {
 			return;
 		}
 
-		$settings = array( 'tc' => (array) get_option( 'jm_tc' ), 'ie' => (array) get_option( 'jm_tc_cpt'), );
+		$settings = array( 'tc' => (array) get_option( 'jm_tc' ), 'ie' => (array) get_option( 'jm_tc_cpt' ), );
 
 		ignore_user_abort( true );
 
@@ -88,7 +89,7 @@ class ImportExport {
 			update_option( 'jm_tc', (array) $settings['tc'] );
 		}
 		if ( ! empty( $settings['ie'] ) ) {
-			update_option( 'jm_tc_cpt',(array) $settings['ie'] );
+			update_option( 'jm_tc_cpt', (array) $settings['ie'] );
 		}
 
 		wp_safe_redirect( add_query_arg( 'page', 'jm_tc', admin_url( 'admin.php' ) ) );

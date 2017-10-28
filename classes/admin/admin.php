@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -26,10 +27,11 @@ class Main {
 
 	/**
 	 * Add some js
+	 *
 	 * @param $hook_suffix
 	 * for fox desc home - charcount
 	 */
-	public function admin_enqueue_scripts( $hook_suffix ){
+	public function admin_enqueue_scripts( $hook_suffix ) {
 
 		wp_register_script( 'jm-tc-charcount', JM_TC_URL . 'js/charcount.js', array( 'jquery' ), JM_TC_VERSION, true );
 
@@ -55,9 +57,18 @@ class Main {
 	}
 
 	function admin_menu() {
-		add_menu_page( __( 'JM Twitter Cards', 'jm-tc' ), __( 'JM Twitter Cards', 'jm-tc' ), 'manage_options', 'jm_tc', array( $this, 'plugin_page' ), 'dashicons-twitter' );
-		add_submenu_page( 'jm_tc', __( 'Import' ) . ' / ' . __( 'Export' ), __( 'Import' ) . ' / ' . __( 'Export' ), 'manage_options', 'jm_tc_import_export', array( $this, 'get_view_exp' ) );
-		add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ), 'manage_options', 'jm_tc_about', array( $this, 'get_view_about' ) );
+		add_menu_page( __( 'JM Twitter Cards', 'jm-tc' ), __( 'JM Twitter Cards', 'jm-tc' ), 'manage_options', 'jm_tc', array(
+			$this,
+			'plugin_page'
+		), 'dashicons-twitter' );
+		add_submenu_page( 'jm_tc', __( 'Import' ) . ' / ' . __( 'Export' ), __( 'Import' ) . ' / ' . __( 'Export' ), 'manage_options', 'jm_tc_import_export', array(
+			$this,
+			'get_view_exp'
+		) );
+		add_submenu_page( 'jm_tc', __( 'About' ), __( 'About' ), 'manage_options', 'jm_tc_about', array(
+			$this,
+			'get_view_about'
+		) );
 	}
 
 	/**
@@ -67,6 +78,7 @@ class Main {
 	function get_settings_sections() {
 		$sections = array();
 		require_once( JM_TC_DIR . 'views/settings-sections.php' );
+
 		return $sections;
 	}
 
@@ -79,6 +91,7 @@ class Main {
 
 		$settings_fields = array();
 		require_once( JM_TC_DIR . 'views/settings.php' );
+
 		return $settings_fields;
 	}
 
@@ -86,13 +99,14 @@ class Main {
 	 * Simply get post types
 	 *
 	 * @param array $args
+	 *
 	 * @author Julien Maury
 	 * @return array
 	 */
 	public function get_post_types( $args = array() ) {
 
 		$defaults = array( 'public' => true, );
-		$pt_args = apply_filters( 'jm_tc_cpt_args', wp_parse_args ( $args, $defaults ) );
+		$pt_args  = apply_filters( 'jm_tc_cpt_args', wp_parse_args( $args, $defaults ) );
 
 		if ( ! is_array( $pt_args ) ) {
 			$pt_args = array();
@@ -104,20 +118,22 @@ class Main {
 	/**
 	 * Get our view
 	 */
-	public function get_view_exp(){
+	public function get_view_exp() {
 		ob_start();
 		require( JM_TC_DIR . 'views/settings-import-export.php' );
 		ob_end_flush();
+
 		return true;
 	}
 
 	/**
 	 * Get our view
 	 */
-	public function get_view_about(){
+	public function get_view_about() {
 		ob_start();
 		require( JM_TC_DIR . 'views/about.php' );
 		ob_end_flush();
+
 		return true;
 	}
 
@@ -127,7 +143,6 @@ class Main {
 	function plugin_page() {
 		echo '<div class="wrap">';
 		echo '<h1>' . __( 'JM Twitter Cards', 'jm-tc' ) . '</h1>';
-		$this->settings_api->show_navigation();
 		$this->settings_api->show_forms();
 		echo '</div>';
 	}

@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
 
 if ( ! function_exists( 'add_action' ) ) {

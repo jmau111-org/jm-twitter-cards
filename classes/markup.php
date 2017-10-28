@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -13,13 +14,13 @@ class Markup {
 	 * Options
 	 * @var array
 	 */
-	protected $opts    = array();
+	protected $opts = array();
 	protected $options = array();
 
 	public function __construct( Admin\Options $options ) {
 
 		$this->options = $options;
-		$this->opts = \jm_tc_get_options();
+		$this->opts    = \jm_tc_get_options();
 	}
 
 	/**
@@ -32,7 +33,8 @@ class Markup {
 	 */
 	public function html_comments( $end = false ) {
 		$slash = ( false === $end ) ? '' : '/';
-		return '<!-- '. $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
+
+		return '<!-- ' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 	}
 
 	/**
@@ -40,7 +42,7 @@ class Markup {
 	 */
 	public function __toString() {
 
-		$markup  = $this->html_comments();
+		$markup = $this->html_comments();
 
 		/* most important meta */
 		$markup .= $this->generate_markup( $this->options->card_type() );
@@ -66,7 +68,7 @@ class Markup {
 	 *
 	 * @return string
 	 */
-	protected function generate_markup( $data) {
+	protected function generate_markup( $data ) {
 
 		$markup = '';
 
@@ -95,8 +97,9 @@ class Markup {
 				}
 			}
 		} elseif ( is_string( $data ) ) {
-			$markup .=  '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . PHP_EOL;
+			$markup .= '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . PHP_EOL;
 		}
+
 		return $markup;
 	}
 }

@@ -8,7 +8,7 @@ if ( ! function_exists( 'add_action' ) ) {
 
 $card = '<div class="tc-summary tc-container">';
 $card .= '<div id="' . esc_attr( $type ) . '-img-container" class="tc-' . esc_attr( $type ) . '-img-container onchange" ' . $style . '>';
-$card .= 'player' ===  $type
+$card .= 'player' === $type
 	? '<video id="tc-img-child" class="tc-img onchange" style="-webkit-user-drag: none;" controls poster="' . esc_url( $image ) . '"></video>'
 	: '<img id="tc-img-child" class="tc-img ' . esc_attr( $type ) . '-img onchange" src="' . esc_url( $image ) . '" alt="">';
 $card .= '</div>';

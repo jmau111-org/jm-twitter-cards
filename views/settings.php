@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -8,7 +9,7 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 $settings_fields = array(
-	'jm_tc' => array(
+	'jm_tc'     => array(
 		array(
 			'name'  => 'twitterCreator',
 			'label' => __( 'Creator (twitter username)', 'jm-tc' ),
@@ -27,7 +28,7 @@ $settings_fields = array(
 			'options' => array(
 				'summary'             => __( 'Summary', 'jm-tc' ),
 				'summary_large_image' => __( 'Summary below Large Image', 'jm-tc' ),
-				'app' => __( 'Application', 'jm-tc' ),
+				'app'                 => __( 'Application', 'jm-tc' ),
 			)
 		),
 		array(

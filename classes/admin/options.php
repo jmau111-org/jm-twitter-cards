@@ -1,5 +1,7 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
+
 use TokenToMe\TwitterCards\Utilities;
 use TokenToMe\TwitterCards\Thumbs;
 
@@ -21,7 +23,7 @@ class Options {
 
 	public function __construct( $post_ID ) {
 		$this->post_ID = $post_ID;
-		$this->opts = \jm_tc_get_options();
+		$this->opts    = \jm_tc_get_options();
 	}
 
 	/**
@@ -31,8 +33,8 @@ class Options {
 	 */
 	public function get_seo_plugin_datas( $type ) {
 
-		$aioseop_title           = get_post_meta( $this->post_ID, '_aioseop_title', true );
-		$aioseop_description     = get_post_meta( $this->post_ID, '_aioseop_description', true );
+		$aioseop_title       = get_post_meta( $this->post_ID, '_aioseop_title', true );
+		$aioseop_description = get_post_meta( $this->post_ID, '_aioseop_description', true );
 
 		$title = get_the_title( $this->post_ID );
 		$desc  = Utilities::get_excerpt_by_id( $this->post_ID );
@@ -61,7 +63,7 @@ class Options {
 	public function card_type() {
 
 		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
-		$cardType = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
+		$cardType     = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
 
 		return array( 'card' => apply_filters( 'jm_tc_card_type', $cardType ) );
 	}
@@ -121,6 +123,7 @@ class Options {
 				$cardTitle = $this->get_seo_plugin_datas( 'title' );
 			}
 		}
+
 		return array( 'title' => apply_filters( 'jm_tc_get_title', $cardTitle ) );
 
 	}

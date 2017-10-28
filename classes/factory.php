@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -12,6 +13,7 @@ class Factory {
 	 * Markup front
 	 *
 	 * @param bool|false $post_ID
+	 *
 	 * @author Julien Maury
 	 * @return \TokenToMe\TwitterCards\Markup
 	 */
@@ -24,7 +26,7 @@ class Factory {
 	 * @author Julien Maury
 	 * @return \TokenToMe\TwitterCards\Admin\Fields
 	 */
-	public function createFields(){
+	public function createFields() {
 		return new Admin\Fields();
 	}
 
@@ -32,10 +34,11 @@ class Factory {
 	 * Preview metabox
 	 *
 	 * @param $post_ID
+	 *
 	 * @author Julien Maury
 	 * @return \TokenToMe\TwitterCards\Admin\Preview
 	 */
-	public function createPreview( $post_ID ){
+	public function createPreview( $post_ID ) {
 		$options = new Admin\Options( $post_ID );
 		echo new Admin\Preview( $options );
 	}

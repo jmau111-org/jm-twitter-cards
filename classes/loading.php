@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -12,7 +13,7 @@ class Loading {
 	 * Plugin instance.
 	 * @type object
 	 */
-	protected static $instance = NULL;
+	protected static $instance = null;
 
 	/**
 	 * Access this plugin's working instance
@@ -21,9 +22,11 @@ class Loading {
 	 * @return $this object (kidding)
 	 */
 	public static function get_instance() {
-		NULL === self::$instance and self::$instance = new self;
+		null === self::$instance and self::$instance = new self;
+
 		return self::$instance;
 	}
+
 	/**
 	 * Setup
 	 * @return  void
@@ -39,6 +42,7 @@ class Loading {
 			new Particular();
 		}
 	}
+
 	/**
 	 * Constructor. Intentionally left empty and public.
 	 *
@@ -53,14 +57,14 @@ class Loading {
 	 * Everything that triggers on this hook
 	 * init
 	 */
-	public function on_init(){
+	public function on_init() {
 		$this->register_text_domain( 'jm-tc' );
 	}
 
 	/**
 	 * Add specific markup
 	 */
-	public function add_markup(){
+	public function add_markup() {
 
 		$types = Utilities::get_post_types();
 
@@ -78,12 +82,13 @@ class Loading {
 	 * Loads translations
 	 *
 	 * @param   string $domain
+	 *
 	 * @return  void
 	 */
-	public function register_text_domain( $domain ){
+	public function register_text_domain( $domain ) {
 		load_plugin_textdomain(
 			$domain,
-			FALSE,
+			false,
 			plugin_basename( dirname( __FILE__ ) ) . '/languages'
 		);
 	}

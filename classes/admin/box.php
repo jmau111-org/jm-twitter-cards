@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 use TokenToMe\TwitterCards\Factory;
@@ -73,7 +74,7 @@ class Box implements MetaBox {
 					'summary'             => __( 'Summary', 'jm-tc' ),
 					'summary_large_image' => __( 'Summary below Large Image', 'jm-tc' ),
 					'player'              => __( 'Player', 'jm-tc' ),
-					'app'				  => __( 'Application', 'jm-tc' ),
+					'app'                 => __( 'Application', 'jm-tc' ),
 				),
 				'value'    => get_post_meta( self::get_post_id(), 'twitterCardType', true ) ? get_post_meta( self::get_post_id(), 'twitterCardType', true ) : $this->opts['twitterCardType'],
 			)
@@ -126,9 +127,9 @@ class Box implements MetaBox {
 	/**
 	 * The save part
 	 *
-	 * @param int      $post_id The post ID.
+	 * @param int $post_id The post ID.
 	 * @param \WP_Post $post The post object.
-	 * @param bool     $update Whether this is an existing post being updated or not.
+	 * @param bool $update Whether this is an existing post being updated or not.
 	 *
 	 * @author Julien Maury
 	 *
@@ -205,7 +206,7 @@ class Box implements MetaBox {
 	public function admin_enqueue_scripts() {
 
 		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array( 'jquery' ), JM_TC_VERSION, true );
-		wp_register_script( 'jm-tc-preview', JM_TC_URL . 'js/preview.js', array('jquery'), JM_TC_VERSION, true );
+		wp_register_script( 'jm-tc-preview', JM_TC_URL . 'js/preview.js', array( 'jquery' ), JM_TC_VERSION, true );
 		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.css', array(), JM_TC_VERSION );
 
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
@@ -217,8 +218,8 @@ class Box implements MetaBox {
 				'jm-tc-metabox',
 				'tcStrings',
 				array(
-					'upload_message' => __( 'Upload'),
-					'default_image'  =>  ! empty( $this->opts['twitterImage'] ) ? esc_url( $this->opts['twitterImage'] ) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
+					'upload_message' => __( 'Upload' ),
+					'default_image'  => ! empty( $this->opts['twitterImage'] ) ? esc_url( $this->opts['twitterImage'] ) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
 				)
 			);
 

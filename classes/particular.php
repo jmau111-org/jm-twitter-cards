@@ -1,5 +1,7 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
+
 use TokenToMe\TwitterCards\Admin\Init;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -31,8 +33,8 @@ class Particular {
 
 		add_action( 'wpmu_new_blog', array( $this, 'new_blog' ) );
 
-		add_filter( 'jm_tc_card_site', array( $this, 'remove_tweetpressfr') );
-		add_filter( 'jm_tc_card_creator', array( $this, 'remove_tweetpressfr') );
+		add_filter( 'jm_tc_card_site', array( $this, 'remove_tweetpressfr' ) );
+		add_filter( 'jm_tc_card_creator', array( $this, 'remove_tweetpressfr' ) );
 
 	}
 
@@ -40,11 +42,12 @@ class Particular {
 	 * @since 6.1
 	 * Use my own filters to fix my mess !
 	 */
-	public function remove_tweetpressfr( $meta ){
+	public function remove_tweetpressfr( $meta ) {
 
-		if ( 'tweetpressfr' === strtolower( $meta ) || '@tweetpressfr' === strtolower( $meta ) ){
+		if ( 'tweetpressfr' === strtolower( $meta ) || '@tweetpressfr' === strtolower( $meta ) ) {
 			return false;
 		}
+
 		return $meta;
 	}
 
@@ -65,6 +68,7 @@ class Particular {
 	 * filter for robots.txt rules
 	 *
 	 * @param $output
+	 *
 	 * @since 5.3.2
 	 * @return string
 	 */
@@ -88,6 +92,7 @@ class Particular {
 		if ( ! empty( $_excerpt ) ) {
 			return $_excerpt;
 		}
+
 		return $excerpt;
 	}
 
