@@ -493,7 +493,7 @@ class Settings {
 		}
 
 		foreach ( $this->settings_sections as $k => $tab ) {
-			$k++;
+			$k ++;
 			$html .= sprintf( '<a href="#tabs-%d" id="#tabs-%d" class="nav-tab">%s</a>', $k, $k, $tab['title'] );
 		}
 
@@ -507,29 +507,28 @@ class Settings {
 	 *
 	 * This function displays every sections in a different form
 	 */
-	function show_forms() {
+	public function show_forms() {
 		?>
         <div class="metabox-holder">
             <div id="tabs" class="tabs">
 				<?php $this->show_navigation(); ?>
 				<?php foreach ( $this->settings_sections as $k => $form ) { ?>
-                <div id="tabs-<?php echo $k + 1; ?>">
-                    <form method="post" action="options.php">
-						<?php
-						do_action( 'wsa_form_top_' . $form['id'], $form );
-						settings_fields( $form['id'] );
-						do_settings_sections( $form['id'] );
-						do_action( 'wsa_form_bottom_' . $form['id'], $form );
-						if ( isset( $this->settings_fields[ $form['id'] ] ) ):
+                    <form method="POST" action="options.php">
+                        <div id="tabs-<?php echo $k + 1; ?>">
+							<?php
+							do_action( 'wsa_form_top_' . $form['id'], $form );
+							settings_fields( $form['id'] );
+							do_settings_sections( $form['id'] );
+							do_action( 'wsa_form_bottom_' . $form['id'], $form );
 							?>
-                            <div style="padding-left: 10px;">
-								<?php submit_button(); ?>
-                            </div>
-						<?php endif; ?>
+                            <span style="padding-left: 10px;">
+                                <?php submit_button(); ?>
+                             </span>
+                        </div>
                     </form>
-                </div>
+				<?php } ?>
+
             </div>
-			<?php } ?>
         </div>
 		<?php
 	}

@@ -21,6 +21,11 @@ composer install
 
 ## Changelog ##
 
+### 8.2
+* 30 Oct 2017
+* fix markup issue that causes setting error
+* fix bug first page not saving options anymore
+
 ### 8.1
 * 28 Oct 2017
 * fix admin screens & reported incompatibilities with themes

@@ -48,15 +48,13 @@ class Main {
 	}
 
 
-	function admin_init() {
-		//set the settings
+	public function admin_init() {
 		$this->settings_api->set_sections( $this->get_settings_sections() );
 		$this->settings_api->set_fields( $this->get_settings_fields() );
-		//initialize settings
 		$this->settings_api->admin_init();
 	}
 
-	function admin_menu() {
+	public function admin_menu() {
 		add_menu_page( __( 'JM Twitter Cards', 'jm-tc' ), __( 'JM Twitter Cards', 'jm-tc' ), 'manage_options', 'jm_tc', array(
 			$this,
 			'plugin_page'
@@ -75,7 +73,7 @@ class Main {
 	 * Register tabs
 	 * @return array
 	 */
-	function get_settings_sections() {
+	public function get_settings_sections() {
 		$sections = array();
 		require_once( JM_TC_DIR . 'views/settings-sections.php' );
 
@@ -87,12 +85,25 @@ class Main {
 	 *
 	 * @return array settings fields
 	 */
-	function get_settings_fields() {
+	public function get_settings_fields() {
 
 		$settings_fields = array();
 		require_once( JM_TC_DIR . 'views/settings.php' );
 
 		return $settings_fields;
+	}
+
+	/**
+	 * Returns all the settings fields
+	 *
+	 * @return array settings fields
+	 */
+	public function get_settings_fields_cpt() {
+
+		$settings_cpt = array();
+		require_once( JM_TC_DIR . 'views/settings-cpt.php' );
+
+		return $settings_cpt;
 	}
 
 	/**
@@ -122,8 +133,6 @@ class Main {
 		ob_start();
 		require( JM_TC_DIR . 'views/settings-import-export.php' );
 		ob_end_flush();
-
-		return true;
 	}
 
 	/**
@@ -133,14 +142,12 @@ class Main {
 		ob_start();
 		require( JM_TC_DIR . 'views/about.php' );
 		ob_end_flush();
-
-		return true;
 	}
 
 	/**
 	 * Display options
 	 */
-	function plugin_page() {
+	public function plugin_page() {
 		echo '<div class="wrap">';
 		echo '<h1>' . __( 'JM Twitter Cards', 'jm-tc' ) . '</h1>';
 		$this->settings_api->show_forms();
