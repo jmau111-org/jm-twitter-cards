@@ -23,27 +23,13 @@ class Settings {
 	 */
 	protected $settings_fields = array();
 
-	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-	}
-
-	/**
-	 * Enqueue scripts and styles
-	 */
-	function admin_enqueue_scripts() {
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_media();
-		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings.js', array(
-			'jquery',
-		), JM_TC_VERSION, true );
-	}
 
 	/**
 	 * Set settings sections
 	 *
 	 * @param array $sections setting sections array
+	 *
+	 * @return $this
 	 */
 	function set_sections( $sections ) {
 		$this->settings_sections = $sections;
@@ -55,6 +41,8 @@ class Settings {
 	 * Add a single section
 	 *
 	 * @param array $section
+	 *
+	 * @return $this
 	 */
 	function add_section( $section ) {
 		$this->settings_sections[] = $section;
@@ -66,6 +54,8 @@ class Settings {
 	 * Set settings fields
 	 *
 	 * @param array $fields settings fields array
+	 *
+	 * @return $this
 	 */
 	function set_fields( $fields ) {
 		$this->settings_fields = $fields;
@@ -139,6 +129,7 @@ class Settings {
 					'min'               => isset( $option['min'] ) ? $option['min'] : '',
 					'max'               => isset( $option['max'] ) ? $option['max'] : '',
 					'step'              => isset( $option['step'] ) ? $option['step'] : '',
+					'charcount'         => isset( $option['charcount'] ) ? $option['charcount'] : '',
 				);
 
 				add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
@@ -155,6 +146,8 @@ class Settings {
 	 * Get field description for display
 	 *
 	 * @param array $args settings field args
+	 *
+	 * @return string
 	 */
 	public function get_field_description( $args ) {
 		if ( ! empty( $args['desc'] ) ) {
@@ -308,8 +301,9 @@ class Settings {
 		$value       = esc_textarea( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 		$size        = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 		$placeholder = empty( $args['placeholder'] ) ? '' : ' placeholder="' . $args['placeholder'] . '"';
+		$charcount   = empty( $args['charcount'] ) ? '' : ' data-count="' . $args['charcount'] . '"';
 
-		$html = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]"%4$s>%5$s</textarea>', $size, $args['section'], $args['id'], $placeholder, $value );
+		$html = sprintf( '<textarea %6$s rows="5" cols="55" class="%1$s-text textarea" id="%2$s[%3$s]" name="%2$s[%3$s]"%4$s>%5$s</textarea>', $size, $args['section'], $args['id'], $placeholder, $value, $charcount );
 		$html .= $this->get_field_description( $args );
 
 		echo $html;

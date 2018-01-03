@@ -21,6 +21,12 @@ composer install
 
 ## Changelog ##
 
+### 9.0
+* Jan 2018
+* multiple js bugfixes especially in preview
+* reorganize + enhance code, this is a major release but it won't break anything, filters are still there
+* add twitter meta image alt
+
 ### 8.2
 * 30 Oct 2017
 * fix markup issue that causes setting error

@@ -36,11 +36,11 @@ class Loading {
 		if ( is_admin() ) {
 			new Admin\Main();
 			new Admin\ImportExport();
-			new Admin\Box();
-		} else {
-			new Thumbs();
-			new Particular();
+			new Admin\Metabox();
 		}
+
+		new Thumbs();
+		new Particular();
 	}
 
 	/**
@@ -66,16 +66,16 @@ class Loading {
 	 */
 	public function add_markup() {
 
-		$types = Utilities::get_post_types();
-
-		if ( ! is_home() && ! is_front_page() && ! in_array( get_post_type(), $types, true ) ) {
+		if ( ! is_home() && ! is_front_page() && ! in_array( get_post_type(), Utilities::get_post_types(), true ) ) {
 			return false;
 		}
 
 		if ( ! is_404() && ! is_tag() && ! is_archive() && ! is_tax() && ! is_category() ) {
 			$factory = new Factory();
-			$factory->createMarkup( get_queried_object_id() );
+			$factory->generateMarkup( get_queried_object_id() );
 		}
+
+		return true;
 	}
 
 	/**
@@ -86,10 +86,6 @@ class Loading {
 	 * @return  void
 	 */
 	public function register_text_domain( $domain ) {
-		load_plugin_textdomain(
-			$domain,
-			false,
-			plugin_basename( dirname( __FILE__ ) ) . '/languages'
-		);
+		load_plugin_textdomain( $domain, false, JM_TC_LANG_DIR );
 	}
 }

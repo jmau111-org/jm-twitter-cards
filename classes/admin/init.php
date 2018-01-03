@@ -14,9 +14,9 @@ class Init {
 	 * Avoid undefined index by registering default options
 	 */
 	public static function on_activation() {
-		$opts = get_option( 'jm_tc' );
+		$opts = get_option( JM_TC_SLUG_MAIN_OPTION );
 		if ( ! is_array( $opts ) ) {
-			update_option( 'jm_tc', self::get_default_options() );
+			update_option( JM_TC_SLUG_MAIN_OPTION, self::get_default_options() );
 		}
 	}
 
@@ -30,6 +30,7 @@ class Init {
 			'twitterCreator'        => '',
 			'twitterSite'           => '',
 			'twitterImage'          => 'https://g.twimg.com/Twitter_logo_blue.png',
+			'twitterImageAlt'       => '',
 			'twitterCardImgSize'    => 'small',
 			'twitterProfile'        => 'yes',
 			'twitterPostPageTitle'  => get_bloginfo( 'name' ), // filter used by plugin to customize title

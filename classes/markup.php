@@ -33,34 +33,27 @@ class Markup {
 	 */
 	public function html_comments( $end = false ) {
 		$slash = ( false === $end ) ? '' : '/';
-
 		return '<!-- ' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function __toString() {
+	public function generateMarkup() {
 
-		$markup = $this->html_comments();
+		echo $this->html_comments();
 
 		/* most important meta */
-		$markup .= $this->generate_markup( $this->options->card_type() );
-		$markup .= $this->generate_markup( $this->options->creator_username( true ) );
-		$markup .= $this->generate_markup( $this->options->site_username() );
-		$markup .= $this->generate_markup( $this->options->title() );
-		$markup .= $this->generate_markup( $this->options->description() );
-		$markup .= $this->generate_markup( $this->options->image() );
+		echo $this->build( $this->options->card_type() );
+		echo $this->build( $this->options->creator_username( true ) );
+		echo $this->build( $this->options->site_username() );
+		echo $this->build( $this->options->title() );
+		echo $this->build( $this->options->description() );
+		echo $this->build( $this->options->image() );
 
 		/* secondary meta */
-		$markup .= $this->generate_markup( $this->options->player() );
-		$markup .= $this->generate_markup( $this->options->deep_linking() );
+		echo $this->build( $this->options->image_alt() );
+		echo $this->build( $this->options->player() );
+		echo $this->build( $this->options->deep_linking() );
 
-		$markup .= $this->html_comments( true );
-
-
-		return $markup;
-
+		echo $this->html_comments( true );
 	}
 
 	/**
@@ -68,7 +61,7 @@ class Markup {
 	 *
 	 * @return string
 	 */
-	protected function generate_markup( $data ) {
+	protected function build( $data ) {
 
 		$markup = '';
 

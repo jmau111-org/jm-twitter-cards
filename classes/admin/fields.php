@@ -11,15 +11,25 @@ if ( ! function_exists( 'add_action' ) ) {
 class Fields {
 
 	/**
+	 * @param $array
+	 */
+	public function generateFields( $array ) {
+
+		foreach ( $array as $field => $options ) {
+			$method = array_shift( $options );
+			echo method_exists( $this, $method ) ? $this->{$method}( $options ) : '';
+		}
+	}
+
+	/**
 	 * Simple wrapper div
 	 *
-	 * @param string $mod
 	 * @param array $aar
 	 *
 	 * @author Julien Maury
 	 * @return string|bool
 	 */
-	public function wrapper( $aar = array(), $mod = 'start' ) {
+	public function wrapper( $aar = array() ) {
 
 		if ( empty( $aar['tag'] ) ) {
 			return false;
@@ -27,7 +37,7 @@ class Fields {
 
 		$class = ! empty( $aar['class'] ) ? sanitize_html_class( $aar['class'] ) : '';
 
-		return 'start' === $mod ? '<' . esc_attr( $aar['tag'] ) . ' class="' . $class . '">' : '</' . esc_attr( $aar['tag'] ) . '>';
+		return 'start' === $aar['mod'] ? '<' . esc_attr( $aar['tag'] ) . ' class="' . $class . '">' : '</' . esc_attr( $aar['tag'] ) . '>';
 	}
 
 	/**
@@ -45,6 +55,27 @@ class Fields {
 		$output = '<tr class="' . esc_attr( $aar['field_id'] ) . '">';
 		$output .= '<th scope="row"><label for="' . esc_attr( $aar['field_id'] ) . '">' . esc_html( $aar['label'] ) . '</label></th>';
 		$output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '" type="text" value="' . esc_attr( $aar['value'] ) . '"></td>';
+		$output .= '</tr>';
+
+		return $output;
+	}
+
+	/**
+	 * Basic textarea
+	 *
+	 * @param array $aar
+	 *
+	 * @return string
+	 * @author Julien Maury
+	 */
+	public function textarea_field( $aar ) {
+
+		$type      = ! empty( $aar['type'] ) ? esc_attr( $aar['type'] ) : '';
+		$charcount = empty( $aar['charcount'] ) ? '' : 'data-count="' . $aar['charcount'] . '"';
+
+		$output = '<tr class="' . esc_attr( $aar['field_id'] ) . '">';
+		$output .= '<th scope="row"><label for="' . esc_attr( $aar['field_id'] ) . '">' . esc_html( $aar['label'] ) . '</label></th>';
+		$output .= '<td><textarea rows="5" cols="80" class="textarea tc-field-' . $type . '-url" ' . $charcount . ' id="' . esc_attr( $aar['field_id'] ) . '" name="' . esc_attr( $aar['field_id'] ) . '">' . esc_attr( $aar['value'] ) . '</textarea></td>';
 		$output .= '</tr>';
 
 		return $output;

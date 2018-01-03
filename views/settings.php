@@ -9,7 +9,7 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 $settings_fields = array(
-	'jm_tc'     => array(
+	JM_TC_SLUG_MAIN_OPTION => array(
 		array(
 			'name'  => 'twitterCreator',
 			'label' => __( 'Creator (twitter username)', 'jm-tc' ),
@@ -60,6 +60,12 @@ $settings_fields = array(
 			'default' => ''
 		),
 		array(
+			'name'      => 'twitterImageAlt',
+			'label'     => __( 'Image alt', 'jm-tc' ),
+			'type'      => 'textarea',
+			'charcount' => 420,
+		),
+		array(
 			'name'    => 'twitterCardImgSize',
 			'label'   => __( 'Define specific size for twitter:image display', 'jm-tc' ),
 			'type'    => 'select',
@@ -72,10 +78,11 @@ $settings_fields = array(
 			)
 		),
 		array(
-			'label' => __( 'Home meta desc', 'jm-tc' ),
-			'desc'  => __( 'Enter desc for Posts Page (max: 200 characters)', 'jm-tc' ),
-			'name'  => 'twitterPostPageDesc',
-			'type'  => 'textarea',
+			'label'     => __( 'Home meta desc', 'jm-tc' ),
+			'desc'      => __( 'Enter desc for Posts Page (max: 200 characters)', 'jm-tc' ),
+			'name'      => 'twitterPostPageDesc',
+			'type'      => 'textarea',
+			'charcount' => 200,
 		),
 		array(
 			'label' => __( 'iPhone Name', 'jm-tc' ),
@@ -150,7 +157,7 @@ $settings_fields = array(
 			'type'  => 'text',
 		),
 	),
-	'jm_tc_cpt' => array(
+	JM_TC_SLUG_CPT_OPTION  => array(
 		array(
 			'name'    => 'twitterCardPt',
 			'label'   => __( 'Add or hide the meta box', 'jm-tc' ),
