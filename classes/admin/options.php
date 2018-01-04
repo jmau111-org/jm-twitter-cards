@@ -186,11 +186,8 @@ class Options {
 		$cardImageAlt = '';
 
 		if ( $this->post_ID ) {
-
-			if ( ! empty( $this->opts['twitterImageAlt'] ) ) {
-				$imageAlt     = get_post_meta( $this->post_ID, $this->opts['twitterImageAlt'], true );
-				$cardImageAlt = ! empty( $imageAlt ) ? htmlspecialchars( stripcslashes( $imageAlt ) ) : '';
-			}
+			$imageAlt     = get_post_meta( $this->post_ID, 'cardImageAlt', true );
+			$cardImageAlt = ! empty( $imageAlt ) ? htmlspecialchars( stripcslashes( $imageAlt ) ) : '';
 		}
 
 		if ( is_home() || is_front_page() ) {
