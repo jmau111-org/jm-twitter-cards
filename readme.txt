@@ -3,7 +3,7 @@ Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BJYYT486HEH6
 Requires at least: 4.2
-Tested up to: 4.8.1
+Tested up to: 4.9.1
 License: GPLv2 or later
 Stable tag: trunk
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -123,6 +123,7 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 * multiple js bugfixes especially in preview
 * reorganize + enhance code, this is a major release but it won't break anything, filters are still there
 * add twitter meta image alt
+* add new dropdown menu to select custom meta key (advanced users).
 
 ### 8.2
 * 30 Oct 2017

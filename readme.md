@@ -26,6 +26,7 @@ composer install
 * multiple js bugfixes especially in preview
 * reorganize + enhance code, this is a major release but it won't break anything, filters are still there
 * add twitter meta image alt
+* add new dropdown menu to select custom meta key (advanced users).
 
 ### 8.2
 * 30 Oct 2017

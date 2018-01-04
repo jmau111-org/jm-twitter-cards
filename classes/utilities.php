@@ -47,6 +47,24 @@ class Utilities {
 	}
 
 	/**
+	 * @return array
+	 * @author Julien Maury
+	 */
+	public static function get_keys() {
+		global $wpdb;
+		$keys = $wpdb->get_results( "SELECT DISTINCT meta_key from {$wpdb->postmeta}" );
+
+		if ( empty( $keys ) ) {
+			return [];
+		}
+
+		$keys = wp_list_pluck( $keys, 'meta_key', 'meta_key' );
+		array_unshift( $keys, __( 'Select' ) );
+
+		return array_map( 'esc_attr', $keys );
+	}
+
+	/**
 	 * @param $lb
 	 *
 	 * @return string

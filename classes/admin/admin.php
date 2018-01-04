@@ -129,6 +129,9 @@ class Main {
 	public function get_settings_fields() {
 
 		$settings_fields = array();
+		$opts = \jm_tc_get_options();
+		$keys = Utilities::get_keys();
+
 		require_once( JM_TC_DIR . 'views/settings.php' );
 
 		return $settings_fields;
