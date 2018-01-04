@@ -11,23 +11,22 @@ if ( ! function_exists( 'add_action' ) ) {
 class Factory {
 	/**
 	 * Markup front
-	 *
-	 * @param bool|false $post_ID
-	 *
+	 * @param $post_ID
 	 * @author Julien Maury
-	 * @return \TokenToMe\TwitterCards\Markup
 	 */
-	public function createMarkup( $post_ID = false ) {
+	public function generateMarkup( $post_ID ) {
 		$options = new Admin\Options( $post_ID );
-		echo new Markup( $options );
+		$markup  = new Markup( $options );
+		$markup->generateMarkup();
 	}
 
+
 	/**
-	 * @author Julien Maury
-	 * @return \TokenToMe\TwitterCards\Admin\Fields
+	 * @param $data
 	 */
-	public function createFields() {
-		return new Admin\Fields();
+	public function generateMetaBox( $data ) {
+		$fields = new Admin\Fields();
+		$fields->generateFields( $data );
 	}
 
 	/**
@@ -38,7 +37,7 @@ class Factory {
 	 * @author Julien Maury
 	 * @return \TokenToMe\TwitterCards\Admin\Preview
 	 */
-	public function createPreview( $post_ID ) {
+	public function generatePreview( $post_ID ) {
 		$options = new Admin\Options( $post_ID );
 		echo new Admin\Preview( $options );
 	}

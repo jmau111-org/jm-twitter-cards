@@ -1,13 +1,19 @@
 (function ($) {
-    //Initiate Color Picker
+    "use strict";
+
+    /**
+     * Color picker init
+     ******************************************************************************************************************/
     $('.wp-color-picker-field').wpColorPicker();
 
-    //tabs
+    /**
+     * tabs
+     ******************************************************************************************************************/
     $('#tabs div').hide();
     $('#tabs div:first').show();
     $('#tabs a:first').addClass('active');
 
-    $('#tabs a').click(function(){
+    $('#tabs a').click(function () {
         $('#tabs a').removeClass('active');
         $(this).parent().addClass('active');
         var currentTab = $(this).attr('href');
@@ -16,7 +22,9 @@
         return false;
     });
 
-    //uploads
+    /**
+     * Uploads
+     ******************************************************************************************************************/
     $('.wpsa-browse').on('click', function (event) {
         event.preventDefault();
 
@@ -39,4 +47,25 @@
         // Finally, open the modal
         file_frame.open();
     });
+
+    /**
+     * Hide fields specific such as app fields
+     ******************************************************************************************************************/
+    function toggleAppFields(value) {
+        var target = $( '.twitteriPhoneName,.twitteriPhoneUrl,.twitteriPhoneId,' +
+            '.twitteriPadName,.twitteriPadUrl,.twitteriPadId,' +
+            '.twitterGooglePlayName,.twitterGooglePlayUrl,.twitterGooglePlayId,.twitterAppCountry');
+        target.hide();
+
+        if ('app' === value) {
+            target.fadeIn();
+        } else {
+            target.fadeOut();
+        }
+    }
+
+    $('.twitterCardType select').on('change', function (event) {
+        event.preventDefault();
+        toggleAppFields(event.target.value);
+    }).change();
 })(jQuery);

@@ -29,7 +29,7 @@ class Options {
 	/**
 	 * @param $type
 	 *
-	 * @return string|void
+	 * @return string
 	 */
 	public function get_seo_plugin_datas( $type ) {
 
@@ -65,7 +65,7 @@ class Options {
 		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
 		$cardType     = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
 
-		return array( 'card' => apply_filters( 'jm_tc_card_type', $cardType ) );
+		return array( 'card' => apply_filters( 'jm_tc_card_type', $cardType, $this->post_ID, $this->opts ) );
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Options {
 			$cardCreator = '@' . Utilities::remove_at( $cardCreator );
 		}
 
-		return array( 'creator' => apply_filters( 'jm_tc_card_creator', $cardCreator ) );
+		return array( 'creator' => apply_filters( 'jm_tc_card_creator', $cardCreator, $this->post_ID, $this->opts ) );
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Options {
 
 		$cardSite = '@' . Utilities::remove_at( $this->opts['twitterSite'] );
 
-		return array( 'site' => apply_filters( 'jm_tc_card_site', $cardSite ) );
+		return array( 'site' => apply_filters( 'jm_tc_card_site', $cardSite, $this->post_ID, $this->opts ) );
 	}
 
 
@@ -124,7 +124,7 @@ class Options {
 			}
 		}
 
-		return array( 'title' => apply_filters( 'jm_tc_get_title', $cardTitle ) );
+		return array( 'title' => apply_filters( 'jm_tc_get_title', $cardTitle, $this->post_ID, $this->opts ) );
 
 	}
 
@@ -147,10 +147,9 @@ class Options {
 		}
 		$cardDescription = Utilities::remove_lb( $cardDescription );
 
-		return array( 'description' => apply_filters( 'jm_tc_get_excerpt', $cardDescription ) );
+		return array( 'description' => apply_filters( 'jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->opts ) );
 
 	}
-
 
 	/**
 	 * @return array|bool
@@ -174,7 +173,33 @@ class Options {
 			$image = $this->opts['twitterImage'];
 		}
 
-		return array( 'image' => apply_filters( 'jm_tc_image_source', $image ) );
+		return array( 'image' => apply_filters( 'jm_tc_image_source', $image, $this->post_ID, $this->opts ) );
+
+	}
+
+	/**
+	 * @link https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup
+	 * @return array
+	 */
+	public function image_alt() {
+
+		$cardImageAlt = '';
+
+		if ( $this->post_ID ) {
+
+			if ( ! empty( $this->opts['twitterImageAlt'] ) ) {
+				$imageAlt     = get_post_meta( $this->post_ID, $this->opts['twitterImageAlt'], true );
+				$cardImageAlt = ! empty( $imageAlt ) ? htmlspecialchars( stripcslashes( $imageAlt ) ) : '';
+			}
+		}
+
+		if ( is_home() || is_front_page() ) {
+			$cardImageAlt = $this->opts['twitterImageAlt'];
+		}
+
+		$cardImageAlt = Utilities::remove_lb( $cardImageAlt );
+
+		return array( 'image:alt' => apply_filters( 'jm_tc_image_alt', $cardImageAlt, $this->post_ID, $this->opts ) );
 
 	}
 
@@ -194,7 +219,7 @@ class Options {
 			$playerCodec     = get_post_meta( $this->post_ID, 'cardPlayerCodec', true );
 			$player          = array();
 
-			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl );
+			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl, $this->post_ID, $this->opts );
 
 			//Player
 			if ( empty( $player['player'] ) ) {
@@ -203,21 +228,21 @@ class Options {
 
 			//Player stream
 			if ( ! empty( $playerStreamUrl ) ) {
-				$player['player:stream'] = apply_filters( 'jm_tc_player_stream_url', $playerStreamUrl );
+				$player['player:stream'] = apply_filters( 'jm_tc_player_stream_url', $playerStreamUrl, $this->post_ID, $this->opts );
 			}
 
-			$player['player:stream:content_type'] = esc_attr( apply_filters( 'jm_tc_player_codec', 'video/mp4; codecs="avc1.42E01E1, mp4a.40.2"' ) );
+			$player['player:stream:content_type'] = esc_attr( apply_filters( 'jm_tc_player_codec', 'video/mp4; codecs="avc1.42E01E1, mp4a.40.2"', $this->post_ID, $this->opts ) );
 
 			if ( ! empty( $playerCodec ) ) {
-				$player['player:stream:content_type'] = esc_attr( apply_filters( 'jm_tc_player_codec', $playerCodec ) );
+				$player['player:stream:content_type'] = esc_attr( apply_filters( 'jm_tc_player_codec', $playerCodec, $this->post_ID, $this->opts ) );
 			}
 
 			//Player width and
 			$player['player:width']  = apply_filters( 'jm_tc_player_default_width', 435 );
 			$player['player:height'] = apply_filters( 'jm_tc_player_default_height', 251 );
 			if ( ! empty( $playerWidth ) && ! empty( $playerHeight ) ) {
-				$player['player:width']  = apply_filters( 'jm_tc_player_width', $playerWidth );
-				$player['player:height'] = apply_filters( 'jm_tc_player_height', $playerHeight );
+				$player['player:width']  = apply_filters( 'jm_tc_player_width', $playerWidth, $this->post_ID, $this->opts );
+				$player['player:height'] = apply_filters( 'jm_tc_player_height', $playerHeight, $this->post_ID, $this->opts );
 			}
 
 			return $player;
@@ -242,16 +267,16 @@ class Options {
 		$twitterGooglePlayId   = ( ! empty( $this->opts['twitterGooglePlayId'] ) ) ? $this->opts['twitterGooglePlayId'] : '';
 		$twitterAppCountry     = ( ! empty( $this->opts['twitterAppCountry'] ) ) ? $this->opts['twitterAppCountry'] : '';
 
-		$twitteriPhoneName     = apply_filters( 'jm_tc_iphone_name', $twitteriPhoneName );
-		$twitteriPadName       = apply_filters( 'jm_tc_ipad_name', $twitteriPadName );
-		$twitterGooglePlayName = apply_filters( 'jm_tc_googleplay_name', $twitterGooglePlayName );
-		$twitteriPhoneUrl      = apply_filters( 'jm_tc_iphone_url', $twitteriPhoneUrl );
-		$twitteriPadUrl        = apply_filters( 'jm_tc_ipad_url', $twitteriPadUrl );
-		$twitterGooglePlayUrl  = apply_filters( 'jm_tc_googleplay_url', $twitterGooglePlayUrl );
-		$twitteriPhoneId       = apply_filters( 'jm_tc_iphone_id', $twitteriPhoneId );
-		$twitteriPadId         = apply_filters( 'jm_tc_ipad_id', $twitteriPadId );
-		$twitterGooglePlayId   = apply_filters( 'jm_tc_googleplay_id', $twitterGooglePlayId );
-		$twitterAppCountry     = apply_filters( 'jm_tc_country', $twitterAppCountry );
+		$twitteriPhoneName     = apply_filters( 'jm_tc_iphone_name', $twitteriPhoneName, $this->post_ID, $this->opts );
+		$twitteriPadName       = apply_filters( 'jm_tc_ipad_name', $twitteriPadName, $this->post_ID, $this->opts );
+		$twitterGooglePlayName = apply_filters( 'jm_tc_googleplay_name', $twitterGooglePlayName, $this->post_ID, $this->opts );
+		$twitteriPhoneUrl      = apply_filters( 'jm_tc_iphone_url', $twitteriPhoneUrl, $this->post_ID, $this->opts );
+		$twitteriPadUrl        = apply_filters( 'jm_tc_ipad_url', $twitteriPadUrl, $this->post_ID, $this->opts );
+		$twitterGooglePlayUrl  = apply_filters( 'jm_tc_googleplay_url', $twitterGooglePlayUrl, $this->post_ID, $this->opts );
+		$twitteriPhoneId       = apply_filters( 'jm_tc_iphone_id', $twitteriPhoneId, $this->post_ID, $this->opts );
+		$twitteriPadId         = apply_filters( 'jm_tc_ipad_id', $twitteriPadId, $this->post_ID, $this->opts );
+		$twitterGooglePlayId   = apply_filters( 'jm_tc_googleplay_id', $twitterGooglePlayId, $this->post_ID, $this->opts );
+		$twitterAppCountry     = apply_filters( 'jm_tc_country', $twitterAppCountry, $this->post_ID, $this->opts );
 
 		$app = array(
 			'app:name:iphone'     => $twitteriPhoneName,

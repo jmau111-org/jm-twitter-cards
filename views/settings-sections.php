@@ -10,11 +10,11 @@ if ( ! function_exists( 'add_action' ) ) {
 
 $sections = array(
 	array(
-		'id'    => 'jm_tc',
+		'id'    => JM_TC_SLUG_MAIN_OPTION,
 		'title' => __( 'Options', 'jm-tc' )
 	),
 	array(
-		'id'    => 'jm_tc_cpt',
+		'id'    => JM_TC_SLUG_CPT_OPTION,
 		'title' => __( 'Post types' )
 	),
 );

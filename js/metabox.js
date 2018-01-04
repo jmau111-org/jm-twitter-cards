@@ -3,7 +3,6 @@
  * field image
  */
 (function ($) {
-
     $('.tc-file-input-select').click(function (e) {
         e.preventDefault();
         var image = wp.media({
@@ -21,17 +20,14 @@
         e.preventDefault();
         $('.tc-file-input').attr('value', '');
     });
-})(jQuery);
 
-
-/**
- * Hide/show options
- * according to card type
- */
-(function ($) {
+    /**
+     * Hide/show options
+     * according to card type
+     */
     $("#twitterCardType").on("change", function () {
-        "app" == this.value ? $('.tc-preview').hide() : $('.tc-preview').show()
-        "player" == this.value ? $('*[class^="cardPlayer"]').show() : $('*[class^="cardPlayer"]').hide()
-    }).change()
+        "app" === this.value ? $('.tc-preview').hide() : $('.tc-preview').show();
+        "player" === this.value ? $('*[class^="cardPlayer"]').show() : $('*[class^="cardPlayer"]').hide();
+    }).change();
 
 })(jQuery);

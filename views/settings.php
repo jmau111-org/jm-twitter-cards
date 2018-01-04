@@ -9,7 +9,7 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 $settings_fields = array(
-	'jm_tc'     => array(
+	JM_TC_SLUG_MAIN_OPTION => array(
 		array(
 			'name'  => 'twitterCreator',
 			'label' => __( 'Creator (twitter username)', 'jm-tc' ),
@@ -60,6 +60,12 @@ $settings_fields = array(
 			'default' => ''
 		),
 		array(
+			'name'      => 'twitterImageAlt',
+			'label'     => __( 'Image alt', 'jm-tc' ),
+			'type'      => 'textarea',
+			'charcount' => 420,
+		),
+		array(
 			'name'    => 'twitterCardImgSize',
 			'label'   => __( 'Define specific size for twitter:image display', 'jm-tc' ),
 			'type'    => 'select',
@@ -72,10 +78,11 @@ $settings_fields = array(
 			)
 		),
 		array(
-			'label' => __( 'Home meta desc', 'jm-tc' ),
-			'desc'  => __( 'Enter desc for Posts Page (max: 200 characters)', 'jm-tc' ),
-			'name'  => 'twitterPostPageDesc',
-			'type'  => 'textarea',
+			'label'     => __( 'Home meta desc', 'jm-tc' ),
+			'desc'      => __( 'Enter desc for Posts Page (max: 200 characters)', 'jm-tc' ),
+			'name'      => 'twitterPostPageDesc',
+			'type'      => 'textarea',
+			'charcount' => 200,
 		),
 		array(
 			'label' => __( 'iPhone Name', 'jm-tc' ),
@@ -141,16 +148,20 @@ $settings_fields = array(
 			'label' => __( 'Custom field title', 'jm-tc' ),
 			'desc'  => __( 'If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title.', 'jm-tc' ),
 			'name'  => 'twitterCardTitle',
-			'type'  => 'text',
+			'type'  => 'select',
+			'default' => $opts['twitterCardTitle'],
+			'options' => $keys
 		),
 		array(
 			'label' => __( 'Custom field desc', 'jm-tc' ),
 			'desc'  => __( 'If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc.', 'jm-tc' ),
 			'name'  => 'twitterCardDesc',
-			'type'  => 'text',
+			'type'  => 'select',
+			'default' => $opts['twitterCardDesc'],
+			'options' => $keys
 		),
 	),
-	'jm_tc_cpt' => array(
+	JM_TC_SLUG_CPT_OPTION  => array(
 		array(
 			'name'    => 'twitterCardPt',
 			'label'   => __( 'Add or hide the meta box', 'jm-tc' ),

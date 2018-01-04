@@ -6,18 +6,16 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 ?>
-<div class="wrap">
+<div class="wrap tc">
     <h1><?php esc_html_e( 'JM Twitter Cards', 'jm-tc' ); ?>: <?php echo strtolower( esc_html__( 'Import' ) ); ?>
         / <?php echo strtolower( esc_html__( 'Export' ) ); ?></h1>
-
-    <div class="metabox-holder">
-        <div class="postbox">
+    <div class="holder">
+        <div class="inbox">
             <h3><span><?php esc_html_e( 'Export' ); ?></span></h3>
 
             <div class="inside">
                 <form method="post">
                     <p><input type="hidden" name="action" value="export_settings"/></p>
-
                     <p>
 						<?php wp_nonce_field( 'export_nonce', 'export_nonce' ); ?>
 						<?php submit_button( __( 'Export' ), 'primary', 'submit', false ); ?>
@@ -26,8 +24,8 @@ if ( ! function_exists( 'add_action' ) ) {
             </div>
             <!-- .inside -->
         </div>
-        <!-- .postbox -->
-        <div class="postbox">
+        <!-- .inbox -->
+        <div class="inbox">
             <h3><span><?php esc_html_e( 'Import' ); ?></span></h3>
 
             <div class="inside">
@@ -45,7 +43,6 @@ if ( ! function_exists( 'add_action' ) ) {
             </div>
             <!-- .inside -->
         </div>
-        <!-- .postbox -->
+        <!-- .inbox -->
     </div>
-    <!-- .metabox-holder -->
 </div>

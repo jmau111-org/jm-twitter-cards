@@ -27,6 +27,44 @@ class Utilities {
 	}
 
 	/**
+	 * Put some cache on request
+	 * @return bool|mixed
+	 * @author Julien Maury
+	 */
+	public static function get_github_repositories() {
+
+		if ( false === ( $data = get_site_transient( 'jm_github_repos' ) ) ) {
+
+			$request = wp_remote_get( 'https://api.github.com/users/tweetpressfr/repos?sort=created' );
+
+			if ( ! empty( $request ) && ! is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) === 200 ) {
+				$data = set_site_transient( 'jm_github_repos', wp_remote_retrieve_body( $request ), WEEK_IN_SECONDS );// it's actually enough ^^
+			}
+
+		}
+
+		return $data;
+	}
+
+	/**
+	 * @return array
+	 * @author Julien Maury
+	 */
+	public static function get_keys() {
+		global $wpdb;
+		$keys = $wpdb->get_results( "SELECT DISTINCT meta_key from {$wpdb->postmeta}" );
+
+		if ( empty( $keys ) ) {
+			return [];
+		}
+
+		$keys = wp_list_pluck( $keys, 'meta_key', 'meta_key' );
+		array_unshift( $keys, __( 'Select' ) );
+
+		return array_map( 'esc_attr', $keys );
+	}
+
+	/**
 	 * @param $lb
 	 *
 	 * @return string
@@ -47,7 +85,7 @@ class Utilities {
 	/**
 	 * @param $post_id
 	 *
-	 * @return string|void
+	 * @return string
 	 */
 	public static function get_excerpt_by_id( $post_id ) {
 		$the_post    = get_post( $post_id );

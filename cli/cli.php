@@ -6,7 +6,7 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-WP_CLI::add_command( 'jm_tc', 'JM_TC_CLI' );
+WP_CLI::add_command( JM_TC_SLUG_MAIN_OPTION, 'JM_TC_CLI' );
 
 /**
  * Control your install
@@ -30,9 +30,9 @@ class JM_TC_CLI extends WP_CLI_Command {
 			WP_CLI::error( __( 'You sox !', 'jm-tc' ) );
 		}
 
-		$options                   = get_option( 'jm_tc' );
+		$options                   = get_option( JM_TC_SLUG_MAIN_OPTION );
 		$options['twitterCreator'] = jm_tc_remove_at( $args[0] );
-		update_option( 'jm_tc', $options );
+		update_option( JM_TC_SLUG_MAIN_OPTION, $options );
 
 		WP_CLI::success( __( 'Twitter Cards creator set successfully', 'jm-tc' ) );
 
@@ -55,9 +55,9 @@ class JM_TC_CLI extends WP_CLI_Command {
 			WP_CLI::error( __( 'You sox !', 'jm-tc' ) );
 		}
 
-		$options                = get_option( 'jm_tc' );
+		$options                = get_option( JM_TC_SLUG_MAIN_OPTION );
 		$options['twitterSite'] = jm_tc_remove_at( $args[0] );
-		update_option( 'jm_tc', $options );
+		update_option( JM_TC_SLUG_MAIN_OPTION, $options );
 
 		WP_CLI::success( __( 'Twitter Cards Sitename set successfully', 'jm-tc' ) );
 
@@ -91,7 +91,7 @@ class JM_TC_CLI extends WP_CLI_Command {
 
 		$options                    = get_option( 'jm_tc' );
 		$options['twitterCardType'] = jm_tc_remove_at( $args[0] );
-		update_option( 'jm_tc', $options );
+		update_option( JM_TC_SLUG_MAIN_OPTION, $options );
 
 		WP_CLI::success( __( 'Twitter Cards Type set successfully', 'jm-tc' ) );
 
@@ -116,7 +116,7 @@ class JM_TC_CLI extends WP_CLI_Command {
 
 		$options                  = get_option( 'jm_tc' );
 		$options['twitterCardOg'] = $args[0];
-		update_option( 'jm_tc', $options );
+		update_option( JM_TC_SLUG_MAIN_OPTION, $options );
 
 		WP_CLI::success( __( 'Twitter Cards creator set successfully', 'jm-tc' ) );
 
@@ -152,7 +152,7 @@ class JM_TC_CLI extends WP_CLI_Command {
 			$_pts['twitterCardPt'][ $arg ] = $arg;
 		}
 
-		update_option( 'jm_tc_cpt', $_pts );
+		update_option( JM_TC_SLUG_CPT_OPTION, $_pts );
 
 		WP_CLI::success( __( 'Twitter Cards custom post types set succesfully', 'jm-tc' ) );
 	}

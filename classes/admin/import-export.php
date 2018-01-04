@@ -22,7 +22,7 @@ class ImportExport {
 	 * Process a settings export that generates a .json file of the shop settings
 	 * @since 5.3.2
 	 */
-	function process_settings_export() {
+	public function process_settings_export() {
 
 		if ( empty( $_POST['action'] ) || 'export_settings' !== $_POST['action'] ) {
 			return;
@@ -36,7 +36,7 @@ class ImportExport {
 			return;
 		}
 
-		$settings = array( 'tc' => (array) get_option( 'jm_tc' ), 'ie' => (array) get_option( 'jm_tc_cpt' ), );
+		$settings = array( 'tc' => (array) get_option( JM_TC_SLUG_MAIN_OPTION ), 'ie' => (array) get_option( JM_TC_SLUG_CPT_OPTION ), );
 
 		ignore_user_abort( true );
 
@@ -53,7 +53,7 @@ class ImportExport {
 	 * Process a settings import from a json file
 	 * @since 5.3.2
 	 */
-	function process_settings_import() {
+	public function process_settings_import() {
 
 		if ( empty( $_POST['action'] ) || 'import_settings' !== $_POST['action'] ) {
 			return;
@@ -86,13 +86,13 @@ class ImportExport {
 		$settings = (array) json_decode( file_get_contents( $import_file ), true );
 
 		if ( ! empty( $settings['tc'] ) ) {
-			update_option( 'jm_tc', (array) $settings['tc'] );
+			update_option( JM_TC_SLUG_MAIN_OPTION, (array) $settings['tc'] );
 		}
 		if ( ! empty( $settings['ie'] ) ) {
-			update_option( 'jm_tc_cpt', (array) $settings['ie'] );
+			update_option( JM_TC_SLUG_CPT_OPTION, (array) $settings['ie'] );
 		}
 
-		wp_safe_redirect( add_query_arg( 'page', 'jm_tc', admin_url( 'admin.php' ) ) );
+		wp_safe_redirect( add_query_arg( 'page', JM_TC_SLUG_MAIN_OPTION, admin_url( 'admin.php' ) ) );
 		exit;
 
 	}

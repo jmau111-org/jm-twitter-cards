@@ -1,4 +1,10 @@
 (function ($) {
+    /**
+     * TODO: rebuild this crap
+     * and prepare for Gutenberg \0/
+     */
+
+    "use strict";
 
     /**
      * @type {Element}
@@ -64,7 +70,7 @@
             iCc.removeChild(iChild);
         }, bgimgC = function () {
             iCc.removeAttribute("style");
-            iCc.setAttribute("style", "-webkit-background-size: cover;background-size: cover; background-image: url(" + getImage() + ");");
+            iCc.setAttribute("style", "background-size: auto 100%;background-position: center center;background-repeat: no-repeat; background-image: url(" + getImage() + ");");
         }, setIdC = function (obj) {
             obj.id = 'tc-img-child';
         };
@@ -74,16 +80,18 @@
          */
         switch (evt.target.value) {
             case 'summary':
-                bgimgC();
+                var contentainer = document.getElementById('card-content');
+                contentainer.className = "summary-content";
+                iCc.removeAttribute("style");
                 iCc.parentNode.className = evt.target.value + ' tc-container';
                 removeC();
+                iCc.setAttribute("style", "background-repeat: no-repeat; background-image: url(" + getImage() + ");");
                 var imgSmall = document.createElement('img');
                 imgSmall.setAttribute("src", getImage());
                 setIdC(imgSmall);
                 imgSmall.className = "tc-img summary-img onchange";
                 iCc.appendChild(imgSmall);
                 break;
-
             case 'summary_large_image':
                 bgimgC();
                 iCc.parentNode.className = evt.target.value + ' tc-container';
@@ -103,11 +111,13 @@
                 var video = document.createElement('video');
                 video.setAttribute("poster", getImage());
                 video.setAttribute("controls", "");
+                video.setAttribute("height", '200');
+                video.setAttribute("width", "100%");
                 setIdC(video);
                 iCc.appendChild(video);
                 break;
         }
 
-    });
+    }).change();
 
 })(jQuery);

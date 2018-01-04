@@ -15,7 +15,7 @@ if ( ! function_exists( 'add_action' ) ) {
 if ( ! function_exists( 'jm_tc_get_options' ) ) {
 	function jm_tc_get_options() {
 		global $jm_tc_options;
-		$jm_tc_options = get_option( 'jm_tc' );
+		$jm_tc_options = get_option( JM_TC_SLUG_MAIN_OPTION );
 		$jm_tc_options = apply_filters( 'jm_tc_get_options', $jm_tc_options );
 
 		return $jm_tc_options;
@@ -48,7 +48,7 @@ if ( ! function_exists( 'jm_tc_get_excerpt_by_id' ) ) {
 	/**
 	 * @param $post_id
 	 *
-	 * @return string|void
+	 * @return string
 	 */
 	function jm_tc_get_excerpt_by_id( $post_id ) {
 		return \TokenToMe\TwitterCards\Utilities::get_excerpt_by_id( $post_id );
