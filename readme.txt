@@ -3,7 +3,7 @@ Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BJYYT486HEH6
 Requires at least: 4.2
-Tested up to: 4.9.1
+Tested up to: 4.9.4
 Requires PHP: 5.4
 License: GPLv2 or later
 Stable tag: trunk
@@ -109,11 +109,14 @@ Cela peut poser problème si vous travaillez avec de la HD et/ou beaucoup d'imag
 
 Il suffit de renseigner les clés de vos custom fields en page d'option et le plugin s'occupera de récupérer les datas correspondantes.
 
-
-== Screenshots ==
-
-
 == Changelog ==
+
+### 9.2
+* Feb 2018
+* fix error in about.php
+* fix warnings in case very first use
+* remove get_keys() cause slow on large site, this feature is useless for now
+* fix incompatibility with NGG (nextgen gallery)
 
 ### 9.1
 * Jan 2018

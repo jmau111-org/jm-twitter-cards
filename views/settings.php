@@ -143,23 +143,18 @@ $settings_fields = array(
 			'desc'  => __( 'Enter 2 letter App Country code in case your app is not available in the US app store', 'jm-tc' ),
 			'name'  => 'twitterAppCountry',
 			'type'  => 'text',
-			'type'  => 'text',
 		),
 		array(
-			'label' => __( 'Custom field title', 'jm-tc' ),
-			'desc'  => __( 'If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title.', 'jm-tc' ),
-			'name'  => 'twitterCardTitle',
-			'type'  => 'select',
-			'default' => ! empty( $opts['twitterCardTitle'] ) ? $opts['twitterCardTitle'] : '',
-			'options' => ! empty( $keys ) ? $keys : []
+			'label'   => __( 'Custom field title', 'jm-tc' ),
+			'desc'    => __( 'If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title.', 'jm-tc' ),
+			'name'    => 'twitterCardTitle',
+			'type'    => 'text',
 		),
 		array(
-			'label' => __( 'Custom field desc', 'jm-tc' ),
-			'desc'  => __( 'If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc.', 'jm-tc' ),
-			'name'  => 'twitterCardDesc',
-			'type'  => 'select',
-			'default' => ! empty( $opts['twitterCardDesc'] ) ? $opts['twitterCardDesc'] : '',
-			'options' => ! empty( $keys ) ? $keys : []
+			'label'   => __( 'Custom field desc', 'jm-tc' ),
+			'desc'    => __( 'If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc.', 'jm-tc' ),
+			'name'    => 'twitterCardDesc',
+			'type'    => 'text',
 		),
 	),
 	JM_TC_SLUG_CPT_OPTION  => array(

@@ -2,8 +2,8 @@
 
 namespace TokenToMe\TwitterCards\Admin;
 
-use TokenToMe\TwitterCards\Utilities;
 use TokenToMe\TwitterCards\Thumbs;
+use TokenToMe\TwitterCards\Utilities;
 
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -63,7 +63,11 @@ class Options {
 	public function card_type() {
 
 		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
-		$cardType     = ( ! empty( $cardTypePost ) ) ? $cardTypePost : $this->opts['twitterCardType'];
+		$cardType     = ( ! empty( $cardTypePost ) )
+			? $cardTypePost
+			: ! empty( $this->opts['twitterCardType'] )
+				? $this->opts['twitterCardType']
+				: '';
 
 		return array( 'card' => apply_filters( 'jm_tc_card_type', $cardType, $this->post_ID, $this->opts ) );
 	}
@@ -77,7 +81,10 @@ class Options {
 
 		$post_obj    = get_post( $this->post_ID );
 		$author_id   = $post_obj->post_author;
-		$cardCreator = '@' . Utilities::remove_at( $this->opts['twitterCreator'] );
+		$crea        = ! empty( $this->opts['twitterCreator'] )
+			? $this->opts['twitterCreator']
+			: '';
+		$cardCreator = '@' . Utilities::remove_at( $crea );
 
 		if ( $post_author ) {
 
@@ -86,7 +93,9 @@ class Options {
 			$cardUsernameKey = ! empty( $this->opts['twitterUsernameKey'] ) ? $this->opts['twitterUsernameKey'] : 'jm_tc_twitter';
 			$cardCreator     = get_the_author_meta( $cardUsernameKey, $author_id );
 
-			$cardCreator = ( ! empty( $cardCreator ) ) ? $cardCreator : $this->opts['twitterCreator'];
+			$cardCreator = ( ! empty( $cardCreator ) )
+				? $cardCreator
+				: $crea;
 			$cardCreator = '@' . Utilities::remove_at( $cardCreator );
 		}
 
@@ -98,7 +107,7 @@ class Options {
 	 */
 	public function site_username() {
 
-		$cardSite = '@' . Utilities::remove_at( $this->opts['twitterSite'] );
+		$cardSite = '@' . Utilities::remove_at( ! empty( $this->opts['twitterSite'] ) ? $this->opts['twitterSite'] : '' );
 
 		return array( 'site' => apply_filters( 'jm_tc_card_site', $cardSite, $this->post_ID, $this->opts ) );
 	}
@@ -133,7 +142,9 @@ class Options {
 	 */
 	public function description() {
 
-		$cardDescription = $this->opts['twitterPostPageDesc'];
+		$cardDescription = ! empty( $this->opts['twitterPostPageDesc'] )
+			? $this->opts['twitterPostPageDesc']
+			: '';
 		if ( $this->post_ID ) {
 
 			$cardDescription = Utilities::get_excerpt_by_id( $this->post_ID );
@@ -159,18 +170,18 @@ class Options {
 		$cardImage = get_post_meta( $this->post_ID, 'cardImage', true );
 
 		//fallback
-		$image = $this->opts['twitterImage'];
+		$image = ! empty( $this->opts['twitterImage'] ) ? $this->opts['twitterImage'] : '';
 
 		if ( $this->post_ID && empty( $cardImage ) && has_post_thumbnail( $this->post_ID ) ) {
 			$size             = Thumbs::thumbnail_sizes();
 			$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
-			$image            = ! empty( $image_attributes ) && is_array( $image_attributes ) ? reset( $image_attributes ) : $this->opts['twitterImage'];;
+			$image            = ! empty( $image_attributes ) && is_array( $image_attributes ) ? reset( $image_attributes ) : $image;
 		} elseif ( ! empty( $cardImage ) ) {
 			$image = esc_url_raw( $cardImage );
 		} elseif ( 'attachment' === get_post_type() ) {
 			$image = wp_get_attachment_url( $this->post_ID );
 		} elseif ( empty( $this->post_ID ) ) {
-			$image = $this->opts['twitterImage'];
+			$image = ! empty( $this->opts['twitterImage'] ) ? $this->opts['twitterImage'] : '';
 		}
 
 		return array( 'image' => apply_filters( 'jm_tc_image_source', $image, $this->post_ID, $this->opts ) );
@@ -191,7 +202,9 @@ class Options {
 		}
 
 		if ( is_home() || is_front_page() ) {
-			$cardImageAlt = $this->opts['twitterImageAlt'];
+			$cardImageAlt = ! empty( $this->opts['twitterImageAlt'] )
+							 ? $this->opts['twitterImageAlt']
+							 : '';
 		}
 
 		$cardImageAlt = Utilities::remove_lb( $cardImageAlt );

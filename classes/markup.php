@@ -72,9 +72,17 @@ class Markup {
 			 * so we need to sanitize again
 			 */
 			$data = array_map( 'esc_attr', $data );
+			$data = array_filter( $data );
+
 			foreach ( $data as $name => $value ) {
 				if ( '' !== $value ) {
-					if ( 'yes' === $this->opts['twitterCardOg'] && in_array( $name, array(
+
+					if ( '@' === $value ) {
+						$markup = '<!-- [(-_-)@@(-_-)] -->' . PHP_EOL;
+						continue;
+					}
+
+					if ( ! empty( $this->opts['twitterCardOg'] ) && 'yes' === $this->opts['twitterCardOg'] && in_array( $name, array(
 							'title',
 							'description',
 							'image',

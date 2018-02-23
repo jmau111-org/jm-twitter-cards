@@ -21,6 +21,13 @@ composer install
 
 ## Changelog ##
 
+### 9.2
+* Feb 2018
+* fix error in about.php
+* fix warnings in case very first use
+* remove get_keys() cause slow on large site, this feature is useless for now
+* fix incompatibility with NGG (nextgen gallery)
+
 ### 9.1
 * Jan 2018
 * multiple js bugfixes especially in preview
