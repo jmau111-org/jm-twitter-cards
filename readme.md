@@ -21,7 +21,7 @@ composer install
 
 ## Changelog ##
 
-### 9.0
+### 9.1
 * Jan 2018
 * multiple js bugfixes especially in preview
 * reorganize + enhance code, this is a major release but it won't break anything, filters are still there

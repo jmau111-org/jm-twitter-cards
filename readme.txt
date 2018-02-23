@@ -4,6 +4,7 @@ Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, p
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BJYYT486HEH6
 Requires at least: 4.2
 Tested up to: 4.9.1
+Requires PHP: 5.4
 License: GPLv2 or later
 Stable tag: trunk
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,10 +51,6 @@ This URL is the place where I improve the plugin according to support requests a
 2. Activate the plugin through the Plugins menu in WordPress
 3. Then go to settings > JM Twitter Cards to configure the plugin
 4. To display the metabox in edit section (posts, pages, attachments) just use default settings or enable only the post types you want
-
-[youtube http://www.youtube.com/watch?v=8l4k3zrD4Z0]
-
-*this is an outdated version of tutorial, I'll add a new one soon.*
 
 == Frequently asked questions ==
 
@@ -118,7 +115,7 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
-### 9.0
+### 9.1
 * Jan 2018
 * multiple js bugfixes especially in preview
 * reorganize + enhance code, this is a major release but it won't break anything, filters are still there
