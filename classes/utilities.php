@@ -32,13 +32,14 @@ class Utilities {
 	 * @author Julien Maury
 	 */
 	public static function get_github_repositories() {
-
-		if ( false === ( $data = get_site_transient( 'jm_github_repos' ) ) ) {
+		$data = get_site_transient( 'jm_github_repos' );
+		if ( empty( $data ) ) {
 
 			$request = wp_remote_get( 'https://api.github.com/users/tweetpressfr/repos?sort=created' );
 
 			if ( ! empty( $request ) && ! is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) === 200 ) {
-				$data = set_site_transient( 'jm_github_repos', wp_remote_retrieve_body( $request ), WEEK_IN_SECONDS );// it's actually enough ^^
+				$data = wp_remote_retrieve_body( $request );
+				set_site_transient( 'jm_github_repos', $data, WEEK_IN_SECONDS );// it's actually enough ^^
 			}
 
 		}
