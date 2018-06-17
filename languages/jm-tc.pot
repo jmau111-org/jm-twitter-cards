@@ -1,0 +1,407 @@
+# Copyright (C) 2018 JM Twitter Cards
+# This file is distributed under the same license as the JM Twitter Cards package.
+msgid ""
+msgstr ""
+"Project-Id-Version: JM Twitter Cards 9.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jm-twitter-cards\n"
+"POT-Creation-Date: 2018-01-04 18:52:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: classes/admin/admin.php:25 views/import-export.php:10
+#: views/import-export.php:29 views/import-export.php:40
+msgid "Import"
+msgstr ""
+
+#: classes/admin/admin.php:25 views/import-export.php:11
+#: views/import-export.php:14 views/import-export.php:21
+msgid "Export"
+msgstr ""
+
+#: classes/admin/admin.php:26 views/about.php:10
+msgid "About"
+msgstr ""
+
+#: classes/admin/admin.php:50
+msgid "characters left"
+msgstr ""
+
+#: classes/admin/admin.php:100 classes/admin/admin.php:179 views/about.php:10
+#: views/import-export.php:10
+msgid "JM Twitter Cards"
+msgstr ""
+
+#: classes/admin/fields.php:161
+msgid "Select"
+msgstr ""
+
+#: classes/admin/fields.php:162
+msgid "Remove"
+msgstr ""
+
+#: classes/admin/fields.php:169
+msgid "Not found"
+msgstr ""
+
+#: classes/admin/import-export.php:73
+msgid "Please upload a valid .json file"
+msgstr ""
+
+#: classes/admin/import-export.php:79
+msgid "Please upload a file to import"
+msgstr ""
+
+#: classes/admin/init.php:37
+msgid "Welcome to"
+msgstr ""
+
+#: classes/admin/init.php:37
+msgid "see blog posts"
+msgstr ""
+
+#: classes/admin/metabox.php:51
+msgid "Twitter Cards"
+msgstr ""
+
+#: classes/admin/metabox.php:72 views/settings.php:25
+msgid "Card type"
+msgstr ""
+
+#: classes/admin/metabox.php:75 views/settings.php:29
+msgid "Summary"
+msgstr ""
+
+#: classes/admin/metabox.php:76 views/settings.php:30
+msgid "Summary below Large Image"
+msgstr ""
+
+#: classes/admin/metabox.php:77
+msgid "Player"
+msgstr ""
+
+#: classes/admin/metabox.php:78 views/settings.php:31
+msgid "Application"
+msgstr ""
+
+#: classes/admin/metabox.php:86
+msgid "Set another source as twitter image (enter URL)"
+msgstr ""
+
+#: classes/admin/metabox.php:92
+msgid "Image Alt"
+msgstr ""
+
+#: classes/admin/metabox.php:99 classes/admin/metabox.php:124
+msgid "URL of iFrame player (MUST BE HTTPS)"
+msgstr ""
+
+#: classes/admin/metabox.php:105
+msgid "Player width"
+msgstr ""
+
+#: classes/admin/metabox.php:114
+msgid "Player height"
+msgstr ""
+
+#: classes/admin/metabox.php:130
+msgid "Codec"
+msgstr ""
+
+#: classes/admin/metabox.php:241
+msgid "Upload"
+msgstr ""
+
+#: classes/admin/options.php:226
+msgid "Warning : Player Card is not set properly ! There is no URL provided for iFrame player !"
+msgstr ""
+
+#: classes/admin/settings.php:362
+msgid "Choose File"
+msgstr ""
+
+#: classes/thumbs.php:111
+msgid "No featured image for now !"
+msgstr ""
+
+#: classes/thumbs.php:119
+msgid "Unknown error !"
+msgstr ""
+
+#: classes/thumbs.php:127
+msgid "Image is heavier than 1MB ! Card will be broken !"
+msgstr ""
+
+#: cli/cli.php:30 cli/cli.php:55 cli/cli.php:85 cli/cli.php:139
+msgid "You sox !"
+msgstr ""
+
+#: cli/cli.php:37 cli/cli.php:121
+msgid "Twitter Cards creator set successfully"
+msgstr ""
+
+#: cli/cli.php:62
+msgid "Twitter Cards Sitename set successfully"
+msgstr ""
+
+#: cli/cli.php:89
+msgid "Player cards cannot be set globally, makes no sense, just go to the metabox please. You sox a little bit !"
+msgstr ""
+
+#: cli/cli.php:96
+msgid "Twitter Cards Type set successfully"
+msgstr ""
+
+#: cli/cli.php:114
+msgid "You gotta be kidding me !"
+msgstr ""
+
+#: cli/cli.php:147
+msgid "%s is not a valid post type ! And you still sox !"
+msgstr ""
+
+#: cli/cli.php:157
+msgid "Twitter Cards custom post types set succesfully"
+msgstr ""
+
+#: jm-twitter-cards.php:73
+msgid "Settings"
+msgstr ""
+
+#: views/about.php:11
+msgid "The developer"
+msgstr ""
+
+#: views/about.php:13
+msgid "I am a WordPress Developer, I like to make it simple."
+msgstr ""
+
+#: views/about.php:25
+msgid "Keep the plugin free"
+msgstr ""
+
+#: views/about.php:26
+msgid "Please help if you want to keep this plugin free."
+msgstr ""
+
+#: views/about.php:35
+msgid "GitHub"
+msgstr ""
+
+#: views/preview.php:12
+msgid "Name"
+msgstr ""
+
+#: views/preview.php:13
+msgid "account"
+msgstr ""
+
+#: views/preview.php:15
+msgid "The card for your website will look a little something like this!"
+msgstr ""
+
+#: views/settings-sections.php:14
+msgid "Options"
+msgstr ""
+
+#: views/settings-sections.php:18
+msgid "Post types"
+msgstr ""
+
+#: views/settings.php:15
+msgid "Creator (twitter username)"
+msgstr ""
+
+#: views/settings.php:20
+msgid "Site (twitter username)"
+msgstr ""
+
+#: views/settings.php:36
+msgid "Excerpt"
+msgstr ""
+
+#: views/settings.php:37
+msgid "Excerpt as meta desc?"
+msgstr ""
+
+#: views/settings.php:41 views/settings.php:53
+msgid "yes"
+msgstr ""
+
+#: views/settings.php:42 views/settings.php:52
+msgid "no"
+msgstr ""
+
+#: views/settings.php:47
+msgid "Open Graph"
+msgstr ""
+
+#: views/settings.php:48
+msgid "Open Graph/SEO"
+msgstr ""
+
+#: views/settings.php:58
+msgid "Image Fallback"
+msgstr ""
+
+#: views/settings.php:64
+msgid "Image alt"
+msgstr ""
+
+#: views/settings.php:70
+msgid "Define specific size for twitter:image display"
+msgstr ""
+
+#: views/settings.php:74
+msgid "280 x 375 px"
+msgstr ""
+
+#: views/settings.php:75
+msgid "560 x 750 px"
+msgstr ""
+
+#: views/settings.php:76
+msgid "435 x 375 px"
+msgstr ""
+
+#: views/settings.php:77
+msgid "280 x 150 px"
+msgstr ""
+
+#: views/settings.php:81
+msgid "Home meta desc"
+msgstr ""
+
+#: views/settings.php:82
+msgid "Enter desc for Posts Page (max: 200 characters)"
+msgstr ""
+
+#: views/settings.php:88
+msgid "iPhone Name"
+msgstr ""
+
+#: views/settings.php:89
+msgid "Enter iPhone Name "
+msgstr ""
+
+#: views/settings.php:94
+msgid " iPhone URL"
+msgstr ""
+
+#: views/settings.php:95
+msgid "Enter iPhone URL "
+msgstr ""
+
+#: views/settings.php:100
+msgid "iPhone ID"
+msgstr ""
+
+#: views/settings.php:101
+msgid "Enter iPhone ID "
+msgstr ""
+
+#: views/settings.php:106
+msgid "iPad Name"
+msgstr ""
+
+#: views/settings.php:107
+msgid "Enter iPad Name "
+msgstr ""
+
+#: views/settings.php:112
+msgid "iPad URL"
+msgstr ""
+
+#: views/settings.php:113
+msgid "Enter iPad URL "
+msgstr ""
+
+#: views/settings.php:118
+msgid "iPad ID"
+msgstr ""
+
+#: views/settings.php:119
+msgid "Enter iPad ID "
+msgstr ""
+
+#: views/settings.php:124
+msgid "Google Play Name"
+msgstr ""
+
+#: views/settings.php:125
+msgid "Enter Google Play Name "
+msgstr ""
+
+#: views/settings.php:130
+msgid "Google Play URL"
+msgstr ""
+
+#: views/settings.php:131
+msgid "Enter Google Play URL "
+msgstr ""
+
+#: views/settings.php:136
+msgid "Google Play ID"
+msgstr ""
+
+#: views/settings.php:137
+msgid "Enter Google Play ID "
+msgstr ""
+
+#: views/settings.php:142
+msgid "App Country code"
+msgstr ""
+
+#: views/settings.php:143
+msgid "Enter 2 letter App Country code in case your app is not available in the US app store"
+msgstr ""
+
+#: views/settings.php:148
+msgid "Custom field title"
+msgstr ""
+
+#: views/settings.php:149
+msgid "If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title."
+msgstr ""
+
+#: views/settings.php:154
+msgid "Custom field desc"
+msgstr ""
+
+#: views/settings.php:155
+msgid "If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc."
+msgstr ""
+
+#: views/settings.php:163
+msgid "Add or hide the meta box"
+msgstr ""
+
+#: views/settings.php:164
+msgid "Default"
+msgstr ""
+
+#: views/settings.php:164
+msgid "All"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "JM Twitter Cards"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://dev73.tweetpress.fr"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Meant to help users to implement and customize Twitter Cards easily"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Julien Maury"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://tweetpress.fr"
+msgstr ""
