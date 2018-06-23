@@ -21,11 +21,11 @@ Once activated the plugin adds appropriate meta on your WordPress website allowi
 *  preview : preview the rendering on Twitter. 
 *  WP SEO by Yoast and All in One SEO compatible (no conflict with SEO title and desc set with these plugins)
 
-contact@tweetpress.fr
+contact@julien-maury.com
 
 = First image found instead of featured image =
 
-If you want to get first image found in post content as twitter image, I've created a free add-on here https://github.com/TweetPressFr/jm-twitter-cards-first-image
+If you want to get first image found in post content as twitter image, I've created a free add-on here https://github.com/jmau111/jm-twitter-cards-first-image
 
 = Translators =
 
@@ -38,8 +38,8 @@ Thanks a lot to all translators. Can't wait to add your work to the project.
 
 = Github =
 
-*  Latest stable version : https://github.com/TweetPressFr/jm-twitter-cards
-*  Trunk version : https://github.com/TweetPressFr/jm-twitter-cards/tree/trunk
+*  Latest stable version : https://github.com/jmau111/jm-twitter-cards
+*  Trunk version : https://github.com/jmau111/jm-twitter-cards/tree/trunk
 
 This URL is the place where I improve the plugin according to support requests and stuffs like this. GitHub is the place !
 

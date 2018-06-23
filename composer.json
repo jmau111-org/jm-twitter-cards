@@ -1,17 +1,17 @@
 {
-  "name": "tweetpressfr/jm-twitter-cards",
+  "name": "jmau/jm-twitter-cards",
   "keywords": [
     "WordPress",
     "twitter",
     "cards",
     "meta"
   ],
-  "homepage": "https://github.com/TweetPressFr/jm-twitter-cards",
+  "homepage": "https://github.com/jmau111/jm-twitter-cards",
   "license": "GPL-2.0+",
   "authors": [
     {
-      "name": "TweetPressFr",
-      "email": "contact@tweetpress.fr"
+      "name": "jmau111",
+      "email": "contact@julien-maury.com"
     }
   ],
   "type": "wordpress-plugin",
