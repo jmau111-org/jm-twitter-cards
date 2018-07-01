@@ -15,7 +15,7 @@ class Particular {
 	 * Options
 	 * @var array $opts
 	 */
-	protected $opts = array();
+	protected $opts = [];
 
 	/**
 	 * Constructor
@@ -23,19 +23,35 @@ class Particular {
 	 */
 	public function __construct() {
 
-		add_filter( 'robots_txt', array( $this, 'robots_mod' ) );
+		add_filter( 'robots_txt', [ $this, 'robots_mod' ] );
 
 		$this->opts = \jm_tc_get_options();
 
 		if ( isset( $this->opts['twitterCardExcerpt'] ) && 'yes' === $this->opts['twitterCardExcerpt'] ) {
-			add_filter( 'jm_tc_get_excerpt', array( $this, 'modify_excerpt' ) );
+			add_filter( 'jm_tc_get_excerpt', [ $this, 'modify_excerpt' ] );
 		}
 
-		add_action( 'wpmu_new_blog', array( $this, 'new_blog' ) );
+		add_action( 'wpmu_new_blog', [ $this, 'new_blog' ] );
 
-		add_filter( 'jm_tc_card_site', array( $this, 'remove_tweetpressfr' ) );
-		add_filter( 'jm_tc_card_creator', array( $this, 'remove_tweetpressfr' ) );
+		add_filter( 'jm_tc_card_site', [ $this, 'remove_tweetpressfr' ] );
+		add_filter( 'jm_tc_card_creator', [ $this, 'remove_tweetpressfr' ] );
 
+	}
+
+	/**
+	 * filter for robots.txt rules
+	 *
+	 * @param $output
+	 *
+	 * @since 5.3.2
+	 * @return string
+	 */
+	public static function robots_mod( $output ) {
+
+		$output .= 'User-agent: Twitterbot' . PHP_EOL;
+		$output .= 'Disallow: ';
+
+		return $output;
 	}
 
 	/**
@@ -62,22 +78,6 @@ class Particular {
 		Init::on_activation();
 
 		restore_current_blog();
-	}
-
-	/**
-	 * filter for robots.txt rules
-	 *
-	 * @param $output
-	 *
-	 * @since 5.3.2
-	 * @return string
-	 */
-	public static function robots_mod( $output ) {
-
-		$output .= 'User-agent: Twitterbot' . PHP_EOL;
-		$output .= 'Disallow: ';
-
-		return $output;
 	}
 
 	/**

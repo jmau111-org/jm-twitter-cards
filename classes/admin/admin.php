@@ -21,18 +21,19 @@ class Main {
 	public function __construct() {
 
 		$this->settings_api = new Settings();
-		$this->subpages     = array(
+		$this->subpages     = [
 			'jm_tc_import_export' => __( 'Import' ) . ' / ' . __( 'Export' ),
 			'jm_tc_about'         => __( 'About' ),
-		);
+		];
 
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'admin_init', [ $this, 'admin_init' ] );
+		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 	}
 
 	/**
 	 * Enqueue scripts and styles
+	 *
 	 * @param $hook_suffix
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
@@ -40,15 +41,15 @@ class Main {
 		/**
 		 * Char count utility
 		 **************************************************************************************************************/
-		wp_register_script( 'count-chars', JM_TC_URL . 'js/charcount.js', array(
+		wp_register_script( 'count-chars', JM_TC_URL . 'js/charcount.js', [
 			'jquery',
-		), JM_TC_VERSION, true );
+		], JM_TC_VERSION, true );
 		wp_localize_script(
 			'count-chars',
 			'_tcStrings',
-			array(
+			[
 				'message' => __( 'characters left', 'jm-tc' ),
-			)
+			]
 		);
 
 		/**
@@ -59,9 +60,9 @@ class Main {
 			wp_enqueue_media();
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings.js', array(
+			wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings.js', [
 				'jquery',
-			), JM_TC_VERSION, true );
+			], JM_TC_VERSION, true );
 			wp_enqueue_script( 'count-chars' );
 		}
 
@@ -69,23 +70,23 @@ class Main {
 		 * Import Export page
 		 **************************************************************************************************************/
 		if ( 'jm-twitter-cards_page_jm_tc_import_export' === $hook_suffix ) {
-			wp_enqueue_style( 'import-export', JM_TC_URL . 'css/import-export.css', array(), JM_TC_VERSION );
+			wp_enqueue_style( 'import-export', JM_TC_URL . 'css/import-export.css', [], JM_TC_VERSION );
 		}
 
 		/**
 		 * About page
 		 **************************************************************************************************************/
 		if ( 'jm-twitter-cards_page_jm_tc_about' === $hook_suffix ) {
-			wp_enqueue_script( 'about', JM_TC_URL . 'js/about.js', array(
+			wp_enqueue_script( 'about', JM_TC_URL . 'js/about.js', [
 				'jquery',
-			), JM_TC_VERSION, true );
+			], JM_TC_VERSION, true );
 			wp_localize_script(
 				'about',
 				'tcGitHub',
-				array(
+				[
 					'user'         => 'tweetpressfr',
-					'repositories' => Utilities::get_github_repositories()
-				)
+					'repositories' => Utilities::get_github_repositories(),
+				]
 			);
 		}
 	}
@@ -96,26 +97,12 @@ class Main {
 		$this->settings_api->admin_init();
 	}
 
-	public function admin_menu() {
-		add_menu_page( __( 'JM Twitter Cards', 'jm-tc' ), __( 'JM Twitter Cards', 'jm-tc' ), 'manage_options', 'jm_tc', array(
-			$this,
-			'plugin_page'
-		), 'dashicons-twitter' );
-
-		foreach ( $this->subpages as $page => $title ) {
-			add_submenu_page( 'jm_tc', $title, $title, 'manage_options', $page, array(
-				$this,
-				'get_view'
-			) );
-		}
-	}
-
 	/**
 	 * Register tabs
 	 * @return array
 	 */
 	public function get_settings_sections() {
-		$sections = array();
+		$sections = [];
 		require_once( JM_TC_DIR . 'views/settings-sections.php' );
 
 		return $sections;
@@ -128,12 +115,26 @@ class Main {
 	 */
 	public function get_settings_fields() {
 
-		$settings_fields = array();
-		$opts = \jm_tc_get_options();
+		$settings_fields = [];
+		$opts            = \jm_tc_get_options();
 
 		require_once( JM_TC_DIR . 'views/settings.php' );
 
 		return $settings_fields;
+	}
+
+	public function admin_menu() {
+		add_menu_page( __( 'JM Twitter Cards', 'jm-tc' ), __( 'JM Twitter Cards', 'jm-tc' ), 'manage_options', 'jm_tc', [
+			$this,
+			'plugin_page',
+		], 'dashicons-twitter' );
+
+		foreach ( $this->subpages as $page => $title ) {
+			add_submenu_page( 'jm_tc', $title, $title, 'manage_options', $page, [
+				$this,
+				'get_view',
+			] );
+		}
 	}
 
 	/**
@@ -144,13 +145,13 @@ class Main {
 	 * @author Julien Maury
 	 * @return array
 	 */
-	public function get_post_types( $args = array() ) {
+	public function get_post_types( $args = [] ) {
 
-		$defaults = array( 'public' => true, );
+		$defaults = [ 'public' => true, ];
 		$pt_args  = apply_filters( 'jm_tc_cpt_args', wp_parse_args( $args, $defaults ) );
 
 		if ( ! is_array( $pt_args ) ) {
-			$pt_args = array();
+			$pt_args = [];
 		}
 
 		return get_post_types( $pt_args );

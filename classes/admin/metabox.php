@@ -18,7 +18,7 @@ class Metabox {
 
 	function __construct() {
 
-		$this->keys = array(
+		$this->keys = [
 			'twitterCardType',
 			'cardImage',
 			'cardImageAlt',
@@ -26,13 +26,13 @@ class Metabox {
 			'cardPlayerWidth',
 			'cardPlayerHeight',
 			'cardPlayerStream',
-			'cardPlayerCodec'
-		);
+			'cardPlayerCodec',
+		];
 
-		add_action( 'add_meta_boxes', array( $this, 'add_box' ), 10, 2 );
-		add_action( 'save_post', array( $this, 'save_box' ), 10, 3 );
+		add_action( 'add_meta_boxes', [ $this, 'add_box' ], 10, 2 );
+		add_action( 'save_post', [ $this, 'save_box' ], 10, 3 );
 
-		add_filter( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_filter( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 		$this->opts = \jm_tc_get_options();
 	}
 
@@ -49,7 +49,7 @@ class Metabox {
 		add_meta_box(
 			'jm_tc_metabox',
 			__( 'Twitter Cards', 'jm-tc' ),
-			array( $this, 'display_box' ),
+			[ $this, 'display_box' ],
 			Utilities::get_post_types()
 		);
 	}
@@ -64,42 +64,42 @@ class Metabox {
 		$factory = new Factory();
 		$factory->generatePreview( self::get_post_id() );
 
-		$metaBox = array(
-			array( 'method' => 'wrapper', 'tag' => 'table', 'class' => 'form-table', 'mod' => 'start' ),
-			array( 'method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'start' ),
-			array(
+		$metaBox = [
+			[ 'method' => 'wrapper', 'tag' => 'table', 'class' => 'form-table', 'mod' => 'start' ],
+			[ 'method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'start' ],
+			[
 				'method'   => 'select_field',
 				'label'    => __( 'Card type', 'jm-tc' ),
 				'field_id' => 'twitterCardType',
-				'options'  => array(
+				'options'  => [
 					'summary'             => __( 'Summary', 'jm-tc' ),
 					'summary_large_image' => __( 'Summary below Large Image', 'jm-tc' ),
 					'player'              => __( 'Player', 'jm-tc' ),
 					'app'                 => __( 'Application', 'jm-tc' ),
-				),
+				],
 				'type'     => 'select_field',
 				'value'    => get_post_meta( self::get_post_id(), 'twitterCardType', true ) ? get_post_meta( self::get_post_id(), 'twitterCardType', true ) : $this->opts['twitterCardType'],
-			),
-			array(
+			],
+			[
 				'method'   => 'image_field',
 				'field_id' => 'cardImage',
 				'label'    => __( 'Set another source as twitter image (enter URL)', 'jm-tc' ),
 				'value'    => get_post_meta( self::get_post_id(), 'cardImage', true ),
-			),
-			array(
+			],
+			[
 				'method'    => 'textarea_field',
 				'field_id'  => 'cardImageAlt',
 				'label'     => __( 'Image Alt', 'jm-tc' ),
 				'value'     => get_post_meta( self::get_post_id(), 'cardImageAlt', true ),
 				'charcount' => 420,
-			),
-			array(
+			],
+			[
 				'method'   => 'url_field',
 				'field_id' => 'cardPlayer',
 				'label'    => __( 'URL of iFrame player (MUST BE HTTPS)', 'jm-tc' ),
 				'value'    => get_post_meta( self::get_post_id(), 'cardPlayer', true ),
-			),
-			array(
+			],
+			[
 				'method'   => 'num_field',
 				'field_id' => 'cardPlayerWidth',
 				'label'    => __( 'Player width', 'jm-tc' ),
@@ -107,8 +107,8 @@ class Metabox {
 				'max'      => 1000,
 				'step'     => 1,
 				'value'    => get_post_meta( self::get_post_id(), 'cardPlayerWidth', true ),
-			),
-			array(
+			],
+			[
 				'method'   => 'num_field',
 				'field_id' => 'cardPlayerHeight',
 				'label'    => __( 'Player height', 'jm-tc' ),
@@ -117,26 +117,34 @@ class Metabox {
 				'max'      => 1000,
 				'step'     => 1,
 				'value'    => get_post_meta( self::get_post_id(), 'cardPlayerHeight', true ),
-			),
-			array(
+			],
+			[
 				'method'   => 'url_field',
 				'field_id' => 'cardPlayerStream',
 				'label'    => __( 'URL of iFrame player (MUST BE HTTPS)', 'jm-tc' ),
 				'value'    => get_post_meta( self::get_post_id(), 'cardPlayerStream', true ),
-			),
-			array(
+			],
+			[
 				'method'   => 'text_field',
 				'field_id' => 'cardPlayerCodec',
 				'label'    => __( 'Codec', 'jm-tc' ),
 				'value'    => get_post_meta( self::get_post_id(), 'cardPlayerCodec', true ),
-			),
-			array( 'method'=> 'wrapper', 'tag' => 'tbody', 'mod' => 'end' ),
-			array( 'method'=> 'wrapper', 'tag' => 'table', 'mod' => 'end' ),
-		);
+			],
+			[ 'method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'end' ],
+			[ 'method' => 'wrapper', 'tag' => 'table', 'mod' => 'end' ],
+		];
 
 		$factory->generateMetaBox( $metaBox );
 		wp_nonce_field( 'save_tc_meta', 'save_tc_meta_nonce' );
 
+	}
+
+	/**
+	 * @author Julien Maury
+	 * @return int
+	 */
+	public static function get_post_id() {
+		return isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0;
 	}
 
 	/**
@@ -187,12 +195,12 @@ class Metabox {
 
 		switch ( $key ) {
 			case 'twitterCardType':
-				return in_array( $value, array(
+				return in_array( $value, [
 					'summary',
 					'summary_large_image',
 					'player',
-                    'app'
-				) ) ? sanitize_text_field( $value ) : $this->opts['twitterCardType'];
+					'app',
+				] ) ? sanitize_text_field( $value ) : $this->opts['twitterCardType'];
 				break;
 			case 'cardImageAlt':
 				return esc_textarea( $value );
@@ -224,8 +232,8 @@ class Metabox {
 	 */
 	public function admin_enqueue_scripts() {
 
-		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', array( 'jquery' ), JM_TC_VERSION, true );
-		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.css', array(), JM_TC_VERSION );
+		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox.js', [ 'jquery' ], JM_TC_VERSION, true );
+		wp_register_style( 'jm-tc-preview', JM_TC_URL . 'css/preview.css', [], JM_TC_VERSION );
 
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
 			wp_enqueue_media();
@@ -235,22 +243,14 @@ class Metabox {
 			wp_localize_script(
 				'jm-tc-metabox',
 				'tcStrings',
-				array(
+				[
 					'upload_message' => __( 'Upload' ),
 					'default_image'  => ! empty( $this->opts['twitterImage'] ) ? esc_url( $this->opts['twitterImage'] ) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
-				)
+				]
 			);
 
 			wp_enqueue_style( 'jm-tc-preview' );
 
 		}
-	}
-
-	/**
-	 * @author Julien Maury
-	 * @return int
-	 */
-	public static function get_post_id() {
-		return isset( $_GET['post'] ) ? absint( $_GET['post'] ) : 0;
 	}
 }

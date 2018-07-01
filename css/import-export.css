@@ -3,9 +3,11 @@
     flex-wrap: wrap;
     margin: 2em auto;
 }
+
 .inbox h3 {
     text-transform: uppercase;
 }
+
 .inbox {
     flex: 50%;
     box-sizing: border-box;

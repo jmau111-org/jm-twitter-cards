@@ -13,6 +13,19 @@ class Init {
 	/**
 	 * Avoid undefined index by registering default options
 	 */
+	public static function activate() {
+
+		if ( ! is_multisite() ) {
+
+			self::on_activation();
+
+		}
+
+	}
+
+	/**
+	 * Avoid undefined index by registering default options
+	 */
 	public static function on_activation() {
 		$opts = get_option( JM_TC_SLUG_MAIN_OPTION );
 		if ( ! is_array( $opts ) ) {
@@ -25,7 +38,7 @@ class Init {
 	 * @return array
 	 */
 	public static function get_default_options() {
-		return array(
+		return [
 			'twitterCardType'       => 'summary',
 			'twitterCreator'        => '',
 			'twitterSite'           => '',
@@ -51,19 +64,6 @@ class Init {
 			'twitterCardRobotsTxt'  => 'no',
 			'twitterAppCountry'     => '',
 			'twitterCardOg'         => 'no',
-		);
-	}
-
-	/**
-	 * Avoid undefined index by registering default options
-	 */
-	public static function activate() {
-
-		if ( ! is_multisite() ) {
-
-			self::on_activation();
-
-		}
-
+		];
 	}
 }

@@ -18,44 +18,13 @@ class Options {
 	 *
 	 * @var array
 	 */
-	protected $opts = array();
+	protected $opts = [];
 	protected $post_ID;
 
 	public function __construct( $post_ID ) {
 		$this->post_ID = $post_ID;
 		$this->opts    = \jm_tc_get_options();
 	}
-
-	/**
-	 * @param $type
-	 *
-	 * @return string
-	 */
-	public function get_seo_plugin_data( $type ) {
-
-		$aioseop_title       = get_post_meta( $this->post_ID, '_aioseop_title', true );
-		$aioseop_description = get_post_meta( $this->post_ID, '_aioseop_description', true );
-
-		$title = get_the_title( $this->post_ID );
-		$desc  = Utilities::get_excerpt_by_id( $this->post_ID );
-
-		if ( class_exists( 'All_in_One_SEO_Pack' ) ) {
-			$title = ! empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( array( 'echo' => false ) );
-			$desc  = ! empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
-		}
-
-		switch ( $type ) {
-			case 'title' :
-				return $title;
-				break;
-			case 'desc' :
-				return $desc;
-				break;
-			default:
-				return $title;
-		}
-	}
-
 
 	/**
 	 * @return array
@@ -65,7 +34,7 @@ class Options {
 		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
 		$cardType     = ( ! empty( $cardTypePost ) ) ? $cardTypePost : ( ! empty( $this->opts['twitterCardType'] ) ? $this->opts['twitterCardType'] : '' );
 
-		return array( 'card' => apply_filters( 'jm_tc_card_type', $cardType, $this->post_ID, $this->opts ) );
+		return [ 'card' => apply_filters( 'jm_tc_card_type', $cardType, $this->post_ID, $this->opts ) ];
 	}
 
 	/**
@@ -95,7 +64,7 @@ class Options {
 			$cardCreator = '@' . Utilities::remove_at( $cardCreator );
 		}
 
-		return array( 'creator' => apply_filters( 'jm_tc_card_creator', $cardCreator, $this->post_ID, $this->opts ) );
+		return [ 'creator' => apply_filters( 'jm_tc_card_creator', $cardCreator, $this->post_ID, $this->opts ) ];
 	}
 
 	/**
@@ -105,9 +74,8 @@ class Options {
 
 		$cardSite = '@' . Utilities::remove_at( ! empty( $this->opts['twitterSite'] ) ? $this->opts['twitterSite'] : '' );
 
-		return array( 'site' => apply_filters( 'jm_tc_card_site', $cardSite, $this->post_ID, $this->opts ) );
+		return [ 'site' => apply_filters( 'jm_tc_card_site', $cardSite, $this->post_ID, $this->opts ) ];
 	}
-
 
 	/**
 	 * @return array
@@ -129,8 +97,38 @@ class Options {
 			}
 		}
 
-		return array( 'title' => apply_filters( 'jm_tc_get_title', $cardTitle, $this->post_ID, $this->opts ) );
+		return [ 'title' => apply_filters( 'jm_tc_get_title', $cardTitle, $this->post_ID, $this->opts ) ];
 
+	}
+
+	/**
+	 * @param $type
+	 *
+	 * @return string
+	 */
+	public function get_seo_plugin_data( $type ) {
+
+		$aioseop_title       = get_post_meta( $this->post_ID, '_aioseop_title', true );
+		$aioseop_description = get_post_meta( $this->post_ID, '_aioseop_description', true );
+
+		$title = get_the_title( $this->post_ID );
+		$desc  = Utilities::get_excerpt_by_id( $this->post_ID );
+
+		if ( class_exists( 'All_in_One_SEO_Pack' ) ) {
+			$title = ! empty( $aioseop_title ) ? htmlspecialchars( stripcslashes( $aioseop_title ) ) : the_title_attribute( [ 'echo' => false ] );
+			$desc  = ! empty( $aioseop_description ) ? htmlspecialchars( stripcslashes( $aioseop_description ) ) : Utilities::get_excerpt_by_id( $this->post_ID );
+		}
+
+		switch ( $type ) {
+			case 'title' :
+				return $title;
+				break;
+			case 'desc' :
+				return $desc;
+				break;
+			default:
+				return $title;
+		}
 	}
 
 	/**
@@ -154,7 +152,7 @@ class Options {
 		}
 		$cardDescription = Utilities::remove_lb( $cardDescription );
 
-		return array( 'description' => apply_filters( 'jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->opts ) );
+		return [ 'description' => apply_filters( 'jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->opts ) ];
 
 	}
 
@@ -180,7 +178,7 @@ class Options {
 			$image = ! empty( $this->opts['twitterImage'] ) ? $this->opts['twitterImage'] : '';
 		}
 
-		return array( 'image' => apply_filters( 'jm_tc_image_source', $image, $this->post_ID, $this->opts ) );
+		return [ 'image' => apply_filters( 'jm_tc_image_source', $image, $this->post_ID, $this->opts ) ];
 
 	}
 
@@ -199,13 +197,13 @@ class Options {
 
 		if ( is_home() || is_front_page() ) {
 			$cardImageAlt = ! empty( $this->opts['twitterImageAlt'] )
-							 ? $this->opts['twitterImageAlt']
-							 : '';
+				? $this->opts['twitterImageAlt']
+				: '';
 		}
 
 		$cardImageAlt = Utilities::remove_lb( $cardImageAlt );
 
-		return array( 'image:alt' => apply_filters( 'jm_tc_image_alt', $cardImageAlt, $this->post_ID, $this->opts ) );
+		return [ 'image:alt' => apply_filters( 'jm_tc_image_alt', $cardImageAlt, $this->post_ID, $this->opts ) ];
 
 	}
 
@@ -223,7 +221,7 @@ class Options {
 			$playerWidth     = get_post_meta( $this->post_ID, 'cardPlayerWidth', true );
 			$playerHeight    = get_post_meta( $this->post_ID, 'cardPlayerHeight', true );
 			$playerCodec     = get_post_meta( $this->post_ID, 'cardPlayerCodec', true );
-			$player          = array();
+			$player          = [];
 
 			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl, $this->post_ID, $this->opts );
 
@@ -258,6 +256,21 @@ class Options {
 	}
 
 	/**
+	 * @param bool $error
+	 *
+	 * @return bool
+	 */
+	protected function error( $error = false ) {
+
+		if ( $error && current_user_can( 'edit_posts' ) ) {
+			return $error;
+		}
+
+		return false;
+
+	}
+
+	/**
 	 * @return array
 	 */
 	public function deep_linking() {
@@ -284,7 +297,7 @@ class Options {
 		$twitterGooglePlayId   = apply_filters( 'jm_tc_googleplay_id', $twitterGooglePlayId, $this->post_ID, $this->opts );
 		$twitterAppCountry     = apply_filters( 'jm_tc_country', $twitterAppCountry, $this->post_ID, $this->opts );
 
-		$app = array(
+		$app = [
 			'app:name:iphone'     => $twitteriPhoneName,
 			'app:name:ipad'       => $twitteriPadName,
 			'app:name:googleplay' => $twitterGooglePlayName,
@@ -295,25 +308,9 @@ class Options {
 			'app:id:ipad'         => $twitteriPadId,
 			'app:id:googleplay'   => $twitterGooglePlayId,
 			'app:id:country'      => $twitterAppCountry,
-		);
+		];
 
 		return $return = array_map( 'esc_attr', $app );
-
-	}
-
-
-	/**
-	 * @param bool $error
-	 *
-	 * @return bool
-	 */
-	protected function error( $error = false ) {
-
-		if ( $error && current_user_can( 'edit_posts' ) ) {
-			return $error;
-		}
-
-		return false;
 
 	}
 

@@ -14,26 +14,13 @@ class Markup {
 	 * Options
 	 * @var array
 	 */
-	protected $opts = array();
-	protected $options = array();
+	protected $opts = [];
+	protected $options = [];
 
 	public function __construct( Admin\Options $options ) {
 
 		$this->options = $options;
 		$this->opts    = \jm_tc_get_options();
-	}
-
-	/**
-	 * Add just one line before meta
-	 * @since 5.3.2
-	 *
-	 * @param bool $end
-	 *
-	 * @return string
-	 */
-	public function html_comments( $end = false ) {
-		$slash = ( false === $end ) ? '' : '/';
-		return '<!-- ' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 	}
 
 	public function generateMarkup() {
@@ -54,6 +41,20 @@ class Markup {
 		echo $this->build( $this->options->deep_linking() );
 
 		echo $this->html_comments( true );
+	}
+
+	/**
+	 * Add just one line before meta
+	 * @since 5.3.2
+	 *
+	 * @param bool $end
+	 *
+	 * @return string
+	 */
+	public function html_comments( $end = false ) {
+		$slash = ( false === $end ) ? '' : '/';
+
+		return '<!-- ' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
 	}
 
 	/**
@@ -82,11 +83,11 @@ class Markup {
 						continue;
 					}
 
-					if ( ! empty( $this->opts['twitterCardOg'] ) && 'yes' === $this->opts['twitterCardOg'] && in_array( $name, array(
+					if ( ! empty( $this->opts['twitterCardOg'] ) && 'yes' === $this->opts['twitterCardOg'] && in_array( $name, [
 							'title',
 							'description',
 							'image',
-						) )
+						] )
 					) {
 						$is_og    = 'og';
 						$name_tag = 'property';

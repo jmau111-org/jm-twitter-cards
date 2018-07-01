@@ -11,7 +11,9 @@ if ( ! function_exists( 'add_action' ) ) {
 class Factory {
 	/**
 	 * Markup front
+	 *
 	 * @param $post_ID
+	 *
 	 * @author Julien Maury
 	 */
 	public function generateMarkup( $post_ID ) {

@@ -14,8 +14,8 @@ class ImportExport {
 	 * @since 5.3.2
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'process_settings_export' ) );
-		add_action( 'admin_init', array( $this, 'process_settings_import' ) );
+		add_action( 'admin_init', [ $this, 'process_settings_export' ] );
+		add_action( 'admin_init', [ $this, 'process_settings_import' ] );
 	}
 
 	/**
@@ -36,7 +36,10 @@ class ImportExport {
 			return;
 		}
 
-		$settings = array( 'tc' => (array) get_option( JM_TC_SLUG_MAIN_OPTION ), 'ie' => (array) get_option( JM_TC_SLUG_CPT_OPTION ), );
+		$settings = [
+			'tc' => (array) get_option( JM_TC_SLUG_MAIN_OPTION ),
+			'ie' => (array) get_option( JM_TC_SLUG_CPT_OPTION ),
+		];
 
 		ignore_user_abort( true );
 

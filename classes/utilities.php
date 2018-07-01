@@ -54,9 +54,9 @@ class Utilities {
 	 * @return string
 	 */
 	public static function remove_lb( $lb ) {
-		$output = str_replace( array( "\r" . PHP_EOL, "\r" ), PHP_EOL, $lb );
+		$output = str_replace( [ "\r" . PHP_EOL, "\r" ], PHP_EOL, $lb );
 		$lines  = explode( PHP_EOL, $output );
-		$nolb   = array();
+		$nolb   = [];
 		foreach ( $lines as $key => $line ) {
 			if ( ! empty( $line ) ) {
 				$nolb[] = trim( $line );
@@ -93,7 +93,7 @@ class Utilities {
 	public static function get_post_types() {
 		$cpts = get_option( 'jm_tc_cpt' );
 
-		return empty( $cpts['twitterCardPt'] ) ? get_post_types( array( 'public' => true ) ) : array_values( $cpts['twitterCardPt'] );
+		return empty( $cpts['twitterCardPt'] ) ? get_post_types( [ 'public' => true ] ) : array_values( $cpts['twitterCardPt'] );
 	}
 
 }

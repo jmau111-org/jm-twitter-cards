@@ -14,14 +14,14 @@ class Settings {
 	 *
 	 * @var array
 	 */
-	protected $settings_sections = array();
+	protected $settings_sections = [];
 
 	/**
 	 * Settings fields array
 	 *
 	 * @var array
 	 */
-	protected $settings_fields = array();
+	protected $settings_fields = [];
 
 
 	/**
@@ -64,12 +64,12 @@ class Settings {
 	}
 
 	function add_field( $section, $field ) {
-		$defaults = array(
+		$defaults = [
 			'name'  => '',
 			'label' => '',
 			'desc'  => '',
-			'type'  => 'text'
-		);
+			'type'  => 'text',
+		];
 
 		$arg                                 = wp_parse_args( $field, $defaults );
 		$this->settings_fields[ $section ][] = $arg;
@@ -93,10 +93,10 @@ class Settings {
 			}
 
 			if ( isset( $section['desc'] ) && ! empty( $section['desc'] ) ) {
-				$section['desc']  = '<div class="inside">' . $section['desc'] . '</div>';
-				$callback         = function() use( $section ) {
-				    echo wp_strip_all_tags( $section['desc'] );
-                };
+				$section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
+				$callback        = function () use ( $section ) {
+					echo wp_strip_all_tags( $section['desc'] );
+				};
 			} else if ( isset( $section['callback'] ) ) {
 				$callback = $section['callback'];
 			} else {
@@ -113,9 +113,9 @@ class Settings {
 				$name     = $option['name'];
 				$type     = isset( $option['type'] ) ? $option['type'] : 'text';
 				$label    = isset( $option['label'] ) ? $option['label'] : '';
-				$callback = isset( $option['callback'] ) ? $option['callback'] : array( $this, 'callback_' . $type );
+				$callback = isset( $option['callback'] ) ? $option['callback'] : [ $this, 'callback_' . $type ];
 
-				$args = array(
+				$args = [
 					'id'                => $name,
 					'class'             => isset( $option['class'] ) ? $option['class'] : $name,
 					'label_for'         => "{$section}[{$name}]",
@@ -132,7 +132,7 @@ class Settings {
 					'max'               => isset( $option['max'] ) ? $option['max'] : '',
 					'step'              => isset( $option['step'] ) ? $option['step'] : '',
 					'charcount'         => isset( $option['charcount'] ) ? $option['charcount'] : '',
-				);
+				];
 
 				add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
 			}
@@ -140,25 +140,17 @@ class Settings {
 
 		// creates our settings in the options table
 		foreach ( $this->settings_sections as $section ) {
-			register_setting( $section['id'], $section['id'], array( $this, 'sanitize_options' ) );
+			register_setting( $section['id'], $section['id'], [ $this, 'sanitize_options' ] );
 		}
 	}
 
 	/**
-	 * Get field description for display
+	 * Displays a url field for a settings field
 	 *
 	 * @param array $args settings field args
-	 *
-	 * @return string
 	 */
-	public function get_field_description( $args ) {
-		if ( ! empty( $args['desc'] ) ) {
-			$desc = sprintf( '<p class="description">%s</p>', $args['desc'] );
-		} else {
-			$desc = '';
-		}
-
-		return $desc;
+	function callback_url( $args ) {
+		$this->callback_text( $args );
 	}
 
 	/**
@@ -180,12 +172,40 @@ class Settings {
 	}
 
 	/**
-	 * Displays a url field for a settings field
+	 * Get the value of a settings field
+	 *
+	 * @param string $option settings field name
+	 * @param string $section the section name this field belongs to
+	 * @param string $default default text if it's not found
+	 *
+	 * @return string
+	 */
+	function get_option( $option, $section, $default = '' ) {
+
+		$options = get_option( $section );
+
+		if ( isset( $options[ $option ] ) ) {
+			return $options[ $option ];
+		}
+
+		return $default;
+	}
+
+	/**
+	 * Get field description for display
 	 *
 	 * @param array $args settings field args
+	 *
+	 * @return string
 	 */
-	function callback_url( $args ) {
-		$this->callback_text( $args );
+	public function get_field_description( $args ) {
+		if ( ! empty( $args['desc'] ) ) {
+			$desc = sprintf( '<p class="description">%s</p>', $args['desc'] );
+		} else {
+			$desc = '';
+		}
+
+		return $desc;
 	}
 
 	/**
@@ -334,11 +354,11 @@ class Settings {
 
 		echo '<div style="max-width: ' . $size . ';">';
 
-		$editor_settings = array(
+		$editor_settings = [
 			'teeny'         => true,
 			'textarea_name' => $args['section'] . '[' . $args['id'] . ']',
-			'textarea_rows' => 10
-		);
+			'textarea_rows' => 10,
+		];
 
 		if ( isset( $args['options'] ) && is_array( $args['options'] ) ) {
 			$editor_settings = array_merge( $editor_settings, $args['options'] );
@@ -454,51 +474,6 @@ class Settings {
 	}
 
 	/**
-	 * Get the value of a settings field
-	 *
-	 * @param string $option settings field name
-	 * @param string $section the section name this field belongs to
-	 * @param string $default default text if it's not found
-	 *
-	 * @return string
-	 */
-	function get_option( $option, $section, $default = '' ) {
-
-		$options = get_option( $section );
-
-		if ( isset( $options[ $option ] ) ) {
-			return $options[ $option ];
-		}
-
-		return $default;
-	}
-
-	/**
-	 * Show navigations as tab
-	 *
-	 * Shows all the settings section labels as tab
-	 */
-	function show_navigation() {
-
-		$html  = '<h2 class="nav-tab-wrapper">';
-		$count = count( $this->settings_sections );
-
-		// don't show the navigation if only one section exists
-		if ( $count === 1 ) {
-			return;
-		}
-
-		foreach ( $this->settings_sections as $k => $tab ) {
-			$k ++;
-			$html .= sprintf( '<a href="#tabs-%d" id="#tabs-%d" class="nav-tab">%s</a>', $k, $k, $tab['title'] );
-		}
-
-		$html .= '</h2>';
-
-		echo $html;
-	}
-
-	/**
 	 * Show the section settings forms
 	 *
 	 * This function displays every sections in a different form
@@ -527,6 +502,31 @@ class Settings {
             </div>
         </div>
 		<?php
+	}
+
+	/**
+	 * Show navigations as tab
+	 *
+	 * Shows all the settings section labels as tab
+	 */
+	function show_navigation() {
+
+		$html  = '<h2 class="nav-tab-wrapper">';
+		$count = count( $this->settings_sections );
+
+		// don't show the navigation if only one section exists
+		if ( $count === 1 ) {
+			return;
+		}
+
+		foreach ( $this->settings_sections as $k => $tab ) {
+			$k ++;
+			$html .= sprintf( '<a href="#tabs-%d" id="#tabs-%d" class="nav-tab">%s</a>', $k, $k, $tab['title'] );
+		}
+
+		$html .= '</h2>';
+
+		echo $html;
 	}
 
 }

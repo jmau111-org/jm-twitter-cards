@@ -15,8 +15,8 @@ class Preview {
 	 *
 	 * @var array
 	 */
-	protected $opts = array();
-	protected $options = array();
+	protected $opts = [];
+	protected $options = [];
 
 	public function __construct( Options $options ) {
 

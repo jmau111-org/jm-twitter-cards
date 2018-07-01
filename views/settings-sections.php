@@ -8,13 +8,13 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-$sections = array(
-	array(
+$sections = [
+	[
 		'id'    => JM_TC_SLUG_MAIN_OPTION,
 		'title' => __( 'Options', 'jm-tc' ),
-	),
-	array(
+	],
+	[
 		'id'    => JM_TC_SLUG_CPT_OPTION,
-		'title' => __( 'Custom Post types' )
-	),
-);
+		'title' => __( 'Custom Post types' ),
+	],
+];

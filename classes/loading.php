@@ -11,6 +11,16 @@ if ( ! function_exists( 'add_action' ) ) {
 class Loading {
 
 	/**
+	 * Constructor. Intentionally left empty and public.
+	 *
+	 * @see plugin_setup()
+	 */
+	public function __construct() {
+		add_action( 'wp_head', [ $this, 'add_markup' ], 1 );
+		add_action( 'init', [ $this, 'on_init' ], 1 );
+	}
+
+	/**
 	 * Setup
 	 * @return  void
 	 */
@@ -27,21 +37,22 @@ class Loading {
 	}
 
 	/**
-	 * Constructor. Intentionally left empty and public.
-	 *
-	 * @see plugin_setup()
-	 */
-	public function __construct() {
-		add_action( 'wp_head', array( $this, 'add_markup' ), 1 );
-		add_action( 'init', array( $this, 'on_init' ), 1 );
-	}
-
-	/**
 	 * Everything that triggers on this hook
 	 * init
 	 */
 	public function on_init() {
 		$this->register_text_domain( 'jm-tc' );
+	}
+
+	/**
+	 * Loads translations
+	 *
+	 * @param   string $domain
+	 *
+	 * @return  void
+	 */
+	public function register_text_domain( $domain ) {
+		load_plugin_textdomain( $domain, false, JM_TC_LANG_DIR );
 	}
 
 	/**
@@ -59,16 +70,5 @@ class Loading {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Loads translations
-	 *
-	 * @param   string $domain
-	 *
-	 * @return  void
-	 */
-	public function register_text_domain( $domain ) {
-		load_plugin_textdomain( $domain, false, JM_TC_LANG_DIR );
 	}
 }

@@ -5,7 +5,7 @@ Plugin URI: http://dev73.tweetpress.fr
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: http://tweetpress.fr
-Version: 9.4
+Version: 10.0
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -30,7 +30,7 @@ defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
 // Constantly constant
-define( 'JM_TC_VERSION', defined('SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '9.4' );
+define( 'JM_TC_VERSION', defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '10.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
 define( 'JM_TC_LANG_DIR', plugin_basename( dirname( __FILE__ ) ) . '/languages' );
@@ -70,11 +70,11 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_setting
  * @return mixed
  */
 function jm_tc_settings_action_link( $links ) {
-	$links['settings'] = '<a href="' . add_query_arg( array( 'page' => JM_TC_SLUG_MAIN_OPTION ), admin_url( 'admin.php' ) ) . '">' . __( 'Settings' ) . '</a>';
+	$links['settings'] = '<a href="' . add_query_arg( [ 'page' => JM_TC_SLUG_MAIN_OPTION ], admin_url( 'admin.php' ) ) . '">' . __( 'Settings' ) . '</a>';
 
 	return $links;
 }
 
-register_activation_hook( __FILE__, array( 'TokenToMe\TwitterCards\Admin\Init', 'activate' ) );
+register_activation_hook( __FILE__, [ 'TokenToMe\TwitterCards\Admin\Init', 'activate' ] );
 
-add_action( 'plugins_loaded', array( new TokenToMe\TwitterCards\Loading, 'plugin_setup' ) );
+add_action( 'plugins_loaded', [ new TokenToMe\TwitterCards\Loading, 'plugin_setup' ] );
