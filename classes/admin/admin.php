@@ -103,7 +103,7 @@ class Main {
 	 */
 	public function get_settings_sections() {
 		$sections = [];
-		require_once( JM_TC_DIR . 'views/settings-sections.php' );
+		require_once JM_TC_DIR . 'views/settings-sections.php';
 
 		return $sections;
 	}
@@ -118,7 +118,7 @@ class Main {
 		$settings_fields = [];
 		$opts            = \jm_tc_get_options();
 
-		require_once( JM_TC_DIR . 'views/settings.php' );
+		require_once JM_TC_DIR . 'views/settings.php';
 
 		return $settings_fields;
 	}

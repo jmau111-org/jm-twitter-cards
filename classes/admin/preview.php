@@ -45,7 +45,7 @@ class Preview {
 
 
 		ob_start();
-		require_once( JM_TC_DIR . 'views/preview.php' );
+		require_once JM_TC_DIR . 'views/preview.php';
 		ob_end_clean();
 
 		return $preview;

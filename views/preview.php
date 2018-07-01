@@ -15,7 +15,7 @@ $preview .= '</div>';
 $preview .= '<div class="tc-text u-pullLeft"><p>' . esc_html__( 'The card for your website will look a little something like this!', 'jm-tc' ) . '</p> </div>';
 
 $card = '';
-require_once( JM_TC_DIR . 'views/card.php' );
+require_once JM_TC_DIR . 'views/card.php';
 
 $preview .= $card;
 $preview .= '</div>';
