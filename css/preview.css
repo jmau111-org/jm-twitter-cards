@@ -50,7 +50,7 @@
 }
 
 .tc-preview .tc-summary {
-    display: table;
+    display: block;
     width: 100%
 }
 
