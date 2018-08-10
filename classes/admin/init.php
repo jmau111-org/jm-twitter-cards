@@ -44,7 +44,7 @@ class Init {
 			'twitterSite'           => '',
 			'twitterImage'          => 'https://g.twimg.com/Twitter_logo_blue.png',
 			'twitterImageAlt'       => '',
-			'twitterCardImgSize'    => 'small',
+			'twitterCardImgSize'    => 'web',
 			'twitterProfile'        => 'yes',
 			'twitterPostPageTitle'  => get_bloginfo( 'name' ), // filter used by plugin to customize title
 			'twitterPostPageDesc'   => __( 'Welcome to', 'jm-tc' ) . ' ' . get_bloginfo( 'name' ) . ' - ' . __( 'see blog posts', 'jm-tc' ),
