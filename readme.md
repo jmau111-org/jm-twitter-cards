@@ -16,7 +16,12 @@ To get this work, use composer :
 
 ```
 git clone https://github.com/jmau111/jm-twitter-cards.git && cd jm-twitter-cards
-composer install
+```
+
+If Gutenberg is enabled then run :
+
+```
+npm i && npm run build
 ```
 
 ## Changelog ##
