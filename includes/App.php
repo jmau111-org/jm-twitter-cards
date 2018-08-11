@@ -75,7 +75,6 @@ class Main {
 		}
 
 		require_once JM_TC_DIR . 'admin/Admin.php';
-		require_once JM_TC_DIR . 'admin/Fields.php';
 		require_once JM_TC_DIR . 'admin/Preview.php';
 		require_once JM_TC_DIR . 'admin/Metabox.php';
 		require_once JM_TC_DIR . 'admin/Settings.php';
@@ -97,11 +96,6 @@ class Main {
 	 * @access   protected
 	 */
 	protected function define_post_hooks() {
-
-		$plugin_posts = new Metabox( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'add_meta_boxes', $plugin_posts, 'add_box'  );
-		$this->loader->add_action( 'save_post', $plugin_posts, 'save_box', 10, 2 );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_posts, 'admin_enqueue_scripts' );
 	}
 
 	/**
@@ -140,7 +134,6 @@ class Main {
 	 */
 	protected function define_admin_hooks() {
 		$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'admin_enqueue_scripts' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'admin_enqueue_scripts' );
 		$this->loader->add_filter( 'plugin_action_links_' . JM_TC_BASENAME, $plugin_admin, 'settings_action_link' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
