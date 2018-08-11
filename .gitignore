@@ -50,6 +50,11 @@ temp/
 
 .svn
 
+scripts/*/build
+node_modules
+.DS_Store
+svn
+
 ############
 ## Composer
 ############

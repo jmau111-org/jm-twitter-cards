@@ -1,6 +1,7 @@
 <?php
 namespace TokenToMe\TwitterCards;
 use TokenToMe\TwitterCards\Admin\Admin;
+use TokenToMe\TwitterCards\Admin\Gutenberg;
 use TokenToMe\TwitterCards\Admin\Metabox;
 
 if ( ! defined( 'JM_TC_SLUG_MAIN_OPTION' ) ) {
@@ -74,9 +75,9 @@ class Main {
 			require_once JM_TC_DIR . 'cli/cli.php';
 		}
 
+		require_once JM_TC_DIR . 'admin/Gutenberg.php';
+
 		require_once JM_TC_DIR . 'admin/Admin.php';
-		require_once JM_TC_DIR . 'admin/Preview.php';
-		require_once JM_TC_DIR . 'admin/Metabox.php';
 		require_once JM_TC_DIR . 'admin/Settings.php';
 		require_once JM_TC_DIR . 'admin/Options.php';
 
@@ -140,6 +141,11 @@ class Main {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_export' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_import' );
+
+		$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'script_enqueue' );
+		$this->loader->add_action( 'init', $gut, 'script_register' );
+		$this->loader->add_action( 'init', $gut, 'i18n_register' );
 	}
 
 	/**
