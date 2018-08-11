@@ -1,8 +1,12 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
+
 use TokenToMe\TwitterCards\Utils as Utilities;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 /**
  * The public-specific functionality of the plugin.
@@ -17,7 +21,7 @@ class Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	protected $plugin_name;
 
@@ -26,7 +30,7 @@ class Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	protected $version;
 
@@ -39,17 +43,18 @@ class Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string $plugin_name The name of this plugin.
+	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 		$this->settings_api = new Settings();
-		$this->sub_pages     = [
+		$this->sub_pages    = [
 			'jm_tc_import_export' => __( 'Import' ) . ' / ' . __( 'Export' ),
 			'jm_tc_about'         => __( 'About' ),
 		];
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->plugin_name  = $plugin_name;
+		$this->version      = $version;
 
 	}
 
@@ -78,7 +83,7 @@ class Admin {
 		/**
 		 * Char count utility
 		 **************************************************************************************************************/
-		wp_register_script( 'count-chars', JM_TC_URL . 'js/charcount.js', [
+		wp_register_script( 'count-chars', JM_TC_URL . 'js/charcount' . Utilities::suffix_for_dev_env() . '.js', [
 			'jquery',
 		], JM_TC_VERSION, true );
 		wp_localize_script(
@@ -97,31 +102,24 @@ class Admin {
 			wp_enqueue_media();
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_script( 'jquery' );
-			wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings.js', [
+			wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings' . Utilities::suffix_for_dev_env() . '.js', [
 				'jquery',
 			], JM_TC_VERSION, true );
 			wp_enqueue_script( 'count-chars' );
 		}
 
 		/**
-		 * Import Export page
-		 **************************************************************************************************************/
-		if ( 'jm-twitter-cards_page_jm_tc_import_export' === $hook_suffix ) {
-			wp_enqueue_style( 'import-export', JM_TC_URL . 'css/import-export.css', [], JM_TC_VERSION );
-		}
-
-		/**
 		 * About page
 		 **************************************************************************************************************/
 		if ( 'jm-twitter-cards_page_jm_tc_about' === $hook_suffix ) {
-			wp_enqueue_script( 'about', JM_TC_URL . 'js/about.js', [
+			wp_enqueue_script( 'about', JM_TC_URL . 'js/about' . Utilities::suffix_for_dev_env() . '.js', [
 				'jquery',
 			], JM_TC_VERSION, true );
 			wp_localize_script(
 				'about',
 				'tcGitHub',
 				[
-					'user'         => 'tweetpressfr',
+					'user'         => 'jmau111',
 					'repositories' => Utilities::get_github_repositories(),
 				]
 			);

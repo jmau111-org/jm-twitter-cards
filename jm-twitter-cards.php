@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
-define( 'JM_TC_VERSION', defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '10.0' );
+define( 'JM_TC_VERSION', '10.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
 	define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );

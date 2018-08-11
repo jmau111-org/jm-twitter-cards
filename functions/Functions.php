@@ -54,3 +54,12 @@ if ( ! function_exists( 'jm_tc_get_excerpt_by_id' ) ) {
 		return \TokenToMe\TwitterCards\Utils::get_excerpt_by_id( $post_id );
 	}
 }
+
+/**
+ * Utils::gutenberg_exists()
+ */
+if ( ! function_exists( 'jm_tc_gutenberg_exists' ) ) {
+	function jm_tc_gutenberg_exists() {
+		return \TokenToMe\TwitterCards\Utils::gutenberg_exists();
+	 }
+}

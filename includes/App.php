@@ -46,7 +46,7 @@ class Main {
 	 */
 	public function __construct() {
 		$this->plugin_name = 'JM Twitter Cards';
-		$this->version = '10.0.0';
+		$this->version = JM_TC_VERSION;
 
 		$this->load_dependencies();
 		$this->define_post_hooks();
@@ -75,7 +75,12 @@ class Main {
 			require_once JM_TC_DIR . 'cli/cli.php';
 		}
 
-		require_once JM_TC_DIR . 'admin/Gutenberg.php';
+		if ( Utils::gutenberg_exists() ) {
+			require_once JM_TC_DIR . 'admin/Gutenberg.php';
+		} else {
+			require_once JM_TC_DIR . 'admin/Fields.php';
+			require_once JM_TC_DIR . 'admin/Metabox.php';
+		}
 
 		require_once JM_TC_DIR . 'admin/Admin.php';
 		require_once JM_TC_DIR . 'admin/Settings.php';
@@ -97,6 +102,12 @@ class Main {
 	 * @access   protected
 	 */
 	protected function define_post_hooks() {
+		if ( ! Utils::gutenberg_exists() ) {
+			$plugin_posts = new Metabox( $this->get_plugin_name(), $this->get_version() );
+			$this->loader->add_action( 'add_meta_boxes', $plugin_posts, 'add_box' );
+			$this->loader->add_action( 'save_post', $plugin_posts, 'save_box', 10, 2 );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_posts, 'admin_enqueue_scripts' );
+		}
 	}
 
 	/**
@@ -142,10 +153,12 @@ class Main {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_export' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_import' );
 
-		$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'script_enqueue' );
-		$this->loader->add_action( 'init', $gut, 'script_register' );
-		$this->loader->add_action( 'init', $gut, 'i18n_register' );
+		if ( Utils::gutenberg_exists() ) {
+			$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
+			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'script_enqueue' );
+			$this->loader->add_action( 'init', $gut, 'script_register' );
+			$this->loader->add_action( 'init', $gut, 'i18n_register' );
+		}
 	}
 
 	/**

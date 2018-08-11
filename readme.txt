@@ -113,7 +113,10 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 ### 10.0
 * August 2018
-* prepare for Gutenberg
+* Prepare for Gutenberg
+* There won't be preview anymore for installation without Gutenberg
+but metabox will be still there
+* If you enable Gutenberg then you will have a custom block meta \O/
 * Reorganize deeply the plugin structure
 * fix preview props to [tomdxw](https://github.com/tomdxw)
 * fix default size props [tomdxw](https://github.com/tomdxw)

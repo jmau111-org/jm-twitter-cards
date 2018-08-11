@@ -92,6 +92,14 @@ class Utils {
 	}
 
 	/**
+	 * @return bool
+	 * @author Julien Maury
+	 */
+	public static function gutenberg_exists() {
+		return function_exists( 'the_gutenberg_project' );
+	}
+
+	/**
 	 * @return array
 	 * @author Julien Maury
 	 */
@@ -123,6 +131,22 @@ class Utils {
 			'twitterAppCountry'     => '',
 			'twitterCardOg'         => 'no',
 		];
+	}
+
+	/**
+	 * @return bool
+	 * @author Julien Maury
+	 */
+	public static function is_dev_env() {
+		return defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+	}
+
+	/**
+	 * @return bool
+	 * @author Julien Maury
+	 */
+	public static function suffix_for_dev_env() {
+		return self::is_dev_env() ? '.min' : '';
 	}
 
 }
