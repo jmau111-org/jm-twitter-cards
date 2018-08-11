@@ -9,7 +9,7 @@ if ( ! function_exists( 'add_action' ) ) {
 /**
  * Globalize options
  * provides filter for options
- * @return $jm_tc_options
+ * @return array
  */
 
 if ( ! function_exists( 'jm_tc_get_options' ) ) {
@@ -29,7 +29,7 @@ if ( ! function_exists( 'jm_tc_remove_at' ) ) {
 	 * @return bool|mixed
 	 */
 	function jm_tc_remove_at( $at ) {
-		return \TokenToMe\TwitterCards\Utilities::remove_at( $at );
+		return \TokenToMe\TwitterCards\Utils::remove_at( $at );
 	}
 }
 
@@ -40,7 +40,7 @@ if ( ! function_exists( 'jm_tc_remove_lb' ) ) {
 	 * @return string
 	 */
 	function jm_tc_remove_lb( $lb ) {
-		return \TokenToMe\TwitterCards\Utilities::remove_lb( $lb );
+		return \TokenToMe\TwitterCards\Utils::remove_lb( $lb );
 	}
 }
 
@@ -51,6 +51,6 @@ if ( ! function_exists( 'jm_tc_get_excerpt_by_id' ) ) {
 	 * @return string
 	 */
 	function jm_tc_get_excerpt_by_id( $post_id ) {
-		return \TokenToMe\TwitterCards\Utilities::get_excerpt_by_id( $post_id );
+		return \TokenToMe\TwitterCards\Utils::get_excerpt_by_id( $post_id );
 	}
 }

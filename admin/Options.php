@@ -3,7 +3,7 @@
 namespace TokenToMe\TwitterCards\Admin;
 
 use TokenToMe\TwitterCards\Thumbs;
-use TokenToMe\TwitterCards\Utilities;
+use TokenToMe\TwitterCards\Utils as Utilities;
 
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );

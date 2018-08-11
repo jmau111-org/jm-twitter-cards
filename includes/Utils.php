@@ -1,14 +1,9 @@
 <?php
-
 namespace TokenToMe\TwitterCards;
 
-if ( ! function_exists( 'add_action' ) ) {
-	header( 'Status: 403 Forbidden' );
-	header( 'HTTP/1.1 403 Forbidden' );
-	exit();
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Utilities {
+class Utils {
 
 	/**
 	 * @param $at
@@ -94,6 +89,40 @@ class Utilities {
 		$cpts = get_option( 'jm_tc_cpt' );
 
 		return empty( $cpts['twitterCardPt'] ) ? get_post_types( [ 'public' => true ] ) : array_values( $cpts['twitterCardPt'] );
+	}
+
+	/**
+	 * @return array
+	 * @author Julien Maury
+	 */
+	public static function get_default_options() {
+		return  [
+			'twitterCardType'       => 'summary',
+			'twitterCreator'        => '',
+			'twitterSite'           => '',
+			'twitterImage'          => 'https://g.twimg.com/Twitter_logo_blue.png',
+			'twitterImageAlt'       => '',
+			'twitterCardImgSize'    => 'web',
+			'twitterProfile'        => 'yes',
+			'twitterPostPageTitle'  => get_bloginfo( 'name' ), // filter used by plugin to customize title
+			'twitterPostPageDesc'   => __( 'Welcome to', 'jm-tc' ) . ' ' . get_bloginfo( 'name' ) . ' - ' . __( 'see blog posts', 'jm-tc' ),
+			'twitterCardTitle'      => '',
+			'twitterCardDesc'       => '',
+			'twitterCardExcerpt'    => 'no',
+			'twitterUsernameKey'    => 'jm_tc_twitter',
+			'twitteriPhoneName'     => '',
+			'twitteriPadName'       => '',
+			'twitterGooglePlayName' => '',
+			'twitteriPhoneUrl'      => '',
+			'twitteriPadUrl'        => '',
+			'twitterGooglePlayUrl'  => '',
+			'twitteriPhoneId'       => '',
+			'twitteriPadId'         => '',
+			'twitterGooglePlayId'   => '',
+			'twitterCardRobotsTxt'  => 'no',
+			'twitterAppCountry'     => '',
+			'twitterCardOg'         => 'no',
+		];
 	}
 
 }

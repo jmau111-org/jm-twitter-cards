@@ -10,9 +10,12 @@ if ( ! function_exists( 'add_action' ) ) {
 
 class Thumbs {
 
-	public function __construct() {
-		add_filter( 'admin_post_thumbnail_html', [ $this, 'add_featured_image_instruction' ] );
-		add_filter( 'after_setup_theme', [ $this, 'add_image_sizes' ] );
+	protected $plugin_name;
+	protected $version;
+
+	public function __construct( $plugin_name, $version ) {
+		$this->plugin_name = $plugin_name;
+		$this->version = $version;
 	}
 
 	/**
@@ -90,6 +93,11 @@ class Thumbs {
 		}
 
 		$opts = \jm_tc_get_options();
+
+		if ( empty( $opts['twitterCardImgSize'] ) ) {
+			return false;
+		}
+
 		switch ( $opts['twitterCardImgSize'] ) {
 			case 'small':
 				add_image_size(

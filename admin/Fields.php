@@ -13,7 +13,7 @@ class Fields {
 	/**
 	 * @param $array
 	 */
-	public function generateFields( $array ) {
+	public function generate_fields( $array ) {
 
 		foreach ( $array as $field => $options ) {
 			$method = array_shift( $options );
@@ -29,7 +29,7 @@ class Fields {
 	 * @author Julien Maury
 	 * @return string|bool
 	 */
-	public function wrapper( $aar = [] ) {
+	public function wrapper( $aar = array() ) {
 
 		if ( empty( $aar['tag'] ) ) {
 			return false;

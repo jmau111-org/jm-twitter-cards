@@ -18,13 +18,13 @@ class Preview {
 	protected $opts = [];
 	protected $options = [];
 
-	public function __construct( Options $options ) {
+	public function __construct( $post_ID ) {
 
-		$this->options = $options;
+		$this->options = new Options( $post_ID );
 		$this->opts    = \jm_tc_get_options();
 	}
 
-	public function __toString() {
+	public function display() {
 		$preview = '';
 		$type    = $this->options->card_type();
 		$title   = $this->options->title();
@@ -45,10 +45,10 @@ class Preview {
 
 
 		ob_start();
-		require_once JM_TC_DIR . 'views/preview.php';
+		require_once JM_TC_DIR . 'admin/views/preview.php';
 		ob_end_clean();
 
-		return $preview;
+		echo $preview;
 	}
 
 }

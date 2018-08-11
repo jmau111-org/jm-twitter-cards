@@ -2,8 +2,6 @@
 
 namespace TokenToMe\TwitterCards;
 
-use TokenToMe\TwitterCards\Admin\Init;
-
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -11,31 +9,13 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 class Particular {
-	/**
-	 * Options
-	 * @var array $opts
-	 */
-	protected $opts = [];
 
-	/**
-	 * Constructor
-	 * @since 5.3.2
-	 */
-	public function __construct() {
+	protected $plugin_name;
+	protected $version;
 
-		add_filter( 'robots_txt', [ $this, 'robots_mod' ] );
-
-		$this->opts = \jm_tc_get_options();
-
-		if ( isset( $this->opts['twitterCardExcerpt'] ) && 'yes' === $this->opts['twitterCardExcerpt'] ) {
-			add_filter( 'jm_tc_get_excerpt', [ $this, 'modify_excerpt' ] );
-		}
-
-		add_action( 'wpmu_new_blog', [ $this, 'new_blog' ] );
-
-		add_filter( 'jm_tc_card_site', [ $this, 'remove_tweetpressfr' ] );
-		add_filter( 'jm_tc_card_creator', [ $this, 'remove_tweetpressfr' ] );
-
+	public function __construct( $plugin_name, $version ) {
+		$this->plugin_name = $plugin_name;
+		$this->version = $version;
 	}
 
 	/**

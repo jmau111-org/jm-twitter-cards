@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: JM Twitter Cards
-Plugin URI: http://dev73.tweetpress.fr
+Plugin URI: https://julien-maury.com/blog
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
-Author URI: http://tweetpress.fr
+Author URI: https://julien-maury.com/blog
 Version: 10.0
 License: GPL2++
 
@@ -24,57 +24,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-// Add some security, no direct load !
 defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
-// Constantly constant
 define( 'JM_TC_VERSION', defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '10.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
-define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) );
-define( 'JM_TC_LANG_DIR', plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
+	define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
+define( 'JM_TC_LANG_DIR', JM_TC_BASENAME . '/languages' );
 
-if ( ! defined( 'JM_TC_SLUG_MAIN_OPTION' ) ) {
-	define( 'JM_TC_SLUG_MAIN_OPTION', 'jm_tc' );
+$autoload = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
+if ( file_exists( $autoload ) ) {
+	require $autoload;
 }
 
-if ( ! defined( 'JM_TC_SLUG_CPT_OPTION' ) ) {
-	define( 'JM_TC_SLUG_CPT_OPTION', 'jm_tc_cpt' );
-}
+require plugin_dir_path( __FILE__ ) . 'includes/App.php';
 
 /**
- * Autoload this !
+ * @since 10.0.0
  */
-if ( ! file_exists( JM_TC_DIR . 'vendor/autoload.php' ) ) {
-	return false;
+function jm_tc_run() {
+	$plugin = new TokenToMe\TwitterCards\Main();
+	$plugin->run();
 }
+jm_tc_run();
 
-require_once JM_TC_DIR . 'vendor/autoload.php';
 
-/**
- * CLI commands
- */
-if ( defined( 'WP_CLI' ) && WP_CLI ) {
-	require_once JM_TC_DIR . 'cli/cli.php';
-}
 
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'jm_tc_settings_action_link' );
-
-/**
- * Re-add Settings link to admin page
- * some users needed it and it does not evil ^^
- *
- * @param $links
- *
- * @return mixed
- */
-function jm_tc_settings_action_link( $links ) {
-	$links['settings'] = '<a href="' . add_query_arg( [ 'page' => JM_TC_SLUG_MAIN_OPTION ], admin_url( 'admin.php' ) ) . '">' . __( 'Settings' ) . '</a>';
-
-	return $links;
-}
-
-register_activation_hook( __FILE__, [ 'TokenToMe\TwitterCards\Admin\Init', 'activate' ] );
-
-add_action( 'plugins_loaded', [ new TokenToMe\TwitterCards\Loading, 'plugin_setup' ] );

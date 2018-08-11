@@ -21,6 +21,13 @@ composer install
 
 ## Changelog ##
 
+### 10.0
+* August 2018
+* prepare for Gutenberg
+* Reorganize deeply the plugin structure
+* fix preview props to [tomdxw](https://github.com/tomdxw)
+* fix default size props [tomdxw](https://github.com/tomdxw)
+
 ### 9.4
 * June 2018
 * remove bad bad method get_keys()
