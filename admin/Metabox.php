@@ -40,7 +40,7 @@ class Metabox {
 	/**
 	 * register box
 	 *
-	 *
+	 * @see https://github.com/WordPress/gutenberg/blob/master/docs/extensibility/meta-box.md
 	 * @author Julien Maury
 	 * @return mixed|void
 	 */

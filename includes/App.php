@@ -1,5 +1,7 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
+
 use TokenToMe\TwitterCards\Admin\Admin;
 use TokenToMe\TwitterCards\Admin\Gutenberg;
 use TokenToMe\TwitterCards\Admin\Metabox;
@@ -12,7 +14,9 @@ if ( ! defined( 'JM_TC_SLUG_CPT_OPTION' ) ) {
 	define( 'JM_TC_SLUG_CPT_OPTION', 'jm_tc_cpt' );
 }
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 class Main {
 
@@ -23,7 +27,7 @@ class Main {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 	/**
@@ -31,7 +35,7 @@ class Main {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -46,7 +50,7 @@ class Main {
 	 */
 	public function __construct() {
 		$this->plugin_name = 'JM Twitter Cards';
-		$this->version = JM_TC_VERSION;
+		$this->version     = JM_TC_VERSION;
 
 		$this->load_dependencies();
 		$this->define_post_hooks();
@@ -85,6 +89,7 @@ class Main {
 		require_once JM_TC_DIR . 'admin/Admin.php';
 		require_once JM_TC_DIR . 'admin/Settings.php';
 		require_once JM_TC_DIR . 'admin/Options.php';
+		require_once JM_TC_DIR . 'admin/Rest.php';
 
 		require_once JM_TC_DIR . 'public/Front.php';
 		require_once JM_TC_DIR . 'public/Thumbs.php';
@@ -107,6 +112,11 @@ class Main {
 			$this->loader->add_action( 'add_meta_boxes', $plugin_posts, 'add_box' );
 			$this->loader->add_action( 'save_post', $plugin_posts, 'save_box', 10, 2 );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_posts, 'admin_enqueue_scripts' );
+
+			$plugin_posts = new Rest( $this->get_plugin_name(), $this->get_version() );
+			$this->loader->add_action( 'init', $plugin_posts, 'gutenberg_register_meta' );
+			$this->loader->add_action( 'rest_api_init', $plugin_posts, 'gutenberg_api_post_meta' );
+			$this->loader->add_action( 'rest_authentication_errors', $plugin_posts, 'rest_authentication_errors' );
 		}
 	}
 
@@ -122,8 +132,8 @@ class Main {
 		$this->loader->add_action( 'wp_head', $plugin_front, 'add_markup', 0 );
 
 		$plugin_front = new Thumbs( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_filter( 'admin_post_thumbnail_html',  $plugin_front, 'add_featured_image_instruction' );
-		$this->loader->add_filter( 'after_setup_theme',  $plugin_front, 'add_image_sizes' );
+		$this->loader->add_filter( 'admin_post_thumbnail_html', $plugin_front, 'add_featured_image_instruction' );
+		$this->loader->add_filter( 'after_setup_theme', $plugin_front, 'add_image_sizes' );
 
 		$plugin_front = new Particular( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_filter( 'robots_txt', $plugin_front, 'robots_mod' );
@@ -133,8 +143,8 @@ class Main {
 		}
 
 		$this->loader->add_action( 'wpmu_new_blog', $plugin_front, 'new_blog' );
-		$this->loader->add_filter( 'jm_tc_card_site', $plugin_front, 'remove_tweetpressfr' );
-		$this->loader->add_filter( 'jm_tc_card_creator', $plugin_front, 'remove_tweetpressfr' );
+		$this->loader->add_filter( 'jm_tc_card_site', $plugin_front, 'remove_myself' );
+		$this->loader->add_filter( 'jm_tc_card_creator', $plugin_front, 'remove_myself' );
 	}
 
 	/**

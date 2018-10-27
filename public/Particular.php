@@ -34,11 +34,7 @@ class Particular {
 		return $output;
 	}
 
-	/**
-	 * @since 6.1
-	 * Use my own filters to fix my mess !
-	 */
-	public function remove_tweetpressfr( $meta ) {
+	public function remove_myself( $meta ) {
 
 		if ( 'tweetpressfr' === strtolower( $meta ) || '@tweetpressfr' === strtolower( $meta ) ) {
 			return false;

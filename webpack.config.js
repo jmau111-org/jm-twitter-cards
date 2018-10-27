@@ -52,6 +52,7 @@ const wpDependencies = [
   "plugins",
   "apiRequest",
   "hooks",
+  "compose",
   "editor"
 ];
 wpDependencies.forEach(wpDependency => {

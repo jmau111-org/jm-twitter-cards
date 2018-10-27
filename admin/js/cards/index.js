@@ -1,16 +1,16 @@
-import './style.scss';
-
-import { registerBlockType } from "@wordpress/blocks";
-import {
-  RichText,
-  PlainText,
-  InspectorControls
-} from "@wordpress/editor";
+import "./style.scss";
 
 import { Fragment } from "@wordpress/element";
+import { registerPlugin } from "@wordpress/plugins";
 
-import { SelectControl } from "@wordpress/components";
+import SidebarTC from "./components/sidebar";
 
-import { __ } from "@wordpress/i18n";
+const TC = () => (
+    <Fragment>
+        <SidebarTC />
+    </Fragment>
+);
 
-//TODO
+registerPlugin("tc", {
+    render: TC
+});

@@ -30,7 +30,7 @@ or die( 'No direct load !' );
 define( 'JM_TC_VERSION', '10.0.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
-	define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
+define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
 define( 'JM_TC_LANG_DIR', JM_TC_BASENAME . '/languages' );
 
 $autoload = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';

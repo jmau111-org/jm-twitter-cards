@@ -3,34 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: admin/js/cards/index.js:17
-msgid "Alerts"
-msgstr ""
-
-#: admin/js/cards/index.js:46
-msgid "Write an alert"
-msgstr ""
-
-#: admin/js/cards/index.js:51
-msgid "Alert type"
-msgstr ""
-
-#: admin/js/cards/index.js:54
-msgid "Default"
-msgstr ""
-
-#: admin/js/cards/index.js:55
-msgid "Danger"
-msgstr ""
-
-#: admin/js/cards/index.js:56
-msgid "Warning"
-msgstr ""
-
-#: admin/js/cards/index.js:57
-msgid "Info"
-msgstr ""
-
-#: admin/js/cards/index.js:58
-msgid "Success"
+#: admin/js/cards/components/sidebar/index.js:9
+msgid "Twitter Cards"
 msgstr ""

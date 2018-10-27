@@ -127,7 +127,7 @@ class Front {
 				if ( '' !== $value ) {
 
 					if ( '@' === $value ) {
-						$markup = sprintf( '<!-- [(-_-)@ %s @(-_-)] -->', __( 'Error on this meta', 'jm-tc' ) ) . PHP_EOL;
+						$markup = sprintf( '<!-- [(-_-)@ %s @(-_-)] -->', __( 'Missing critical option !', 'jm-tc' ) ) . PHP_EOL;
 						continue;
 					}
 

@@ -146,7 +146,7 @@ class Utils {
 	 * @author Julien Maury
 	 */
 	public static function suffix_for_dev_env() {
-		return self::is_dev_env() ? '.min' : '';
+		return self::is_dev_env() ? '' : '.min';
 	}
 
 	/**

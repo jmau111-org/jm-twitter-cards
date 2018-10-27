@@ -100,6 +100,7 @@ class Admin {
 		if ( 'toplevel_page_jm_tc' === $hook_suffix ) {
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_media();
+			wp_enqueue_style( 'settings', JM_TC_URL . 'css/settings' . Utilities::suffix_for_dev_env() . '.css' );
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'settings', JM_TC_URL . 'js/settings' . Utilities::suffix_for_dev_env() . '.js', [
@@ -218,6 +219,7 @@ class Admin {
 	public function plugin_page() {
 		echo '<div class="wrap tc">';
 		echo '<h1>' . __( 'JM Twitter Cards', 'jm-tc' ) . '</h1>';
+		echo '<div class="brandnew"><p>' . __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use the sidebar feature. It is on the top right of your post edit screen. Just click on the Twitter icon.', 'jm-tc' ) . '</p></div>';
 		$this->settings_api->show_forms();
 		echo '</div>';
 	}
