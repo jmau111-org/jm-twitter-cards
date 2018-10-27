@@ -149,4 +149,18 @@ class Utils {
 		return self::is_dev_env() ? '.min' : '';
 	}
 
+	/**
+	 * @param $array
+	 * @param $key
+	 *
+	 * @return string
+	 */
+	public static function maybe_get_opt( $array, $key ) {
+
+		if ( empty( $array ) ) {
+			return '';
+		}
+
+		return array_key_exists( $key, $array ) ? $array[ $key ] : '';
+	}
 }

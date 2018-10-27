@@ -69,13 +69,13 @@ class Front {
 		/* most important meta */
 
 		if ( is_front_page() || is_home() ) {
-			echo $this->build( [ 'card'        => $this->opts['twitterCardType'] ] );
-			echo $this->build( [ 'creator'     => $this->opts['twitterCreator'] ] );
-			echo $this->build( [ 'site'        => $this->opts['twitterSite'] ] );
-			echo $this->build( [ 'title'       => $this->opts['twitterPostPageTitle'] ] );
-			echo $this->build( [ 'description' => $this->opts['twitterPostPageDesc'] ] );
-			echo $this->build( [ 'image'       => $this->opts['twitterImage'] ] );
-			echo $this->build( [ 'image:alt'   => $this->opts['twitterImageAlt'] ] );
+			echo $this->build( [ 'card'        => Utils::maybe_get_opt( $this->opts, 'twitterCardType' ) ] );
+			echo $this->build( [ 'creator'     => Utils::maybe_get_opt( $this->opts, 'twitterCreator' ) ] );
+			echo $this->build( [ 'site'        => Utils::maybe_get_opt( $this->opts, 'twitterSite' ) ] );
+			echo $this->build( [ 'title'       => Utils::maybe_get_opt( $this->opts, 'twitterPostPageTitle' ) ] );
+			echo $this->build( [ 'description' => Utils::maybe_get_opt( $this->opts, 'twitterPostPageDesc' ) ] );
+			echo $this->build( [ 'image'       => Utils::maybe_get_opt( $this->opts, 'twitterImage' ) ] );
+			echo $this->build( [ 'image:alt'   => Utils::maybe_get_opt( $this->opts, 'twitterImageAlt' ) ] );
 		} else {
 			echo $this->build( $this->options->card_type() );
 			echo $this->build( $this->options->creator_username( true ) );
@@ -127,7 +127,7 @@ class Front {
 				if ( '' !== $value ) {
 
 					if ( '@' === $value ) {
-						$markup = '<!-- [(-_-)@@(-_-)] -->' . PHP_EOL;
+						$markup = sprintf( '<!-- [(-_-)@ %s @(-_-)] -->', __( 'Error on this meta', 'jm-tc' ) ) . PHP_EOL;
 						continue;
 					}
 
