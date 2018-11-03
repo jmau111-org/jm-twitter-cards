@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-class Rest {
+class Meta {
 
 	/**
 	 * The ID of this plugin.
@@ -32,27 +32,10 @@ class Rest {
 		$this->version     = $version;
 	}
 
-	/**
-	 * @param $auth
-	 *
-	 * @return bool|int
-	 */
-	public function rest_authentication_errors( $auth ) {
-		if ( ! empty( $auth ) ) {
-			return $auth;
-		}
-
-		if ( ! isset( $_SERVER['HTTP_TC_NONCE'] ) ) {
-			return $auth;
-		}
-
-		$nonce = sanitize_text_field( $_SERVER['HTTP_TC_NONCE'] );
-		return wp_verify_nonce( $nonce, 'tc_rest' );
-	}
-
 	public function gutenberg_register_meta() {
 
 		foreach ( Utils::get_post_types() as $cpt ) {
+
 			register_meta(
 				$cpt, 'twitterCardType', [
 					'type'         => 'string',
@@ -60,6 +43,13 @@ class Rest {
 					'show_in_rest' => true,
 				]
 			);
+            register_meta(
+                $cpt, 'cardImageID', [
+                    'type'         => 'integer',
+                    'single'       => true,
+                    'show_in_rest' => true,
+                ]
+            );
 
 			register_meta(
 				$cpt, 'cardImage', [
@@ -87,7 +77,7 @@ class Rest {
 
 			register_meta(
 				$cpt, 'cardPlayerWidth', [
-					'type'         => 'int',
+					'type'         => 'integer',
 					'single'       => true,
 					'show_in_rest' => true,
 				]
@@ -95,7 +85,7 @@ class Rest {
 
 			register_meta(
 				$cpt, 'cardPlayerHeight', [
-					'type'         => 'int',
+					'type'         => 'integer',
 					'single'       => true,
 					'show_in_rest' => true,
 				]
@@ -117,20 +107,6 @@ class Rest {
 				]
 			);
 		}
-	}
-
-	public function process_meta( \WP_REST_Request $request ) {
-
-	}
-
-	public function gutenberg_api_post_meta() {
-		register_rest_route(
-			'jm-tc/v1', '/update-meta', [
-				'methods'  => 'POST',
-				'callback' => [ $this, 'gutenberg_update_callback' ],
-				'args'     => [ $this, 'process_meta' ],
-			]
-		);
 	}
 
 }

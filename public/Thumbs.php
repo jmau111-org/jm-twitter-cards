@@ -8,6 +8,8 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
+use TokenToMe\TwitterCards\Utils as Utilities;
+
 class Thumbs {
 
 	protected $plugin_name;
@@ -24,7 +26,7 @@ class Thumbs {
 	static function thumbnail_sizes() {
 
 		$opts = \jm_tc_get_options();
-		$size = $opts['twitterCardImgSize'];
+		$size = Utilities::maybe_get_opt( $opts, 'twitterCardImgSize' );
 
 		switch ( $size ) {
 			case 'small':

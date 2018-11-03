@@ -94,6 +94,11 @@ class Gutenberg {
 	 * @author Julien Maury
 	 */
 	public function script_enqueue() {
+
+	    if ( ! in_array( get_post_type(), Utils::get_post_types(), true ) ) {
+	        return false;
+        }
+
 		wp_enqueue_script( 'jm-tc-gut-metabox' );
 		wp_enqueue_style( 'jm-tc-gut-metabox' );
 	}

@@ -32,7 +32,7 @@ class Options {
 	public function card_type() {
 
 		$cardTypePost = get_post_meta( $this->post_ID, 'twitterCardType', true );
-		$cardType     = ( ! empty( $cardTypePost ) ) ? $cardTypePost : ( ! empty( $this->opts['twitterCardType'] ) ? $this->opts['twitterCardType'] : '' );
+		$cardType     = ( ! empty( $cardTypePost ) ) ? $cardTypePost : Utilities::maybe_get_opt( $this->opts, 'twitterCardType' );
 
 		return [ 'card' => apply_filters( 'jm_tc_card_type', $cardType, $this->post_ID, $this->opts ) ];
 	}
@@ -72,7 +72,7 @@ class Options {
 	 */
 	public function site_username() {
 
-		$cardSite = '@' . Utilities::remove_at( ! empty( $this->opts['twitterSite'] ) ? $this->opts['twitterSite'] : '' );
+		$cardSite = '@' . Utilities::remove_at( Utilities::maybe_get_opt( $this->opts, 'twitterSite' ) );
 
 		return [ 'site' => apply_filters( 'jm_tc_card_site', $cardSite, $this->post_ID, $this->opts ) ];
 	}
@@ -162,9 +162,14 @@ class Options {
 	public function image() {
 
 		$cardImage = get_post_meta( $this->post_ID, 'cardImage', true );
+        $cardImageID = get_post_meta( $this->post_ID, 'cardImageID', true );
 
-		//fallback
-		$image = ! empty( $this->opts['twitterImage'] ) ? $this->opts['twitterImage'] : '';
+        if ( ! empty( $cardImageID ) ) {
+            $cardImage = wp_get_attachment_image_url( $cardImageID, Utilities::maybe_get_opt( $this->opts, 'twitterImage' ) );
+        }
+
+		// fallback
+		$image = Utilities::maybe_get_opt( $this->opts, 'twitterImage' );
 
 		if ( $this->post_ID && empty( $cardImage ) && has_post_thumbnail( $this->post_ID ) ) {
 			$size             = Thumbs::thumbnail_sizes();
@@ -175,7 +180,7 @@ class Options {
 		} elseif ( 'attachment' === get_post_type() ) {
 			$image = wp_get_attachment_url( $this->post_ID );
 		} elseif ( empty( $this->post_ID ) ) {
-			$image = ! empty( $this->opts['twitterImage'] ) ? $this->opts['twitterImage'] : '';
+			$image = Utilities::maybe_get_opt( $this->opts, 'twitterImage' );
 		}
 
 		return [ 'image' => apply_filters( 'jm_tc_image_source', $image, $this->post_ID, $this->opts ) ];
@@ -196,9 +201,7 @@ class Options {
 		}
 
 		if ( is_home() || is_front_page() ) {
-			$cardImageAlt = ! empty( $this->opts['twitterImageAlt'] )
-				? $this->opts['twitterImageAlt']
-				: '';
+			$cardImageAlt = Utilities::maybe_get_opt( $this->opts, 'twitterImageAlt' );
 		}
 
 		$cardImageAlt = Utilities::remove_lb( $cardImageAlt );
@@ -275,39 +278,17 @@ class Options {
 	 */
 	public function deep_linking() {
 
-		$twitteriPhoneName     = ( ! empty( $this->opts['twitteriPhoneName'] ) ) ? $this->opts['twitteriPhoneName'] : '';
-		$twitteriPadName       = ( ! empty( $this->opts['twitteriPadName'] ) ) ? $this->opts['twitteriPadName'] : '';
-		$twitterGooglePlayName = ( ! empty( $this->opts['twitterGooglePlayName'] ) ) ? $this->opts['twitterGooglePlayName'] : '';
-		$twitteriPhoneUrl      = ( ! empty( $this->opts['twitteriPhoneUrl'] ) ) ? $this->opts['twitteriPhoneUrl'] : '';
-		$twitteriPadUrl        = ( ! empty( $this->opts['twitteriPadUrl'] ) ) ? $this->opts['twitteriPadUrl'] : '';
-		$twitterGooglePlayUrl  = ( ! empty( $this->opts['twitterGooglePlayUrl'] ) ) ? $this->opts['twitterGooglePlayUrl'] : '';
-		$twitteriPhoneId       = ( ! empty( $this->opts['twitteriPhoneId'] ) ) ? $this->opts['twitteriPhoneId'] : '';
-		$twitteriPadId         = ( ! empty( $this->opts['twitteriPadId'] ) ) ? $this->opts['twitteriPadId'] : '';
-		$twitterGooglePlayId   = ( ! empty( $this->opts['twitterGooglePlayId'] ) ) ? $this->opts['twitterGooglePlayId'] : '';
-		$twitterAppCountry     = ( ! empty( $this->opts['twitterAppCountry'] ) ) ? $this->opts['twitterAppCountry'] : '';
-
-		$twitteriPhoneName     = apply_filters( 'jm_tc_iphone_name', $twitteriPhoneName, $this->post_ID, $this->opts );
-		$twitteriPadName       = apply_filters( 'jm_tc_ipad_name', $twitteriPadName, $this->post_ID, $this->opts );
-		$twitterGooglePlayName = apply_filters( 'jm_tc_googleplay_name', $twitterGooglePlayName, $this->post_ID, $this->opts );
-		$twitteriPhoneUrl      = apply_filters( 'jm_tc_iphone_url', $twitteriPhoneUrl, $this->post_ID, $this->opts );
-		$twitteriPadUrl        = apply_filters( 'jm_tc_ipad_url', $twitteriPadUrl, $this->post_ID, $this->opts );
-		$twitterGooglePlayUrl  = apply_filters( 'jm_tc_googleplay_url', $twitterGooglePlayUrl, $this->post_ID, $this->opts );
-		$twitteriPhoneId       = apply_filters( 'jm_tc_iphone_id', $twitteriPhoneId, $this->post_ID, $this->opts );
-		$twitteriPadId         = apply_filters( 'jm_tc_ipad_id', $twitteriPadId, $this->post_ID, $this->opts );
-		$twitterGooglePlayId   = apply_filters( 'jm_tc_googleplay_id', $twitterGooglePlayId, $this->post_ID, $this->opts );
-		$twitterAppCountry     = apply_filters( 'jm_tc_country', $twitterAppCountry, $this->post_ID, $this->opts );
-
 		$app = [
-			'app:name:iphone'     => $twitteriPhoneName,
-			'app:name:ipad'       => $twitteriPadName,
-			'app:name:googleplay' => $twitterGooglePlayName,
-			'app:url:iphone'      => $twitteriPhoneUrl,
-			'app:url:ipad'        => $twitteriPadUrl,
-			'app:url:googleplay'  => $twitterGooglePlayUrl,
-			'app:id:iphone'       => $twitteriPhoneId,
-			'app:id:ipad'         => $twitteriPadId,
-			'app:id:googleplay'   => $twitterGooglePlayId,
-			'app:id:country'      => $twitterAppCountry,
+			'app:name:iphone'     => apply_filters( 'jm_tc_iphone_name', Utilities::maybe_get_opt( $this->opts, 'twitteriPhoneName' ), $this->post_ID, $this->opts ),
+			'app:name:ipad'       => apply_filters( 'jm_tc_ipad_name', Utilities::maybe_get_opt( $this->opts, 'twitteriPadName' ), $this->post_ID, $this->opts ),
+			'app:name:googleplay' => apply_filters( 'jm_tc_googleplay_name', Utilities::maybe_get_opt( $this->opts, 'twitterGooglePlayName' ), $this->post_ID, $this->opts ),
+			'app:url:iphone'      => apply_filters( 'jm_tc_iphone_url', Utilities::maybe_get_opt( $this->opts, 'twitteriPhoneUrl' ), $this->post_ID, $this->opts ),
+			'app:url:ipad'        => apply_filters( 'jm_tc_ipad_url', Utilities::maybe_get_opt( $this->opts, 'twitteriPadUrl' ), $this->post_ID, $this->opts ),
+			'app:url:googleplay'  => apply_filters( 'jm_tc_googleplay_url', Utilities::maybe_get_opt( $this->opts, 'twitterGooglePlayUrl' ), $this->post_ID, $this->opts ),
+			'app:id:iphone'       => apply_filters( 'jm_tc_iphone_id', Utilities::maybe_get_opt( $this->opts, 'twitteriPhoneId' ), $this->post_ID, $this->opts ),
+			'app:id:ipad'         => apply_filters( 'jm_tc_ipad_id', Utilities::maybe_get_opt( $this->opts, 'twitteriPadId' ), $this->post_ID, $this->opts ),
+			'app:id:googleplay'   => apply_filters( 'jm_tc_googleplay_id', Utilities::maybe_get_opt( $this->opts, 'twitterGooglePlayId' ), $this->post_ID, $this->opts ),
+			'app:id:country'      => apply_filters( 'jm_tc_country', Utilities::maybe_get_opt( $this->opts, 'twitterAppCountry' ), $this->post_ID, $this->opts ),
 		];
 
 		return $return = array_map( 'esc_attr', $app );

@@ -219,7 +219,7 @@ class Admin {
 	public function plugin_page() {
 		echo '<div class="wrap tc">';
 		echo '<h1>' . __( 'JM Twitter Cards', 'jm-tc' ) . '</h1>';
-		echo '<div class="brandnew"><p>' . __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use the sidebar feature. It is on the top right of your post edit screen. Just click on the Twitter icon.', 'jm-tc' ) . '</p></div>';
+		echo '<div class="brandnew"><p>' . __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use this custom block. Just click on the Twitter icon. All data are saved as meta (like before).', 'jm-tc' ) . '</p></div>';
 		$this->settings_api->show_forms();
 		echo '</div>';
 	}

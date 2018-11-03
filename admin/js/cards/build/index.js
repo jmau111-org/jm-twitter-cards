@@ -1,1 +1,359 @@
-this["jm-tc"]=this["jm-tc"]||{},this["jm-tc"].cards=function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=1)}([function(t,e){!function(){t.exports=this.wp.element}()},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(2),i=(n.n(r),n(0)),c=(n.n(i),n(3)),u=(n.n(c),n(4)),o=function(){return wp.element.createElement(i.Fragment,null,wp.element.createElement(u.a,null))};Object(c.registerPlugin)("tc",{render:o})},function(t,e){},function(t,e){!function(){t.exports=this.wp.plugins}()},function(t,e,n){"use strict";var r=n(5),i=(n.n(r),n(0)),c=(n.n(i),n(6)),u=(n.n(c),function(){return wp.element.createElement(r.PluginSidebar,{icon:"twitter",name:"tc-sidebar",title:Object(c.__)("Twitter Cards","jm-tc")},"/*TODO*/")});e.a=u},function(t,e){!function(){t.exports=this.wp.editPost}()},function(t,e){!function(){t.exports=this.wp.i18n}()}]);
+this["jm-tc"] = this["jm-tc"] || {}; this["jm-tc"]["cards"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_scss__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_blocks__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_blocks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__wordpress_blocks__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_editor__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__wordpress_editor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wordpress_components__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordpress_element__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__wordpress_element__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__wordpress_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__);
+
+
+
+
+
+
+
+
+
+
+
+
+Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_blocks__["registerBlockType"])('jm-tc/cards', {
+    title: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Twitter Cards', 'jm-tc'),
+    icon: 'twitter',
+    category: 'common',
+
+    attributes: {
+        twitterCardType: {
+            type: 'string',
+            source: 'meta',
+            meta: 'twitterCardType'
+        },
+        cardImageID: {
+            type: 'integer',
+            source: 'meta',
+            meta: 'cardImageID'
+        },
+        cardImage: {
+            type: 'string',
+            source: 'meta',
+            meta: 'cardImage'
+        },
+        cardImageAlt: {
+            type: 'string',
+            source: 'meta',
+            meta: 'cardImageAlt'
+        },
+        cardPlayer: {
+            type: 'string',
+            source: 'meta',
+            meta: 'cardPlayer'
+        },
+        cardPlayerWidth: {
+            type: 'integer',
+            source: 'meta',
+            meta: 'cardPlayerWidth'
+        },
+        cardPlayerHeight: {
+            type: 'integer',
+            source: 'meta',
+            meta: 'cardPlayerHeight'
+        },
+        cardPlayerStream: {
+            type: 'string',
+            source: 'meta',
+            meta: 'cardPlayerStream'
+        },
+        cardPlayerCodec: {
+            type: 'string',
+            source: 'meta',
+            meta: 'cardPlayerCodec'
+        }
+    },
+
+    edit: function edit(_ref) {
+        var attributes = _ref.attributes,
+            setAttributes = _ref.setAttributes,
+            className = _ref.className;
+        var twitterCardType = attributes.twitterCardType,
+            cardImageID = attributes.cardImageID,
+            cardImage = attributes.cardImage,
+            cardImageAlt = attributes.cardImageAlt,
+            cardPlayer = attributes.cardPlayer,
+            cardPlayerWidth = attributes.cardPlayerWidth,
+            cardPlayerHeight = attributes.cardPlayerHeight,
+            cardPlayerStream = attributes.cardPlayerStream,
+            cardPlayerCodec = attributes.cardPlayerCodec;
+
+
+        console.log(attributes);
+
+        var updateCardType = function updateCardType(twitterCardType) {
+            return setAttributes({ twitterCardType: twitterCardType });
+        };
+        var updateCardImageAlt = function updateCardImageAlt(cardImageAlt) {
+            return setAttributes({ cardImageAlt: cardImageAlt });
+        };
+        var updateCardPlayer = function updateCardPlayer(cardPlayer) {
+            return setAttributes({ cardPlayer: cardPlayer });
+        };
+        var updateCardPlayerWidth = function updateCardPlayerWidth(cardPlayerWidth) {
+            return setAttributes({ cardPlayerWidth: cardPlayerWidth });
+        };
+        var updateCardPlayerHeight = function updateCardPlayerHeight(cardPlayerHeight) {
+            return setAttributes({ cardPlayerHeight: cardPlayerHeight });
+        };
+        var updateCardPlayerStream = function updateCardPlayerStream(cardPlayerStream) {
+            return setAttributes({ cardPlayerStream: cardPlayerStream });
+        };
+        var updateCardPlayerCodec = function updateCardPlayerCodec(cardPlayerCodec) {
+            return setAttributes({ cardPlayerCodec: cardPlayerCodec });
+        };
+
+        return wp.element.createElement(
+            __WEBPACK_IMPORTED_MODULE_4__wordpress_element__["Fragment"],
+            null,
+            wp.element.createElement(
+                "div",
+                { className: "tc-preview" },
+                "TODO: preview, use template to lock the thing"
+            ),
+            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["SelectControl"], {
+                label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Card Type", "jm-tc"),
+                value: twitterCardType,
+                options: [{ label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Summary', 'jm-tc'), value: 'summary' }, { label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Summary Large Image', 'jm-tc'), value: 'summary_large_image' }, { label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Player', 'jm-tc'), value: 'player' }, { label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Application', 'jm-tc'), value: 'app' }],
+                onChange: updateCardType
+            }),
+            !cardImage && wp.element.createElement(
+                __WEBPACK_IMPORTED_MODULE_3__wordpress_components__["Placeholder"],
+                {
+                    instructions: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc"),
+                    icon: "format-image",
+                    label: "Image"
+                },
+                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__wordpress_editor__["MediaUpload"], {
+                    onSelect: function onSelect(media) {
+                        return setAttributes({ cardImage: media.url, cardImageID: media.id });
+                    },
+                    type: "image",
+                    render: function render(_ref2) {
+                        var open = _ref2.open;
+                        return wp.element.createElement(
+                            __WEBPACK_IMPORTED_MODULE_3__wordpress_components__["Button"],
+                            { isLarge: true, onClick: open },
+                            Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Insert from Media Library", "jm-tc")
+                        );
+                    }
+                })
+            ),
+            wp.element.createElement(
+                __WEBPACK_IMPORTED_MODULE_2__wordpress_editor__["InspectorControls"],
+                null,
+                wp.element.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3__wordpress_components__["PanelBody"],
+                    { title: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Image Settings", "gutextra") },
+                    cardImage && wp.element.createElement(
+                        __WEBPACK_IMPORTED_MODULE_3__wordpress_components__["Placeholder"],
+                        {
+                            instructions: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Change twitter Image source", "jm-tc"),
+                            icon: "format-image",
+                            label: "Image"
+                        },
+                        wp.element.createElement(
+                            "div",
+                            { className: "thumbnail" },
+                            wp.element.createElement(
+                                "div",
+                                { className: "centered" },
+                                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__wordpress_editor__["MediaUpload"], {
+                                    onSelect: function onSelect(media) {
+                                        return setAttributes({
+                                            cardImage: media.url,
+                                            cardImageID: media.id
+                                        });
+                                    },
+                                    type: "image",
+                                    value: cardImageID,
+                                    render: function render(_ref3) {
+                                        var open = _ref3.open;
+                                        return wp.element.createElement("img", { src: cardImage, className: "tc-image-overview", onClick: open });
+                                    }
+                                })
+                            )
+                        )
+                    ),
+                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["TextareaControl"], {
+                        label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Card image alt text", "jm-tc"),
+                        className: className,
+                        value: cardImageAlt,
+                        onChange: updateCardImageAlt
+                    })
+                ),
+                'player' === twitterCardType && wp.element.createElement(
+                    __WEBPACK_IMPORTED_MODULE_3__wordpress_components__["PanelBody"],
+                    { title: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])("Player Settings", "gutextra") },
+                    wp.element.createElement(
+                        __WEBPACK_IMPORTED_MODULE_4__wordpress_element__["Fragment"],
+                        null,
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["TextControl"], {
+                            type: "url",
+                            label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Player URL', 'jm-tc'),
+                            value: cardPlayer,
+                            placeholder: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
+                            onChange: updateCardPlayer
+                        }),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["RangeControl"], {
+                            label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Player Width', 'jm-tc'),
+                            value: cardPlayerWidth,
+                            min: 262,
+                            max: 1000,
+                            onChange: updateCardPlayerWidth
+                        }),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["RangeControl"], {
+                            label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Player Height', 'jm-tc'),
+                            value: cardPlayerHeight,
+                            min: 196,
+                            max: 1000,
+                            onChange: updateCardPlayerHeight
+                        }),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["TextControl"], {
+                            type: "url",
+                            label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Player Stream URL', 'jm-tc'),
+                            value: cardPlayerStream,
+                            placeholder: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
+                            onChange: updateCardPlayerStream
+                        }),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__wordpress_components__["TextControl"], {
+                            type: "url",
+                            label: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Player codec URL', 'jm-tc'),
+                            value: cardPlayerCodec,
+                            placeholder: Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
+                            onChange: updateCardPlayerCodec
+                        })
+                    )
+                )
+            )
+        );
+    },
+
+
+    save: function save() {
+        return null; // we need this to prevent our stuffs from appearing in post content, we want meta here
+    }
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blocks"]; }());
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["editor"]; }());
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["element"]; }());
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=index.js.map

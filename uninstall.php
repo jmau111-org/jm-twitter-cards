@@ -16,6 +16,7 @@ delete_option( 'jm_tc_cpt' );
  */
 $keys = [
 	'twitterCardType',
+	'cardImageID',
 	'cardImage',
 	'cardImageAlt',
 	'cardPlayer',

@@ -89,7 +89,7 @@ class Main {
 		require_once JM_TC_DIR . 'admin/Admin.php';
 		require_once JM_TC_DIR . 'admin/Settings.php';
 		require_once JM_TC_DIR . 'admin/Options.php';
-		require_once JM_TC_DIR . 'admin/Rest.php';
+		require_once JM_TC_DIR . 'admin/Meta.php';
 
 		require_once JM_TC_DIR . 'public/Front.php';
 		require_once JM_TC_DIR . 'public/Thumbs.php';
@@ -112,12 +112,10 @@ class Main {
 			$this->loader->add_action( 'add_meta_boxes', $plugin_posts, 'add_box' );
 			$this->loader->add_action( 'save_post', $plugin_posts, 'save_box', 10, 2 );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_posts, 'admin_enqueue_scripts' );
-
-			$plugin_posts = new Rest( $this->get_plugin_name(), $this->get_version() );
-			$this->loader->add_action( 'init', $plugin_posts, 'gutenberg_register_meta' );
-			$this->loader->add_action( 'rest_api_init', $plugin_posts, 'gutenberg_api_post_meta' );
-			$this->loader->add_action( 'rest_authentication_errors', $plugin_posts, 'rest_authentication_errors' );
-		}
+		} else {
+            $plugin_posts = new Meta( $this->get_plugin_name(), $this->get_version() );
+            $this->loader->add_action( 'init', $plugin_posts, 'gutenberg_register_meta' );
+        }
 	}
 
 	/**
