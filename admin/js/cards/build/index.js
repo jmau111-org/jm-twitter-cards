@@ -61,33 +61,27 @@ this["jm-tc"] = this["jm-tc"] || {}; this["jm-tc"]["cards"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["editor"]; }());
-
-/***/ }),
-/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_blocks__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_blocks__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_blocks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__wordpress_blocks__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_editor__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_editor__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__wordpress_editor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_components__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_components__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__wordpress_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wordpress_element__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wordpress_element__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__wordpress_element__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordpress_i18n__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordpress_i18n__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordpress_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__wordpress_i18n__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_title__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_scss__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_title__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_scss__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__style_scss__);
 /**
  * TODO: tidy... player part too
@@ -207,8 +201,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_blocks__["registerBlockType"])('jm
         };
 
         var imageWrapperStyles = {
-            backgroundImage: 'url(' + cardImage + ')',
-            backgroundSize: '3em'
+            backgroundImage: 'url(' + cardImage + ')'
         };
 
         return wp.element.createElement(
@@ -286,7 +279,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_blocks__["registerBlockType"])('jm
                                             wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_title__["a" /* Title */], null),
                                             wp.element.createElement(
                                                 "p",
-                                                { className: "tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline" },
+                                                { className: "TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline" },
                                                 cardDesc
                                             )
                                         )
@@ -438,43 +431,43 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_blocks__["registerBlockType"])('jm
 });
 
 /***/ }),
+/* 1 */,
 /* 2 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["blocks"]; }());
+(function() { module.exports = this["wp"]["editor"]; }());
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["components"]; }());
+(function() { module.exports = this["wp"]["blocks"]; }());
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["element"]; }());
+(function() { module.exports = this["wp"]["components"]; }());
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["i18n"]; }());
+(function() { module.exports = this["wp"]["element"]; }());
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+(function() { module.exports = this["wp"]["i18n"]; }());
 
 /***/ }),
-/* 7 */,
-/* 8 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Title; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_data__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_data__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_data___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__wordpress_data__);
 
 
@@ -502,10 +495,16 @@ var selectTitle = Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_data__["withSele
 var Title = selectTitle(GetTitle);
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["data"]; }());
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

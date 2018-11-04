@@ -113,7 +113,6 @@ registerBlockType('jm-tc/cards', {
 
         const imageWrapperStyles = {
             backgroundImage: 'url(' + cardImage + ')',
-            backgroundSize: '3em'
         };
 
         return (
@@ -151,7 +150,7 @@ registerBlockType('jm-tc/cards', {
                                                 className={twitterCardType + "-contentContainer TwitterCardsGrid-float--prev"}>
                                                 <div className={twitterCardType + "-content TwitterCardsGrid-ltr"}>
                                                     <Title/>
-                                                    <p className="tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{cardDesc}</p>
+                                                    <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{cardDesc}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -113,26 +113,21 @@
   border-width: 0;
 }
 
-.TwitterCardsGrid .TwitterCardsGrid-float--prev {
+.summary_large_image-contentContainer .TwitterCardsGrid-float--prev,
+.player-contentContainer .TwitterCardsGrid-float--prev {
   float: left;
 }
 
-.TwitterCard .SummaryCard--small .SummaryCard-contentContainer {
-  width: calc(100% - 8.81667em - 2px);
-}
-
-.TwitterCardsGrid .TwitterCardsGrid-float--prev {
-  float: left;
+.summary-contentContainer .TwitterCard-title,
+.summary-contentContainer .TwitterCard-desc {
+  text-align: left;
+  padding-left: 32%;
 }
 
 .TwitterCard .SummaryCard-content {
   padding: .75em;
   box-sizing: border-box;
   text-decoration: none;
-}
-
-.TwitterCardsGrid-ltr {
-  text-align: left;
 }
 
 .TwitterCard .SummaryCard-content .TwitterCard-title {
@@ -162,12 +157,12 @@
   width: 100%;
 }
 
-.summary-image .tcu-imageWrapper img {
+.summary-image img.u-block {
   display: none;
 }
 
-.summary_large_image-image .tcu-imageWrapper img,
-.player-image .tcu-imageWrapper img {
+.summary_large_image-image img.u-block,
+.player-image img.u-block {
   display: block;
   margin: 0 auto;
 }
