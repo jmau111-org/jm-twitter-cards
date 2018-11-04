@@ -61,5 +61,5 @@ if ( ! function_exists( 'jm_tc_get_excerpt_by_id' ) ) {
 if ( ! function_exists( 'jm_tc_gutenberg_exists' ) ) {
 	function jm_tc_gutenberg_exists() {
 		return \TokenToMe\TwitterCards\Utils::gutenberg_exists();
-	 }
+	}
 }

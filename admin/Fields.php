@@ -29,7 +29,7 @@ class Fields {
 	 * @author Julien Maury
 	 * @return string|bool
 	 */
-	public function wrapper( $aar = array() ) {
+	public function wrapper( $aar = [] ) {
 
 		if ( empty( $aar['tag'] ) ) {
 			return false;

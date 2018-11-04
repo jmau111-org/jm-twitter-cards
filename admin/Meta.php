@@ -43,16 +43,24 @@ class Meta {
 					'show_in_rest' => true,
 				]
 			);
-            register_meta(
-                $cpt, 'cardImageID', [
-                    'type'         => 'integer',
-                    'single'       => true,
-                    'show_in_rest' => true,
-                ]
-            );
+			register_meta(
+				$cpt, 'cardImageID', [
+					'type'         => 'integer',
+					'single'       => true,
+					'show_in_rest' => true,
+				]
+			);
 
 			register_meta(
 				$cpt, 'cardImage', [
+					'type'         => 'string',
+					'single'       => true,
+					'show_in_rest' => true,
+				]
+			);
+
+			register_meta(
+				$cpt, 'cardDesc', [
 					'type'         => 'string',
 					'single'       => true,
 					'show_in_rest' => true,

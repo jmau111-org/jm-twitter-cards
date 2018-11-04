@@ -1,6 +1,7 @@
 <?php
 
 namespace TokenToMe\TwitterCards\Admin;
+
 use TokenToMe\TwitterCards\Utils;
 
 if ( ! function_exists( 'add_action' ) ) {
@@ -55,6 +56,7 @@ class Gutenberg {
 	 * @since 1.0.0
 	 */
 	public function i18n_register() {
+
 		$locale_data = $this->get_jed_locale_data( 'jm-tc' );
 		$content     = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "jm-tc" );';
 
@@ -73,6 +75,7 @@ class Gutenberg {
 	 * @since 1.0.0
 	 */
 	public function script_register() {
+
 		wp_register_script(
 			'jm-tc-gut-metabox',
 			JM_TC_URL . 'js/cards/build/index.js',
@@ -88,6 +91,16 @@ class Gutenberg {
 			[],
 			filemtime( JM_TC_DIR . 'admin/js/cards/build/style.css' )
 		);
+
+		wp_localize_script(
+			'jm-tc-gut-metabox',
+			'tcDataMetabox',
+			[
+				'twitterSite' => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterSite' ),
+				'domain'      => ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : get_bloginfo( 'url' ),
+				'avatar'      => get_avatar_url( 0, 16 )
+			]
+		);
 	}
 
 	/**
@@ -95,9 +108,9 @@ class Gutenberg {
 	 */
 	public function script_enqueue() {
 
-	    if ( ! in_array( get_post_type(), Utils::get_post_types(), true ) ) {
-	        return false;
-        }
+		if ( ! in_array( get_post_type(), Utils::get_post_types(), true ) ) {
+			return false;
+		}
 
 		wp_enqueue_script( 'jm-tc-gut-metabox' );
 		wp_enqueue_style( 'jm-tc-gut-metabox' );

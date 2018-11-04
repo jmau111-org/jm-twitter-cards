@@ -5,7 +5,10 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": ["prettier", "react"],
+  "plugins": [
+    "prettier",
+    "react"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module",
@@ -29,7 +32,11 @@
   },
   "rules": {
     "prettier/prettier": "error",
-    "react/prop-types": [0],
-    "react/display-name": [0]
+    "react/prop-types": [
+      0
+    ],
+    "react/display-name": [
+      0
+    ]
   }
 }

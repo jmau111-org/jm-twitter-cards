@@ -48,6 +48,7 @@ function jm_tc_run() {
 	$plugin = new TokenToMe\TwitterCards\Main();
 	$plugin->run();
 }
+
 jm_tc_run();
 
 

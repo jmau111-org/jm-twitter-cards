@@ -113,9 +113,9 @@ class Main {
 			$this->loader->add_action( 'save_post', $plugin_posts, 'save_box', 10, 2 );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_posts, 'admin_enqueue_scripts' );
 		} else {
-            $plugin_posts = new Meta( $this->get_plugin_name(), $this->get_version() );
-            $this->loader->add_action( 'init', $plugin_posts, 'gutenberg_register_meta' );
-        }
+			$plugin_posts = new Meta( $this->get_plugin_name(), $this->get_version() );
+			$this->loader->add_action( 'init', $plugin_posts, 'gutenberg_register_meta' );
+		}
 	}
 
 	/**

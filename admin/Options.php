@@ -150,23 +150,30 @@ class Options {
 				$cardDescription = $this->get_seo_plugin_data( 'desc' );
 			}
 		}
+
+		$cardDesc = get_post_meta( $this->post_ID, 'cardDesc', true );
+
+		if ( ! empty( $cardDesc ) ) {
+			$cardDescription = $cardDesc;// allows to override all desc
+		}
+
 		$cardDescription = Utilities::remove_lb( $cardDescription );
 
 		return [ 'description' => apply_filters( 'jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->opts ) ];
 
 	}
-
+	
 	/**
 	 * @return array|bool
 	 */
 	public function image() {
 
-		$cardImage = get_post_meta( $this->post_ID, 'cardImage', true );
-        $cardImageID = get_post_meta( $this->post_ID, 'cardImageID', true );
+		$cardImage   = get_post_meta( $this->post_ID, 'cardImage', true );
+		$cardImageID = get_post_meta( $this->post_ID, 'cardImageID', true );
 
-        if ( ! empty( $cardImageID ) ) {
-            $cardImage = wp_get_attachment_image_url( $cardImageID, Utilities::maybe_get_opt( $this->opts, 'twitterImage' ) );
-        }
+		if ( ! empty( $cardImageID ) ) {
+			$cardImage = wp_get_attachment_image_url( $cardImageID, Utilities::maybe_get_opt( $this->opts, 'twitterImage' ) );
+		}
 
 		// fallback
 		$image = Utilities::maybe_get_opt( $this->opts, 'twitterImage' );

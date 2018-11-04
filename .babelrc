@@ -1,6 +1,13 @@
 {
-  "presets": ["@wordpress/default"],
+  "presets": [
+    "@wordpress/default"
+  ],
   "plugins": [
-    ["@wordpress/babel-plugin-makepot", { "output": "languages/jm-tc.pot" }]
+    [
+      "@wordpress/babel-plugin-makepot",
+      {
+        "output": "languages/jm-tc.pot"
+      }
+    ]
   ]
 }

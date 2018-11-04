@@ -1,7 +1,10 @@
 <?php
+
 namespace TokenToMe\TwitterCards;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 class Utils {
 
@@ -104,7 +107,7 @@ class Utils {
 	 * @author Julien Maury
 	 */
 	public static function get_default_options() {
-		return  [
+		return [
 			'twitterCardType'       => 'summary',
 			'twitterCreator'        => '',
 			'twitterSite'           => '',

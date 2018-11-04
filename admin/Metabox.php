@@ -1,4 +1,5 @@
 <?php
+
 namespace TokenToMe\TwitterCards\Admin;
 
 use TokenToMe\TwitterCards\Utils as Utilities;
@@ -21,8 +22,8 @@ class Metabox {
 	function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-		$this->fields = new Fields();
+		$this->version     = $version;
+		$this->fields      = new Fields();
 
 		$this->keys = [
 			'twitterCardType',
@@ -164,7 +165,7 @@ class Metabox {
 	 */
 	public function admin_enqueue_scripts() {
 
-		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox' . Utils::suffix_for_dev_env().'.js', [ 'jquery' ], JM_TC_VERSION, true );
+		wp_register_script( 'jm-tc-metabox', JM_TC_URL . 'js/metabox' . Utils::suffix_for_dev_env() . '.js', [ 'jquery' ], JM_TC_VERSION, true );
 
 		if ( in_array( get_post_type(), Utilities::get_post_types() ) ) {
 			wp_enqueue_media();
