@@ -29,7 +29,7 @@ class Init {
 			'twitterCardType'       => 'summary',
 			'twitterCreator'        => '',
 			'twitterSite'           => '',
-			'twitterImage'          => 'https://g.twimg.com/Twitter_logo_blue.png',
+			'twitterImage'          => '',
 			'twitterImageAlt'       => '',
 			'twitterCardImgSize'    => 'small',
 			'twitterProfile'        => 'yes',

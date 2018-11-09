@@ -1,31 +1,27 @@
 /**
- * TODO: tidy... player part too
+ * TODO: TIDY
  */
 import {registerBlockType} from "@wordpress/blocks";
-import {
-    InspectorControls,
-    BlockControls
-} from "@wordpress/editor";
+import {BlockControls, InspectorControls, MediaUpload, mediaUpload} from "@wordpress/editor";
 
 import {
-    TextareaControl,
+    Button,
+    IconButton,
+    PanelBody,
     Placeholder,
     RangeControl,
-    PanelBody,
-    ToggleControl,
     SelectControl,
+    TextareaControl,
     TextControl,
-    IconButton,
-    Button
+    ToggleControl
 } from "@wordpress/components";
 
 import {Fragment} from "@wordpress/element";
 
-import {MediaUpload, mediaUpload} from "@wordpress/editor";
-
 import {__} from "@wordpress/i18n";
 
 import {Title} from "./components/title";
+import {getImage} from "./components/image";
 
 import "./style.scss";
 
@@ -33,12 +29,18 @@ registerBlockType('jm-tc/cards', {
     title: __('Twitter Cards', 'jm-tc'),
     icon: 'twitter',
     category: 'common',
-
+    supports: {
+        className: false,
+        html: false,
+        inserter: true,// see https://wordpress.org/gutenberg/handbook/block-api/
+        reusable: false,// see https://wordpress.org/gutenberg/handbook/block-api/
+        multiple: false,// see https://github.com/WordPress/gutenberg/blob/master/packages/block-library/src/more/index.js#L38
+    },
     attributes: {
         twitterCardType: {
             type: 'string',
             source: 'meta',
-            meta: 'twitterCardType'
+            meta: 'twitterCardType',
         },
         cardDesc: {
             type: 'string',
@@ -53,7 +55,7 @@ registerBlockType('jm-tc/cards', {
         cardImage: {
             type: 'string',
             source: 'meta',
-            meta: 'cardImage'
+            meta: 'cardImage',
         },
         cardImageAlt: {
             type: 'string',
@@ -111,63 +113,73 @@ registerBlockType('jm-tc/cards', {
         const updateCardPlayerStream = cardPlayerStream => setAttributes({cardPlayerStream});
         const updateCardPlayerCodec = cardPlayerCodec => setAttributes({cardPlayerCodec});
 
-        const imageWrapperStyles = {
-            backgroundImage: 'url(' + cardImage + ')',
+        let theType = twitterCardType || tcDataMetabox.defaultType;
+
+        let theImage = getImage(cardImage);
+        let imageWrapperStyles = {
+            backgroundImage: 'url(' + theImage + ')',
         };
 
         return (
             <Fragment>
-                {'app' !== twitterCardType && (
-                    <div className="EmbeddedTweet">
-                        <div className="EmbeddedTweet-author u-cf">
-                            <img className="EmbeddedTweet-author-avatar"
-                                 src={tcDataMetabox.avatar}/>
-                            <div
-                                className="EmbeddedTweet-author-name u-pullLeft">{__("Your Twitter account name", "jm-tc")}</div>
-                            <div className="EmbeddedTweet-author-handle u-pullLeft">@{tcDataMetabox.twitterSite}</div>
-                        </div>
-                        <div className="EmbeddedTweet-text">
+                <div className="EmbeddedTweet">
+                    <div className="EmbeddedTweet-author u-cf">
+                        <img className="EmbeddedTweet-author-avatar"
+                             src={tcDataMetabox.avatar}/>
+                        <div
+                            className="EmbeddedTweet-author-name u-pullLeft">{__("Your Twitter account name", "jm-tc")}</div>
+                        <div className="EmbeddedTweet-author-handle u-pullLeft">@{tcDataMetabox.twitterSite}</div>
+                    </div>
+                    <div className="EmbeddedTweet-text">
+                        {'app' !== theType && (
                             <p>{__("The card for your website will look a little something like this!", "jm-tc")}</p>
-                        </div>
+                        )}
+                        {'app' === theType && (
+                            <p>{__('Preview is not provided for application card', 'jm-tc')}</p>
+                        )}
+                    </div>
 
-                        <div className="CardPreview u-marginVm" id="CardPreview">
-                            <div className="CardPreview-preview js-cardPreview">
-                                <div className="TwitterCardsGrid TwitterCard TwitterCard--animation">
+                    <div className="CardPreview u-marginVm" id="CardPreview">
+                        <div className="CardPreview-preview js-cardPreview">
+                            <div className="TwitterCardsGrid TwitterCard TwitterCard--animation">
+                                {'app' !== theType && (
                                     <div
                                         className="TwitterCardsGrid-col--12 TwitterCardsGrid-col--spacerBottom CardContent">
                                         <div
-                                            className={"js-openLink u-block TwitterCardsGrid-col--12 TwitterCard-container " + twitterCardType + "--small " + twitterCardType + "--noImage"}>
-                                            <div className={twitterCardType + "-image TwitterCardsGrid-float--prev"}>
+                                            className={"js-openLink u-block TwitterCardsGrid-col--12 TwitterCard-container " + theType + "--small " + theType + "--noImage"}>
+                                            <div className={theType + "-image TwitterCardsGrid-float--prev"}>
                                                 <div className="tcu-imageContainer tcu-imageAspect--1to1">
                                                     <div className="tcu-imageWrapper" style={imageWrapperStyles}>
                                                         <img className="u-block"
-                                                             alt=""
-                                                             src={cardImage}/>
+                                                             alt={cardImageAlt || ''}
+                                                             src={theImage}/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div
-                                                className={twitterCardType + "-contentContainer TwitterCardsGrid-float--prev"}>
-                                                <div className={twitterCardType + "-content TwitterCardsGrid-ltr"}>
+                                                className={theType + "-contentContainer TwitterCardsGrid-float--prev"}>
+                                                <div className={theType + "-content TwitterCardsGrid-ltr"}>
                                                     <Title/>
-                                                    <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{cardDesc}</p>
+                                                    <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{cardDesc}
+                                                        <span
+                                                            className="SummaryCard-destination">{tcDataMetabox.domain}</span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>{tcDataMetabox.domain}</div>
+                                )}
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
 
                 <InspectorControls>
                     <PanelBody title={__("General Settings", "jm-tc")}>
 
                         <SelectControl
                             label={__("Card Type", "jm-tc")}
-                            value={twitterCardType}
+                            value={theType}
                             options={[
                                 {label: __('Summary', 'jm-tc'), value: 'summary'},
                                 {label: __('Summary Large Image', 'jm-tc'), value: 'summary_large_image'},
@@ -182,58 +194,6 @@ registerBlockType('jm-tc/cards', {
                             className={className}
                             value={cardDesc}
                             onChange={updateCardDesc}
-                        />
-                    </PanelBody>
-                    <PanelBody title={__("Image Settings", "jm-tc")}>
-                        {!cardImage && (
-                            <Placeholder
-                                instructions={__("Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc")}
-                                icon="format-image"
-                                label={"Image"}
-                            >
-                                <MediaUpload
-                                    onSelect={(media) => setAttributes({cardImage: media.url, cardImageID: media.id})}
-                                    type="image"
-                                    render={({open}) => (
-                                        <Button isLarge onClick={open}>
-                                            {__(
-                                                "Insert from Media Library",
-                                                "jm-tc"
-                                            )}
-                                        </Button>
-                                    )}
-                                />
-                            </Placeholder>)}
-                        {cardImage && (
-                            <Placeholder
-                                instructions={__("Change twitter Image source", "jm-tc")}
-                                icon="format-image"
-                                label={"Image"}
-                            >
-                                <div className="thumbnail">
-                                    <div className="centered">
-                                        <MediaUpload
-                                            onSelect={(media) => setAttributes({
-                                                cardImage: media.url,
-                                                cardImageID: media.id
-                                            })}
-                                            type="image"
-                                            value={cardImageID}
-                                            render={({open}) => (
-                                                <img src={cardImage} className="tc-image-overview" onClick={open}/>
-                                            )}
-                                        />
-                                    </div>
-                                </div>
-                            </Placeholder>
-
-                        )}
-
-                        <TextareaControl
-                            label={__("Card image alt text", "jm-tc")}
-                            className={className}
-                            value={cardImageAlt}
-                            onChange={updateCardImageAlt}
                         />
                     </PanelBody>
                     {'player' === twitterCardType && (
@@ -278,9 +238,59 @@ registerBlockType('jm-tc/cards', {
                         </PanelBody>
                     )}
 
+                    <PanelBody title={__("Image Settings", "jm-tc")}>
+                        {!cardImage && (
+                            <Placeholder
+                                instructions={__("Using featured image is highly recommended but you can override this here. Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc")}
+                                icon="format-image"
+                                label={"Image"}
+                            >
+                                <MediaUpload
+                                    onSelect={(media) => setAttributes({cardImage: media.url, cardImageID: media.id})}
+                                    type="image"
+                                    render={({open}) => (
+                                        <Button isLarge onClick={open}>
+                                            {__(
+                                                "Insert from Media Library",
+                                                "jm-tc"
+                                            )}
+                                        </Button>
+                                    )}
+                                />
+                            </Placeholder>)}
+                        {cardImage && (
+                            <Placeholder
+                                instructions={__("Change twitter Image source", "jm-tc")}
+                                icon="format-image"
+                                label={"Image"}
+                            >
+                                <div className="thumbnail">
+                                    <div className="centered">
+                                        <MediaUpload
+                                            onSelect={(media) => setAttributes({
+                                                cardImage: media.url,
+                                                cardImageID: media.id
+                                            })}
+                                            type="image"
+                                            value={cardImageID}
+                                            render={({open}) => (
+                                                <img src={cardImage} alt={cardImageAlt || ''}
+                                                     className="tc-image-overview" onClick={open}/>
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                            </Placeholder>
+                        )}
 
+                        <TextareaControl
+                            label={__("Card image alt text", "jm-tc")}
+                            className={className}
+                            value={cardImageAlt}
+                            onChange={updateCardImageAlt}
+                        />
+                    </PanelBody>
                 </InspectorControls>
-
             </Fragment>
         );
     },

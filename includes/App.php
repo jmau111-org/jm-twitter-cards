@@ -167,6 +167,7 @@ class Main {
 			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'script_enqueue' );
 			$this->loader->add_action( 'init', $gut, 'script_register' );
 			$this->loader->add_action( 'init', $gut, 'i18n_register' );
+			$this->loader->add_action( 'init', $gut, 'template', 73 );
 		}
 	}
 
