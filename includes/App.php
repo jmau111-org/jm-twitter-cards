@@ -69,6 +69,7 @@ class Main {
 	 */
 	protected function load_dependencies() {
 
+		require_once JM_TC_DIR . 'includes/Init.php';
 		require_once JM_TC_DIR . 'includes/Loader.php';
 
 		require_once JM_TC_DIR . 'includes/Utils.php';

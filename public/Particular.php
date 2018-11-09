@@ -34,9 +34,14 @@ class Particular {
 		return $output;
 	}
 
+	/**
+	 * @param $meta
+	 *
+	 * @return bool
+	 */
 	public function remove_myself( $meta ) {
 
-		if ( 'tweetpressfr' === strtolower( $meta ) || '@tweetpressfr' === strtolower( $meta ) ) {
+		if ( in_array( strtolower( $meta ), [ 'tweetpressfr', '@tweetpressfr', 'jmau111', '@jmau111' ], true ) ) {
 			return false;
 		}
 
@@ -50,9 +55,7 @@ class Particular {
 	 */
 	public function new_blog( $blog_id ) {
 		switch_to_blog( $blog_id );
-
 		Init::on_activation();
-
 		restore_current_blog();
 	}
 

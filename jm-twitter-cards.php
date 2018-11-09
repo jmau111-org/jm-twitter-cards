@@ -44,12 +44,14 @@ require plugin_dir_path( __FILE__ ) . 'includes/App.php';
 /**
  * @since 10.0.0
  */
+add_action( 'plugins_loaded', 'jm_tc_run' );
 function jm_tc_run() {
 	$plugin = new TokenToMe\TwitterCards\Main();
 	$plugin->run();
 }
 
-jm_tc_run();
+
+
 
 
 
