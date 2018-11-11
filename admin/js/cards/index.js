@@ -1,5 +1,5 @@
 /**
- * TODO: TIDY
+ * TODO: TIDY, withSelect
  */
 import {registerBlockType} from "@wordpress/blocks";
 import {BlockControls, InspectorControls, MediaUpload, mediaUpload} from "@wordpress/editor";
