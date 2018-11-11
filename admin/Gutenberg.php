@@ -96,12 +96,12 @@ class Gutenberg {
 			'jm-tc-gut-metabox',
 			'tcDataMetabox',
 			[
-				'twitterSite'   => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterSite' ),
-				'domain'        => ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : get_bloginfo( 'url' ),
-				'avatar'        => get_avatar_url( 0, 16 ),
-				'defaultImage'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterImage' ),
-				'defaultType'   => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterCardType' ),
-				'pluginUrl'     => JM_TC_URL,
+				'twitterSite'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterSite' ),
+				'domain'       => ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : get_bloginfo( 'url' ),
+				'avatar'       => get_avatar_url( 0, 16 ),
+				'defaultImage' => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterImage' ),
+				'defaultType'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterCardType' ),
+				'pluginUrl'    => JM_TC_URL,
 			]
 		);
 	}
@@ -129,11 +129,16 @@ class Gutenberg {
 
 		foreach ( Utils::get_post_types() as $cpt ) {
 
-			$post_type_object             = get_post_type_object( $cpt );
-			$post_type_object->template[] = [
-				'jm-tc/cards',
+			add_post_type_support( $cpt, 'custom-fields' );// if not there then the whole things fails !
+
+			$post_type_object               = get_post_type_object( $cpt );
+			$post_type_object->show_in_rest = true;// if not there then the whole things fails !
+			$post_type_object->template     = [
 				[
-					'cardImage' => Utils::maybe_get_opt( $opts, 'twitterImage' ),
+					'jm-tc/cards',
+					[
+						'cardImage' => Utils::maybe_get_opt( $opts, 'twitterImage' ),
+					]
 				]
 			];
 		}

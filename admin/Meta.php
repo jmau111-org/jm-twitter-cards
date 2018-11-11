@@ -32,89 +32,107 @@ class Meta {
 		$this->version     = $version;
 	}
 
+	/**
+	 * here there is no concerne about privacy links
+	 * these are public meta displayed in <head>
+	 */
 	public function gutenberg_register_meta() {
 
 		foreach ( Utils::get_post_types() as $cpt ) {
 
 			register_meta(
-				$cpt, 'twitterCardType', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'twitterCardType', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
 				]
 			);
 			register_meta(
-				$cpt, 'cardImageID', [
-					'type'         => 'integer',
-					'single'       => true,
-					'show_in_rest' => true,
-				]
-			);
-
-			register_meta(
-				$cpt, 'cardImage', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardImageID', [
+					'type'              => 'integer',
+					'single'            => true,
+					'show_in_rest'      => true,
+					'object_subtype'    => $cpt,
+					'sanitize_callback' => 'absint',
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardDesc', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardImage', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardImageAlt', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardDesc', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardPlayer', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardImageAlt', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardPlayerWidth', [
-					'type'         => 'integer',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardPlayer', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardPlayerHeight', [
-					'type'         => 'integer',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardPlayerWidth', [
+					'type'              => 'integer',
+					'single'            => true,
+					'show_in_rest'      => true,
+					'object_subtype'    => $cpt,
+					'sanitize_callback' => 'absint',
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardPlayerStream', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardPlayerHeight', [
+					'type'              => 'integer',
+					'single'            => true,
+					'show_in_rest'      => true,
+					'object_subtype'    => $cpt,
+					'sanitize_callback' => 'absint',
 				]
 			);
 
 			register_meta(
-				$cpt, 'cardPlayerCodec', [
-					'type'         => 'string',
-					'single'       => true,
-					'show_in_rest' => true,
+				'post', 'cardPlayerStream', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
+				]
+			);
+
+			register_meta(
+				'post', 'cardPlayerCodec', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
 				]
 			);
 		}
+
 	}
 
 }

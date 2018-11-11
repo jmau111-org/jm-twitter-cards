@@ -3,100 +3,100 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: admin/js/cards/index.js:130
+#: admin/js/cards/index.js:129
 msgid "Your Twitter account name"
 msgstr ""
 
-#: admin/js/cards/index.js:135
+#: admin/js/cards/index.js:134
 msgid "The card for your website will look a little something like this!"
 msgstr ""
 
-#: admin/js/cards/index.js:138
+#: admin/js/cards/index.js:137
 msgid "Preview is not provided for application card"
 msgstr ""
 
-#: admin/js/cards/index.js:178
+#: admin/js/cards/index.js:177
 msgid "General Settings"
 msgstr ""
 
-#: admin/js/cards/index.js:181
+#: admin/js/cards/index.js:180
 msgid "Card Type"
 msgstr ""
 
-#: admin/js/cards/index.js:184
+#: admin/js/cards/index.js:183
 msgid "Summary"
 msgstr ""
 
-#: admin/js/cards/index.js:185
+#: admin/js/cards/index.js:184
 msgid "Summary Large Image"
 msgstr ""
 
-#: admin/js/cards/index.js:186
+#: admin/js/cards/index.js:185
 msgid "Player"
 msgstr ""
 
-#: admin/js/cards/index.js:187
+#: admin/js/cards/index.js:186
 msgid "Application"
 msgstr ""
 
-#: admin/js/cards/index.js:192
+#: admin/js/cards/index.js:191
 msgid "Card description"
 msgstr ""
 
-#: admin/js/cards/index.js:193
+#: admin/js/cards/index.js:192
 msgid ""
 "By default this will be automatically generated or retrieved from a SEO "
 "plugin such as Yoast or All in One SEO but you can override this here"
 msgstr ""
 
-#: admin/js/cards/index.js:200
+#: admin/js/cards/index.js:199
 msgid "Player Settings"
 msgstr ""
 
-#: admin/js/cards/index.js:204
+#: admin/js/cards/index.js:203
 msgid "Player URL"
 msgstr ""
 
-#: admin/js/cards/index.js:210
+#: admin/js/cards/index.js:209
 msgid "Player Width"
 msgstr ""
 
-#: admin/js/cards/index.js:217
+#: admin/js/cards/index.js:216
 msgid "Player Height"
 msgstr ""
 
-#: admin/js/cards/index.js:225
+#: admin/js/cards/index.js:224
 msgid "Player Stream URL"
 msgstr ""
 
-#: admin/js/cards/index.js:232
+#: admin/js/cards/index.js:231
 msgid "Player codec URL"
 msgstr ""
 
-#: admin/js/cards/index.js:234
+#: admin/js/cards/index.js:233
 msgid "Enter URL…"
 msgstr ""
 
-#: admin/js/cards/index.js:241
+#: admin/js/cards/index.js:240
 msgid "Image Settings"
 msgstr ""
 
-#: admin/js/cards/index.js:244
+#: admin/js/cards/index.js:243
 msgid ""
 "Using featured image is highly recommended but you can override this here. "
 "Upload image here or insert from media library to set another source for "
 "twitter image than featured image"
 msgstr ""
 
-#: admin/js/cards/index.js:253
+#: admin/js/cards/index.js:252
 msgid "Insert from Media Library"
 msgstr ""
 
-#: admin/js/cards/index.js:263
+#: admin/js/cards/index.js:262
 msgid "Change twitter Image source"
 msgstr ""
 
-#: admin/js/cards/index.js:287
+#: admin/js/cards/index.js:286
 msgid "Card image alt text"
 msgstr ""
 

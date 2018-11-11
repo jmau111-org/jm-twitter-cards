@@ -1,5 +1,5 @@
 /**
- * TODO: TIDY, withSelect
+ * TODO: TIDY, withState
  */
 import {registerBlockType} from "@wordpress/blocks";
 import {BlockControls, InspectorControls, MediaUpload, mediaUpload} from "@wordpress/editor";
@@ -114,7 +114,6 @@ registerBlockType('jm-tc/cards', {
         const updateCardPlayerCodec = cardPlayerCodec => setAttributes({cardPlayerCodec});
 
         let theType = twitterCardType || tcDataMetabox.defaultType;
-
         let theImage = getImage(cardImage);
         let imageWrapperStyles = {
             backgroundImage: 'url(' + theImage + ')',
@@ -208,14 +207,14 @@ registerBlockType('jm-tc/cards', {
                                 />
                                 <RangeControl
                                     label={__('Player Width', 'jm-tc')}
-                                    value={cardPlayerWidth}
+                                    value={Number(cardPlayerWidth)}
                                     min={262}
                                     max={1000}
                                     onChange={updateCardPlayerWidth}
                                 />
                                 <RangeControl
                                     label={__('Player Height', 'jm-tc')}
-                                    value={cardPlayerHeight}
+                                    value={Number(cardPlayerHeight)}
                                     min={196}
                                     max={1000}
                                     onChange={updateCardPlayerHeight}
