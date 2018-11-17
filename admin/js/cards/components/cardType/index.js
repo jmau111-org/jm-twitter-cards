@@ -1,3 +1,3 @@
-export function Type(attributes) {
-    return attributes.twitterCardType || tcDataMetabox.defaultType;
+export function Type(props) {
+    return props.meta.twitterCardType || tcDataMetabox.defaultType;
 }

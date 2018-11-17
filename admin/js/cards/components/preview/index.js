@@ -3,21 +3,21 @@ import {Title} from "../title";
 import {Type} from "../cardType";
 import {Image} from "../image";
 
-export const Preview = ({attributes}) => (
+export const Preview = ({props}) => (
 
     <div className="EmbeddedTweet">
         <div className="EmbeddedTweet-author u-cf">
             <img className="EmbeddedTweet-author-avatar"
                  src={tcDataMetabox.avatar}/>
             <div
-                className="EmbeddedTweet-author-name u-pullLeft">{__("Your Twitter account name", "jm-tc")}</div>
+                className="EmbeddedTweet-author-name u-pullLeft">{__("Your Twitter name", "jm-tc")}</div>
             <div className="EmbeddedTweet-author-handle u-pullLeft">@{tcDataMetabox.twitterSite}</div>
         </div>
         <div className="EmbeddedTweet-text">
-            {'app' !==  Type(attributes) && (
+            {'app' !==  Type(props) && (
                 <p>{__("The card for your website will look a little something like this!", "jm-tc")}</p>
             )}
-            {'app' === Type(attributes) && (
+            {'app' === Type(props) && (
                 <p>{__('Preview is not provided for application card', 'jm-tc')}</p>
             )}
         </div>
@@ -25,26 +25,26 @@ export const Preview = ({attributes}) => (
         <div className="CardPreview u-marginVm" id="CardPreview">
             <div className="CardPreview-preview js-cardPreview">
                 <div className="TwitterCardsGrid TwitterCard TwitterCard--animation">
-                    {'app' !== Type(attributes) && (
+                    {'app' !== Type(props) && (
                         <div
                             className="TwitterCardsGrid-col--12 TwitterCardsGrid-col--spacerBottom CardContent">
                             <div
-                                className={"js-openLink u-block TwitterCardsGrid-col--12 TwitterCard-container " + Type(attributes) + "--small " + Type(attributes) + "--noImage"}>
-                                <div className={Type(attributes) + "-image TwitterCardsGrid-float--prev"}>
+                                className={"js-openLink u-block TwitterCardsGrid-col--12 TwitterCard-container " + Type(props) + "--small " + Type(props) + "--noImage"}>
+                                <div className={Type(props) + "-image TwitterCardsGrid-float--prev"}>
                                     <div className="tcu-imageContainer tcu-imageAspect--1to1">
                                         <div className="tcu-imageWrapper"
-                                             style={{backgroundImage: "url(" + Image(attributes) + ")"}}>
+                                             style={{backgroundImage: "url(" + Image(props) + ")"}}>
                                             <img className="u-block"
-                                                 alt={attributes.cardImageAlt || ''}
-                                                 src={Image(attributes)}/>
+                                                 alt={props.meta.cardImageAlt || ''}
+                                                 src={Image(props)}/>
                                         </div>
                                     </div>
                                 </div>
                                 <div
-                                    className={Type(attributes) + "-contentContainer TwitterCardsGrid-float--prev"}>
-                                    <div className={Type(attributes) + "-content TwitterCardsGrid-ltr"}>
+                                    className={Type(props) + "-contentContainer TwitterCardsGrid-float--prev"}>
+                                    <div className={Type(props) + "-content TwitterCardsGrid-ltr"}>
                                         <Title/>
-                                        <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{attributes.cardDesc}
+                                        <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{props.meta.cardDesc}
                                             <span
                                                 className="SummaryCard-destination">{tcDataMetabox.domain}</span>
                                         </p>

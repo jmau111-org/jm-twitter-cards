@@ -112,9 +112,9 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 == Changelog ==
 
 ### 10.0.0
-* October 2018
+* November 2018
 * Prepare for Gutenberg
-* There won't be metabox in Gutenberg context, I made a custom block, just click the twitter icon on the top right of the screen
+* There won't be metabox in Gutenberg context, I made a custom sidebar.
 * If you enable Gutenberg then you will have a custom block meta \O/
 * Reorganize deeply the plugin structure
 * fix preview props to [tomdxw](https://github.com/tomdxw)

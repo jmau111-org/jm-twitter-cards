@@ -63,7 +63,7 @@ class Gutenberg {
 		wp_register_script(
 			'jm-tc-gut-i18n',
 			JM_TC_URL . 'js/i18n/build/index.js',
-			[ 'wp-i18n' ],
+			[],
 			filemtime( JM_TC_DIR . 'admin/js/i18n/build/index.js' )
 		);
 		wp_add_inline_script( 'jm-tc-gut-i18n', $content );
@@ -117,31 +117,6 @@ class Gutenberg {
 
 		wp_enqueue_script( 'jm-tc-gut-metabox' );
 		wp_enqueue_style( 'jm-tc-gut-metabox' );
-	}
-
-
-	/**
-	 * @author Julien Maury
-	 */
-	public function template() {
-
-		$opts = jm_tc_get_options();
-
-		foreach ( Utils::get_post_types() as $cpt ) {
-
-			add_post_type_support( $cpt, 'custom-fields' );// if not there then the whole things fails !
-
-			$post_type_object               = get_post_type_object( $cpt );
-			$post_type_object->show_in_rest = true;// if not there then the whole things fails !
-			$post_type_object->template     = [
-				[
-					'jm-tc/cards',
-					[
-						'cardImage' => Utils::maybe_get_opt( $opts, 'twitterImage' ),
-					]
-				]
-			];
-		}
 	}
 
 }

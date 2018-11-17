@@ -5,12 +5,9 @@
 
 .EmbeddedTweet {
   position: relative;
-  width: 506px;
   padding: 12px 12px 8px 54px;
   margin: 0 auto;
   text-align: left;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
 
   .EmbeddedTweet-author-avatar {
     position: absolute;
@@ -27,7 +24,7 @@
 
   .EmbeddedTweet-author-name {
     margin-right: 4px;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 700;
     color: #333;
   }
@@ -47,12 +44,12 @@
     padding: 0;
     margin-top: 2px;
     margin-left: 2px;
-    font-size: 12px;
+    font-size: 10px;
     color: #999;
   }
 
   .EmbeddedTweet-text p {
-    font-size: 14px !important;
+    font-size: 12px !important;
     margin: 0 0 10px;
   }
 
@@ -143,7 +140,7 @@
   }
 
   .TwitterCard-desc, .TwitterCard-title {
-    font-size: 14px !important;
+    font-size: 12px !important;
     margin: .2em auto !important;
   }
 

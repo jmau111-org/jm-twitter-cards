@@ -1,3 +1,3 @@
-export function Image(attributes) {
-    return attributes.cardImage || tcDataMetabox.defaultImage;
+export function Image(props) {
+    return props.meta.cardImage || tcDataMetabox.defaultImage;
 }

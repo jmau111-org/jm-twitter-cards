@@ -4,12 +4,9 @@
  */
 .EmbeddedTweet {
   position: relative;
-  width: 506px;
   padding: 12px 12px 8px 54px;
   margin: 0 auto;
-  text-align: left;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px; }
+  text-align: left; }
   .EmbeddedTweet .EmbeddedTweet-author-avatar {
     position: absolute;
     top: 3px;
@@ -21,7 +18,7 @@
     float: left !important; }
   .EmbeddedTweet .EmbeddedTweet-author-name {
     margin-right: 4px;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 700;
     color: #333; }
   .EmbeddedTweet .EmbeddedTweet-author {
@@ -35,10 +32,10 @@
     padding: 0;
     margin-top: 2px;
     margin-left: 2px;
-    font-size: 12px;
+    font-size: 10px;
     color: #999; }
   .EmbeddedTweet .EmbeddedTweet-text p {
-    font-size: 14px !important;
+    font-size: 12px !important;
     margin: 0 0 10px; }
   .EmbeddedTweet .CardPreview {
     position: relative; }
@@ -95,7 +92,7 @@
     text-align: left;
     padding-left: 32%; }
   .EmbeddedTweet .TwitterCard-desc, .EmbeddedTweet .TwitterCard-title {
-    font-size: 14px !important;
+    font-size: 12px !important;
     margin: .2em auto !important; }
   .EmbeddedTweet .TwitterCard .SummaryCard-content {
     padding: .5em;
