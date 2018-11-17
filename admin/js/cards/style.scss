@@ -120,7 +120,7 @@
   }
 
   .summary-content {
-    height: 125px;
+    height: 85px;
   }
 
   .summary_large_image-content,
@@ -137,6 +137,12 @@
   .summary-contentContainer .TwitterCard-desc {
     text-align: left;
     padding-left: 32%;
+  }
+
+  .TwitterCard-desc {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .TwitterCard-desc, .TwitterCard-title {

@@ -80,7 +80,7 @@
   .EmbeddedTweet .player-contentContainer .TwitterCardsGrid-float--prev {
     float: left; }
   .EmbeddedTweet .summary-content {
-    height: 125px; }
+    height: 85px; }
   .EmbeddedTweet .summary_large_image-content,
   .EmbeddedTweet .player-content {
     padding-left: 1em;
@@ -91,6 +91,10 @@
   .EmbeddedTweet .summary-contentContainer .TwitterCard-desc {
     text-align: left;
     padding-left: 32%; }
+  .EmbeddedTweet .TwitterCard-desc {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
   .EmbeddedTweet .TwitterCard-desc, .EmbeddedTweet .TwitterCard-title {
     font-size: 12px !important;
     margin: .2em auto !important; }
