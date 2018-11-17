@@ -1,3 +1,11 @@
+/**
+ * WordPress dependencies
+ */
+import {
+    withSelect,
+    withDispatch,
+} from '@wordpress/data';
+
 import {registerBlockType} from "@wordpress/blocks";
 
 import {BlockControls, InspectorControls, MediaUpload, mediaUpload} from "@wordpress/editor";
@@ -23,14 +31,6 @@ import {compose} from '@wordpress/compose';
 
 import {__} from "@wordpress/i18n";
 
-/**
- * WordPress dependencies
- */
-import {
-    withSelect,
-    withDispatch,
-} from '@wordpress/data';
-
 import {
     PluginSidebar,
     PluginSidebarMoreMenuItem,
@@ -38,6 +38,9 @@ import {
 
 import {registerPlugin} from '@wordpress/plugins';
 
+/**
+ * Custom dependencies
+ */
 import {Type} from "./components/cardType";
 import {Preview} from "./components/preview";
 

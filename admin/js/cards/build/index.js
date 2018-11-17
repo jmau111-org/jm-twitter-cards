@@ -771,13 +771,13 @@ exports.f = __webpack_require__(4) ? gOPD : function getOwnPropertyDescriptor(O,
 /* 42 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["i18n"]; }());
+(function() { module.exports = this["wp"]["data"]; }());
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["data"]; }());
+(function() { module.exports = this["wp"]["i18n"]; }());
 
 /***/ }),
 /* 44 */
@@ -807,20 +807,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_possibleConstructorReturn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__wordpress_blocks__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__wordpress_blocks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__wordpress_blocks__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_editor__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__wordpress_editor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_components__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_element__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__wordpress_element__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_compose__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_compose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__wordpress_compose__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__wordpress_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__wordpress_data__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__wordpress_data___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__wordpress_data__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__wordpress_data__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__wordpress_data___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_blocks__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_blocks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__wordpress_blocks__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_editor__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__wordpress_editor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_components__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_element__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__wordpress_element__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__wordpress_compose__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__wordpress_compose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__wordpress_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__wordpress_plugins__ = __webpack_require__(100);
@@ -829,6 +829,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_preview__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__style_scss__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__style_scss__);
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
 
 
 
@@ -848,14 +857,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /**
- * WordPress dependencies
+ * Custom dependencies
  */
-
-
-
-
-
-
 
 
 
@@ -889,7 +892,7 @@ var JmTc = function (_Component) {
 
 
             return wp.element.createElement(
-                __WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Fragment"],
+                __WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Fragment"],
                 null,
                 wp.element.createElement(
                     __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__["PluginSidebarMoreMenuItem"],
@@ -897,29 +900,29 @@ var JmTc = function (_Component) {
                         name: "jm-tc-sidebar",
                         target: "jm-tc-sidebar"
                     },
-                    Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Set your Twitter Cards', 'jm-tc')
+                    Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Set your Twitter Cards', 'jm-tc')
                 ),
                 wp.element.createElement(
                     __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__["PluginSidebar"],
                     {
                         icon: "twitter",
                         name: "jm-tc-sidebar",
-                        title: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Twitter Cards', 'jm-tc') },
+                        title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Twitter Cards', 'jm-tc') },
                     wp.element.createElement(__WEBPACK_IMPORTED_MODULE_16__components_preview__["a" /* Preview */], { props: this.props }),
                     wp.element.createElement(
-                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelBody"],
-                        { title: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("General Settings", "jm-tc") },
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["SelectControl"], {
-                            label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Card Type", "jm-tc"),
+                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["PanelBody"],
+                        { title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("General Settings", "jm-tc") },
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["SelectControl"], {
+                            label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Card Type", "jm-tc"),
                             value: Object(__WEBPACK_IMPORTED_MODULE_15__components_cardType__["a" /* Type */])(this.props),
-                            options: [{ label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Summary', 'jm-tc'), value: 'summary' }, { label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Summary Large Image', 'jm-tc'), value: 'summary_large_image' }, { label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Player', 'jm-tc'), value: 'player' }, { label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Application', 'jm-tc'), value: 'app' }],
+                            options: [{ label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary', 'jm-tc'), value: 'summary' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary Large Image', 'jm-tc'), value: 'summary_large_image' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player', 'jm-tc'), value: 'player' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Application', 'jm-tc'), value: 'app' }],
                             onChange: function onChange(value) {
                                 updatePostMeta({ twitterCardType: value || '' });
                             }
                         }),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextareaControl"], {
-                            label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Card description", "jm-tc"),
-                            help: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("By default this will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here", "jm-tc"),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextareaControl"], {
+                            label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Card description", "jm-tc"),
+                            help: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("By default this will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here", "jm-tc"),
                             value: cardDesc,
                             onChange: function onChange(value) {
                                 updatePostMeta({ cardDesc: value || '' });
@@ -927,22 +930,22 @@ var JmTc = function (_Component) {
                         })
                     ),
                     'player' === twitterCardType && wp.element.createElement(
-                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelBody"],
-                        { title: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Player Settings", "jm-tc") },
+                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["PanelBody"],
+                        { title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Player Settings", "jm-tc") },
                         wp.element.createElement(
-                            __WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Fragment"],
+                            __WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Fragment"],
                             null,
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextControl"], {
                                 type: "url",
-                                label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Player URL', 'jm-tc'),
+                                label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player URL', 'jm-tc'),
                                 value: cardPlayer,
-                                placeholder: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
+                                placeholder: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
                                 onChange: function onChange(value) {
                                     updatePostMeta({ cardPlayer: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["RangeControl"], {
-                                label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Player Width', 'jm-tc'),
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["RangeControl"], {
+                                label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player Width', 'jm-tc'),
                                 value: Number(cardPlayerWidth),
                                 min: 262,
                                 max: 1000,
@@ -950,8 +953,8 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayerWidth: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["RangeControl"], {
-                                label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Player Height', 'jm-tc'),
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["RangeControl"], {
+                                label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player Height', 'jm-tc'),
                                 value: Number(cardPlayerHeight),
                                 min: 196,
                                 max: 1000,
@@ -959,20 +962,20 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayerHeight: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextControl"], {
                                 type: "url",
-                                label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Player Stream URL', 'jm-tc'),
+                                label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player Stream URL', 'jm-tc'),
                                 value: cardPlayerStream,
-                                placeholder: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
+                                placeholder: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
                                 onChange: function onChange(value) {
                                     updatePostMeta({ cardPlayerStream: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextControl"], {
                                 type: "url",
-                                label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Player codec URL', 'jm-tc'),
+                                label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player codec URL', 'jm-tc'),
                                 value: cardPlayerCodec,
-                                placeholder: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
+                                placeholder: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Enter URL…', 'jm-tc'),
                                 onChange: function onChange(value) {
                                     updatePostMeta({ cardPlayerCodec: value || '' });
                                 }
@@ -980,16 +983,16 @@ var JmTc = function (_Component) {
                         )
                     ),
                     wp.element.createElement(
-                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelBody"],
-                        { title: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Image Settings", "jm-tc") },
+                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["PanelBody"],
+                        { title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Image Settings", "jm-tc") },
                         !cardImage && wp.element.createElement(
-                            __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Placeholder"],
+                            __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["Placeholder"],
                             {
-                                instructions: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Using featured image is highly recommended but you can override this here. Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc"),
+                                instructions: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Using featured image is highly recommended but you can override this here. Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc"),
                                 icon: "format-image",
                                 label: "Image"
                             },
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__wordpress_editor__["MediaUpload"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_editor__["MediaUpload"], {
                                 onSelect: function onSelect(media) {
                                     return updatePostMeta({
                                         cardImage: media.url,
@@ -1000,17 +1003,17 @@ var JmTc = function (_Component) {
                                 render: function render(_ref) {
                                     var open = _ref.open;
                                     return wp.element.createElement(
-                                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Button"],
+                                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["Button"],
                                         { isLarge: true, onClick: open },
-                                        Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Insert from Media Library", "jm-tc")
+                                        Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Insert from Media Library", "jm-tc")
                                     );
                                 }
                             })
                         ),
                         cardImage && wp.element.createElement(
-                            __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Placeholder"],
+                            __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["Placeholder"],
                             {
-                                instructions: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Change twitter Image source", "jm-tc"),
+                                instructions: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Change twitter Image source", "jm-tc"),
                                 icon: "format-image",
                                 label: "Image" },
                             wp.element.createElement(
@@ -1019,7 +1022,7 @@ var JmTc = function (_Component) {
                                 wp.element.createElement(
                                     "div",
                                     { className: "centered" },
-                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__wordpress_editor__["MediaUpload"], {
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_editor__["MediaUpload"], {
                                         onSelect: function onSelect(media) {
                                             return updatePostMeta({
                                                 cardImage: media.url,
@@ -1037,8 +1040,8 @@ var JmTc = function (_Component) {
                                 )
                             )
                         ),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextareaControl"], {
-                            label: Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_i18n__["__"])("Card image alt text", "jm-tc"),
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextareaControl"], {
+                            label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Card image alt text", "jm-tc"),
                             value: cardImageAlt,
                             onChange: function onChange(value) {
                                 updatePostMeta({ cardImageAlt: value || '' });
@@ -1051,20 +1054,20 @@ var JmTc = function (_Component) {
     }]);
 
     return JmTc;
-}(__WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Component"]);
+}(__WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Component"]);
 
 /**
  * This is how it's done in core
  */
 
 
-var applyWithSelect = Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_data__["withSelect"])(function (select) {
+var applyWithSelect = Object(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__["withSelect"])(function (select) {
     return {
         meta: select('core/editor').getEditedPostAttribute('meta')
     };
 });
 
-var applyWithDispatch = Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_data__["withDispatch"])(function (dispatch, _ref3) {
+var applyWithDispatch = Object(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__["withDispatch"])(function (dispatch, _ref3) {
     var meta = _ref3.meta;
 
     return {
@@ -1077,7 +1080,7 @@ var applyWithDispatch = Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_data__["w
 /**
  * Combine components
  */
-var render = Object(__WEBPACK_IMPORTED_MODULE_10__wordpress_compose__["compose"])(applyWithSelect, applyWithDispatch)(JmTc);
+var render = Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__["compose"])(applyWithSelect, applyWithDispatch)(JmTc);
 
 /**
  * Custom plugin register in GUT
@@ -2138,7 +2141,7 @@ $export($export.S, 'Object', { create: __webpack_require__(26) });
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Preview; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_i18n__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_i18n__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__wordpress_i18n__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__title__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cardType__ = __webpack_require__(44);
@@ -2254,7 +2257,7 @@ var Preview = function Preview(_ref) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Title; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_data__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_data__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_data___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__wordpress_data__);
 
 
