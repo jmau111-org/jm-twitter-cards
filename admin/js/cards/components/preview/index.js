@@ -34,6 +34,9 @@ export const Preview = ({props}) => (
                                     <div className="tcu-imageContainer tcu-imageAspect--1to1">
                                         <div className="tcu-imageWrapper"
                                              style={{backgroundImage: "url(" + Image(props) + ")"}}>
+                                            { 'player' === Type(props) && (
+                                            <div className="PlayerCard-playButton" style={{backgroundImage: "url(" + tcDataMetabox.pluginUrl + "img/player.svg)"}}></div>
+                                            ) }
                                             <img className="u-block"
                                                  alt={props.meta.cardImageAlt || ''}
                                                  src={Image(props)}/>

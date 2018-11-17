@@ -2212,6 +2212,7 @@ var Preview = function Preview(_ref) {
                                         "div",
                                         { className: "tcu-imageWrapper",
                                             style: { backgroundImage: "url(" + Object(__WEBPACK_IMPORTED_MODULE_3__image__["a" /* Image */])(props) + ")" } },
+                                        'player' === Object(__WEBPACK_IMPORTED_MODULE_2__cardType__["a" /* Type */])(props) && wp.element.createElement("div", { className: "PlayerCard-playButton", style: { backgroundImage: "url(" + tcDataMetabox.pluginUrl + "img/player.svg)" } }),
                                         wp.element.createElement("img", { className: "u-block",
                                             alt: props.meta.cardImageAlt || '',
                                             src: Object(__WEBPACK_IMPORTED_MODULE_3__image__["a" /* Image */])(props) })

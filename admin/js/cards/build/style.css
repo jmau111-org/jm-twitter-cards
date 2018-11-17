@@ -76,19 +76,19 @@
   .EmbeddedTweet .TwitterCard-container {
     border: 1px solid #E1E8ED;
     border-radius: 1em; }
-  .EmbeddedTweet .summary_large_image-contentContainer .TwitterCardsGrid-float--prev,
-  .EmbeddedTweet .player-contentContainer .TwitterCardsGrid-float--prev {
+  .EmbeddedTweet .summary_large_image-contentContainer .TwitterCardsGrid-float--prev {
     float: left; }
-  .EmbeddedTweet .summary-content {
+  .EmbeddedTweet .summary-content, .EmbeddedTweet .player-content {
     height: 85px; }
-  .EmbeddedTweet .summary_large_image-content,
-  .EmbeddedTweet .player-content {
+  .EmbeddedTweet .summary_large_image-content {
     padding-left: 1em;
     padding-bottom: 1em; }
-  .EmbeddedTweet .summary--small {
+  .EmbeddedTweet .summary--small, .EmbeddedTweet .player--small {
     margin-bottom: -5px; }
   .EmbeddedTweet .summary-contentContainer .TwitterCard-title,
-  .EmbeddedTweet .summary-contentContainer .TwitterCard-desc {
+  .EmbeddedTweet .summary-contentContainer .TwitterCard-desc,
+  .EmbeddedTweet .player-contentContainer .TwitterCard-title,
+  .EmbeddedTweet .player-contentContainer .TwitterCard-desc {
     text-align: left;
     padding-left: 32%; }
   .EmbeddedTweet .TwitterCard-desc {
@@ -116,18 +116,18 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; }
-  .EmbeddedTweet .summary-image .tcu-imageWrapper {
+  .EmbeddedTweet .summary-image .tcu-imageWrapper,
+  .EmbeddedTweet .player-image .tcu-imageWrapper {
     width: 30%;
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em; }
-  .EmbeddedTweet .summary_large_image-image .tcu-imageWrapper, .EmbeddedTweet .player-image .tcu-imageWrapper {
+  .EmbeddedTweet .summary_large_image-image .tcu-imageWrapper {
     position: relative;
     background-image: none !important;
     width: 100%; }
-  .EmbeddedTweet .summary-image img.u-block {
+  .EmbeddedTweet .summary-image img.u-block, .EmbeddedTweet .player-image img.u-block {
     display: none; }
-  .EmbeddedTweet .summary_large_image-image img.u-block,
-  .EmbeddedTweet .player-image img.u-block {
+  .EmbeddedTweet .summary_large_image-image img.u-block {
     display: block;
     margin: 0;
     width: 100%;
@@ -142,5 +142,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+  .EmbeddedTweet .PlayerCard-playButton {
+    z-index: 73;
+    cursor: pointer;
+    position: absolute;
+    width: 30px;
+    height: 36px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
 
 /*# sourceMappingURL=style.css.map*/

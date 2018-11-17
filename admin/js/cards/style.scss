@@ -114,27 +114,27 @@
     border-radius: 1em;
   }
 
-  .summary_large_image-contentContainer .TwitterCardsGrid-float--prev,
-  .player-contentContainer .TwitterCardsGrid-float--prev {
+  .summary_large_image-contentContainer .TwitterCardsGrid-float--prev {
     float: left;
   }
 
-  .summary-content {
+  .summary-content, .player-content {
     height: 85px;
   }
 
-  .summary_large_image-content,
-  .player-content {
+  .summary_large_image-content {
     padding-left: 1em;
     padding-bottom: 1em;
   }
 
-  .summary--small {
+  .summary--small, .player--small {
     margin-bottom: -5px;
   }
 
   .summary-contentContainer .TwitterCard-title,
-  .summary-contentContainer .TwitterCard-desc {
+  .summary-contentContainer .TwitterCard-desc,
+  .player-contentContainer .TwitterCard-title,
+  .player-contentContainer .TwitterCard-desc {
     text-align: left;
     padding-left: 32%;
   }
@@ -174,25 +174,25 @@
     background-repeat: no-repeat;
   }
 
-  .summary-image .tcu-imageWrapper {
+  .summary-image .tcu-imageWrapper,
+  .player-image .tcu-imageWrapper {
     width: 30%;
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
   }
 
-  .summary_large_image-image .tcu-imageWrapper, .player-image .tcu-imageWrapper {
+  .summary_large_image-image .tcu-imageWrapper {
     position: relative;
     background-image: none !important;
     width: 100%;
 
   }
 
-  .summary-image img.u-block {
+  .summary-image img.u-block, .player-image img.u-block {
     display: none;
   }
 
-  .summary_large_image-image img.u-block,
-  .player-image img.u-block {
+  .summary_large_image-image img.u-block {
     display: block;
     margin: 0;
     width: 100%;
@@ -209,5 +209,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .PlayerCard-playButton {
+    z-index: 73;
+    cursor: pointer;
+    position: absolute;
+    width: 30px;
+    height: 36px;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
   }
 }
