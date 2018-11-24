@@ -39,6 +39,8 @@ class Admin {
 	protected $settings_api;
 	protected $sub_pages;
 
+	protected $video_files;
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -48,14 +50,24 @@ class Admin {
 	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-		$this->settings_api = new Settings();
-		$this->sub_pages    = [
-			'jm_tc_import_export' => __( 'Import' ) . ' / ' . __( 'Export' ),
-			'jm_tc_about'         => __( 'About' ),
-		];
+
 		$this->plugin_name  = $plugin_name;
 		$this->version      = $version;
+		$this->settings_api = new Settings();
 
+		$this->sub_pages = [
+			'jm_tc_import_export' => __( 'Import' ) . ' / ' . __( 'Export' ),
+			'jm_tc_about'         => __( 'About' ),
+			'jm_tc_tutorials'     => __( 'Tutorials' ),
+		];
+
+		$this->video_files = [
+			'302609444' => __( 'Setup for the first time', 'jm-tc' ),
+			'302609402' => __( 'Setup metabox with custom post types', 'jm-tc' ),
+			'302609437' => __( 'Dealing with images', 'jm-tc' ),
+			'302609425' => __( 'Set first image found in post content as twitter image', 'jm-tc' ),
+			'302609429' => __( 'Upgrading to Gutenberg', 'jm-tc' ),
+		];
 	}
 
 	/**
@@ -219,7 +231,15 @@ class Admin {
 	public function plugin_page() {
 		echo '<div class="wrap tc">';
 		echo '<h1>' . __( 'JM Twitter Cards', 'jm-tc' ) . '</h1>';
-		echo '<div class="brandnew"><p>' . __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use this custom sidebar. Just click on the Twitter Icon on your edit screen (top right corner). All data are saved as meta (like before).', 'jm-tc' ) . '</p></div>';
+
+		if ( Utilities::gutenberg_exists() ) {
+			echo '<div class="brandnew">';
+			echo '<p class="description">';
+			echo __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use this custom sidebar. Just click on the Twitter Icon on your edit screen (top right corner). All data are saved as meta (like before).', 'jm-tc' );
+			echo '</p>';
+			echo '</div>';
+		}
+
 		$this->settings_api->show_forms();
 		echo '</div>';
 	}

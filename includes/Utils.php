@@ -156,6 +156,7 @@ class Utils {
 	 * @param $array
 	 * @param $key
 	 *
+	 * @author Julien Maury
 	 * @return string
 	 */
 	public static function maybe_get_opt( $array, $key ) {
@@ -165,5 +166,24 @@ class Utils {
 		}
 
 		return array_key_exists( $key, $array ) ? $array[ $key ] : '';
+	}
+
+	/**
+	 * @param $id
+	 * @param $args
+	 *
+	 * @author Julien Maury
+	 * @return false|string
+	 */
+	public static function embed( $id, $args = [] ) {
+
+		$merged = wp_parse_args(
+			$args,
+			[
+				'witdh' => 400,
+			]
+		);
+
+		return wp_oembed_get( esc_url( sprintf( 'https://vimeo.com/%s', $id ) ), $merged );
 	}
 }

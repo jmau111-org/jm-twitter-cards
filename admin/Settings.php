@@ -478,6 +478,7 @@ class Settings {
 	 * This function displays every sections in a different form
 	 */
 	public function show_forms() {
+		settings_errors();
 		?>
         <div class="metabox-holder">
             <div id="tabs" class="tabs">
