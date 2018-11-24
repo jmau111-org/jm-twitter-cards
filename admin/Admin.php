@@ -233,12 +233,10 @@ class Admin {
 		echo '<h1>' . __( 'JM Twitter Cards', 'jm-tc' ) . '</h1>';
 
 		if ( Utilities::gutenberg_exists() ) {
-			echo '<div class="brandnew">';
-			echo '<p class="description">';
-			echo __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use this custom sidebar. Just click on the Twitter Icon on your edit screen (top right corner). All data are saved as meta (like before).', 'jm-tc' );
-			echo '</p>';
-			echo '</div>';
+			echo Utilities::brand_new( __( '10.0.0 : There is now support for <a href="https://wordpress.org/gutenberg/">Gutenberg</a>, please use this custom sidebar. Just click on the Twitter Icon on your edit screen (top right corner). All data are saved as meta (like before).', 'jm-tc' ) );
 		}
+
+		echo Utilities::brand_new( sprintf( __( '10.0.0 : Please see the new <a href="%s">Tutorial page</a> which can help you.', 'jm-tc' ), add_query_arg( 'page', 'jm_tc_tutorials', admin_url( 'admin.php' ) ) ) );
 
 		$this->settings_api->show_forms();
 		echo '</div>';

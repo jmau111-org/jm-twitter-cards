@@ -186,4 +186,19 @@ class Utils {
 
 		return wp_oembed_get( esc_url( sprintf( 'https://vimeo.com/%s', $id ) ), $merged );
 	}
+
+	/**
+	 * @param $message
+	 * @author Julien Maury
+	 * @return string
+	 */
+	public static function brand_new( $message ) {
+		$brand_new = '<div class="brandnew">';
+		$brand_new .= '<p class="description">';
+		$brand_new .= sprintf( '%s', wp_kses_post( $message ) );
+		$brand_new .= '</p>';
+		$brand_new .= '</div>';
+
+		return $brand_new;
+	}
 }
