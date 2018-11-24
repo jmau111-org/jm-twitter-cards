@@ -15,95 +15,64 @@ msgstr ""
 msgid "Preview is not provided for application card"
 msgstr ""
 
-#: admin/js/cards/index.js:100
-msgid ""
-"By default this will be automatically generated or retrieved from a SEO "
-"plugin such as Yoast or All in One SEO but you can override this here"
-msgstr ""
-
-#: admin/js/cards/index.js:108
-msgid "Player Settings"
-msgstr ""
-
-#: admin/js/cards/index.js:112
+#: admin/js/cards/index.js:110
 msgid "Player URL"
 msgstr ""
 
-#: admin/js/cards/index.js:120
+#: admin/js/cards/index.js:118
 msgid "Player Width"
 msgstr ""
 
-#: admin/js/cards/index.js:129
+#: admin/js/cards/index.js:127
 msgid "Player Height"
 msgstr ""
 
-#: admin/js/cards/index.js:139
+#: admin/js/cards/index.js:137
 msgid "Player Stream URL"
 msgstr ""
 
-#: admin/js/cards/index.js:148
+#: admin/js/cards/index.js:146
 msgid "Player codec URL"
 msgstr ""
 
-#: admin/js/cards/index.js:150
+#: admin/js/cards/index.js:148
 msgid "Enter URL…"
 msgstr ""
 
-#: admin/js/cards/index.js:159
-msgid "Image Settings"
-msgstr ""
-
-#: admin/js/cards/index.js:162
-msgid ""
-"Using featured image is highly recommended but you can override this here. "
-"Upload image here or insert from media library to set another source for "
-"twitter image than featured image"
-msgstr ""
-
-#: admin/js/cards/index.js:174
-msgid "Insert from Media Library"
-msgstr ""
-
-#: admin/js/cards/index.js:184
-msgid "Change twitter Image source"
-msgstr ""
-
-#: admin/js/cards/index.js:207
-msgid "Card image alt text"
-msgstr ""
-
-#: admin/js/cards/index.js:74
-msgid "Set your Twitter Cards"
-msgstr ""
-
-#: admin/js/cards/index.js:79
+#: admin/js/cards/index.js:165
 msgid "Twitter Cards"
 msgstr ""
 
-#: admin/js/cards/index.js:83
-msgid "General Settings"
+#: admin/js/cards/index.js:75
+msgid "Click to set your Twitter Cards"
 msgstr ""
 
-#: admin/js/cards/index.js:86
+#: admin/js/cards/index.js:85
 msgid "Card Type"
 msgstr ""
 
-#: admin/js/cards/index.js:89
+#: admin/js/cards/index.js:88
 msgid "Summary"
 msgstr ""
 
-#: admin/js/cards/index.js:90
+#: admin/js/cards/index.js:89
 msgid "Summary Large Image"
 msgstr ""
 
-#: admin/js/cards/index.js:91
+#: admin/js/cards/index.js:90
 msgid "Player"
 msgstr ""
 
-#: admin/js/cards/index.js:92
+#: admin/js/cards/index.js:91
 msgid "Application"
 msgstr ""
 
-#: admin/js/cards/index.js:99
+#: admin/js/cards/index.js:98
 msgid "Card description"
+msgstr ""
+
+#: admin/js/cards/index.js:99
+msgid ""
+"By default this will be automatically generated or retrieved from a SEO "
+"plugin such as Yoast or All in One SEO but you can override this here"
 msgstr ""

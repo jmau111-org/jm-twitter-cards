@@ -31,18 +31,15 @@ class Gutenberg {
 	 */
 	public function get_jed_locale_data( $domain ) {
 		$translations = get_translations_for_domain( $domain );
-
-		$locale = [
+		$locale       = [
 			'' => [
 				'domain' => $domain,
 				'lang'   => is_admin() ? get_user_locale() : get_locale(),
 			],
 		];
-
 		if ( ! empty( $translations->headers['Plural-Forms'] ) ) {
 			$locale['']['plural_forms'] = $translations->headers['Plural-Forms'];
 		}
-
 		foreach ( $translations->entries as $msgid => $entry ) {
 			$locale[ $msgid ] = $entry->translations;
 		}
