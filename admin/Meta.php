@@ -32,13 +32,21 @@ class Meta {
 		$this->version     = $version;
 	}
 
+	protected function add_critical_settings( $cpt ) {
+		$cpt_object = get_post_type_object( $cpt );
+		add_post_type_support( $cpt, 'custom-fields' );// needed
+		$cpt_object->show_in_rest = true; // we only fetch public cpt in Utils::get_post_types()
+	}
+
 	/**
-	 * here there is no concerne about privacy links
-	 * these are public meta displayed in <head>
+	 * here there is no concern about privacy links
+	 * these are public metadata displayed in <head>
 	 */
 	public function gutenberg_register_meta() {
 
 		foreach ( Utils::get_post_types() as $cpt ) {
+
+			$this->add_critical_settings( $cpt );
 
 			register_meta(
 				'post', 'twitterCardType', [

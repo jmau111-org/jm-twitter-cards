@@ -809,22 +809,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__wordpress_data__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__wordpress_data___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_blocks__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_blocks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__wordpress_blocks__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_editor__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__wordpress_editor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_components__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_element__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__wordpress_element__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_editor__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__wordpress_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__wordpress_editor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_components__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__wordpress_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_element__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__wordpress_element___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__wordpress_element__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_editPost__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__wordpress_editPost___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__wordpress_editPost__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__wordpress_compose__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__wordpress_compose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__wordpress_i18n___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__wordpress_plugins__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__wordpress_plugins___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__wordpress_plugins__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__wordpress_plugins__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__wordpress_plugins___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__wordpress_plugins__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__wordpress_hooks__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__wordpress_hooks___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__wordpress_hooks__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_cardType__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_preview__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__style_scss__ = __webpack_require__(104);
@@ -836,6 +836,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /**
+ * TODO: not working for now with modal, probably due to plugin sidebar and render compose
  * WordPress dependencies
  */
 
@@ -864,16 +865,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var JmTc = function (_Component) {
-    __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits___default()(JmTc, _Component);
+var JM_Twitter_Cards = function (_Component) {
+    __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits___default()(JM_Twitter_Cards, _Component);
 
-    function JmTc() {
-        __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default()(this, JmTc);
+    function JM_Twitter_Cards() {
+        __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default()(this, JM_Twitter_Cards);
 
-        return __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_possibleConstructorReturn___default()(this, (JmTc.__proto__ || __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_get_prototype_of___default()(JmTc)).apply(this, arguments));
+        return __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_possibleConstructorReturn___default()(this, (JM_Twitter_Cards.__proto__ || __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_get_prototype_of___default()(JM_Twitter_Cards)).apply(this, arguments));
     }
 
-    __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_createClass___default()(JmTc, [{
+    __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_createClass___default()(JM_Twitter_Cards, [{
         key: "render",
         value: function render() {
             var _this2 = this;
@@ -893,24 +894,24 @@ var JmTc = function (_Component) {
                 updatePostMeta = _props.updatePostMeta;
 
 
-            var TC_Modal = Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__["withState"])({
+            var TCModal = Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__["withState"])({
                 isOpen: false
             })(function (_ref) {
                 var isOpen = _ref.isOpen,
                     setState = _ref.setState;
                 return wp.element.createElement(
-                    __WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Fragment"],
+                    __WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Fragment"],
                     null,
                     wp.element.createElement(
-                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["Button"],
+                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Button"],
                         { isDefault: true,
                             onClick: function onClick() {
                                 return setState({ isOpen: true });
                             } },
-                        Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Click to set your Twitter Cards', 'jm-tc')
+                        Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Set and preview your Twitter Cards', 'jm-tc')
                     ),
                     isOpen ? wp.element.createElement(
-                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["Modal"],
+                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Modal"],
                         {
                             title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Twitter Cards', 'jm-tc'),
                             closeButtonLabel: 'close',
@@ -918,7 +919,7 @@ var JmTc = function (_Component) {
                                 return setState({ isOpen: false });
                             } },
                         wp.element.createElement(__WEBPACK_IMPORTED_MODULE_16__components_preview__["a" /* Preview */], { props: _this2.props }),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["SelectControl"], {
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["SelectControl"], {
                             label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Card Type', 'jm-tc'),
                             value: Object(__WEBPACK_IMPORTED_MODULE_15__components_cardType__["a" /* Type */])(_this2.props),
                             options: [{ label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary', 'jm-tc'), value: 'summary' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary Large Image', 'jm-tc'), value: 'summary_large_image' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player', 'jm-tc'), value: 'player' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Application', 'jm-tc'), value: 'app' }],
@@ -926,7 +927,7 @@ var JmTc = function (_Component) {
                                 updatePostMeta({ twitterCardType: value || '' });
                             }
                         }),
-                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextareaControl"], {
+                        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextareaControl"], {
                             label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Card description', 'jm-tc'),
                             help: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('By default this will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here', 'jm-tc'),
                             value: cardDesc,
@@ -935,9 +936,9 @@ var JmTc = function (_Component) {
                             }
                         }),
                         'player' === twitterCardType && wp.element.createElement(
-                            __WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Fragment"],
+                            __WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Fragment"],
                             null,
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextControl"], {
                                 type: "url",
                                 label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player URL', 'jm-tc'),
                                 value: cardPlayer,
@@ -946,7 +947,7 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayer: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["RangeControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["RangeControl"], {
                                 label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player Width', 'jm-tc'),
                                 value: Number(cardPlayerWidth),
                                 min: 262,
@@ -955,7 +956,7 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayerWidth: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["RangeControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["RangeControl"], {
                                 label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player Height', 'jm-tc'),
                                 value: Number(cardPlayerHeight),
                                 min: 196,
@@ -964,7 +965,7 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayerHeight: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextControl"], {
                                 type: "url",
                                 label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player Stream URL', 'jm-tc'),
                                 value: cardPlayerStream,
@@ -973,7 +974,7 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayerStream: value || '' });
                                 }
                             }),
-                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_9__wordpress_components__["TextControl"], {
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["TextControl"], {
                                 type: "url",
                                 label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player codec URL', 'jm-tc'),
                                 value: cardPlayerCodec,
@@ -982,27 +983,93 @@ var JmTc = function (_Component) {
                                     updatePostMeta({ cardPlayerCodec: value || '' });
                                 }
                             })
+                        ),
+                        wp.element.createElement(
+                            __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Button"],
+                            { isDefault: true, onClick: function onClick() {
+                                    return setState({ isOpen: false });
+                                } },
+                            Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Close', 'jm-tc')
                         )
                     ) : null
                 );
             });
 
             return wp.element.createElement(
-                __WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Fragment"],
+                __WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Fragment"],
                 null,
                 wp.element.createElement(
-                    __WEBPACK_IMPORTED_MODULE_13__wordpress_editPost__["PluginSidebar"],
+                    __WEBPACK_IMPORTED_MODULE_10__wordpress_editPost__["PluginSidebar"],
                     {
                         icon: "twitter",
                         name: "jm-tc-sidebar",
-                        title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Twitter Cards', 'jm-tc') },
+                        title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Twitter Cards settings', 'jm-tc') },
                     wp.element.createElement(
-                        __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["PanelBody"],
-                        null,
+                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelBody"],
+                        { title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Main settings & preview', 'jm-tc') },
                         wp.element.createElement(
-                            __WEBPACK_IMPORTED_MODULE_9__wordpress_components__["PanelRow"],
+                            __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelRow"],
                             null,
-                            wp.element.createElement(TC_Modal, null)
+                            wp.element.createElement(TCModal, null)
+                        )
+                    ),
+                    wp.element.createElement(
+                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelBody"],
+                        { title: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Image Settings", "jm-tc") },
+                        !cardImage && wp.element.createElement(
+                            __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Placeholder"],
+                            {
+                                instructions: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Using featured image is highly recommended but you can override this here. Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc"),
+                                icon: "format-image",
+                                label: "Image"
+                            },
+                            wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__wordpress_editor__["MediaUpload"], {
+                                onSelect: function onSelect(media) {
+                                    return updatePostMeta({
+                                        cardImage: media.url,
+                                        cardImageID: media.id
+                                    });
+                                },
+                                type: "image",
+                                render: function render(_ref2) {
+                                    var open = _ref2.open;
+                                    return wp.element.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Button"],
+                                        { isLarge: true, onClick: open },
+                                        Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Insert from Media Library", "jm-tc")
+                                    );
+                                }
+                            })
+                        ),
+                        cardImage && wp.element.createElement(
+                            __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Placeholder"],
+                            {
+                                instructions: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])("Change twitter Image source", "jm-tc"),
+                                icon: "format-image",
+                                label: "Image" },
+                            wp.element.createElement(
+                                "div",
+                                { className: "thumbnail" },
+                                wp.element.createElement(
+                                    "div",
+                                    { className: "centered" },
+                                    wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__wordpress_editor__["MediaUpload"], {
+                                        onSelect: function onSelect(media) {
+                                            return updatePostMeta({
+                                                cardImage: media.url,
+                                                cardImageID: media.id
+                                            });
+                                        },
+                                        type: "image",
+                                        value: cardImageID,
+                                        render: function render(_ref3) {
+                                            var open = _ref3.open;
+                                            return wp.element.createElement("img", { src: cardImage, alt: cardImageAlt || '',
+                                                className: "tc-image-overview", onClick: open });
+                                        }
+                                    })
+                                )
+                            )
                         )
                     )
                 )
@@ -1010,8 +1077,8 @@ var JmTc = function (_Component) {
         }
     }]);
 
-    return JmTc;
-}(__WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Component"]);
+    return JM_Twitter_Cards;
+}(__WEBPACK_IMPORTED_MODULE_9__wordpress_element__["Component"]);
 
 /**
  * This is how it's done in core
@@ -1024,8 +1091,8 @@ var applyWithSelect = Object(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__["with
     };
 });
 
-var applyWithDispatch = Object(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__["withDispatch"])(function (dispatch, _ref2) {
-    var meta = _ref2.meta;
+var applyWithDispatch = Object(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__["withDispatch"])(function (dispatch, _ref4) {
+    var meta = _ref4.meta;
 
     return {
         updatePostMeta: function updatePostMeta(Meta) {
@@ -1037,12 +1104,12 @@ var applyWithDispatch = Object(__WEBPACK_IMPORTED_MODULE_6__wordpress_data__["wi
 /**
  * Combine components
  */
-var render = Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__["compose"])(applyWithSelect, applyWithDispatch)(JmTc);
+var render = Object(__WEBPACK_IMPORTED_MODULE_11__wordpress_compose__["compose"])(applyWithSelect, applyWithDispatch)(JM_Twitter_Cards);
 
 /**
  * Custom plugin register in GUT
  */
-Object(__WEBPACK_IMPORTED_MODULE_14__wordpress_plugins__["registerPlugin"])('jm-tc', {
+Object(__WEBPACK_IMPORTED_MODULE_13__wordpress_plugins__["registerPlugin"])('jm-twitter-cards', {
     render: render
 });
 
@@ -2054,25 +2121,25 @@ $export($export.S, 'Object', { create: __webpack_require__(26) });
 /* 94 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["blocks"]; }());
+(function() { module.exports = this["wp"]["editor"]; }());
 
 /***/ }),
 /* 95 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["editor"]; }());
+(function() { module.exports = this["wp"]["components"]; }());
 
 /***/ }),
 /* 96 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["components"]; }());
+(function() { module.exports = this["wp"]["element"]; }());
 
 /***/ }),
 /* 97 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["element"]; }());
+(function() { module.exports = this["wp"]["editPost"]; }());
 
 /***/ }),
 /* 98 */
@@ -2084,13 +2151,13 @@ $export($export.S, 'Object', { create: __webpack_require__(26) });
 /* 99 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["editPost"]; }());
+(function() { module.exports = this["wp"]["plugins"]; }());
 
 /***/ }),
 /* 100 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["plugins"]; }());
+(function() { module.exports = this["wp"]["hooks"]; }());
 
 /***/ }),
 /* 101 */

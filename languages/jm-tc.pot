@@ -39,39 +39,70 @@ msgstr ""
 msgid "Enter URL…"
 msgstr ""
 
-#: admin/js/cards/index.js:165
+#: admin/js/cards/index.js:157
+msgid "Close"
+msgstr ""
+
+#: admin/js/cards/index.js:169
+msgid "Twitter Cards settings"
+msgstr ""
+
+#: admin/js/cards/index.js:170
+msgid "Main settings & preview"
+msgstr ""
+
+#: admin/js/cards/index.js:175
+msgid "Image Settings"
+msgstr ""
+
+#: admin/js/cards/index.js:178
+msgid ""
+"Using featured image is highly recommended but you can override this here. "
+"Upload image here or insert from media library to set another source for "
+"twitter image than featured image"
+msgstr ""
+
+#: admin/js/cards/index.js:190
+msgid "Insert from Media Library"
+msgstr ""
+
+#: admin/js/cards/index.js:200
+msgid "Change twitter Image source"
+msgstr ""
+
+#: admin/js/cards/index.js:73
+msgid "Set and preview your Twitter Cards"
+msgstr ""
+
+#: admin/js/cards/index.js:76
 msgid "Twitter Cards"
 msgstr ""
 
-#: admin/js/cards/index.js:75
-msgid "Click to set your Twitter Cards"
-msgstr ""
-
-#: admin/js/cards/index.js:85
+#: admin/js/cards/index.js:83
 msgid "Card Type"
 msgstr ""
 
-#: admin/js/cards/index.js:88
+#: admin/js/cards/index.js:86
 msgid "Summary"
 msgstr ""
 
-#: admin/js/cards/index.js:89
+#: admin/js/cards/index.js:87
 msgid "Summary Large Image"
 msgstr ""
 
-#: admin/js/cards/index.js:90
+#: admin/js/cards/index.js:88
 msgid "Player"
 msgstr ""
 
-#: admin/js/cards/index.js:91
+#: admin/js/cards/index.js:89
 msgid "Application"
 msgstr ""
 
-#: admin/js/cards/index.js:98
+#: admin/js/cards/index.js:97
 msgid "Card description"
 msgstr ""
 
-#: admin/js/cards/index.js:99
+#: admin/js/cards/index.js:98
 msgid ""
 "By default this will be automatically generated or retrieved from a SEO "
 "plugin such as Yoast or All in One SEO but you can override this here"

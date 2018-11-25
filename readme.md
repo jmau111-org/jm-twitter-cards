@@ -29,7 +29,7 @@ npm i && npm run build
 ### 10.0.0
 * November 2018
 * Prepare for Gutenberg
-* There won't be metabox in Gutenberg context, I made a custom sidebar.
+* There won't be metabox in Gutenberg context, I made a custom sidebar panel.
 * If you enable Gutenberg then you will have a custom block meta \O/
 * Reorganize deeply the plugin structure
 * fix preview props to [tomdxw](https://github.com/tomdxw)

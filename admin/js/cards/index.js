@@ -1,4 +1,5 @@
 /**
+ * TODO: not working for now with modal, probably due to plugin sidebar and render compose
  * WordPress dependencies
  */
 import {
@@ -6,17 +7,14 @@ import {
     withDispatch,
 } from '@wordpress/data';
 
-import {registerBlockType} from "@wordpress/blocks";
-
 import {BlockControls, InspectorControls, MediaUpload, mediaUpload} from "@wordpress/editor";
 
 import {
     Button,
     Modal,
-    Panel,
-    PanelRow,
     IconButton,
     PanelBody,
+    PanelRow,
     Placeholder,
     RangeControl,
     SelectControl,
@@ -30,15 +28,15 @@ import {
     Component
 } from "@wordpress/element";
 
+import {PluginSidebar} from '@wordpress/editPost';
+
 import {compose, withState} from '@wordpress/compose';
 
 import {__} from "@wordpress/i18n";
 
-import {
-    PluginSidebar
-} from '@wordpress/editPost';
-
 import {registerPlugin} from '@wordpress/plugins';
+
+import {addFilter} from '@wordpress/hooks';
 
 /**
  * Custom dependencies
@@ -48,7 +46,7 @@ import {Preview} from "./components/preview";
 
 import "./style.scss";
 
-class JmTc extends Component {
+class JM_Twitter_Cards extends Component {
 
     render() {
         const {
@@ -67,12 +65,12 @@ class JmTc extends Component {
             updatePostMeta,
         } = this.props;
 
-        const TC_Modal = withState({
+        const TCModal = withState({
             isOpen: false,
         })(({isOpen, setState}) => (
             <Fragment>
                 <Button isDefault
-                        onClick={() => setState({isOpen: true})}>{__('Click to set your Twitter Cards', 'jm-tc')}</Button>
+                        onClick={() => setState({isOpen: true})}>{__('Set and preview your Twitter Cards', 'jm-tc')}</Button>
                 {isOpen ?
                     <Modal
                         title={__('Twitter Cards', 'jm-tc')}
@@ -94,6 +92,7 @@ class JmTc extends Component {
                                 updatePostMeta({twitterCardType: value || ''});
                             }}
                         />
+
                         <TextareaControl
                             label={__('Card description', 'jm-tc')}
                             help={__('By default this will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here', 'jm-tc')}
@@ -102,6 +101,7 @@ class JmTc extends Component {
                                 updatePostMeta({cardDesc: value || ''});
                             }}
                         />
+
                         {'player' === twitterCardType && (
                             <Fragment>
 
@@ -152,6 +152,10 @@ class JmTc extends Component {
                                 />
                             </Fragment>
                         )}
+
+                        <Button isDefault onClick={() => setState({isOpen: false})}>
+                            {__('Close', 'jm-tc')}
+                        </Button>
                     </Modal>
                     : null}
             </Fragment>
@@ -162,18 +166,64 @@ class JmTc extends Component {
                 <PluginSidebar
                     icon="twitter"
                     name="jm-tc-sidebar"
-                    title={__('Twitter Cards', 'jm-tc')}>
-                    <PanelBody>
+                    title={__('Twitter Cards settings', 'jm-tc')}>
+                    <PanelBody title={__('Main settings & preview', 'jm-tc')}>
                         <PanelRow>
-                            <TC_Modal/>
+                            <TCModal/>
                         </PanelRow>
+                    </PanelBody>
+                    <PanelBody title={__("Image Settings", "jm-tc")}>
+                        {!cardImage && (
+                            <Placeholder
+                                instructions={__("Using featured image is highly recommended but you can override this here. Upload image here or insert from media library to set another source for twitter image than featured image", "jm-tc")}
+                                icon="format-image"
+                                label={"Image"}
+                            >
+                                <MediaUpload
+                                    onSelect={(media) => updatePostMeta({
+                                        cardImage: media.url,
+                                        cardImageID: media.id
+                                    })}
+                                    type="image"
+                                    render={({open}) => (
+                                        <Button isLarge onClick={open}>
+                                            {__(
+                                                "Insert from Media Library",
+                                                "jm-tc"
+                                            )}
+                                        </Button>
+                                    )}
+                                />
+                            </Placeholder>)}
+                        {cardImage && (
+                            <Placeholder
+                                instructions={__("Change twitter Image source", "jm-tc")}
+                                icon="format-image"
+                                label={"Image"}>
+                                <div className="thumbnail">
+                                    <div className="centered">
+                                        <MediaUpload
+                                            onSelect={(media) => updatePostMeta({
+                                                cardImage: media.url,
+                                                cardImageID: media.id
+                                            })}
+                                            type="image"
+                                            value={cardImageID}
+                                            render={({open}) => (
+                                                <img src={cardImage} alt={cardImageAlt || ''}
+                                                     className="tc-image-overview" onClick={open}/>
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                            </Placeholder>
+                        )}
                     </PanelBody>
                 </PluginSidebar>
             </Fragment>
         );
     }
 }
-
 
 /**
  * This is how it's done in core
@@ -198,11 +248,11 @@ const applyWithDispatch = withDispatch((dispatch, {meta}) => {
 const render = compose(
     applyWithSelect,
     applyWithDispatch
-)(JmTc);
+)(JM_Twitter_Cards);
 
 /**
  * Custom plugin register in GUT
  */
-registerPlugin('jm-tc', {
+registerPlugin('jm-twitter-cards', {
     render,
 });
