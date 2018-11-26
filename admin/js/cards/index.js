@@ -48,6 +48,18 @@ import "./style.scss";
 
 class JM_Twitter_Cards extends Component {
 
+    constructor() {
+        super(...arguments);
+        this.state = {
+            isOpen: false,
+        };
+        this.updateQuery = this.updateQuery.bind(this);
+    }
+
+    updateQuery(event) {
+        this.setState({isOpen: event.target.value});
+    }
+
     render() {
         const {
             meta: {
@@ -65,101 +77,7 @@ class JM_Twitter_Cards extends Component {
             updatePostMeta,
         } = this.props;
 
-        const TCModal = withState({
-            isOpen: false,
-        })(({isOpen, setState}) => (
-            <Fragment>
-                <Button isDefault
-                        onClick={() => setState({isOpen: true})}>{__('Set and preview your Twitter Cards', 'jm-tc')}</Button>
-                {isOpen ?
-                    <Modal
-                        title={__('Twitter Cards', 'jm-tc')}
-                        closeButtonLabel={'close'}
-                        onRequestClose={() => setState({isOpen: false})}>
-
-                        <Preview props={this.props}/>
-
-                        <SelectControl
-                            label={__('Card Type', 'jm-tc')}
-                            value={Type(this.props)}
-                            options={[
-                                {label: __('Summary', 'jm-tc'), value: 'summary'},
-                                {label: __('Summary Large Image', 'jm-tc'), value: 'summary_large_image'},
-                                {label: __('Player', 'jm-tc'), value: 'player'},
-                                {label: __('Application', 'jm-tc'), value: 'app'},
-                            ]}
-                            onChange={(value) => {
-                                updatePostMeta({twitterCardType: value || ''});
-                            }}
-                        />
-
-                        <TextareaControl
-                            label={__('Card description', 'jm-tc')}
-                            help={__('By default this will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here', 'jm-tc')}
-                            value={cardDesc}
-                            onChange={(value) => {
-                                updatePostMeta({cardDesc: value || ''});
-                            }}
-                        />
-
-                        {'player' === twitterCardType && (
-                            <Fragment>
-
-                                <TextControl
-                                    type="url"
-                                    label={__('Player URL', 'jm-tc')}
-                                    value={cardPlayer}
-                                    placeholder={__('Enter URL…', 'jm-tc')}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardPlayer: value || ''});
-                                    }}
-                                />
-                                <RangeControl
-                                    label={__('Player Width', 'jm-tc')}
-                                    value={Number(cardPlayerWidth)}
-                                    min={262}
-                                    max={1000}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardPlayerWidth: value || ''});
-                                    }}
-                                />
-                                <RangeControl
-                                    label={__('Player Height', 'jm-tc')}
-                                    value={Number(cardPlayerHeight)}
-                                    min={196}
-                                    max={1000}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardPlayerHeight: value || ''});
-                                    }}
-                                />
-                                <TextControl
-                                    type="url"
-                                    label={__('Player Stream URL', 'jm-tc')}
-                                    value={cardPlayerStream}
-                                    placeholder={__('Enter URL…', 'jm-tc')}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardPlayerStream: value || ''});
-                                    }}
-                                />
-                                <TextControl
-                                    type="url"
-                                    label={__('Player codec URL', 'jm-tc')}
-                                    value={cardPlayerCodec}
-                                    placeholder={__('Enter URL…', 'jm-tc')}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardPlayerCodec: value || ''});
-                                    }}
-                                />
-                            </Fragment>
-                        )}
-
-                        <Button isDefault onClick={() => setState({isOpen: false})}>
-                            {__('Close', 'jm-tc')}
-                        </Button>
-                    </Modal>
-                    : null}
-            </Fragment>
-        ));
+        const {isOpen} = this.state;
 
         return (
             <Fragment>
@@ -169,7 +87,95 @@ class JM_Twitter_Cards extends Component {
                     title={__('Twitter Cards settings', 'jm-tc')}>
                     <PanelBody title={__('Main settings & preview', 'jm-tc')}>
                         <PanelRow>
-                            <TCModal/>
+                            <Button isDefault
+                                    onClick={() => this.setState({isOpen: true})}>{__('Set and preview your Twitter Cards', 'jm-tc')}</Button>
+                            {isOpen ?
+                                <Modal
+                                    title={__('Twitter Cards', 'jm-tc')}
+                                    closeButtonLabel={'close'}
+                                    onRequestClose={() => this.setState({isOpen: false})}>
+
+                                    <Preview props={this.props}/>
+
+                                    <SelectControl
+                                        label={__('Card Type', 'jm-tc')}
+                                        value={Type(this.props)}
+                                        options={[
+                                            {label: __('Summary', 'jm-tc'), value: 'summary'},
+                                            {label: __('Summary Large Image', 'jm-tc'), value: 'summary_large_image'},
+                                            {label: __('Player', 'jm-tc'), value: 'player'},
+                                            {label: __('Application', 'jm-tc'), value: 'app'},
+                                        ]}
+                                        onChange={(value) => {
+                                            updatePostMeta({twitterCardType: value || ''});
+                                        }}
+                                    />
+
+                                    <TextareaControl
+                                        label={__('Card description', 'jm-tc')}
+                                        help={__('By default this will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here', 'jm-tc')}
+                                        value={cardDesc}
+                                        onChange={(value) => {
+                                            updatePostMeta({cardDesc: value || ''});
+                                        }}
+                                    />
+
+                                    {'player' === twitterCardType && (
+                                        <Fragment>
+
+                                            <TextControl
+                                                type="url"
+                                                label={__('Player URL', 'jm-tc')}
+                                                value={cardPlayer}
+                                                placeholder={__('Enter URL…', 'jm-tc')}
+                                                onChange={(value) => {
+                                                    updatePostMeta({cardPlayer: value || ''});
+                                                }}
+                                            />
+                                            <RangeControl
+                                                label={__('Player Width', 'jm-tc')}
+                                                value={Number(cardPlayerWidth)}
+                                                min={262}
+                                                max={1000}
+                                                onChange={(value) => {
+                                                    updatePostMeta({cardPlayerWidth: value || ''});
+                                                }}
+                                            />
+                                            <RangeControl
+                                                label={__('Player Height', 'jm-tc')}
+                                                value={Number(cardPlayerHeight)}
+                                                min={196}
+                                                max={1000}
+                                                onChange={(value) => {
+                                                    updatePostMeta({cardPlayerHeight: value || ''});
+                                                }}
+                                            />
+                                            <TextControl
+                                                type="url"
+                                                label={__('Player Stream URL', 'jm-tc')}
+                                                value={cardPlayerStream}
+                                                placeholder={__('Enter URL…', 'jm-tc')}
+                                                onChange={(value) => {
+                                                    updatePostMeta({cardPlayerStream: value || ''});
+                                                }}
+                                            />
+                                            <TextControl
+                                                type="url"
+                                                label={__('Player codec URL', 'jm-tc')}
+                                                value={cardPlayerCodec}
+                                                placeholder={__('Enter URL…', 'jm-tc')}
+                                                onChange={(value) => {
+                                                    updatePostMeta({cardPlayerCodec: value || ''});
+                                                }}
+                                            />
+                                        </Fragment>
+                                    )}
+
+                                    <Button isDefault onClick={() => this.setState({isOpen: false})}>
+                                        {__('Close', 'jm-tc')}
+                                    </Button>
+                                </Modal>
+                                : null}
                         </PanelRow>
                     </PanelBody>
                     <PanelBody title={__("Image Settings", "jm-tc")}>
