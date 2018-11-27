@@ -53,11 +53,6 @@ class JM_Twitter_Cards extends Component {
         this.state = {
             isOpen: false,
         };
-        this.updateQuery = this.updateQuery.bind(this);
-    }
-
-    updateQuery(event) {
-        this.setState({isOpen: event.target.value});
     }
 
     render() {

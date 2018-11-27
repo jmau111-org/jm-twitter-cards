@@ -876,16 +876,10 @@ var JM_Twitter_Cards = function (_Component) {
         _this.state = {
             isOpen: false
         };
-        _this.updateQuery = _this.updateQuery.bind(_this);
         return _this;
     }
 
     __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_createClass___default()(JM_Twitter_Cards, [{
-        key: "updateQuery",
-        value: function updateQuery(event) {
-            this.setState({ isOpen: event.target.value });
-        }
-    }, {
         key: "render",
         value: function render() {
             var _this2 = this;
