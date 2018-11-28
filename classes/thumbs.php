@@ -27,6 +27,9 @@ class Thumbs {
 		}
 
 		$opts = \jm_tc_get_options();
+		if ( ! isset( $opts['twitterCardImgSize'] ) {
+			return false;
+		}
 		switch ( $opts['twitterCardImgSize'] ) {
 			case 'small':
 				add_image_size(
