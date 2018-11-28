@@ -916,12 +916,20 @@ var JM_Twitter_Cards = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["PanelRow"],
                             null,
                             wp.element.createElement(
-                                __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Button"],
-                                { isDefault: true,
-                                    onClick: function onClick() {
-                                        return _this2.setState({ isOpen: true });
-                                    } },
-                                Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Set and preview your Twitter Cards', 'jm-tc')
+                                __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Placeholder"],
+                                {
+                                    instructions: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('The preview button allows ou to change main twitter cards settings and see what it would look like on Twitter.', 'jm-tc'),
+                                    icon: isOpen ? "hidden" : "visibility",
+                                    label: "preview" },
+                                wp.element.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Button"],
+                                    {
+                                        isDefault: true,
+                                        onClick: function onClick() {
+                                            return _this2.setState({ isOpen: true });
+                                        } },
+                                    Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('preview and set Twitter card', 'jm-tc')
+                                )
                             ),
                             isOpen ? wp.element.createElement(
                                 __WEBPACK_IMPORTED_MODULE_8__wordpress_components__["Modal"],
@@ -935,7 +943,10 @@ var JM_Twitter_Cards = function (_Component) {
                                 wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__wordpress_components__["SelectControl"], {
                                     label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Card Type', 'jm-tc'),
                                     value: Object(__WEBPACK_IMPORTED_MODULE_15__components_cardType__["a" /* Type */])(this.props),
-                                    options: [{ label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary', 'jm-tc'), value: 'summary' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary Large Image', 'jm-tc'), value: 'summary_large_image' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player', 'jm-tc'), value: 'player' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Application', 'jm-tc'), value: 'app' }],
+                                    options: [{ label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary', 'jm-tc'), value: 'summary' }, {
+                                        label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Summary Large Image', 'jm-tc'),
+                                        value: 'summary_large_image'
+                                    }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Player', 'jm-tc'), value: 'player' }, { label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Application', 'jm-tc'), value: 'app' }],
                                     onChange: function onChange(value) {
                                         updatePostMeta({ twitterCardType: value || '' });
                                     }

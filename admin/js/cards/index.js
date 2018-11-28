@@ -82,8 +82,16 @@ class JM_Twitter_Cards extends Component {
                     title={__('Twitter Cards settings', 'jm-tc')}>
                     <PanelBody title={__('Main settings & preview', 'jm-tc')}>
                         <PanelRow>
-                            <Button isDefault
-                                    onClick={() => this.setState({isOpen: true})}>{__('Set and preview your Twitter Cards', 'jm-tc')}</Button>
+                            <Placeholder
+                                instructions={__('The preview button allows ou to change main twitter cards settings and see what it would look like on Twitter.', 'jm-tc')}
+                                icon={isOpen ? "hidden" : "visibility"}
+                                label={"preview"}>
+                                <Button
+                                    isDefault
+                                    onClick={() => this.setState({isOpen: true})}>
+                                    {__('preview and set Twitter card', 'jm-tc')}
+                                </Button>
+                            </Placeholder>
                             {isOpen ?
                                 <Modal
                                     title={__('Twitter Cards', 'jm-tc')}
@@ -97,7 +105,10 @@ class JM_Twitter_Cards extends Component {
                                         value={Type(this.props)}
                                         options={[
                                             {label: __('Summary', 'jm-tc'), value: 'summary'},
-                                            {label: __('Summary Large Image', 'jm-tc'), value: 'summary_large_image'},
+                                            {
+                                                label: __('Summary Large Image', 'jm-tc'),
+                                                value: 'summary_large_image'
+                                            },
                                             {label: __('Player', 'jm-tc'), value: 'player'},
                                             {label: __('Application', 'jm-tc'), value: 'app'},
                                         ]}
