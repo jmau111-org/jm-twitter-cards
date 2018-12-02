@@ -1,5 +1,4 @@
 /**
- * TODO: not working for now with modal, probably due to plugin sidebar and render compose
  * WordPress dependencies
  */
 import {
@@ -177,9 +176,11 @@ class JM_Twitter_Cards extends Component {
                                         </Fragment>
                                     )}
 
-                                    <Button isDefault onClick={() => this.setState({isOpen: false})}>
-                                        {__('Close', 'jm-tc')}
-                                    </Button>
+                                    <div className="tc-mb">
+                                        <Button isDefault onClick={() => this.setState({isOpen: false})}>
+                                            {__('Close', 'jm-tc')}
+                                        </Button>
+                                    </div>
                                 </Modal>
                                 : null}
                         </PanelRow>
@@ -230,6 +231,16 @@ class JM_Twitter_Cards extends Component {
                                 </div>
                             </Placeholder>
                         )}
+                        <div className="tc-mb">
+                            <TextareaControl
+                                label={__('Card Image alt', 'jm-tc')}
+                                help={__('Alt text - accessibility for your Twitter Image', 'jm-tc')}
+                                value={cardImageAlt}
+                                onChange={(value) => {
+                                    updatePostMeta({cardImageAlt: value || ''});
+                                }}
+                            />
+                        </div>
                     </PanelBody>
                 </PluginSidebar>
             </Fragment>

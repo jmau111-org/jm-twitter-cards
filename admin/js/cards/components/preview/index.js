@@ -2,6 +2,7 @@ import {__} from "@wordpress/i18n";
 import {Title} from "../title";
 import {Type} from "../cardType";
 import {Image} from "../image";
+import "./style.scss";
 
 export const Preview = ({props}) => (
 
@@ -32,15 +33,7 @@ export const Preview = ({props}) => (
                                 className={"js-openLink u-block TwitterCardsGrid-col--12 TwitterCard-container " + Type(props) + "--small " + Type(props) + "--noImage"}>
                                 <div className={Type(props) + "-image TwitterCardsGrid-float--prev"}>
                                     <div className="tcu-imageContainer tcu-imageAspect--1to1">
-                                        <div className="tcu-imageWrapper"
-                                             style={{backgroundImage: "url(" + Image(props) + ")"}}>
-                                            { 'player' === Type(props) && (
-                                            <div className="PlayerCard-playButton" style={{backgroundImage: "url(" + tcDataMetabox.pluginUrl + "img/player.svg)"}}></div>
-                                            ) }
-                                            <img className="u-block"
-                                                 alt={props.meta.cardImageAlt || ''}
-                                                 src={Image(props)}/>
-                                        </div>
+                                        <Image props={props}/>
                                     </div>
                                 </div>
                                 <div

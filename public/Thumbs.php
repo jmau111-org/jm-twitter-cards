@@ -14,6 +14,14 @@ class Thumbs {
 
 	protected $plugin_name;
 	protected $version;
+	protected $opts;
+	protected static $sizes = [
+		'small'             => [ 'w' => 280, 'h' => 150 ],
+		'web'               => [ 'w' => 435, 'h' => 375 ],
+		'mobile-non-retina' => [ 'w' => 280, 'h' => 375 ],
+		'mobile-retina'     => [ 'w' => 560, 'h' => 750 ],
+		'default'           => [ 'w' => 435, 'h' => 375 ],
+	];
 
 	public function __construct( $plugin_name, $version ) {
 		$this->plugin_name = $plugin_name;
@@ -23,7 +31,7 @@ class Thumbs {
 	/**
 	 * @return string
 	 */
-	static function thumbnail_sizes() {
+	static function thumbnail_size_names() {
 
 		$opts = \jm_tc_get_options();
 		$size = Utilities::maybe_get_opt( $opts, 'twitterCardImgSize' );
@@ -46,6 +54,34 @@ class Thumbs {
 		}
 
 	}
+
+
+	/**
+	 * @param string $dimension
+	 *
+	 * @return array|int
+	 */
+	static function get_thumbnail_dimensions( $dimension = '' ) {
+
+		$opts = \jm_tc_get_options();
+		$size = Utilities::maybe_get_opt( $opts, 'twitterCardImgSize' );
+
+		if ( empty( self::$sizes[ $size ] ) ) {
+			return [];
+		}
+
+		$w = self::$sizes[ $size ]['w'];
+		$h = self::$sizes[ $size ]['h'];
+
+		if ( 'w' === $dimension ) {
+			return $w;
+		} elseif ( 'h' === $dimension ) {
+			return $h;
+		}
+
+		return [ 'w' => $w, 'h' => $h ];
+	}
+
 
 	function add_featured_image_instruction( $content ) {
 		return $content . self::get_post_thumbnail_size( get_queried_object_id() );
@@ -95,49 +131,50 @@ class Thumbs {
 		}
 
 		$opts = \jm_tc_get_options();
+		$size = Utilities::maybe_get_opt( $opts, 'twitterCardImgSize' );
 
-		if ( empty( $opts['twitterCardImgSize'] ) ) {
+		if ( empty( $size ) ) {
 			return false;
 		}
 
-		switch ( $opts['twitterCardImgSize'] ) {
+		switch ( $size ) {
 			case 'small':
 				add_image_size(
 					'jmtc-small-thumb',
-					280,
-					150
+					self::$sizes['small']['w'],
+					self::$sizes['small']['h']
 				);/* the minimum size possible for Twitter Cards */
 				break;
 
 			case 'web':
 				add_image_size(
 					'jmtc-max-web-thumb',
-					435,
-					375
+					self::$sizes['web']['w'],
+					self::$sizes['web']['h']
 				);/* maximum web size for photo cards */
 				break;
 
 			case 'mobile-non-retina':
 				add_image_size(
 					'jmtc-max-mobile-non-retina-thumb',
-					280,
-					375
+					self::$sizes['web']['w'],
+					self::$sizes['web']['h']
 				);/* maximum non retina mobile size for photo cards*/
 				break;
 
 			case 'mobile-retina':
 				add_image_size(
 					'jmtc-max-mobile-retina-thumb',
-					560,
-					750
+					self::$sizes['web']['w'],
+					self::$sizes['web']['h']
 				);/* maximum retina mobile size for photo cards  */
 				break;
 
 			default:
 				add_image_size(
-					'jmtc-small-thumb',
-					280,
-					150
+					'jmtc-max-web-thumb',
+					self::$sizes['default']['w'],
+					self::$sizes['default']['h']
 				);/* the minimum size possible for Twitter Cards */
 		}
 	}

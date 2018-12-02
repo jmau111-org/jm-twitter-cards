@@ -3,6 +3,7 @@
 namespace TokenToMe\TwitterCards\Admin;
 
 use TokenToMe\TwitterCards\Utils;
+use TokenToMe\TwitterCards\Thumbs;
 
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -93,12 +94,12 @@ class Gutenberg {
 			'jm-tc-gut-metabox',
 			'tcDataMetabox',
 			[
-				'twitterSite'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterSite' ),
-				'domain'       => ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : get_bloginfo( 'url' ),
-				'avatar'       => get_avatar_url( 0, 16 ),
-				'defaultImage' => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterImage' ),
-				'defaultType'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterCardType' ),
-				'pluginUrl'    => JM_TC_URL,
+				'twitterSite'      => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterSite' ),
+				'domain'           => ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : get_bloginfo( 'url' ),
+				'avatar'           => get_avatar_url( 0, 16 ),
+				'defaultImage'     => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterImage' ),
+				'defaultType'      => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterCardType' ),
+				'pluginUrl'        => JM_TC_URL,
 			]
 		);
 	}
