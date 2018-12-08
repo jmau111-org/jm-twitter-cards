@@ -31,7 +31,6 @@ class Init {
 			'twitterSite'           => '',
 			'twitterImage'          => '',
 			'twitterImageAlt'       => '',
-			'twitterCardImgSize'    => 'small',
 			'twitterProfile'        => 'yes',
 			'twitterPostPageTitle'  => get_bloginfo( 'name' ), // filter used by plugin to customize title
 			'twitterPostPageDesc'   => __( 'Welcome to', 'jm-tc' ) . ' ' . get_bloginfo( 'name' ) . ' - ' . __( 'see blog posts', 'jm-tc' ),
@@ -48,7 +47,7 @@ class Init {
 			'twitteriPhoneId'       => '',
 			'twitteriPadId'         => '',
 			'twitterGooglePlayId'   => '',
-			'twitterCardRobotsTxt'  => 'no',
+			'twitterCardRobotsTxt'  => 'yes',
 			'twitterAppCountry'     => '',
 			'twitterCardOg'         => 'no',
 		);

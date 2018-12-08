@@ -80,6 +80,15 @@ class Meta {
 			);
 
 			register_meta(
+				'post', 'cardTitle', [
+					'type'           => 'string',
+					'single'         => true,
+					'show_in_rest'   => true,
+					'object_subtype' => $cpt,
+				]
+			);
+
+			register_meta(
 				'post', 'cardDesc', [
 					'type'           => 'string',
 					'single'         => true,

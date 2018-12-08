@@ -132,7 +132,6 @@ class Main {
 
 		$plugin_front = new Thumbs( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_filter( 'admin_post_thumbnail_html', $plugin_front, 'add_featured_image_instruction' );
-		$this->loader->add_filter( 'after_setup_theme', $plugin_front, 'add_image_sizes' );
 
 		$plugin_front = new Particular( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_filter( 'robots_txt', $plugin_front, 'robots_mod' );
@@ -165,8 +164,8 @@ class Main {
 		if ( Utils::gutenberg_exists() ) {
 			$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
 			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'script_enqueue' );
-			$this->loader->add_action( 'init', $gut, 'script_register' );
-			$this->loader->add_action( 'init', $gut, 'i18n_register' );
+			$this->loader->add_action( 'admin_init', $gut, 'script_register' );
+			$this->loader->add_action( 'admin_init', $gut, 'i18n_register' );
 		}
 	}
 

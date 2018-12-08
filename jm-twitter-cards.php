@@ -50,8 +50,6 @@ function jm_tc_run() {
 	$plugin->run();
 }
 
-
-
-
-
-
+/**
+ * TODO: i18n merge js/php
+ */

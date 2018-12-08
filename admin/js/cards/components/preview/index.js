@@ -1,6 +1,7 @@
 import {__} from "@wordpress/i18n";
-import {Title} from "../title";
+
 import {Type} from "../cardType";
+import {Title} from "../title";
 import {Image} from "../image";
 import "./style.scss";
 
@@ -39,7 +40,7 @@ export const Preview = ({props}) => (
                                 <div
                                     className={Type(props) + "-contentContainer TwitterCardsGrid-float--prev"}>
                                     <div className={Type(props) + "-content TwitterCardsGrid-ltr"}>
-                                        <Title/>
+                                        <Title props={props}/>
                                         <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">{props.meta.cardDesc}
                                             <span
                                                 className="SummaryCard-destination">{tcDataMetabox.domain}</span>

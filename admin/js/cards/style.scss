@@ -28,3 +28,15 @@ g {
 .tc-mb {
   margin: 1em 0;
 }
+
+.tc-mb.buttons button, .buttons button {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.image-instructions li:before {
+  content: "\2605";
+}
+.image-instructions li {
+  font-style: italic;
+}

@@ -1,4 +1,5 @@
 import {withSelect} from "@wordpress/data";
+import {Fragment} from "@wordpress/element";
 
 /**
  * @link https://stackoverflow.com/a/51792096
@@ -7,10 +8,14 @@ import {withSelect} from "@wordpress/data";
  * @returns {*}
  * @constructor
  */
-const GetTitle = props => <h2 className="TwitterCard-title js-cardClick tcu-textEllipse--multiline">{props.title}</h2>;
+const GetTitle = props => props.title;
 
 const selectTitle = withSelect(select => ({
     title: select("core/editor").getEditedPostAttribute('title')
 }));
 
-export const Title = selectTitle(GetTitle);
+export const Title = ({props}) => (
+    <h2 className="TwitterCard-title js-cardClick tcu-textEllipse--multiline">
+        {props.meta.cardTitle || selectTitle(GetTitle)}
+    </h2>
+);

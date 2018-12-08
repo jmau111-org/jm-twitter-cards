@@ -26,6 +26,10 @@ class Options {
 		$this->opts    = \jm_tc_get_options();
 	}
 
+	public function get_ID() {
+		return $this->post_ID;
+	}
+
 	/**
 	 * @return array
 	 */
@@ -94,6 +98,12 @@ class Options {
 
 			} elseif ( empty( $this->opts['twitterCardTitle'] ) && ( class_exists( 'WPSEO_Frontend' ) || class_exists( 'All_in_One_SEO_Pack' ) ) ) {
 				$cardTitle = $this->get_seo_plugin_data( 'title' );
+			}
+
+			$cardTitleMeta = get_post_meta( $this->post_ID, 'cardTitle', true );
+
+			if ( ! empty( $cardTitleMeta ) ) {
+				$cardTitle = $cardTitleMeta;// allows to override all desc
 			}
 		}
 
@@ -179,8 +189,7 @@ class Options {
 		$image = Utilities::maybe_get_opt( $this->opts, 'twitterImage' );
 
 		if ( $this->post_ID && empty( $cardImage ) && has_post_thumbnail( $this->post_ID ) ) {
-			$size             = Thumbs::thumbnail_size_names();
-			$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), $size );
+			$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post_ID ), 'full' );
 			$image            = ! empty( $image_attributes ) && is_array( $image_attributes ) ? reset( $image_attributes ) : $image;
 		} elseif ( ! empty( $cardImage ) ) {
 			$image = esc_url_raw( $cardImage );

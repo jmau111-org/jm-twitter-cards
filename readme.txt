@@ -112,13 +112,13 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 == Changelog ==
 
 ### 10.0.0
-* November 2018
-* Prepare for Gutenberg
-* There won't be metabox in Gutenberg context, I made a custom sidebar panel.
-* If you enable Gutenberg then you will have a custom block meta \O/
+* December 2018
 * Reorganize deeply the plugin structure
-* fix preview props to [tomdxw](https://github.com/tomdxw)
-* fix default size props [tomdxw](https://github.com/tomdxw)
+* css fixes props to [tomdxw](https://github.com/tomdxw)
+* delete image sizes, actually very bad for disk space and rules have changes in 2018 with Twitter image
+* Gutenberg users will have additional features such as custom modal and preview but also custom title and desc for cards \0/
+* I've added some instructions and advices props to https://www.contentkingapp.com/
+* There is a new admin sub page called "tutorials" in admin with video tutorials !
 
 ### 9.4
 * June 2018

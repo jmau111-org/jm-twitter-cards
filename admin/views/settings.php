@@ -66,18 +66,6 @@ $settings_fields = [
 			'charcount' => 420,
 		],
 		[
-			'name'    => 'twitterCardImgSize',
-			'label'   => __( 'Define specific size for twitter:image display', 'jm-tc' ),
-			'type'    => 'select',
-			'default' => 'web',
-			'options' => [
-				'small'             => __( '280 x 375 px', 'jm-tc' ),
-				'web'               => __( '560 x 750 px', 'jm-tc' ),
-				'mobile-non-retina' => __( '435 x 375 px', 'jm-tc' ),
-				'mobile-retina'     => __( '280 x 150 px', 'jm-tc' ),
-			],
-		],
-		[
 			'label'     => __( 'Home meta desc', 'jm-tc' ),
 			'desc'      => __( 'Enter desc for Posts Page (max: 200 characters)', 'jm-tc' ),
 			'name'      => 'twitterPostPageDesc',

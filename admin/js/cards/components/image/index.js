@@ -1,12 +1,13 @@
 import {Type} from "../cardType";
+import {select} from '@wordpress/data';
 
-/**
- * TODO featured image
- * @param props
- * @returns {*}
- */
 function theImageUrl(props) {
-    return props.meta.cardImage || tcDataMetabox.defaultImage;
+
+    let featuredImageId = select('core/editor').getEditedPostAttribute('featured_media');
+    let media = select('core').getMedia(featuredImageId);
+    let featuredImageUrl = typeof(media) !== 'undefined' ? media.source_url : '';
+
+    return props.meta.cardImage || featuredImageUrl || tcDataMetabox.defaultImage;
 }
 
 export const Image = ({props}) => (
@@ -21,4 +22,3 @@ export const Image = ({props}) => (
              src={theImageUrl(props)}/>
     </div>
 );
-

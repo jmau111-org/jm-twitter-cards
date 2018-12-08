@@ -99,7 +99,8 @@ class Utils {
 	 * @author Julien Maury
 	 */
 	public static function gutenberg_exists() {
-		return function_exists( 'the_gutenberg_project' );
+		global $wp_version;
+		return function_exists( 'the_gutenberg_project' ) || version_compare( $wp_version, '5.0', '>=' ) ;
 	}
 
 	/**

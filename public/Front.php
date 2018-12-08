@@ -61,7 +61,7 @@ class Front {
 
 	public function generate_markup() {
 
-		$this->options = new Options( get_post()->ID );
+		$this->options = new Options( get_queried_object_id() );
 		$this->opts    = \jm_tc_get_options();
 
 		echo $this->html_comments();
