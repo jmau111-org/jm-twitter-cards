@@ -153,6 +153,7 @@ class Main {
 	 * @access   protected
 	 */
 	protected function define_admin_hooks() {
+
 		$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'admin_enqueue_scripts' );
 		$this->loader->add_filter( 'plugin_action_links_' . JM_TC_BASENAME, $plugin_admin, 'settings_action_link' );
@@ -161,13 +162,13 @@ class Main {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_export' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_import' );
 
-		if ( Utils::gutenberg_exists() ) {
+		if ( Utils::gutenberg_exists() && ! in_array( get_post_type(), Utils::get_post_types(), true ) ) {
 			$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
-			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'script_enqueue' );
-			$this->loader->add_action( 'admin_init', $gut, 'script_register' );
-			$this->loader->add_action( 'admin_init', $gut, 'i18n_register' );
+			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'scripts_register' );
+			$this->loader->add_action( 'enqueue_block_assets', $gut, 'scripts_enqueue' );
 			$this->loader->add_action( 'admin_init', $gut, 'load_i18n' );
 		}
+
 	}
 
 	/**

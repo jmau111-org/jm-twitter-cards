@@ -31,7 +31,7 @@ define( 'JM_TC_VERSION', '10.0.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
 define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
-define( 'JM_TC_LANG_DIR', JM_TC_BASENAME . '/languages' );
+define( 'JM_TC_LANG_DIR', basename( rtrim( dirname( __FILE__ ), '/' ) ) . '/languages' );
 
 $autoload = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
@@ -49,7 +49,3 @@ function jm_tc_run() {
 	$plugin = new TokenToMe\TwitterCards\Main();
 	$plugin->run();
 }
-
-/**
- * TODO: i18n merge js/php
- */

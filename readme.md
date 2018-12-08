@@ -31,7 +31,7 @@ npm i && npm run build
 * delete image sizes, actually very bad for disk space and rules have changes in 2018 with Twitter image
 * Gutenberg users will have additional features such as custom modal and preview but also custom title and desc for cards \0/
 * I've added some instructions and advices props to https://www.contentkingapp.com/
-* There is a new admin sub page called "tutorials" in admin with video tutorials !
+* There is a new admin sub page called "tutorials" with video tutorials !
 
 ### 9.4
 * June 2018

@@ -17,9 +17,10 @@ Once activated the plugin adds appropriate meta on your WordPress website allowi
 
 = Features =
 
-*  meta box : customize Twitter Cards experience (per each post)
-*  preview : preview the rendering on Twitter. 
-*  WP SEO by Yoast and All in One SEO compatible (no conflict with SEO title and desc set with these plugins)
+* Gutenberg compatible with a custom sidebar
+* meta box : customize Twitter Cards experience (per each post)
+* preview : preview the rendering on Twitter.
+* WP SEO by Yoast and All in One SEO compatible (no conflict with SEO title and desc set with these plugins)
 
 contact@julien-maury.com
 
@@ -118,7 +119,7 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 * delete image sizes, actually very bad for disk space and rules have changes in 2018 with Twitter image
 * Gutenberg users will have additional features such as custom modal and preview but also custom title and desc for cards \0/
 * I've added some instructions and advices props to https://www.contentkingapp.com/
-* There is a new admin sub page called "tutorials" in admin with video tutorials !
+* There is a new admin sub page called "tutorials" with video tutorials !
 
 ### 9.4
 * June 2018

@@ -55,7 +55,9 @@ node_modules
 .DS_Store
 svn
 
-build/*
+admin/js/cards/build/
+admin/js/i18n/build/
+!.index.html
 
 ############
 ## Composer

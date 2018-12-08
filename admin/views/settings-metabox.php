@@ -66,18 +66,6 @@ $metaBox = [
 		'step'     => 1,
 		'value'    => get_post_meta( self::get_post_id(), 'cardPlayerHeight', true ),
 	],
-	[
-		'method'   => 'url_field',
-		'field_id' => 'cardPlayerStream',
-		'label'    => __( 'URL of iFrame player (MUST BE HTTPS)', 'jm-tc' ),
-		'value'    => get_post_meta( self::get_post_id(), 'cardPlayerStream', true ),
-	],
-	[
-		'method'   => 'text_field',
-		'field_id' => 'cardPlayerCodec',
-		'label'    => __( 'Codec', 'jm-tc' ),
-		'value'    => get_post_meta( self::get_post_id(), 'cardPlayerCodec', true ),
-	],
 	[ 'method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'end' ],
 	[ 'method' => 'wrapper', 'tag' => 'table', 'mod' => 'end' ],
 ];

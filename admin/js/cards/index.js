@@ -28,13 +28,11 @@ import {
 
 import {PluginSidebar} from '@wordpress/editPost';
 
-import {compose, withState} from '@wordpress/compose';
+import {compose} from '@wordpress/compose';
 
 import {__} from "@wordpress/i18n";
 
 import {registerPlugin} from '@wordpress/plugins';
-
-import {addFilter} from '@wordpress/hooks';
 
 /**
  * Custom dependencies
@@ -65,8 +63,6 @@ class JM_Twitter_Cards extends Component {
                 cardPlayer: cardPlayer,
                 cardPlayerWidth: cardPlayerWidth,
                 cardPlayerHeight: cardPlayerHeight,
-                cardPlayerStream: cardPlayerStream,
-                cardPlayerCodec: cardPlayerCodec,
             },
             updatePostMeta,
         } = this.props;
@@ -81,12 +77,12 @@ class JM_Twitter_Cards extends Component {
                     title={__('Twitter Cards settings', 'jm-tc-gut')}>
                     <PanelBody title={__('Main settings & preview', 'jm-tc-gut')}>
                         <p className="description smaller">{__('The preview button allows you to change main twitter cards settings and see what it might look like on Twitter.', 'jm-tc-gut')}</p>
-                        <p className="description smaller" >{__('On no account this could replace the Twitter cards validator', 'jm-tc-gut')}</p>
+                        <p className="description smaller">{__('On no account this could replace the Twitter cards validator', 'jm-tc-gut')}</p>
 
                         <Placeholder
                             instructions={__('Preview and set your cards', 'jm-tc-gut')}
                             icon={isOpen ? "hidden" : "visibility"}
-                            label={"preview"}>
+                            label={__('preview', 'jm-tc-gut')}>
                             <div className="buttons">
                                 <Button
                                     isDefault
@@ -109,45 +105,49 @@ class JM_Twitter_Cards extends Component {
 
                                 <Preview props={this.props}/>
 
-                                <SelectControl
-                                    label={__('Card Type', 'jm-tc-gut')}
-                                    value={Type(this.props)}
-                                    options={[
-                                        {label: __('Summary', 'jm-tc-gut'), value: 'summary'},
-                                        {
-                                            label: __('Summary Large Image', 'jm-tc-gut'),
-                                            value: 'summary_large_image'
-                                        },
-                                        {label: __('Player', 'jm-tc-gut'), value: 'player'},
-                                        {label: __('Application', 'jm-tc-gut'), value: 'app'},
-                                    ]}
-                                    onChange={(value) => {
-                                        updatePostMeta({twitterCardType: value || ''});
-                                    }}
-                                />
-
-                                <TextControl
-                                    type="text"
-                                    label={__('Custom title', 'jm-tc-gut')}
-                                    help={__('Best is under 55 chars. If no set default card title would be post title', 'jm-tc-gut')}
-                                    value={cardTitle}
-                                    placeholder={__('Enter custom title…', 'jm-tc-gut')}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardTitle: value || ''});
-                                    }}
-                                />
-
-                                <TextareaControl
-                                    label={__('Card description', 'jm-tc-gut')}
-                                    help={__('200 chars max but it is better to keep it short, 120-130 chars is fine. By default description will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here.', 'jm-tc-gut')}
-                                    value={cardDesc}
-                                    onChange={(value) => {
-                                        updatePostMeta({cardDesc: value || ''});
-                                    }}
-                                />
+                                <div className="tc-fields-container">
+                                    <SelectControl
+                                        label={__('Card Type', 'jm-tc-gut')}
+                                        value={Type(this.props)}
+                                        options={[
+                                            {label: __('Summary', 'jm-tc-gut'), value: 'summary'},
+                                            {
+                                                label: __('Summary Large Image', 'jm-tc-gut'),
+                                                value: 'summary_large_image'
+                                            },
+                                            {label: __('Player', 'jm-tc-gut'), value: 'player'},
+                                            {label: __('Application', 'jm-tc-gut'), value: 'app'},
+                                        ]}
+                                        onChange={(value) => {
+                                            updatePostMeta({twitterCardType: value || ''});
+                                        }}
+                                    />
+                                </div>
+                                <div className="tc-fields-container">
+                                    <TextControl
+                                        type="text"
+                                        label={__('Custom title', 'jm-tc-gut')}
+                                        help={__('Best is under 55 chars. If no set default card title would be post title', 'jm-tc-gut')}
+                                        value={cardTitle}
+                                        placeholder={__('Enter custom title…', 'jm-tc-gut')}
+                                        onChange={(value) => {
+                                            updatePostMeta({cardTitle: value || ''});
+                                        }}
+                                    />
+                                </div>
+                                <div className="tc-fields-container">
+                                    <TextareaControl
+                                        label={__('Card description', 'jm-tc-gut')}
+                                        help={__('200 chars max but it is better to keep it short, 120-130 chars is fine. By default description will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here.', 'jm-tc-gut')}
+                                        value={cardDesc}
+                                        onChange={(value) => {
+                                            updatePostMeta({cardDesc: value || ''});
+                                        }}
+                                    />
+                                </div>
 
                                 {'player' === twitterCardType && (
-                                    <Fragment>
+                                    <div className="tc-fields-container">
 
                                         <TextControl
                                             type="url"
@@ -176,25 +176,7 @@ class JM_Twitter_Cards extends Component {
                                                 updatePostMeta({cardPlayerHeight: value || ''});
                                             }}
                                         />
-                                        <TextControl
-                                            type="url"
-                                            label={__('Player Stream URL', 'jm-tc-gut')}
-                                            value={cardPlayerStream}
-                                            placeholder={__('Enter URL…', 'jm-tc-gut')}
-                                            onChange={(value) => {
-                                                updatePostMeta({cardPlayerStream: value || ''});
-                                            }}
-                                        />
-                                        <TextControl
-                                            type="url"
-                                            label={__('Player codec URL', 'jm-tc-gut')}
-                                            value={cardPlayerCodec}
-                                            placeholder={__('Enter URL…', 'jm-tc-gut')}
-                                            onChange={(value) => {
-                                                updatePostMeta({cardPlayerCodec: value || ''});
-                                            }}
-                                        />
-                                    </Fragment>
+                                    </div>
                                 )}
 
                                 <div className="tc-mb buttons">
@@ -311,6 +293,7 @@ const render = compose(
 /**
  * Custom plugin register in GUT
  */
-registerPlugin('jm-twitter-cards', {
+registerPlugin('jm-tc-sidebar', {
+    icon: 'twitter',
     render,
 });

@@ -6,7 +6,7 @@
     [
       "@wordpress/babel-plugin-makepot",
       {
-        "output": "languages/jm-tc.pot"
+        "output": "languages/jm-tc-gut.pot"
       }
     ]
   ]

@@ -29,14 +29,14 @@ const extractConfig = {
     ]
 };
 
-const entryPointNames = ["cards", "i18n"];
+const entryPointNames = ["cards"];
 
 const externals = {
     react: "React"
 };
 entryPointNames.forEach(entryPointName => {
-    externals["@jm-tc-gut/" + entryPointName] = {
-        this: ["jm-tc-gut", entryPointName]
+    externals["@jm-twitter-cards/" + entryPointName] = {
+        this: ["jm-twitter-cards", entryPointName]
     };
 });
 
@@ -70,7 +70,7 @@ const config = {
     output: {
         filename: "admin/js/[name]/build/index.js",
         path: __dirname,
-        library: ["jm-tc-gut", "[name]"],
+        library: ["[name]"],
         libraryTarget: "this"
     },
     resolve: {

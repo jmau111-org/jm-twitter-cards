@@ -37,6 +37,11 @@ g {
 .image-instructions li:before {
   content: "\2605";
 }
+
 .image-instructions li {
   font-style: italic;
+}
+
+.tc-fields-container {
+  margin: 1em 0;
 }

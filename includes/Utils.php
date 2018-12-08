@@ -91,7 +91,7 @@ class Utils {
 	public static function get_post_types() {
 		$cpts = get_option( 'jm_tc_cpt' );
 
-		return empty( $cpts['twitterCardPt'] ) ? get_post_types( [ 'public' => true ] ) : array_values( $cpts['twitterCardPt'] );
+		return ( empty( $cpts['twitterCardPt'] ) ) ? get_post_types( [ 'public' => true ] ) : array_values( $cpts['twitterCardPt'] );
 	}
 
 	/**

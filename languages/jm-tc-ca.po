@@ -3,26 +3,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Twitter Cards 10.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jm-twitter-cards\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jm-twitter-"
+"cards\n"
 "POT-Creation-Date: 2018-12-08 16:35:30+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"Language: en\n"
+"PO-Revision-Date: 2018-12-08 23:05+0100\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
+"X-Poedit-Basepath: ..\n"
 "X-Textdomain-Support: yes\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: admin/Admin.php:59 admin/views/import-export.php:10
 #: admin/views/import-export.php:29 admin/views/import-export.php:40
@@ -30,7 +29,7 @@ msgstr ""
 #: admin/views/settings-import-export.php:31
 #: admin/views/settings-import-export.php:42
 msgid "Import"
-msgstr ""
+msgstr "Importació"
 
 #: admin/Admin.php:59 admin/views/import-export.php:11
 #: admin/views/import-export.php:14 admin/views/import-export.php:21
@@ -38,54 +37,56 @@ msgstr ""
 #: admin/views/settings-import-export.php:15
 #: admin/views/settings-import-export.php:23
 msgid "Export"
-msgstr ""
+msgstr "Exportació"
 
 #: admin/Admin.php:60 admin/views/about.php:10
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: admin/Admin.php:61 admin/views/tutorials.php:12
 msgid "Tutorials"
-msgstr ""
+msgstr "Tutorials"
 
 #: admin/Admin.php:65
 msgid "Setup for the first time"
-msgstr ""
+msgstr "Configuració per primera vegada"
 
 #: admin/Admin.php:66
 msgid "Setup metabox with custom post types"
-msgstr ""
+msgstr "Configuració de la metabox"
 
 #: admin/Admin.php:67
 msgid "Dealing with images"
-msgstr ""
+msgstr "Tractar amb imatges"
 
 #: admin/Admin.php:68
 msgid "Set first image found in post content as twitter image"
 msgstr ""
+"Estableix la primera imatge que es troba en el contingut de publicació com "
+"a imatge de Twitter"
 
 #: admin/Admin.php:69
 msgid "Upgrading to Gutenberg"
-msgstr ""
+msgstr "Gutenberg"
 
 #: admin/Admin.php:82
 msgid "Settings"
-msgstr ""
+msgstr "Paràmetres"
 
 #: admin/Admin.php:105
 msgid "characters left"
-msgstr ""
+msgstr "caràcters deixats"
 
 #. Plugin Name of the plugin/theme
 msgid "JM Twitter Cards"
-msgstr ""
+msgstr "JM Twitter Cards"
 
 #: admin/Admin.php:236
 msgid ""
-"10.0.0 : There is now support for <a "
-"href=\"https://wordpress.org/gutenberg/\">Gutenberg</a>, please use this "
-"custom sidebar. Just click on the Twitter Icon on your edit screen (top "
-"right corner). All data are saved as meta (like before)."
+"10.0.0 : There is now support for <a href=\"https://wordpress.org/gutenberg/"
+"\">Gutenberg</a>, please use this custom sidebar. Just click on the Twitter "
+"Icon on your edit screen (top right corner). All data are saved as meta "
+"(like before)."
 msgstr ""
 
 #: admin/Admin.php:239
@@ -96,273 +97,294 @@ msgstr ""
 
 #: admin/Admin.php:300
 msgid "Please upload a valid .json file"
-msgstr ""
+msgstr "Carregueu un fitxer .json vàlid"
 
 #: admin/Admin.php:306
 msgid "Please upload a file to import"
-msgstr ""
+msgstr "Carregueu un fitxer per importar"
 
 #: admin/Fields.php:161
 msgid "Select"
-msgstr ""
+msgstr "Selecciona"
 
 #: admin/Fields.php:162
 msgid "Remove"
-msgstr ""
+msgstr "Elimina"
 
 #: admin/Fields.php:169
 msgid "Not found"
-msgstr ""
+msgstr "No trobat"
 
 #: admin/Metabox.php:51
 msgid "Twitter Cards"
-msgstr ""
+msgstr "Targes de Twitter"
 
 #: admin/Metabox.php:179
 msgid "Upload"
-msgstr ""
+msgstr "Carrega"
 
 #: admin/Options.php:249
 msgid ""
 "Warning : Player Card is not set properly ! There is no URL provided for "
 "iFrame player !"
 msgstr ""
+"Avís: la tarja de Reproductor no està llesta! No hi ha URL pel iFrame del "
+"Reproductor!"
 
 #: admin/Settings.php:383
 msgid "Choose File"
-msgstr ""
+msgstr "Seleccioneu fitxers"
 
 #: admin/views/about.php:12
 msgid "This plugin is free"
-msgstr ""
+msgstr "Aquest complement és gratuït"
 
 #: admin/views/about.php:14
 msgid "This plugin is free not me :)"
-msgstr ""
+msgstr "Aquest complement no és lliure per mi :)"
 
 #: admin/views/about.php:15
 msgid ""
 "So please give me some time to solve issues and answer in case you have any "
 "problem."
 msgstr ""
+"Si us plau, dóna'm un temps per resoldre problemes i respondre en cas que "
+"tinguis algun problema."
 
 #: admin/views/about.php:16
 msgid "The developer"
-msgstr ""
+msgstr "l desenvolupador"
 
 #: admin/views/about.php:18
 msgid "I am a web developer, I like to make it simpler."
-msgstr ""
+msgstr "Sóc desenvolupador web, m'agrada fer-ho més senzill."
 
 #: admin/views/about.php:30
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: admin/views/settings-metabox.php:18 admin/views/settings.php:25
 msgid "Card type"
-msgstr ""
+msgstr "Tipus de Targes"
 
 #: admin/views/settings-metabox.php:21 admin/views/settings.php:29
 msgid "Summary"
-msgstr ""
+msgstr "Resum"
 
 #: admin/views/settings-metabox.php:22 admin/views/settings.php:30
 msgid "Summary below Large Image"
-msgstr ""
+msgstr "Resum sota imatge gran"
 
 #: admin/views/settings-metabox.php:23
 msgid "Player"
-msgstr ""
+msgstr "Reproductor"
 
 #: admin/views/settings-metabox.php:24 admin/views/settings.php:31
 msgid "Application"
-msgstr ""
+msgstr "Aplicació"
 
 #: admin/views/settings-metabox.php:34
 msgid "Set another source as twitter image (enter URL)"
-msgstr ""
+msgstr "Posa una altra font com imatge de twitter (introdueix URL)"
 
 #: admin/views/settings-metabox.php:40
 msgid "Image Alt"
-msgstr ""
+msgstr "Imatge alt"
+
+#: admin/views/settings-metabox.php:47 admin/views/settings-metabox.php:72
+msgid "URL of iFrame player (MUST BE HTTPS)"
+msgstr "URL del iFrame del reproductor (HA DE SER HTTPS)"
 
 #: admin/views/settings-metabox.php:53
 msgid "Player width"
-msgstr ""
+msgstr "Amplada del Reproductor"
 
 #: admin/views/settings-metabox.php:62
 msgid "Player height"
-msgstr ""
+msgstr "Alçada del reproductor"
+
+#: admin/views/settings-metabox.php:78
+msgid "Codec"
+msgstr "Codec"
 
 #: admin/views/settings-sections.php:14
 msgid "Options"
-msgstr ""
+msgstr "Opcions"
 
 #: admin/views/settings-sections.php:18
 msgid "Custom Post types"
-msgstr ""
+msgstr "Custom Post types"
 
 #: admin/views/settings.php:15
 msgid "Creator (twitter username)"
-msgstr ""
+msgstr "Creador (nom d'usuari a twitter)"
 
 #: admin/views/settings.php:20
 msgid "Site (twitter username)"
-msgstr ""
+msgstr "Lloc (nom d'usuari a twitter)"
 
 #: admin/views/settings.php:36
 msgid "Excerpt"
-msgstr ""
+msgstr "Fragment"
 
 #: admin/views/settings.php:37
 msgid "Excerpt as meta desc?"
-msgstr ""
+msgstr "Fragment de meta desc?"
 
 #: admin/views/settings.php:41 admin/views/settings.php:53
 msgid "yes"
-msgstr ""
+msgstr "sí"
 
 #: admin/views/settings.php:42 admin/views/settings.php:52
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #: admin/views/settings.php:47
 msgid "Open Graph"
-msgstr ""
+msgstr "Open Graph"
 
 #: admin/views/settings.php:48
 msgid "Open Graph/SEO"
-msgstr ""
+msgstr "Open Graph/SEO"
 
 #: admin/views/settings.php:58
 msgid "Image Fallback"
-msgstr ""
+msgstr "Imatge per defecte"
 
 #: admin/views/settings.php:64
 msgid "Image alt"
-msgstr ""
+msgstr "Imatge alt"
 
 #: admin/views/settings.php:69
 msgid "Home meta desc"
-msgstr ""
+msgstr "Home meta desc"
 
 #: admin/views/settings.php:70
 msgid "Enter desc for Posts Page (max: 200 characters)"
 msgstr ""
+"Introduïu la descripció de la pàgina de missatges (màxim: 200 caràcters)"
 
 #: admin/views/settings.php:76
 msgid "iPhone Name"
-msgstr ""
+msgstr "Nom iPhone"
 
 #: admin/views/settings.php:77
 msgid "Enter iPhone Name "
-msgstr ""
+msgstr "Introdueix nom iPhone"
 
 #: admin/views/settings.php:82
 msgid " iPhone URL"
-msgstr ""
+msgstr "URL iPhone"
 
 #: admin/views/settings.php:83
 msgid "Enter iPhone URL "
-msgstr ""
+msgstr "Introdueix URL iPhone"
 
 #: admin/views/settings.php:88
 msgid "iPhone ID"
-msgstr ""
+msgstr "iPhone ID"
 
 #: admin/views/settings.php:89
 msgid "Enter iPhone ID "
-msgstr ""
+msgstr "Introdueix ID iPhone"
 
 #: admin/views/settings.php:94
 msgid "iPad Name"
-msgstr ""
+msgstr "Nom iPad"
 
 #: admin/views/settings.php:95
 msgid "Enter iPad Name "
-msgstr ""
+msgstr "Introdueix Nom iPad"
 
 #: admin/views/settings.php:100
 msgid "iPad URL"
-msgstr ""
+msgstr "iPad URL"
 
 #: admin/views/settings.php:101
 msgid "Enter iPad URL "
-msgstr ""
+msgstr "Introdueix URL iPad"
 
 #: admin/views/settings.php:106
 msgid "iPad ID"
-msgstr ""
+msgstr "ID iPad"
 
 #: admin/views/settings.php:107
 msgid "Enter iPad ID "
-msgstr ""
+msgstr "Introdueix ID iPad"
 
 #: admin/views/settings.php:112
 msgid "Google Play Name"
-msgstr ""
+msgstr "Nom Google Play"
 
 #: admin/views/settings.php:113
 msgid "Enter Google Play Name "
-msgstr ""
+msgstr "Introdueix el nom de Google Play"
 
 #: admin/views/settings.php:118
 msgid "Google Play URL"
-msgstr ""
+msgstr "URL de Google Play"
 
 #: admin/views/settings.php:119
 msgid "Enter Google Play URL "
-msgstr ""
+msgstr "Introdueix la URL de Google Play"
 
 #: admin/views/settings.php:124
 msgid "Google Play ID"
-msgstr ""
+msgstr "ID de Google Play"
 
 #: admin/views/settings.php:125
 msgid "Enter Google Play ID "
-msgstr ""
+msgstr "Afegeix la Google Play ID"
 
 #: admin/views/settings.php:130
 msgid "App Country code"
-msgstr ""
+msgstr "Codi App de país"
 
 #: admin/views/settings.php:131
 msgid ""
 "Enter 2 letter App Country code in case your app is not available in the US "
 "app store"
 msgstr ""
+"Introdueix el codi App de país de 2 lletres en cas que la teva app no "
+"etigui disponible a la App Store US"
 
 #: admin/views/settings.php:136
 msgid "Custom field title"
-msgstr ""
+msgstr "Títol del camp personalitzat"
 
 #: admin/views/settings.php:137
 msgid ""
 "If you prefer to use your own field for twitter meta title instead of SEO "
 "plugin. Leave it blank if you want to use SEO plugin or default title."
 msgstr ""
+"Si prefereixes usar els teus propis camps per la meta títol de Twitter per "
+"comptes de deixar-ho en mans de l'extensió SEO. Deixa en blanc si vols que "
+"s'encarregui l'extensió SEO o el valor per defecte de la títol."
 
 #: admin/views/settings.php:142
 msgid "Custom field desc"
-msgstr ""
+msgstr "Descripció del camp personalitzar"
 
 #: admin/views/settings.php:143
 msgid ""
 "If you prefer to use your own field for twitter meta description instead of "
 "SEO plugin. Leave it blank if you want to use SEO plugin or default desc."
 msgstr ""
+"Si prefereixes usar els teus propis camps per la meta descripció de Twitter "
+"per comptes de deixar-ho en mans de l'extensió SEO. Deixa en blanc si vols "
+"que s'encarregui l'extensió SEO o el valor per defecte de la descripció."
 
 #: admin/views/settings.php:151
 msgid "Add or hide the meta box"
-msgstr ""
+msgstr "Afegeix o amaga la <i>meta box</i>"
 
 #: admin/views/settings.php:152
 msgid "Default"
-msgstr ""
+msgstr "Defecte"
 
 #: admin/views/settings.php:152
 msgid "All"
-msgstr ""
+msgstr "Tots"
 
 #: cli/cli.php:30 cli/cli.php:55 cli/cli.php:85 cli/cli.php:139
 msgid "You sox !"
@@ -400,36 +422,38 @@ msgstr ""
 
 #: includes/Init.php:36 includes/Utils.php:120
 msgid "Welcome to"
-msgstr ""
+msgstr "Benvingut a"
 
 #: includes/Init.php:36 includes/Utils.php:120
 msgid "see blog posts"
-msgstr ""
+msgstr "mira els articles del blog"
 
 #: public/Front.php:130
 msgid "Missing critical option !"
-msgstr ""
+msgstr "Error desconegut !"
 
 #: public/Thumbs.php:36
 msgid "No featured image for now !"
-msgstr ""
+msgstr "Per ara no hi ha imatge destacada !"
 
 #: public/Thumbs.php:44
 msgid "Unknown error !"
-msgstr ""
+msgstr "Error desconegut !"
 
 #: public/Thumbs.php:52
 msgid "Image is heavier than 1MB ! Card will be broken !"
-msgstr ""
+msgstr "La imatge és més gran que 1 MB. La targeta es trencarà !"
 
 #. Author URI of the plugin/theme
 msgid "https://julien-maury.com/blog"
-msgstr ""
+msgstr "https://julien-maury.com/blog"
 
 #. Description of the plugin/theme
 msgid "Meant to help users to implement and customize Twitter Cards easily"
 msgstr ""
+"És important ajudar els usuaris a implementar i personalitzar fàcilment les "
+"targetes de Twitter"
 
 #. Author of the plugin/theme
 msgid "Julien Maury"
-msgstr ""
+msgstr "Julien Maury"

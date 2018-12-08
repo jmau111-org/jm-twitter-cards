@@ -236,10 +236,8 @@ class Options {
 		if ( 'player' === $cardType ) {
 
 			$playerUrl       = get_post_meta( $this->post_ID, 'cardPlayer', true );
-			$playerStreamUrl = get_post_meta( $this->post_ID, 'cardPlayerStream', true );
 			$playerWidth     = get_post_meta( $this->post_ID, 'cardPlayerWidth', true );
 			$playerHeight    = get_post_meta( $this->post_ID, 'cardPlayerHeight', true );
-			$playerCodec     = get_post_meta( $this->post_ID, 'cardPlayerCodec', true );
 			$player          = [];
 
 			$player['player'] = apply_filters( 'jm_tc_player_url', $playerUrl, $this->post_ID, $this->opts );
@@ -247,17 +245,6 @@ class Options {
 			//Player
 			if ( empty( $player['player'] ) ) {
 				return $this->error( __( 'Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc' ) );
-			}
-
-			//Player stream
-			if ( ! empty( $playerStreamUrl ) ) {
-				$player['player:stream'] = apply_filters( 'jm_tc_player_stream_url', $playerStreamUrl, $this->post_ID, $this->opts );
-			}
-
-			$player['player:stream:content_type'] = esc_attr( apply_filters( 'jm_tc_player_codec', 'video/mp4; codecs="avc1.42E01E1, mp4a.40.2"', $this->post_ID, $this->opts ) );
-
-			if ( ! empty( $playerCodec ) ) {
-				$player['player:stream:content_type'] = esc_attr( apply_filters( 'jm_tc_player_codec', $playerCodec, $this->post_ID, $this->opts ) );
 			}
 
 			//Player width and

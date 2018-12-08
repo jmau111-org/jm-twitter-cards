@@ -1,0 +1,159 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: admin/js/cards/components/preview/index.js:15
+msgid "Your Twitter name"
+msgstr ""
+
+#: admin/js/cards/components/preview/index.js:20
+msgid "The card for your website will look a little something like this!"
+msgstr ""
+
+#: admin/js/cards/components/preview/index.js:23
+msgid "Preview is not provided for application card"
+msgstr ""
+
+#: admin/js/cards/index.js:102
+msgid "Twitter Cards"
+msgstr ""
+
+#: admin/js/cards/index.js:110
+msgid "Card Type"
+msgstr ""
+
+#: admin/js/cards/index.js:113
+msgid "Summary"
+msgstr ""
+
+#: admin/js/cards/index.js:115
+msgid "Summary Large Image"
+msgstr ""
+
+#: admin/js/cards/index.js:118
+msgid "Player"
+msgstr ""
+
+#: admin/js/cards/index.js:119
+msgid "Application"
+msgstr ""
+
+#: admin/js/cards/index.js:129
+msgid "Custom title"
+msgstr ""
+
+#: admin/js/cards/index.js:130
+msgid "Best is under 55 chars. If no set default card title would be post title"
+msgstr ""
+
+#: admin/js/cards/index.js:132
+msgid "Enter custom title…"
+msgstr ""
+
+#: admin/js/cards/index.js:140
+msgid "Card description"
+msgstr ""
+
+#: admin/js/cards/index.js:141
+msgid ""
+"200 chars max but it is better to keep it short, 120-130 chars is fine. By "
+"default description will be automatically generated or retrieved from a SEO "
+"plugin such as Yoast or All in One SEO but you can override this here."
+msgstr ""
+
+#: admin/js/cards/index.js:154
+msgid "Player URL"
+msgstr ""
+
+#: admin/js/cards/index.js:156
+msgid "Enter URL…"
+msgstr ""
+
+#: admin/js/cards/index.js:162
+msgid "Player Width"
+msgstr ""
+
+#: admin/js/cards/index.js:171
+msgid "Player Height"
+msgstr ""
+
+#: admin/js/cards/index.js:184
+msgid "Close"
+msgstr ""
+
+#: admin/js/cards/index.js:188
+msgid "check validator"
+msgstr ""
+
+#: admin/js/cards/index.js:194
+msgid "Image Settings"
+msgstr ""
+
+#: admin/js/cards/index.js:196
+msgid "Depending on your card type, please use appropriate ratio. Best is :"
+msgstr ""
+
+#: admin/js/cards/index.js:199
+msgid "1:1 for summary card (square)"
+msgstr ""
+
+#: admin/js/cards/index.js:200
+msgid "2:1 (rectangle) for summary large image"
+msgstr ""
+
+#: admin/js/cards/index.js:203
+msgid ""
+"Using featured image is highly recommended (if supported by your post type "
+"which is the case for posts) but you can override this here."
+msgstr ""
+
+#: admin/js/cards/index.js:207
+msgid "Override featured image and default image for this post"
+msgstr ""
+
+#: admin/js/cards/index.js:219
+msgid "Insert from Media Library"
+msgstr ""
+
+#: admin/js/cards/index.js:229
+msgid "Change twitter Image source"
+msgstr ""
+
+#: admin/js/cards/index.js:253
+msgid "Card Image alt"
+msgstr ""
+
+#: admin/js/cards/index.js:254
+msgid "Alt text - accessibility for your Twitter Image"
+msgstr ""
+
+#: admin/js/cards/index.js:77
+msgid "Twitter Cards settings"
+msgstr ""
+
+#: admin/js/cards/index.js:78
+msgid "Main settings & preview"
+msgstr ""
+
+#: admin/js/cards/index.js:79
+msgid ""
+"The preview button allows you to change main twitter cards settings and see "
+"what it might look like on Twitter."
+msgstr ""
+
+#: admin/js/cards/index.js:80
+msgid "On no account this could replace the Twitter cards validator"
+msgstr ""
+
+#: admin/js/cards/index.js:83
+msgid "Preview and set your cards"
+msgstr ""
+
+#: admin/js/cards/index.js:85
+msgid "preview"
+msgstr ""
+
+#: admin/js/cards/index.js:90
+msgid "open modal"
+msgstr ""
