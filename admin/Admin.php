@@ -56,9 +56,9 @@ class Admin {
 		$this->settings_api = new Settings();
 
 		$this->sub_pages = [
-			'jm_tc_import_export' => __( 'Import' ) . ' / ' . __( 'Export' ),
-			'jm_tc_about'         => __( 'About' ),
-			'jm_tc_tutorials'     => __( 'Tutorials' ),
+			'jm_tc_import_export' => __( 'Import', 'jm-tc' ) . ' / ' . __( 'Export', 'jm-tc' ),
+			'jm_tc_about'         => __( 'About', 'jm-tc' ),
+			'jm_tc_tutorials'     => __( 'Tutorials', 'jm-tc' ),
 		];
 
 		$this->video_files = [
@@ -79,7 +79,7 @@ class Admin {
 	 * @return mixed
 	 */
 	public function settings_action_link( $links ) {
-		$links['settings'] = '<a href="' . add_query_arg( [ 'page' => JM_TC_SLUG_MAIN_OPTION ], admin_url( 'admin.php' ) ) . '">' . __( 'Settings' ) . '</a>';
+		$links['settings'] = '<a href="' . add_query_arg( [ 'page' => JM_TC_SLUG_MAIN_OPTION ], admin_url( 'admin.php' ) ) . '">' . __( 'Settings', 'jm-tc' ) . '</a>';
 
 		return $links;
 	}

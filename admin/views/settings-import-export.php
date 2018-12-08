@@ -7,12 +7,12 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 ?>
 <div class="wrap">
-    <h1><?php esc_html_e( 'JM Twitter Cards', 'jm-tc' ); ?>: <?php echo strtolower( esc_html__( 'Import' ) ); ?>
-        / <?php echo strtolower( esc_html__( 'Export' ) ); ?></h1>
+    <h1><?php esc_html_e( 'JM Twitter Cards', 'jm-tc' ); ?>: <?php echo strtolower( esc_html__( 'Import', 'jm-tc' ) ); ?>
+        / <?php echo strtolower( esc_html__( 'Export', 'jm-tc' ) ); ?></h1>
 
     <div class="metabox-holder">
         <div class="postbox">
-            <h3><span><?php esc_html_e( 'Export' ); ?></span></h3>
+            <h3><span><?php esc_html_e( 'Export', 'jm-tc' ); ?></span></h3>
 
             <div class="inside">
                 <form method="post">
@@ -20,7 +20,7 @@ if ( ! function_exists( 'add_action' ) ) {
 
                     <p>
 						<?php wp_nonce_field( 'export_nonce', 'export_nonce' ); ?>
-						<?php submit_button( __( 'Export' ), 'primary', 'submit', false ); ?>
+						<?php submit_button( __( 'Export', 'jm-tc' ), 'primary', 'submit', false ); ?>
                     </p>
                 </form>
             </div>
@@ -28,7 +28,7 @@ if ( ! function_exists( 'add_action' ) ) {
         </div>
         <!-- .postbox -->
         <div class="postbox">
-            <h3><span><?php esc_html_e( 'Import' ); ?></span></h3>
+            <h3><span><?php esc_html_e( 'Import', 'jm-tc' ); ?></span></h3>
 
             <div class="inside">
                 <form method="post" enctype="multipart/form-data">
@@ -39,7 +39,7 @@ if ( ! function_exists( 'add_action' ) ) {
                     <p>
                         <input type="hidden" name="action" value="import_settings"/>
 						<?php wp_nonce_field( 'import_nonce', 'import_nonce' ); ?>
-						<?php submit_button( __( 'Import' ), 'primary', 'submit', false ); ?>
+						<?php submit_button( __( 'Import', 'jm-tc' ), 'primary', 'submit', false ); ?>
                     </p>
                 </form>
             </div>

@@ -10,8 +10,6 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Important to know ##
 
-The plugin uses libraries such as API Settings wrapper or Rilwis Metabox Framework.
-
 To get this work, use composer :
 
 ```

@@ -33,7 +33,7 @@ $settings_fields = [
 		],
 		[
 			'name'    => 'twitterCardExcerpt',
-			'label'   => __( 'Excerpt' ),
+			'label'   => __( 'Excerpt', 'jm-tc' ),
 			'desc'    => __( 'Excerpt as meta desc?', 'jm-tc' ),
 			'type'    => 'radio',
 			'default' => 'no',
@@ -149,7 +149,7 @@ $settings_fields = [
 		[
 			'name'    => 'twitterCardPt',
 			'label'   => __( 'Add or hide the meta box', 'jm-tc' ),
-			'desc'    => __( 'Default' ) . ': ' . __( 'All' ),
+			'desc'    => __( 'Default', 'jm-tc' ) . ': ' . __( 'All', 'jm-tc' ),
 			'type'    => 'multicheck',
 			'options' => $this->get_post_types(),
 		],

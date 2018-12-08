@@ -12,15 +12,15 @@ export const Preview = ({props}) => (
             <img className="EmbeddedTweet-author-avatar"
                  src={tcDataMetabox.avatar}/>
             <div
-                className="EmbeddedTweet-author-name u-pullLeft">{__("Your Twitter name", "jm-tc")}</div>
+                className="EmbeddedTweet-author-name u-pullLeft">{__("Your Twitter name", 'jm-tc-gut')}</div>
             <div className="EmbeddedTweet-author-handle u-pullLeft">@{tcDataMetabox.twitterSite}</div>
         </div>
         <div className="EmbeddedTweet-text">
             {'app' !==  Type(props) && (
-                <p>{__("The card for your website will look a little something like this!", "jm-tc")}</p>
+                <p>{__("The card for your website will look a little something like this!", 'jm-tc-gut')}</p>
             )}
             {'app' === Type(props) && (
-                <p>{__('Preview is not provided for application card', 'jm-tc')}</p>
+                <p>{__('Preview is not provided for application card', 'jm-tc-gut')}</p>
             )}
         </div>
 

@@ -78,48 +78,48 @@ class JM_Twitter_Cards extends Component {
                 <PluginSidebar
                     icon="twitter"
                     name="jm-tc-sidebar"
-                    title={__('Twitter Cards settings', 'jm-tc')}>
-                    <PanelBody title={__('Main settings & preview', 'jm-tc')}>
-                        <p className="description smaller">{__('The preview button allows you to change main twitter cards settings and see what it might look like on Twitter.', 'jm-tc')}</p>
-                        <p className="description smaller" >{__('On no account this could replace the Twitter cards validator', 'jm-tc')}</p>
+                    title={__('Twitter Cards settings', 'jm-tc-gut')}>
+                    <PanelBody title={__('Main settings & preview', 'jm-tc-gut')}>
+                        <p className="description smaller">{__('The preview button allows you to change main twitter cards settings and see what it might look like on Twitter.', 'jm-tc-gut')}</p>
+                        <p className="description smaller" >{__('On no account this could replace the Twitter cards validator', 'jm-tc-gut')}</p>
 
                         <Placeholder
-                            instructions={__('Preview and set your cards', 'jm-tc')}
+                            instructions={__('Preview and set your cards', 'jm-tc-gut')}
                             icon={isOpen ? "hidden" : "visibility"}
                             label={"preview"}>
                             <div className="buttons">
                                 <Button
                                     isDefault
                                     onClick={() => this.setState({isOpen: true})}>
-                                    {__('open modal', 'jm-tc')}
+                                    {__('open modal', 'jm-tc-gut')}
                                 </Button>
 
 
                                 <Button
                                     href="https://cards-dev.twitter.com/validator">
-                                    {__('check validator', 'jm-tc')}
+                                    {__('check validator', 'jm-tc-gut')}
                                 </Button>
                             </div>
                         </Placeholder>
                         {isOpen ?
                             <Modal
-                                title={__('Twitter Cards', 'jm-tc')}
+                                title={__('Twitter Cards', 'jm-tc-gut')}
                                 closeButtonLabel={'close'}
                                 onRequestClose={() => this.setState({isOpen: false})}>
 
                                 <Preview props={this.props}/>
 
                                 <SelectControl
-                                    label={__('Card Type', 'jm-tc')}
+                                    label={__('Card Type', 'jm-tc-gut')}
                                     value={Type(this.props)}
                                     options={[
-                                        {label: __('Summary', 'jm-tc'), value: 'summary'},
+                                        {label: __('Summary', 'jm-tc-gut'), value: 'summary'},
                                         {
-                                            label: __('Summary Large Image', 'jm-tc'),
+                                            label: __('Summary Large Image', 'jm-tc-gut'),
                                             value: 'summary_large_image'
                                         },
-                                        {label: __('Player', 'jm-tc'), value: 'player'},
-                                        {label: __('Application', 'jm-tc'), value: 'app'},
+                                        {label: __('Player', 'jm-tc-gut'), value: 'player'},
+                                        {label: __('Application', 'jm-tc-gut'), value: 'app'},
                                     ]}
                                     onChange={(value) => {
                                         updatePostMeta({twitterCardType: value || ''});
@@ -128,18 +128,18 @@ class JM_Twitter_Cards extends Component {
 
                                 <TextControl
                                     type="text"
-                                    label={__('Custom title', 'jm-tc')}
-                                    help={__('Best is under 55 chars. If no set default card title would be post title', 'jm-tc')}
+                                    label={__('Custom title', 'jm-tc-gut')}
+                                    help={__('Best is under 55 chars. If no set default card title would be post title', 'jm-tc-gut')}
                                     value={cardTitle}
-                                    placeholder={__('Enter custom title…', 'jm-tc')}
+                                    placeholder={__('Enter custom title…', 'jm-tc-gut')}
                                     onChange={(value) => {
                                         updatePostMeta({cardTitle: value || ''});
                                     }}
                                 />
 
                                 <TextareaControl
-                                    label={__('Card description', 'jm-tc')}
-                                    help={__('200 chars max but it is better to keep it short, 120-130 chars is fine. By default description will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here.', 'jm-tc')}
+                                    label={__('Card description', 'jm-tc-gut')}
+                                    help={__('200 chars max but it is better to keep it short, 120-130 chars is fine. By default description will be automatically generated or retrieved from a SEO plugin such as Yoast or All in One SEO but you can override this here.', 'jm-tc-gut')}
                                     value={cardDesc}
                                     onChange={(value) => {
                                         updatePostMeta({cardDesc: value || ''});
@@ -151,15 +151,15 @@ class JM_Twitter_Cards extends Component {
 
                                         <TextControl
                                             type="url"
-                                            label={__('Player URL', 'jm-tc')}
+                                            label={__('Player URL', 'jm-tc-gut')}
                                             value={cardPlayer}
-                                            placeholder={__('Enter URL…', 'jm-tc')}
+                                            placeholder={__('Enter URL…', 'jm-tc-gut')}
                                             onChange={(value) => {
                                                 updatePostMeta({cardPlayer: value || ''});
                                             }}
                                         />
                                         <RangeControl
-                                            label={__('Player Width', 'jm-tc')}
+                                            label={__('Player Width', 'jm-tc-gut')}
                                             value={Number(cardPlayerWidth)}
                                             min={262}
                                             max={1000}
@@ -168,7 +168,7 @@ class JM_Twitter_Cards extends Component {
                                             }}
                                         />
                                         <RangeControl
-                                            label={__('Player Height', 'jm-tc')}
+                                            label={__('Player Height', 'jm-tc-gut')}
                                             value={Number(cardPlayerHeight)}
                                             min={196}
                                             max={1000}
@@ -178,18 +178,18 @@ class JM_Twitter_Cards extends Component {
                                         />
                                         <TextControl
                                             type="url"
-                                            label={__('Player Stream URL', 'jm-tc')}
+                                            label={__('Player Stream URL', 'jm-tc-gut')}
                                             value={cardPlayerStream}
-                                            placeholder={__('Enter URL…', 'jm-tc')}
+                                            placeholder={__('Enter URL…', 'jm-tc-gut')}
                                             onChange={(value) => {
                                                 updatePostMeta({cardPlayerStream: value || ''});
                                             }}
                                         />
                                         <TextControl
                                             type="url"
-                                            label={__('Player codec URL', 'jm-tc')}
+                                            label={__('Player codec URL', 'jm-tc-gut')}
                                             value={cardPlayerCodec}
-                                            placeholder={__('Enter URL…', 'jm-tc')}
+                                            placeholder={__('Enter URL…', 'jm-tc-gut')}
                                             onChange={(value) => {
                                                 updatePostMeta({cardPlayerCodec: value || ''});
                                             }}
@@ -199,30 +199,30 @@ class JM_Twitter_Cards extends Component {
 
                                 <div className="tc-mb buttons">
                                     <Button isDefault onClick={() => this.setState({isOpen: false})}>
-                                        {__('Close', 'jm-tc')}
+                                        {__('Close', 'jm-tc-gut')}
                                     </Button>
                                     <Button
                                         href="https://cards-dev.twitter.com/validator">
-                                        {__('check validator', 'jm-tc')}
+                                        {__('check validator', 'jm-tc-gut')}
                                     </Button>
                                 </div>
                             </Modal>
                             : null}
                     </PanelBody>
-                    <PanelBody title={__("Image Settings", "jm-tc")}>
+                    <PanelBody title={__("Image Settings", 'jm-tc-gut')}>
                         <p className="description smaller">
-                            {__("Depending on your card type, please use appropriate ratio. Best is :", "jm-tc")}
+                            {__("Depending on your card type, please use appropriate ratio. Best is :", 'jm-tc-gut')}
                         </p>
                         <ul className="image-instructions">
-                            <li>{__("1:1 for summary card (square)", "jm-tc")}</li>
-                            <li>{__("2:1 (rectangle) for summary large image", "jm-tc")}</li>
+                            <li>{__("1:1 for summary card (square)", 'jm-tc-gut')}</li>
+                            <li>{__("2:1 (rectangle) for summary large image", 'jm-tc-gut')}</li>
                         </ul>
                         <p className="description smaller">
-                            {__("Using featured image is highly recommended (if supported by your post type which is the case for posts) but you can override this here.", "jm-tc")}
+                            {__("Using featured image is highly recommended (if supported by your post type which is the case for posts) but you can override this here.", 'jm-tc-gut')}
                         </p>
                         {!cardImage && (
                             <Placeholder
-                                instructions={__('Override featured image and default image for this post', 'jm-tc')}
+                                instructions={__('Override featured image and default image for this post', 'jm-tc-gut')}
                                 icon="format-image"
                                 label={"Image"}
                             >
@@ -236,7 +236,7 @@ class JM_Twitter_Cards extends Component {
                                         <Button isLarge onClick={open}>
                                             {__(
                                                 "Insert from Media Library",
-                                                "jm-tc"
+                                                'jm-tc-gut'
                                             )}
                                         </Button>
                                     )}
@@ -244,7 +244,7 @@ class JM_Twitter_Cards extends Component {
                             </Placeholder>)}
                         {cardImage && (
                             <Placeholder
-                                instructions={__("Change twitter Image source", "jm-tc")}
+                                instructions={__("Change twitter Image source", 'jm-tc-gut')}
                                 icon="format-image"
                                 label={"Image"}>
                                 <div className="thumbnail">
@@ -268,8 +268,8 @@ class JM_Twitter_Cards extends Component {
 
                         <div className="tc-mb">
                             <TextareaControl
-                                label={__('Card Image alt', 'jm-tc')}
-                                help={__('Alt text - accessibility for your Twitter Image', 'jm-tc')}
+                                label={__('Card Image alt', 'jm-tc-gut')}
+                                help={__('Alt text - accessibility for your Twitter Image', 'jm-tc-gut')}
                                 value={cardImageAlt}
                                 onChange={(value) => {
                                     updatePostMeta({cardImageAlt: value || ''});

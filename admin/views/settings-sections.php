@@ -15,6 +15,6 @@ $sections = [
 	],
 	[
 		'id'    => JM_TC_SLUG_CPT_OPTION,
-		'title' => __( 'Custom Post types' ),
+		'title' => __( 'Custom Post types', 'jm-tc' ),
 	],
 ];

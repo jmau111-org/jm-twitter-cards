@@ -55,8 +55,8 @@ class Gutenberg {
 	 */
 	public function i18n_register() {
 
-		$locale_data = $this->get_jed_locale_data( 'jm-tc' );
-		$content     = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "jm-tc" );';
+		$locale_data = $this->get_jed_locale_data( 'jm-tc-gut' );
+		$content     = 'wp.i18n.setLocaleData( ' . json_encode( $locale_data ) . ', "jm-tc-gut" );';
 
 		wp_register_script(
 			'jm-tc-gut-i18n',
@@ -115,6 +115,10 @@ class Gutenberg {
 
 		wp_enqueue_script( 'jm-tc-gut-metabox' );
 		wp_enqueue_style( 'jm-tc-gut-metabox' );
+	}
+
+	public function load_i18n() {
+		load_plugin_textdomain( 'jm-tc-gut', false, JM_TC_LANG_DIR );
 	}
 
 }

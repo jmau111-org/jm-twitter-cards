@@ -176,7 +176,7 @@ class Metabox {
 				'jm-tc-metabox',
 				'tcStrings',
 				[
-					'upload_message' => __( 'Upload' ),
+					'upload_message' => __( 'Upload', 'jm-tc' ),
 					'default_image'  => ! empty( $this->opts['twitterImage'] ) ? esc_url( $this->opts['twitterImage'] ) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
 				]
 			);

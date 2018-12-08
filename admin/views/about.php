@@ -7,7 +7,7 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 ?>
 <div class="wrap tc">
-    <h1><?php esc_html_e( 'JM Twitter Cards', 'jm-tc' ); ?>: <?php echo strtolower( esc_html__( 'About' ) ); ?></h1>
+    <h1><?php esc_html_e( 'JM Twitter Cards', 'jm-tc' ); ?>: <?php echo strtolower( esc_html__( 'About', 'jm-tc' ) ); ?></h1>
     <h3>
         <span class="icon dashicons-before dashicons-heart"></span><span><?php _e( 'This plugin is free', 'jm-tc' ); ?></span>
     </h3>

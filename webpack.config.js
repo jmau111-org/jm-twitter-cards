@@ -35,8 +35,8 @@ const externals = {
     react: "React"
 };
 entryPointNames.forEach(entryPointName => {
-    externals["@jm-tc/" + entryPointName] = {
-        this: ["jm-tc", entryPointName]
+    externals["@jm-tc-gut/" + entryPointName] = {
+        this: ["jm-tc-gut", entryPointName]
     };
 });
 
@@ -70,7 +70,7 @@ const config = {
     output: {
         filename: "admin/js/[name]/build/index.js",
         path: __dirname,
-        library: ["jm-tc", "[name]"],
+        library: ["jm-tc-gut", "[name]"],
         libraryTarget: "this"
     },
     resolve: {

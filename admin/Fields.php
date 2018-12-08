@@ -158,14 +158,14 @@ class Fields {
 		$output = '<tr class="' . esc_attr( $aar['field_id'] ) . '">';
 		$output .= '<th scope="row"><label for="' . esc_attr( $aar['field_id'] ) . '">' . esc_html( $aar['label'] ) . '</label></th>';
 		$output .= '<td><input size="60" type="text" class="tc-file-input" name="' . esc_attr( $aar['field_id'] ) . '" id="' . esc_attr( $aar['field_id'] ) . '" value="' . esc_attr( $aar['value'] ) . '">';
-		$output .= '<a href="#" class="tc-file-input-select button-primary">' . __( 'Select' ) . '</a>' . "\r";
-		$output .= '<a href="#" class="tc-file-input-reset button-secondary">' . __( 'Remove' ) . '</a></td>';
+		$output .= '<a href="#" class="tc-file-input-select button-primary">' . __( 'Select', 'jm-tc' ) . '</a>' . "\r";
+		$output .= '<a href="#" class="tc-file-input-reset button-secondary">' . __( 'Remove', 'jm-tc' ) . '</a></td>';
 		$output .= '</tr>';
 
 		return $output;
 	}
 
 	public function __toString() {
-		return __( 'Not found' );
+		return __( 'Not found', 'jm-tc' );
 	}
 }
