@@ -26,7 +26,7 @@ import {
     Component
 } from "@wordpress/element";
 
-import {PluginSidebar} from '@wordpress/editPost';
+import {PluginSidebar,PluginSidebarMoreMenuItem} from '@wordpress/editPost';
 
 import {compose} from '@wordpress/compose';
 
@@ -75,6 +75,7 @@ class JM_Twitter_Cards extends Component {
                     icon="twitter"
                     name="jm-tc-sidebar"
                     title={__('Twitter Cards settings', 'jm-tc-gut')}>
+
                     <PanelBody title={__('Main settings & preview', 'jm-tc-gut')}>
                         <p className="description smaller">{__('The preview button allows you to change main twitter cards settings and see what it might look like on Twitter.', 'jm-tc-gut')}</p>
                         <p className="description smaller">{__('On no account this could replace the Twitter cards validator', 'jm-tc-gut')}</p>
@@ -260,6 +261,12 @@ class JM_Twitter_Cards extends Component {
                         </div>
                     </PanelBody>
                 </PluginSidebar>
+                <PluginSidebarMoreMenuItem
+                    icon="twitter"
+                    target="jm-tc-sidebar"
+                >
+                    {__("Twitter Cards", "jm-tc-gut")}
+                </PluginSidebarMoreMenuItem>
             </Fragment>
         );
     }

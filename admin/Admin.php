@@ -67,6 +67,7 @@ class Admin {
 			'302609437' => __( 'Dealing with images', 'jm-tc' ),
 			'302609425' => __( 'Set first image found in post content as twitter image', 'jm-tc' ),
 			'302609429' => __( 'Upgrading to Gutenberg', 'jm-tc' ),
+			'305338709' => __( 'How to recover twitter cards sidebar after unpin', 'jm-tc' ),
 		];
 	}
 

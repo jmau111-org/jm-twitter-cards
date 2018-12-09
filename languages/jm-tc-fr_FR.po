@@ -3,24 +3,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Twitter Cards 10.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jm-twitter-"
-"cards\n"
-"POT-Creation-Date: 2018-12-08 21:14+0100\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jm-twitter-cards\n"
+"POT-Creation-Date: 2018-12-09 16:09:58+00:00\n"
+"PO-Revision-Date: 2018-12-09 17:10+0100\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-12-08 21:55+0100\n"
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Textdomain-Support: yes\n"
-"Last-Translator: \n"
-"Language-Team: French\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/Admin.php:59 admin/views/import-export.php:10
@@ -68,11 +67,15 @@ msgstr ""
 msgid "Upgrading to Gutenberg"
 msgstr "Passer à Gutenberg"
 
-#: admin/Admin.php:82
+#: admin/Admin.php:70
+msgid "How to recover twitter cards sidebar after unpin"
+msgstr "Comment récupérer la sidebar Twitter Cards après l'avoir \"décrochée\""
+
+#: admin/Admin.php:83
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/Admin.php:105
+#: admin/Admin.php:106
 msgid "characters left"
 msgstr "caractères restants"
 
@@ -80,20 +83,20 @@ msgstr "caractères restants"
 msgid "JM Twitter Cards"
 msgstr "JM Twitter Cards"
 
-#: admin/Admin.php:236
+#: admin/Admin.php:237
 msgid ""
 "10.0.0 : There is now support for <a href=\"https://wordpress.org/gutenberg/"
 "\">Gutenberg</a>, please use this custom sidebar. Just click on the Twitter "
 "Icon on your edit screen (top right corner). All data are saved as meta "
 "(like before)."
 msgstr ""
-"10.0.0 : tout nouveau support pour <a href=\"https://wordpress.org/"
-"gutenberg/\">Gutenberg</a>, SVP utilisez la sidebar personnalisée. Cliquez "
-"simplement sur l'icône Twitter (en haut à droite de l'écran de modification "
-"de la publication). Toutes les données sont sauvegardées de la même façon "
-"donc pas de perte de données des anciennes publications."
+"10.0.0 : tout nouveau support pour <a href=\"https://wordpress.org/gutenberg/"
+"\">Gutenberg</a>, SVP utilisez la sidebar personnalisée. Cliquez simplement "
+"sur l'icône Twitter (en haut à droite de l'écran de modification de la "
+"publication). Toutes les données sont sauvegardées de la même façon donc pas "
+"de perte de données des anciennes publications."
 
-#: admin/Admin.php:239
+#: admin/Admin.php:240
 msgid ""
 "10.0.0 : Please see the new <a href=\"%s\">Tutorial page</a> which can help "
 "you."
@@ -101,11 +104,11 @@ msgstr ""
 "10.0.0 : SVP jetez un oeil à la nouvelle <a href=\"%s\">page de tutoriel </"
 "a>, cela pourrait vous aider."
 
-#: admin/Admin.php:300
+#: admin/Admin.php:301
 msgid "Please upload a valid .json file"
 msgstr "SVP téléversez un ficheir .json valide"
 
-#: admin/Admin.php:306
+#: admin/Admin.php:307
 msgid "Please upload a file to import"
 msgstr "SVP téléversez un fichier à importer"
 
@@ -121,7 +124,7 @@ msgstr "Supprimer"
 msgid "Not found"
 msgstr "Aucun résultat"
 
-#: admin/Metabox.php:51
+#: admin/Metabox.php:51 languages/jm-tc-gut-translations.php:14
 msgid "Twitter Cards"
 msgstr "Twitter Cards"
 
@@ -129,13 +132,13 @@ msgstr "Twitter Cards"
 msgid "Upload"
 msgstr "Téléverser"
 
-#: admin/Options.php:249
+#: admin/Options.php:247
 msgid ""
 "Warning : Player Card is not set properly ! There is no URL provided for "
 "iFrame player !"
 msgstr ""
-"Avertissement: la card PLayer n'est pas paramétrée correctement ! Aucune "
-"URL n'est fournie pour le lecteur iFrame !"
+"Avertissement: la card PLayer n'est pas paramétrée correctement ! Aucune URL "
+"n'est fournie pour le lecteur iFrame !"
 
 #: admin/Settings.php:383
 msgid "Choose File"
@@ -172,6 +175,7 @@ msgid "Card type"
 msgstr "Type de card"
 
 #: admin/views/settings-metabox.php:21 admin/views/settings.php:29
+#: languages/jm-tc-gut-translations.php:20
 msgid "Summary"
 msgstr "Résumé"
 
@@ -179,11 +183,12 @@ msgstr "Résumé"
 msgid "Summary below Large Image"
 msgstr "Résumé large image"
 
-#: admin/views/settings-metabox.php:23
+#: admin/views/settings-metabox.php:23 languages/jm-tc-gut-translations.php:26
 msgid "Player"
 msgstr "Player"
 
 #: admin/views/settings-metabox.php:24 admin/views/settings.php:31
+#: languages/jm-tc-gut-translations.php:29
 msgid "Application"
 msgstr "Application"
 
@@ -195,7 +200,7 @@ msgstr "Surcharger l'image Twitter"
 msgid "Image Alt"
 msgstr "Texte alternatif pour l'image Twitter"
 
-#: admin/views/settings-metabox.php:47 admin/views/settings-metabox.php:72
+#: admin/views/settings-metabox.php:47
 msgid "URL of iFrame player (MUST BE HTTPS)"
 msgstr "URL du player iFrame(DOIT ÊTRE HTTPS)"
 
@@ -206,10 +211,6 @@ msgstr "Largeur du player"
 #: admin/views/settings-metabox.php:62
 msgid "Player height"
 msgstr "Hauteur du player"
-
-#: admin/views/settings-metabox.php:78
-msgid "Codec"
-msgstr "Codec"
 
 #: admin/views/settings-sections.php:14
 msgid "Options"
@@ -434,6 +435,168 @@ msgstr "Bienvenu sur"
 msgid "see blog posts"
 msgstr "Voir les publications"
 
+#: languages/jm-tc-gut-translations.php:5
+#, fuzzy
+#| msgid "Creator (twitter username)"
+msgid "Your Twitter name"
+msgstr "Créateur (pseudo twitter)"
+
+#: languages/jm-tc-gut-translations.php:8
+msgid "The card for your website will look a little something like this!"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:11
+msgid "Preview is not provided for application card"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:17
+#, fuzzy
+#| msgid "Card type"
+msgid "Card Type"
+msgstr "Type de card"
+
+#: languages/jm-tc-gut-translations.php:23
+#, fuzzy
+#| msgid "Summary below Large Image"
+msgid "Summary Large Image"
+msgstr "Résumé large image"
+
+#: languages/jm-tc-gut-translations.php:32
+#, fuzzy
+#| msgid "Custom field title"
+msgid "Custom title"
+msgstr "Champ titre personnalisé"
+
+#: languages/jm-tc-gut-translations.php:35
+msgid ""
+"Best is under 55 chars. If no set default card title would be post title"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:38
+msgid "Enter custom title…"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:41
+msgid "Card description"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:44
+msgid ""
+"200 chars max but it is better to keep it short, 120-130 chars is fine. By "
+"default description will be automatically generated or retrieved from a SEO "
+"plugin such as Yoast or All in One SEO but you can override this here."
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:47
+#, fuzzy
+#| msgid "Player"
+msgid "Player URL"
+msgstr "Player"
+
+#: languages/jm-tc-gut-translations.php:50
+#, fuzzy
+#| msgid "Enter iPad URL "
+msgid "Enter URL…"
+msgstr "Entrez l'URL iPad"
+
+#: languages/jm-tc-gut-translations.php:53
+#, fuzzy
+#| msgid "Player width"
+msgid "Player Width"
+msgstr "Largeur du player"
+
+#: languages/jm-tc-gut-translations.php:56
+#, fuzzy
+#| msgid "Player height"
+msgid "Player Height"
+msgstr "Hauteur du player"
+
+#: languages/jm-tc-gut-translations.php:59
+msgid "Close"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:62
+msgid "check validator"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:65
+#, fuzzy
+#| msgid "Settings"
+msgid "Image Settings"
+msgstr "Réglages"
+
+#: languages/jm-tc-gut-translations.php:68
+msgid "Depending on your card type, please use appropriate ratio. Best is :"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:71
+msgid "1:1 for summary card (square)"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:74
+msgid "2:1 (rectangle) for summary large image"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:77
+msgid ""
+"Using featured image is highly recommended (if supported by your post type "
+"which is the case for posts) but you can override this here."
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:80
+msgid "Override featured image and default image for this post"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:83
+msgid "Insert from Media Library"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:86
+msgid "Change twitter Image source"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:89
+#, fuzzy
+#| msgid "Image alt"
+msgid "Card Image alt"
+msgstr "Texte alternatif pour l'image Twitter"
+
+#: languages/jm-tc-gut-translations.php:92
+msgid "Alt text - accessibility for your Twitter Image"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:95
+#, fuzzy
+#| msgid "Twitter Cards"
+msgid "Twitter Cards settings"
+msgstr "Twitter Cards"
+
+#: languages/jm-tc-gut-translations.php:98
+msgid "Main settings & preview"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:101
+msgid ""
+"The preview button allows you to change main twitter cards settings and see "
+"what it might look like on Twitter."
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:104
+msgid "On no account this could replace the Twitter cards validator"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:107
+msgid "Preview and set your cards"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:110
+msgid "preview"
+msgstr ""
+
+#: languages/jm-tc-gut-translations.php:113
+msgid "open modal"
+msgstr ""
+
 #: public/Front.php:130
 msgid "Missing critical option !"
 msgstr "Option critique manquante !"
@@ -462,3 +625,6 @@ msgstr "Conçu pour aider à mettre en place des cards Twitter facilement"
 #. Author of the plugin/theme
 msgid "Julien Maury"
 msgstr "Julien Maury"
+
+#~ msgid "Codec"
+#~ msgstr "Codec"
