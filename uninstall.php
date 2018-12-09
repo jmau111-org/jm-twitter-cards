@@ -14,8 +14,11 @@ delete_option( 'jm_tc_cpt' );
  * Delete postmeta from option table
  *
  */
-$keys = array(
+$keys = [
 	'twitterCardType',
+	'cardDesc',
+	'cardTitle',
+	'cardImageID',
 	'cardImage',
 	'cardImageAlt',
 	'cardPlayer',
@@ -28,8 +31,8 @@ $keys = array(
 	'cardData1',
 	'cardLabel1',
 	'cardData2',
-	'cardLabel2'
-);
+	'cardLabel2',
+];
 
 global $wpdb;
 foreach ( $keys as $key ) {

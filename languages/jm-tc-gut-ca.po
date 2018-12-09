@@ -1,0 +1,182 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: admin/js/cards/components/preview/index.js:15
+msgid "Your Twitter name"
+msgstr "El teu nom de Twitter"
+
+#: admin/js/cards/components/preview/index.js:20
+msgid "The card for your website will look a little something like this!"
+msgstr "La targeta del vostre lloc web tindrà una mica semblant a això."
+
+#: admin/js/cards/components/preview/index.js:23
+msgid "Preview is not provided for application card"
+msgstr "No es proporciona cap previsualització per a la targeta d'aplicació"
+
+#: admin/js/cards/index.js:111
+msgid "Card Type"
+msgstr "Tipus de targeta"
+
+#: admin/js/cards/index.js:114
+msgid "Summary"
+msgstr "Resum"
+
+#: admin/js/cards/index.js:116
+msgid "Summary Large Image"
+msgstr "Resum Imatge gran"
+
+#: admin/js/cards/index.js:119
+msgid "Player"
+msgstr "Jugador"
+
+#: admin/js/cards/index.js:120
+msgid "Application"
+msgstr "Aplicació"
+
+#: admin/js/cards/index.js:130
+msgid "Custom title"
+msgstr "Títol personalitzat"
+
+#: admin/js/cards/index.js:131
+msgid ""
+"Best is under 55 chars. If no set default card title would be post title"
+msgstr ""
+"El millor és de menys de 55 caràcters. Si el títol de la targeta "
+"predeterminada no era definit, es publicaria el títol"
+
+#: admin/js/cards/index.js:133
+msgid "Enter custom title…"
+msgstr "Introduïu el títol personalitzat ..."
+
+#: admin/js/cards/index.js:141
+msgid "Card description"
+msgstr "Descripció de la targeta"
+
+#: admin/js/cards/index.js:142
+msgid ""
+"200 chars max but it is better to keep it short, 120-130 chars is fine. By "
+"default description will be automatically generated or retrieved from a SEO "
+"plugin such as Yoast or All in One SEO but you can override this here."
+msgstr ""
+"200 caràcters màx. Però és millor mantenir-lo curt, 120-130 caràcters està "
+"bé. La descripció predeterminada es generarà automàticament o es recuperarà "
+"d'un complement de SEO com Yoast o All in One SEO, però podeu substituir-lo "
+"aquí."
+
+#: admin/js/cards/index.js:155
+msgid "Player URL"
+msgstr "URL del reproductor"
+
+#: admin/js/cards/index.js:157
+msgid "Enter URL…"
+msgstr "Introduïu l'URL ..."
+
+#: admin/js/cards/index.js:163
+msgid "Player Width"
+msgstr "Amplada del reproductor"
+
+#: admin/js/cards/index.js:172
+msgid "Player Height"
+msgstr "Alçada del jugador"
+
+#: admin/js/cards/index.js:185
+msgid "Close"
+msgstr "Tanca"
+
+#: admin/js/cards/index.js:189
+msgid "check validator"
+msgstr "comproveu el validador de bruixes"
+
+#: admin/js/cards/index.js:195
+msgid "Image Settings"
+msgstr "Configuració de la imatge"
+
+#: admin/js/cards/index.js:197
+msgid "Depending on your card type, please use appropriate ratio. Best is :"
+msgstr ""
+"En funció del tipus de targeta, utilitzeu la relació adequada. El millor és:"
+
+#: admin/js/cards/index.js:200
+msgid "1:1 for summary card (square)"
+msgstr "1: 1 per a la targeta de resum (quadrat)"
+
+#: admin/js/cards/index.js:201
+msgid "2:1 (rectangle) for summary large image"
+msgstr "2: 1 (rectangle) per a la imatge de resum gran"
+
+#: admin/js/cards/index.js:204
+msgid ""
+"Using featured image is highly recommended (if supported by your post type "
+"which is the case for posts) but you can override this here."
+msgstr ""
+"L'ús de la imatge destacada és molt recomanable (si és compatible amb el "
+"tipus de publicació que és el cas de les publicacions), però podeu "
+"substituir-lo aquí."
+
+#: admin/js/cards/index.js:208
+msgid "Override featured image and default image for this post"
+msgstr ""
+"Anul·la la imatge destacada i la imatge predeterminada d'aquesta publicació"
+
+#: admin/js/cards/index.js:220
+msgid "Insert from Media Library"
+msgstr "Insereix des de la Biblioteca"
+
+#: admin/js/cards/index.js:230
+msgid "Change twitter Image source"
+msgstr "Canvia twitter Font d'imatge"
+
+#: admin/js/cards/index.js:254
+msgid "Card Image alt"
+msgstr "Imatge de la targeta alt"
+
+#: admin/js/cards/index.js:255
+msgid "Alt text - accessibility for your Twitter Image"
+msgstr "Alt text: accessibilitat per a la imatge de Twitter"
+
+#: admin/js/cards/index.js:268
+msgid "Twitter Cards"
+msgstr "Twitter Cards"
+
+#: admin/js/cards/index.js:77
+msgid "Twitter Cards settings"
+msgstr "Configuració de les targetes de Twitter"
+
+#: admin/js/cards/index.js:79
+msgid "Main settings & preview"
+msgstr "Configuració / prèvia"
+
+#: admin/js/cards/index.js:80
+msgid ""
+"The preview button allows you to change main twitter cards settings and see "
+"what it might look like on Twitter."
+msgstr ""
+"El botó de vista prèvia us permet canviar la configuració principal de les "
+"targetes de twitter i veure el que podria semblar a Twitter."
+
+#: admin/js/cards/index.js:81
+msgid "On no account this could replace the Twitter cards validator"
+msgstr ""
+"En cap cas això podria substituir el validador de les targetes de Twitter"
+
+#: admin/js/cards/index.js:84
+msgid "Preview and set your cards"
+msgstr "Previsualitza i configura les teves targetes"
+
+#: admin/js/cards/index.js:86
+msgid "preview"
+msgstr "Vista prèvia"
+
+#: admin/js/cards/index.js:91
+msgid "open modal"
+msgstr "obert modal"

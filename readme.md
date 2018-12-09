@@ -10,16 +10,28 @@ Want to fork? Please fork the trunk version and not the master version, URL is h
 
 ## Important to know ##
 
-The plugin uses libraries such as API Settings wrapper or Rilwis Metabox Framework.
-
 To get this work, use composer :
 
 ```
 git clone https://github.com/jmau111/jm-twitter-cards.git && cd jm-twitter-cards
-composer install
+```
+
+If Gutenberg is enabled then run :
+
+```
+npm i && npm run build
 ```
 
 ## Changelog ##
+
+### 10.0.0
+* December 2018
+* Reorganize deeply the plugin structure
+* css fixes props to [tomdxw](https://github.com/tomdxw)
+* delete image sizes, actually very bad for disk space and rules have changes in 2018 with Twitter image
+* Gutenberg users will have additional features such as custom modal and preview but also custom title and desc for cards \0/
+* I've added some instructions and advices props to https://www.contentkingapp.com/
+* There is a new admin sub page called "tutorials" with video tutorials !
 
 ### 9.4
 * June 2018

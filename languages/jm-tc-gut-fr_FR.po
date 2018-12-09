@@ -1,0 +1,179 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: admin/js/cards/components/preview/index.js:15
+msgid "Your Twitter name"
+msgstr "Votre pseudo Twitter"
+
+#: admin/js/cards/components/preview/index.js:20
+msgid "The card for your website will look a little something like this!"
+msgstr "Votre card pourrait ressembler à ce qui suit !"
+
+#: admin/js/cards/components/preview/index.js:23
+msgid "Preview is not provided for application card"
+msgstr "La prévisualisation n'est pas fournie pour la card de type application"
+
+#: admin/js/cards/index.js:111
+msgid "Card Type"
+msgstr "Type de card"
+
+#: admin/js/cards/index.js:114
+msgid "Summary"
+msgstr "Résumé"
+
+#: admin/js/cards/index.js:116
+msgid "Summary Large Image"
+msgstr "Résumé large image"
+
+#: admin/js/cards/index.js:119
+msgid "Player"
+msgstr "Player"
+
+#: admin/js/cards/index.js:120
+msgid "Application"
+msgstr "Application"
+
+#: admin/js/cards/index.js:130
+msgid "Custom title"
+msgstr "Titre personnalisé"
+
+#: admin/js/cards/index.js:131
+msgid ""
+"Best is under 55 chars. If no set default card title would be post title"
+msgstr ""
+"Le mieux est de rester en dessous de 55 caractères. Si vide, le titre du "
+"post est repris par défaut"
+
+#: admin/js/cards/index.js:133
+msgid "Enter custom title…"
+msgstr "Entrez un titre personnalisé..."
+
+#: admin/js/cards/index.js:141
+msgid "Card description"
+msgstr "Description de la card"
+
+#: admin/js/cards/index.js:142
+msgid ""
+"200 chars max but it is better to keep it short, 120-130 chars is fine. By "
+"default description will be automatically generated or retrieved from a SEO "
+"plugin such as Yoast or All in One SEO but you can override this here."
+msgstr ""
+"200 caractères maximum mais c'est mieux de faire court, 120-130 caractères "
+"c'est déjà bien. Par défaut la description est reprise automatiquement ou "
+"via un plugin SEO comme Yoast ou All in One SEO mais vous pouvez surcharger "
+"cela ici."
+
+#: admin/js/cards/index.js:155
+msgid "Player URL"
+msgstr "L'URL du player"
+
+#: admin/js/cards/index.js:157
+msgid "Enter URL…"
+msgstr "Entrez l'URL..."
+
+#: admin/js/cards/index.js:163
+msgid "Player Width"
+msgstr "Largeur du player"
+
+#: admin/js/cards/index.js:172
+msgid "Player Height"
+msgstr "Hauteur du player"
+
+#: admin/js/cards/index.js:185
+msgid "Close"
+msgstr "Fermer"
+
+#: admin/js/cards/index.js:189
+msgid "check validator"
+msgstr "Vérifiez avec le validateur"
+
+#: admin/js/cards/index.js:195
+msgid "Image Settings"
+msgstr "Réglages de l'image"
+
+#: admin/js/cards/index.js:197
+msgid "Depending on your card type, please use appropriate ratio. Best is :"
+msgstr ""
+"Suivant votre type de card, svp utilisez un ratio approprié. Le mieux est :"
+
+#: admin/js/cards/index.js:200
+msgid "1:1 for summary card (square)"
+msgstr "1:1 pour les cards résumé (carré)"
+
+#: admin/js/cards/index.js:201
+msgid "2:1 (rectangle) for summary large image"
+msgstr "2:1 (rectangle) pour les cards résumé large image"
+
+#: admin/js/cards/index.js:204
+msgid ""
+"Using featured image is highly recommended (if supported by your post type "
+"which is the case for posts) but you can override this here."
+msgstr ""
+"Mieux vaut utiliser l'image à la UNE (méthode recommandée si votre type de "
+"contenu le supporte) mais vous pouvez surcharger cela ici."
+
+#: admin/js/cards/index.js:208
+msgid "Override featured image and default image for this post"
+msgstr "Surcharger l'image à la UNE et l'image par défaut Twitter"
+
+#: admin/js/cards/index.js:220
+msgid "Insert from Media Library"
+msgstr "Insérer une image"
+
+#: admin/js/cards/index.js:230
+msgid "Change twitter Image source"
+msgstr "Modifier l'image Twitter"
+
+#: admin/js/cards/index.js:254
+msgid "Card Image alt"
+msgstr "Texte alternatif pour l'image Twitter"
+
+#: admin/js/cards/index.js:255
+msgid "Alt text - accessibility for your Twitter Image"
+msgstr "Texte alternatif - accessibilité pour l'image Twitter"
+
+#: admin/js/cards/index.js:268
+msgid "Twitter Cards"
+msgstr "Twitter Cards"
+
+#: admin/js/cards/index.js:77
+msgid "Twitter Cards settings"
+msgstr "Réglages Twitter Cards"
+
+#: admin/js/cards/index.js:79
+msgid "Main settings & preview"
+msgstr "Réglages principaux et aperçu"
+
+#: admin/js/cards/index.js:80
+msgid ""
+"The preview button allows you to change main twitter cards settings and see "
+"what it might look like on Twitter."
+msgstr ""
+"Le bouton d'aperçu permet de modifier les réglages de la card Twitter tout "
+"en voyant ce que cela pourrait donner sur Twitter."
+
+#: admin/js/cards/index.js:81
+msgid "On no account this could replace the Twitter cards validator"
+msgstr "En aucun cas cela peut remplacer le validateur de Twitter"
+
+#: admin/js/cards/index.js:84
+msgid "Preview and set your cards"
+msgstr "Prévisualiser et paramétrer votre card"
+
+#: admin/js/cards/index.js:86
+msgid "preview"
+msgstr "Prévisualisation"
+
+#: admin/js/cards/index.js:91
+msgid "open modal"
+msgstr "Ouvrir la modale"

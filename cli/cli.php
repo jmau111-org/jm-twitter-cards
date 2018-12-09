@@ -76,12 +76,12 @@ class JM_TC_CLI extends WP_CLI_Command {
 	 */
 	public function set_cardtype( $args, $assoc_args ) {
 
-		if ( empty( $args[0] ) || ! in_array( $args[0], array(
+		if ( empty( $args[0] ) || ! in_array( $args[0], [
 				'summary',
 				'summary_large_image',
 				'app',
 				'player',
-			) ) ) {
+			] ) ) {
 			WP_CLI::error( __( 'You sox !', 'jm-tc' ) );
 		}
 
@@ -110,7 +110,7 @@ class JM_TC_CLI extends WP_CLI_Command {
 	 */
 	public function set_opengraph( $args, $assoc_args ) {
 
-		if ( empty( $args[0] ) || ! in_array( $args[0], array( 'yes', 'no' ) ) ) {
+		if ( empty( $args[0] ) || ! in_array( $args[0], [ 'yes', 'no' ] ) ) {
 			WP_CLI::error( __( 'You gotta be kidding me !', 'jm-tc' ) );
 		}
 
