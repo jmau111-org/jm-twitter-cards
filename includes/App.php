@@ -162,7 +162,20 @@ class Main {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_export' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_import' );
 
-		if ( Utils::gutenberg_exists() && ! in_array( get_post_type(), Utils::get_post_types(), true ) ) {
+
+		/**
+		 * @global string $post_type
+		 * @global object $post_type_object
+		 * @global \WP_Post $post
+		 */
+		global $post_type;
+		if ( ! isset( $_GET['post_type'] ) ) {
+			$post_type = 'post';
+		} elseif ( in_array( $_GET['post_type'], get_post_types( [ 'show_ui' => true ] ) ) ) {
+			$post_type = $_GET['post_type'];
+		}
+
+		if ( Utils::gutenberg_exists() && in_array( $post_type, Utils::get_post_types(), true ) ) {
 			$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
 			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'scripts_register' );
 			$this->loader->add_action( 'enqueue_block_assets', $gut, 'scripts_enqueue' );
