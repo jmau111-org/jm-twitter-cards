@@ -162,13 +162,8 @@ class Main {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_export' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_import' );
 
+		$post_type = get_post_type();
 
-		/**
-		 * @global string $post_type
-		 * @global object $post_type_object
-		 * @global \WP_Post $post
-		 */
-		global $post_type;
 		if ( ! isset( $_GET['post_type'] ) ) {
 			$post_type = 'post';
 		} elseif ( in_array( $_GET['post_type'], get_post_types( [ 'show_ui' => true ] ) ) ) {
