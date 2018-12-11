@@ -26,7 +26,7 @@ class Gutenberg {
 	/**
 	 * @author Julien Maury
 	 */
-	public function scripts_register() {
+	public function scripts_enqueue() {
 
 		$js_file_path  = JM_TC_DIR . 'admin/js/cards/build/index.js';
 		$css_file_path = JM_TC_DIR . 'admin/js/cards/build/style.css';
@@ -69,6 +69,11 @@ class Gutenberg {
 			'wp.i18n.setLocaleData( ' . json_encode( $this->get_jed_locale_data( 'jm-tc-gut' ) ) . ', "jm-tc-gut" );',
 			'before'
 		);
+
+
+		wp_enqueue_script( 'tc-gut-sidebar' );
+		wp_enqueue_style( 'tc-gut-styles' );
+
 	}
 
 	/**
@@ -95,16 +100,6 @@ class Gutenberg {
 		}
 
 		return $locale;
-	}
-
-	/**
-	 * @author Julien Maury
-	 */
-	public function scripts_enqueue() {
-
-		wp_enqueue_script( 'tc-gut-sidebar' );
-		wp_enqueue_style( 'tc-gut-styles' );
-
 	}
 
 	public function load_i18n() {

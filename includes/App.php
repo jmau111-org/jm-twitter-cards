@@ -172,8 +172,7 @@ class Main {
 
 		if ( Utils::gutenberg_exists() && in_array( $post_type, Utils::get_post_types(), true ) ) {
 			$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
-			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'scripts_register' );
-			$this->loader->add_action( 'enqueue_block_assets', $gut, 'scripts_enqueue' );
+			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'scripts_enqueue' );
 			$this->loader->add_action( 'admin_init', $gut, 'load_i18n' );
 		}
 
