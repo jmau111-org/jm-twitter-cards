@@ -3,11 +3,27 @@ import {select} from '@wordpress/data';
 
 function theImageUrl(props) {
 
-    let featuredImageId = select('core/editor').getEditedPostAttribute('featured_media');
-    let media = select('core').getMedia(featuredImageId);
-    let featuredImageUrl = typeof(media) !== 'undefined' ? media.source_url : null;
+    let fallback = props.meta.cardImage || tcData.defaultImage;
+    const {getPostType} = select('core');
+    let postTypeCheck = getPostType(select('core/editor').getEditedPostAttribute('type'));// no use if no support for thumbnail
 
-    return props.meta.cardImage || featuredImageUrl || tcData.defaultImage;
+    if (!postTypeCheck || !postTypeCheck.supports['thumbnail']) {
+        return fallback;
+    }
+    let featuredImageId = select('core/editor').getEditedPostAttribute('featured_media');
+
+    if (featuredImageId === 0) {
+        return fallback;
+    }
+
+    let media = select('core').getMedia(featuredImageId);
+
+    if (typeof(media) !== 'undefined') {
+        return props.meta.cardImage || media.source_url;
+    }
+
+    return fallback;
+
 }
 
 export const Image = ({props}) => (
