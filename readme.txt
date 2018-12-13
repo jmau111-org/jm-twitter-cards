@@ -3,7 +3,7 @@ Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BJYYT486HEH6
 Requires at least: 4.2
-Tested up to: 4.9.5
+Tested up to: 5.0.1
 Requires PHP: 5.4
 License: GPLv2 or later
 Stable tag: trunk
