@@ -100,7 +100,7 @@ class Utils {
 	 */
 	public static function gutenberg_exists() {
 		global $wp_version;
-		return function_exists( 'the_gutenberg_project' ) || version_compare( $wp_version, '5.0', '>=' ) ;
+		return (bool) apply_filters( 'jm_tc_gutenberg_exists', ! class_exists( 'DisableGutenberg' ) && ! class_exists( 'Classic_Editor' ) && ( function_exists( 'the_gutenberg_project' ) || version_compare( $wp_version, '5.0', '>=' ) ) );
 	}
 
 	/**

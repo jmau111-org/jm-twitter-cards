@@ -28,10 +28,6 @@ contact@julien-maury.com
 
 If you want to get first image found in post content as twitter image, I've created a free add-on here https://github.com/jmau111/jm-twitter-cards-first-image
 
-= Force refresh Twitter image =
-
-If you want to force refresh twitter image, I've created a free add-on here https://github.com/jmau111/jm-twitter-cards-refresh-image
-
 = Translators =
 
 The plugin is available in French, English and Spanish. Feel totally free to send me your translation in other languages.
@@ -48,7 +44,7 @@ Thanks a lot to all translators. Can't wait to add your work to the project.
 
 This URL is the place where I improve the plugin according to support requests and stuffs like this. GitHub is the place !
 
-[Follow me on Twitter](http://twitter.com/intent/user?screen_name=jmau111)
+[Follow me on Twitter](http://twitter.com/intent/user?screen_name=tweetpressfr)
 
 == Installation ==
 
@@ -116,6 +112,10 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 10.0.1
+* December 2018
+* handle case where installation is WordPress 5++ but the classic editor plugin or the disable Gutenberg plugin is used
+
 ### 10.0.0
 * December 2018
 * Reorganize deeply the plugin structure
@@ -173,3 +173,5 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 == Upgrade notice ==
 Nothing
 = 1.0 =
+
+
