@@ -28,23 +28,27 @@ contact@julien-maury.com
 
 If you want to get first image found in post content as twitter image, I've created a free add-on here https://github.com/jmau111/jm-twitter-cards-first-image
 
+= Force refresh Twitter image =
+
+If you want to get your Twitter image to refresh, I’ve created a free add-on here https://github.com/jmau111/jm-twitter-cards-refresh-image
+
 = Translators =
 
 The plugin is available in French, English and Spanish. Feel totally free to send me your translation in other languages.
 You'll be added to the list here with your name and URL.
 Thanks a lot to all translators. Can't wait to add your work to the project.
 
-* Spanish version : [WebHostingHub](http://www.webhostinghub.com/) (thanks a lot ^^) 
+* Spanish version : [WebHostingHub](http://www.webhostinghub.com/) (thanks a lot ^^)
 * Catalan version : [SeoFreelance](http://www.seofreelance.es) (thanks Dude )
 
 = Github =
 
-*  Latest stable version : https://github.com/jmau111/jm-twitter-cards
-*  Trunk version : https://github.com/jmau111/jm-twitter-cards/tree/trunk
+*  Latest stable version : [https://github.com/jmau111/jm-twitter-cards](https://github.com/jmau111/jm-twitter-cards)
+*  Trunk version : [https://github.com/jmau111/jm-twitter-cards/tree/trunk](https://github.com/jmau111/jm-twitter-cards/tree/trunk)
 
 This URL is the place where I improve the plugin according to support requests and stuffs like this. GitHub is the place !
 
-[Follow me on Twitter](http://twitter.com/intent/user?screen_name=tweetpressfr)
+[Follow me on Twitter](http://twitter.com/intent/user?screen_name=jmau111)
 
 == Installation ==
 
@@ -57,7 +61,7 @@ This URL is the place where I improve the plugin according to support requests a
 
 = I got problem with Instagram =
 
-It's a known issue due to Instagram. Twitter said it recently : Users are experiencing issues with viewing Instagram photos on Twitter. Issues include cropped images.This is due to Instagram disabling its Twitter cards integration, and as a result, photos are being displayed using a pre-cards experience. 
+It's a known issue due to Instagram. Twitter said it recently : Users are experiencing issues with viewing Instagram photos on Twitter. Issues include cropped images.This is due to Instagram disabling its Twitter cards integration, and as a result, photos are being displayed using a pre-cards experience.
 So, when users click on Tweets with an Instagram link, photos appear cropped.
 
 = Plugin is fine but Twitter cards doesn't appear in my tweets =
@@ -65,7 +69,7 @@ So, when users click on Tweets with an Instagram link, photos appear cropped.
 1. Make sure you correctly fulfilled fields in option page according to [Twitter documentation](https://dev.twitter.com/docs/cards "Twitter cards documentation")
 2. Be careful with your robots.txt and put some rules to allow Twitter to fetch your website :
 
-`	
+`
 	User-agent: Twitterbot
 	Disallow:
 `
@@ -102,7 +106,7 @@ C'est un problème connu. Cela vient d'Instagram lui-même qui préfère que ses
 
 Si cela ne marche toujours pas SVP ouvrez un topic sur le support.
 
-= Le plugin génère beaucoup trop de fichiers images = 
+= Le plugin génère beaucoup trop de fichiers images =
 
 Cela peut poser problème si vous travaillez avec de la HD et/ou beaucoup d'images. Vous pouvez donc utiliser un plugin qui va effacer les fichiers images non utilisés.
 
@@ -173,5 +177,3 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 == Upgrade notice ==
 Nothing
 = 1.0 =
-
-
