@@ -24,6 +24,10 @@ npm i && npm run build
 
 ## Changelog ##
 
+### 10.0.2
+* September 2019
+* update dependencies
+
 ### 10.0.1
 * December 2018
 * handle case where installation is WordPress 5++ but the classic editor plugin or the disable Gutenberg plugin is used

@@ -5,7 +5,7 @@ Plugin URI: https://julien-maury.com/blog
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: https://julien-maury.com/blog
-Version: 10.0.1
+Version: 10.0.2
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -27,19 +27,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 defined( 'ABSPATH' )
 or die( 'No direct load !' );
 
-define( 'JM_TC_VERSION', '10.0.1' );
+define( 'JM_TC_VERSION', '10.0.2' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
 define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
 define( 'JM_TC_LANG_DIR', basename( rtrim( dirname( __FILE__ ), '/' ) ) . '/languages' );
 
-$autoload = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+$autoload = JM_TC_DIR . 'vendor/autoload.php';
 
 if ( file_exists( $autoload ) ) {
 	require $autoload;
 }
 
-require plugin_dir_path( __FILE__ ) . 'includes/App.php';
+require JM_TC_DIR . 'includes/App.php';
 
 /**
  * @since 10.0.0
