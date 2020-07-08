@@ -18,10 +18,6 @@ if ( ! function_exists( 'add_action' ) ) {
 	$output = wpautop( __( 'I am a web developer, I like to make it simpler.', 'jm-tc' ) );
 	$output .= '
         <ul class="socials">
-            <li><a class="socials-item-link" href="https://www.twitter.com/jmau111">
-                <span>Twitter</span>
-            </a></li>
-
            <li> <a class="socials-item-link" href="https://www.linkedin.com/in/julienmaury73">
                 <span>Linkedin</span>
              </a></li>

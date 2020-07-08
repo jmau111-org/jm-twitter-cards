@@ -69,32 +69,32 @@ class Main {
 	 */
 	protected function load_dependencies() {
 
-		require_once JM_TC_DIR . 'includes/Init.php';
-		require_once JM_TC_DIR . 'includes/Loader.php';
+		require JM_TC_DIR . 'includes/Init.php';
+		require JM_TC_DIR . 'includes/Loader.php';
 
-		require_once JM_TC_DIR . 'includes/Utils.php';
+		require JM_TC_DIR . 'includes/Utils.php';
 
-		require_once JM_TC_DIR . 'functions/Functions.php';
+		require JM_TC_DIR . 'functions/Functions.php';
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-			require_once JM_TC_DIR . 'cli/cli.php';
+			require JM_TC_DIR . 'cli/cli.php';
 		}
 
 		if ( Utils::gutenberg_exists() ) {
-			require_once JM_TC_DIR . 'admin/Gutenberg.php';
+			require JM_TC_DIR . 'admin/Gutenberg.php';
 		} else {
-			require_once JM_TC_DIR . 'admin/Fields.php';
-			require_once JM_TC_DIR . 'admin/Metabox.php';
+			require JM_TC_DIR . 'admin/Fields.php';
+			require JM_TC_DIR . 'admin/Metabox.php';
 		}
 
-		require_once JM_TC_DIR . 'admin/Admin.php';
-		require_once JM_TC_DIR . 'admin/Settings.php';
-		require_once JM_TC_DIR . 'admin/Options.php';
-		require_once JM_TC_DIR . 'admin/Meta.php';
+		require JM_TC_DIR . 'admin/Admin.php';
+		require JM_TC_DIR . 'admin/Settings.php';
+		require JM_TC_DIR . 'admin/Options.php';
+		require JM_TC_DIR . 'admin/Meta.php';
 
-		require_once JM_TC_DIR . 'public/Front.php';
-		require_once JM_TC_DIR . 'public/Thumbs.php';
-		require_once JM_TC_DIR . 'public/Particular.php';
+		require JM_TC_DIR . 'public/Front.php';
+		require JM_TC_DIR . 'public/Thumbs.php';
+		require JM_TC_DIR . 'public/Particular.php';
 
 		$this->loader = new Loader();
 	}

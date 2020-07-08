@@ -1,9 +1,9 @@
 === JM Twitter Cards ===
 Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
-Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BJYYT486HEH6
+Donate Link: https://don.fondationabbepierre.org/b/mon-don?_ga=2.25482229.995513841.1594242995-131201139.1594242995&_cv=1
 Requires at least: 4.2
-Tested up to: 5.2.3
+Tested up to: 5.4.2
 Requires PHP: 5.4
 License: GPLv2 or later
 Stable tag: trunk
@@ -21,8 +21,6 @@ Once activated the plugin adds appropriate meta on your WordPress website allowi
 * meta box : customize Twitter Cards experience (per each post)
 * preview : preview the rendering on Twitter.
 * WP SEO by Yoast and All in One SEO compatible (no conflict with SEO title and desc set with these plugins)
-
-contact@julien-maury.com
 
 = First image found instead of featured image =
 
@@ -47,8 +45,6 @@ Thanks a lot to all translators. Can't wait to add your work to the project.
 *  Trunk version : [https://github.com/jmau111/jm-twitter-cards/tree/trunk](https://github.com/jmau111/jm-twitter-cards/tree/trunk)
 
 This URL is the place where I improve the plugin according to support requests and stuffs like this. GitHub is the place !
-
-[Follow me on Twitter](http://twitter.com/intent/user?screen_name=jmau111)
 
 == Installation ==
 
@@ -115,6 +111,12 @@ Cela peut poser problème si vous travaillez avec de la HD et/ou beaucoup d'imag
 Il suffit de renseigner les clés de vos custom fields en page d'option et le plugin s'occupera de récupérer les datas correspondantes.
 
 == Changelog ==
+
+### 10.1.0
+* July 2020
+* update dependencies
+* refactoring
+* use yarn
 
 ### 10.0.2
 * September 2019
