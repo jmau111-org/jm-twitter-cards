@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: JM Twitter Cards
-Plugin URI: https://julien-maury.com/blog
+Plugin URI: https://julien-maury.com
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
-Author URI: https://julien-maury.com/blog
-Version: 10.0.2
+Author URI: https://julien-maury.com
+Version: 10.1.0
 License: GPL2++
 
 JM Twitter Cards Plugin
-Copyright (C) 2015-2018, Julien Maury - contact@julien-maury.com
+Copyright (C) 2015-2020, Julien Maury
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,10 +24,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-defined( 'ABSPATH' )
-or die( 'No direct load !' );
+defined( 'ABSPATH' ) || die( 'No direct load !' );
 
-define( 'JM_TC_VERSION', '10.0.2' );
+define( 'JM_TC_VERSION', '10.1.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
 define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
@@ -46,6 +45,5 @@ require JM_TC_DIR . 'includes/App.php';
  */
 add_action( 'plugins_loaded', 'jm_tc_run' );
 function jm_tc_run() {
-	$plugin = new TokenToMe\TwitterCards\Main();
-	$plugin->run();
+	(new TokenToMe\TwitterCards\Main())->run();
 }
