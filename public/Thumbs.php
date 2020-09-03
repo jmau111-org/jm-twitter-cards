@@ -12,14 +12,7 @@ use TokenToMe\TwitterCards\Utils as Utilities;
 
 class Thumbs {
 
-	protected $plugin_name;
-	protected $version;
 	protected $opts;
-
-	public function __construct( $plugin_name, $version ) {
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
-	}
 
 	/**
 	 * Get post thumb weight

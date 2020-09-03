@@ -16,24 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Admin {
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $plugin_name The ID of this plugin.
-	 */
-	protected $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $version The current version of this plugin.
-	 */
-	protected $version;
-
 	protected $options;
 
 	protected $settings_api;
@@ -49,10 +31,8 @@ class Admin {
 	 * @param      string $plugin_name The name of this plugin.
 	 * @param      string $version The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct() {
 
-		$this->plugin_name  = $plugin_name;
-		$this->version      = $version;
 		$this->settings_api = new Settings();
 
 		$this->sub_pages = [
@@ -138,6 +118,12 @@ class Admin {
 				]
 			);
 		}
+		/**
+		 * Tutorials page
+		 **************************************************************************************************************/
+		if ( 'jm-twitter-cards_page_jm_tc_tutorials' === $hook_suffix ) {
+			wp_enqueue_style( 'tutorials', JM_TC_URL . 'css/tutorials' . Utilities::suffix_for_dev_env() . '.css', [], JM_TC_VERSION );
+		}
 	}
 
 	public function admin_init() {
@@ -155,7 +141,7 @@ class Admin {
 	 */
 	public function get_settings_sections() {
 		$sections = [];
-		require_once JM_TC_DIR . 'admin/views/settings-sections.php';
+		require JM_TC_DIR . 'admin/views/settings-sections.php';
 
 		return $sections;
 	}
@@ -170,7 +156,7 @@ class Admin {
 		$settings_fields = [];
 		$opts            = \jm_tc_get_options();
 
-		require_once JM_TC_DIR . 'admin/views/settings.php';
+		require JM_TC_DIR . 'admin/views/settings.php';
 
 		return $settings_fields;
 	}
@@ -220,7 +206,7 @@ class Admin {
 			ob_start();
 			$slug = str_replace( 'jm_tc_', '', sanitize_title_with_dashes( $_GET['page'] ) );
 			$slug = str_replace( '_', '-', $slug );
-			require( JM_TC_DIR . 'admin/views/' . $slug . '.php' );
+			require JM_TC_DIR . 'admin/views/' . $slug . '.php';
 			ob_end_flush();
 		}
 

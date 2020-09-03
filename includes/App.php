@@ -18,26 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-class Main {
+class App {
 
-	protected $loader;
 	protected $opts;
-	/**
-	 * The unique identifier of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $plugin_name The string used to uniquely identify this plugin.
-	 */
-	protected $plugin_name;
-	/**
-	 * The current version of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $version The current version of the plugin.
-	 */
-	protected $version;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -48,9 +31,7 @@ class Main {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-		$this->plugin_name = 'JM Twitter Cards';
-		$this->version     = JM_TC_VERSION;
+	public function run() {
 
 		$this->load_dependencies();
 		$this->define_post_hooks();
@@ -70,7 +51,6 @@ class Main {
 	protected function load_dependencies() {
 
 		require JM_TC_DIR . 'includes/Init.php';
-		require JM_TC_DIR . 'includes/Loader.php';
 
 		require JM_TC_DIR . 'includes/Utils.php';
 
@@ -95,8 +75,6 @@ class Main {
 		require JM_TC_DIR . 'public/Front.php';
 		require JM_TC_DIR . 'public/Thumbs.php';
 		require JM_TC_DIR . 'public/Particular.php';
-
-		$this->loader = new Loader();
 	}
 
 
@@ -109,13 +87,13 @@ class Main {
 	 */
 	protected function define_post_hooks() {
 		if ( ! Utils::gutenberg_exists() ) {
-			$plugin_posts = new Metabox( $this->get_plugin_name(), $this->get_version() );
-			$this->loader->add_action( 'add_meta_boxes', $plugin_posts, 'add_box' );
-			$this->loader->add_action( 'save_post', $plugin_posts, 'save_box', 10, 2 );
-			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_posts, 'admin_enqueue_scripts' );
+			$plugin_posts = new Metabox();
+			\add_action( 'add_meta_boxes', [ $plugin_posts, 'add_box' ] );
+			\add_action( 'save_post', [ $plugin_posts, 'save_box' ], 10, 2 );
+			\add_action( 'admin_enqueue_scripts', [ $plugin_posts, 'admin_enqueue_scripts' ] );
 		} else {
-			$plugin_posts = new Meta( $this->get_plugin_name(), $this->get_version() );
-			$this->loader->add_action( 'init', $plugin_posts, 'gutenberg_register_meta' );
+			$plugin_posts = new Meta();
+			\add_action( 'init', [ $plugin_posts, 'gutenberg_register_meta' ] );
 		}
 	}
 
@@ -127,22 +105,22 @@ class Main {
 	 * @access   protected
 	 */
 	protected function define_public_hooks() {
-		$plugin_front = new Front( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'wp_head', $plugin_front, 'add_markup', 0 );
+		$plugin_front = new Front();
+		\add_action( 'wp_head', [ $plugin_front, 'add_markup' ], 0 );
 
-		$plugin_front = new Thumbs( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_filter( 'admin_post_thumbnail_html', $plugin_front, 'add_featured_image_instruction' );
+		$plugin_front = new Thumbs();
+		\add_filter( 'admin_post_thumbnail_html', [ $plugin_front, 'add_featured_image_instruction' ] );
 
-		$plugin_front = new Particular( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_filter( 'robots_txt', $plugin_front, 'robots_mod' );
+		$plugin_front = new Particular();
+		\add_filter( 'robots_txt', [ $plugin_front, 'robots_mod' ] );
 
 		if ( isset( $this->opts['twitterCardExcerpt'] ) && 'yes' === $this->opts['twitterCardExcerpt'] ) {
-			$this->loader->add_filter( 'jm_tc_get_excerpt', $plugin_front, 'modify_excerpt' );
+			\add_filter( 'jm_tc_get_excerpt', [ $plugin_front, 'modify_excerpt' ] );
 		}
 
-		$this->loader->add_action( 'wpmu_new_blog', $plugin_front, 'new_blog' );
-		$this->loader->add_filter( 'jm_tc_card_site', $plugin_front, 'remove_myself' );
-		$this->loader->add_filter( 'jm_tc_card_creator', $plugin_front, 'remove_myself' );
+		\add_action( 'wpmu_new_blog', [ $plugin_front, 'new_blog' ] );
+		\add_filter( 'jm_tc_card_site', [ $plugin_front, 'remove_myself' ] );
+		\add_filter( 'jm_tc_card_creator', [ $plugin_front, 'remove_myself' ] );
 	}
 
 	/**
@@ -154,13 +132,13 @@ class Main {
 	 */
 	protected function define_admin_hooks() {
 
-		$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'admin_enqueue_scripts' );
-		$this->loader->add_filter( 'plugin_action_links_' . JM_TC_BASENAME, $plugin_admin, 'settings_action_link' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_export' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'process_settings_import' );
+		$plugin_admin = new Admin();
+		\add_action( 'admin_enqueue_scripts', [ $plugin_admin, 'admin_enqueue_scripts' ] );
+		\add_filter( 'plugin_action_links_' . JM_TC_BASENAME, [ $plugin_admin, 'settings_action_link' ] );
+		\add_action( 'admin_menu', [ $plugin_admin, 'admin_menu' ] );
+		\add_action( 'admin_init', [ $plugin_admin, 'admin_init' ] );
+		\add_action( 'admin_init', [ $plugin_admin, 'process_settings_export' ] );
+		\add_action( 'admin_init', [ $plugin_admin, 'process_settings_import' ] );
 
 		$post_type = get_post_type();
 
@@ -171,50 +149,10 @@ class Main {
 		}
 
 		if ( Utils::gutenberg_exists() && in_array( $post_type, Utils::get_post_types(), true ) ) {
-			$gut = new Gutenberg( $this->get_plugin_name(), $this->get_version() );
-			$this->loader->add_action( 'enqueue_block_editor_assets', $gut, 'scripts_enqueue' );
-			$this->loader->add_action( 'admin_init', $gut, 'load_i18n' );
+			$gut = new Gutenberg();
+			\add_action( 'enqueue_block_editor_assets', [ $gut, 'scripts_enqueue' ] );
+			\add_action( 'admin_init', [ $gut, 'load_i18n' ] );
 		}
 
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
-	 */
-	public function get_plugin_name() {
-		return $this->plugin_name;
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    Loader    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
-	 */
-	public function get_version() {
-		return $this->version;
 	}
 }

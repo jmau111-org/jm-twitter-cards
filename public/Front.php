@@ -18,31 +18,6 @@ class Front {
 	protected $opts = [];
 	protected $options = [];
 
-
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $plugin_name The ID of this plugin.
-	 */
-	protected $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $version The current version of this plugin.
-	 */
-	protected $version;
-
-	public function __construct( $plugin_name, $version ) {
-
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
-	}
-
 	/**
 	 * Add specific markup
 	 */
@@ -102,7 +77,7 @@ class Front {
 	public function html_comments( $end = false ) {
 		$slash = ( false === $end ) ? '' : '/';
 
-		return '<!-- ' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . ' -->' . PHP_EOL;
+		return '<!-- [(-_-)@' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . '@(-_-)] -->' . PHP_EOL;
 	}
 
 	/**

@@ -10,14 +10,6 @@ if ( ! function_exists( 'add_action' ) ) {
 
 class Particular {
 
-	protected $plugin_name;
-	protected $version;
-
-	public function __construct( $plugin_name, $version ) {
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
-	}
-
 	/**
 	 * filter for robots.txt rules
 	 *
