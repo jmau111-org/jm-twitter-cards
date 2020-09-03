@@ -112,6 +112,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 10.2.0
+* September 2020
+* update dependencies
+* refactoring
+
 ### 10.1.0
 * July 2020
 * update dependencies
