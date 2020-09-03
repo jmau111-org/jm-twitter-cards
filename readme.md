@@ -26,6 +26,11 @@ or use the wordpress.org version.
 
 ## Changelog ##
 
+### 10.2.0
+* September 2020
+* update dependencies
+* refactoring
+
 ### 10.1.0
 * July 2020
 * update dependencies

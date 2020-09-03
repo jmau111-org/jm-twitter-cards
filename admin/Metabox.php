@@ -15,8 +15,6 @@ class Metabox {
 
 	protected $keys;
 	protected $opts;
-	protected $plugin_name;
-	protected $version;
 	protected $fields;
 
 	function __construct() {
@@ -62,7 +60,7 @@ class Metabox {
 		$metaBox = [];
 
 		ob_start();
-		require_once JM_TC_DIR . 'admin/views/settings-metabox.php';
+		require JM_TC_DIR . 'admin/views/settings-metabox.php';
 		ob_get_clean();
 
 		$this->fields->generate_fields( $metaBox );

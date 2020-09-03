@@ -118,6 +118,12 @@ class Admin {
 				]
 			);
 		}
+		/**
+		 * Tutorials page
+		 **************************************************************************************************************/
+		if ( 'jm-twitter-cards_page_jm_tc_tutorials' === $hook_suffix ) {
+			wp_enqueue_style( 'tutorials', JM_TC_URL . 'css/tutorials' . Utilities::suffix_for_dev_env() . '.css', [], JM_TC_VERSION );
+		}
 	}
 
 	public function admin_init() {
