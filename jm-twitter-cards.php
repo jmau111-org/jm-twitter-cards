@@ -5,7 +5,7 @@ Plugin URI: https://julien-maury.com
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: https://julien-maury.com
-Version: 10.1.0
+Version: 10.2.0
 License: GPL2++
 
 JM Twitter Cards Plugin
