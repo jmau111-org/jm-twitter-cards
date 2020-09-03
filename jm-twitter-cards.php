@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 defined( 'ABSPATH' ) || die( 'No direct load !' );
 
-define( 'JM_TC_VERSION', '10.1.0' );
+define( 'JM_TC_VERSION', '10.2.0' );
 define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
 define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
@@ -45,5 +45,5 @@ require JM_TC_DIR . 'includes/App.php';
  */
 add_action( 'plugins_loaded', 'jm_tc_run' );
 function jm_tc_run() {
-	(new TokenToMe\TwitterCards\Main())->run();
+	(new TokenToMe\TwitterCards\App())->run();
 }

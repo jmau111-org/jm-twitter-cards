@@ -8,30 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Meta {
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $plugin_name The ID of this plugin.
-	 */
-	protected $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $version The current version of this plugin.
-	 */
-	protected $version;
-
-	public function __construct( $plugin_name, $version ) {
-
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
-	}
-
 	protected function add_critical_settings( $cpt ) {
 		$cpt_object = get_post_type_object( $cpt );
 

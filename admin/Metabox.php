@@ -19,10 +19,8 @@ class Metabox {
 	protected $version;
 	protected $fields;
 
-	function __construct( $plugin_name, $version ) {
+	function __construct() {
 
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
 		$this->fields      = new Fields();
 
 		$this->keys = [
