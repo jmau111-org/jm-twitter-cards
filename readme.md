@@ -4,7 +4,7 @@ Easy integration of Twitter cards in WordPress. All card types provided.
 
 ## Description ##
 
-This is the GitHub version of the JM Twitter Cards plugin.
+This is the GitHub/dev version of the JM Twitter Cards plugin.
 
 Want to fork? Please fork the trunk version and not the master version, URL is here : https://github.com/jmau111/jm-twitter-cards/tree/trunk
 
@@ -19,79 +19,16 @@ git clone https://github.com/jmau111/jm-twitter-cards.git && cd jm-twitter-cards
 If Gutenberg is enabled then run :
 
 ```
-yarn && yarn run build
+yarn && yarn build
 ```
 
-or use the wordpress.org version.
+or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-cards/).
 
 ## Changelog ##
 
-### 10.2.0
-* September 2020
-* update dependencies
-* refactoring
-
-### 10.1.0
-* July 2020
-* update dependencies
-* refactoring
-* use yarn
-
-### 10.0.2
-* September 2019
-* update dependencies
-
-### 10.0.1
-* December 2018
-* handle case where installation is WordPress 5++ but the classic editor plugin or the disable Gutenberg plugin is used
-
-### 10.0.0
-* December 2018
-* Reorganize deeply the plugin structure
-* css fixes props to [tomdxw](https://github.com/tomdxw)
-* delete image sizes, actually very bad for disk space and rules have changes in 2018 with Twitter image
-* Gutenberg users will have additional features such as custom modal and preview but also custom title and desc for cards \0/
-* I've added some instructions and advices props to https://www.contentkingapp.com/
-* There is a new admin sub page called "tutorials" with video tutorials !
-
-### 9.4
-* June 2018
-* remove bad bad method get_keys()
-* remove preview js so now you'll have to save post as draft or publish to see preview, need to prepare for Gutenberg
-* refactor code
-* fix images sizes never added (don't forget to regenerate thumbnails)
-* remove deprecated code (PHP 7.2)
-
-### 9.3
-* April 2018
-* fix bug wrong ternaries in class options (props @ioneill)
-* fix sanitize metabox card type not taking into account app card
-
-### 9.2
-* Feb 2018
-* fix error in about.php
-* fix warnings in case very first use
-* remove get_keys() cause slow on large site, this feature is useless for now
-* fix incompatibility with NGG (nextgen gallery)
-
-### 9.1
-* Jan 2018
-* multiple js bugfixes especially in preview
-* reorganize + enhance code, this is a major release but it won't break anything, filters are still there
-* add twitter meta image alt
-* add new dropdown menu to select custom meta key (advanced users).
-
-### 8.2
-* 30 Oct 2017
-* fix markup issue that causes setting error
-* fix bug first page not saving options anymore
-
-### 8.1
-* 28 Oct 2017
-* fix admin screens & reported incompatibilities with themes
-* delete crappy localstorage
-
-### 8.0
-* 09 Sept 2017
-* test up to 4.8.1
-* fix load markup according to post types option
+### 11.0.0
+* October 2020
+* fix deprecations
+* update sidebar gutenberg
+* use [the amazing core js setup](https://developer.wordpress.org/block-editor/tutorials/javascript/js-build-setup/)
+* bufixes with default values

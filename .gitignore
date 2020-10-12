@@ -55,8 +55,7 @@ node_modules
 .DS_Store
 svn
 
-admin/js/cards/build/
-admin/js/i18n/build/
+build/
 !.index.html
 
 ############
@@ -64,3 +63,13 @@ admin/js/i18n/build/
 ############
 vendor/
 composer.phar
+
+############
+## WP CLI
+############
+wp-cli.phar
+
+############
+## Yarn
+############
+yarn-error.log

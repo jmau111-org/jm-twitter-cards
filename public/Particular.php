@@ -2,13 +2,14 @@
 
 namespace TokenToMe\TwitterCards;
 
-if ( ! function_exists( 'add_action' ) ) {
-	header( 'Status: 403 Forbidden' );
-	header( 'HTTP/1.1 403 Forbidden' );
+if (!function_exists('add_action')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
 	exit();
 }
 
-class Particular {
+class Particular
+{
 
 	/**
 	 * filter for robots.txt rules
@@ -18,7 +19,8 @@ class Particular {
 	 * @since 5.3.2
 	 * @return string
 	 */
-	public static function robots_mod( $output ) {
+	public function robots_mod($output)
+	{
 
 		$output .= 'User-agent: Twitterbot' . PHP_EOL;
 		$output .= 'Disallow: ';
@@ -31,9 +33,10 @@ class Particular {
 	 *
 	 * @return bool
 	 */
-	public function remove_myself( $meta ) {
+	public function remove_myself($meta)
+	{
 
-		if ( in_array( strtolower( $meta ), [ 'tweetpressfr', '@tweetpressfr', 'jmau111', '@jmau111' ], true ) ) {
+		if (in_array(strtolower($meta), ['tweetpressfr', '@tweetpressfr', 'jmau111', '@jmau111'], true)) {
 			return false;
 		}
 
@@ -45,8 +48,9 @@ class Particular {
 	 *
 	 * @param $blog_id
 	 */
-	public function new_blog( $blog_id ) {
-		switch_to_blog( $blog_id );
+	public function new_blog($blog_id)
+	{
+		switch_to_blog($blog_id);
 		Init::on_activation();
 		restore_current_blog();
 	}
@@ -56,11 +60,12 @@ class Particular {
 	 * @since 5.3.2
 	 * @return string
 	 */
-	function modify_excerpt( $excerpt ) {
+	function modify_excerpt($excerpt)
+	{
 		global $post;
-		$_excerpt = $this->get_excerpt_from_far_far_away( $post->ID );
+		$_excerpt = $this->get_excerpt_from_far_far_away($post->ID);
 
-		if ( ! empty( $_excerpt ) ) {
+		if (!empty($_excerpt)) {
 			return $_excerpt;
 		}
 
@@ -72,12 +77,13 @@ class Particular {
 	 * @since 5.3.2
 	 * @return string
 	 */
-	function get_excerpt_from_far_far_away( $post_id ) {
+	function get_excerpt_from_far_far_away($post_id)
+	{
 		global $wpdb;
 		$query        = "SELECT post_excerpt FROM {$wpdb->posts} WHERE ID = %d LIMIT 1";
-		$result       = $wpdb->get_results( $wpdb->prepare( $query, (int) $post_id ), ARRAY_A );
+		$result       = $wpdb->get_results($wpdb->prepare($query, (int) $post_id), ARRAY_A);
 		$post_excerpt = $result[0]['post_excerpt'];
 
-		return esc_attr( $post_excerpt );
+		return esc_attr($post_excerpt);
 	}
 }

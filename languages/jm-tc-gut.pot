@@ -1,7 +1,15 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"X-Generator: babel-plugin-makepot\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: admin/js/cards/components/preview/index.js:15
 msgid "Your Twitter name"
@@ -52,8 +60,7 @@ msgid "Card description"
 msgstr ""
 
 #: admin/js/cards/index.js:142
-msgid ""
-"200 chars max but it is better to keep it short, 120-130 chars is fine. By "
+msgid "200 chars max but it is better to keep it short, 120-130 chars is fine. By "
 "default description will be automatically generated or retrieved from a SEO "
 "plugin such as Yoast or All in One SEO but you can override this here."
 msgstr ""
@@ -99,8 +106,7 @@ msgid "2:1 (rectangle) for summary large image"
 msgstr ""
 
 #: admin/js/cards/index.js:204
-msgid ""
-"Using featured image is highly recommended (if supported by your post type "
+msgid "Using featured image is highly recommended (if supported by your post type "
 "which is the case for posts) but you can override this here."
 msgstr ""
 
@@ -137,8 +143,7 @@ msgid "Main settings & preview"
 msgstr ""
 
 #: admin/js/cards/index.js:80
-msgid ""
-"The preview button allows you to change main twitter cards settings and see "
+msgid "The preview button allows you to change main twitter cards settings and see "
 "what it might look like on Twitter."
 msgstr ""
 

@@ -3,99 +3,72 @@
 namespace TokenToMe\TwitterCards\Admin;
 
 use TokenToMe\TwitterCards\Utils;
-use TokenToMe\TwitterCards\Thumbs;
 
-if ( ! function_exists( 'add_action' ) ) {
-	header( 'Status: 403 Forbidden' );
-	header( 'HTTP/1.1 403 Forbidden' );
+if (!function_exists('add_action')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
 	exit();
 }
 
-class Gutenberg {
-
+class Gutenberg
+{
 	/**
-	 * @author Julien Maury
+	 * @author unknown
 	 */
-	public function scripts_enqueue() {
+	public function register_scripts()
+	{
+		if (!is_admin()) {
+			return;
+		}
 
-		$js_file_path  = JM_TC_DIR . 'admin/js/cards/build/index.js';
-		$css_file_path = JM_TC_DIR . 'admin/js/cards/build/style.css';
+		$rel_path_css = 'build/style-index.css';
+		$rel_path_js = 'build/index.js';
+
+		if (!file_exists(JM_TC_DIR . $rel_path_js) || !file_exists(JM_TC_DIR . $rel_path_css)) {
+			return;
+		}
 
 		wp_register_script(
 			'tc-gut-sidebar',
-			JM_TC_URL . 'js/cards/build/index.js',
-			[ 'wp-i18n' ],
-			filemtime( $js_file_path ),
+			JM_TC_URL . $rel_path_js,
+			[],
+			Utils::assets_version($rel_path_js),
 			true
 		);
-
-		wp_register_style(
-			'tc-gut-styles',
-			JM_TC_URL . 'js/cards/build/style.css',
-			[ 'wp-edit-blocks' ],
-			filemtime( $css_file_path )
-		);
-
+		
 		wp_localize_script(
 			'tc-gut-sidebar',
 			'tcData',
 			[
-				'twitterSite'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterSite' ),
-				'domain'       => ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : get_bloginfo( 'url' ),
-				'avatar'       => get_avatar_url( 0, 16 ),
-				'defaultImage' => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterImage' ),
-				'defaultType'  => Utils::maybe_get_opt( jm_tc_get_options(), 'twitterCardType' ),
+				'twitterSite'  => Utils::remove_at(Utils::maybe_get_opt(jm_tc_get_options(), 'twitterSite')),
+				'domain'       => !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : get_bloginfo('url'),
+				'avatar'       => get_avatar_url(0, 16),
+				'defaultImage' => Utils::maybe_get_opt(jm_tc_get_options(), 'twitterImage'),
+				'defaultType'  => Utils::maybe_get_opt(jm_tc_get_options(), 'twitterCardType'),
 				'pluginUrl'    => JM_TC_URL,
 			]
 		);
-
-		/*
-		 * Pass already loaded translations to our JavaScript.
-		 *
-		 * This happens _before_ our JavaScript runs, afterwards it's too late.
+		
+		/**
+		 * @see https://developer.wordpress.org/block-editor/developers/internationalization/
 		 */
-		wp_add_inline_script(
-			'tc-gut-sidebar',
-			'wp.i18n.setLocaleData( ' . json_encode( $this->get_jed_locale_data( 'jm-tc-gut' ) ) . ', "jm-tc-gut" );',
-			'before'
+		wp_set_script_translations(
+			'tc-gut-sidebar', 
+			'jm-tc-gut', 
+			plugin_dir_path( dirname( __FILE__ ) ) . "languages"
 		);
 
-
-		wp_enqueue_script( 'tc-gut-sidebar' );
-		wp_enqueue_style( 'tc-gut-styles' );
-
-	}
-
-	/**
-	 * @param $domain
-	 *
-	 * @return array
-	 */
-	protected function get_jed_locale_data( $domain ) {
-		$translations = get_translations_for_domain( $domain );
-
-		$locale = array(
-			'' => array(
-				'domain' => $domain,
-				'lang'   => is_admin() ? get_user_locale() : get_locale(),
-			),
+		wp_register_style(
+			'tc-gut-styles',
+			JM_TC_URL . $rel_path_css,
+			['wp-edit-blocks'],
+			Utils::assets_version($rel_path_css)
 		);
-
-		if ( ! empty( $translations->headers['Plural-Forms'] ) ) {
-			$locale['']['plural_forms'] = $translations->headers['Plural-Forms'];
-		}
-
-		foreach ( $translations->entries as $msgid => $entry ) {
-			$locale[ $msgid ] = $entry->translations;
-		}
-
-		return $locale;
 	}
 
-	public function load_i18n() {
-
-		load_plugin_textdomain( 'jm-tc-gut', false, JM_TC_LANG_DIR );
-
+	public function enqueue_scripts()
+	{
+		wp_enqueue_script('tc-gut-sidebar');
+		wp_enqueue_style('tc-gut-styles');
 	}
-
 }
