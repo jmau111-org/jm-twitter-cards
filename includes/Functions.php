@@ -19,7 +19,7 @@ if (!function_exists('jm_tc_get_options')) {
 	{
 		global $jm_tc_options;
 		$jm_tc_options = get_option(JM_TC_SLUG_MAIN_OPTION);
-		$jm_tc_options = apply_filters('jm_tc_get_options', $jm_tc_options);
+		$jm_tc_options = (array) apply_filters('jm_tc_get_options', $jm_tc_options);
 		$default_options = Utils::get_default_options();
 
 		return array_merge($default_options, $jm_tc_options);
