@@ -46,5 +46,5 @@ if (defined('WP_CLI') && WP_CLI) {
 add_action('plugins_loaded', 'jm_tc_run');
 function jm_tc_run()
 {
-	(new TokenToMe\TwitterCards\App())->run();x
+	(new TokenToMe\TwitterCards\App())->run();
 }
