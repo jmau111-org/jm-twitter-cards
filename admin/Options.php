@@ -21,7 +21,7 @@ class Options
 	protected $opts = [];
 	protected $post_ID;
 
-	public function __construct(int $post_ID = 0)
+	public function __construct(int $post_ID = null)
 	{
 		if (empty($post_ID)) {
 			$post_ID = get_queried_object_id();
