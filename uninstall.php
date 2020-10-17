@@ -1,13 +1,13 @@
 <?php
 
 // If cheating exit
-if ( ! defined( 'ABSPATH' ) && ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN')) {
 	exit();
 }
 
 
-delete_option( 'jm_tc' );
-delete_option( 'jm_tc_cpt' );
+delete_option('jm_tc');
+delete_option('jm_tc_cpt');
 
 
 /**
@@ -35,7 +35,7 @@ $keys = [
 ];
 
 global $wpdb;
-foreach ( $keys as $key ) {
+foreach ($keys as $key) {
 	$wpdb->query(
 		$wpdb->prepare(
 			"

@@ -5,7 +5,7 @@ Plugin URI: https://julien-maury.com
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
 Author URI: https://julien-maury.com
-Version: 10.2.0
+Version: 11.0.0
 License: GPL2++
 
 JM Twitter Cards Plugin
@@ -24,26 +24,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-defined( 'ABSPATH' ) || die( 'No direct load !' );
+defined('ABSPATH') || die('No direct load !');
 
-define( 'JM_TC_VERSION', '10.2.0' );
-define( 'JM_TC_DIR', plugin_dir_path( __FILE__ ) );
-define( 'JM_TC_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
-define( 'JM_TC_BASENAME', plugin_basename( __FILE__ ) );
-define( 'JM_TC_LANG_DIR', basename( rtrim( dirname( __FILE__ ), '/' ) ) . '/languages' );
-
-$autoload = JM_TC_DIR . 'vendor/autoload.php';
-
-if ( file_exists( $autoload ) ) {
-	require $autoload;
-}
+define('JM_TC_DIR', plugin_dir_path(__FILE__));
+define('JM_TC_URL', plugin_dir_url(__FILE__));
+define('JM_TC_VERSION', '11.0.0');
+define('JM_TC_DIR_VIEWS', JM_TC_DIR . "admin/views/");
+define('JM_TC_DIR_VIEWS_SETTINGS', JM_TC_DIR_VIEWS . "settings/");
+define('JM_TC_BASENAME', plugin_basename(__FILE__));
+define('JM_TC_LANG_DIR', basename(rtrim(dirname(__FILE__), '/')) . '/languages');
 
 require JM_TC_DIR . 'includes/App.php';
+
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require JM_TC_DIR . 'cli/cli.php';
+}
 
 /**
  * @since 10.0.0
  */
-add_action( 'plugins_loaded', 'jm_tc_run' );
-function jm_tc_run() {
+add_action('plugins_loaded', 'jm_tc_run');
+function jm_tc_run()
+{
 	(new TokenToMe\TwitterCards\App())->run();
 }

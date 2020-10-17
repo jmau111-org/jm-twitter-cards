@@ -10,14 +10,15 @@
   "license": "GPL-2.0+",
   "authors": [
     {
-      "name": "jmau111",
+      "name": "unknown",
       "email": "unknown@space.xyz"
     }
   ],
   "type": "wordpress-plugin",
   "description": "Easy integration of Twitter cards in WordPress. All card types provided.",
-  "require": {
-    "composer/installers": "~1.0",
-    "php": ">=5.6.0"
+  "config": {
+    "platform": {
+        "php": "5.6"
+    }
   }
 }

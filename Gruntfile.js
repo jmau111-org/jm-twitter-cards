@@ -1,46 +1,44 @@
 module.exports = function (grunt) {
+  "use strict";
 
-    'use strict';
+  // Project configuration
+  grunt.initConfig({
+    pkg: grunt.file.readJSON("package.json"),
 
-    // Project configuration
-    grunt.initConfig({
+    cssmin: {
+      target: {
+        files: [
+          {
+            expand: true,
+            cwd: "admin/css",
+            src: ["*.css", "!*.min.css"],
+            dest: "admin/css",
+            ext: ".min.css",
+          },
+        ],
+      },
+    },
 
-        pkg: grunt.file.readJSON('package.json'),
-
-        addtextdomain: {
-            options: {
-                textdomain: 'jm-tc',
+    uglify: {
+      dev: {
+        files: [
+          {
+            expand: true,
+            src: ["*.js", "!*.min.js"],
+            dest: "admin/js",
+            cwd: "admin/js",
+            rename: function (dst, src) {
+              return dst + "/" + src.replace(".js", ".min.js");
             },
-            update_all_domains: {
-                options: {
-                    updateDomains: true
-                },
-                src: ['*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*']
-            }
-        },
-
-        makepot: {
-            target: {
-                options: {
-                    domainPath: '/languages',
-                    exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*'],
-                    mainFile: 'jm-twitter-cards.php',
-                    potFilename: 'jm-tc.pot',
-                    potHeaders: {
-                        poedit: true,
-                        'x-poedit-keywordslist': true
-                    },
-                    type: 'wp-plugin',
-                    updateTimestamp: true
-                }
-            }
-        },
-    });
-
-    grunt.loadNpmTasks('grunt-wp-i18n');
-    grunt.registerTask('default', ['i18n']);
-    grunt.registerTask('i18n', ['addtextdomain', 'makepot']);
-
-    grunt.util.linefeed = '\n';
-
+          },
+        ],
+      },
+    },
+  });
+  grunt.loadNpmTasks("grunt-contrib-cssmin");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.registerTask("css", ["cssmin"]);
+  grunt.registerTask("js", ["uglify"]);
+  grunt.registerTask("default", ["css", "js"]);
+  grunt.util.linefeed = "\n";
 };

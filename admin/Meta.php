@@ -2,34 +2,38 @@
 
 namespace TokenToMe\TwitterCards;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
 
-class Meta {
+class Meta
+{
 
-	protected function add_critical_settings( $cpt ) {
-		$cpt_object = get_post_type_object( $cpt );
+	protected function add_critical_settings($cpt)
+	{
+		$cpt_object = get_post_type_object($cpt);
 
-		if ( ! empty( $cpt_object ) ) {
-			add_post_type_support( $cpt, 'custom-fields' );// needed
+		if (!empty($cpt_object)) {
+			add_post_type_support($cpt, 'custom-fields'); // needed
 			$cpt_object->show_in_rest = true; // we only fetch public cpt in Utils::get_post_types()
 		}
-
 	}
 
 	/**
 	 * here there is no concern about privacy links
 	 * these are public metadata displayed in <head>
 	 */
-	public function gutenberg_register_meta() {
+	public function gutenberg_register_meta()
+	{
 
-		foreach ( Utils::get_post_types() as $cpt ) {
+		foreach (Utils::get_post_types() as $cpt) {
 
-			$this->add_critical_settings( $cpt );
+			$this->add_critical_settings($cpt);
 
 			register_meta(
-				'post', 'twitterCardType', [
+				'post',
+				'twitterCardType',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -37,7 +41,9 @@ class Meta {
 				]
 			);
 			register_meta(
-				'post', 'cardImageID', [
+				'post',
+				'cardImageID',
+				[
 					'type'              => 'integer',
 					'single'            => true,
 					'show_in_rest'      => true,
@@ -47,7 +53,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardImage', [
+				'post',
+				'cardImage',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -56,7 +64,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardTitle', [
+				'post',
+				'cardTitle',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -65,7 +75,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardDesc', [
+				'post',
+				'cardDesc',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -74,7 +86,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardImageAlt', [
+				'post',
+				'cardImageAlt',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -83,7 +97,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardPlayer', [
+				'post',
+				'cardPlayer',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -92,7 +108,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardPlayerWidth', [
+				'post',
+				'cardPlayerWidth',
+				[
 					'type'              => 'integer',
 					'single'            => true,
 					'show_in_rest'      => true,
@@ -102,7 +120,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardPlayerHeight', [
+				'post',
+				'cardPlayerHeight',
+				[
 					'type'              => 'integer',
 					'single'            => true,
 					'show_in_rest'      => true,
@@ -112,7 +132,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardPlayerStream', [
+				'post',
+				'cardPlayerStream',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -121,7 +143,9 @@ class Meta {
 			);
 
 			register_meta(
-				'post', 'cardPlayerCodec', [
+				'post',
+				'cardPlayerCodec',
+				[
 					'type'           => 'string',
 					'single'         => true,
 					'show_in_rest'   => true,
@@ -129,7 +153,5 @@ class Meta {
 				]
 			);
 		}
-
 	}
-
 }

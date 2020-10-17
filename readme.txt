@@ -4,7 +4,7 @@ Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, p
 Donate Link: https://don.fondationabbepierre.org/b/mon-don?_ga=2.25482229.995513841.1594242995-131201139.1594242995&_cv=1
 Requires at least: 4.2
 Tested up to: 5.5.1
-Requires PHP: 5.4
+Requires PHP: 5.6
 License: GPLv2 or later
 Stable tag: trunk
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,11 +24,11 @@ Once activated the plugin adds appropriate meta on your WordPress website allowi
 
 = First image found instead of featured image =
 
-If you want to get first image found in post content as twitter image, I've created a free add-on here https://github.com/jmau111/jm-twitter-cards-first-image
+If you want to get first image found in post content as twitter image, I've created a free add-on here [https://github.com/jmau111/jm-twitter-cards-first-image](https://github.com/jmau111/jm-twitter-cards-first-image)
 
 = Force refresh Twitter image =
 
-If you want to get your Twitter image to refresh, I’ve created a free add-on here https://github.com/jmau111/jm-twitter-cards-refresh-image
+If you want to get your Twitter image to refresh, I’ve created a free add-on here [https://github.com/jmau111/jm-twitter-cards-refresh-image](https://github.com/jmau111/jm-twitter-cards-refresh-image)
 
 = Translators =
 
@@ -112,78 +112,12 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
-### 10.2.0
-* September 2020
-* update dependencies
-* refactoring
-
-### 10.1.0
-* July 2020
-* update dependencies
-* refactoring
-* use yarn
-
-### 10.0.2
-* September 2019
-* update dependencies
-
-### 10.0.1
-* December 2018
-* handle case where installation is WordPress 5++ but the classic editor plugin or the disable Gutenberg plugin is used
-
-### 10.0.0
-* December 2018
-* Reorganize deeply the plugin structure
-* css fixes props to [tomdxw](https://github.com/tomdxw)
-* delete image sizes, actually very bad for disk space and rules have changes in 2018 with Twitter image
-* Gutenberg users will have additional features such as custom modal and preview but also custom title and desc for cards \0/
-* I've added some instructions and advices props to https://www.contentkingapp.com/
-* There is a new admin sub page called "tutorials" with video tutorials !
-
-### 9.4
-* June 2018
-* remove bad bad method get_keys()
-* remove preview js so now you'll have to save post as draft or publish to see preview, need to prepare for Gutenberg
-* refactor code
-* fix images sizes never added (don't forget to regenerate thumbnails)
-* remove deprecated code (PHP 7.2)
-
-### 9.3
-* April 2018
-* fix bug wrong ternaries in class options (props @ioneill)
-* fix sanitize metabox card type not taking into account app card
-
-### 9.2
-* Feb 2018
-* fix error in about.php
-* fix warnings in case very first use
-* remove get_keys() cause slow on large site, this feature is useless for now
-* fix incompatibility with NGG (nextgen gallery)
-
-### 9.1
-* Jan 2018
-* multiple js bugfixes especially in preview
-* reorganize + enhance code, this is a major release but it won't break anything, filters are still there
-* add twitter meta image alt
-* add new dropdown menu to select custom meta key (advanced users).
-
-### 8.2
-* 30 Oct 2017
-* fix markup issue that causes setting error
-* fix bug first page not saving options anymore
-
-### 8.1
-* 28 Oct 2017
-* fix admin screens & reported incompatibilities with themes
-* delete crappy localstorage
-
-### 8.0
-* 09 Sept 2017
-* test up compat to WordPress 4.8.1
-* fix display cars according to post types options
-* fix missing loading class
-* fix empty description when excerpt option is on and there's no excerpt
-
+### 11.0.0
+* October 2020
+* fix deprecations
+* update sidebar gutenberg
+* use js core setup for gut sidebar
+* bufixes with default values
 
 == Upgrade notice ==
 Nothing
