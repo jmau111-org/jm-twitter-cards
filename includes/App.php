@@ -134,7 +134,6 @@ class App
 		add_action('admin_init', [$plugin_admin, 'admin_init']);
 		add_action('admin_init', [$plugin_admin, 'process_settings_export']);
 		add_action('admin_init', [$plugin_admin, 'process_settings_import']);
-		add_filter('admin_post_thumbnail_html', [$plugin_admin, 'add_featured_image_instruction']);
 
 		$post_type = get_post_type();
 

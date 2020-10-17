@@ -63,7 +63,7 @@ class Metabox
 		$metaBox = [];
 
 		ob_start();
-		require JM_TC_DIR_VIEWS_SETTINGS . "settings-metabox";
+		require JM_TC_DIR_VIEWS_SETTINGS . "settings-metabox.php";
 		ob_get_clean();
 
 		$this->fields->generate_fields($metaBox);
@@ -164,7 +164,7 @@ class Metabox
 	public function admin_enqueue_scripts()
 	{
 
-		wp_register_script('jm-tc-metabox', JM_TC_URL . 'js/metabox' . Utilities::suffix_for_dev_env() . '.js', ['jquery'], JM_TC_VERSION, true);
+		wp_register_script('jm-tc-metabox', JM_TC_URL . 'admin/js/metabox' . Utilities::assets_suffix() . '.js', ['jquery'], JM_TC_VERSION, true);
 
 		if (in_array(get_post_type(), Utilities::get_post_types())) {
 			wp_enqueue_media();

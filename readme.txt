@@ -112,6 +112,10 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 11.0.2
+* October 2020
+* fix issue reported on support with non Gutenberg installations
+
 ### 11.0.1
 * October 2020
 * a missing warning on fresh install wp
