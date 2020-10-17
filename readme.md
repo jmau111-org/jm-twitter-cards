@@ -26,6 +26,10 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 
 ## Changelog ##
 
+### 11.1.0
+* October 2020
+* add tests
+
 ### 11.0.2
 * October 2020
 * fix issue reported on support with non Gutenberg installations
