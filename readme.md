@@ -26,6 +26,10 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 
 ## Changelog ##
 
+### 11.0.1
+* October 2020
+* a missing warning on fresh install wp
+
 ### 11.0.0
 * October 2020
 * fix deprecations

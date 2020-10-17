@@ -6,7 +6,7 @@ Requires at least: 4.2
 Tested up to: 5.5.1
 Requires PHP: 5.6
 License: GPLv2 or later
-Stable tag: trunk
+Stable tag: 11.0.1
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easy integration of Twitter cards in WordPress. All card types provided. 
@@ -112,7 +112,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
-### 11.0.0
+### 11.0.1
+* October 2020
+* a missing warning on fresh install wp
+
+### 11.0.0 
 * October 2020
 * fix deprecations
 * update sidebar gutenberg
