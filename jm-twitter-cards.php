@@ -34,9 +34,13 @@ define('JM_TC_DIR_VIEWS_SETTINGS', JM_TC_DIR_VIEWS . "settings/");
 define('JM_TC_BASENAME', plugin_basename(__FILE__));
 define('JM_TC_LANG_DIR', basename(rtrim(dirname(__FILE__), '/')) . '/languages');
 
+if (file_exists(__DIR__ . "/vendor/autoload.php")) {
+	require __DIR__ . "/vendor/autoload.php";
+}
+
 require JM_TC_DIR . 'includes/App.php';
 
-if ( defined( 'WP_CLI' ) && WP_CLI ) {
+if (defined('WP_CLI') && WP_CLI) {
 	require JM_TC_DIR . 'cli/cli.php';
 }
 
