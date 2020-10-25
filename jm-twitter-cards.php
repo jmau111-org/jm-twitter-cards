@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: JM Twitter Cards
-Plugin URI: https://julien-maury.com
+Plugin URI: https://www.julien-maury.dev
 Description: Meant to help users to implement and customize Twitter Cards easily
 Author: Julien Maury
-Author URI: https://julien-maury.com
+Author URI: https://www.julien-maury.dev
 Version: 11.1.0
 License: GPL2++
 
