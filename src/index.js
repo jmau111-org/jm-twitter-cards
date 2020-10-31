@@ -88,14 +88,14 @@ class JM_Twitter_Cards extends Component {
             >
               <div className="buttons">
                 <Button
-                  isDefault
+                  isSecondary
                   onClick={() => this.setState({ isOpen: true })}
                 >
                   {__("open modal", "jm-tc-gut")}
                 </Button>
 
                 <Button
-                  isDefault
+                  isSecondary
                   href="https://cards-dev.twitter.com/validator"
                 >
                   {__("check validator", "jm-tc-gut")}
@@ -191,13 +191,13 @@ class JM_Twitter_Cards extends Component {
 
                 <div className="tc-mb buttons">
                   <Button
-                    isDefault
+                    isSecondary
                     onClick={() => this.setState({ isOpen: false })}
                   >
                     {__("Close", "jm-tc-gut")}
                   </Button>
                   <Button
-                    isDefault
+                    isSecondary
                     href="https://cards-dev.twitter.com/validator"
                   >
                     {__("check validator", "jm-tc-gut")}

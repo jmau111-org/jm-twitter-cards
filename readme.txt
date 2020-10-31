@@ -3,10 +3,10 @@ Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://don.fondationabbepierre.org/b/mon-don?_ga=2.25482229.995513841.1594242995-131201139.1594242995&_cv=1
 Requires at least: 4.2
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 Requires PHP: 7.0
 License: GPLv2 or later
-Stable tag: 11.0.1
+Stable tag: 11.1.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easy integration of Twitter cards in WordPress. All card types provided. 
@@ -115,6 +115,7 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 ### 11.1.0
 * October 2020
 * add tests
+* update @wordpress/scripts - fix security issues
 
 ### 11.0.2
 * October 2020
