@@ -112,7 +112,7 @@ class JM_Twitter_Cards extends Component {
 
                 <div className="tc-fields-container">
                   <SelectControl
-                    label={__("Card getType", "jm-tc-gut")}
+                    label={__("Card Type", "jm-tc-gut")}
                     value={getType(this.props)}
                     options={[
                       { label: __("Summary", "jm-tc-gut"), value: "summary" },
