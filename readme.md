@@ -26,6 +26,11 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 
 ## Changelog ##
 
+### 11.1.1
+* November 2020
+* the plugin has now an italian version props to Chema Bescós
+* fix issue reported with reusable Gutenberg blocks in edge cases
+
 ### 11.1.0
 * October 2020
 * add tests

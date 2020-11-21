@@ -20,7 +20,7 @@ if (!function_exists('add_action')) {
                         <input type="file" name="import_file" />
                         <input type="hidden" name="action" value="import_settings" />
                         <?php wp_nonce_field('import_nonce', 'import_nonce'); ?>
-                        <?php submit_button(__('Import', 'jm-tc'), 'primary', 'submit', false); ?>
+                        <?php submit_button(esc_html__('Import', 'jm-tc'), 'primary', 'submit', false); ?>
                     </p>
                 </form>
             </div>
@@ -33,7 +33,7 @@ if (!function_exists('add_action')) {
                         <p><input type="hidden" name="action" value="export_settings" /></p>
                         <p>
                             <?php wp_nonce_field('export_nonce', 'export_nonce'); ?>
-                            <?php submit_button(__('Export', 'jm-tc'), 'primary', 'submit', false); ?>
+                            <?php submit_button(esc_html__('Export', 'jm-tc'), 'primary', 'submit', false); ?>
                         </p>
                     </form>
                 </div>

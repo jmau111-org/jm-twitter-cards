@@ -38,18 +38,18 @@ class Admin
 		$this->settings_api = new Settings();
 
 		$this->sub_pages = [
-			'jm_tc_import_export' => __('Import', 'jm-tc') . ' / ' . __('Export', 'jm-tc'),
-			'jm_tc_about'         => __('About', 'jm-tc'),
-			'jm_tc_tutorials'     => __('Tutorials', 'jm-tc'),
+			'jm_tc_import_export' => esc_html__('Import', 'jm-tc') . ' / ' . esc_html__('Export', 'jm-tc'),
+			'jm_tc_about'         => esc_html__('About', 'jm-tc'),
+			'jm_tc_tutorials'     => esc_html__('Tutorials', 'jm-tc'),
 		];
 
 		$this->video_files = [
-			'302609444' => __('Setup for the first time', 'jm-tc'),
-			'302609402' => __('Setup metabox with custom post types', 'jm-tc'),
-			'302609437' => __('Dealing with images', 'jm-tc'),
-			'302609425' => __('Set first image found in post content as twitter image', 'jm-tc'),
-			'302609429' => __('Upgrading to Gutenberg', 'jm-tc'),
-			'305338709' => __('How to recover twitter cards sidebar after unpin', 'jm-tc'),
+			'302609444' => esc_html__('Setup for the first time', 'jm-tc'),
+			'302609402' => esc_html__('Setup metabox with custom post types', 'jm-tc'),
+			'302609437' => esc_html__('Dealing with images', 'jm-tc'),
+			'302609425' => esc_html__('Set first image found in post content as twitter image', 'jm-tc'),
+			'302609429' => esc_html__('Upgrading to Gutenberg', 'jm-tc'),
+			'305338709' => esc_html__('How to recover twitter cards sidebar after unpin', 'jm-tc'),
 		];
 	}
 
@@ -63,7 +63,7 @@ class Admin
 	 */
 	public function settings_action_link($links)
 	{
-		$links['settings'] = '<a href="' . add_query_arg(['page' => JM_TC_SLUG_MAIN_OPTION], admin_url('admin.php')) . '">' . __('Settings', 'jm-tc') . '</a>';
+		$links['settings'] = '<a href="' . add_query_arg(['page' => JM_TC_SLUG_MAIN_OPTION], admin_url('admin.php')) . '">' . esc_html__('Settings', 'jm-tc') . '</a>';
 
 		return $links;
 	}
@@ -88,7 +88,7 @@ class Admin
 			'count-chars',
 			'_tcStrings',
 			[
-				'message' => __('characters left', 'jm-tc'),
+				'message' => esc_html__('characters left', 'jm-tc'),
 			]
 		);
 
@@ -176,7 +176,7 @@ class Admin
 
 	public function admin_menu()
 	{
-		add_menu_page(__('JM Twitter Cards', 'jm-tc'), __('JM Twitter Cards', 'jm-tc'), 'manage_options', 'jm_tc', [
+		add_menu_page(esc_html__('JM Twitter Cards', 'jm-tc'), esc_html__('JM Twitter Cards', 'jm-tc'), 'manage_options', 'jm_tc', [
 			$this,
 			'plugin_page',
 		], 'dashicons-twitter');
@@ -233,7 +233,7 @@ class Admin
 	public function plugin_page()
 	{
 		echo '<div class="wrap tc">';
-		echo '<h1>' . __('JM Twitter Cards', 'jm-tc') . '</h1>';
+		echo '<h1>' . esc_html__('JM Twitter Cards', 'jm-tc') . '</h1>';
 		echo Utilities::brand_new(sprintf(__('10.0.0 : Please see the new <a href="%s">Tutorial page</a> which can help you.', 'jm-tc'), add_query_arg('page', 'jm_tc_tutorials', admin_url('admin.php'))));
 		$this->settings_api->show_forms();
 		echo '</div>';
@@ -296,13 +296,13 @@ class Admin
 		$extension = end(explode('.', $_FILES['import_file']['name']));
 
 		if ('json' !== $extension) {
-			wp_die(__('Please upload a valid .json file', 'jm-tc'));
+			wp_die(esc_html__('Please upload a valid .json file', 'jm-tc'));
 		}
 
 		$import_file = $_FILES['import_file']['tmp_name'];
 
 		if (empty($import_file)) {
-			wp_die(__('Please upload a file to import', 'jm-tc'));
+			wp_die(esc_html__('Please upload a file to import', 'jm-tc'));
 		}
 
 		/**

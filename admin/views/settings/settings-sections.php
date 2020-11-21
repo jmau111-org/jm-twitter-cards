@@ -11,10 +11,10 @@ if (!function_exists('add_action')) {
 $sections = [
 	[
 		'id'    => JM_TC_SLUG_MAIN_OPTION,
-		'title' => __('Options', 'jm-tc'),
+		'title' => esc_html__('Options', 'jm-tc'),
 	],
 	[
 		'id'    => JM_TC_SLUG_CPT_OPTION,
-		'title' => __('Custom Post types', 'jm-tc'),
+		'title' => esc_html__('Custom Post types', 'jm-tc'),
 	],
 ];

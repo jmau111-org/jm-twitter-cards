@@ -1,0 +1,608 @@
+# Copyright (C) 2020 Julien Maury
+# This file is distributed under the GPL2++.
+msgid ""
+msgstr ""
+"Project-Id-Version: JM Twitter Cards 11.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jm-twitter-cards\n"
+"POT-Creation-Date: 2020-10-11 21:54:08+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-11-21 19:07+0100\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Language: it\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/Admin.php:41 admin/views/import-export.php:10
+#: admin/views/import-export.php:29 admin/views/import-export.php:40
+msgid "Import"
+msgstr "Importa"
+
+#: admin/Admin.php:41 admin/views/import-export.php:11
+#: admin/views/import-export.php:14 admin/views/import-export.php:21
+msgid "Export"
+msgstr "Esporta"
+
+#: admin/Admin.php:42 admin/views/about.php:10
+msgid "About"
+msgstr "Info"
+
+#: admin/Admin.php:43 admin/views/tutorials.php:12
+msgid "Tutorials"
+msgstr "Tutorial"
+
+#: admin/Admin.php:47
+msgid "Setup for the first time"
+msgstr "Configurazione per la prima volta"
+
+#: admin/Admin.php:48
+msgid "Setup metabox with custom post types"
+msgstr "Configurazione metabox con tipi di post personalizzati"
+
+#: admin/Admin.php:49
+msgid "Dealing with images"
+msgstr "Gestione delle immagini"
+
+#: admin/Admin.php:50
+msgid "Set first image found in post content as twitter image"
+msgstr ""
+"Imposta la prima immagine trovata nel contenuto del post come immagine "
+"Twitter"
+
+#: admin/Admin.php:51
+msgid "Upgrading to Gutenberg"
+msgstr "Aggiornamento a Gutenberg"
+
+#: admin/Admin.php:52
+msgid "How to recover twitter cards sidebar after unpin"
+msgstr "Come recuperare le schede twitter sidebar dopo sbloccare"
+
+#: admin/Admin.php:66
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: admin/Admin.php:90
+msgid "characters left"
+msgstr "caratteri a disposizione"
+
+#. Plugin Name of the plugin/theme
+msgid "JM Twitter Cards"
+msgstr "JM Twitter Cards"
+
+#: admin/Admin.php:223
+msgid ""
+"10.0.0 : Please see the new <a href=\"%s\">Tutorial page</a> which can help "
+"you."
+msgstr ""
+"10.0.0 : Si prega di vedere la <a href=\"%s\">nuova pagina</a> Tutorial che "
+"può aiutarti."
+
+#: admin/Admin.php:285
+msgid "Please upload a valid .json file"
+msgstr "Devi caricare un file .json valido"
+
+#: admin/Admin.php:291
+msgid "Please upload a file to import"
+msgstr "Per favore carica un file per importare"
+
+#: admin/Admin.php:325
+msgid "No featured image for now !"
+msgstr "Nessuna immagine in primo piano per ora !"
+
+#: admin/Admin.php:333
+msgid "Unknown error !"
+msgstr "Errore sconosciuto !"
+
+#: admin/Admin.php:341
+msgid "Image is heavier than 1MB ! Card will be broken !"
+msgstr "L'immagine è più pesante di 1 MB ! La carta sarà rotta!"
+
+#: admin/Fields.php:170
+msgid "Select"
+msgstr "Seleziona"
+
+#: admin/Fields.php:171
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: admin/Fields.php:179
+msgid "Not found"
+msgstr "Non trovato"
+
+#: admin/Metabox.php:49 languages/jm-tc-gut-translations.php:14
+msgid "Twitter Cards"
+msgstr "Twitter"
+
+#: admin/Metabox.php:178
+msgid "Upload"
+msgstr "Carica"
+
+#: admin/Options.php:252
+msgid ""
+"Warning : Player Card is not set properly ! There is no URL provided for "
+"iFrame player !"
+msgstr ""
+"Attenzione : Player Card non è impostato correttamente ! Non è stato fornito "
+"alcun URL per iFrame Player !"
+
+#: admin/Settings.php:402
+msgid "Choose File"
+msgstr "Scegli file"
+
+#: admin/views/about.php:12
+msgid "This plugin is free"
+msgstr "Questo plugin è gratuito"
+
+#: admin/views/about.php:14
+msgid "This plugin is free not me :)"
+msgstr "Questo plugin è gratuito non me :)"
+
+#: admin/views/about.php:15
+msgid ""
+"So please give me some time to solve issues and answer in case you have any "
+"problem."
+msgstr ""
+"Quindi, per favore dammi un po 'di tempo per risolvere i problemi e "
+"rispondere nel caso in cui avete qualche problema."
+
+#: admin/views/about.php:16
+msgid "The developer"
+msgstr "Lo sviluppatore"
+
+#: admin/views/about.php:18
+msgid "I am a web developer, I like to make it simpler."
+msgstr "Sono uno sviluppatore web, mi piace renderlo più semplice."
+
+#: admin/views/about.php:19
+msgid "GitHub"
+msgstr "GitHub"
+
+#: admin/views/settings/settings-metabox.php:18
+#: admin/views/settings/settings.php:25
+msgid "Card type"
+msgstr "Tipo di Carta"
+
+#: admin/views/settings/settings-metabox.php:21
+#: admin/views/settings/settings.php:29 languages/jm-tc-gut-translations.php:20
+msgid "Summary"
+msgstr "Sommario"
+
+#: admin/views/settings/settings-metabox.php:22
+#: admin/views/settings/settings.php:30
+msgid "Summary below Large Image"
+msgstr "Riepilogo sotto Immagine di grandi dimensioni"
+
+#: admin/views/settings/settings-metabox.php:23
+#: languages/jm-tc-gut-translations.php:26
+msgid "Player"
+msgstr "Giocatore"
+
+#: admin/views/settings/settings-metabox.php:24
+#: admin/views/settings/settings.php:31 languages/jm-tc-gut-translations.php:29
+msgid "Application"
+msgstr "Applicazione"
+
+#: admin/views/settings/settings-metabox.php:34
+msgid "Set another source as twitter image (enter URL)"
+msgstr "Imposta un'altra origine come immagine twitter (inserisci URL)"
+
+#: admin/views/settings/settings-metabox.php:40
+msgid "Image Alt"
+msgstr "Alt Immagine"
+
+#: admin/views/settings/settings-metabox.php:47
+msgid "URL of iFrame player (MUST BE HTTPS)"
+msgstr "URL del lettore iFrame (MUST BE HTTPS)"
+
+#: admin/views/settings/settings-metabox.php:53
+msgid "Player width"
+msgstr "Larghezza del video player"
+
+#: admin/views/settings/settings-metabox.php:62
+msgid "Player height"
+msgstr "Altezza del giocatore"
+
+#: admin/views/settings/settings-sections.php:14
+msgid "Options"
+msgstr "Opzioni"
+
+#: admin/views/settings/settings-sections.php:18
+msgid "Custom Post types"
+msgstr "Tipi di post personalizzati"
+
+#: admin/views/settings/settings.php:15
+msgid "Creator (twitter username)"
+msgstr "Creatore (nome utente twitter)"
+
+#: admin/views/settings/settings.php:20
+msgid "Site (twitter username)"
+msgstr "Sito (nome utente twitter)"
+
+#: admin/views/settings/settings.php:36
+msgid "Excerpt"
+msgstr "Estratto"
+
+#: admin/views/settings/settings.php:37
+msgid "Excerpt as meta desc?"
+msgstr "Estratto come meta desc?"
+
+#: admin/views/settings/settings.php:41 admin/views/settings/settings.php:53
+msgid "yes"
+msgstr "sì"
+
+#: admin/views/settings/settings.php:42 admin/views/settings/settings.php:52
+msgid "no"
+msgstr "no"
+
+#: admin/views/settings/settings.php:47
+msgid "Open Graph"
+msgstr "Open Graph"
+
+#: admin/views/settings/settings.php:48
+msgid "Open Graph/SEO"
+msgstr "Grafico aperto/SEO"
+
+#: admin/views/settings/settings.php:58
+msgid "Image Fallback"
+msgstr "Immagine alternativa"
+
+#: admin/views/settings/settings.php:64
+msgid "Image alt"
+msgstr "Alt immagine"
+
+#: admin/views/settings/settings.php:69
+msgid "Home meta desc"
+msgstr "Home meta desc"
+
+#: admin/views/settings/settings.php:70
+msgid "Enter desc for Posts Page (max: 200 characters)"
+msgstr "Inserisci desc per la Pagina Post (max: 200 caratteri)"
+
+#: admin/views/settings/settings.php:76
+msgid "iPhone Name"
+msgstr "Nome iPhone"
+
+#: admin/views/settings/settings.php:77
+msgid "Enter iPhone Name "
+msgstr "Inserisci il nome dell'iPhone "
+
+#: admin/views/settings/settings.php:82
+msgid " iPhone URL"
+msgstr " URL iPhone"
+
+#: admin/views/settings/settings.php:83
+msgid "Enter iPhone URL "
+msgstr "Inserisci l'URL dell'iPhone "
+
+#: admin/views/settings/settings.php:88
+msgid "iPhone ID"
+msgstr "ID iPhone"
+
+#: admin/views/settings/settings.php:89
+msgid "Enter iPhone ID "
+msgstr "Inserisci l'ID iPhone "
+
+#: admin/views/settings/settings.php:94
+msgid "iPad Name"
+msgstr "Nome iPad"
+
+#: admin/views/settings/settings.php:95
+msgid "Enter iPad Name "
+msgstr "Inserisci il nome dell'iPad "
+
+#: admin/views/settings/settings.php:100
+msgid "iPad URL"
+msgstr "URL iPad"
+
+#: admin/views/settings/settings.php:101
+msgid "Enter iPad URL "
+msgstr "Immettere l'URL dell'iPad "
+
+#: admin/views/settings/settings.php:106
+msgid "iPad ID"
+msgstr "ID iPad"
+
+#: admin/views/settings/settings.php:107
+msgid "Enter iPad ID "
+msgstr "Inserisci ID iPad "
+
+#: admin/views/settings/settings.php:112
+msgid "Google Play Name"
+msgstr "Nome Google Play"
+
+#: admin/views/settings/settings.php:113
+msgid "Enter Google Play Name "
+msgstr "Inserisci il nome di Google Play "
+
+#: admin/views/settings/settings.php:118
+msgid "Google Play URL"
+msgstr "URL di Google Play"
+
+#: admin/views/settings/settings.php:119
+msgid "Enter Google Play URL "
+msgstr "Inserisci l'URL di Google Play "
+
+#: admin/views/settings/settings.php:124
+msgid "Google Play ID"
+msgstr "Google Play ID"
+
+#: admin/views/settings/settings.php:125
+msgid "Enter Google Play ID "
+msgstr "Inserisci l'ID di Google Play "
+
+#: admin/views/settings/settings.php:130
+msgid "App Country code"
+msgstr "Codice paese app"
+
+#: admin/views/settings/settings.php:131
+msgid ""
+"Enter 2 letter App Country code in case your app is not available in the US "
+"app store"
+msgstr ""
+"Inserisci il codice del paese dell'app di 2 lettere nel caso in cui l'app "
+"non sia disponibile nell'app store degli Stati Uniti"
+
+#: admin/views/settings/settings.php:136
+msgid "Custom field title"
+msgstr "Titolo campo personalizzato"
+
+#: admin/views/settings/settings.php:137
+msgid ""
+"If you prefer to use your own field for twitter meta title instead of SEO "
+"plugin. Leave it blank if you want to use SEO plugin or default title."
+msgstr ""
+"Se si preferisce utilizzare il proprio campo per twitter meta titolo invece "
+"di SEO plugin. Lasciare vuoto se si desidera utilizzare il plugin SEO o il "
+"titolo predefinito."
+
+#: admin/views/settings/settings.php:142
+msgid "Custom field desc"
+msgstr "Campo personalizzato desc"
+
+#: admin/views/settings/settings.php:143
+msgid ""
+"If you prefer to use your own field for twitter meta description instead of "
+"SEO plugin. Leave it blank if you want to use SEO plugin or default desc."
+msgstr ""
+"Se si preferisce utilizzare il proprio campo per twitter meta descrizione "
+"invece di SEO plugin. Lasciare vuoto se si desidera utilizzare il plug-in "
+"SEO o desc predefinito."
+
+#: admin/views/settings/settings.php:151
+msgid "Add or hide the meta box"
+msgstr "Aggiungere o nascondere la meta box"
+
+#: admin/views/settings/settings.php:152
+msgid "Default"
+msgstr "Predefinito"
+
+#: admin/views/settings/settings.php:152
+msgid "All"
+msgstr "Tutti"
+
+#: cli/cli.php:32 cli/cli.php:57 cli/cli.php:87 cli/cli.php:141
+msgid "You sox !"
+msgstr "Tu sox !"
+
+#: cli/cli.php:39 cli/cli.php:123
+msgid "Twitter Cards creator set successfully"
+msgstr "Il creatore di Twitter Cards è stato impostato con successo"
+
+#: cli/cli.php:64
+msgid "Twitter Cards Sitename set successfully"
+msgstr "Twitter Cards Sitename impostato correttamente"
+
+#: cli/cli.php:91
+msgid ""
+"Player cards cannot be set globally, makes no sense, just go to the metabox "
+"please. You sox a little bit !"
+msgstr ""
+"Le carte giocatore non possono essere impostate a livello globale, non ha "
+"senso, basta andare alla metabox per favore. Sox un po' !"
+
+#: cli/cli.php:98
+msgid "Twitter Cards Type set successfully"
+msgstr "Tipo di schede Twitter impostato correttamente"
+
+#: cli/cli.php:116
+msgid "You gotta be kidding me !"
+msgstr "Mi stai prendendo in giro!"
+
+#: cli/cli.php:149
+msgid "%s is not a valid post type ! And you still sox !"
+msgstr "%s non è un tipo di post valido ! E tu ancora sox !"
+
+#: cli/cli.php:159
+msgid "Twitter Cards custom post types set successfully"
+msgstr ""
+"I tipi di post personalizzati delle schede Twitter vengono impostati "
+"correttamente"
+
+#: includes/Init.php:39 includes/Utils.php:127
+msgid "Welcome to"
+msgstr "Benvenuto su"
+
+#: includes/Init.php:39 includes/Utils.php:127
+msgid "see blog posts"
+msgstr "vedere i post del blog"
+
+#: languages/jm-tc-gut-translations.php:5
+msgid "Your Twitter name"
+msgstr "Il tuo nome Twitter"
+
+#: languages/jm-tc-gut-translations.php:8
+msgid "The card for your website will look a little something like this!"
+msgstr "La scheda per il tuo sito web sarà un po 'simile a questo!"
+
+#: languages/jm-tc-gut-translations.php:11
+msgid "Preview is not provided for application card"
+msgstr "L'anteprima non è disponibile per la scheda dell'applicazione"
+
+#: languages/jm-tc-gut-translations.php:17
+msgid "Card Type"
+msgstr "Tipo di carta"
+
+#: languages/jm-tc-gut-translations.php:23
+msgid "Summary Large Image"
+msgstr "Riepilogo Immagine grande"
+
+#: languages/jm-tc-gut-translations.php:32
+msgid "Custom title"
+msgstr "Personalizza titolo"
+
+#: languages/jm-tc-gut-translations.php:35
+msgid ""
+"Best is under 55 chars. If no set default card title would be post title"
+msgstr ""
+"Il migliore è sotto i 55 caratteri. Se nessun titolo di carta predefinito "
+"impostato sarebbe titolo del post"
+
+#: languages/jm-tc-gut-translations.php:38
+msgid "Enter custom title…"
+msgstr "Inserisci titolo personalizzato..."
+
+#: languages/jm-tc-gut-translations.php:41
+msgid "Card description"
+msgstr "Descrizione della carta"
+
+#: languages/jm-tc-gut-translations.php:44
+msgid ""
+"200 chars max but it is better to keep it short, 120-130 chars is fine. By "
+"default description will be automatically generated or retrieved from a SEO "
+"plugin such as Yoast or All in One SEO but you can override this here."
+msgstr ""
+"200 caratteri max ma è meglio tenerlo breve, 120-130 caratteri va bene. Per "
+"impostazione predefinita la descrizione verrà generata o recuperata "
+"automaticamente da un plugin SEO come Yoast o All in One SEO, ma puoi "
+"ignorarlo qui."
+
+#: languages/jm-tc-gut-translations.php:47
+msgid "Player URL"
+msgstr "URL giocatore"
+
+#: languages/jm-tc-gut-translations.php:50
+msgid "Enter URL…"
+msgstr "Inserisci URL..."
+
+#: languages/jm-tc-gut-translations.php:53
+msgid "Player Width"
+msgstr "Larghezza Player"
+
+#: languages/jm-tc-gut-translations.php:56
+msgid "Player Height"
+msgstr "Altezza Player"
+
+#: languages/jm-tc-gut-translations.php:59
+msgid "Close"
+msgstr "Chiudi"
+
+#: languages/jm-tc-gut-translations.php:62
+msgid "check validator"
+msgstr "validator di controllo"
+
+#: languages/jm-tc-gut-translations.php:65
+msgid "Image Settings"
+msgstr "Impostazioni immagine"
+
+#: languages/jm-tc-gut-translations.php:68
+msgid "Depending on your card type, please use appropriate ratio. Best is :"
+msgstr ""
+"A seconda del tipo di carta, utilizzare il rapporto appropriato. Il migliore "
+"è:"
+
+#: languages/jm-tc-gut-translations.php:71
+msgid "1:1 for summary card (square)"
+msgstr "1:1 per la scheda di riepilogo (quadrato)"
+
+#: languages/jm-tc-gut-translations.php:74
+msgid "2:1 (rectangle) for summary large image"
+msgstr "2:1 (rettangolo) per riepilogo immagine grande"
+
+#: languages/jm-tc-gut-translations.php:77
+msgid ""
+"Using featured image is highly recommended (if supported by your post type "
+"which is the case for posts) but you can override this here."
+msgstr ""
+"L'uso dell'immagine in primo piano è altamente consigliato (se supportato "
+"dal tuo tipo di post, che è il caso dei post), ma puoi ignorarlo qui."
+
+#: languages/jm-tc-gut-translations.php:80
+msgid "Override featured image and default image for this post"
+msgstr ""
+"Ignora l'immagine in primo piano e l'immagine predefinita per questo post"
+
+#: languages/jm-tc-gut-translations.php:83
+msgid "Insert from Media Library"
+msgstr "Inserisci dal Catalogo multimediale"
+
+#: languages/jm-tc-gut-translations.php:86
+msgid "Change twitter Image source"
+msgstr "Cambia twitter Origine immagine"
+
+#: languages/jm-tc-gut-translations.php:89
+msgid "Card Image alt"
+msgstr "Immagine scheda alt"
+
+#: languages/jm-tc-gut-translations.php:92
+msgid "Alt text - accessibility for your Twitter Image"
+msgstr "Testo alternativo - accessibilità per l'immagine Twitter"
+
+#: languages/jm-tc-gut-translations.php:95
+msgid "Twitter Cards settings"
+msgstr "Impostazioni delle schede Twitter"
+
+#: languages/jm-tc-gut-translations.php:98
+msgid "Main settings & preview"
+msgstr "Impostazioni principali e anteprima"
+
+#: languages/jm-tc-gut-translations.php:101
+msgid ""
+"The preview button allows you to change main twitter cards settings and see "
+"what it might look like on Twitter."
+msgstr ""
+"Il pulsante di anteprima consente di modificare le principali impostazioni "
+"delle schede Twitter e vedere come potrebbe apparire su Twitter."
+
+#: languages/jm-tc-gut-translations.php:104
+msgid "On no account this could replace the Twitter cards validator"
+msgstr ""
+"In nessun caso questo potrebbe sostituire il validatore di carte Twitter"
+
+#: languages/jm-tc-gut-translations.php:107
+msgid "Preview and set your cards"
+msgstr "Visualizzare in anteprima e impostare le schede"
+
+#: languages/jm-tc-gut-translations.php:110
+msgid "preview"
+msgstr "anteprima"
+
+#: languages/jm-tc-gut-translations.php:113
+msgid "open modal"
+msgstr "modalità aperta"
+
+#: public/Front.php:110
+msgid "Missing critical option !"
+msgstr "Manca l'opzione critica !"
+
+#. Author URI of the plugin/theme
+msgid "https://julien-maury.com"
+msgstr "https://julien-maury.com"
+
+#. Description of the plugin/theme
+msgid "Meant to help users to implement and customize Twitter Cards easily"
+msgstr ""
+"Pensato per aiutare gli utenti a implementare e personalizzare facilmente le "
+"schede Twitter"
+
+#. Author of the plugin/theme
+msgid "Julien Maury"
+msgstr "Julien Maury"

@@ -6,7 +6,7 @@ Requires at least: 4.2
 Tested up to: 5.5.3
 Requires PHP: 7.0
 License: GPLv2 or later
-Stable tag: 11.1.0
+Stable tag: 11.1.1
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easy integration of Twitter cards in WordPress. All card types provided. 
@@ -38,6 +38,7 @@ Thanks a lot to all translators. Can't wait to add your work to the project.
 
 * Spanish version : [WebHostingHub](http://www.webhostinghub.com/) (thanks a lot ^^)
 * Catalan version : [SeoFreelance](http://www.seofreelance.es) (thanks Dude )
+* Italian version : [IBIDEM GROUP](https://www.ibidemgroup.com) (thanks a lot)
 
 = Github =
 
