@@ -29,7 +29,7 @@ import { registerPlugin } from "@wordpress/plugins";
 /**
  * Custom dependencies
  */
-import { Type } from "./components/cardType";
+import { getType } from "./components/cardType";
 import { Preview } from "./components/preview";
 
 import "./style.scss";
@@ -112,8 +112,8 @@ class JM_Twitter_Cards extends Component {
 
                 <div className="tc-fields-container">
                   <SelectControl
-                    label={__("Card Type", "jm-tc-gut")}
-                    value={Type(this.props)}
+                    label={__("Card getType", "jm-tc-gut")}
+                    value={getType(this.props)}
                     options={[
                       { label: __("Summary", "jm-tc-gut"), value: "summary" },
                       {

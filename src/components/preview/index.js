@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 
-import { Type } from "../cardType";
+import { getType } from "../cardType";
 import { Title } from "../title";
 import { Image } from "../image";
 import "./style.scss";
@@ -17,7 +17,7 @@ export const Preview = ({ props }) => (
       </div>
     </div>
     <div className="EmbeddedTweet-text">
-      {"app" !== Type(props) && (
+      {"app" !== getType(props) && (
         <p>
           {__(
             "The card for your website will look a little something like this!",
@@ -25,7 +25,7 @@ export const Preview = ({ props }) => (
           )}
         </p>
       )}
-      {"app" === Type(props) && (
+      {"app" === getType(props) && (
         <p>{__("Preview is not provided for application card", "jm-tc-gut")}</p>
       )}
     </div>
@@ -33,20 +33,20 @@ export const Preview = ({ props }) => (
     <div className="CardPreview u-marginVm" id="CardPreview">
       <div className="CardPreview-preview js-cardPreview">
         <div className="TwitterCardsGrid TwitterCard TwitterCard--animation">
-          {"app" !== Type(props) && (
+          {"app" !== getType(props) && (
             <div className="TwitterCardsGrid-col--12 TwitterCardsGrid-col--spacerBottom CardContent">
               <div
                 className={
                   "js-openLink u-block TwitterCardsGrid-col--12 TwitterCard-container " +
-                  Type(props) +
+                  getType(props) +
                   "--small " +
-                  Type(props) +
+                  getType(props) +
                   "--noImage"
                 }
               >
                 <div
                   className={
-                    Type(props) + "-image TwitterCardsGrid-float--prev"
+                    getType(props) + "-image TwitterCardsGrid-float--prev"
                   }
                 >
                   <div className="tcu-imageContainer tcu-imageAspect--1to1">
@@ -55,12 +55,12 @@ export const Preview = ({ props }) => (
                 </div>
                 <div
                   className={
-                    Type(props) +
+                    getType(props) +
                     "-contentContainer TwitterCardsGrid-float--prev"
                   }
                 >
                   <div
-                    className={Type(props) + "-content TwitterCardsGrid-ltr"}
+                    className={getType(props) + "-content TwitterCardsGrid-ltr"}
                   >
                     <Title props={props} />
                     <p className="TwitterCard-desc tcu-resetMargin u-block TwitterCardsGrid-col--spacerTop tcu-textEllipse--multiline">

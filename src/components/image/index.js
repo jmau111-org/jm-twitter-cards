@@ -1,7 +1,7 @@
-import { Type } from "../cardType";
+import { getType } from "../cardType";
 import { select } from "@wordpress/data";
 
-function theImageUrl(props) {
+function getImageUrl(props) {
   let fallback = props.meta.cardImage || tcData.defaultImage;
   const { getPostType } = select("core");
   let postTypeCheck = getPostType(
@@ -31,9 +31,9 @@ function theImageUrl(props) {
 export const Image = ({ props }) => (
   <div
     className="tcu-imageWrapper"
-    style={{ backgroundImage: "url(" + theImageUrl(props) + ")" }}
+    style={{ backgroundImage: "url(" + getImageUrl(props) + ")" }}
   >
-    {"player" === Type(props) && (
+    {"player" === getType(props) && (
       <div
         className="PlayerCard-playButton"
         style={{
@@ -44,7 +44,7 @@ export const Image = ({ props }) => (
     <img
       className="u-block"
       alt={props.meta.cardImageAlt || ""}
-      src={theImageUrl(props)}
+      src={getImageUrl(props)}
     />
   </div>
 );

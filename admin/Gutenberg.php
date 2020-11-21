@@ -21,6 +21,8 @@ class Gutenberg
 			return;
 		}
 
+
+
 		$rel_path_css = 'build/style-index.css';
 		$rel_path_js = 'build/index.js';
 
@@ -35,7 +37,7 @@ class Gutenberg
 			Utils::assets_version($rel_path_js),
 			true
 		);
-		
+
 		wp_localize_script(
 			'tc-gut-sidebar',
 			'tcData',
@@ -48,14 +50,14 @@ class Gutenberg
 				'pluginUrl'    => JM_TC_URL,
 			]
 		);
-		
+
 		/**
 		 * @see https://developer.wordpress.org/block-editor/developers/internationalization/
 		 */
 		wp_set_script_translations(
-			'tc-gut-sidebar', 
-			'jm-tc-gut', 
-			plugin_dir_path( dirname( __FILE__ ) ) . "languages"
+			'tc-gut-sidebar',
+			'jm-tc-gut',
+			plugin_dir_path(dirname(__FILE__)) . "languages"
 		);
 
 		wp_register_style(
@@ -68,6 +70,10 @@ class Gutenberg
 
 	public function enqueue_scripts()
 	{
+		if (!in_array(get_post_type(), Utils::get_post_types(), true)) {
+			return;
+		}
+
 		wp_enqueue_script('tc-gut-sidebar');
 		wp_enqueue_style('tc-gut-styles');
 	}
