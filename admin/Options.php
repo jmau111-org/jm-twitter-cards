@@ -252,7 +252,7 @@ class Options
 
 			//Player
 			if (empty($player['player'])) {
-				return $this->error(__('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc'));
+				return $this->error(esc_html__('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc'));
 			}
 
 			//Player width and
