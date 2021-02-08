@@ -1,0 +1,51 @@
+.jm-tc-sidebar-icon,
+.jm-tc-sidebar-icon.is-small svg {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.jm-tc-sidebar-icon.is-small svg {
+  height: 20px;
+  width: 20px;
+}
+
+.edit-post-header
+.components-button.is-toggled:not(:hover)
+.jm-tc-sidebar-icon.is-small,
+.edit-post-header
+.components-button.is-toggled:not(:hover)
+.jm-tc-sidebar-icon
+path,
+.edit-post-header
+.components-button.is-toggled:not(:hover)
+.jm-tc-sidebar-icon
+g {
+  stroke: #fff !important;
+  fill: #fff !important;
+  visibility: hidden;
+}
+
+.tc-mb {
+  margin: 1em 0;
+}
+
+.tc-mb.buttons button, .buttons button {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.image-instructions li:before {
+  content: "-";
+}
+
+.image-instructions li {
+  font-style: italic;
+}
+
+.tc-fields-container {
+  margin: 1em 0;
+}
+
+.TwitterCard-container {
+  min-height: 111px;
+}
