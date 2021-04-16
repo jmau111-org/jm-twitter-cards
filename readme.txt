@@ -113,10 +113,10 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
-### 11.1.2
+### 11.1.4
 * April 2021
 * fix indentation
-* refactor
+* security fixes
 
 ### 11.1.0
 * October 2020

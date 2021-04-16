@@ -25,11 +25,10 @@ yarn && yarn build
 or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-cards/).
 
 ## Changelog ##
-
-### 11.1.2
+### 11.1.4
 * April 2021
 * fix indentation
-* refactor
+* security fixes
 
 ### 11.1.1
 * November 2020
