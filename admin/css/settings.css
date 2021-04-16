@@ -4,7 +4,7 @@
 }
 
 .tc .brandnew p:before {
-    content: "\f301";
+    content: '\f301';
     margin-right: 0.111%;
     display: inline-block;
     width: 20px;
@@ -17,7 +17,7 @@
     font-style: normal;
     vertical-align: top;
     text-align: center;
-    transition: color .1s ease-in 0;
+    transition: color 0.1s ease-in 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
