@@ -26,6 +26,12 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 
 ## Changelog ##
 
+### 11.1.2
+* April 2021
+* fix indentation
+* code smell
+* refactor
+
 ### 11.1.1
 * November 2020
 * the plugin has now an italian version props to Chema Bescós
