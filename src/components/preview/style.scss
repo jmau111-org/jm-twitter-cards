@@ -10,7 +10,7 @@
   max-width: 500px;
   border-radius: 1em;
   text-align: left;
-  border: 1px solid #E1E8ED;
+  border: 1px solid #e1e8ed;
 
   .EmbeddedTweet-author-avatar {
     position: absolute;
@@ -78,19 +78,20 @@
   .TwitterCard--animation {
     animation-duration: 150ms;
     animation-name: fadeInTwitterCard;
-    animation-timing-function: cubic-bezier(0.9, 0, .9, 0);
+    animation-timing-function: cubic-bezier(0.9, 0, 0.9, 0);
   }
 
   .TwitterCard {
     background: transparent;
     overflow: hidden;
-    color: #292F33;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #292f33;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.3em;
   }
 
-  .TwitterCardsGrid .TwitterCardsGrid-col--spacerBottom, .TwitterCardsGrid-rtl .TwitterCardsGrid-col--spacerBottom {
-    margin-bottom: .32333em;
+  .TwitterCardsGrid .TwitterCardsGrid-col--spacerBottom,
+  .TwitterCardsGrid-rtl .TwitterCardsGrid-col--spacerBottom {
+    margin-bottom: 0.32333em;
   }
 
   .TwitterCardsGrid .TwitterCardsGrid-col--12 {
@@ -105,7 +106,7 @@
   }
 
   .TwitterCard .SummaryCard-image {
-    background-color: #E1E8ED;
+    background-color: #e1e8ed;
     border-radius: 1em;
     border-style: solid;
     border-color: inherit;
@@ -113,7 +114,7 @@
   }
 
   .TwitterCard-container {
-    border: 1px solid #E1E8ED;
+    border: 1px solid #e1e8ed;
     border-radius: 1em;
   }
 
@@ -121,7 +122,8 @@
     float: left;
   }
 
-  .summary-content, .player-content {
+  .summary-content,
+  .player-content {
     height: 85px;
   }
 
@@ -130,7 +132,8 @@
     padding-bottom: 1em;
   }
 
-  .summary--small, .player--small {
+  .summary--small,
+  .player--small {
     margin-bottom: -5px;
   }
 
@@ -148,19 +151,20 @@
     text-overflow: ellipsis;
   }
 
-  .TwitterCard-desc, .TwitterCard-title {
+  .TwitterCard-desc,
+  .TwitterCard-title {
     font-size: 12px !important;
-    margin: .2em auto !important;
+    margin: 0.2em auto !important;
   }
 
   .TwitterCard .SummaryCard-content {
-    padding: .5em;
+    padding: 0.5em;
     box-sizing: border-box;
     text-decoration: none;
   }
 
   .TwitterCard .SummaryCard-content .TwitterCard-title {
-    max-height: .7em;
+    max-height: 0.7em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -190,7 +194,8 @@
     width: 100%;
   }
 
-  .summary-image img.u-block, .player-image img.u-block {
+  .summary-image img.u-block,
+  .player-image img.u-block {
     display: none;
   }
 
@@ -199,15 +204,15 @@
     overflow: hidden;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
-    margin:0;
+    margin: 0;
   }
 
   .summary_large_image-image img {
     display: block;
     width: 500px;
     height: 200px;
-    object-fit:cover; /* kinda or completely hack, I have a bad legacy with image url */
-    background-color: #8899A6;
+    object-fit: cover; /* kinda or completely hack, I have a bad legacy with image url */
+    background-color: #8899a6;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
   }
@@ -215,7 +220,7 @@
   .SummaryCard-destination {
     text-transform: lowercase;
     display: block;
-    color: #8899A6;
+    color: #8899a6;
     max-height: 1.3em;
     white-space: nowrap;
     overflow: hidden;

@@ -10,12 +10,12 @@
     if (this.name !== tcGitHub.user.toLowerCase() + ".github.com") {
       list.append(
         '<dt><a href="' +
-          (e.homepage ? e.homepage : e.html_url) +
-          '">' +
-          e.name +
-          "</a> <em>" +
-          (e.language ? "(" + e.language + ")" : "") +
-          "</em></dt>"
+        (e.homepage ? e.homepage : e.html_url) +
+        '">' +
+        e.name +
+        "</a> <em>" +
+        (e.language ? "(" + e.language + ")" : "") +
+        "</em></dt>"
       );
       list.append("<dd>" + e.description + "</dd>");
     }

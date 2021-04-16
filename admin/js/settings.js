@@ -49,8 +49,8 @@
   function toggleAppFields(value) {
     var target = $(
       ".twitteriPhoneName,.twitteriPhoneUrl,.twitteriPhoneId," +
-        ".twitteriPadName,.twitteriPadUrl,.twitteriPadId," +
-        ".twitterGooglePlayName,.twitterGooglePlayUrl,.twitterGooglePlayId,.twitterAppCountry"
+      ".twitteriPadName,.twitteriPadUrl,.twitteriPadId," +
+      ".twitterGooglePlayName,.twitterGooglePlayUrl,.twitterGooglePlayId,.twitterAppCountry"
     );
     target.hide();
 

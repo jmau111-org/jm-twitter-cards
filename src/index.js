@@ -115,21 +115,21 @@ class JM_Twitter_Cards extends Component {
                     label={__("Card Type", "jm-tc-gut")}
                     value={getType(this.props)}
                     options={[
-                      { 
-                        label: __("Summary", "jm-tc-gut"), 
-                        value: "summary" 
+                      {
+                        label: __("Summary", "jm-tc-gut"),
+                        value: "summary"
                       },
                       {
                         label: __("Summary Large Image", "jm-tc-gut"),
                         value: "summary_large_image",
                       },
-                      { 
-                        label: __("Player", "jm-tc-gut"), 
-                        value: "player" 
+                      {
+                        label: __("Player", "jm-tc-gut"),
+                        value: "player"
                       },
-                      { 
-                        label: __("Application", "jm-tc-gut"), 
-                        value: "app" 
+                      {
+                        label: __("Application", "jm-tc-gut"),
+                        value: "app"
                       },
                     ]}
                     onChange={(value) => {
