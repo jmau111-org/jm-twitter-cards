@@ -29,7 +29,6 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 ### 11.1.2
 * April 2021
 * fix indentation
-* code smell
 * refactor
 
 ### 11.1.1
