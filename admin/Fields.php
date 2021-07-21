@@ -19,7 +19,7 @@ class Fields
 
         foreach ($array as $options) {
             $method = array_shift($options);
-            echo method_exists($this, $method) ? $this->{$method}($options) : '';
+            echo is_callable($this, $method) ? $this->{$method}($options) : '';
         }
     }
 
