@@ -9,7 +9,7 @@ Version: 11.1.5
 License: GPL2++
 
 JM Twitter Cards Plugin
-Copyright (C) 2015-2020, Julien Maury
+Copyright (C) 2015-2021, Julien Maury
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
