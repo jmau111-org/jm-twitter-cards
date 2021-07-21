@@ -113,6 +113,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 11.1.5
+* July 2021
+* update npm dependencies
+* security fixes
+
 ### 11.1.4
 * April 2021
 * fix indentation
