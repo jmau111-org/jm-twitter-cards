@@ -35,8 +35,7 @@ class Utils
     {
         $data = get_site_transient('jm_github_repos');
         if (empty($data)) {
-
-            $request = wp_remote_get('https://api.github.com/users/jmau111/repos?sort=created');
+            $request = wp_remote_get('https://api.github.com/users/jmau111/repos?sort=updated&type=public');
 
             if (!empty($request) && !is_wp_error($request) && wp_remote_retrieve_response_code($request) === 200) {
                 $data = wp_remote_retrieve_body($request);

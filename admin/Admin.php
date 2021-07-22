@@ -37,20 +37,20 @@ class Admin
 
         $this->settings_api = new Settings();
 
-        $this->sub_pages = [
+        $this->sub_pages = apply_filters( "jm_tc_admin_sub_pages", [
             'jm_tc_import_export' => esc_html__('Import', 'jm-tc') . ' / ' . esc_html__('Export', 'jm-tc'),
             'jm_tc_about'         => esc_html__('About', 'jm-tc'),
             'jm_tc_tutorials'     => esc_html__('Tutorials', 'jm-tc'),
-        ];
+        ] );
 
-        $this->video_files = [
+        $this->video_files = apply_filters( "jm_tc_admin_tuts_vids", [
             '302609444' => esc_html__('Setup for the first time', 'jm-tc'),
             '302609402' => esc_html__('Setup metabox with custom post types', 'jm-tc'),
             '302609437' => esc_html__('Dealing with images', 'jm-tc'),
             '302609425' => esc_html__('Set first image found in post content as twitter image', 'jm-tc'),
             '302609429' => esc_html__('Upgrading to Gutenberg', 'jm-tc'),
             '305338709' => esc_html__('How to recover twitter cards sidebar after unpin', 'jm-tc'),
-        ];
+        ] );
     }
 
     /**
@@ -159,7 +159,7 @@ class Admin
     {
         $sections = [];
         require JM_TC_DIR_VIEWS_SETTINGS . "settings-sections.php";
-        return $sections;
+        return (array) apply_filters("jm_tc_card_settings_sections", $sections);
     }
 
     /**
@@ -171,7 +171,7 @@ class Admin
     {
         $settings_fields = [];
         require JM_TC_DIR_VIEWS_SETTINGS . "settings.php";
-        return $settings_fields;
+        return (array) apply_filters("jm_tc_card_settings_fields", $settings_fields);
     }
 
     public function admin_menu()

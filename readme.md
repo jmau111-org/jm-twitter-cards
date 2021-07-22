@@ -26,10 +26,11 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 
 ## Changelog ##
 
-### 11.1.5
+### 11.1.5 && 11.1.6
 * July 2021
 * update npm dependencies
 * security fixes
+* new filters for sections settings
 ### 11.1.4
 * April 2021
 * fix indentation
