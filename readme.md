@@ -1,5 +1,8 @@
 # JM Twitter Cards #
 
+[![WordPress Download Count](https://img.shields.io/wordpress/plugin/dt/jm-twitter-cards.svg?style=flat-square)](https://wordpress.org/plugins/jm-twitter-cards/)
+[![WordPress Rating](https://img.shields.io/wordpress/plugin/r/jm-twitter-cards.svg?style=flat-square)](https://wordpress.org/support/plugin/jm-twitter-cards/reviews/)
+
 Easy integration of Twitter cards in WordPress. All card types provided.
 
 ## Description ##
