@@ -1,6 +1,6 @@
 {
   "name": "jm-twitter-cards",
-  "version": "11.1.6",
+  "version": "11.1.7",
   "private": true,
   "dependencies": {},
   "scripts": {
@@ -14,7 +14,7 @@
     "test:unit": "wp-scripts test-unit-js"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^17.0.0",
+    "@wordpress/scripts": "^18.0.1",
     "grunt": "^1.4.1",
     "grunt-contrib-cssmin": "^4.0.0",
     "grunt-contrib-uglify": "^5.0.1"
