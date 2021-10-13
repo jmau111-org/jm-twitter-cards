@@ -29,7 +29,7 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 
 ## Changelog ##
 
-### 11.1.7
+### 11.1.7 & 11.1.8
 * October 2021
 * update npm/composer dependencies
 
