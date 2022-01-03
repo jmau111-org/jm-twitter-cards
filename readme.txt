@@ -113,6 +113,10 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 11.1.9
+* January 2022
+* update npm/composer dependencies
+
 ### 11.1.7 & 11.1.8
 * October 2021
 * update npm/composer dependencies
