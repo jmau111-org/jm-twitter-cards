@@ -17,18 +17,12 @@
   visibility: hidden;
 }
 
-.tc-mb {
-  margin: 1em 0;
-}
-
-.tc-mb.buttons button,
-.buttons button {
-  display: block;
-  margin-bottom: 1em;
-}
-
 .image-instructions li:before {
-  content: '-';
+  content: '°) ';
+}
+
+.details {
+  margin: 0 auto 1.5rem;
 }
 
 .image-instructions li {
@@ -41,4 +35,14 @@
 
 .TwitterCard-container {
   min-height: 111px;
+}
+
+.c>.is-secondary {
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
 }

@@ -3,10 +3,10 @@ Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://don.fondationabbepierre.org/b/mon-don?_ga=2.25482229.995513841.1594242995-131201139.1594242995&_cv=1
 Requires at least: 4.2
-Tested up to: 5.8.1
+Tested up to: 5.9
 Requires PHP: 7.0
 License: GPLv2 or later
-Stable tag: 11.1.8
+Stable tag: 11.1.9
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easy integration of Twitter cards in WordPress. All card types provided. 
@@ -116,6 +116,9 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 ### 11.1.9
 * January 2022
 * update npm/composer dependencies
+* new filter `jm_tc_display_html_comments` to hide HTML comments (credits)
+* css preview, align fields and preview on desktop to enhance the experience
+* toggle details - instructions by default
 
 ### 11.1.7 & 11.1.8
 * October 2021
