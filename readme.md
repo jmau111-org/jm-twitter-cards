@@ -33,6 +33,8 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 * January 2022
 * update npm/composer dependencies
 * new filter `jm_tc_display_html_comments` to hide HTML comments (credits)
+* css preview, align fields and preview on desktop to enhance the experience
+* toggle details - instructions by default
 
 ### 11.1.7 & 11.1.8
 * October 2021

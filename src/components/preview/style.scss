@@ -5,12 +5,10 @@
 
 .EmbeddedTweet {
   position: relative;
-  padding: 12px 12px 8px 54px;
+  padding: 0 12px 8px 54px;
   margin: 2em 0;
   max-width: 500px;
-  border-radius: 1em;
   text-align: left;
-  border: 1px solid #e1e8ed;
 
   .EmbeddedTweet-author-avatar {
     position: absolute;
@@ -208,10 +206,13 @@
   }
 
   .summary_large_image-image img {
-    display: block;
-    width: 500px;
-    height: 200px;
-    object-fit: cover; /* kinda or completely hack, I have a bad legacy with image url */
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 200px;
+    aspect-ratio: 16/9;
+    object-fit: contain; /* kinda or completely hack, I have a bad legacy with image url */
     background-color: #8899a6;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
@@ -236,5 +237,27 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.tc-fields {  
+  .buttons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .tc-app {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .EmbeddedTweet {
+    flex-grow: 1;
+    width: 100%;
+    padding-right: 2.5rem;
+    border-right: 1px solid #e1e8ed;
   }
 }
