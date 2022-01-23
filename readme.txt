@@ -116,6 +116,7 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 ### 11.1.9
 * January 2022
 * update npm/composer dependencies
+* new filter `jm_tc_display_html_comments` to hide HTML comments (credits)
 
 ### 11.1.7 & 11.1.8
 * October 2021

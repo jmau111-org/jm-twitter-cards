@@ -28,9 +28,12 @@ yarn && yarn build
 or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-cards/).
 
 ## Changelog ##
+
 ### 11.1.9
 * January 2022
 * update npm/composer dependencies
+* new filter `jm_tc_display_html_comments` to hide HTML comments (credits)
+
 ### 11.1.7 & 11.1.8
 * October 2021
 * update npm/composer dependencies
