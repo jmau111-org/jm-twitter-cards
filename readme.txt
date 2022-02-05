@@ -113,6 +113,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 11.1.10
+* February 2022
+* composer updates
+* get excerpt field as meta desc if it's fulfilled in post edit and no other overriding option is used
+
 ### 11.1.9
 * January 2022
 * update npm/composer dependencies
