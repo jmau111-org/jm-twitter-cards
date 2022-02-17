@@ -2839,15 +2839,15 @@
     object.fromentries "^2.0.0"
     prop-types "^15.7.0"
 
-"@wordpress/babel-plugin-import-jsx-pragma@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.0.tgz#0a1be89a64bb938f91b733c31bfebd89519c2548"
-  integrity sha512-518mL3goaSeXtJCQcPK9OYHUUiA0sjXuoGWHBwRalkyTIQZZy5ZZzlwrlSc9ESZcOw9BZ+Uo8CJRjV2OWnx+Zw==
+"@wordpress/babel-plugin-import-jsx-pragma@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-3.1.1.tgz#f2d127526f92d7cbdfc51ec0f25cea9203c5efb7"
+  integrity sha512-0gopMgFMVBtJiYTwsxq4ERhbeHV2iI11fHt52fguBr8eS7h61ufp3uZy0aapdh8vQh80S2v1rgdYJwAWb73r1w==
 
-"@wordpress/babel-preset-default@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/babel-preset-default/-/babel-preset-default-6.5.0.tgz#4ef07beee3663df8fd00ad3ee9a2a64c25ff89cb"
-  integrity sha512-F2bv78gNz8FsSP88tEabNffiynvwgepcfustDCbhXXWZoMQoTmyu+jj1h7sjriH+9lIUmfcJifKy+QstCR1Y4w==
+"@wordpress/babel-preset-default@^6.5.1":
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/babel-preset-default/-/babel-preset-default-6.5.1.tgz#e031bb3a7c22f8fd09d32d7a03f687df81da08ae"
+  integrity sha512-mfCLHQe7emZoxR9PQBRnBRYIBvO2Z2SsCrVRjk5sUg0iPv5TH03Sox1Gn3/WTKat2p8UU08en865UG0OYhGgeA==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/plugin-transform-react-jsx" "^7.16.0"
@@ -2855,61 +2855,61 @@
     "@babel/preset-env" "^7.16.0"
     "@babel/preset-typescript" "^7.16.0"
     "@babel/runtime" "^7.16.0"
-    "@wordpress/babel-plugin-import-jsx-pragma" "^3.1.0"
-    "@wordpress/browserslist-config" "^4.1.0"
-    "@wordpress/element" "^4.1.0"
-    "@wordpress/warning" "^2.3.0"
+    "@wordpress/babel-plugin-import-jsx-pragma" "^3.1.1"
+    "@wordpress/browserslist-config" "^4.1.1"
+    "@wordpress/element" "^4.1.1"
+    "@wordpress/warning" "^2.3.1"
     browserslist "^4.17.6"
     core-js "^3.19.1"
 
-"@wordpress/base-styles@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/base-styles/-/base-styles-4.1.0.tgz#814318562278ec832f932e025172d46ff34447d6"
-  integrity sha512-rjyMWFs0WWE16w77sHffaXBFosg15iUUVpQr/H4eEElHE/JpXFZJczMbM3yx5tSH+72S3sPFVn5NYn4qHLP7Rg==
+"@wordpress/base-styles@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/base-styles/-/base-styles-4.1.1.tgz#f1c3e940d897d3733149a88c944c9cbab4116a04"
+  integrity sha512-DFWyfgHxsVhKqRZH4cCrQjItNMDIoPBaJd3/bTd2jPCu+MN/PITR1xUY6cET3ASCR34vrJ0fWZeylncrCixTnw==
 
-"@wordpress/browserslist-config@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/browserslist-config/-/browserslist-config-4.1.0.tgz#d6ae9d43709b2355eaccc4131fb47a0f2ae072c1"
-  integrity sha512-RSJhgY2xmz6yAdDNhz/NvAO6JS+91vv9cVL7VDG2CftbyjTXBef05vWt3FzZhfeF0xUrYdpZL1PVpxmJiKvbEg==
+"@wordpress/browserslist-config@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/browserslist-config/-/browserslist-config-4.1.1.tgz#bbee2bc0c43f651e4cdf590e89f36d961f2a3fd9"
+  integrity sha512-fz2IQ3eghmnWIb3YnSSC1aNlrdNPBF53b5RIdF6Zt5Wtk9k3NZ+YmH6ph8zUyktSzckRkV0dNsI3X9Z1RU49gQ==
 
-"@wordpress/dependency-extraction-webpack-plugin@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/dependency-extraction-webpack-plugin/-/dependency-extraction-webpack-plugin-3.3.0.tgz#302db24abead3c9905aaf76c62a1daa74b1a5708"
-  integrity sha512-bUBRkT1keDoD+Mv+YBkJGB5DPLes+zK1e34/SyrX+NIGOEngxsoUOdKPyX/Hex/t/0w6Bhqb5+2lYaNR6ar8IQ==
+"@wordpress/dependency-extraction-webpack-plugin@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/dependency-extraction-webpack-plugin/-/dependency-extraction-webpack-plugin-3.3.1.tgz#3ce6789291564ef7b491d017d9357a31f42c9bb6"
+  integrity sha512-BQcjilKXgHWUWmzjzSwtE5Dw8IUmjaXtSAxlh988CBfNRk94BSSTI4FqXH1R0ywpAF6ebb4NTP+9Y6joydENVA==
   dependencies:
     json2php "^0.0.4"
     webpack-sources "^3.2.2"
 
-"@wordpress/element@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/element/-/element-4.1.0.tgz#001c475525c079c8efafa0595f42c739a27ccf72"
-  integrity sha512-Q63OGOExHthL1TGJOaQKYXr2vEvkIk3jBlcMuPuY/6JhKx3h0G6GDE3J0mc9HQyydkv6XWDyATWjfP5naMjM/Q==
+"@wordpress/element@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/element/-/element-4.1.1.tgz#3d403eba33227d80f75c6b3cc3d80529d900096c"
+  integrity sha512-lzrCvQOtzyRguw+VlG8EVzy8aexJ2Fk3tN8ifefvvTN0vNJeFdoEaSZGqYCoVvRKHKXpLfX9vMsVp0Ug0EWPcQ==
   dependencies:
     "@babel/runtime" "^7.16.0"
     "@types/react" "^17.0.37"
     "@types/react-dom" "^17.0.11"
-    "@wordpress/escape-html" "^2.3.0"
+    "@wordpress/escape-html" "^2.3.1"
     lodash "^4.17.21"
     react "^17.0.2"
     react-dom "^17.0.2"
 
-"@wordpress/escape-html@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-2.3.0.tgz#419089bb03e97d7d3dd7fee11afdc3d9f3a09159"
-  integrity sha512-QD5uid5Le3sZkKGKiXcudQKILxrSEeGltYVyQoNwbeBIhUE19DW7J0S1zqKkaaHks0jEERPIfzNThiyUh1IrVg==
+"@wordpress/escape-html@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-2.3.1.tgz#81dd894f2b1d8ae38f60df20f42397154b083701"
+  integrity sha512-7lqbW1NiIQOlAwxc6iAfZ69v7sf2/2lZOfS5ntIrdB+erqHURkgwvqAOGJ2VwJcjQadaKbDIMf8YPZPwYY66+A==
   dependencies:
     "@babel/runtime" "^7.16.0"
 
-"@wordpress/eslint-plugin@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-10.0.0.tgz#68bae0d39849993c456835465d345f4dbfb34b89"
-  integrity sha512-OMPyXLwjvnDio/f1l2+FkwwtNO2hpHkTdJe8D1ie5QpUFQgVz7n59w9USMxdJ/XR2eDDLjVv1alwXEow1go+mg==
+"@wordpress/eslint-plugin@^10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-10.0.1.tgz#f6989431bdc9087872208bb0bb378a6811c04f7b"
+  integrity sha512-MsmuEckT7pUWccky0cZDAfeFGPLWuRJwlf3GSWEPCGjCxzxoxQEXTj6GS21UoRPat8SyuKIx8d/8Da1SQM01UQ==
   dependencies:
     "@babel/eslint-parser" "^7.16.0"
     "@typescript-eslint/eslint-plugin" "^5.3.0"
     "@typescript-eslint/parser" "^5.3.0"
-    "@wordpress/babel-preset-default" "^6.5.0"
-    "@wordpress/prettier-config" "^1.1.1"
+    "@wordpress/babel-preset-default" "^6.5.1"
+    "@wordpress/prettier-config" "^1.1.2"
     cosmiconfig "^7.0.0"
     eslint-config-prettier "^8.3.0"
     eslint-plugin-import "^2.25.2"
@@ -2923,61 +2923,61 @@
     prettier "npm:wp-prettier@2.2.1-beta-1"
     requireindex "^1.2.0"
 
-"@wordpress/jest-console@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/jest-console/-/jest-console-5.0.0.tgz#48ed649fd6efaa78704414061d999be5d91da852"
-  integrity sha512-jW9TskAlHYbOdA2H/LTDUZ8Db5kigs9haNJtOgRYcgqjp2wioEGOziss69b3/HszRq9s0yAHxdiLEVhuLrFY6Q==
+"@wordpress/jest-console@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/jest-console/-/jest-console-5.0.1.tgz#8f2dff67980c75523b8231ac951cfe97a7b907e6"
+  integrity sha512-xVYGtzsewfI5QhdIX9Sm+aqUZTJYuWYEFVBAhJJdEGwAeqirZPEADZJjZwh3olOTvHBVk+YpMhBaExjxVSUt9g==
   dependencies:
     "@babel/runtime" "^7.16.0"
     jest-matcher-utils "^27.4.2"
     lodash "^4.17.21"
 
-"@wordpress/jest-preset-default@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/jest-preset-default/-/jest-preset-default-8.0.0.tgz#e73b42d5d552979480e0ee0968b8372973687cd7"
-  integrity sha512-7vKskqlEdYL8b+itZGDRf6yceTva9xUV4NK8KZ+HFcLP4ZJuhuosIBCkkSdh1Mlu8LBEQLmgtkUzvxqhJE7NLQ==
+"@wordpress/jest-preset-default@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/jest-preset-default/-/jest-preset-default-8.0.1.tgz#f4854f781749f2eececaef74b2326fac4d1cd1db"
+  integrity sha512-nqVlXo3XAwDlVCVbpPuYIXTDuMa9X3n3Vz6i9cVVaM9jO1/mb1s6d2sGCUTBFuipHFkr615OV0f/ZRKBmypR0Q==
   dependencies:
     "@wojtekmaj/enzyme-adapter-react-17" "^0.6.1"
-    "@wordpress/jest-console" "^5.0.0"
+    "@wordpress/jest-console" "^5.0.1"
     babel-jest "^27.4.5"
     enzyme "^3.11.0"
     enzyme-to-json "^3.4.4"
 
-"@wordpress/npm-package-json-lint-config@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/npm-package-json-lint-config/-/npm-package-json-lint-config-4.1.0.tgz#3ea6ea89fef58b506b1fe25a3905d67317594785"
-  integrity sha512-FjXL5GbpmI/wXXcpCf2sKosVIVuWjUuHmDbwcMzd0SClcudo9QjDRdVe35We+js8eQLPgB9hsG4Cty6cAFFxsQ==
+"@wordpress/npm-package-json-lint-config@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/npm-package-json-lint-config/-/npm-package-json-lint-config-4.1.1.tgz#d95151b914d352d8d60811cfe0e4d1a27856aaaa"
+  integrity sha512-Kuyge30wO3qceDTg3PRrF/lPP4h4f7gwJMTkFFv68Ouvv6HBPubjfAVHtrtFOaFkxMnt91oqOXLAL1y7j95L4w==
 
-"@wordpress/postcss-plugins-preset@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/postcss-plugins-preset/-/postcss-plugins-preset-3.3.0.tgz#7911d40b6396dc37015c8bd4f37027a2be2c8a8f"
-  integrity sha512-Yj6t+eATEObTyGUoMaxZfkHtKh9i59lAUKTz1NY47QDmNED+Gq5WBBuQJ7ddFIXeQ7LSJcpN1wWujvNexeVISA==
+"@wordpress/postcss-plugins-preset@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/postcss-plugins-preset/-/postcss-plugins-preset-3.3.1.tgz#9b69c04d0d54c060e0c339b392ad09ad697ef3b2"
+  integrity sha512-UEznsalMpDetECLKjUbHw+CQ5YkDtygrnHazZlHViAU0yLOOCru5YdUZy9NulabFOTZk9nhHPIul+u/1l93rNg==
   dependencies:
-    "@wordpress/base-styles" "^4.1.0"
+    "@wordpress/base-styles" "^4.1.1"
     autoprefixer "^10.2.5"
 
-"@wordpress/prettier-config@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.1.1.tgz#0a77268708ca338fde671adf1d30bf141df6f5fb"
-  integrity sha512-qjpBK5KB2ieCLv+1fGNKRW4urf5tFN1eUn3Qy+JINxNwAx6Jj9uhfXA4AldCSnD+WkzsN2UgBvgAj5/SWwzRZQ==
+"@wordpress/prettier-config@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.1.2.tgz#b83f454803ceb1a81d3d2a8d79ea2bc23606dd9d"
+  integrity sha512-jVUd22QAErCxdYsP33HC10GLDMbLU6A1bYgRpA//VxirJwvbT/chEnkO9Xy2TILXYtpil4WJtGoD9Fv599N82Q==
 
-"@wordpress/scripts@^20.0.2":
-  version "20.0.2"
-  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-20.0.2.tgz#9fd4837eedb45dc1faa83280399757cb6b9fcdfd"
-  integrity sha512-6BHOAUmZ0XyjhayD5gKUuXsEpOEI8oZhcTJ85GTbib5TGBXd8VxTuh8b53fOOppbqh7YlWSSSsuMX3HaAfUYeg==
+"@wordpress/scripts@^21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-21.0.1.tgz#1ff07bd2b8783d294f6a026e1546d69454f07867"
+  integrity sha512-NJUZpHQf5hTOcj7XLx1K5sb42eCizTqsZLdz9XkYAYXep85DjNdoJBOoCimP/FF3vRg7Yo1wTi8RNa6tuw1Pfw==
   dependencies:
     "@babel/core" "^7.16.0"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.5.2"
     "@svgr/webpack" "^5.5.0"
-    "@wordpress/babel-preset-default" "^6.5.0"
-    "@wordpress/browserslist-config" "^4.1.0"
-    "@wordpress/dependency-extraction-webpack-plugin" "^3.3.0"
-    "@wordpress/eslint-plugin" "^10.0.0"
-    "@wordpress/jest-preset-default" "^8.0.0"
-    "@wordpress/npm-package-json-lint-config" "^4.1.0"
-    "@wordpress/postcss-plugins-preset" "^3.3.0"
-    "@wordpress/prettier-config" "^1.1.1"
-    "@wordpress/stylelint-config" "^20.0.0"
+    "@wordpress/babel-preset-default" "^6.5.1"
+    "@wordpress/browserslist-config" "^4.1.1"
+    "@wordpress/dependency-extraction-webpack-plugin" "^3.3.1"
+    "@wordpress/eslint-plugin" "^10.0.1"
+    "@wordpress/jest-preset-default" "^8.0.1"
+    "@wordpress/npm-package-json-lint-config" "^4.1.1"
+    "@wordpress/postcss-plugins-preset" "^3.3.1"
+    "@wordpress/prettier-config" "^1.1.2"
+    "@wordpress/stylelint-config" "^20.0.1"
     adm-zip "^0.5.9"
     babel-jest "^27.4.5"
     babel-loader "^8.2.3"
@@ -3009,7 +3009,7 @@
     postcss "^8.4.5"
     postcss-loader "^6.2.1"
     prettier "npm:wp-prettier@2.2.1-beta-1"
-    puppeteer-core "^11.0.0"
+    puppeteer-core "^13.2.0"
     react-refresh "^0.10.0"
     read-pkg-up "^7.0.1"
     resolve-bin "^0.4.0"
@@ -3024,18 +3024,18 @@
     webpack-cli "^4.9.1"
     webpack-dev-server "^4.4.0"
 
-"@wordpress/stylelint-config@^20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/stylelint-config/-/stylelint-config-20.0.0.tgz#df8bffbd9a9d685625e47ed8ae9e9d8f17705b38"
-  integrity sha512-GNKkj52Gc4Z4dqVQEGDGhJSNbINLWAJ2R88i6Y79sGay+Gc6d//tdqVFJEYcAEOxMKIw3OLaSq+ojVZPhvIHrg==
+"@wordpress/stylelint-config@^20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/stylelint-config/-/stylelint-config-20.0.1.tgz#ddeb1a99e0de5acb6e06364f28fab2813dc883b6"
+  integrity sha512-f+aydCTrfFcEvx0eOS4N1VRV8MSl/zZTIPJcPkh2oV1yLNq0pL4zQ5OYMlSg5vaj0yZJdRLyGVa+VSjy+D81Ag==
   dependencies:
     stylelint-config-recommended "^6.0.0"
     stylelint-config-recommended-scss "^5.0.2"
 
-"@wordpress/warning@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/warning/-/warning-2.3.0.tgz#deb1f7739c58290d744183516e21f3fafb678a8d"
-  integrity sha512-Is6uEp2wvUPTK1+RtQQdzTdb93BDMAJEYE5UCHvoSFCWpxvEhBP6SY+Nzv/MkFKHZwY66QxEAduThxfINma87Q==
+"@wordpress/warning@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/warning/-/warning-2.3.1.tgz#0d458ce4728d02d9d4f2f489b13cb36801b7ad18"
+  integrity sha512-cnQaWv3IUuFSdZ/5xR6yabOYS5KJV7r3qSzh5CTdl4b9B6jXlVHzcqmRAz+up7+qxF4awmkJhqlozwz9TBCyjg==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -4216,6 +4216,13 @@ cosmiconfig@^7.0.1:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+cross-fetch@3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
+  integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
+  dependencies:
+    node-fetch "2.6.7"
+
 cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -4448,10 +4455,10 @@ debug@4, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1:
   dependencies:
     ms "2.1.2"
 
-debug@4.3.2, debug@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
-  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
+debug@4.3.3, debug@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
+  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
   dependencies:
     ms "2.1.2"
 
@@ -4462,10 +4469,10 @@ debug@^3.1.1, debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.3.3:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
-  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
+debug@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   dependencies:
     ms "2.1.2"
 
@@ -4595,10 +4602,10 @@ detect-node@^2.0.4:
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.1.0.tgz#c9c70775a49c3d03bc2c06d9a73be550f978f8b1"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
 
-devtools-protocol@0.0.901419:
-  version "0.0.901419"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.901419.tgz#79b5459c48fe7e1c5563c02bd72f8fec3e0cebcd"
-  integrity sha512-4INMPwNm9XRpBukhNbF7OB6fNTTCaI8pzy/fXg0xQzAy5h3zL1P8xT3QazgKqBrb/hAYwIBizqDBZ7GtJE74QQ==
+devtools-protocol@0.0.960912:
+  version "0.0.960912"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.960912.tgz#411c1fa355eddb72f06c4a8743f2808766db6245"
+  integrity sha512-I3hWmV9rWHbdnUdmMKHF2NuYutIM2kXz2mdXW8ha7TbRlGTVs+PF+PsB5QWvpCek4Fy9B+msiispCfwlhG5Sqg==
 
 diff-sequences@^27.4.0:
   version "27.4.0"
@@ -7956,10 +7963,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-node-fetch@2.6.5:
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.5.tgz#42735537d7f080a7e5f78b6c549b7146be1742fd"
-  integrity sha512-mmlIVHJEu5rnIxgEgez6b9GgWXbkZj5YZ7fx+2r94a2E+Uirsp6HsPTPlomfdHtpt/B0cdKviwkoaM6pyvUOpQ==
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
 
@@ -9014,23 +9021,23 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-11.0.0.tgz#d7aa19634948671fa35d14027fa45be807c340cb"
-  integrity sha512-hfQ39KNP0qKplQ86iaCNXHH9zpWlV01UFdggt2qffgWeCBF9KMavwP/k/iK/JidPPWfOnKZhDLSHZVSUr73DtA==
+puppeteer-core@^13.2.0:
+  version "13.3.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-13.3.2.tgz#03b47c776fea881df69e7a55559848434f8110f3"
+  integrity sha512-9T8deXmLWf55/RvDpl32vP68stTufqvtj6fc9hH09ZwCLh5IwnN9Z0MWHfDMTLiW6MUpW2Flx5CQWt1SCUT47g==
   dependencies:
-    debug "4.3.2"
-    devtools-protocol "0.0.901419"
+    cross-fetch "3.1.5"
+    debug "4.3.3"
+    devtools-protocol "0.0.960912"
     extract-zip "2.0.1"
     https-proxy-agent "5.0.0"
-    node-fetch "2.6.5"
     pkg-dir "4.2.0"
     progress "2.0.3"
     proxy-from-env "1.1.0"
     rimraf "3.0.2"
     tar-fs "2.1.1"
     unbzip2-stream "1.4.3"
-    ws "8.2.3"
+    ws "8.5.0"
 
 q@^1.1.2:
   version "1.5.1"
@@ -10909,10 +10916,10 @@ write-file-atomic@^4.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^4.0.0"
 
-ws@8.2.3:
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.2.3.tgz#63a56456db1b04367d0b721a0b80cae6d8becbba"
-  integrity sha512-wBuoj1BDpC6ZQ1B7DWQBYVLphPWkm8i9Y0/3YdHjHKHiohOJ1ws+3OccDWtH+PoC9DZD5WOTrJvNbWvjS6JWaA==
+ws@8.5.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
+  integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
 
 ws@^7.3.1:
   version "7.4.6"
