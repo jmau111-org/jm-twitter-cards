@@ -2961,10 +2961,10 @@
   resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.1.2.tgz#b83f454803ceb1a81d3d2a8d79ea2bc23606dd9d"
   integrity sha512-jVUd22QAErCxdYsP33HC10GLDMbLU6A1bYgRpA//VxirJwvbT/chEnkO9Xy2TILXYtpil4WJtGoD9Fv599N82Q==
 
-"@wordpress/scripts@^21.0.1":
-  version "21.0.1"
-  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-21.0.1.tgz#1ff07bd2b8783d294f6a026e1546d69454f07867"
-  integrity sha512-NJUZpHQf5hTOcj7XLx1K5sb42eCizTqsZLdz9XkYAYXep85DjNdoJBOoCimP/FF3vRg7Yo1wTi8RNa6tuw1Pfw==
+"@wordpress/scripts@^21.0.2":
+  version "21.0.2"
+  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-21.0.2.tgz#58d71dc00ec6dbd48e2c2e4053df376ec43fd681"
+  integrity sha512-WbekljoRh0fHmYVHDdSigmAHbfcOyXsbQsShh27zdVp6D+JJEAGkxfk4+tfLqNW2a4XDUSfhKo8kG4CatZ2oog==
   dependencies:
     "@babel/core" "^7.16.0"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.5.2"
