@@ -17,6 +17,6 @@
     "@wordpress/scripts": "^21.0.1",
     "grunt": "^1.4.1",
     "grunt-contrib-cssmin": "^4.0.0",
-    "grunt-contrib-uglify": "^5.0.1"
+    "grunt-contrib-uglify": "^5.1.0"
   }
 }
