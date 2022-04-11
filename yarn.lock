@@ -38,28 +38,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.17.0.tgz#86850b8597ea6962089770952075dcaabb8dba34"
   integrity sha512-392byTlpGWXMv4FbyWw3sAZ/FrW/DrwqLGXpy0mbyNe9Taqv1mg9yON5/o0cnr8XYCkFTZbC1eV+c+LAROgrng==
 
-"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.16.0", "@babel/core@^7.7.2", "@babel/core@^7.8.0":
-  version "7.16.12"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.16.12.tgz#5edc53c1b71e54881315923ae2aedea2522bb784"
-  integrity sha512-dK5PtG1uiN2ikk++5OzSYsitZKny4wOCD0nrO4TqnW4BVBTQ2NGS3NgilvT/TEyxTST7LNyWV/T4tXDoD3fOgg==
-  dependencies:
-    "@ampproject/remapping" "^2.1.0"
-    "@babel/code-frame" "^7.16.7"
-    "@babel/generator" "^7.17.3"
-    "@babel/helper-compilation-targets" "^7.16.7"
-    "@babel/helper-module-transforms" "^7.16.7"
-    "@babel/helpers" "^7.17.2"
-    "@babel/parser" "^7.17.3"
-    "@babel/template" "^7.16.7"
-    "@babel/traverse" "^7.17.3"
-    "@babel/types" "^7.17.0"
-    convert-source-map "^1.7.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.2"
-    json5 "^2.1.2"
-    semver "^6.3.0"
-
-"@babel/core@^7.15.5":
+"@babel/core@^7.1.0", "@babel/core@^7.12.3", "@babel/core@^7.15.5", "@babel/core@^7.16.0", "@babel/core@^7.7.2", "@babel/core@^7.8.0":
   version "7.17.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.17.5.tgz#6cd2e836058c28f06a4ca8ee7ed955bbf37c8225"
   integrity sha512-/BBMw4EvjmyquN5O+t5eh0+YqB3XXJkYD2cjKpYtWOfFy4lQ4UozNSmxAcWT8r2XtZs0ewG+zrfsqeR15i1ajA==
@@ -438,15 +417,6 @@
     "@babel/template" "^7.16.7"
     "@babel/traverse" "^7.16.8"
     "@babel/types" "^7.16.8"
-
-"@babel/helpers@^7.17.2":
-  version "7.17.2"
-  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.17.2.tgz#23f0a0746c8e287773ccd27c14be428891f63417"
-  integrity sha512-0Qu7RLR1dILozr/6M0xgj+DFPmi6Bnulgm9M8BVa9ZCWxDqlSnqt3cf8IDPB5m45sVXUZ0kuQAgUrdSFFH79fQ==
-  dependencies:
-    "@babel/template" "^7.16.7"
-    "@babel/traverse" "^7.17.0"
-    "@babel/types" "^7.17.0"
 
 "@babel/helpers@^7.17.2":
   version "7.17.2"
@@ -1446,24 +1416,8 @@
     "@babel/types" "^7.16.8"
     debug "^4.1.0"
     globals "^11.1.0"
-    
-"@babel/traverse@^7.16.8", "@babel/traverse@^7.17.0", "@babel/traverse@^7.17.3":
-  version "7.17.3"
-  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.17.3.tgz#0ae0f15b27d9a92ba1f2263358ea7c4e7db47b57"
-  integrity sha512-5irClVky7TxRWIRtxlh2WPUUOLhcPN06AGgaQSB8AEwuyEBgJVuJ5imdHm5zxk8w0QS5T+tDfnDxAlhWjpb7cw==
-  dependencies:
-    "@babel/code-frame" "^7.16.7"
-    "@babel/generator" "^7.17.3"
-    "@babel/helper-environment-visitor" "^7.16.7"
-    "@babel/helper-function-name" "^7.16.7"
-    "@babel/helper-hoist-variables" "^7.16.7"
-    "@babel/helper-split-export-declaration" "^7.16.7"
-    "@babel/parser" "^7.17.3"
-    "@babel/types" "^7.17.0"
-    debug "^4.1.0"
-    globals "^11.1.0"
 
-"@babel/types@^7.15.6", "@babel/types@^7.17.0":
+"@babel/types@^7.0.0", "@babel/types@^7.12.13", "@babel/types@^7.13.0", "@babel/types@^7.13.12", "@babel/types@^7.13.14", "@babel/types@^7.15.6", "@babel/types@^7.17.0", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.4":
   version "7.17.0"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.17.0.tgz#a826e368bccb6b3d84acd76acad5c0d87342390b"
   integrity sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==
@@ -2669,10 +2623,10 @@
   resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.1.2.tgz#b83f454803ceb1a81d3d2a8d79ea2bc23606dd9d"
   integrity sha512-jVUd22QAErCxdYsP33HC10GLDMbLU6A1bYgRpA//VxirJwvbT/chEnkO9Xy2TILXYtpil4WJtGoD9Fv599N82Q==
 
-"@wordpress/scripts@^22.0.1":
-  version "22.0.1"
-  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-22.0.1.tgz#49fb2ad5863605dec4bc1eeba270e27ccdcdb36a"
-  integrity sha512-G7S4IxZXUr9xHawWXMs/Tu0vz9LexEg5rgUYxT5lZMcTZSx1g622KcGun27PKPDRc8C7w49ae1kM7cWXA9IEOA==
+"@wordpress/scripts@^22.1.0":
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-22.1.0.tgz#9532dc36ed1bf360815cec4cff77a22f98083426"
+  integrity sha512-Jonw10TWx/eo1ZJz62dX5wLDOWVgKsoScouFf/SDB4SBfFcuSUiPcCHfVQnpT+ImM2wF+N5Dlm0Vx+JeB0MgDA==
   dependencies:
     "@babel/core" "^7.16.0"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.5.2"
@@ -7153,7 +7107,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0, lodash@~4.17.19, lodash@~4.17.21:
+lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0, lodash@~4.17.19, lodash@~4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
