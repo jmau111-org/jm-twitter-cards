@@ -32,7 +32,7 @@ or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-c
 ### 11.1.12
 * April 2022
 * composer enhancements
-* npm sescurity updates
+* npm security updates
 
 ### 11.1.10
 * February 2022
