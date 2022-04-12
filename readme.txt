@@ -113,6 +113,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 11.1.12
+* April 2022
+* composer enhancements
+* npm sescurity updates
+
 ### 11.1.10
 * February 2022
 * composer updates
