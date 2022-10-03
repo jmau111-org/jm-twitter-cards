@@ -117,23 +117,6 @@ class Admin
         }
 
         /**
-         * About page
-         **************************************************************************************************************/
-        if ('jm-twitter-cards_page_jm_tc_about' === $hook_suffix) {
-            $rel_path_js = 'admin/js/about' . Utilities::assets_suffix() . '.js';
-            wp_enqueue_script('about', JM_TC_URL . $rel_path_js, [
-                'jquery',
-            ], JM_TC_VERSION, true);
-            wp_localize_script(
-                'about',
-                'tcGitHub',
-                [
-                    'user'         => 'jmau111',
-                    'repositories' => Utilities::get_github_repositories(),
-                ]
-            );
-        }
-        /**
          * Tutorials page
          **************************************************************************************************************/
         if ('jm-twitter-cards_page_jm_tc_tutorials' === $hook_suffix) {
