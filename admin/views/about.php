@@ -16,8 +16,6 @@ if (!function_exists('add_action')) {
     <h3><span class="icon dashicons-before dashicons-editor-code"></span><?php _e('The developer', 'jm-tc'); ?></h3>
     <?php
     $output = wpautop(__('I am a web developer, I like to make it simpler.', 'jm-tc'));
-    $output .= '<h3><span class="icon dashicons-before dashicons-admin-plugins"></span><span>' . __('GitHub', 'jm-tc') . '</span></h3>';
-    $output .= '<div id="github-repositories"></div>';
 
     echo $output; ?>
 </div>
