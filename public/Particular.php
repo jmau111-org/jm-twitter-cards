@@ -33,7 +33,7 @@ class Particular
      *
      * @return bool
      */
-    public function remove_myself($meta)
+    public function remover($meta)
     {
 
         if (in_array(strtolower($meta), ['tweetpressfr', '@tweetpressfr', 'jmau111', '@jmau111'], true)) {

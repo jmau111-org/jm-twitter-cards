@@ -115,8 +115,8 @@ class App
         }
 
         add_action('wpmu_new_blog', [$plugin_front, 'new_blog']);
-        add_filter('jm_tc_card_site', [$plugin_front, 'remove_myself']);
-        add_filter('jm_tc_card_creator', [$plugin_front, 'remove_myself']);
+        add_filter('jm_tc_card_site', [$plugin_front, 'remover']);
+        add_filter('jm_tc_card_creator', [$plugin_front, 'remover']);
     }
 
     /**

@@ -20,10 +20,8 @@ class Admin
 {
 
     protected $options;
-
     protected $settings_api;
     protected $sub_pages;
-
     protected $video_files;
 
     /**
