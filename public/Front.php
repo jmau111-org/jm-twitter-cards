@@ -5,9 +5,11 @@ namespace TokenToMe\TwitterCards;
 use TokenToMe\TwitterCards\Admin\Options;
 use TokenToMe\TwitterCards\Utils as Utilities;
 
-if (!defined('ABSPATH')) {
-    exit;
-} // Exit if accessed directly
+if (!function_exists('add_action')) {
+    header('Status: 403 Forbidden');
+    header('HTTP/1.1 403 Forbidden');
+    exit();
+}
 
 class Front
 {
@@ -80,7 +82,7 @@ class Front
     public function html_comments($end = false)
     {
         $slash = (false === $end) ? '' : '/';
-        return (bool) apply_filters("jm_tc_display_html_comments", true ) === true ? '<!--||  ' . $slash . 'JM Twitter Cards by Julien Maury ' . JM_TC_VERSION . '  ||-->' . PHP_EOL : "";
+        return (bool) apply_filters("jm_tc_display_html_comments", true ) === true ? '<!--||  ' . $slash . 'JM Twitter Cards by Julien Maury v' . JM_TC_VERSION . '  ||-->' . PHP_EOL : "";
     }
 
     /**

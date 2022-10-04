@@ -8,16 +8,14 @@ if (!function_exists('add_action')) {
 ?>
 <div class="wrap tc">
     <h1><?php esc_html_e('JM Twitter Cards', 'jm-tc'); ?>: <?php echo strtolower(esc_html__('About', 'jm-tc')); ?></h1>
-    <h3>
+    <h2>
         <span class="icon dashicons-before dashicons-heart"></span><span><?php _e('This plugin is free', 'jm-tc'); ?></span>
-    </h3>
+    </h2>
     <?php _e('This plugin is free not me :)', 'jm-tc'); ?>
     <?php _e('So please give me some time to solve issues and answer in case you have any problem.', 'jm-tc'); ?>
-    <h3><span class="icon dashicons-before dashicons-editor-code"></span><?php _e('The developer', 'jm-tc'); ?></h3>
+    <h2><span class="icon dashicons-before dashicons-editor-code"></span><?php _e('The developer', 'jm-tc'); ?></h2>
     <?php
     $output = wpautop(__('I am a web developer, I like to make it simpler.', 'jm-tc'));
-    $output .= '<h3><span class="icon dashicons-before dashicons-admin-plugins"></span><span>' . __('GitHub', 'jm-tc') . '</span></h3>';
-    $output .= '<div id="github-repositories"></div>';
 
     echo $output; ?>
 </div>

@@ -22,17 +22,17 @@ git clone https://github.com/jmau111/jm-twitter-cards.git && cd jm-twitter-cards
 If Gutenberg is enabled then run :
 
 ```
-yarn && yarn build
+npm && npm run build
 ```
 
 or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-cards/).
 
 ## Changelog ##
 
-### 11.1.12
-* April 2022
-* composer enhancements
-* npm security updates
+### 12
+* October 2022
+* dependency updates
+* delete yarn
 
 ### 11.1.10
 * February 2022

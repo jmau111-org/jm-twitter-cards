@@ -8,9 +8,6 @@ if (!function_exists('add_action')) {
 
 WP_CLI::add_command(JM_TC_SLUG_MAIN_OPTION, 'JM_TC_CLI');
 
-/**
- * Control your install
- */
 class JM_TC_CLI extends WP_CLI_Command
 {
 
@@ -83,7 +80,7 @@ class JM_TC_CLI extends WP_CLI_Command
             'summary_large_image',
             'app',
             'player',
-        ])) {
+        ], true)) {
             WP_CLI::error(__('You sox !', 'jm-tc'));
         }
 
@@ -112,7 +109,7 @@ class JM_TC_CLI extends WP_CLI_Command
     public function set_opengraph($args, $assoc_args)
     {
 
-        if (empty($args[0]) || !in_array($args[0], ['yes', 'no'])) {
+        if (empty($args[0]) || !in_array($args[0], ['yes', 'no'], true)) {
             WP_CLI::error(__('You gotta be kidding me !', 'jm-tc'));
         }
 

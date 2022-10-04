@@ -11,10 +11,10 @@ if (!function_exists('add_action')) {
         / <?php echo strtolower(esc_html__('Export', 'jm-tc')); ?></h1>
     <div class="holder">
         <!-- .inbox -->
-        <div class="inbox">
-            <h3><span><?php esc_html_e('Import', 'jm-tc'); ?></span></h3>
+        <section class="inbox">
+            <h2><span><?php esc_html_e('Import', 'jm-tc'); ?></span></h2>
 
-            <div class="inside flex">
+            <article class="inside flex">
                 <form method="post" enctype="multipart/form-data">
                     <p>
                         <input type="file" name="import_file" />
@@ -23,10 +23,10 @@ if (!function_exists('add_action')) {
                         <?php submit_button(esc_html__('Import', 'jm-tc'), 'primary', 'submit', false); ?>
                     </p>
                 </form>
-            </div>
+            </article>
             <!-- .inside -->
-            <div class="inbox">
-                <h3><span><?php esc_html_e('Export', 'jm-tc'); ?></span></h3>
+            <article class="inbox">
+                <h2><span><?php esc_html_e('Export', 'jm-tc'); ?></span></h2>
 
                 <div class="inside">
                     <form method="post">
@@ -38,8 +38,8 @@ if (!function_exists('add_action')) {
                     </form>
                 </div>
                 <!-- .inside -->
-            </div>
+            </article>
             <!-- .inbox -->
-        </div>
+        </section>
     </div>
 </div>
