@@ -82,7 +82,7 @@ class Front
     public function html_comments($end = false)
     {
         $slash = (false === $end) ? '' : '/';
-        return (bool) apply_filters("jm_tc_display_html_comments", true ) === true ? '<!--||  ' . $slash . 'JM Twitter Cards by Julien Maury v' . JM_TC_VERSION . '  ||-->' . PHP_EOL : "";
+        return (bool) apply_filters("jm_tc_display_html_comments", true ) === true ? '<!--||  ' . $slash . 'JM Twitter Cards by jmau111 v' . JM_TC_VERSION . '  ||-->' . PHP_EOL : "";
     }
 
     /**

@@ -176,7 +176,7 @@ class Admin
 
     /**
      * Get our view
-     * @author unknown
+     * @author jmau111
      */
     public function get_view()
     {
@@ -196,7 +196,7 @@ class Admin
      *
      * @param array $args
      *
-     * @author unknown
+     * @author jmau111
      * @return array
      */
     public function get_post_types($args = [])

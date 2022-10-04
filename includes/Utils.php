@@ -82,7 +82,7 @@ class Utils
 
     /**
      * @return bool
-     * @author unknown
+     * @author jmau111
      */
     public static function gutenberg_exists()
     {
@@ -92,7 +92,7 @@ class Utils
 
     /**
      * @return array
-     * @author unknown
+     * @author jmau111
      */
     public static function get_default_options()
     {
@@ -101,7 +101,7 @@ class Utils
 
     /**
      * @return bool
-     * @author unknown
+     * @author jmau111
      */
     public static function is_dev_env()
     {
@@ -112,7 +112,7 @@ class Utils
      * @param $array
      * @param $key
      *
-     * @author unknown
+     * @author jmau111
      * @return string
      */
     public static function maybe_get_opt($array, $key)
@@ -128,7 +128,7 @@ class Utils
      * @param $id
      * @param $args
      *
-     * @author unknown
+     * @author jmau111
      * @return false|string
      */
     public static function embed($id, $args = [])
@@ -146,7 +146,7 @@ class Utils
 
     /**
      * @param $message
-     * @author unknown
+     * @author jmau111
      * @return string
      */
     public static function brand_new($message)
@@ -162,7 +162,7 @@ class Utils
 
     /**
      * @return bool
-     * @author unknown
+     * @author jmau111
      */
     public static function assets_suffix()
     {

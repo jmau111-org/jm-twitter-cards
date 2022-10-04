@@ -13,7 +13,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set username
-     * @author unknown
+     * @author jmau111
      *
      * ## EXAMPLES
      *
@@ -38,7 +38,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set sitename
-     * @author unknown
+     * @author jmau111
      *
      * ## EXAMPLES
      *
@@ -63,7 +63,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set card type
-     * @author unknown
+     * @author jmau111
      *
      * ## EXAMPLES
      *
@@ -97,7 +97,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set opengraph
-     * @author unknown
+     * @author jmau111
      *
      * ## EXAMPLES
      *
@@ -122,7 +122,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set post types for metabox
-     * @author unknown
+     * @author jmau111
      *
      * ## EXAMPLES
      *

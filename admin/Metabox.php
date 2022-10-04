@@ -39,7 +39,7 @@ class Metabox
      * register box
      *
      * @see https://github.com/WordPress/gutenberg/blob/master/docs/extensibility/meta-box.md
-     * @author unknown
+     * @author jmau111
      * @return mixed|void
      */
     public function add_box()
@@ -55,7 +55,7 @@ class Metabox
     /**
      * callback - box
      *
-     * @author unknown
+     * @author jmau111
      */
     public function display_box()
     {
@@ -72,7 +72,7 @@ class Metabox
     }
 
     /**
-     * @author unknown
+     * @author jmau111
      * @return int
      */
     public static function get_post_id()
@@ -86,7 +86,7 @@ class Metabox
      * @param int $post_id The post ID.
      * @param \WP_Post $post The post object.
      *
-     * @author unknown
+     * @author jmau111
      *
      * @return int
      */
@@ -119,7 +119,7 @@ class Metabox
      * @param $key
      * @param $value
      *
-     * @author unknown
+     * @author jmau111
      * @return int|bool|string
      */
     public function sanitize($key, $value)
@@ -159,7 +159,7 @@ class Metabox
      * for metabox
      * no need to show all fields if not player
      *
-     * @author unknown
+     * @author jmau111
      */
     public function admin_enqueue_scripts()
     {

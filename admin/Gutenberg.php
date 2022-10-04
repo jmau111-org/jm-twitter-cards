@@ -13,7 +13,7 @@ if (!function_exists('add_action')) {
 class Gutenberg
 {
     /**
-     * @author unknown
+     * @author jmau111
      */
     public function register_scripts()
     {

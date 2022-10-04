@@ -50,7 +50,7 @@ class App
     }
 
     /**
-     * @author unknown
+     * @author jmau111
      */
     protected function load_dependencies()
     {

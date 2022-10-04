@@ -26,39 +26,39 @@ class Fields
     /**
      * Simple wrapper div
      *
-     * @param array $aar
+     * @param array $murray
      *
-     * @author unknown
+     * @author jmau111
      * @return string|bool
      */
-    public function wrapper($aar = [])
+    public function wrapper($murray = [])
     {
 
-        if (empty($aar['tag'])) {
+        if (empty($murray['tag'])) {
             return false;
         }
 
-        $class = !empty($aar['class']) ? sanitize_html_class($aar['class']) : '';
+        $class = !empty($murray['class']) ? sanitize_html_class($murray['class']) : '';
 
-        return 'start' === $aar['mod'] ? '<' . esc_attr($aar['tag']) . ' class="' . $class . '">' : '</' . esc_attr($aar['tag']) . '>';
+        return 'start' === $murray['mod'] ? '<' . esc_attr($murray['tag']) . ' class="' . $class . '">' : '</' . esc_attr($murray['tag']) . '>';
     }
 
     /**
      * Basic field
      *
-     * @param array $aar
+     * @param array $murray
      *
      * @return string
-     * @author unknown
+     * @author jmau111
      */
-    public function text_field($aar)
+    public function text_field($murray)
     {
 
-        $type = !empty($aar['type']) ? esc_attr($aar['type']) : '';
+        $type = !empty($murray['type']) ? esc_attr($murray['type']) : '';
 
-        $output = '<tr class="' . esc_attr($aar['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($aar['field_id']) . '">' . esc_html($aar['label']) . '</label></th>';
-        $output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($aar['field_id']) . '" name="' . esc_attr($aar['field_id']) . '" type="text" value="' . esc_attr($aar['value']) . '"></td>';
+        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
+        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
+        $output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '" type="text" value="' . esc_attr($murray['value']) . '"></td>';
         $output .= '</tr>';
 
         return $output;
@@ -67,20 +67,20 @@ class Fields
     /**
      * Basic textarea
      *
-     * @param array $aar
+     * @param array $murray
      *
      * @return string
-     * @author unknown
+     * @author jmau111
      */
-    public function textarea_field($aar)
+    public function textarea_field($murray)
     {
 
-        $type      = !empty($aar['type']) ? esc_attr($aar['type']) : '';
-        $charcount = empty($aar['charcount']) ? '' : 'data-count="' . $aar['charcount'] . '"';
+        $type      = !empty($murray['type']) ? esc_attr($murray['type']) : '';
+        $charcount = empty($murray['charcount']) ? '' : 'data-count="' . $murray['charcount'] . '"';
 
-        $output = '<tr class="' . esc_attr($aar['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($aar['field_id']) . '">' . esc_html($aar['label']) . '</label></th>';
-        $output .= '<td><textarea rows="5" cols="80" class="textarea tc-field-' . $type . '-url" ' . $charcount . ' id="' . esc_attr($aar['field_id']) . '" name="' . esc_attr($aar['field_id']) . '">' . esc_attr($aar['value']) . '</textarea></td>';
+        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
+        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
+        $output .= '<td><textarea rows="5" cols="80" class="textarea tc-field-' . $type . '-url" ' . $charcount . ' id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '">' . esc_attr($murray['value']) . '</textarea></td>';
         $output .= '</tr>';
 
         return $output;
@@ -89,19 +89,19 @@ class Fields
     /**
      * Url field
      *
-     * @param array $aar
+     * @param array $murray
      *
      * @return string
-     * @author unknown
+     * @author jmau111
      */
-    public function url_field($aar)
+    public function url_field($murray)
     {
 
-        $type = !empty($aar['type']) ? esc_attr($aar['type']) : '';
+        $type = !empty($murray['type']) ? esc_attr($murray['type']) : '';
 
-        $output = '<tr class="' . esc_attr($aar['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($aar['field_id']) . '">' . esc_html($aar['label']) . '</label></th>';
-        $output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($aar['field_id']) . '" name="' . esc_attr($aar['field_id']) . '" type="url" value="' . esc_attr($aar['value']) . '" placeholder="https://"></td>';
+        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
+        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
+        $output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '" type="url" value="' . esc_attr($murray['value']) . '" placeholder="https://"></td>';
         $output .= '</tr>';
 
         return $output;
@@ -110,19 +110,19 @@ class Fields
     /**
      * Num field
      *
-     * @param array $aar
+     * @param array $murray
      *
      * @return string
-     * @author unknown
+     * @author jmau111
      */
-    public function num_field($aar)
+    public function num_field($murray)
     {
 
-        $type = !empty($aar['type']) ? esc_attr($aar['type']) : '';
+        $type = !empty($murray['type']) ? esc_attr($murray['type']) : '';
 
-        $output = '<tr class="' . esc_attr($aar['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($aar['field_id']) . '">' . esc_html($aar['label']) . '</label></th>';
-        $output .= '<td><input size=60" step="' . esc_attr($aar['step']) . '" min="' . esc_attr($aar['min']) . '" max="' . esc_attr($aar['max']) . '" class="tc-field-' . $type . '-url" id="' . esc_attr($aar['field_id']) . '" name="' . esc_attr($aar['field_id']) . '" type="number" value="' . esc_attr($aar['value']) . '"></td>';
+        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
+        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
+        $output .= '<td><input size=60" step="' . esc_attr($murray['step']) . '" min="' . esc_attr($murray['min']) . '" max="' . esc_attr($murray['max']) . '" class="tc-field-' . $type . '-url" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '" type="number" value="' . esc_attr($murray['value']) . '"></td>';
         $output .= '</tr>';
 
         return $output;
@@ -131,20 +131,20 @@ class Fields
     /**
      * Select field
      *
-     * @param array $aar
+     * @param array $murray
      *
-     * @author unknown
+     * @author jmau111
      * @return string
      */
-    public function select_field($aar)
+    public function select_field($murray)
     {
 
-        $output = '<tr class="' . esc_attr($aar['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($aar['field_id']) . '">' . esc_html($aar['label']) . '</label></th>';
-        $output .= '<td><select class="' . esc_attr($aar['field_id']) . '" id="' . esc_attr($aar['field_id']) . '" name="' . esc_attr($aar['field_id']) . '">';
+        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
+        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
+        $output .= '<td><select class="' . esc_attr($murray['field_id']) . '" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '">';
 
-        foreach ($aar['options'] as $value => $label) {
-            $output .= '<option value="' . esc_attr($value) . '"' . selected($aar['value'], $value, false) . '>' . esc_html($label) . '</option>';
+        foreach ($murray['options'] as $value => $label) {
+            $output .= '<option value="' . esc_attr($value) . '"' . selected($murray['value'], $value, false) . '>' . esc_html($label) . '</option>';
         }
 
         $output .= '</select></td>';
@@ -156,17 +156,17 @@ class Fields
     /**
      * Image field
      *
-     * @param array $aar
+     * @param array $murray
      *
-     * @author unknown
+     * @author jmau111
      * @return string
      */
-    public function image_field($aar)
+    public function image_field($murray)
     {
 
-        $output = '<tr class="' . esc_attr($aar['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($aar['field_id']) . '">' . esc_html($aar['label']) . '</label></th>';
-        $output .= '<td><input size="60" type="text" class="tc-file-input" name="' . esc_attr($aar['field_id']) . '" id="' . esc_attr($aar['field_id']) . '" value="' . esc_attr($aar['value']) . '">';
+        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
+        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
+        $output .= '<td><input size="60" type="text" class="tc-file-input" name="' . esc_attr($murray['field_id']) . '" id="' . esc_attr($murray['field_id']) . '" value="' . esc_attr($murray['value']) . '">';
         $output .= '<a href="#" class="tc-file-input-select button-primary">' . esc_html__('Select', 'jm-tc') . '</a>' . "\r";
         $output .= '<a href="#" class="tc-file-input-reset button-secondary">' . esc_html__('Remove', 'jm-tc') . '</a></td>';
         $output .= '</tr>';
