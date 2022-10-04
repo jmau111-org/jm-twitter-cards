@@ -26,26 +26,6 @@ class Utils
         return $noat;
     }
 
-    /**
-     * Put some cache on request
-     * @return bool|mixed
-     * @author unknown
-     */
-    public static function get_github_repositories()
-    {
-        $data = get_site_transient('jm_github_repos');
-        if (empty($data)) {
-            $request = wp_remote_get('https://api.github.com/users/jmau111/repos?sort=updated&type=public');
-
-            if (!empty($request) && !is_wp_error($request) && wp_remote_retrieve_response_code($request) === 200) {
-                $data = wp_remote_retrieve_body($request);
-                set_site_transient('jm_github_repos', $data, WEEK_IN_SECONDS); // it's actually enough ^^
-            }
-        }
-
-        return $data;
-    }
-
 
     /**
      * @param $lb
