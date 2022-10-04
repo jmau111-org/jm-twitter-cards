@@ -6,6 +6,12 @@ use TokenToMe\TwitterCards\Admin\Admin;
 use TokenToMe\TwitterCards\Admin\Gutenberg;
 use TokenToMe\TwitterCards\Admin\Metabox;
 
+if (!function_exists('add_action')) {
+    header('Status: 403 Forbidden');
+    header('HTTP/1.1 403 Forbidden');
+    exit();
+}
+
 if (!defined('JM_TC_SLUG_MAIN_OPTION')) {
     define('JM_TC_SLUG_MAIN_OPTION', 'jm_tc');
 }
@@ -13,10 +19,6 @@ if (!defined('JM_TC_SLUG_MAIN_OPTION')) {
 if (!defined('JM_TC_SLUG_CPT_OPTION')) {
     define('JM_TC_SLUG_CPT_OPTION', 'jm_tc_cpt');
 }
-
-if (!defined('ABSPATH')) {
-    exit;
-} // Exit if accessed directly
 
 class App
 {
