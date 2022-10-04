@@ -21,8 +21,6 @@ class Gutenberg
             return;
         }
 
-
-
         $rel_path_css = 'build/style-index.css';
         $rel_path_js = 'build/index.js';
 
@@ -43,7 +41,7 @@ class Gutenberg
             'tcData',
             [
                 'twitterSite'  => Utils::remove_at(Utils::maybe_get_opt(jm_tc_get_options(), 'twitterSite')),
-                'domain'       => !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : get_bloginfo('url'),
+                'domain'       => get_bloginfo('url'),
                 'avatar'       => get_avatar_url(0, 16),
                 'defaultImage' => Utils::maybe_get_opt(jm_tc_get_options(), 'twitterImage'),
                 'defaultType'  => Utils::maybe_get_opt(jm_tc_get_options(), 'twitterCardType'),
