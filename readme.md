@@ -22,7 +22,7 @@ git clone https://github.com/jmau111/jm-twitter-cards.git && cd jm-twitter-cards
 If Gutenberg is enabled then run :
 
 ```
-npm && npm run build
+npm i && npm run build
 ```
 
 or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-cards/).
