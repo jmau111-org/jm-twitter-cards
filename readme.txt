@@ -22,14 +22,6 @@ Once activated the plugin adds appropriate meta on your WordPress website allowi
 * preview : preview the rendering on Twitter.
 * WP SEO by Yoast and All in One SEO compatible (no conflict with SEO title and desc set with these plugins)
 
-= First image found instead of featured image =
-
-If you want to get first image found in post content as twitter image, I've created a free add-on here [https://github.com/jmau111/jm-twitter-cards-first-image](https://github.com/jmau111/jm-twitter-cards-first-image)
-
-= Force refresh Twitter image =
-
-If you want to get your Twitter image to refresh, I’ve created a free add-on here [https://github.com/jmau111/jm-twitter-cards-refresh-image](https://github.com/jmau111/jm-twitter-cards-refresh-image)
-
 = Translators =
 
 The plugin is available in French, English and Spanish. Feel totally free to send me your translation in other languages.
