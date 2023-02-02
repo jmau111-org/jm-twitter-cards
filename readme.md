@@ -27,6 +27,50 @@ npm i && npm run build
 
 or use [the wordpress.org version](https://fr.wordpress.org/plugins/jm-twitter-cards/).
 
+## Add-ons
+
+You can create custom add-ons based on custom filters and other hooks available in the main plugin.
+
+### Use first image found in post content as Twitter image
+
+```PHP
+add_filter('jm_tc_image_source', function($url)
+{
+    global $post;
+
+    if (!isset($post->post_content)) {
+        return $url;
+    }
+
+    if (preg_match_all('`<img [^>]+>`', $post->post_content, $matches)) {
+        $_matches = reset($matches);
+        foreach ($_matches as $image) {
+            if (preg_match('`src=(["\'])(.*?)\1`', $image, $_match)) {
+                return $_match[2];
+            }
+        }
+    }
+
+    return $url;
+});
+```
+
+### Force refresh image
+
+```PHP
+add_filter('jm_tc_image_source', function($image)
+{
+
+    if (empty($image)) {
+        return false;
+    }
+
+    $params = (array) apply_filters('jm_tc_refresh_image_query_string_params', ['tc' => strtotime('now')], $image);
+
+    return add_query_arg($params, $image);
+});
+```
+
 ## Changelog ##
 
 ### 12
