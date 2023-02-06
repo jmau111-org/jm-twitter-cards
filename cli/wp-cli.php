@@ -1,5 +1,7 @@
 <?php
 
+use JMTC\Functions;
+
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
     header('HTTP/1.1 403 Forbidden');
@@ -11,9 +13,11 @@ WP_CLI::add_command(JM_TC_SLUG_MAIN_OPTION, 'JM_TC_CLI');
 class JM_TC_CLI extends WP_CLI_Command
 {
 
+    use Functions;
+
     /**
      * Set username
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -24,13 +28,12 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_username($args, $assoc_args)
     {
-
         if (empty($args[0])) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                   = get_option(JM_TC_SLUG_MAIN_OPTION);
-        $options['twitterCreator'] = jm_tc_remove_at($args[0]);
+        $options['twitterCreator'] = $this->remove_at($args[0]);
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
         WP_CLI::success(__('Twitter Cards creator set successfully', 'jm-tc'));
@@ -38,7 +41,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set sitename
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -49,13 +52,12 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_sitename($args, $assoc_args)
     {
-
         if (empty($args[0])) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                = get_option(JM_TC_SLUG_MAIN_OPTION);
-        $options['twitterSite'] = jm_tc_remove_at($args[0]);
+        $options['twitterSite'] = $this->remove_at($args[0]);
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
         WP_CLI::success(__('Twitter Cards Sitename set successfully', 'jm-tc'));
@@ -63,7 +65,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set card type
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -74,22 +76,16 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_cardtype($args, $assoc_args)
     {
-
         if (empty($args[0]) || !in_array($args[0], [
             'summary',
             'summary_large_image',
-            'app',
-            'player',
+            'app', # player cards cannot be set globally
         ], true)) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
-        }
-
-        if ('player' === $args[0]) {
-            WP_CLI::error(__('Player cards cannot be set globally, makes no sense, just go to the metabox please. You sox a little bit !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                    = get_option('jm_tc');
-        $options['twitterCardType'] = jm_tc_remove_at($args[0]);
+        $options['twitterCardType'] = $this->remove_at($args[0]);
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
         WP_CLI::success(__('Twitter Cards Type set successfully', 'jm-tc'));
@@ -97,7 +93,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set opengraph
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -108,12 +104,11 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_opengraph($args, $assoc_args)
     {
-
         if (empty($args[0]) || !in_array($args[0], ['yes', 'no'], true)) {
-            WP_CLI::error(__('You gotta be kidding me !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
-        $options                  = get_option('jm_tc');
+        $options                  = get_option(JM_TC_SLUG_MAIN_OPTION);
         $options['twitterCardOg'] = $args[0];
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
@@ -122,7 +117,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set post types for metabox
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -133,9 +128,8 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_post_types($args, $assoc_args)
     {
-
         if (empty($args[0])) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $_pts = [];
@@ -143,7 +137,7 @@ class JM_TC_CLI extends WP_CLI_Command
         foreach ($args as $arg) {
 
             if (!post_type_exists($arg)) {
-                WP_CLI::error(sprintf(__('%s is not a valid post type ! And you still sox !', 'jm-tc')));
+                WP_CLI::error( __('Error') );
                 break;
             }
 

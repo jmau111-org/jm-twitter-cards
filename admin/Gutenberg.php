@@ -1,8 +1,7 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
-
-use TokenToMe\TwitterCards\Utils;
+namespace JMTC\Admin;
+use JMTC\Functions;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -12,17 +11,16 @@ if (!function_exists('add_action')) {
 
 class Gutenberg
 {
-    /**
-     * @author jmau111
-     */
-    public function register_scripts()
+    use Functions;
+    
+    public function register_scripts(): void
     {
         if (!is_admin()) {
             return;
         }
 
-        $rel_path_css = 'build/style-index.css';
-        $rel_path_js = 'build/index.js';
+        $rel_path_css = JM_TC_GUT_FOLDER . '/style-gutenberg-sidebar.css';
+        $rel_path_js = JM_TC_GUT_FOLDER . '/gutenberg-sidebar.js';
 
         if (!file_exists(JM_TC_DIR . $rel_path_js) || !file_exists(JM_TC_DIR . $rel_path_css)) {
             return;
@@ -32,7 +30,7 @@ class Gutenberg
             'tc-gut-sidebar',
             JM_TC_URL . $rel_path_js,
             [],
-            Utils::assets_version($rel_path_js),
+            $this->get_asset_version($rel_path_js),
             true
         );
 
@@ -40,11 +38,11 @@ class Gutenberg
             'tc-gut-sidebar',
             'tcData',
             [
-                'twitterSite'  => Utils::remove_at(Utils::maybe_get_opt(jm_tc_get_options(), 'twitterSite')),
+                'twitterSite'  => $this->remove_at($this->maybe_get_option('twitterSite')),
                 'domain'       => get_bloginfo('url'),
                 'avatar'       => get_avatar_url(0, 16),
-                'defaultImage' => Utils::maybe_get_opt(jm_tc_get_options(), 'twitterImage'),
-                'defaultType'  => Utils::maybe_get_opt(jm_tc_get_options(), 'twitterCardType'),
+                'defaultImage' => $this->maybe_get_option('twitterImage'),
+                'defaultType'  => $this->maybe_get_option('twitterCardType'),
                 'pluginUrl'    => JM_TC_URL,
             ]
         );
@@ -62,13 +60,13 @@ class Gutenberg
             'tc-gut-styles',
             JM_TC_URL . $rel_path_css,
             ['wp-edit-blocks'],
-            Utils::assets_version($rel_path_css)
+            $this->get_asset_version($rel_path_css)
         );
     }
 
-    public function enqueue_scripts()
+    public function enqueue_scripts(): void
     {
-        if (!in_array(get_post_type(), Utils::get_post_types(), true)) {
+        if (!$this->is_post_type_allowed()) {
             return;
         }
 

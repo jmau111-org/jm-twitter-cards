@@ -5,15 +5,9 @@ if (!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN')) {
     exit();
 }
 
+delete_option(JM_TC_SLUG_MAIN_OPTION);
+delete_option(JM_TC_SLUG_CPT_OPTION);
 
-delete_option('jm_tc');
-delete_option('jm_tc_cpt');
-
-
-/**
- * Delete postmeta from option table
- *
- */
 $keys = [
     'twitterCardType',
     'cardDesc',

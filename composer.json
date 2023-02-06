@@ -18,7 +18,7 @@
   "description": "Easy integration of Twitter cards in WordPress. All card types provided.",
   "config": {
     "platform": {
-        "php": "7.0"
+        "php": "7.4"
     }
   }
 }

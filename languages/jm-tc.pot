@@ -375,10 +375,6 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: cli/cli.php:32 cli/cli.php:57 cli/cli.php:87 cli/cli.php:141
-msgid "You sox !"
-msgstr ""
-
 #: cli/cli.php:39 cli/cli.php:123
 msgid "Twitter Cards creator set successfully"
 msgstr ""
@@ -387,22 +383,12 @@ msgstr ""
 msgid "Twitter Cards Sitename set successfully"
 msgstr ""
 
-#: cli/cli.php:91
-msgid ""
-"Player cards cannot be set globally, makes no sense, just go to the metabox "
-"please. You sox a little bit !"
-msgstr ""
-
 #: cli/cli.php:98
 msgid "Twitter Cards Type set successfully"
 msgstr ""
 
 #: cli/cli.php:116
 msgid "You gotta be kidding me !"
-msgstr ""
-
-#: cli/cli.php:149
-msgid "%s is not a valid post type ! And you still sox !"
 msgstr ""
 
 #: cli/cli.php:159
@@ -561,7 +547,7 @@ msgid "Missing critical option !"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://julien-maury.com"
+msgid ""
 msgstr ""
 
 #. Description of the plugin/theme
