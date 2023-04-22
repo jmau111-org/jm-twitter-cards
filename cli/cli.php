@@ -13,7 +13,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set username
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -38,7 +38,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set sitename
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -63,7 +63,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set card type
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -78,14 +78,9 @@ class JM_TC_CLI extends WP_CLI_Command
         if (empty($args[0]) || !in_array($args[0], [
             'summary',
             'summary_large_image',
-            'app',
-            'player',
+            'app', # player cards cannot be set globally
         ], true)) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
-        }
-
-        if ('player' === $args[0]) {
-            WP_CLI::error(__('Player cards cannot be set globally, makes no sense, just go to the metabox please. You sox a little bit !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                    = get_option('jm_tc');
@@ -97,7 +92,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set opengraph
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -110,7 +105,7 @@ class JM_TC_CLI extends WP_CLI_Command
     {
 
         if (empty($args[0]) || !in_array($args[0], ['yes', 'no'], true)) {
-            WP_CLI::error(__('You gotta be kidding me !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                  = get_option('jm_tc');
@@ -122,7 +117,7 @@ class JM_TC_CLI extends WP_CLI_Command
 
     /**
      * Set post types for metabox
-     * @author jmau111
+  
      *
      * ## EXAMPLES
      *
@@ -135,7 +130,7 @@ class JM_TC_CLI extends WP_CLI_Command
     {
 
         if (empty($args[0])) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $_pts = [];
@@ -143,7 +138,7 @@ class JM_TC_CLI extends WP_CLI_Command
         foreach ($args as $arg) {
 
             if (!post_type_exists($arg)) {
-                WP_CLI::error(sprintf(__('%s is not a valid post type ! And you still sox !', 'jm-tc')));
+                WP_CLI::error( __('Error') );
                 break;
             }
 

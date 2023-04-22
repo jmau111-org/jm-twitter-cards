@@ -105,6 +105,11 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 
 == Changelog ==
 
+### 13
+* April 2023
+* dependency & security updates
+* global refactor with new namespace: no migration required, but if you use internal helpers elsewhere (bad practice), be careful. My recommendation is to use action hooks and filters only.
+
 ### 12
 * October 2022
 * dependency updates

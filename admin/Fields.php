@@ -1,6 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
+namespace JMTC\Admin;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -10,172 +10,94 @@ if (!function_exists('add_action')) {
 
 class Fields
 {
-
-    /**
-     * @param $array
-     */
-    public function generate_fields($array)
+    public function generate_fields(array $array): self
     {
 
         foreach ($array as $options) {
             $method = array_shift($options);
-            echo is_callable([$this, $method]) ? $this->{$method}($options) : '';
+            echo is_callable([$this, $method]) ? $this->tr( $this->{$method}($options) ) : '';
         }
+        return $this;
     }
 
-    /**
-     * Simple wrapper div
-     *
-     * @param array $murray
-     *
-     * @author jmau111
-     * @return string|bool
-     */
-    public function wrapper($murray = [])
+    private function wrapper($array = []): string
     {
 
-        if (empty($murray['tag'])) {
-            return false;
+        if (empty($array['tag'])) {
+            return '';
         }
 
-        $class = !empty($murray['class']) ? sanitize_html_class($murray['class']) : '';
+        $class = !empty($array['class']) ? sanitize_html_class($array['class']) : '';
 
-        return 'start' === $murray['mod'] ? '<' . esc_attr($murray['tag']) . ' class="' . $class . '">' : '</' . esc_attr($murray['tag']) . '>';
+        return 'start' === $array['mod'] ? '<' . esc_attr($array['tag']) . ' class="' . $class . '">' : '</' . esc_attr($array['tag']) . '>';
     }
 
-    /**
-     * Basic field
-     *
-     * @param array $murray
-     *
-     * @return string
-     * @author jmau111
-     */
-    public function text_field($murray)
+    private function text_field(array $array): string
     {
 
-        $type = !empty($murray['type']) ? esc_attr($murray['type']) : '';
-
-        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
-        $output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '" type="text" value="' . esc_attr($murray['value']) . '"></td>';
-        $output .= '</tr>';
+        $type = !empty($array['type']) ? esc_attr($array['type']) : '';
+        $output  = '<input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($array['field_id']) . '" name="' . esc_attr($array['field_id']) . '" type="text" value="' . esc_attr($array['value']) . '">';
 
         return $output;
     }
 
-    /**
-     * Basic textarea
-     *
-     * @param array $murray
-     *
-     * @return string
-     * @author jmau111
-     */
-    public function textarea_field($murray)
+    private function textarea_field(array $array): string
     {
 
-        $type      = !empty($murray['type']) ? esc_attr($murray['type']) : '';
-        $charcount = empty($murray['charcount']) ? '' : 'data-count="' . $murray['charcount'] . '"';
-
-        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
-        $output .= '<td><textarea rows="5" cols="80" class="textarea tc-field-' . $type . '-url" ' . $charcount . ' id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '">' . esc_attr($murray['value']) . '</textarea></td>';
-        $output .= '</tr>';
+        $type      = !empty($array['type']) ? esc_attr($array['type']) : '';
+        $charcount = empty($array['charcount']) ? '' : 'data-count="' . $array['charcount'] . '"';
+        $output  = '<textarea rows="5" cols="80" class="textarea tc-field-' . $type . '-url" ' . $charcount . ' id="' . esc_attr($array['field_id']) . '" name="' . esc_attr($array['field_id']) . '">' . esc_attr($array['value']) . '</textarea>';
 
         return $output;
     }
 
-    /**
-     * Url field
-     *
-     * @param array $murray
-     *
-     * @return string
-     * @author jmau111
-     */
-    public function url_field($murray)
+    private function url_field(array $array): string
     {
 
-        $type = !empty($murray['type']) ? esc_attr($murray['type']) : '';
-
-        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
-        $output .= '<td><input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '" type="url" value="' . esc_attr($murray['value']) . '" placeholder="https://"></td>';
-        $output .= '</tr>';
+        $type = !empty($array['type']) ? esc_attr($array['type']) : '';
+        $output = '<input size="60" class="tc-field-' . $type . '-url" id="' . esc_attr($array['field_id']) . '" name="' . esc_attr($array['field_id']) . '" type="url" value="' . esc_attr($array['value']) . '" placeholder="https://">';
 
         return $output;
     }
 
-    /**
-     * Num field
-     *
-     * @param array $murray
-     *
-     * @return string
-     * @author jmau111
-     */
-    public function num_field($murray)
+    private function num_field(array $array): string
     {
 
-        $type = !empty($murray['type']) ? esc_attr($murray['type']) : '';
-
-        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
-        $output .= '<td><input size=60" step="' . esc_attr($murray['step']) . '" min="' . esc_attr($murray['min']) . '" max="' . esc_attr($murray['max']) . '" class="tc-field-' . $type . '-url" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '" type="number" value="' . esc_attr($murray['value']) . '"></td>';
-        $output .= '</tr>';
+        $type = !empty($array['type']) ? esc_attr($array['type']) : '';
+        $output = '<input size=60" step="' . esc_attr($array['step']) . '" min="' . esc_attr($array['min']) . '" max="' . esc_attr($array['max']) . '" class="tc-field-' . $type . '-url" id="' . esc_attr($array['field_id']) . '" name="' . esc_attr($array['field_id']) . '" type="number" value="' . esc_attr($array['value']) . '">';
 
         return $output;
     }
 
-    /**
-     * Select field
-     *
-     * @param array $murray
-     *
-     * @author jmau111
-     * @return string
-     */
-    public function select_field($murray)
+    private function select_field(array $array): string
     {
+        $output  = '<select class="' . esc_attr($array['field_id']) . '" id="' . esc_attr($array['field_id']) . '" name="' . esc_attr($array['field_id']) . '">';
 
-        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
-        $output .= '<td><select class="' . esc_attr($murray['field_id']) . '" id="' . esc_attr($murray['field_id']) . '" name="' . esc_attr($murray['field_id']) . '">';
-
-        foreach ($murray['options'] as $value => $label) {
-            $output .= '<option value="' . esc_attr($value) . '"' . selected($murray['value'], $value, false) . '>' . esc_html($label) . '</option>';
+        foreach ($array['options'] as $value => $label) {
+            $output .= '<option value="' . esc_attr($value) . '"' . selected($array['value'], $value, false) . '>' . esc_html($label) . '</option>';
         }
 
-        $output .= '</select></td>';
-        $output .= '</tr>';
+        $output .= '</select>';
 
         return $output;
     }
 
-    /**
-     * Image field
-     *
-     * @param array $murray
-     *
-     * @author jmau111
-     * @return string
-     */
-    public function image_field($murray)
+    private function image_field(array $array): string
     {
 
-        $output = '<tr class="' . esc_attr($murray['field_id']) . '">';
-        $output .= '<th scope="row"><label for="' . esc_attr($murray['field_id']) . '">' . esc_html($murray['label']) . '</label></th>';
-        $output .= '<td><input size="60" type="text" class="tc-file-input" name="' . esc_attr($murray['field_id']) . '" id="' . esc_attr($murray['field_id']) . '" value="' . esc_attr($murray['value']) . '">';
+        $output  = '<input size="60" type="text" class="tc-file-input" name="' . esc_attr($array['field_id']) . '" id="' . esc_attr($array['field_id']) . '" value="' . esc_attr($array['value']) . '">';
         $output .= '<a href="#" class="tc-file-input-select button-primary">' . esc_html__('Select', 'jm-tc') . '</a>' . "\r";
         $output .= '<a href="#" class="tc-file-input-reset button-secondary">' . esc_html__('Remove', 'jm-tc') . '</a></td>';
-        $output .= '</tr>';
 
         return $output;
     }
 
-    public function __toString()
-    {
-        return esc_html__('Not found', 'jm-tc');
+    private function tr(array $array, string $str): string {
+        $output  = '<tr class="' . esc_attr($array['field_id']) . '">';
+        $output  = '<th scope="row"><label for="' . esc_attr($array['field_id']) . '">' . esc_html($array['label']) . '</label></th>';
+        $output .= '<td>' . $str . '<td>';
+        $output .= '</tr>';
+        
+        return $output;
     }
 }

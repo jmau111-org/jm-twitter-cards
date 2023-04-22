@@ -1,6 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
+namespace JMTC\Admin;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -8,7 +8,7 @@ if (!function_exists('add_action')) {
     exit();
 }
 
-$opts = \jm_tc_get_options();
+$opts = jm_tc_get_options();
 $settings_fields = [
     JM_TC_SLUG_MAIN_OPTION => [
         [
@@ -58,7 +58,7 @@ $settings_fields = [
             'name'    => 'twitterImage',
             'label'   => esc_html__('Image Fallback', 'jm-tc'),
             'type'    => 'file',
-            'default' => $opts["twitterImage"] ?? "",
+            'default' => $opts["twitterImage"],
         ],
         [
             'name'      => 'twitterImageAlt',

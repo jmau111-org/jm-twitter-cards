@@ -1,8 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
-
-use TokenToMe\TwitterCards\Utils as Utilities;
+namespace JMTC\Admin;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -11,18 +9,16 @@ if (!function_exists('add_action')) {
 }
 
 /**
- * The public-specific functionality of the plugin.
- *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  */
 class Admin
 {
 
-    protected $options;
-    protected $settings_api;
-    protected $sub_pages;
-    protected $video_files;
+    private $options;
+    private $sub_pages;
+    private $settings_api;
+    private $video_files;
 
     /**
      * Initialize the class and set its properties.
@@ -34,8 +30,6 @@ class Admin
      */
     public function __construct()
     {
-
-        $this->settings_api = new Settings();
 
         $this->sub_pages = apply_filters( "jm_tc_admin_sub_pages", [
             'jm_tc_import_export' => esc_html__('Import', 'jm-tc') . ' / ' . esc_html__('Export', 'jm-tc'),
@@ -53,37 +47,27 @@ class Admin
         ] );
     }
 
-    /**
-     * Re-add Settings link to admin page
-     * some users needed it and it does not evil ^^
-     *
-     * @param $links
-     *
-     * @return mixed
-     */
-    public function settings_action_link($links)
+    public function settings_action_link($links): ?array
     {
         $links['settings'] = '<a href="' . add_query_arg(['page' => JM_TC_SLUG_MAIN_OPTION], admin_url('admin.php')) . '">' . esc_html__('Settings', 'jm-tc') . '</a>';
 
         return $links;
     }
 
-
-    /**
-     * Enqueue scripts and styles
-     *
-     * @param $hook_suffix
-     */
-    public function admin_enqueue_scripts($hook_suffix)
+    public function admin_enqueue_scripts($hook_suffix): void
     {
 
         /**
          * Char count utility
          **************************************************************************************************************/
-        $rel_path_js = 'admin/js/charcount' . Utilities::assets_suffix() . '.js';
-        wp_register_script('count-chars', JM_TC_URL . $rel_path_js, [
-            'jquery',
-        ], Utilities::assets_version($rel_path_js), true);
+        $rel_path_js = 'admin/js/charcount' . jm_tc_get_assets_suffix() . '.js';
+        wp_register_script(
+            'count-chars', 
+            JM_TC_URL . $rel_path_js, 
+            ['jquery',], 
+            jm_tc_get_assets_version($rel_path_js), 
+            true
+        );
         wp_localize_script(
             'count-chars',
             '_tcStrings',
@@ -96,14 +80,14 @@ class Admin
          * Main page
          **************************************************************************************************************/
         if ('toplevel_page_jm_tc' === $hook_suffix) {
-            $rel_path_css = 'admin/css/settings' . Utilities::assets_suffix() . '.css';
-            $rel_path_js = 'admin/js/settings' . Utilities::assets_suffix() . '.js';
+            $rel_path_css = 'admin/css/settings' . jm_tc_get_assets_suffix() . '.css';
+            $rel_path_js = 'admin/js/settings' . jm_tc_get_assets_suffix() . '.js';
             wp_enqueue_media();
-            wp_enqueue_style('settings', JM_TC_URL . $rel_path_css, [], Utilities::assets_version($rel_path_css));
+            wp_enqueue_style('settings', JM_TC_URL . $rel_path_css, [], jm_tc_get_assets_version($rel_path_css));
             wp_enqueue_script('jquery');
             wp_enqueue_script('settings', JM_TC_URL . $rel_path_js, [
                 'jquery',
-            ], Utilities::assets_version($rel_path_js), true);
+            ], jm_tc_get_assets_version($rel_path_js), true);
             wp_enqueue_script('count-chars');
         }
 
@@ -112,52 +96,41 @@ class Admin
          * Import/ page
          **************************************************************************************************************/
         if ('jm-twitter-cards_page_jm_tc_import_export' === $hook_suffix) {
-            $rel_path_css = 'admin/css/iexp' . Utilities::assets_suffix() . '.css';
-            wp_enqueue_style('iexp', JM_TC_URL . $rel_path_css, [], Utilities::assets_version($rel_path_css));
+            $rel_path_css = 'admin/css/iexp' . jm_tc_get_assets_suffix() . '.css';
+            wp_enqueue_style('iexp', JM_TC_URL . $rel_path_css, [], jm_tc_get_assets_version($rel_path_css));
         }
 
         /**
          * Tutorials page
          **************************************************************************************************************/
         if ('jm-twitter-cards_page_jm_tc_tutorials' === $hook_suffix) {
-            $rel_path_css = 'admin/css/tutorials' . Utilities::assets_suffix() . '.css';
-            wp_enqueue_style('tutorials', JM_TC_URL . $rel_path_css, [], Utilities::assets_version($rel_path_css));
+            $rel_path_css = 'admin/css/tutorials' . jm_tc_get_assets_suffix() . '.css';
+            wp_enqueue_style('tutorials', JM_TC_URL . $rel_path_css, [], jm_tc_get_assets_version($rel_path_css));
         }
     }
 
-    public function admin_init()
+    public function admin_init(): void
     {
         load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
-
-        $this->settings_api->set_sections($this->get_settings_sections());
-        $this->settings_api->set_fields($this->get_settings_fields());
+        $this->settings_api = new Settings($this->get_settings_sections(), $this->get_settings_fields());
         $this->settings_api->admin_init();
     }
 
-    /**
-     * Register tabs
-     * @return array
-     */
-    public function get_settings_sections()
+    public function get_settings_sections(): array
     {
         $sections = [];
         require JM_TC_DIR_VIEWS_SETTINGS . "settings-sections.php";
         return (array) apply_filters("jm_tc_card_settings_sections", $sections);
     }
 
-    /**
-     * Returns all the settings fields
-     *
-     * @return array settings fields
-     */
-    public function get_settings_fields()
+    public function get_settings_fields(): array
     {
         $settings_fields = [];
         require JM_TC_DIR_VIEWS_SETTINGS . "settings.php";
         return (array) apply_filters("jm_tc_card_settings_fields", $settings_fields);
     }
 
-    public function admin_menu()
+    public function admin_menu(): void
     {
         add_menu_page(esc_html__('JM Twitter Cards', 'jm-tc'), esc_html__('JM Twitter Cards', 'jm-tc'), 'manage_options', 'jm_tc', [
             $this,
@@ -174,9 +147,8 @@ class Admin
 
     /**
      * Get our view
-     * @author jmau111
      */
-    public function get_view()
+    public function get_view(): void
     {
 
         if (isset($_GET['page']) && in_array($_GET['page'], array_keys($this->sub_pages), true)) {
@@ -190,14 +162,17 @@ class Admin
     }
 
     /**
-     * Simply get post types
-     *
-     * @param array $args
-     *
-     * @author jmau111
-     * @return array
+     * Display options
      */
-    public function get_post_types($args = [])
+    public function plugin_page(): void
+    {
+        ob_start();
+        $settings = $this->settings_api;
+        require JM_TC_DIR_VIEWS_SETTINGS . "settings-plugin-page.php";
+        ob_end_flush();
+    }
+
+    public function get_post_types($args = []): ?array
     {
 
         $defaults = ['public' => true,];
@@ -211,22 +186,10 @@ class Admin
     }
 
     /**
-     * Display options
-     */
-    public function plugin_page()
-    {
-        echo '<div class="wrap tc">';
-        echo '<h1>' . esc_html__('JM Twitter Cards', 'jm-tc') . '</h1>';
-        echo Utilities::brand_new(sprintf(__('10.0.0 : Please see the new <a href="%s">Tutorial page</a> which can help you.', 'jm-tc'), add_query_arg('page', 'jm_tc_tutorials', admin_url('admin.php'))));
-        $this->settings_api->show_forms();
-        echo '</div>';
-    }
-
-    /**
      * Process a settings export that generates a .json file of the shop settings
      * @since 5.3.2
      */
-    public function process_settings_export()
+    public function process_settings_export(): void
     {
 
         if (empty($_POST['action']) || 'export_settings' !== $_POST['action']) {
@@ -261,7 +224,7 @@ class Admin
      * Process a settings import from a json file
      * @since 5.3.2
      */
-    public function process_settings_import()
+    public function process_settings_import(): void
     {
 
         if (empty($_POST['action']) || 'import_settings' !== $_POST['action']) {

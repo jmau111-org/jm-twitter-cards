@@ -1,6 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
+namespace JMTC\Admin;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');

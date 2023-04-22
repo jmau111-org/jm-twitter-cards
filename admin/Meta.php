@@ -1,6 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards;
+namespace JMTC;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -10,14 +10,13 @@ if (!function_exists('add_action')) {
 
 class Meta
 {
-
-    protected function add_critical_settings($cpt)
+    private function add_critical_settings($cpt): void
     {
         $cpt_object = get_post_type_object($cpt);
 
         if (!empty($cpt_object)) {
             add_post_type_support($cpt, 'custom-fields'); // needed
-            $cpt_object->show_in_rest = true; // we only fetch public cpt in Utils::get_post_types()
+            $cpt_object->show_in_rest = true; // we only fetch public cpt in jm_tc_get_post_types()
         }
     }
 
@@ -25,10 +24,10 @@ class Meta
      * here there is no concern about privacy links
      * these are public metadata displayed in <head>
      */
-    public function gutenberg_register_meta()
+    public function gutenberg_register_meta(): void
     {
 
-        foreach (Utils::get_post_types() as $cpt) {
+        foreach (jm_tc_get_post_types() as $cpt) {
 
             $this->add_critical_settings($cpt);
 

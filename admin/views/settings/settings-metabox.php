@@ -1,6 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
+namespace JMTC\Admin;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -9,6 +9,7 @@ if (!function_exists('add_action')) {
 }
 
 $cardTypeGeneral = (!empty($this->opts['twitterCardType'])) ? $this->opts['twitterCardType'] : '';
+$post_id = isset($_GET['post']) ? absint($_GET['post']) : 0;
 
 $metaBox = [
     ['method' => 'wrapper', 'tag' => 'table', 'class' => 'form-table', 'mod' => 'start'],
@@ -24,28 +25,28 @@ $metaBox = [
             'app'                 => esc_html__('Application', 'jm-tc'),
         ],
         'type'     => 'select_field',
-        'value'    => (get_post_meta(self::get_post_id(), 'twitterCardType', true))
-            ? get_post_meta(self::get_post_id(), 'twitterCardType', true)
+        'value'    => (get_post_meta($post_id, 'twitterCardType', true))
+            ? get_post_meta($post_id, 'twitterCardType', true)
             : $cardTypeGeneral,
     ],
     [
         'method'   => 'image_field',
         'field_id' => 'cardImage',
         'label'    => esc_html__('Set another source as twitter image (enter URL)', 'jm-tc'),
-        'value'    => get_post_meta(self::get_post_id(), 'cardImage', true),
+        'value'    => get_post_meta($post_id, 'cardImage', true),
     ],
     [
         'method'    => 'textarea_field',
         'field_id'  => 'cardImageAlt',
         'label'     => esc_html__('Image Alt', 'jm-tc'),
-        'value'     => get_post_meta(self::get_post_id(), 'cardImageAlt', true),
+        'value'     => get_post_meta($post_id, 'cardImageAlt', true),
         'charcount' => 420,
     ],
     [
         'method'   => 'url_field',
         'field_id' => 'cardPlayer',
         'label'    => esc_html__('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
-        'value'    => get_post_meta(self::get_post_id(), 'cardPlayer', true),
+        'value'    => get_post_meta($post_id, 'cardPlayer', true),
     ],
     [
         'method'   => 'num_field',
@@ -54,7 +55,7 @@ $metaBox = [
         'min'      => 262,
         'max'      => 1000,
         'step'     => 1,
-        'value'    => get_post_meta(self::get_post_id(), 'cardPlayerWidth', true),
+        'value'    => get_post_meta($post_id, 'cardPlayerWidth', true),
     ],
     [
         'method'   => 'num_field',
@@ -64,7 +65,7 @@ $metaBox = [
         'min'      => 196,
         'max'      => 1000,
         'step'     => 1,
-        'value'    => get_post_meta(self::get_post_id(), 'cardPlayerHeight', true),
+        'value'    => get_post_meta($post_id, 'cardPlayerHeight', true),
     ],
     ['method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'end'],
     ['method' => 'wrapper', 'tag' => 'table', 'mod' => 'end'],

@@ -1,8 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards\Admin;
-
-use TokenToMe\TwitterCards\Utils as Utilities;
+namespace JMTC\Admin;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -12,16 +10,11 @@ if (!function_exists('add_action')) {
 
 class Metabox
 {
+    private $keys;
+    private $tc_opts;
 
-    protected $keys;
-    protected $opts;
-    protected $fields;
-
-    function __construct()
+    public function __construct()
     {
-
-        $this->fields = new Fields();
-
         $this->keys = [
             'twitterCardType',
             'cardImage',
@@ -32,32 +25,23 @@ class Metabox
             'cardPlayerStream',
             'cardPlayerCodec',
         ];
-        $this->opts = \jm_tc_get_options();
+        $this->tc_opts = jm_tc_get_options();
     }
 
     /**
-     * register box
-     *
      * @see https://github.com/WordPress/gutenberg/blob/master/docs/extensibility/meta-box.md
-     * @author jmau111
-     * @return mixed|void
      */
-    public function add_box()
+    public function add_box(): void
     {
         add_meta_box(
             'jm_tc_metabox',
             esc_html__('Twitter Cards', 'jm-tc'),
             [$this, 'display_box'],
-            Utilities::get_post_types()
+            jm_tc_get_post_types()
         );
     }
 
-    /**
-     * callback - box
-     *
-     * @author jmau111
-     */
-    public function display_box()
+    public function display_box(): void
     {
 
         $metaBox = [];
@@ -66,18 +50,9 @@ class Metabox
         require JM_TC_DIR_VIEWS_SETTINGS . "settings-metabox.php";
         ob_get_clean();
 
-        $this->fields->generate_fields($metaBox);
+        (new Fields)->generate_fields($metaBox);
 
         wp_nonce_field('save_tc_meta', 'save_tc_meta_nonce');
-    }
-
-    /**
-     * @author jmau111
-     * @return int
-     */
-    public static function get_post_id()
-    {
-        return isset($_GET['post']) ? absint($_GET['post']) : 0;
     }
 
     /**
@@ -85,15 +60,12 @@ class Metabox
      *
      * @param int $post_id The post ID.
      * @param \WP_Post $post The post object.
-     *
-     * @author jmau111
-     *
      * @return int
      */
-    public function save_box($post_id, $post)
+    public function save_box($post_id, $post): int
     {
 
-        $types = Utilities::get_post_types();
+        $types = jm_tc_get_post_types();
 
         if (!in_array($post->post_type, $types)) {
             return $post_id;
@@ -113,16 +85,7 @@ class Metabox
         return $post_id;
     }
 
-    /**
-     * Validate values
-     *
-     * @param $key
-     * @param $value
-     *
-     * @author jmau111
-     * @return int|bool|string
-     */
-    public function sanitize($key, $value)
+    private function sanitize($key, $value)
     {
 
         switch ($key) {
@@ -132,7 +95,7 @@ class Metabox
                     'summary_large_image',
                     'player',
                     'app',
-                ]) ? $value : $this->opts['twitterCardType'];
+                ]) ? $value : $this->tc_opts['twitterCardType'];
                 break;
             case 'cardImageAlt':
                 return esc_textarea($value);
@@ -154,19 +117,12 @@ class Metabox
         }
     }
 
-    /**
-     * Add some js
-     * for metabox
-     * no need to show all fields if not player
-     *
-     * @author jmau111
-     */
-    public function admin_enqueue_scripts()
+    public function admin_enqueue_scripts(): void
     {
 
-        wp_register_script('jm-tc-metabox', JM_TC_URL . 'admin/js/metabox' . Utilities::assets_suffix() . '.js', ['jquery'], JM_TC_VERSION, true);
+        wp_register_script('jm-tc-metabox', JM_TC_URL . 'admin/js/metabox' . jm_tc_get_assets_suffix() . '.js', ['jquery'], JM_TC_VERSION, true);
 
-        if (in_array(get_post_type(), Utilities::get_post_types())) {
+        if (in_array(get_post_type(), jm_tc_get_post_types())) {
             wp_enqueue_media();
             wp_enqueue_script('count-chars');
             wp_enqueue_script('jm-tc-metabox');
@@ -176,7 +132,7 @@ class Metabox
                 'tcStrings',
                 [
                     'upload_message' => esc_html__('Upload', 'jm-tc'),
-                    'default_image'  => !empty($this->opts['twitterImage']) ? esc_url($this->opts['twitterImage']) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
+                    'default_image'  => !empty($this->tc_opts['twitterImage']) ? esc_url($this->tc_opts['twitterImage']) : JM_TC_URL . 'assets/img/Twitter_logo_blue.png',
                 ]
             );
         }

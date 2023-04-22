@@ -1,6 +1,6 @@
 <?php
 
-use \TokenToMe\TwitterCards\Utils;
+use \JM_Twitter_Cards\Utils;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -14,7 +14,7 @@ if (!empty($this->video_files)) : ?>
             <?php foreach ($this->video_files  as $file => $label) : ?>
                 <article>
                     <h2><?php esc_html_e($label, 'jm-tc'); ?></h2>
-                    <?php echo Utils::embed($file); ?>
+                    <?php echo jm_tc_embed($file); ?>
                 </article>
             <?php endforeach; ?>
         </section>
