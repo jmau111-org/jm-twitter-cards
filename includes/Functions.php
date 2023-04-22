@@ -1,23 +1,22 @@
 <?php
 
+namespace JMTC;
+
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
     header('HTTP/1.1 403 Forbidden');
     exit();
 }
 
-if (!function_exists('jm_tc_maybe_get_opt')) 
+trait Functions
 {
-    function jm_tc_maybe_get_opt($key, $array = []): string
+    private function maybe_get_opt($key, $array = []): string
     {
-        $array = !empty($array) ? $array : jm_tc_get_options();
+        $array = !empty($array) ? $array : $this->get_options();
         return array_key_exists($key, $array) ? $array[$key] : '';
     }
-}
 
-if (!function_exists('jm_tc_get_default_options')) 
-{
-    function jm_tc_get_default_options(): array
+    private function get_default_options(): array
     {
         return [
             'twitterCardType'       => 'summary',
@@ -31,7 +30,7 @@ if (!function_exists('jm_tc_get_default_options'))
             'twitterCardTitle'      => '',
             'twitterCardDesc'       => '',
             'twitterCardExcerpt'    => 'no',
-            'twitterUsernameKey'    => 'jm_tc_twitter',
+            'twitterUsernameKey'    => 'twitter',
             'twitteriPhoneName'     => '',
             'twitteriPadName'       => '',
             'twitterGooglePlayName' => '',
@@ -46,32 +45,23 @@ if (!function_exists('jm_tc_get_default_options'))
             'twitterCardOg'         => 'no',
         ];
     }
-}
 
-if (!function_exists('jm_tc_get_options')) 
-{
-    function jm_tc_get_options(): array
+    private function get_options(): array
     {
-        global $jm_tc_options;
-        $jm_tc_options = get_option(JM_TC_SLUG_MAIN_OPTION);
-        $jm_tc_options = (array) apply_filters('jm_tc_get_options', $jm_tc_options);
-        $default_options = jm_tc_get_default_options();
+        global $options;
+        $options = get_option(JM_TC_SLUG_MAIN_OPTION);
+        $options = (array) apply_filters('jm_tc_get_options', $options);
+        $default_options = $this->get_default_options();
 
-        return array_merge($default_options, $jm_tc_options);
+        return array_merge($default_options, $options);
     }
-}
 
-if (!function_exists('jm_tc_remove_at')) 
-{
-    function jm_tc_remove_at($at): string
+    private function remove_at($at): string
     {
         return !is_string($at) ? '' : str_replace('@', '', $at);
     }
-}
 
-if (!function_exists('jm_tc_remove_lb')) 
-{
-    function jm_tc_remove_lb($lb): ?string
+    private function remove_lb($lb): ?string
     {
         $output = str_replace(["\r" . PHP_EOL, "\r"], PHP_EOL, $lb);
         $lines  = explode(PHP_EOL, $output);
@@ -84,11 +74,8 @@ if (!function_exists('jm_tc_remove_lb'))
 
         return implode($nolb);
     }
-}
 
-if (!function_exists('jm_tc_get_excerpt_by_id')) 
-{
-    function jm_tc_get_excerpt_by_id($post_id): ?string
+    private function get_excerpt_by_id($post_id): ?string
     {
         $the_post    = get_post($post_id);
         $the_excerpt = !empty($the_post->post_excerpt) ? $the_post->post_excerpt : $the_post->post_content;
@@ -98,29 +85,20 @@ if (!function_exists('jm_tc_get_excerpt_by_id'))
 
         return esc_attr(substr($the_excerpt, 0, 200));
     }
-}
 
-if (!function_exists('jm_tc_gutenberg_exists')) 
-{
-    function jm_tc_gutenberg_exists(): bool
+    private function gutenberg_exists(): bool
     {
         global $wp_version;
-        return (bool) apply_filters('jm_tc_gutenberg_exists', !class_exists('DisableGutenberg') && !class_exists('Classic_Editor') && (function_exists('the_gutenberg_project') || version_compare($wp_version, '5.0', '>=')));
+        return (bool) apply_filters('gutenberg_exists', !class_exists('DisableGutenberg') && !class_exists('Classic_Editor') && (function_exists('the_gutenberg_project') || version_compare($wp_version, '5.0', '>=')));
     }
-}
 
-if (!function_exists('jm_tc_get_post_types')) 
-{
-    function jm_tc_get_post_types(): array
+    private function get_post_types(): array
     {
-        $cpts = get_option('jm_tc_cpt');
-        return (empty($cpts['twitterCardPt'])) ? get_post_types(['public' => true]) : array_values($cpts['twitterCardPt']);
+        $cpts = get_option(JM_TC_SLUG_CPT_OPTION);
+        return (empty($cpts['twitterCardPt'])) ? get_post_types(['private' => true]) : array_values($cpts['twitterCardPt']);
     }
-}
 
-if (!function_exists('jm_tc_get_current_post_type')) 
-{
-    function jm_tc_get_current_post_type(): ?string
+    private function get_current_post_type(): ?string
     {
         $post_type = get_post_type();
 
@@ -131,19 +109,8 @@ if (!function_exists('jm_tc_get_current_post_type'))
         }
         return $post_type;
     }
-}
 
-if (!function_exists('jm_tc_is_dev_env')) 
-{
-    function jm_tc_is_dev_env(): bool
-    {
-        return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
-    }
-}
-    
-if (!function_exists('jm_tc_embed')) 
-{
-    function jm_tc_embed($id, $args = []): ?string
+    private function embed($id, $args = []): ?string
     {
 
         $merged = wp_parse_args(
@@ -155,20 +122,26 @@ if (!function_exists('jm_tc_embed'))
 
         return wp_oembed_get(esc_url(sprintf('https://vimeo.com/%s', $id)), $merged);
     }
-}
-  
-if (!function_exists('jm_tc_get_assets_suffix')) 
-{
-    function jm_tc_get_assets_suffix(): string
+
+    private function get_assets_suffix(): string
     {
-        return jm_tc_is_dev_env() ? '' : '.min';
+        return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
     }
-}
-    
-if (!function_exists('jm_tc_get_assets_version')) 
-{
-    function jm_tc_get_assets_version($file_rel_path): string
+
+    private function get_assets_version($file_rel_path): string
     {
         return (file_exists($file_rel_path)) ? JM_TC_VERSION . "-" . filemtime($file_rel_path) : JM_TC_VERSION;
+    }
+
+    private function get_videos(): array
+    {
+        return [
+            '302609444' => esc_html__('Setup for the first time', 'jm-tc'),
+            '302609402' => esc_html__('Setup metabox with custom post types', 'jm-tc'),
+            '302609437' => esc_html__('Dealing with images', 'jm-tc'),
+            '302609425' => esc_html__('Set first image found in post content as twitter image', 'jm-tc'),
+            '302609429' => esc_html__('Upgrading to Gutenberg', 'jm-tc'),
+            '305338709' => esc_html__('How to recover twitter cards sidebar after unpin', 'jm-tc'),
+        ];
     }
 }

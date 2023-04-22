@@ -1,5 +1,7 @@
 <?php
 
+use JMTC\Functions;
+
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
     header('HTTP/1.1 403 Forbidden');
@@ -10,6 +12,8 @@ WP_CLI::add_command(JM_TC_SLUG_MAIN_OPTION, 'JM_TC_CLI');
 
 class JM_TC_CLI extends WP_CLI_Command
 {
+
+    use Functions;
 
     /**
      * Set username
@@ -26,11 +30,11 @@ class JM_TC_CLI extends WP_CLI_Command
     {
 
         if (empty($args[0])) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                   = get_option(JM_TC_SLUG_MAIN_OPTION);
-        $options['twitterCreator'] = jm_tc_remove_at($args[0]);
+        $options['twitterCreator'] = $this->remove_at($args[0]);
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
         WP_CLI::success(__('Twitter Cards creator set successfully', 'jm-tc'));
@@ -51,11 +55,11 @@ class JM_TC_CLI extends WP_CLI_Command
     {
 
         if (empty($args[0])) {
-            WP_CLI::error(__('You sox !', 'jm-tc'));
+            WP_CLI::error(__('Error'));
         }
 
         $options                = get_option(JM_TC_SLUG_MAIN_OPTION);
-        $options['twitterSite'] = jm_tc_remove_at($args[0]);
+        $options['twitterSite'] = $this->remove_at($args[0]);
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
         WP_CLI::success(__('Twitter Cards Sitename set successfully', 'jm-tc'));
@@ -84,7 +88,7 @@ class JM_TC_CLI extends WP_CLI_Command
         }
 
         $options                    = get_option('jm_tc');
-        $options['twitterCardType'] = jm_tc_remove_at($args[0]);
+        $options['twitterCardType'] = $this->remove_at($args[0]);
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 
         WP_CLI::success(__('Twitter Cards Type set successfully', 'jm-tc'));
@@ -108,7 +112,7 @@ class JM_TC_CLI extends WP_CLI_Command
             WP_CLI::error(__('Error'));
         }
 
-        $options                  = get_option('jm_tc');
+        $options                  = get_option(JM_TC_SLUG_MAIN_OPTION);
         $options['twitterCardOg'] = $args[0];
         update_option(JM_TC_SLUG_MAIN_OPTION, $options);
 

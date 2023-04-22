@@ -18,6 +18,10 @@ class Settings
         $this->settings_fields = $fields;
     }
 
+    public function get_settings_sections() {
+        return $this->settings_sections;
+    }
+
     private function add_field($section, $field)
     {
         $defaults = [
@@ -278,52 +282,5 @@ class Settings
         }
 
         return false;
-    }
-
-    public function show_forms(): void
-    {
-        settings_errors();
-?>
-        <div class="metabox-holder">
-            <div id="tabs" class="tabs">
-                <?php $this->show_navigation(); ?>
-                <?php foreach ($this->settings_sections as $k => $form) { ?>
-                    <form method="POST" action="options.php">
-                        <div id="tabs-<?php echo $k + 1; ?>">
-                            <?php
-                            do_action('wsa_form_top_' . $form['id'], $form);
-                            settings_fields($form['id']);
-                            do_settings_sections($form['id']);
-                            do_action('wsa_form_bottom_' . $form['id'], $form);
-                            ?>
-                            <span style="padding-left: 10px;">
-                                <?php submit_button(); ?>
-                            </span>
-                        </div>
-                    </form>
-                <?php } ?>
-
-            </div>
-        </div>
-<?php
-    }
-
-    private function show_navigation(): void
-    {
-        $html  = '<h2 class="nav-tab-wrapper">';
-        $count = count($this->settings_sections);
-
-        if ($count === 1) {
-            return;
-        }
-
-        foreach ($this->settings_sections as $k => $tab) {
-            $k++;
-            $html .= sprintf('<a href="#tabs-%d" id="#tabs-%d" class="nav-tab">%s</a>', $k, $k, $tab['title']);
-        }
-
-        $html .= '</h2>';
-
-        echo $html;
     }
 }

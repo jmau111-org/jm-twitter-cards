@@ -10,10 +10,11 @@ if (!function_exists('add_action')) {
 
 class Options
 {
-    protected $tc_opts;
-    protected $post_ID;
-    protected $options;
-    protected $deep_links;
+    private $tc_opts;
+    private $post_ID;
+    private $options;
+
+    use Functions;
 
     public function __construct(array $tc_opts, int $post_ID = 0)
     {
@@ -24,27 +25,22 @@ class Options
         $this->post_ID = $post_ID;
         $this->tc_opts = $tc_opts;
         $this->options = [];
-        $this->deep_links = [];
 
         $this->set_card_type()
+            ->set_creator_username()
+            ->set_site_username()
             ->set_title()
             ->set_description()
-            ->set_site_username()
-            ->set_creator_username()
             ->set_image()
-            ->set_image_alt()
-            ->set_player()
-            ->set_deep_linking();
-    }
+            ->set_image_alt();
 
-    public function get_ID(): int
-    {
-        return $this->post_ID;
-    }
+        if ($this->options["card"] === "player") {
+            $this->set_player();
+        }
 
-    public function get_card_type(): string
-    {
-        return $this->options['card'];
+        if ($this->options["card"] === "app") {
+            $this->set_deep_linking();
+        }
     }
 
     public function get_options(): array
@@ -52,28 +48,23 @@ class Options
         return $this->options;
     }
 
-    public function get_deep_links(): array
-    {
-        return $this->deep_links;
-    }
-
-    protected function set_card_type(): self
+    private function set_card_type(): self
     {
         $cardTypePost = get_post_meta($this->post_ID, 'twitterCardType', true);
-        $cardType     = (!empty($cardTypePost)) ? $cardTypePost :  jm_tc_maybe_get_opt('twitterCardType', $this->tc_opts);
+        $cardType     = (!empty($cardTypePost)) ? $cardTypePost :  $this->maybe_get_opt('twitterCardType', $this->tc_opts);
 
         $this->options['card'] = apply_filters('jm_tc_card_type', $cardType, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
-    protected function set_creator_username($post_author = false): self
+    private function set_creator_username($post_author = false): self
     {
         $post_obj    = get_post($this->post_ID);
         $author_id   = $post_obj->post_author;
         $crea        = !empty($this->tc_opts['twitterCreator'])
             ? $this->tc_opts['twitterCreator']
             : '';
-        $cardCreator = '@' .  jm_tc_remove_at($crea);
+        $cardCreator = '@' .  $this->remove_at($crea);
 
         if ($post_author) {
             $cardUsernameKey = !empty($this->tc_opts['twitterUsernameKey']) ? $this->tc_opts['twitterUsernameKey'] : 'jm_tc_twitter';
@@ -82,21 +73,21 @@ class Options
             $cardCreator = (!empty($cardCreator))
                 ? $cardCreator
                 : $crea;
-            $cardCreator = '@' .  jm_tc_remove_at($cardCreator);
+            $cardCreator = '@' .  $this->remove_at($cardCreator);
         }
 
         $this->options['creator'] = apply_filters('jm_tc_card_creator', $cardCreator, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
-    protected function set_site_username(): self
+    private function set_site_username(): self
     {
-        $cardSite = '@' .  jm_tc_remove_at(jm_tc_maybe_get_opt('twitterSite', $this->tc_opts));
+        $cardSite = '@' .  $this->remove_at($this->maybe_get_opt('twitterSite', $this->tc_opts));
         $this->options['site'] = apply_filters('jm_tc_card_site', $cardSite, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
-    protected function set_title(): self
+    private function set_title(): self
     {
         $cardTitle = get_bloginfo('name');
 
@@ -122,18 +113,18 @@ class Options
         return $this;
     }
 
-    protected function set_description(): self
+    private function set_description(): self
     {
         $cardDescription = !empty($this->tc_opts['twitterPostPageDesc'])
             ? $this->tc_opts['twitterPostPageDesc']
             : '';
         if ($this->post_ID) {
 
-            $cardDescription =  jm_tc_get_excerpt_by_id($this->post_ID);
+            $cardDescription =  $this->get_excerpt_by_id($this->post_ID);
 
             if (!empty($this->tc_opts['twitterCardDesc'])) {
                 $desc            = get_post_meta($this->post_ID, $this->tc_opts['twitterCardDesc'], true);
-                $cardDescription = !empty($desc) ? htmlspecialchars(stripcslashes($desc)) :  jm_tc_get_excerpt_by_id($this->post_ID);
+                $cardDescription = !empty($desc) ? htmlspecialchars(stripcslashes($desc)) : $this->get_excerpt_by_id($this->post_ID);
             } elseif (empty($this->tc_opts['twitterCardDesc']) && (class_exists('WPSEO_Frontend') || class_exists('All_in_One_SEO_Pack'))) {
                 $cardDescription = $this->get_seo_plugin_data('desc');
             }
@@ -145,19 +136,19 @@ class Options
             $cardDescription = $cardDesc;
         }
 
-        $cardDescription =  jm_tc_remove_lb($cardDescription);
+        $cardDescription = $this->remove_lb($cardDescription);
 
         $this->options['description'] = apply_filters('jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
-    protected function set_image(): self
+    private function set_image(): self
     {
         $cardImage   = get_post_meta($this->post_ID, 'cardImage', true);
         $cardImageID = get_post_meta($this->post_ID, 'cardImageID', true);
 
         if (!empty($cardImageID)) {
-            $cardImage = wp_get_attachment_image_url($cardImageID, jm_tc_maybe_get_opt('twitterImage', $this->tc_opts));
+            $cardImage = wp_get_attachment_image_url($cardImageID, $this->maybe_get_opt('twitterImage', $this->tc_opts));
         }
 
         if ($this->post_ID && empty($cardImage) && has_post_thumbnail($this->post_ID)) {
@@ -168,10 +159,10 @@ class Options
         } elseif ('attachment' === get_post_type()) {
             $image = wp_get_attachment_url($this->post_ID);
         } elseif (empty($this->post_ID)) {
-            $image =  jm_tc_maybe_get_opt('twitterImage', $this->tc_opts);
+            $image = $this->maybe_get_opt('twitterImage', $this->tc_opts);
         }
 
-        $image = !empty($image) ? $image :  jm_tc_maybe_get_opt('twitterImage', $this->tc_opts);
+        $image = !empty($image) ? $image :  $this->maybe_get_opt('twitterImage', $this->tc_opts);
 
         $this->options['image'] = apply_filters('jm_tc_image_source', $image, $this->post_ID, $this->tc_opts);
         return $this;
@@ -180,7 +171,7 @@ class Options
     /**
      * @link https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup
      */
-    protected function set_image_alt(): self
+    private function set_image_alt(): self
     {
         $cardImageAlt = '';
 
@@ -190,78 +181,74 @@ class Options
         }
 
         if (is_home() || is_front_page()) {
-            $cardImageAlt = jm_tc_maybe_get_opt('twitterImageAlt', $this->tc_opts);
+            $cardImageAlt = $this->maybe_get_opt('twitterImageAlt', $this->tc_opts);
         }
 
-        $cardImageAlt = jm_tc_remove_lb($cardImageAlt);
+        $cardImageAlt = $this->remove_lb($cardImageAlt);
 
         $this->options['image:alt'] = apply_filters('jm_tc_image_alt', $cardImageAlt, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
-    protected function set_player(): self
+    private function set_player(): self
     {
-        $cardType = apply_filters('jm_tc_card_type', get_post_meta($this->post_ID, 'twitterCardType', true));
+        $playerUrl       = get_post_meta($this->post_ID, 'cardPlayer', true);
+        $playerWidth     = get_post_meta($this->post_ID, 'cardPlayerWidth', true);
+        $playerHeight    = get_post_meta($this->post_ID, 'cardPlayerHeight', true);
+        $player          = [];
 
-        if ('player' === $cardType) {
+        $this->options['player'] = apply_filters('jm_tc_player_url', $playerUrl, $this->post_ID, $this->tc_opts);
 
-            $playerUrl       = get_post_meta($this->post_ID, 'cardPlayer', true);
-            $playerWidth     = get_post_meta($this->post_ID, 'cardPlayerWidth', true);
-            $playerHeight    = get_post_meta($this->post_ID, 'cardPlayerHeight', true);
-            $player          = [];
+        if (empty($player['player'])) {
+            return $this->error(esc_html__('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc'));
+        }
 
-            $this->options['player'] = apply_filters('jm_tc_player_url', $playerUrl, $this->post_ID, $this->tc_opts);
-
-            if (empty($player['player'])) {
-                return $this->error(esc_html__('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc'));
-            }
-
-            $player['player:width']  = apply_filters('jm_tc_player_default_width', 435);
-            $player['player:height'] = apply_filters('jm_tc_player_default_height', 251);
-            if (!empty($playerWidth) && !empty($playerHeight)) {
-                $this->options['player:width']  = apply_filters('jm_tc_player_width', $playerWidth, $this->post_ID, $this->tc_opts);
-                $this->options['player:height'] = apply_filters('jm_tc_player_height', $playerHeight, $this->post_ID, $this->tc_opts);
-            }
+        $player['player:width']  = apply_filters('jm_tc_player_default_width', 435);
+        $player['player:height'] = apply_filters('jm_tc_player_default_height', 251);
+        
+        if (!empty($playerWidth) && !empty($playerHeight)) {
+            $this->options['player:width']  = apply_filters('jm_tc_player_width', $playerWidth, $this->post_ID, $this->tc_opts);
+            $this->options['player:height'] = apply_filters('jm_tc_player_height', $playerHeight, $this->post_ID, $this->tc_opts);
         }
 
         return $this;
     }
 
-    protected function error(): string
+    private function error(): string
     {
         return current_user_can('edit_posts') ? $error : "";
     }
 
-    protected function set_deep_linking(): self
+    private function set_deep_linking(): self
     {
         $opts = $this->tc_opts;
         $app = [
-            'app:name:iphone'     => apply_filters('jm_tc_iphone_name',  jm_tc_maybe_get_opt('twitteriPhoneName', $opts), $this->post_ID, $opts),
-            'app:name:ipad'       => apply_filters('jm_tc_ipad_name',  jm_tc_maybe_get_opt('twitteriPadName', $opts), $this->post_ID, $opts),
-            'app:name:googleplay' => apply_filters('jm_tc_googleplay_name',  jm_tc_maybe_get_opt('twitterGooglePlayName', $opts), $this->post_ID, $opts),
-            'app:url:iphone'      => apply_filters('jm_tc_iphone_url',  jm_tc_maybe_get_opt('twitteriPhoneUrl', $opts), $this->post_ID, $opts),
-            'app:url:ipad'        => apply_filters('jm_tc_ipad_url',  jm_tc_maybe_get_opt('twitteriPadUrl', $opts), $this->post_ID, $opts),
-            'app:url:googleplay'  => apply_filters('jm_tc_googleplay_url',  jm_tc_maybe_get_opt('twitterGooglePlayUrl', $opts), $this->post_ID, $opts),
-            'app:id:iphone'       => apply_filters('jm_tc_iphone_id',  jm_tc_maybe_get_opt('twitteriPhoneId', $opts), $this->post_ID, $opts),
-            'app:id:ipad'         => apply_filters('jm_tc_ipad_id',  jm_tc_maybe_get_opt('twitteriPadId', $opts), $this->post_ID, $opts),
-            'app:id:googleplay'   => apply_filters('jm_tc_googleplay_id',  jm_tc_maybe_get_opt('twitterGooglePlayId', $opts), $this->post_ID, $opts),
-            'app:id:country'      => apply_filters('jm_tc_country',  jm_tc_maybe_get_opt('twitterAppCountry', $opts), $this->post_ID, $opts),
+            'app:name:iphone'     => apply_filters('jm_tc_iphone_name',  $this->maybe_get_opt('twitteriPhoneName', $opts), $this->post_ID, $opts),
+            'app:name:ipad'       => apply_filters('jm_tc_ipad_name',  $this->maybe_get_opt('twitteriPadName', $opts), $this->post_ID, $opts),
+            'app:name:googleplay' => apply_filters('jm_tc_googleplay_name',  $this->maybe_get_opt('twitterGooglePlayName', $opts), $this->post_ID, $opts),
+            'app:url:iphone'      => apply_filters('jm_tc_iphone_url',  $this->maybe_get_opt('twitteriPhoneUrl', $opts), $this->post_ID, $opts),
+            'app:url:ipad'        => apply_filters('jm_tc_ipad_url',  $this->maybe_get_opt('twitteriPadUrl', $opts), $this->post_ID, $opts),
+            'app:url:googleplay'  => apply_filters('jm_tc_googleplay_url',  $this->maybe_get_opt('twitterGooglePlayUrl', $opts), $this->post_ID, $opts),
+            'app:id:iphone'       => apply_filters('jm_tc_iphone_id',  $this->maybe_get_opt('twitteriPhoneId', $opts), $this->post_ID, $opts),
+            'app:id:ipad'         => apply_filters('jm_tc_ipad_id',  $this->maybe_get_opt('twitteriPadId', $opts), $this->post_ID, $opts),
+            'app:id:googleplay'   => apply_filters('jm_tc_googleplay_id',  $this->maybe_get_opt('twitterGooglePlayId', $opts), $this->post_ID, $opts),
+            'app:id:country'      => apply_filters('jm_tc_country',  $this->maybe_get_opt('twitterAppCountry', $opts), $this->post_ID, $opts),
         ];
 
         $this->deep_links = array_map('esc_attr', $app);
         return $this;
     }
 
-    protected function get_seo_plugin_data(string $type): string
+    private function get_seo_plugin_data(string $type): string
     {
         $aioseop_title       = get_post_meta($this->post_ID, '_aioseop_title', true);
         $aioseop_description = get_post_meta($this->post_ID, '_aioseop_description', true);
         $title = !empty(get_the_title($this->post_ID)) ? get_the_title($this->post_ID) : "";
-        $desc  = jm_tc_get_excerpt_by_id($this->post_ID);
+        $desc  = $this->get_excerpt_by_id($this->post_ID);
 
         if (class_exists('All_in_One_SEO_Pack')) {
             $title = !empty($aioseop_title) ? htmlspecialchars(stripcslashes($aioseop_title)) : the_title_attribute(['echo' => false]);
-            $desc  = !empty($aioseop_description) ? htmlspecialchars(stripcslashes($aioseop_description)) :  jm_tc_get_excerpt_by_id($this->post_ID);
+            $desc  = !empty($aioseop_description) ? htmlspecialchars(stripcslashes($aioseop_description)) : $this->get_excerpt_by_id($this->post_ID);
         }
 
         return $type === 'desc' ? $desc : $title;

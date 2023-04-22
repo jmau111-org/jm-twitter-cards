@@ -8,7 +8,6 @@ if (!function_exists('add_action')) {
     exit();
 }
 
-$opts = jm_tc_get_options();
 $settings_fields = [
     JM_TC_SLUG_MAIN_OPTION => [
         [

@@ -24,16 +24,17 @@ class App
 {
     private $opts;
 
+    use Functions;
+
     public function __construct() {
-        $this->opts = jm_tc_get_options();
+        $this->opts = $this->get_options();
     }
 
     public function run()
     {
-
         $this->load_dependencies();
 
-        if (!jm_tc_gutenberg_exists()) {
+        if (!$this->gutenberg_exists()) {
             $plugin_posts = new Metabox();
             add_action('add_meta_boxes', [$plugin_posts, 'add_box']);
             add_action('save_post', [$plugin_posts, 'save_box'], 10, 2);
@@ -41,8 +42,14 @@ class App
         } else {
             $plugin_posts = new Meta();
             add_action('init', [$plugin_posts, 'gutenberg_register_meta']);
+
+            if (in_array($this->get_current_post_type(), $this->get_post_types(), true)) {
+                $gut = new Gutenberg();
+                add_action('init', [$gut, 'register_scripts']);
+                add_action('enqueue_block_editor_assets', [$gut, 'enqueue_scripts']);
+            }
         }
- 
+
         $plugin_admin = new Admin();
         add_action('admin_enqueue_scripts', [$plugin_admin, 'admin_enqueue_scripts']);
         add_filter('plugin_action_links_' . JM_TC_BASENAME, [$plugin_admin, 'settings_action_link']);
@@ -50,12 +57,6 @@ class App
         add_action('admin_init', [$plugin_admin, 'admin_init']);
         add_action('admin_init', [$plugin_admin, 'process_settings_export']);
         add_action('admin_init', [$plugin_admin, 'process_settings_import']);
-
-        if (jm_tc_gutenberg_exists() && in_array(jm_tc_get_current_post_type(), jm_tc_get_post_types(), true)) {
-            $gut = new Gutenberg();
-            add_action('init', [$gut, 'register_scripts']);
-            add_action('enqueue_block_editor_assets', [$gut, 'enqueue_scripts']);
-        }
 
         $plugin_front = new Front();
         add_action('wp_head', [$plugin_front, 'add_markup'], 0);
@@ -78,19 +79,17 @@ class App
             'includes/Init',
         ];
 
-        if (jm_tc_gutenberg_exists()) {
+        if ($this->gutenberg_exists()) {
             $dependencies = array_merge($dependencies, ['admin/Gutenberg',]);
         } else {
-            $dependencies = array_merge($dependencies, [
-                'admin/Fields',
-                'admin/Metabox',
-            ]);
+            $dependencies = array_merge($dependencies, ['admin/Metabox',]);
         }
+
         $dependencies = array_merge($dependencies, [
             'admin/Settings',
             'admin/Admin',
-            'admin/Options',
             'admin/Meta',
+            'public/Options',
             'public/Front',
             'public/Particular'
         ]);

@@ -10,13 +10,15 @@ if (!function_exists('add_action')) {
 
 class Meta
 {
+    use Functions;
+    
     private function add_critical_settings($cpt): void
     {
         $cpt_object = get_post_type_object($cpt);
 
         if (!empty($cpt_object)) {
             add_post_type_support($cpt, 'custom-fields'); // needed
-            $cpt_object->show_in_rest = true; // we only fetch public cpt in jm_tc_get_post_types()
+            $cpt_object->show_in_rest = true; // we only fetch public cpt in $this->get_post_types()
         }
     }
 
@@ -26,8 +28,7 @@ class Meta
      */
     public function gutenberg_register_meta(): void
     {
-
-        foreach (jm_tc_get_post_types() as $cpt) {
+        foreach ($this->get_post_types() as $cpt) {
 
             $this->add_critical_settings($cpt);
 

@@ -12,10 +12,19 @@ $cardTypeGeneral = (!empty($this->opts['twitterCardType'])) ? $this->opts['twitt
 $post_id = isset($_GET['post']) ? absint($_GET['post']) : 0;
 
 $metaBox = [
-    ['method' => 'wrapper', 'tag' => 'table', 'class' => 'form-table', 'mod' => 'start'],
-    ['method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'start'],
     [
-        'method'   => 'select_field',
+        'method' => 'wrapper', 
+        'tag' => 'table', 
+        'class' => 'form-table', 
+        'where' => 'start'
+    ],
+    [
+        'method' => 'wrapper', 
+        'tag' => 'tbody', 
+        'where' => 'start'
+    ],
+    [
+        'method'   => 'field_select',
         'label'    => esc_html__('Card type', 'jm-tc'),
         'field_id' => 'twitterCardType',
         'options'  => [
@@ -24,32 +33,32 @@ $metaBox = [
             'player'              => esc_html__('Player', 'jm-tc'),
             'app'                 => esc_html__('Application', 'jm-tc'),
         ],
-        'type'     => 'select_field',
+        'type'     => 'field_select',
         'value'    => (get_post_meta($post_id, 'twitterCardType', true))
             ? get_post_meta($post_id, 'twitterCardType', true)
             : $cardTypeGeneral,
     ],
     [
-        'method'   => 'image_field',
+        'method'   => 'field_image',
         'field_id' => 'cardImage',
         'label'    => esc_html__('Set another source as twitter image (enter URL)', 'jm-tc'),
         'value'    => get_post_meta($post_id, 'cardImage', true),
     ],
     [
-        'method'    => 'textarea_field',
+        'method'    => 'field_textarea',
         'field_id'  => 'cardImageAlt',
         'label'     => esc_html__('Image Alt', 'jm-tc'),
         'value'     => get_post_meta($post_id, 'cardImageAlt', true),
         'charcount' => 420,
     ],
     [
-        'method'   => 'url_field',
+        'method'   => 'field_url',
         'field_id' => 'cardPlayer',
         'label'    => esc_html__('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
         'value'    => get_post_meta($post_id, 'cardPlayer', true),
     ],
     [
-        'method'   => 'num_field',
+        'method'   => 'field_number',
         'field_id' => 'cardPlayerWidth',
         'label'    => esc_html__('Player width', 'jm-tc'),
         'min'      => 262,
@@ -58,7 +67,7 @@ $metaBox = [
         'value'    => get_post_meta($post_id, 'cardPlayerWidth', true),
     ],
     [
-        'method'   => 'num_field',
+        'method'   => 'field_number',
         'field_id' => 'cardPlayerHeight',
         'label'    => esc_html__('Player height', 'jm-tc'),
         'type'     => 'number',
@@ -67,6 +76,14 @@ $metaBox = [
         'step'     => 1,
         'value'    => get_post_meta($post_id, 'cardPlayerHeight', true),
     ],
-    ['method' => 'wrapper', 'tag' => 'tbody', 'mod' => 'end'],
-    ['method' => 'wrapper', 'tag' => 'table', 'mod' => 'end'],
+    [
+        'method' => 'wrapper', 
+        'tag' => 'tbody', 
+        'where' => 'hyperspace'
+    ],
+    [
+        'method' => 'wrapper', 
+        'tag' => 'table', 
+        'where' => 'hyperspace'
+    ],
 ];

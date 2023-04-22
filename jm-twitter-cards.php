@@ -29,8 +29,10 @@ defined('ABSPATH') || die('No direct load !');
 define('JM_TC_DIR', plugin_dir_path(__FILE__));
 define('JM_TC_URL', plugin_dir_url(__FILE__));
 define('JM_TC_VERSION', '13');
+define('JM_TC_DIR_PARAMS', JM_TC_DIR . "admin/params/");
 define('JM_TC_DIR_VIEWS', JM_TC_DIR . "admin/views/");
 define('JM_TC_DIR_VIEWS_SETTINGS', JM_TC_DIR_VIEWS . "settings/");
+define('JM_TC_DIR_VIEWS_METABOX', JM_TC_DIR_VIEWS . "metabox/");
 define('JM_TC_BASENAME', plugin_basename(__FILE__));
 define('JM_TC_LANG_DIR', basename(rtrim(dirname(__FILE__), '/')) . '/languages');
 

@@ -1,6 +1,8 @@
 <?php
 
 namespace JMTC\Admin;
+use JMTC\Functions;
+
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -14,11 +16,10 @@ if (!function_exists('add_action')) {
  */
 class Admin
 {
-
-    private $options;
     private $sub_pages;
-    private $settings_api;
-    private $video_files;
+    private $settings;
+
+    use Functions;
 
     /**
      * Initialize the class and set its properties.
@@ -30,20 +31,10 @@ class Admin
      */
     public function __construct()
     {
-
         $this->sub_pages = apply_filters( "jm_tc_admin_sub_pages", [
             'jm_tc_import_export' => esc_html__('Import', 'jm-tc') . ' / ' . esc_html__('Export', 'jm-tc'),
             'jm_tc_about'         => esc_html__('About', 'jm-tc'),
             'jm_tc_tutorials'     => esc_html__('Tutorials', 'jm-tc'),
-        ] );
-
-        $this->video_files = apply_filters( "jm_tc_admin_tuts_vids", [
-            '302609444' => esc_html__('Setup for the first time', 'jm-tc'),
-            '302609402' => esc_html__('Setup metabox with custom post types', 'jm-tc'),
-            '302609437' => esc_html__('Dealing with images', 'jm-tc'),
-            '302609425' => esc_html__('Set first image found in post content as twitter image', 'jm-tc'),
-            '302609429' => esc_html__('Upgrading to Gutenberg', 'jm-tc'),
-            '305338709' => esc_html__('How to recover twitter cards sidebar after unpin', 'jm-tc'),
         ] );
     }
 
@@ -56,16 +47,15 @@ class Admin
 
     public function admin_enqueue_scripts($hook_suffix): void
     {
-
         /**
          * Char count utility
          **************************************************************************************************************/
-        $rel_path_js = 'admin/js/charcount' . jm_tc_get_assets_suffix() . '.js';
+        $rel_path_js = 'admin/js/charcount' . $this->get_assets_suffix() . '.js';
         wp_register_script(
             'count-chars', 
             JM_TC_URL . $rel_path_js, 
             ['jquery',], 
-            jm_tc_get_assets_version($rel_path_js), 
+            $this->get_assets_version($rel_path_js), 
             true
         );
         wp_localize_script(
@@ -80,14 +70,14 @@ class Admin
          * Main page
          **************************************************************************************************************/
         if ('toplevel_page_jm_tc' === $hook_suffix) {
-            $rel_path_css = 'admin/css/settings' . jm_tc_get_assets_suffix() . '.css';
-            $rel_path_js = 'admin/js/settings' . jm_tc_get_assets_suffix() . '.js';
+            $rel_path_css = 'admin/css/settings' . $this->get_assets_suffix() . '.css';
+            $rel_path_js = 'admin/js/settings' . $this->get_assets_suffix() . '.js';
             wp_enqueue_media();
-            wp_enqueue_style('settings', JM_TC_URL . $rel_path_css, [], jm_tc_get_assets_version($rel_path_css));
+            wp_enqueue_style('settings', JM_TC_URL . $rel_path_css, [], $this->get_assets_version($rel_path_css));
             wp_enqueue_script('jquery');
             wp_enqueue_script('settings', JM_TC_URL . $rel_path_js, [
                 'jquery',
-            ], jm_tc_get_assets_version($rel_path_js), true);
+            ], $this->get_assets_version($rel_path_js), true);
             wp_enqueue_script('count-chars');
         }
 
@@ -96,38 +86,34 @@ class Admin
          * Import/ page
          **************************************************************************************************************/
         if ('jm-twitter-cards_page_jm_tc_import_export' === $hook_suffix) {
-            $rel_path_css = 'admin/css/iexp' . jm_tc_get_assets_suffix() . '.css';
-            wp_enqueue_style('iexp', JM_TC_URL . $rel_path_css, [], jm_tc_get_assets_version($rel_path_css));
+            $rel_path_css = 'admin/css/iexp' . $this->get_assets_suffix() . '.css';
+            wp_enqueue_style('iexp', JM_TC_URL . $rel_path_css, [], $this->get_assets_version($rel_path_css));
         }
 
         /**
          * Tutorials page
          **************************************************************************************************************/
         if ('jm-twitter-cards_page_jm_tc_tutorials' === $hook_suffix) {
-            $rel_path_css = 'admin/css/tutorials' . jm_tc_get_assets_suffix() . '.css';
-            wp_enqueue_style('tutorials', JM_TC_URL . $rel_path_css, [], jm_tc_get_assets_version($rel_path_css));
+            $rel_path_css = 'admin/css/tutorials' . $this->get_assets_suffix() . '.css';
+            wp_enqueue_style('tutorials', JM_TC_URL . $rel_path_css, [], $this->get_assets_version($rel_path_css));
         }
     }
 
     public function admin_init(): void
     {
         load_plugin_textdomain('jm-tc', false, JM_TC_LANG_DIR);
-        $this->settings_api = new Settings($this->get_settings_sections(), $this->get_settings_fields());
-        $this->settings_api->admin_init();
-    }
 
-    public function get_settings_sections(): array
-    {
         $sections = [];
-        require JM_TC_DIR_VIEWS_SETTINGS . "settings-sections.php";
-        return (array) apply_filters("jm_tc_card_settings_sections", $sections);
-    }
-
-    public function get_settings_fields(): array
-    {
         $settings_fields = [];
-        require JM_TC_DIR_VIEWS_SETTINGS . "settings.php";
-        return (array) apply_filters("jm_tc_card_settings_fields", $settings_fields);
+        $opts = $this->get_options();
+        require JM_TC_DIR_PARAMS . "general.php";
+        require JM_TC_DIR_PARAMS . "sections.php";
+
+        $this->settings = new Settings(
+            (array) apply_filters("jm_tc_card_settings_sections", $sections), 
+            (array) apply_filters("jm_tc_card_settings_fields", $settings_fields)
+        );
+        $this->settings->admin_init();
     }
 
     public function admin_menu(): void
@@ -140,19 +126,14 @@ class Admin
         foreach ($this->sub_pages as $page => $title) {
             add_submenu_page('jm_tc', $title, $title, 'manage_options', $page, [
                 $this,
-                'get_view',
+                'get_admin_view',
             ]);
         }
     }
 
-    /**
-     * Get our view
-     */
-    public function get_view(): void
+    public function get_admin_view(): void
     {
-
         if (isset($_GET['page']) && in_array($_GET['page'], array_keys($this->sub_pages), true)) {
-            // don't allow anything to be loaded
             ob_start();
             $slug = str_replace('jm_tc_', '', sanitize_title_with_dashes($_GET['page']));
             $slug = str_replace('_', '-', $slug);
@@ -161,20 +142,17 @@ class Admin
         }
     }
 
-    /**
-     * Display options
-     */
     public function plugin_page(): void
     {
         ob_start();
-        $settings = $this->settings_api;
-        require JM_TC_DIR_VIEWS_SETTINGS . "settings-plugin-page.php";
+        $sections = $this->settings->get_settings_sections();
+        $count = count($sections);
+        require JM_TC_DIR_VIEWS_SETTINGS . "settings-general.php";
         ob_end_flush();
     }
 
     public function get_post_types($args = []): ?array
     {
-
         $defaults = ['public' => true,];
         $pt_args  = apply_filters('jm_tc_cpt_args', wp_parse_args($args, $defaults));
 
@@ -226,7 +204,6 @@ class Admin
      */
     public function process_settings_import(): void
     {
-
         if (empty($_POST['action']) || 'import_settings' !== $_POST['action']) {
             return;
         }
@@ -251,10 +228,6 @@ class Admin
             wp_die(esc_html__('Please upload a file to import', 'jm-tc'));
         }
 
-        /**
-         * array associative
-         *
-         */
         $settings = (array) json_decode(file_get_contents($import_file), true);
 
         if (!empty($settings['tc'])) {

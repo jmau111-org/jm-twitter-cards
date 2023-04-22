@@ -13,6 +13,8 @@ class Metabox
     private $keys;
     private $tc_opts;
 
+    use Functions;
+
     public function __construct()
     {
         $this->keys = [
@@ -25,47 +27,50 @@ class Metabox
             'cardPlayerStream',
             'cardPlayerCodec',
         ];
-        $this->tc_opts = jm_tc_get_options();
+
+        $this->tc_opts = $this->get_options();
     }
 
-    /**
-     * @see https://github.com/WordPress/gutenberg/blob/master/docs/extensibility/meta-box.md
-     */
     public function add_box(): void
     {
         add_meta_box(
-            'jm_tc_metabox',
+            '$this->metabox',
             esc_html__('Twitter Cards', 'jm-tc'),
             [$this, 'display_box'],
-            jm_tc_get_post_types()
+            $this->get_post_types()
         );
     }
 
     public function display_box(): void
     {
-
-        $metaBox = [];
-
         ob_start();
-        require JM_TC_DIR_VIEWS_SETTINGS . "settings-metabox.php";
-        ob_get_clean();
+        $rules     = JM_TC_DIR_VIEWS_PARAMS . "metabox.php";
+        $row_start = JM_TC_DIR_VIEWS_METABOX . "row-start.php";
+        $row_end   = JM_TC_DIR_VIEWS_METABOX . "row-start.php";
 
-        (new Fields)->generate_fields($metaBox);
+        require $rules;
+
+        foreach ($array as $options) {
+            $method = array_shift($options);
+            $view = JM_TC_DIR_VIEWS_METABOX . "$method.php";
+
+            if (is_file($path) 
+                && file_exists($path) 
+                && !empty($array["field_id"])) {
+                require $row_start;
+                require $view;
+                require $row_end;
+            }
+        }
+        ob_get_flush();
 
         wp_nonce_field('save_tc_meta', 'save_tc_meta_nonce');
     }
 
-    /**
-     * The save part
-     *
-     * @param int $post_id The post ID.
-     * @param \WP_Post $post The post object.
-     * @return int
-     */
     public function save_box($post_id, $post): int
     {
 
-        $types = jm_tc_get_post_types();
+        $types = $this->get_post_types();
 
         if (!in_array($post->post_type, $types)) {
             return $post_id;
@@ -119,10 +124,9 @@ class Metabox
 
     public function admin_enqueue_scripts(): void
     {
+        wp_register_script('jm-tc-metabox', JM_TC_URL . 'admin/js/metabox' . $this->get_assets_suffix() . '.js', ['jquery'], JM_TC_VERSION, true);
 
-        wp_register_script('jm-tc-metabox', JM_TC_URL . 'admin/js/metabox' . jm_tc_get_assets_suffix() . '.js', ['jquery'], JM_TC_VERSION, true);
-
-        if (in_array(get_post_type(), jm_tc_get_post_types())) {
+        if (in_array(get_post_type(), $this->get_post_types())) {
             wp_enqueue_media();
             wp_enqueue_script('count-chars');
             wp_enqueue_script('jm-tc-metabox');

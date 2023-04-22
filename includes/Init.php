@@ -10,11 +10,13 @@ if (!function_exists('add_action')) {
 
 class Init
 {
+    use Functions;
+    
     public static function on_activation(): void
     {
         $opts = get_option(JM_TC_SLUG_MAIN_OPTION);
         if (!is_array($opts)) {
-            update_option(JM_TC_SLUG_MAIN_OPTION, jm_tc_get_default_options());
+            update_option(JM_TC_SLUG_MAIN_OPTION, $this->get_default_options());
         }
     }
 

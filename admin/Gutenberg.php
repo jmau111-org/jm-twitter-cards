@@ -1,6 +1,7 @@
 <?php
 
 namespace JMTC\Admin;
+use JMTC\Functions;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -10,7 +11,9 @@ if (!function_exists('add_action')) {
 
 class Gutenberg
 {
-    public function register_scripts()
+    use Functions;
+    
+    public function register_scripts(): void
     {
         if (!is_admin()) {
             return;
@@ -27,7 +30,7 @@ class Gutenberg
             'tc-gut-sidebar',
             JM_TC_URL . $rel_path_js,
             [],
-            jm_tc_get_assets_version($rel_path_js),
+            $this->get_assets_version($rel_path_js),
             true
         );
 
@@ -35,11 +38,11 @@ class Gutenberg
             'tc-gut-sidebar',
             'tcData',
             [
-                'twitterSite'  => jm_tc_remove_at(jm_tc_maybe_get_opt('twitterSite')),
+                'twitterSite'  => $this->remove_at($this->maybe_get_opt('twitterSite')),
                 'domain'       => get_bloginfo('url'),
                 'avatar'       => get_avatar_url(0, 16),
-                'defaultImage' => jm_tc_maybe_get_opt('twitterImage'),
-                'defaultType'  => jm_tc_maybe_get_opt('twitterCardType'),
+                'defaultImage' => $this->maybe_get_opt('twitterImage'),
+                'defaultType'  => $this->maybe_get_opt('twitterCardType'),
                 'pluginUrl'    => JM_TC_URL,
             ]
         );
@@ -57,13 +60,13 @@ class Gutenberg
             'tc-gut-styles',
             JM_TC_URL . $rel_path_css,
             ['wp-edit-blocks'],
-            jm_tc_get_assets_version($rel_path_css)
+            $this->get_assets_version($rel_path_css)
         );
     }
 
-    public function enqueue_scripts()
+    public function enqueue_scripts(): void
     {
-        if (!in_array(get_post_type(), jm_tc_get_post_types(), true)) {
+        if (!in_array(get_post_type(), $this->get_post_types(), true)) {
             return;
         }
 
