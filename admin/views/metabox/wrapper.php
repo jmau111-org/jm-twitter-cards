@@ -8,12 +8,12 @@ if (!function_exists('add_action')) {
     exit();
 }
 
-if (empty($array['tag'])) {
+if (empty($meta['tag'])) {
     return;
 }
 
-if ('start' === $array['where']) {
-    echo '<' . esc_attr($array['tag']) . ' class="' . $class . '">';
+if ('start' === $meta['where']) {
+    echo '<' . esc_attr($meta['tag']) . ' class="' . esc_attr($meta['class'] ?? "") . '">';
 } else {
-    echo '</' . esc_attr($array['tag']) . '>';
+    echo '</' . esc_attr($meta['tag']) . '>';
 }

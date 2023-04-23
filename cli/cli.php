@@ -28,7 +28,6 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_username($args, $assoc_args)
     {
-
         if (empty($args[0])) {
             WP_CLI::error(__('Error'));
         }
@@ -53,7 +52,6 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_sitename($args, $assoc_args)
     {
-
         if (empty($args[0])) {
             WP_CLI::error(__('Error'));
         }
@@ -78,7 +76,6 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_cardtype($args, $assoc_args)
     {
-
         if (empty($args[0]) || !in_array($args[0], [
             'summary',
             'summary_large_image',
@@ -107,7 +104,6 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_opengraph($args, $assoc_args)
     {
-
         if (empty($args[0]) || !in_array($args[0], ['yes', 'no'], true)) {
             WP_CLI::error(__('Error'));
         }
@@ -132,7 +128,6 @@ class JM_TC_CLI extends WP_CLI_Command
      */
     public function set_post_types($args, $assoc_args)
     {
-
         if (empty($args[0])) {
             WP_CLI::error(__('Error'));
         }

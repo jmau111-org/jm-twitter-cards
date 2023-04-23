@@ -147,7 +147,7 @@ class Admin
         ob_start();
         $sections = $this->settings->get_settings_sections();
         $count = count($sections);
-        require JM_TC_DIR_VIEWS_SETTINGS . "settings-general.php";
+        require JM_TC_DIR_VIEWS_SETTINGS . "general.php";
         ob_end_flush();
     }
 

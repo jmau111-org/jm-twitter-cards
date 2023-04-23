@@ -12,14 +12,6 @@ if (!function_exists('add_action')) {
     exit();
 }
 
-if (!defined('JM_TC_SLUG_MAIN_OPTION')) {
-    define('JM_TC_SLUG_MAIN_OPTION', 'jm_tc');
-}
-
-if (!defined('JM_TC_SLUG_CPT_OPTION')) {
-    define('JM_TC_SLUG_CPT_OPTION', 'jm_tc_cpt');
-}
-
 class App
 {
     private $opts;
@@ -73,6 +65,7 @@ class App
         add_filter('jm_tc_card_creator', [$plugin_front, 'remover']);
     }
     
+    // for now, we'll keep it manual
     private function load_dependencies()
     {
         $dependencies =  [

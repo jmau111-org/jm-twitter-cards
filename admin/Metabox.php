@@ -2,6 +2,8 @@
 
 namespace JMTC\Admin;
 
+use JMTC\Functions;
+
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
     header('HTTP/1.1 403 Forbidden');
@@ -34,7 +36,7 @@ class Metabox
     public function add_box(): void
     {
         add_meta_box(
-            '$this->metabox',
+            'jm_tc_metabox',
             esc_html__('Twitter Cards', 'jm-tc'),
             [$this, 'display_box'],
             $this->get_post_types()
@@ -43,33 +45,32 @@ class Metabox
 
     public function display_box(): void
     {
-        ob_start();
-        $rules     = JM_TC_DIR_VIEWS_PARAMS . "metabox.php";
-        $row_start = JM_TC_DIR_VIEWS_METABOX . "row-start.php";
-        $row_end   = JM_TC_DIR_VIEWS_METABOX . "row-start.php";
+        $metaBox   = [];
+        $rules     = JM_TC_DIR_PARAMS . "metabox.php";
+        $row       = JM_TC_DIR_VIEWS_METABOX . "row.php";
 
         require $rules;
 
-        foreach ($array as $options) {
-            $method = array_shift($options);
-            $view = JM_TC_DIR_VIEWS_METABOX . "$method.php";
+        foreach ($metaBox as $meta) {
+            $method = array_shift($meta);
+            $view   = JM_TC_DIR_VIEWS_METABOX . "$method.php";
 
-            if (is_file($path) 
-                && file_exists($path) 
-                && !empty($array["field_id"])) {
-                require $row_start;
+            if (!is_file($view) || !file_exists($view)) {
+                continue;
+            }
+
+            if ($method === "wrapper") {
                 require $view;
-                require $row_end;
+            } else {
+                require $row;
             }
         }
-        ob_get_flush();
 
         wp_nonce_field('save_tc_meta', 'save_tc_meta_nonce');
     }
 
     public function save_box($post_id, $post): int
     {
-
         $types = $this->get_post_types();
 
         if (!in_array($post->post_type, $types)) {
@@ -78,7 +79,6 @@ class Metabox
 
         if (!empty($_POST['save_tc_meta_nonce']) && check_admin_referer('save_tc_meta', 'save_tc_meta_nonce')) {
             foreach ((array) $this->keys as $key) {
-
                 if (!empty($_POST[$key])) {
                     update_post_meta($post_id, $key, $this->sanitize($key, $_POST[$key]));
                 } elseif (empty($_POST[$key])) {
@@ -92,7 +92,6 @@ class Metabox
 
     private function sanitize($key, $value)
     {
-
         switch ($key) {
             case 'twitterCardType':
                 return in_array($value, [

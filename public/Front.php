@@ -93,8 +93,6 @@ class Front
 
                 $markup .= '<meta ' . $name_tag . '="' . $is_og . ':' . $name . '" content="' . $value . '">' . PHP_EOL;
             }
-        } elseif (is_string($data)) {
-            $markup .= '<!-- [(-_-)@ ' . $data . ' @(-_-)] -->' . PHP_EOL;
         }
 
         return $markup;

@@ -95,7 +95,7 @@ trait Functions
     private function get_post_types(): array
     {
         $cpts = get_option(JM_TC_SLUG_CPT_OPTION);
-        return (empty($cpts['twitterCardPt'])) ? get_post_types(['private' => true]) : array_values($cpts['twitterCardPt']);
+        return (empty($cpts['twitterCardPt'])) ? get_post_types(['public' => true]) : array_values($cpts['twitterCardPt']);
     }
 
     private function get_current_post_type(): ?string
@@ -125,7 +125,7 @@ trait Functions
 
     private function get_assets_suffix(): string
     {
-        return defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+        return defined('WP_DEBUG') && WP_DEBUG ? '' : '.min';
     }
 
     private function get_assets_version($file_rel_path): string

@@ -13,9 +13,9 @@ if (!function_exists('add_action')) {
     type="text" 
     size="60"
     class="tc-file-input" 
-    name="<?php esc_attr_e($array['field_id']); ?>" 
-    id="<?php esc_attr_e($array['field_id']); ?>" 
-    value="<?php esc_attr_e($array['value']); ?>"
+    name="<?php esc_attr_e($meta['field_id']); ?>" 
+    id="<?php esc_attr_e($meta['field_id']); ?>" 
+    value="<?php esc_attr_e($meta['value']); ?>"
 >
 <a href="#" class="tc-file-input-select button-primary">
     <?php esc_html_e('Select', 'jm-tc'); ?>

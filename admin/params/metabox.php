@@ -24,7 +24,7 @@ $metaBox = [
         'where' => 'start'
     ],
     [
-        'method'   => 'field_select',
+        'method'   => 'select',
         'label'    => esc_html__('Card type', 'jm-tc'),
         'field_id' => 'twitterCardType',
         'options'  => [
@@ -33,32 +33,32 @@ $metaBox = [
             'player'              => esc_html__('Player', 'jm-tc'),
             'app'                 => esc_html__('Application', 'jm-tc'),
         ],
-        'type'     => 'field_select',
+        'type'     => 'select',
         'value'    => (get_post_meta($post_id, 'twitterCardType', true))
             ? get_post_meta($post_id, 'twitterCardType', true)
             : $cardTypeGeneral,
     ],
     [
-        'method'   => 'field_image',
+        'method'   => 'image',
         'field_id' => 'cardImage',
         'label'    => esc_html__('Set another source as twitter image (enter URL)', 'jm-tc'),
         'value'    => get_post_meta($post_id, 'cardImage', true),
     ],
     [
-        'method'    => 'field_textarea',
+        'method'    => 'textarea',
         'field_id'  => 'cardImageAlt',
         'label'     => esc_html__('Image Alt', 'jm-tc'),
         'value'     => get_post_meta($post_id, 'cardImageAlt', true),
         'charcount' => 420,
     ],
     [
-        'method'   => 'field_url',
+        'method'   => 'url',
         'field_id' => 'cardPlayer',
         'label'    => esc_html__('URL of iFrame player (MUST BE HTTPS)', 'jm-tc'),
         'value'    => get_post_meta($post_id, 'cardPlayer', true),
     ],
     [
-        'method'   => 'field_number',
+        'method'   => 'number',
         'field_id' => 'cardPlayerWidth',
         'label'    => esc_html__('Player width', 'jm-tc'),
         'min'      => 262,
@@ -67,7 +67,7 @@ $metaBox = [
         'value'    => get_post_meta($post_id, 'cardPlayerWidth', true),
     ],
     [
-        'method'   => 'field_number',
+        'method'   => 'number',
         'field_id' => 'cardPlayerHeight',
         'label'    => esc_html__('Player height', 'jm-tc'),
         'type'     => 'number',

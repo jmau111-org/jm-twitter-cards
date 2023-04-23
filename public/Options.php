@@ -199,24 +199,17 @@ class Options
 
         $this->options['player'] = apply_filters('jm_tc_player_url', $playerUrl, $this->post_ID, $this->tc_opts);
 
-        if (empty($player['player'])) {
-            return $this->error(esc_html__('Warning : Player Card is not set properly ! There is no URL provided for iFrame player !', 'jm-tc'));
+        if (empty($playerWidth)) {
+            $playerWidth  = apply_filters('jm_tc_player_default_width', 435);
+        }
+        if (empty($playerHeight)) {
+            $playerHeight = apply_filters('jm_tc_player_default_height', 251);
         }
 
-        $player['player:width']  = apply_filters('jm_tc_player_default_width', 435);
-        $player['player:height'] = apply_filters('jm_tc_player_default_height', 251);
-        
-        if (!empty($playerWidth) && !empty($playerHeight)) {
-            $this->options['player:width']  = apply_filters('jm_tc_player_width', $playerWidth, $this->post_ID, $this->tc_opts);
-            $this->options['player:height'] = apply_filters('jm_tc_player_height', $playerHeight, $this->post_ID, $this->tc_opts);
-        }
+        $this->options['player:width']  = apply_filters('jm_tc_player_width', $playerWidth, $this->post_ID, $this->tc_opts);
+        $this->options['player:height'] = apply_filters('jm_tc_player_height', $playerHeight, $this->post_ID, $this->tc_opts);
 
         return $this;
-    }
-
-    private function error(): string
-    {
-        return current_user_can('edit_posts') ? $error : "";
     }
 
     private function set_deep_linking(): self

@@ -36,6 +36,14 @@ define('JM_TC_DIR_VIEWS_METABOX', JM_TC_DIR_VIEWS . "metabox/");
 define('JM_TC_BASENAME', plugin_basename(__FILE__));
 define('JM_TC_LANG_DIR', basename(rtrim(dirname(__FILE__), '/')) . '/languages');
 
+if (!defined('JM_TC_SLUG_MAIN_OPTION')) {
+    define('JM_TC_SLUG_MAIN_OPTION', 'jm_tc');
+}
+
+if (!defined('JM_TC_SLUG_CPT_OPTION')) {
+    define('JM_TC_SLUG_CPT_OPTION', 'jm_tc_cpt');
+}
+
 require JM_TC_DIR . "includes/Functions.php";
 require JM_TC_DIR . "includes/App.php";
 
