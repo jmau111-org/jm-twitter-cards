@@ -38,11 +38,11 @@ class Gutenberg
             'tc-gut-sidebar',
             'tcData',
             [
-                'twitterSite'  => $this->remove_at($this->maybe_get_opt('twitterSite')),
+                'twitterSite'  => $this->remove_at($this->maybe_get_option('twitterSite')),
                 'domain'       => get_bloginfo('url'),
                 'avatar'       => get_avatar_url(0, 16),
-                'defaultImage' => $this->maybe_get_opt('twitterImage'),
-                'defaultType'  => $this->maybe_get_opt('twitterCardType'),
+                'defaultImage' => $this->maybe_get_option('twitterImage'),
+                'defaultType'  => $this->maybe_get_option('twitterCardType'),
                 'pluginUrl'    => JM_TC_URL,
             ]
         );

@@ -10,7 +10,7 @@ if (!function_exists('add_action')) {
 
 trait Functions
 {
-    private function maybe_get_opt($key, $array = []): string
+    private function maybe_get_option($key, $array = []): string
     {
         $array = !empty($array) ? $array : $this->get_options();
         return array_key_exists($key, $array) ? $array[$key] : '';
@@ -18,17 +18,16 @@ trait Functions
 
     private function get_default_options(): array
     {
-        return [
+        $blog_name = get_bloginfo('name');
+        return (array) apply_filters('jm_tc_get_default_options', [
             'twitterCardType'       => 'summary',
             'twitterCreator'        => '',
             'twitterSite'           => '',
-            'twitterImage'          => JM_TC_URL . "admin/img/Twitter_logo_blue.png",
+            'twitterImage'          => JM_TC_URL . 'admin/img/Twitter_logo_blue.png',
             'twitterImageAlt'       => '',
             'twitterProfile'        => 'yes',
-            'twitterPostPageTitle'  => get_bloginfo('name'), // filter used by plugin to customize title
-            'twitterPostPageDesc'   => __('Welcome to', 'jm-tc') . ' ' . get_bloginfo('name') . ' - ' . __('see blog posts', 'jm-tc'),
-            'twitterCardTitle'      => '',
-            'twitterCardDesc'       => '',
+            'twitterPostPageTitle'  => $blog_name,
+            'twitterPostPageDesc'   => __('Welcome to', 'jm-tc') . ' ' . $blog_name . ' - ' . __('see blog posts', 'jm-tc'),
             'twitterCardExcerpt'    => 'no',
             'twitterUsernameKey'    => 'twitter',
             'twitteriPhoneName'     => '',
@@ -43,7 +42,15 @@ trait Functions
             'twitterCardRobotsTxt'  => 'yes',
             'twitterAppCountry'     => '',
             'twitterCardOg'         => 'no',
-        ];
+        ]);
+    }
+
+    private function fill_default_options(): void
+    {
+        $opts = get_option(JM_TC_SLUG_MAIN_OPTION);
+        if (!is_array($opts)) {
+            update_option(JM_TC_SLUG_MAIN_OPTION, $this->get_default_options());
+        }
     }
 
     private function get_options(): array
@@ -80,7 +87,7 @@ trait Functions
         $the_post    = get_post($post_id);
         $the_excerpt = !empty($the_post->post_excerpt) ? $the_post->post_excerpt : $the_post->post_content;
         $shortcode_pattern = get_shortcode_regex();
-        $the_excerpt       = preg_replace('/' . $shortcode_pattern . '/', '', $the_excerpt);
+        $the_excerpt = preg_replace('/' . $shortcode_pattern . '/', '', $the_excerpt);
         $the_excerpt = strip_tags($the_excerpt);
 
         return esc_attr(substr($the_excerpt, 0, 200));
@@ -112,12 +119,9 @@ trait Functions
 
     private function embed($id, $args = []): ?string
     {
-
         $merged = wp_parse_args(
             $args,
-            [
-                'witdh' => 400,
-            ]
+            ['witdh' => 400,]
         );
 
         return wp_oembed_get(esc_url(sprintf('https://vimeo.com/%s', $id)), $merged);

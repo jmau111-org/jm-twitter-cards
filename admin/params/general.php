@@ -132,18 +132,6 @@ $settings_fields = [
             'name'  => 'twitterAppCountry',
             'type'  => 'text',
         ],
-        [
-            'label' => esc_html__('Custom field title', 'jm-tc'),
-            'desc'  => esc_html__('If you prefer to use your own field for twitter meta title instead of SEO plugin. Leave it blank if you want to use SEO plugin or default title.', 'jm-tc'),
-            'name'  => 'twitterCardTitle',
-            'type'  => 'text',
-        ],
-        [
-            'label' => esc_html__('Custom field desc', 'jm-tc'),
-            'desc'  => esc_html__('If you prefer to use your own field for twitter meta description instead of SEO plugin. Leave it blank if you want to use SEO plugin or default desc.', 'jm-tc'),
-            'name'  => 'twitterCardDesc',
-            'type'  => 'text',
-        ],
     ],
     JM_TC_SLUG_CPT_OPTION  => [
         [

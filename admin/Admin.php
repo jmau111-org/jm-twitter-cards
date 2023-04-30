@@ -151,18 +151,6 @@ class Admin
         ob_end_flush();
     }
 
-    public function get_post_types($args = []): ?array
-    {
-        $defaults = ['public' => true,];
-        $pt_args  = apply_filters('jm_tc_cpt_args', wp_parse_args($args, $defaults));
-
-        if (!is_array($pt_args)) {
-            $pt_args = [];
-        }
-
-        return get_post_types($pt_args);
-    }
-
     /**
      * Process a settings export that generates a .json file of the shop settings
      * @since 5.3.2

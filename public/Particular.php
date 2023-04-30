@@ -10,10 +10,10 @@ if (!function_exists('add_action')) {
 
 class Particular
 {
+    use Functions;
 
     public function robots_mod($output): string
     {
-
         $output .= 'User-agent: Twitterbot' . PHP_EOL;
         $output .= 'Disallow: ';
 
@@ -22,7 +22,6 @@ class Particular
 
     public function remover($meta): ?string
     {
-
         if (in_array(strtolower($meta), ['tweetpressfr', '@tweetpressfr', 'jmau111', '@jmau111'], true)) {
             return false;
         }
@@ -33,11 +32,11 @@ class Particular
     public function new_blog($blog_id): void
     {
         switch_to_blog($blog_id);
-        Init::on_activation();
+        $this->fill_default_options();
         restore_current_blog();
     }
 
-    function modify_excerpt($excerpt): ?string
+    public function modify_excerpt($excerpt): ?string
     {
         global $post;
         $_excerpt = $this->get_excerpt_from_far_far_away($post->ID);
@@ -49,7 +48,7 @@ class Particular
         return $excerpt;
     }
 
-    function get_excerpt_from_far_far_away($post_id): ?string
+    private function get_excerpt_from_far_far_away($post_id): ?string
     {
         global $wpdb;
         $query        = "SELECT post_excerpt FROM {$wpdb->posts} WHERE ID = %d LIMIT 1";

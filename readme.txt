@@ -109,6 +109,7 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 * April 2023
 * dependency & security updates
 * global refactor with new namespace: no migration required, but if you use internal helpers elsewhere (bad practice), be careful. My recommendation is to use action hooks and filters only.
+* drop support for custom keys regarding post meta title and desc, as it's prone to errors, and 99.9% of users do not need such settings
 
 ### 12
 * October 2022

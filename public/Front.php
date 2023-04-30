@@ -53,13 +53,13 @@ class Front
     private function build_home_meta(): string
     {
         return $this->build_meta([
-            'card'        => $this->maybe_get_opt('twitterCardType', $this->tc_opts),
-            'creator'     => "@" . $this->remove_at($this->maybe_get_opt('twitterCreator', $this->tc_opts)),
-            'site'        => "@" . $this->remove_at($this->maybe_get_opt('twitterSite', $this->tc_opts)),
-            'title'       => $this->maybe_get_opt('twitterPostPageTitle', $this->tc_opts),
-            'description' => $this->maybe_get_opt('twitterPostPageDesc', $this->tc_opts),
-            'image'       => $this->maybe_get_opt('twitterImage', $this->tc_opts),
-            'image:alt'   => $this->maybe_get_opt('twitterImageAlt', $this->tc_opts),
+            'card'        => $this->maybe_get_option('twitterCardType', $this->tc_opts),
+            'creator'     => "@" . $this->remove_at($this->maybe_get_option('twitterCreator', $this->tc_opts)),
+            'site'        => "@" . $this->remove_at($this->maybe_get_option('twitterSite', $this->tc_opts)),
+            'title'       => $this->maybe_get_option('twitterPostPageTitle', $this->tc_opts),
+            'description' => $this->maybe_get_option('twitterPostPageDesc', $this->tc_opts),
+            'image'       => $this->maybe_get_option('twitterImage', $this->tc_opts),
+            'image:alt'   => $this->maybe_get_option('twitterImageAlt', $this->tc_opts),
         ]);
     }
 
