@@ -30,7 +30,7 @@ class Gutenberg
             'tc-gut-sidebar',
             JM_TC_URL . $rel_path_js,
             [],
-            $this->get_assets_version($rel_path_js),
+            $this->get_asset_version($rel_path_js),
             true
         );
 
@@ -60,13 +60,13 @@ class Gutenberg
             'tc-gut-styles',
             JM_TC_URL . $rel_path_css,
             ['wp-edit-blocks'],
-            $this->get_assets_version($rel_path_css)
+            $this->get_asset_version($rel_path_css)
         );
     }
 
     public function enqueue_scripts(): void
     {
-        if (!in_array(get_post_type(), $this->get_post_types(), true)) {
+        if (!$this->is_post_type_allowed()) {
             return;
         }
 

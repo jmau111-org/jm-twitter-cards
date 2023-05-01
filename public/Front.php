@@ -2,6 +2,8 @@
 
 namespace JMTC;
 
+use JMTC\Admin\MetaValues;
+
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
     header('HTTP/1.1 403 Forbidden');
@@ -25,20 +27,20 @@ class Front
         }
 
         if (!is_404() && !is_tag() && !is_archive() && !is_tax() && !is_category()) {
-            $this->display_meta_tags(new Options($this->tc_opts));
+            $this->display_meta_tags(new MetaValues($this->tc_opts));
         }
 
         return true;
     }
 
-    private function display_meta_tags(Options $o): void
+    private function display_meta_tags(MetaValues $mv): void
     {
         $output = $this->html_comments();
 
         if (is_front_page() || is_home()) {
             $output .= $this->build_home_meta();
         } else {
-            $output .= $this->build_meta($o->get_options());
+            $output .= $this->build_meta($mv->get_meta_values());
         }
 
         $output .= $this->html_comments();

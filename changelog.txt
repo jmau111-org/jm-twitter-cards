@@ -1,6 +1,7 @@
 ### 13
-* April 2023
+* May 2023
 * dependency & security updates
+* bump minimum PHP and WP versions to respectively 7.4 and 4.9
 * global refactor with new namespace: no migration required, but if you use internal helpers elsewhere (bad practice), be careful. My recommendation is to use action hooks and filters only.
 * drop support for custom keys regarding post meta title and desc, as it's prone to errors, and 99.9% of users do not need such settings
 

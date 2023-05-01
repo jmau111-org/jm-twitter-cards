@@ -1,6 +1,8 @@
 <?php
 
-namespace JMTC;
+namespace JMTC\Admin;
+
+use JMTC\Functions;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -8,7 +10,7 @@ if (!function_exists('add_action')) {
     exit();
 }
 
-class Meta
+class MetaKeys
 {
     use Functions;
     

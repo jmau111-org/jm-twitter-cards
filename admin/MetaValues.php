@@ -1,6 +1,8 @@
 <?php
 
-namespace JMTC;
+namespace JMTC\Admin;
+
+use JMTC\Functions;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -8,11 +10,11 @@ if (!function_exists('add_action')) {
     exit();
 }
 
-class Options
+class MetaValues
 {
     private $tc_opts;
     private $post_ID;
-    private $options;
+    private $values;
 
     use Functions;
 
@@ -24,7 +26,7 @@ class Options
 
         $this->post_ID = $post_ID;
         $this->tc_opts = $tc_opts;
-        $this->options = [];
+        $this->values = [];
 
         $this->set_card_type()
             ->set_creator_username()
@@ -34,18 +36,18 @@ class Options
             ->set_image()
             ->set_image_alt();
 
-        if ($this->options["card"] === "player") {
+        if ($this->values["card"] === "player") {
             $this->set_player();
         }
 
-        if ($this->options["card"] === "app") {
+        if ($this->values["card"] === "app") {
             $this->set_deep_linking();
         }
     }
 
-    public function get_options(): array
+    public function get_meta_values(): array
     {
-        return $this->options;
+        return $this->values;
     }
 
     private function set_card_type(): self
@@ -53,7 +55,7 @@ class Options
         $cardTypePost = get_post_meta($this->post_ID, 'twitterCardType', true);
         $cardType     = (!empty($cardTypePost)) ? $cardTypePost :  $this->maybe_get_option('twitterCardType', $this->tc_opts);
 
-        $this->options['card'] = apply_filters('jm_tc_card_type', $cardType, $this->post_ID, $this->tc_opts);
+        $this->values['card'] = apply_filters('jm_tc_card_type', $cardType, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
@@ -76,14 +78,14 @@ class Options
             $cardCreator = '@' .  $this->remove_at($cardCreator);
         }
 
-        $this->options['creator'] = apply_filters('jm_tc_card_creator', $cardCreator, $this->post_ID, $this->tc_opts);
+        $this->values['creator'] = apply_filters('jm_tc_card_creator', $cardCreator, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
     private function set_site_username(): self
     {
         $cardSite = '@' .  $this->remove_at($this->maybe_get_option('twitterSite', $this->tc_opts));
-        $this->options['site'] = apply_filters('jm_tc_card_site', $cardSite, $this->post_ID, $this->tc_opts);
+        $this->values['site'] = apply_filters('jm_tc_card_site', $cardSite, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
@@ -106,7 +108,7 @@ class Options
             }
         }
 
-        $this->options['title'] = apply_filters('jm_tc_get_title', $cardTitle, $this->post_ID, $this->tc_opts);
+        $this->values['title'] = apply_filters('jm_tc_get_title', $cardTitle, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
@@ -132,7 +134,7 @@ class Options
 
         $cardDescription = $this->remove_lb($cardDescription);
 
-        $this->options['description'] = apply_filters('jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->tc_opts);
+        $this->values['description'] = apply_filters('jm_tc_get_excerpt', $cardDescription, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
@@ -158,7 +160,7 @@ class Options
 
         $image = !empty($image) ? $image :  $this->maybe_get_option('twitterImage', $this->tc_opts);
 
-        $this->options['image'] = apply_filters('jm_tc_image_source', $image, $this->post_ID, $this->tc_opts);
+        $this->values['image'] = apply_filters('jm_tc_image_source', $image, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
@@ -180,7 +182,7 @@ class Options
 
         $cardImageAlt = $this->remove_lb($cardImageAlt);
 
-        $this->options['image:alt'] = apply_filters('jm_tc_image_alt', $cardImageAlt, $this->post_ID, $this->tc_opts);
+        $this->values['image:alt'] = apply_filters('jm_tc_image_alt', $cardImageAlt, $this->post_ID, $this->tc_opts);
         return $this;
     }
 
@@ -191,7 +193,7 @@ class Options
         $playerHeight    = get_post_meta($this->post_ID, 'cardPlayerHeight', true);
         $player          = [];
 
-        $this->options['player'] = apply_filters('jm_tc_player_url', $playerUrl, $this->post_ID, $this->tc_opts);
+        $this->values['player'] = apply_filters('jm_tc_player_url', $playerUrl, $this->post_ID, $this->tc_opts);
 
         if (empty($playerWidth)) {
             $playerWidth  = apply_filters('jm_tc_player_default_width', 435);
@@ -200,8 +202,8 @@ class Options
             $playerHeight = apply_filters('jm_tc_player_default_height', 251);
         }
 
-        $this->options['player:width']  = apply_filters('jm_tc_player_width', $playerWidth, $this->post_ID, $this->tc_opts);
-        $this->options['player:height'] = apply_filters('jm_tc_player_height', $playerHeight, $this->post_ID, $this->tc_opts);
+        $this->values['player:width']  = apply_filters('jm_tc_player_width', $playerWidth, $this->post_ID, $this->tc_opts);
+        $this->values['player:height'] = apply_filters('jm_tc_player_height', $playerHeight, $this->post_ID, $this->tc_opts);
 
         return $this;
     }

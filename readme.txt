@@ -2,7 +2,7 @@
 Contributors: jmlapam
 Tags: twitter, cards, semantic markup, metabox, meta, photo, product, gallery, player
 Donate Link: https://don.fondationabbepierre.org/b/mon-don?_ga=2.25482229.995513841.1594242995-131201139.1594242995&_cv=1
-Requires at least: 4.2
+Requires at least: 4.9
 Tested up to: 6.2
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -106,8 +106,9 @@ Il suffit de renseigner les clés de vos custom fields en page d'option et le pl
 == Changelog ==
 
 ### 13
-* April 2023
+* May 2023
 * dependency & security updates
+* bump minimum PHP and WP versions to respectively 7.4 and 4.9
 * global refactor with new namespace: no migration required, but if you use internal helpers elsewhere (bad practice), be careful. My recommendation is to use action hooks and filters only.
 * drop support for custom keys regarding post meta title and desc, as it's prone to errors, and 99.9% of users do not need such settings
 

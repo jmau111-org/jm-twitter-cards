@@ -16,6 +16,20 @@ trait Functions
         return array_key_exists($key, $array) ? $array[$key] : '';
     }
 
+    private function get_postmeta_keys(): array
+    {
+        return [
+            'twitterCardType',
+            'cardImage',
+            'cardImageAlt',
+            'cardPlayer',
+            'cardPlayerWidth',
+            'cardPlayerHeight',
+            'cardPlayerStream',
+            'cardPlayerCodec',
+        ];
+    }
+
     private function get_default_options(): array
     {
         $blog_name = get_bloginfo('name');
@@ -117,6 +131,15 @@ trait Functions
         return $post_type;
     }
 
+    private function is_post_type_allowed($post_type = null): bool
+    {
+        if (empty($post_type)) {
+            $post_type = $this->get_current_post_type();
+        }
+
+        return in_array($post_type, $this->get_post_types(), true);
+    }
+
     private function embed($id, $args = []): ?string
     {
         $merged = wp_parse_args(
@@ -132,7 +155,7 @@ trait Functions
         return defined('WP_DEBUG') && WP_DEBUG ? '' : '.min';
     }
 
-    private function get_assets_version($file_rel_path): string
+    private function get_asset_version($file_rel_path): string
     {
         return (file_exists($file_rel_path)) ? JM_TC_VERSION . "-" . filemtime($file_rel_path) : JM_TC_VERSION;
     }

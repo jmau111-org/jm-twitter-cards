@@ -29,13 +29,6 @@ class Particular
         return $meta;
     }
 
-    public function new_blog($blog_id): void
-    {
-        switch_to_blog($blog_id);
-        $this->fill_default_options();
-        restore_current_blog();
-    }
-
     public function modify_excerpt($excerpt): ?string
     {
         global $post;
