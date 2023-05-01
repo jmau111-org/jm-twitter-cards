@@ -19,8 +19,8 @@ class Gutenberg
             return;
         }
 
-        $rel_path_css = 'build/style-index.css';
-        $rel_path_js = 'build/index.js';
+        $rel_path_css = JM_TC_GUT_FOLDER . '/style-gutenberg-sidebar.css';
+        $rel_path_js = JM_TC_GUT_FOLDER . '/gutenberg-sidebar.js';
 
         if (!file_exists(JM_TC_DIR . $rel_path_js) || !file_exists(JM_TC_DIR . $rel_path_css)) {
             return;

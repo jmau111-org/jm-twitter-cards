@@ -21,14 +21,6 @@ class Admin
 
     use Functions;
 
-    /**
-     * Initialize the class and set its properties.
-     *
-     * @since    1.0.0
-     *
-     * @param      string $plugin_name The name of this plugin.
-     * @param      string $version The version of this plugin.
-     */
     public function __construct()
     {
         $this->sub_pages = apply_filters( "jm_tc_admin_sub_pages", [
@@ -252,7 +244,7 @@ class Admin
                     'label'   => esc_html__('Add or hide the meta box', 'jm-tc'),
                     'desc'    => esc_html__('Default', 'jm-tc') . ': ' . esc_html__('All', 'jm-tc'),
                     'type'    => 'multicheck',
-                    'options' => $this->get_post_types(),
+                    'options' => get_post_types(['public' => true]),
                 ],
             ],
         ];

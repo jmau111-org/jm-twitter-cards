@@ -3,8 +3,8 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "build": "wp-scripts build",
-    "dev": "wp-scripts start"
+    "build": "wp-scripts build admin/js/gutenberg-sidebar",
+    "dev": "wp-scripts start admin/js/gutenberg-sidebar"
   },
   "devDependencies": {
     "@wordpress/scripts": "^26.1.0",

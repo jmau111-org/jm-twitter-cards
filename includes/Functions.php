@@ -62,8 +62,12 @@ trait Functions
     private function fill_default_options(): void
     {
         $opts = get_option(JM_TC_SLUG_MAIN_OPTION);
-        if (!is_array($opts)) {
+        $cpts = get_option(JM_TC_SLUG_CPT_OPTION);
+        if (!is_array($opts) || empty($opts)) {
             update_option(JM_TC_SLUG_MAIN_OPTION, $this->get_default_options());
+        }
+        if (!is_array($cpts)|| empty($cpts)) {
+            update_option(JM_TC_SLUG_CPT_OPTION, $this->get_post_types());
         }
     }
 
@@ -115,8 +119,8 @@ trait Functions
 
     private function get_post_types(): array
     {
-        $cpts = get_option(JM_TC_SLUG_CPT_OPTION);
-        return (empty($cpts['twitterCardPt'])) ? get_post_types(['public' => true]) : array_values($cpts['twitterCardPt']);
+        $cpts   = get_option(JM_TC_SLUG_CPT_OPTION);
+        return (empty($cpts['twitterCardPt'])) ? get_post_types(['public' => true]) : $cpts['twitterCardPt'];
     }
 
     private function get_current_post_type(): ?string
