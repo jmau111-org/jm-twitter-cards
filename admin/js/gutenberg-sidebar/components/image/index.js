@@ -11,9 +11,8 @@ function getImageUrl( props ) {
 	if ( ! postTypeCheck || ! postTypeCheck.supports[ 'thumbnail' ] ) {
 		return fallback;
 	}
-	let featuredImageId = select( 'core/editor' ).getEditedPostAttribute(
-		'featured_media'
-	);
+	let featuredImageId =
+		select( 'core/editor' ).getEditedPostAttribute( 'featured_media' );
 
 	if ( featuredImageId === 0 ) {
 		return fallback;

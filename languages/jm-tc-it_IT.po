@@ -593,10 +593,6 @@ msgstr "modalità aperta"
 msgid "Missing critical option !"
 msgstr "Manca l'opzione critica !"
 
-#. Author URI of the plugin/theme
-msgid "https://julien-maury.com"
-msgstr "https://julien-maury.com"
-
 #. Description of the plugin/theme
 msgid "Meant to help users to implement and customize Twitter Cards easily"
 msgstr ""
