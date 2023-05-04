@@ -57,6 +57,8 @@ svn
 build/
 !.index.html
 
+*.zip
+
 ############
 ## Composer
 ############

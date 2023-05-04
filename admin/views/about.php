@@ -11,11 +11,5 @@ if (!function_exists('add_action')) {
     <h2>
         <span><?php _e('This plugin is free', 'jm-tc'); ?></span>
     </h2>
-    <?php _e('This plugin is free not me :)', 'jm-tc'); ?>
     <?php _e('So please give me some time to solve issues and answer in case you have any problem.', 'jm-tc'); ?>
-    <h2><?php _e('The developer', 'jm-tc'); ?></h2>
-    <?php
-    $output = wpautop(__('I am a web developer, I like to make it simpler.', 'jm-tc'));
-
-    echo $output; ?>
 </div>

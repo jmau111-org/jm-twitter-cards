@@ -29,9 +29,6 @@
 	 */
 	$( '#twitterCardType' )
 		.on( 'change', function () {
-			'app' === this.value
-				? $( '.tc-preview' ).hide()
-				: $( '.tc-preview' ).show();
 			'player' === this.value
 				? $( '*[class^="cardPlayer"]' ).show()
 				: $( '*[class^="cardPlayer"]' ).hide();
