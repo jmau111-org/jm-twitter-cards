@@ -1,15 +1,17 @@
 {
   "name": "jm-twitter-cards",
   "private": true,
-  "dependencies": {},
   "scripts": {
-    "build": "wp-scripts build",
-    "dev": "wp-scripts start"
+    "check-engines": "wp-scripts check-engines",
+    "packages-update": "wp-scripts packages-update",
+    "build": "wp-scripts build --webpack-src-dir=./admin/js/gutenberg-sidebar",
+    "dev": "wp-scripts start --webpack-src-dir=./admin/js/gutenberg-sidebar",
+    "format": "wp-scripts format ./admin/js/gutenberg-sidebar"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^25.2.0",
-    "grunt": "^1.6.0",
-    "grunt-contrib-cssmin": "^4.0.0",
+    "@wordpress/scripts": "^26.3.0",
+    "grunt": "^1.6.1",
+    "grunt-contrib-cssmin": "^5.0.0",
     "grunt-contrib-uglify": "^5.2.2"
   }
 }

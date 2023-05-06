@@ -571,10 +571,6 @@ msgstr "Erreur inconnue !"
 msgid "Image is heavier than 1MB ! Card will be broken !"
 msgstr "L'image dépasse les 1 MB, c'est assez lourd et non supporté par Twitter !"
 
-#. Author URI of the plugin/theme
-msgid "https://julien-maury.com/blog"
-msgstr "https://julien-maury.com/blog"
-
 #. Description of the plugin/theme
 msgid "Meant to help users to implement and customize Twitter Cards easily"
 msgstr "Conçu pour aider à mettre en place des cards Twitter facilement"

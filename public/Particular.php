@@ -1,6 +1,6 @@
 <?php
 
-namespace TokenToMe\TwitterCards;
+namespace JMTC;
 
 if (!function_exists('add_action')) {
     header('Status: 403 Forbidden');
@@ -10,32 +10,18 @@ if (!function_exists('add_action')) {
 
 class Particular
 {
+    use Functions;
 
-    /**
-     * filter for robots.txt rules
-     *
-     * @param $output
-     *
-     * @since 5.3.2
-     * @return string
-     */
-    public function robots_mod($output)
+    public function robots_mod($output): string
     {
-
         $output .= 'User-agent: Twitterbot' . PHP_EOL;
         $output .= 'Disallow: ';
 
         return $output;
     }
 
-    /**
-     * @param $meta
-     *
-     * @return bool
-     */
-    public function remover($meta)
+    public function remover($meta): ?string
     {
-
         if (in_array(strtolower($meta), ['tweetpressfr', '@tweetpressfr', 'jmau111', '@jmau111'], true)) {
             return false;
         }
@@ -43,24 +29,7 @@ class Particular
         return $meta;
     }
 
-    /**
-     * Default options for multisite when creating new site
-     *
-     * @param $blog_id
-     */
-    public function new_blog($blog_id)
-    {
-        switch_to_blog($blog_id);
-        Init::on_activation();
-        restore_current_blog();
-    }
-
-    /**
-     * alter excerpt with filter jm_tc_get_excerpt
-     * @since 5.3.2
-     * @return string
-     */
-    function modify_excerpt($excerpt)
+    public function modify_excerpt($excerpt): ?string
     {
         global $post;
         $_excerpt = $this->get_excerpt_from_far_far_away($post->ID);
@@ -72,12 +41,7 @@ class Particular
         return $excerpt;
     }
 
-    /**
-     * Get excerpt from database
-     * @since 5.3.2
-     * @return string
-     */
-    function get_excerpt_from_far_far_away($post_id)
+    private function get_excerpt_from_far_far_away($post_id): ?string
     {
         global $wpdb;
         $query        = "SELECT post_excerpt FROM {$wpdb->posts} WHERE ID = %d LIMIT 1";
