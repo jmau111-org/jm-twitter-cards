@@ -9,7 +9,7 @@
     "format": "wp-scripts format ./admin/js/gutenberg-sidebar"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^26.3.0",
+    "@wordpress/scripts": "^26.8.0",
     "grunt": "^1.6.1",
     "grunt-contrib-cssmin": "^5.0.0",
     "grunt-contrib-uglify": "^5.2.2"
